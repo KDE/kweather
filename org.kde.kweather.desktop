@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Weather
+Comment=A weather application in Kirigami.
+Version=1.0
+Exec=kweather
+MimeType=application/x-kweather;
+Icon=weather-clouds
+Type=Application
+Terminal=false
+Categories=Qt;KDE;Utilities;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.kde.kweather</id>
+  <name>Weather</name>
+  <summary>A convergent weather application.</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2+</project_license>
+  <developer_name>KDE Community</developer_name>
+  <description>
+    <p>KWeather is a full-featured weather application that is mobile friendly.</p>
+  </description>
+</component>

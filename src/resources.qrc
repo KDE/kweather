@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/CitiesPage.qml</file>
+        <file>qml/ForecastPage.qml</file>
+        <file>qml/SettingsPage.qml</file>
+        <file>resources/autumn.jpg</file>
+    </qresource>
+</RCC>
