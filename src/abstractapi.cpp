@@ -1,6 +1,11 @@
 #include "abstractapi.h"
-
-AbstractAPI::AbstractAPI()
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+AbstractAPI::AbstractAPI() : interval(1)
 {
+  mManager = new QNetworkAccessManager();
+}
 
+AbstractAPI::~AbstractAPI() {
+  delete  mManager;
 }

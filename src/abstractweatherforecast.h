@@ -1,11 +1,9 @@
 #ifndef ABSTRACTWEATHERFORECAST_H
 #define ABSTRACTWEATHERFORECAST_H
 #include <QDateTime>
-#include <QObject>
 
 class AbstractWeatherforecast
 {
-    Q_OBJECT
 public:
     AbstractWeatherforecast(QString& LocationName,
                             QString& WindDirection,
