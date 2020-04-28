@@ -112,11 +112,79 @@ void NorwegianMeteorologicalInstitute::xmlParse(
           QDateTime::fromString(reader.attributes().value(QLatin1String(
                                                             "from")).toString(),
                                 Qt::ISODate);
-
+        forecast->setTime(from); // warning: UTC time
         // todo: calculate local time from UTC according to coordinate
         // forecast->setTime()
         // todo: read all the elements
       }
     }
+  }
+}
+
+void NorwegianMeteorologicalInstitute::parseElement(
+  QXmlStreamReader       & reader,
+  AbstractWeatherforecast *fc) {
+  while (!reader.atEnd()) {
+    switch (reader.tokenType()) {
+    case QXmlStreamReader::StartElement:
+
+      if (reader.name() == QLatin1String("temperature")) {
+        const auto t =
+          reader.attributes().value(QLatin1String("value")).toFloat();
+        fc->setMinTemp(t);
+        fc->setMaxTemp(t);
+      } else if (reader.name() == QLatin1String("windDirection")) {
+        fc->setWindDirection(reader.attributes().value(QLatin1String(
+                                                         "name")).toString());
+      } else if (reader.name() == QLatin1String("windSpeed")) {
+        fc->setWindSpeed(reader.attributes().value(QLatin1String(
+                                                     "mps")).toInt());
+      }
+      else if (reader.name() == QLatin1String("humidity")) {
+        fc->setHumidity(reader.attributes().value(QLatin1String(
+                                                    "value")).toInt());
+      }
+      else if (reader.name() == QLatin1String("pressure")) {
+        fc->setPressure(reader.attributes().value(QLatin1String(
+                                                    "value")).toInt());
+      }
+      else if (reader.name() == QLatin1String("cloudiness")) {
+        fc->setCloudiness(reader.attributes().value(QLatin1String(
+                                                      "percent")).toInt());
+      }
+      else if (reader.name() == QLatin1String("fog")) {
+        fc->setFog(reader.attributes().value(QLatin1String(
+                                               "percent")).toFloat());
+      }
+      else if (reader.name() == QLatin1String("minTemperature")) {
+        fc->setMinTemp(reader.attributes().value(QLatin1String("value")).toFloat());
+      } else if (reader.name() == QLatin1String("maxTemperature")) {
+        fc->setMaxTemp(reader.attributes().value(QLatin1String("value")).toFloat());
+      }
+      else if (reader.name() == QLatin1String("symbol")) {
+        auto symId = reader.attributes().value(QLatin1String("number")).toInt();
+
+        if (symId > 100) {
+          symId -= 100; // map polar night symbols
+        }
+        fc->setWeatherIcon(map.value(symId));
+      }
+      else if (reader.name() == QLatin1String("precipitation")) {
+        fc->setPrecipitation(reader.attributes().value(QLatin1String(
+                                                         "value")).toFloat());
+      }
+      break;
+
+    case QXmlStreamReader::EndElement:
+
+      if (reader.name() == QLatin1String("time")) {
+        return;
+      }
+      break;
+
+    default:
+      break;
+    }
+    reader.readNext();
   }
 }
