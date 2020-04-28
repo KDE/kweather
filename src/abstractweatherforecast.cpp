@@ -1,6 +1,6 @@
 #include "abstractweatherforecast.h"
 #include <limits>
-AbstractWeatherforecast::AbstractWeatherforecast(QString   LocationName,
+AbstractWeatherForecast::AbstractWeatherForecast(QString   LocationName,
                                                  QString   WindDirection,
                                                  QString   WeatherDescription,
                                                  QString   WeatherIcon,
@@ -31,20 +31,20 @@ AbstractWeatherforecast::AbstractWeatherforecast(QString   LocationName,
   humidity_(Humidity),
   pressure_(Pressure) {}
 
-AbstractWeatherforecast::AbstractWeatherforecast() {}
+AbstractWeatherForecast::AbstractWeatherForecast() {}
 
-const QString& AbstractWeatherforecast::locationName() {
+const QString& AbstractWeatherForecast::locationName() {
   return locationName_;
 }
 
-const QString& AbstractWeatherforecast::windDirection() {
+const QString& AbstractWeatherForecast::windDirection() {
   return windDirection_;
 }
 
-const QString& AbstractWeatherforecast::weatherDescription() {
+const QString& AbstractWeatherForecast::weatherDescription() {
   return weatherDescription_;
 }
 
-const QString& AbstractWeatherforecast::weatherIcon() {
+const QString& AbstractWeatherForecast::weatherIcon() {
   return weatherIcon_;
 }

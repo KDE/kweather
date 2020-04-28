@@ -25,7 +25,7 @@ void OpenWeatherMap::parse(QNetworkReply *reply) {
   start = start.toOffsetFromUtc(mJson["city"]["timezone"].toInt());
 
   for (int i = 0; i < 39; i++) {
-    mForecasts.push_back(new AbstractWeatherforecast(
+    mForecasts.push_back(new AbstractWeatherForecast(
                            QString(mJson["city"]["country"].toString() + ", " +
                                    mJson["city"]["name"].toString()),
                            getWindDirection(mArray.at(i)["wind"]["deg"].toDouble()),

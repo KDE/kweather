@@ -1,12 +1,15 @@
 #ifndef ABSTRACTWEATHERFORECAST_H
 #define ABSTRACTWEATHERFORECAST_H
-#include <QDateTime>
 
-class AbstractWeatherforecast
+#include <QDateTime>
+#include <QObject>
+
+class AbstractWeatherForecast : public QObject
 {
+    Q_OBJECT
 public:
-    AbstractWeatherforecast();
-    AbstractWeatherforecast(QString LocationName,
+    AbstractWeatherForecast();
+    AbstractWeatherForecast(QString LocationName,
                             QString WindDirection,
                             QString WeatherDescription,
                             QString WeatherIcon,
@@ -15,7 +18,7 @@ public:
                             float Lon,
                             float Precipitation,
                             float Fog,
-                            int Clouldiness,
+                            int Cloudiness,
                             int WindSpeed,
                             int MaxTemp,
                             int MinTemp,

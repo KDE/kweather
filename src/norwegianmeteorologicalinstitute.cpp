@@ -89,10 +89,10 @@ void NorwegianMeteorologicalInstitute::parse(QNetworkReply *reply) {
 
 void NorwegianMeteorologicalInstitute::xmlParse(
   QXmlStreamReader                      & reader,
-  std::vector<AbstractWeatherforecast *>& vector)
+  std::vector<AbstractWeatherForecast *>& vector)
 {
   if (vector.empty()) {
-    AbstractWeatherforecast fc;
+    AbstractWeatherForecast fc;
     vector.push_back(&fc);
   }
   auto forecast = vector.back();
@@ -126,7 +126,7 @@ void NorwegianMeteorologicalInstitute::xmlParse(
         isFinished = parseElement(reader, forecast);
 
         if (isFinished) //  if All data are read, add a blank one in the back
-          vector.push_back(new AbstractWeatherforecast());
+          vector.push_back(new AbstractWeatherForecast());
 
         // warning:
         // UTC
@@ -143,7 +143,7 @@ void NorwegianMeteorologicalInstitute::xmlParse(
 
 bool NorwegianMeteorologicalInstitute::parseElement(
   QXmlStreamReader       & reader,
-  AbstractWeatherforecast *fc) {
+  AbstractWeatherForecast *fc) {
   while (!reader.atEnd()) {
     switch (reader.tokenType()) {
     case QXmlStreamReader::StartElement:
