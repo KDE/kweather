@@ -17,6 +17,7 @@ public:
   Q_PROPERTY(real lat READ lat NOTIFY finished)
   Q_PROPERTY(real lon READ lat NOTIFY finished)
   geoiplookup();
+  ~geoiplookup();
   QString name();
   float   lat();
   float   lon();

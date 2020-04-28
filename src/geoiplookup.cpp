@@ -68,3 +68,7 @@ float geoiplookup::lon() {
 QString geoiplookup::name() {
   return locationName;
 }
+
+geoiplookup::~geoiplookup() {
+  delete mManager;
+}

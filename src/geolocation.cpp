@@ -1,5 +1,4 @@
 #include "geolocation.h"
-#include "weathertile.h"
 #include <QUrlQuery>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -7,12 +6,13 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 geolocation::geolocation(QObject *parent) : QObject(parent)
-{}
+{
+  mManager = new QNetworkAccessManager();
+}
 
 void geolocation::setName(QString& location) {
-  request  = &location;
-  mManager = new QNetworkAccessManager();
   QUrl url;
+
   url.setScheme(QStringLiteral("https"));
   url.setHost(QStringLiteral("nominatim.openstreetmap.org"));
   url.setPath(QStringLiteral("/search"));
@@ -27,6 +27,7 @@ void geolocation::setName(QString& location) {
 }
 
 void geolocation::process(QNetworkReply *reply) {
+  if (mLocation.isEmpty()) mLocation.clear();
   QJsonDocument data = QJsonDocument::fromJson(reply->readAll());
 
   if (data.isEmpty()) {
@@ -62,4 +63,8 @@ float geolocation::lat() {
 
 float geolocation::lon() {
   return Lon;
+}
+
+geolocation::~geolocation() {
+  delete mManager;
 }

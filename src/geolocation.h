@@ -28,6 +28,7 @@ public:
   Q_PROPERTY(real lat READ lat)
   Q_PROPERTY(real lon READ lon)
   geolocation(QObject *parent = nullptr);
+  ~geolocation();
   QStringList      getLocation();
   Q_INVOKABLE void setLocation(int i);
   float            lat();
@@ -47,7 +48,6 @@ private:
 
   float Lat = 0.0;
   float Lon = 0.0;
-  QString *request;
   QStringList mLocation;
   QNetworkAccessManager *mManager = nullptr;
   QNetworkReply *mReply           = nullptr;
