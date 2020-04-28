@@ -112,16 +112,36 @@ void NorwegianMeteorologicalInstitute::xmlParse(
           QDateTime::fromString(reader.attributes().value(QLatin1String(
                                                             "from")).toString(),
                                 Qt::ISODate);
-        forecast->setTime(from); // warning: UTC time
+        auto to =
+          QDateTime::fromString(reader.attributes().value(QLatin1String(
+                                                            "to")).toString(),
+                                Qt::ISODate);
+        bool isFinished;
+
+        if (from.time().hour() == to.time().hour()) forecast->setTime(from);  //
+                                                                              // set
+                                                                              // the
+                                                                              // time
+
+        isFinished = parseElement(reader, forecast);
+
+        if (isFinished) //  if All data are read, add a blank one in the back
+          vector.push_back(new AbstractWeatherforecast());
+
+        // warning:
+        // UTC
+        // time
         // todo: calculate local time from UTC according to coordinate
-        // forecast->setTime()
-        // todo: read all the elements
       }
+      reader.skipCurrentElement();
+    }
+    else {
+      reader.readNext();
     }
   }
 }
 
-void NorwegianMeteorologicalInstitute::parseElement(
+bool NorwegianMeteorologicalInstitute::parseElement(
   QXmlStreamReader       & reader,
   AbstractWeatherforecast *fc) {
   while (!reader.atEnd()) {
@@ -178,7 +198,7 @@ void NorwegianMeteorologicalInstitute::parseElement(
     case QXmlStreamReader::EndElement:
 
       if (reader.name() == QLatin1String("time")) {
-        return;
+        return true;
       }
       break;
 
@@ -187,4 +207,5 @@ void NorwegianMeteorologicalInstitute::parseElement(
     }
     reader.readNext();
   }
+  return false;
 }
