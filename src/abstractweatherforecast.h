@@ -5,6 +5,7 @@
 class AbstractWeatherforecast
 {
 public:
+    AbstractWeatherforecast();
     AbstractWeatherforecast(QString LocationName,
                             QString WindDirection,
                             QString WeatherDescription,
@@ -30,28 +31,43 @@ public:
     inline float lon(){return lon_;};
     inline float precipitation(){return precipitation_;};
     inline float fog(){return fog_;};
-    inline int clouldiness(){return clouldiness_;};
+    inline int cloudiness(){return cloudiness_;};
     inline int windSpeed(){return windSpeed_;};
     inline int maxTemp(){return maxTemp_;};
     inline int minTemp(){return minTemp_;};
     inline int humidity(){return humidity_;};
     inline int pressure(){return pressure_;};
+    inline void setLocationName(QString n){locationName_=n;};
+    inline void setWindDirection(QString d){windDirection_=d;};
+    inline void setWeatherDescription(QString d){weatherDescription_=d;};
+    inline void setWeatherIcon(QString i){weatherIcon_=i;};
+    inline void setTime(QDateTime t){time_=t;};
+    inline void setLat(float l){lat_=l;};
+    inline void setLon(float l){lon_=l;};
+    inline void setPrecipitation(float p){precipitation_=p;};
+    inline void setFog(float f){fog_=f;};
+    inline void setCloudiness(int c){cloudiness_=c;};
+    inline void setWindSpeed(int w){windSpeed_=w;};
+    inline void setMaxTemp(int m){maxTemp_=m;};
+    inline void setMinTemp(int m){minTemp_=m;};
+    inline void setHumidity(int h){humidity_=h;};
+    inline void setPressure(int p){pressure_=p;};
 private:
-    const QString locationName_;
-    const QString windDirection_;
-    const QString weatherDescription_;
-    const QString weatherIcon_;
-    const QDateTime time_;
-    const float lat_;
-    const float lon_;
-    const float precipitation_;
-    const float fog_;
-    const int clouldiness_;
-    const int windSpeed_;
-    const int maxTemp_;
-    const int minTemp_;
-    const int humidity_;
-    const int pressure_;
+    QString locationName_;
+    QString windDirection_;
+    QString weatherDescription_;
+    QString weatherIcon_;
+    QDateTime time_;
+    float lat_;
+    float lon_;
+    float precipitation_;
+    float fog_;
+    int cloudiness_;
+    int windSpeed_;
+    int maxTemp_;
+    int minTemp_;
+    int humidity_;
+    int pressure_;
 };
 
 #endif // ABSTRACTWEATHERFORECAST_H

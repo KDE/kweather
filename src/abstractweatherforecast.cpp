@@ -9,7 +9,7 @@ AbstractWeatherforecast::AbstractWeatherforecast(QString   LocationName,
                                                  float     Lon,
                                                  float     Precipitation = -1.0,
                                                  float     Fog           = -1.0,
-                                                 int       Clouldiness   = -1,
+                                                 int       Cloudiness    = -1,
                                                  int       WindSpeed     = -1,
                                                  int       MaxTemp       = std::numeric_limits<int>::min(),
                                                  int       MinTemp       = std::numeric_limits<int>::max(),
@@ -24,12 +24,14 @@ AbstractWeatherforecast::AbstractWeatherforecast(QString   LocationName,
   lon_(Lon),
   precipitation_(Precipitation),
   fog_(Fog),
-  clouldiness_(Clouldiness),
+  cloudiness_(Cloudiness),
   windSpeed_(WindSpeed),
   maxTemp_(MaxTemp),
   minTemp_(MinTemp),
   humidity_(Humidity),
   pressure_(Pressure) {}
+
+AbstractWeatherforecast::AbstractWeatherforecast() {}
 
 const QString& AbstractWeatherforecast::locationName() {
   return locationName_;
