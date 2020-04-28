@@ -6,24 +6,27 @@
 #include "abstractweatherforecast.h"
 class QNetworkAccessManager;
 class QNetworkReply;
-class AbstractAPI
+class AbstractAPI : public QObject
 {
     Q_OBJECT
 public:
-    AbstractAPI();
+    AbstractAPI(int interval,QString* token=nullptr, QObject* parent = nullptr);
     virtual ~AbstractAPI();
+    virtual void setLocation(float lat, float lon)=0;
     virtual void update()=0;
-    const int interval; // api update interval in hour
+    const int interval=-1; // api update interval in hour
     virtual void setToken(QString& token)=0;
-signals:
-    void updated();
-private slots:
-    virtual void parse()=0;
-private:
-    std::shared_ptr<std::vector<std::shared_ptr<AbstractWeatherforecast>>> mForecasts;
+protected:
+    float lat;
+    float lon;
+    QString* token_=nullptr;
+    std::vector<AbstractWeatherforecast*> mForecasts;
     QNetworkAccessManager* mManager;
     QNetworkReply* mReply;
-    QString* token=nullptr;
+signals:
+    void updated();
+public slots:
+    virtual void parse(QNetworkReply* Reply)=0;
 };
 
 #endif // ABSTRACTAPI_H

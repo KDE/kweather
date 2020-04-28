@@ -2,13 +2,14 @@ set(kweather_SRCS
     main.cpp
     geoiplookup.cpp
     geolocation.cpp
-    downloader.cpp
     abstractweatherforecast.cpp
     weatherforecastmanager.cpp
     weatherlocationmodel.cpp
     weatherhourmodel.cpp
     weatherdaymodel.cpp
     norwegianmeteorologicalinstitute.cpp
+    abstractapi.cpp
+    openweathermap.cpp
     )
 
 qt5_add_resources(RESOURCES resources.qrc)

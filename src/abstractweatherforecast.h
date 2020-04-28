@@ -5,10 +5,10 @@
 class AbstractWeatherforecast
 {
 public:
-    AbstractWeatherforecast(QString& LocationName,
-                            QString& WindDirection,
-                            QString& WeatherDescription,
-                            QString& WeatherIcon,
+    AbstractWeatherforecast(QString LocationName,
+                            QString WindDirection,
+                            QString WeatherDescription,
+                            QString WeatherIcon,
                             QDateTime Time,
                             float Lat,
                             float Lon,
@@ -37,10 +37,10 @@ public:
     inline int humidity(){return humidity_;};
     inline int pressure(){return pressure_;};
 private:
-    const QString& locationName_;
-    const QString& windDirection_;
-    const QString& weatherDescription_;
-    const QString& weatherIcon_;
+    const QString locationName_;
+    const QString windDirection_;
+    const QString weatherDescription_;
+    const QString weatherIcon_;
     const QDateTime time_;
     const float lat_;
     const float lon_;

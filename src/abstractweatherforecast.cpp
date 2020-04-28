@@ -1,9 +1,9 @@
 #include "abstractweatherforecast.h"
 #include <limits>
-AbstractWeatherforecast::AbstractWeatherforecast(QString & LocationName,
-                                                 QString & WindDirection,
-                                                 QString & WeatherDescription,
-                                                 QString & WeatherIcon,
+AbstractWeatherforecast::AbstractWeatherforecast(QString   LocationName,
+                                                 QString   WindDirection,
+                                                 QString   WeatherDescription,
+                                                 QString   WeatherIcon,
                                                  QDateTime Time,
                                                  float     Lat,
                                                  float     Lon,
