@@ -1,11 +1,12 @@
 #ifndef WEATHERHOURMODEL_H
 #define WEATHERHOURMODEL_H
+class WeatherLocation;
 
 #include <QObject>
 #include <QAbstractListModel>
 
-#include <abstractweatherforecast.h>
-#include <weatherlocationmodel.h>
+#include "abstractweatherforecast.h"
+#include "weatherlocationmodel.h"
 
 class WeatherHour : public AbstractWeatherForecast
 {
@@ -20,11 +21,10 @@ class WeatherHourListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    explicit WeatherHourListModel(WeatherLocation* location);
+    explicit WeatherHourListModel(WeatherLocation* location = nullptr);
     
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex& index, int role) const override;
-    QHash<int, QByteArray> roleNames() const override;
     
     void refreshHoursFromForecasts();
     Q_INVOKABLE void updateUi();

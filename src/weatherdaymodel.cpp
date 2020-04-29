@@ -22,12 +22,7 @@ int WeatherDayListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherDayListModel::data(const QModelIndex &index, int role) const
 {
-    
-}
-
-QHash<int, QByteArray> WeatherDayListModel::roleNames() const
-{
-    
+    return QVariant();
 }
 
 void WeatherDayListModel::refreshDaysFromForecasts()

@@ -1,18 +1,20 @@
 #ifndef WEATHERLOCATIONMODEL_H
 #define WEATHERLOCATIONMODEL_H
+class WeatherDayListModel;
+class WeatherHourListModel;
 
 #include <QObject>
 #include <QAbstractListModel>
 
-#include <abstractweatherforecast.h>
-#include <weatherdaymodel.h>
-#include <weatherhourmodel.h>
+#include "abstractweatherforecast.h"
+#include "weatherdaymodel.h"
+#include "weatherhourmodel.h"
 
 class WeatherLocation : public QObject
 {
     Q_OBJECT
-    
 public:
+    explicit WeatherLocation();
     explicit WeatherLocation(QString locationName, float latitude, float longitude);
     explicit WeatherLocation(QString locationName, float latitude, float longitude, QList<AbstractWeatherForecast*> forecasts_);
     
@@ -44,10 +46,7 @@ public:
     explicit WeatherLocationListModel(QObject *parent = nullptr);
     
     int rowCount(const QModelIndex &parent) const override;
-    Qt::ItemFlags flags(const QModelIndex &index) const override;
     QVariant data(const QModelIndex &index, int role) const override;
-    bool setData(const QModelIndex &index, const QVariant &value, int role) override;
-    QHash<int, QByteArray> roleNames() const override;
     
     Q_INVOKABLE void updateUi();
     

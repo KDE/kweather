@@ -30,26 +30,11 @@ int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
     return locationsList.size();
 }
 
-Qt::ItemFlags WeatherLocationListModel::flags(const QModelIndex &index) const
-{
-    Q_UNUSED(index);
-    return 0;
-}
-
 QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) const
 {
-    
+    return QVariant();
 }
 
-bool WeatherLocationListModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    
-}
-
-QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
-{
-    
-}
 
 void WeatherLocationListModel::updateUi()
 {
@@ -79,7 +64,7 @@ void WeatherLocationListModel::remove(int index)
 WeatherLocation* WeatherLocationListModel::get(int index)
 {
     if (index < 0 || index >= locationsList.count())
-        return new WeatherLocation();
+        return new WeatherLocation("", 0, 0);
     
     return locationsList.at(index);
 }

@@ -22,12 +22,7 @@ int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherHourListModel::data(const QModelIndex& index, int role) const
 {
-    
-}
-
-QHash<int, QByteArray> WeatherHourListModel::roleNames() const
-{
-    
+    return QVariant();
 }
 
 void WeatherHourListModel::refreshHoursFromForecasts()

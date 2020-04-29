@@ -1,10 +1,11 @@
 #ifndef WEATHERDAYMODEL_H
 #define WEATHERDAYMODEL_H
+class WeatherLocation;
 
 #include <QObject>
 #include <QAbstractListModel>
 
-#include <weatherlocationmodel.h>
+#include "weatherlocationmodel.h"
 
 // generated from the forecasts list
 class WeatherDay : public QObject
@@ -23,11 +24,10 @@ class WeatherDayListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    explicit WeatherDayListModel(WeatherLocation* location);
+    explicit WeatherDayListModel(WeatherLocation* location = nullptr);
     
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
-    QHash<int, QByteArray> roleNames() const override;
     
     void refreshDaysFromForecasts();
     Q_INVOKABLE void updateUi();
