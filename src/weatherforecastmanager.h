@@ -10,10 +10,12 @@
 #include <QObject>
 #include <memory>
 #include <vector>
+#include <random>
 class AbstractWeatherForecast;
 class NorwegianMeteorologicalInstitute;
 class OpenWeatherMap;
 class WeatherLocationListModel;
+class QTimer;
 class WeatherforecastManager : public QObject {
     Q_OBJECT
 
@@ -31,12 +33,15 @@ protected:
     explicit WeatherforecastManager(WeatherLocationListModel& model,int defaultAPI = NORWEGIAN);
 
 private:
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int>* distribution;
     WeatherLocationListModel& model_;
     int api_ = NORWEGIAN;
     std::unique_ptr<std::vector<NorwegianMeteorologicalInstitute*>> norwegian_ = nullptr;
     std::unique_ptr<std::vector<OpenWeatherMap*>>openWeather_ = nullptr;
 
     void writeToCache(const std::vector<AbstractWeatherForecast *>& data);
+    QTimer* timer;
 
     void readFromCache(QString& url);
     WeatherforecastManager(const WeatherforecastManager&);
