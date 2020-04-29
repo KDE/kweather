@@ -14,7 +14,7 @@ Kirigami.ScrollablePage {
         id: citiesList
         model: citiesModel
         
-        Kirigami.PlaceholderMessage {
+        /*Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
             anchors.left: parent.left
             anchors.right: parent.right
@@ -23,7 +23,7 @@ Kirigami.ScrollablePage {
             text: "Add a city"
             icon.name: "globe"
         }
-        
+        */
         delegate: Kirigami.Card {
             
             actions: Kirigami.Action {
