@@ -14,6 +14,9 @@ public:
 
   NorwegianMeteorologicalInstitute();
   void update() override;
+  void setLocation(float lat,
+                   float lon) override;
+  void setToken(QString&) override;
 
 private slots:
 

@@ -9,11 +9,26 @@
 
 #include <zlib.h>
 
+void NorwegianMeteorologicalInstitute::setLocation(float latitude,
+                                                   float longitude) {
+  lat = latitude;
+  lon = longitude;
+}
+
+void NorwegianMeteorologicalInstitute::setToken(QString&) {} // no token is
+
+// needed
+
 NorwegianMeteorologicalInstitute::NorwegianMeteorologicalInstitute()
   : AbstractAPI(-1)
 {}
 
 void NorwegianMeteorologicalInstitute::update() {
+  if (!mForecasts.empty()) {
+    for (auto fc : mForecasts) delete fc;
+    mForecasts.clear();
+  } // delete old data
+
   // ported from itinerary/weather
   QUrl url;
 
@@ -88,6 +103,7 @@ void NorwegianMeteorologicalInstitute::parse(QNetworkReply *reply) {
     xmlParse(reader, mForecasts);
   } while (stream.avail_out == 0);
   inflateEnd(&stream);
+  emit updated();
 }
 
 void NorwegianMeteorologicalInstitute::xmlParse(
@@ -122,8 +138,26 @@ void NorwegianMeteorologicalInstitute::xmlParse(
         bool isFinished;
 
         if (from.time().hour() == to.time().hour()) forecast->setTime(from);  //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
                                                                               // set
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
                                                                               // the
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
+                                                                              //
                                                                               // time
 
         isFinished = parseElement(reader, forecast);

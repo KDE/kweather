@@ -12,6 +12,11 @@ OpenWeatherMap::OpenWeatherMap() :
   AbstractAPI(3)
 {}
 
+void OpenWeatherMap::setLocation(float latitude, float longitude) {
+  lat = latitude;
+  lon = longitude;
+}
+
 void OpenWeatherMap::setToken(QString& token) {
   token_ = &token;
 }
@@ -65,6 +70,10 @@ QString OpenWeatherMap::getWindDirection(double degrees) {
 }
 
 void OpenWeatherMap::update() {
+  if (!mForecasts.empty()) {
+    for (auto fc : mForecasts) delete fc;
+    mForecasts.clear();
+  } // delete old data
   QUrlQuery query;
 
   query.addQueryItem(QStringLiteral("lat"),   QString().setNum(lat));

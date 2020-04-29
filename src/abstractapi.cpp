@@ -17,3 +17,7 @@ AbstractAPI::~AbstractAPI() {
     delete d;
   }
 }
+
+std::vector<AbstractWeatherForecast *> * AbstractAPI::readData() {
+  return &mForecasts;
+}
