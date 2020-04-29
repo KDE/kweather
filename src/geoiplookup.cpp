@@ -2,7 +2,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QXmlStreamReader>
-geoiplookup::geoiplookup()
+GeoIPLookup::GeoIPLookup()
 {
   mManager = new QNetworkAccessManager();
   QUrl url;
@@ -12,7 +12,7 @@ geoiplookup::geoiplookup()
   QNetworkRequest req(url);
   mReply = mManager->get(req);
   connect(mManager, &QNetworkAccessManager::finished, this,
-          &geoiplookup::process);
+          &GeoIPLookup::process);
 }
 
 /*
@@ -33,7 +33,7 @@ geoiplookup::geoiplookup()
     <TimeZone>Europe/Paris</TimeZone>
    </Response>
  */
-void geoiplookup::process(QNetworkReply *reply) {
+void GeoIPLookup::process(QNetworkReply *reply) {
   auto reader = new QXmlStreamReader(reply->readAll());
 
   while (!reader->atEnd()) {
@@ -48,27 +48,27 @@ void geoiplookup::process(QNetworkReply *reply) {
       locationName.append(", " + reader->readElementText()); // <City>
       reader->readNext();
       reader->readNext();                                    // to <Latitude>
-      Lat = reader->readElementText().toFloat();
+      latitude_ = reader->readElementText().toFloat();
       reader->readNext();
-      Lon = reader->readElementText().toFloat();
+      longitude_ = reader->readElementText().toFloat();
       break;
     }
   }
   emit finished();
 }
 
-float geoiplookup::lat() {
-  return Lat;
+float GeoIPLookup::latitude() {
+  return latitude_;
 }
 
-float geoiplookup::lon() {
-  return Lon;
+float GeoIPLookup::longitude() {
+  return longitude_;
 }
 
-QString geoiplookup::name() {
+QString GeoIPLookup::name() {
   return locationName;
 }
 
-geoiplookup::~geoiplookup() {
+GeoIPLookup::~GeoIPLookup() {
   delete mManager;
 }

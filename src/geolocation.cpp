@@ -1,16 +1,18 @@
 #include "geolocation.h"
+
 #include <QUrlQuery>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-geolocation::geolocation(QObject *parent) : QObject(parent)
+
+GeoLocation::GeoLocation(QObject *parent) : QObject(parent)
 {
   mManager = new QNetworkAccessManager();
 }
 
-void geolocation::setName(QString& location) {
+void GeoLocation::setName(QString& location) {
   QUrl url;
 
   url.setScheme(QStringLiteral("https"));
@@ -23,10 +25,10 @@ void geolocation::setName(QString& location) {
   QNetworkRequest req(url);
   mReply = mManager->get(req);
   connect(mManager, &QNetworkAccessManager::finished, this,
-          &geolocation::process);
+          &GeoLocation::process);
 }
 
-void geolocation::process(QNetworkReply *reply) {
+void GeoLocation::process(QNetworkReply *reply) {
   if (mLocation.isEmpty()) mLocation.clear();
   QJsonDocument data = QJsonDocument::fromJson(reply->readAll());
 
@@ -48,23 +50,23 @@ void geolocation::process(QNetworkReply *reply) {
   emit finished();
 }
 
-QStringList geolocation::getLocation() {
+QStringList GeoLocation::getLocation() {
   return mLocation;
 }
 
-void geolocation::setLocation(int i) {
+void GeoLocation::setLocation(int i) {
   Lat = cityArray.at(i)["boundingbox"]["lat"].toDouble();
   Lon = cityArray.at(i)["boundingbox"]["lon"].toDouble();
 }
 
-float geolocation::lat() {
+float GeoLocation::latitude() {
   return Lat;
 }
 
-float geolocation::lon() {
+float GeoLocation::longitude() {
   return Lon;
 }
 
-geolocation::~geolocation() {
+GeoLocation::~GeoLocation() {
   delete mManager;
 }

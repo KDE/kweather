@@ -1,7 +1,11 @@
 #ifndef NORWEGIANMETEOROLOGICALINSTITUTE_H
 #define NORWEGIANMETEOROLOGICALINSTITUTE_H
-#include "abstractapi.h"
+
 #include <QObject>
+
+#include "abstractweatherforecast.h"
+#include "abstractapi.h"
+
 class QXmlStreamReader;
 class NorwegianMeteorologicalInstitute : public AbstractAPI {
   Q_OBJECT
@@ -18,9 +22,9 @@ private slots:
 private:
 
   void xmlParse(QXmlStreamReader                      & reader,
-                std::vector<AbstractWeatherforecast *>& vector);
+                std::vector<AbstractWeatherForecast *>& vector);
   bool parseElement(QXmlStreamReader       & reader,
-                    AbstractWeatherforecast *fc);
+                    AbstractWeatherForecast *fc);
 
   // https://api.met.no/weatherapi/weathericon/1.1/documentation
   // it's qtcreator auto indentation, I didn't write this!!!

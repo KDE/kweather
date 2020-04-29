@@ -1,11 +1,14 @@
 #include "norwegianmeteorologicalinstitute.h"
+
 #include <QUrlQuery>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QCoreApplication>
 #include <QNetworkRequest>
-#include <zlib.h>
 #include <QXmlStreamReader>
+
+#include <zlib.h>
+
 NorwegianMeteorologicalInstitute::NorwegianMeteorologicalInstitute()
   : AbstractAPI(-1)
 {}

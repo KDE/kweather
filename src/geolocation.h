@@ -1,5 +1,6 @@
 #ifndef GEOLOCATION_H
 #define GEOLOCATION_H
+
 #include <QObject>
 #include <QJsonArray>
 
@@ -13,26 +14,27 @@
  * setLocation takes a int value which is the position
  * of choosen city in QStringList, and set latitude
  * and longitude
- * lat() and lon() return them
+ * latitude() and longitude() return them
  * If no result is found, noResult() is emitted
  * ###################################################
  */
+
 class QNetworkReply;
 class QNetworkAccessManager;
-class geolocation : public QObject {
+class GeoLocation : public QObject {
   Q_OBJECT
 
 public:
 
   Q_PROPERTY(QStringList possibleLocations READ getLocation NOTIFY finished)
-  Q_PROPERTY(real lat READ lat)
-  Q_PROPERTY(real lon READ lon)
-  geolocation(QObject *parent = nullptr);
-  ~geolocation();
+  Q_PROPERTY(qreal latitude READ latitude)
+  Q_PROPERTY(qreal longitude READ longitude)
+  GeoLocation(QObject *parent = nullptr);
+  ~GeoLocation();
   QStringList      getLocation();
   Q_INVOKABLE void setLocation(int i);
-  float            lat();
-  float            lon();
+  float            latitude();
+  float            longitude();
   Q_INVOKABLE void setName(QString& location);
 
 signals:

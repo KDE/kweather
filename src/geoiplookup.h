@@ -8,19 +8,20 @@ class QNetworkReply;
 /*
  * geoiplookup use Ubuntu's api
  */
-class geoiplookup : public QObject {
+
+class GeoIPLookup : public QObject {
   Q_OBJECT
 
 public:
 
   Q_PROPERTY(QString name READ name NOTIFY finished)
-  Q_PROPERTY(real lat READ lat NOTIFY finished)
-  Q_PROPERTY(real lon READ lat NOTIFY finished)
-  geoiplookup();
-  ~geoiplookup();
+  Q_PROPERTY(qreal latitude READ latitude NOTIFY finished)
+  Q_PROPERTY(qreal longitude READ longitude NOTIFY finished)
+  GeoIPLookup();
+  ~GeoIPLookup();
   QString name();
-  float   lat();
-  float   lon();
+  float   latitude();
+  float   longitude();
 
 signals:
 
@@ -35,8 +36,8 @@ private:
   QNetworkAccessManager *mManager;
   QNetworkReply *mReply;
   QString locationName;
-  float Lat;
-  float Lon;
+  float latitude_;
+  float longitude_;
 };
 
 #endif // GEOIPLOOKUP_H

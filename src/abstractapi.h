@@ -20,7 +20,7 @@ protected:
     float lat;
     float lon;
     QString* token_=nullptr;
-    std::vector<AbstractWeatherforecast*> mForecasts;
+    std::vector<AbstractWeatherForecast*> mForecasts;
     QNetworkAccessManager* mManager;
     QNetworkReply* mReply;
 signals:

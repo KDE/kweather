@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-class WeatherforecastManager
+class WeatherforecastManager : public QObject
 {
     Q_OBJECT
 public:
