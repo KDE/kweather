@@ -70,7 +70,7 @@ QString OpenWeatherMap::getWindDirection(double degrees) {
 }
 
 void OpenWeatherMap::update() {
-  if (!mForecasts.empty()) {
+  if (!mForecasts.isEmpty()) {
     for (auto fc : mForecasts) delete fc;
     mForecasts.clear();
   } // delete old data

@@ -20,20 +20,19 @@ public:
   virtual void                            update()               = 0;
   const int interval = -1; // api update interval in hour
   virtual void                            setToken(QString& token) = 0;
-  std::vector<AbstractWeatherForecast *>* readData();
 
 protected:
 
   float lat;
   float lon;
   QString *token_ = nullptr;
-  std::vector<AbstractWeatherForecast *>mForecasts;
+  QList<AbstractWeatherForecast *>mForecasts;
   QNetworkAccessManager *mManager;
   QNetworkReply *mReply;
 
 signals:
 
-  void updated();
+  QList<AbstractWeatherForecast *> updated();
 
 public slots:
 

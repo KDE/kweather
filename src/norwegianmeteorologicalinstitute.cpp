@@ -108,13 +108,13 @@ void NorwegianMeteorologicalInstitute::parse(QNetworkReply *reply) {
 
 void NorwegianMeteorologicalInstitute::xmlParse(
   QXmlStreamReader                      & reader,
-  std::vector<AbstractWeatherForecast *>& vector)
+  QList<AbstractWeatherForecast *>& list)
 {
-  if (vector.empty()) {
+  if (list.isEmpty()) {
     AbstractWeatherForecast fc;
-    vector.push_back(&fc);
+    list.push_back(&fc);
   }
-  auto forecast = vector.back();
+  auto forecast = list.back();
 
   while (!reader.atEnd()) {
     if (reader.tokenType() == QXmlStreamReader::StartElement) {
@@ -137,33 +137,12 @@ void NorwegianMeteorologicalInstitute::xmlParse(
                                 Qt::ISODate);
         bool isFinished;
 
-        if (from.time().hour() == to.time().hour()) forecast->setTime(from);  //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              // set
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              // the
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              //
-                                                                              // time
+        if (from.time().hour() == to.time().hour()) forecast->setTime(from);  // set time
 
         isFinished = parseElement(reader, forecast);
 
         if (isFinished) //  if All data are read, add a blank one in the back
-          vector.push_back(new AbstractWeatherForecast());
+          list.push_back(new AbstractWeatherForecast());
 
         // warning:
         // UTC

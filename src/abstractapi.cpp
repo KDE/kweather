@@ -18,6 +18,6 @@ AbstractAPI::~AbstractAPI() {
   }
 }
 
-std::vector<AbstractWeatherForecast *> * AbstractAPI::readData() {
-  return &mForecasts;
+QList<AbstractWeatherForecast *> AbstractAPI::updated(){
+    return mForecasts;
 }

@@ -13,39 +13,34 @@
 class AbstractWeatherForecast;
 class NorwegianMeteorologicalInstitute;
 class OpenWeatherMap;
+class WeatherLocationListModel;
 class WeatherforecastManager : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
 
-  static WeatherforecastManager         & instance();
-  std::vector<AbstractWeatherForecast *>& getData();
-  Q_INVOKABLE void                        addLocation(float lat,
-                                                      float lon);
+    static WeatherforecastManager& instance(WeatherLocationListModel& model);
 
-public slots:
+signals:
 
-  void update();
-
+    void updated();
+private slots:
+    void update();
 protected:
 
-  explicit WeatherforecastManager(int defaultAPI = NORWEGIAN);
+    explicit WeatherforecastManager(WeatherLocationListModel& model,int defaultAPI = NORWEGIAN);
 
 private:
+    WeatherLocationListModel& model_;
+    int api_ = NORWEGIAN;
+    std::unique_ptr<std::vector<NorwegianMeteorologicalInstitute*>> norwegian_ = nullptr;
+    std::unique_ptr<std::vector<OpenWeatherMap*>>openWeather_ = nullptr;
 
-  int api_ =
-    NORWEGIAN;
-  std::unique_ptr<NorwegianMeteorologicalInstitute>norwegian_ =
-    nullptr;
-  std::unique_ptr<OpenWeatherMap>openWeather_ =
-    nullptr;
+    void writeToCache(const std::vector<AbstractWeatherForecast *>& data);
 
-  void                    writeToCache(
-    const std::vector<AbstractWeatherForecast *>& data);
-
-  void                    readFromCache(QString& url);
-  WeatherforecastManager(const WeatherforecastManager&);
-  WeatherforecastManager& operator=(const WeatherforecastManager&);
+    void readFromCache(QString& url);
+    WeatherforecastManager(const WeatherforecastManager&);
+    WeatherforecastManager& operator=(const WeatherforecastManager&);
 };
 
 #endif // WEATHERFORECASTMANAGER_H

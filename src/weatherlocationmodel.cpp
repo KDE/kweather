@@ -3,7 +3,10 @@
 
 /* ~~~ WeatherLocation ~~~ */
 WeatherLocation::WeatherLocation() {}
-
+void WeatherLocation::update(QList<AbstractWeatherForecast *> fc){
+    forecasts_.clear(); // don't need to delete pointers, they were already deleted by api class
+    forecasts_ = fc; // just assign new list
+}
 WeatherLocation::WeatherLocation(QString locationName,
                                  float   latitude,
                                  float   longitude)
