@@ -37,6 +37,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     Notifications
 )
+find_package(ZLIB REQUIRED)
 
 ################# Enable C++11 features for clang and gcc #################
 
