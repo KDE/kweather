@@ -7,9 +7,9 @@ set(kweather_SRCS
     weatherlocationmodel.cpp
     weatherhourmodel.cpp
     weatherdaymodel.cpp
-    norwegianmeteorologicalinstitute.cpp
-    abstractapi.cpp
-    openweathermap.cpp
+    nmiweatherapi.cpp
+    owmweatherapi.cpp
+    abstractweatherapi.cpp
     )
 
 qt5_add_resources(RESOURCES resources.qrc)

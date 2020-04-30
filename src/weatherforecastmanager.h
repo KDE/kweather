@@ -9,43 +9,42 @@
 
 #include <QObject>
 #include <memory>
-#include <vector>
 #include <random>
+#include <vector>
 class AbstractWeatherForecast;
-class NorwegianMeteorologicalInstitute;
-class OpenWeatherMap;
+class NMIWeatherAPI;
+class OWMWeatherAPI;
 class WeatherLocationListModel;
 class QTimer;
-class WeatherforecastManager : public QObject {
+class WeatherForecastManager : public QObject
+{
     Q_OBJECT
 
 public:
-
-    static WeatherforecastManager& instance(WeatherLocationListModel& model);
+    static WeatherForecastManager& instance(WeatherLocationListModel& model);
 
 signals:
 
     void updated();
 private slots:
     void update();
-protected:
 
-    explicit WeatherforecastManager(WeatherLocationListModel& model,int defaultAPI = NORWEGIAN);
+protected:
+    explicit WeatherForecastManager(WeatherLocationListModel& model, int defaultAPI = NORWEGIAN);
 
 private:
     std::default_random_engine generator;
     std::uniform_int_distribution<int>* distribution;
     WeatherLocationListModel& model_;
-    int api_ = NORWEGIAN;
-    std::unique_ptr<std::vector<NorwegianMeteorologicalInstitute*>> norwegian_ = nullptr;
-    std::unique_ptr<std::vector<OpenWeatherMap*>>openWeather_ = nullptr;
 
-    void writeToCache(const std::vector<AbstractWeatherForecast *>& data);
+    int api_ = NORWEGIAN;
+
+    void writeToCache(const std::vector<AbstractWeatherForecast*>& data);
     QTimer* timer;
 
     void readFromCache(QString& url);
-    WeatherforecastManager(const WeatherforecastManager&);
-    WeatherforecastManager& operator=(const WeatherforecastManager&);
+    WeatherForecastManager(const WeatherForecastManager&);
+    WeatherForecastManager& operator=(const WeatherForecastManager&);
 };
 
 #endif // WEATHERFORECASTMANAGER_H

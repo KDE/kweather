@@ -3,78 +3,86 @@
 
 /* ~~~ WeatherLocation ~~~ */
 WeatherLocation::WeatherLocation() {}
-void WeatherLocation::update(QList<AbstractWeatherForecast *> fc){
+
+void WeatherLocation::updateData(QList<AbstractWeatherForecast*> fc)
+{
     forecasts_.clear(); // don't need to delete pointers, they were already deleted by api class
     forecasts_ = fc; // just assign new list
     emit weatherRefresh();
 }
-WeatherLocation::WeatherLocation(QString locationName,
-                                 float   latitude,
-                                 float   longitude)
+
+WeatherLocation::WeatherLocation(AbstractWeatherAPI* weatherBackendProvider, QString locationName, float latitude,
+                                 float longitude)
 {
-  this->locationName_         = locationName;
-  this->latitude_             = latitude;
-  this->longitude_            = longitude;
-  this->weatherDayListModel_  = new WeatherDayListModel(this);
-  this->weatherHourListModel_ = new WeatherHourListModel(this);
+    this->weatherBackendProvider_ = weatherBackendProvider;
+    this->locationName_ = locationName;
+    this->latitude_ = latitude;
+    this->longitude_ = longitude;
+    this->weatherDayListModel_ = new WeatherDayListModel(this);
+    this->weatherHourListModel_ = new WeatherHourListModel(this);
+
+    connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData,
+            Qt::UniqueConnection);
 }
 
-WeatherLocation::WeatherLocation(QString                         locationName,
-                                 float                           latitude,
-                                 float                           longitude,
-                                 QList<AbstractWeatherForecast *>forecasts)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI* weatherBackendProvider, QString locationName, float latitude,
+                                 float longitude, QList<AbstractWeatherForecast*> forecasts)
 {
-  this->locationName_         = locationName;
-  this->latitude_             = latitude;
-  this->longitude_            = longitude;
-  this->forecasts_            = forecasts;
-  this->weatherDayListModel_  = new WeatherDayListModel(this);
-  this->weatherHourListModel_ = new WeatherHourListModel(this);
+    this->weatherBackendProvider_ = weatherBackendProvider;
+    this->locationName_ = locationName;
+    this->latitude_ = latitude;
+    this->longitude_ = longitude;
+    this->forecasts_ = forecasts;
+    this->weatherDayListModel_ = new WeatherDayListModel(this);
+    this->weatherHourListModel_ = new WeatherHourListModel(this);
+
+    connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData,
+            Qt::UniqueConnection);
 }
 
 /* ~~~ WeatherLocationListModel ~~~ */
-WeatherLocationListModel::WeatherLocationListModel(QObject *parent) {}
+WeatherLocationListModel::WeatherLocationListModel(QObject* parent) {}
 
 int WeatherLocationListModel::rowCount(const QModelIndex& parent) const
 {
-  Q_UNUSED(parent);
-  return locationsList.size();
+    Q_UNUSED(parent);
+    return locationsList.size();
 }
 
 QVariant WeatherLocationListModel::data(const QModelIndex& index, int role) const
 {
-  return QVariant();
+    return QVariant();
 }
 
 void WeatherLocationListModel::updateUi()
 {
-  emit dataChanged(createIndex(0, 0), createIndex(locationsList.count() - 1, 0));
+    emit dataChanged(createIndex(0, 0), createIndex(locationsList.count() - 1, 0));
 }
 
-void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocation)
+void WeatherLocationListModel::insert(int index, WeatherLocation* weatherLocation)
 {
-  if ((index < 0) || (index > locationsList.count())) return;
+    if ((index < 0) || (index > locationsList.count()))
+        return;
 
-  emit beginInsertRows(QModelIndex(), index, index);
-  locationsList.insert(index, weatherLocation);
-  emit endInsertRows();
+    emit beginInsertRows(QModelIndex(), index, index);
+    locationsList.insert(index, weatherLocation);
+    emit endInsertRows();
 }
 
 void WeatherLocationListModel::remove(int index)
 {
-  if ((index < 0) || (index >= locationsList.count())) return;
+    if ((index < 0) || (index >= locationsList.count()))
+        return;
 
-  emit beginRemoveRows(QModelIndex(), index, index);
-  locationsList.removeAt(index);
-  emit endRemoveRows();
+    emit beginRemoveRows(QModelIndex(), index, index);
+    locationsList.removeAt(index);
+    emit endRemoveRows();
 }
 
-WeatherLocation * WeatherLocationListModel::get(int index)
+WeatherLocation* WeatherLocationListModel::get(int index)
 {
-  if ((index < 0) || (index >= locationsList.count())) return new WeatherLocation(
-      "",
-      0,
-      0);
+    if ((index < 0) || (index >= locationsList.count()))
+        return new WeatherLocation(); // TODO risk of nullptr fields being deref
 
-  return locationsList.at(index);
+    return locationsList.at(index);
 }
