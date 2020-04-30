@@ -11,29 +11,31 @@ class AbstractWeatherAPI : public QObject
     Q_OBJECT
 
 public:
-    explicit AbstractWeatherAPI() {}
-    AbstractWeatherAPI(int interval, QString* token = nullptr, QObject* parent = nullptr);
+    explicit AbstractWeatherAPI()
+    {
+    }
+    AbstractWeatherAPI(int interval, QString *token = nullptr, QObject *parent = nullptr);
     virtual ~AbstractWeatherAPI();
     virtual void setLocation(float lat, float lon) = 0;
     virtual void update() = 0;
     const int interval = -1; // api update interval in hour
-    virtual void setToken(QString& token) = 0;
+    virtual void setToken(QString &token) = 0;
 
 protected:
     float lat;
     float lon;
-    QString* token_ = nullptr;
-    QList<AbstractWeatherForecast*> mForecasts;
-    QNetworkAccessManager* mManager;
-    QNetworkReply* mReply;
+    QString *token_ = nullptr;
+    QList<AbstractWeatherForecast *> mForecasts;
+    QNetworkAccessManager *mManager;
+    QNetworkReply *mReply;
 
 signals:
 
-    void updated(QList<AbstractWeatherForecast*> list);
+    QList<AbstractWeatherForecast *> updated();
 
 public slots:
 
-    virtual void parse(QNetworkReply* Reply) = 0;
+    virtual void parse(QNetworkReply *Reply) = 0;
 };
 
 #endif // ABSTRACTAPI_H

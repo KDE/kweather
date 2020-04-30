@@ -4,7 +4,7 @@
 #include "weatherlocationmodel.h"
 #include <QDebug>
 #include <QTimer>
-WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel& model, int defaultAPI)
+WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI)
     : model_(model)
     , api_(defaultAPI)
 {
@@ -12,8 +12,7 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel& model, 
         qDebug() << "wrong api";
         exit(1);
     }
-    distribution
-        = new std::uniform_int_distribution<int>(0, 30 * 3600); // uniform random update interval, 60 min to 90 min
+    distribution = new std::uniform_int_distribution<int>(0, 30 * 3600); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
 
     timer = new QTimer(this);
@@ -25,7 +24,7 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel& model, 
         timer->start(1000 * 3 * 3600 + rand());
 }
 
-WeatherForecastManager& WeatherForecastManager::instance(WeatherLocationListModel& model)
+WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
 {
     static WeatherForecastManager singleton(model);
 

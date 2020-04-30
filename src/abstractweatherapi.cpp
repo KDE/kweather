@@ -1,7 +1,7 @@
 #include "abstractweatherapi.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-AbstractWeatherAPI::AbstractWeatherAPI(int interval, QString* token, QObject* parent)
+AbstractWeatherAPI::AbstractWeatherAPI(int interval, QString *token, QObject *parent)
     : QObject(parent)
     , interval(interval)
     , token_(token)
@@ -17,4 +17,9 @@ AbstractWeatherAPI::~AbstractWeatherAPI()
     for (auto d : mForecasts) {
         delete d;
     }
+}
+
+QList<AbstractWeatherForecast *> AbstractWeatherAPI::updated()
+{
+    return this->mForecasts;
 }

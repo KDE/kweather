@@ -19,18 +19,17 @@ public:
     NMIWeatherAPI();
     void update() override;
     void setLocation(float lat, float lon) override;
-    void setToken(QString&) override;
+    void setToken(QString &) override;
 
 private slots:
 
-    void parse(QNetworkReply* Reply) override;
+    void parse(QNetworkReply *Reply) override;
 
 private:
-    void xmlParse(QXmlStreamReader& reader, QList<AbstractWeatherForecast*>& list);
-    bool parseElement(QXmlStreamReader& reader, AbstractWeatherForecast* fc);
+    void xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list);
+    bool parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
 
     // https://api.met.no/weatherapi/weathericon/1.1/documentation
-    // it's qtcreator auto indentation, I didn't write this!!!
     QHash<int, QString> map = {
         std::pair<int, QString>(1, QStringLiteral("weather-clear")),
         std::pair<int, QString>(2, QStringLiteral("weather-few-clouds")),

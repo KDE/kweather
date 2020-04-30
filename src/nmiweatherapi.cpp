@@ -15,7 +15,9 @@ void NMIWeatherAPI::setLocation(float latitude, float longitude)
     lon = longitude;
 }
 
-void NMIWeatherAPI::setToken(QString&) {} // no token is needed
+void NMIWeatherAPI::setToken(QString &)
+{
+} // no token is needed
 
 NMIWeatherAPI::NMIWeatherAPI()
     : AbstractWeatherAPI(-1)
@@ -46,9 +48,7 @@ void NMIWeatherAPI::update()
     req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
 
     // see §Identification on https://api.met.no/conditions_service.html
-    req.setHeader(QNetworkRequest::UserAgentHeader,
-                  QString(QCoreApplication::applicationName() + QLatin1Char(' ')
-                          + QCoreApplication::applicationVersion() + QLatin1String(" (kde-pim@kde.org)")));
+    req.setHeader(QNetworkRequest::UserAgentHeader, QString(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion() + QLatin1String(" (kde-pim@kde.org)")));
 
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
@@ -57,7 +57,7 @@ void NMIWeatherAPI::update()
     connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
 }
 
-void NMIWeatherAPI::parse(QNetworkReply* reply)
+void NMIWeatherAPI::parse(QNetworkReply *reply)
 {
     // ported from itinerary, but directly parse it instead of caching
     const auto data = reply->readAll();
@@ -74,7 +74,7 @@ void NMIWeatherAPI::parse(QNetworkReply* reply)
     stream.zfree = nullptr;
     stream.opaque = nullptr;
     stream.avail_in = data.size();
-    stream.next_in = reinterpret_cast<unsigned char*>(const_cast<char*>(data.data()));
+    stream.next_in = reinterpret_cast<unsigned char *>(const_cast<char *>(data.data()));
 
     auto ret = inflateInit2(&stream, 15 + 32); // see docs, the magic numbers
                                                // enable gzip decoding
@@ -95,15 +95,15 @@ void NMIWeatherAPI::parse(QNetworkReply* reply)
             break;
         }
 
-        reader.addData(QByteArray(reinterpret_cast<char*>(buffer), sizeof(buffer) - stream.avail_out));
+        reader.addData(QByteArray(reinterpret_cast<char *>(buffer), sizeof(buffer) - stream.avail_out));
         xmlParse(reader, mForecasts);
     } while (stream.avail_out == 0);
     inflateEnd(&stream);
-    
-    emit updated(this->mForecasts);
+
+    emit updated();
 }
 
-void NMIWeatherAPI::xmlParse(QXmlStreamReader& reader, QList<AbstractWeatherForecast*>& list)
+void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list)
 {
     if (list.isEmpty()) {
         AbstractWeatherForecast fc;
@@ -118,10 +118,8 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader& reader, QList<AbstractWeatherFore
                 continue;
             }
 
-            if ((reader.name() == QLatin1String("time"))
-                && (reader.attributes().value(QLatin1String("datatype")) == QLatin1String("forecast"))) {
-                auto from
-                    = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
+            if ((reader.name() == QLatin1String("time")) && (reader.attributes().value(QLatin1String("datatype")) == QLatin1String("forecast"))) {
+                auto from = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
                 auto to = QDateTime::fromString(reader.attributes().value(QLatin1String("to")).toString(), Qt::ISODate);
                 bool isFinished;
 
@@ -145,7 +143,7 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader& reader, QList<AbstractWeatherFore
     }
 }
 
-bool NMIWeatherAPI::parseElement(QXmlStreamReader& reader, AbstractWeatherForecast* fc)
+bool NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc)
 {
     while (!reader.atEnd()) {
         switch (reader.tokenType()) {
