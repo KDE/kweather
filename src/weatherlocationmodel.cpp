@@ -2,13 +2,16 @@
 #include "weatherdaymodel.h"
 
 /* ~~~ WeatherLocation ~~~ */
-WeatherLocation::WeatherLocation() {}
+WeatherLocation::WeatherLocation() {
+    this->weatherDayListModel_ = new WeatherDayListModel(this);
+    this->weatherHourListModel_ = new WeatherHourListModel(this);
+}
 
 void WeatherLocation::updateData(QList<AbstractWeatherForecast*> fc)
 {
     forecasts_.clear(); // don't need to delete pointers, they were already deleted by api class
     forecasts_ = fc; // just assign new list
-    emit weatherRefresh();
+    emit weatherRefresh(fc);
 }
 
 WeatherLocation::WeatherLocation(AbstractWeatherAPI* weatherBackendProvider, QString locationName, float latitude,

@@ -22,6 +22,9 @@ QVariant WeatherDayListModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts() {}
+void WeatherDayListModel::refreshDaysFromForecasts(QList<AbstractWeatherForecast*> forecasts) 
+{
+    
+}
 
 void WeatherDayListModel::updateUi() {}

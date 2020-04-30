@@ -36,7 +36,7 @@ public slots:
     void updateData(QList<AbstractWeatherForecast*> fc);
 
 signals:
-    void weatherRefresh(); // sent when weather data is refreshed
+    void weatherRefresh(QList<AbstractWeatherForecast*> fc); // sent when weather data is refreshed
 
 private:
     QString locationName_;

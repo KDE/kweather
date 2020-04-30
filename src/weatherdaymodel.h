@@ -27,9 +27,11 @@ public:
     int rowCount(const QModelIndex& parent) const override;
     QVariant data(const QModelIndex& index, int role) const override;
 
-    void refreshDaysFromForecasts();
     Q_INVOKABLE void updateUi();
 
+public slots:
+    void refreshDaysFromForecasts(QList<AbstractWeatherForecast*> forecasts);
+    
 private:
     QList<WeatherDay*> daysList;
 };

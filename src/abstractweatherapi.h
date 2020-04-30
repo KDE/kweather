@@ -11,6 +11,7 @@ class AbstractWeatherAPI : public QObject
     Q_OBJECT
 
 public:
+    explicit AbstractWeatherAPI() {}
     AbstractWeatherAPI(int interval, QString* token = nullptr, QObject* parent = nullptr);
     virtual ~AbstractWeatherAPI();
     virtual void setLocation(float lat, float lon) = 0;
