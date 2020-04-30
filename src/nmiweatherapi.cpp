@@ -59,16 +59,15 @@ void NMIWeatherAPI::update()
 
 void NMIWeatherAPI::parse(QNetworkReply *reply)
 {
-    // ported from itinerary, but directly parse it instead of caching
     const auto data = reply->readAll();
-
     if ((data.size() < 4) || (data.at(0) != 0x1f) || (data.at(1) != char(0x8b))) {
         qWarning() << "Invalid gzip format";
         return;
     }
+    QByteArray uncomp;
     QXmlStreamReader reader;
     z_stream stream;
-    unsigned char buffer[1024];
+    unsigned char buffer[4096];
 
     stream.zalloc = nullptr;
     stream.zfree = nullptr;
@@ -85,6 +84,7 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
     }
 
     do {
+        qDebug() << "start parsing";
         stream.avail_out = sizeof(buffer);
         stream.next_out = buffer;
 
@@ -95,55 +95,42 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
             break;
         }
 
-        reader.addData(QByteArray(reinterpret_cast<char *>(buffer), sizeof(buffer) - stream.avail_out));
-        xmlParse(reader, mForecasts);
+        uncomp.append(reinterpret_cast<char *>(buffer), sizeof(buffer) - stream.avail_out);
     } while (stream.avail_out == 0);
     inflateEnd(&stream);
-
+    reader.addData(uncomp);
+    xmlParse(reader, mForecasts);
+    reply->deleteLater();
     emit updated();
 }
 
 void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list)
 {
     if (list.isEmpty()) {
-        AbstractWeatherForecast fc;
-        list.push_back(&fc);
+        auto fc = new AbstractWeatherForecast();
+        list.push_back(fc);
     }
-    auto forecast = list.back();
 
     while (!reader.atEnd()) {
-        if (reader.tokenType() == QXmlStreamReader::StartElement) {
-            if ((reader.name() == QLatin1String("weatherdata")) || (reader.name() == QLatin1String("product"))) {
-                reader.readNext(); // enter these elements
+        auto forecast = list.back();
+        if (reader.readNextStartElement()) {
+            if (reader.name() == QLatin1String("weatherdata") || reader.name() == QLatin1String("meta") || reader.name() == QLatin1String("product")) {
                 continue;
             }
-
-            if ((reader.name() == QLatin1String("time")) && (reader.attributes().value(QLatin1String("datatype")) == QLatin1String("forecast"))) {
-                auto from = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
-                auto to = QDateTime::fromString(reader.attributes().value(QLatin1String("to")).toString(), Qt::ISODate);
-                bool isFinished;
-
-                if (from.time().hour() == to.time().hour())
-                    forecast->setTime(from); // set time
-
-                isFinished = parseElement(reader, forecast);
-
-                if (isFinished) //  if All data are read, add a blank one in the back
-                    list.push_back(new AbstractWeatherForecast());
-
-                // warning:
-                // UTC
-                // time
-                // todo: calculate local time from UTC according to coordinate
+            if (reader.name() == QLatin1String("time")) {
+                if (reader.attributes().value(QLatin1String("from")).toString() == reader.attributes().value(QLatin1String("to")).toString()) {
+                    auto fc = new AbstractWeatherForecast();
+                    list.push_back(fc);
+                    forecast = fc;
+                    forecast->setTime(QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate)); // utc time
+                }
             }
-            reader.skipCurrentElement();
-        } else {
-            reader.readNext();
+            parseElement(reader, forecast);
         }
     }
 }
 
-bool NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc)
+void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc)
 {
     while (!reader.atEnd()) {
         switch (reader.tokenType()) {
@@ -171,11 +158,11 @@ bool NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
                 fc->setMaxTemp(reader.attributes().value(QLatin1String("value")).toFloat());
             } else if (reader.name() == QLatin1String("symbol")) {
                 auto symId = reader.attributes().value(QLatin1String("number")).toInt();
-
                 if (symId > 100) {
                     symId -= 100; // map polar night symbols
                 }
                 fc->setWeatherIcon(map.value(symId));
+                fc->setWeatherDescription(reader.attributes().value(QLatin1String("id")).toString());
             } else if (reader.name() == QLatin1String("precipitation")) {
                 fc->setPrecipitation(reader.attributes().value(QLatin1String("value")).toFloat());
             }
@@ -184,7 +171,7 @@ bool NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
         case QXmlStreamReader::EndElement:
 
             if (reader.name() == QLatin1String("time")) {
-                return true;
+                return;
             }
             break;
 
@@ -193,5 +180,4 @@ bool NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
         }
         reader.readNext();
     }
-    return false;
 }

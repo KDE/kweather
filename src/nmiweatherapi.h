@@ -27,7 +27,7 @@ private slots:
 
 private:
     void xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list);
-    bool parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
+    void parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
 
     // https://api.met.no/weatherapi/weathericon/1.1/documentation
     QHash<int, QString> map = {
