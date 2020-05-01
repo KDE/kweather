@@ -3,9 +3,11 @@
 #include "owmweatherapi.h"
 #include "weatherlocationmodel.h"
 #include <QDebug>
+#include <QDirIterator>
 #include <QFile>
 #include <QStandardPaths>
 #include <QTimer>
+
 WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI)
     : model_(model)
     , api_(defaultAPI)
@@ -55,6 +57,18 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
         file.open(QIODevice::WriteOnly);                                                 // wipe out old data as well
         file.write((char *)fc, sizeof(*fc));                                             // write binary data into file
         file.close();                                                                    // we could do some optimizations here
-                                                                                         // I want to use system call lol
-    }                                                                                    // on mobile platform we should be fine
+    }                                                                                    // I just realised that one file for each
+} // instance will occupy a lot of space even for a relative small block size, I will come up with a better idea later
+
+void WeatherForecastManager::readFromCache()
+{
+    QFile reader;
+    QDirIterator LatIt(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/kweather")); // list directory entries
+    while (LatIt.hasNext()) {                                                                                         // list all longitude
+        QDirIterator LonIt(LatIt.next());
+        while (LonIt.hasNext()) {
+            QDirIterator forecastIt(LonIt.next(), QDirIterator::Subdirectories);
+            // stop here
+        }
+    }
 }

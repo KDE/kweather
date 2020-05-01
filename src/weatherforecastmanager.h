@@ -43,7 +43,7 @@ private:
     void writeToCache(WeatherLocation &data);
     QTimer *timer;
 
-    void readFromCache(QString &url);
+    void readFromCache();
     WeatherForecastManager(const WeatherForecastManager &);
     WeatherForecastManager &operator=(const WeatherForecastManager &);
 };
