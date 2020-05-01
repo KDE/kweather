@@ -107,7 +107,7 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
         continue;
     xmlParse(reader, mForecasts);
     reply->deleteLater();
-    emit updated();
+    emit updated(this->mForecasts);
 }
 
 void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list)

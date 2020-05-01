@@ -31,7 +31,7 @@ protected:
 
 signals:
 
-    QList<AbstractWeatherForecast *> updated();
+    void updated(QList<AbstractWeatherForecast *> forecasts);
 
 public slots:
 

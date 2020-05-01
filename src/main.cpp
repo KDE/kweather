@@ -11,6 +11,8 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#include "weatherdaymodel.h"
+#include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
 
 int main(int argc, char* argv[])
@@ -34,6 +36,9 @@ int main(int argc, char* argv[])
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
     qmlRegisterType<WeatherDay>("kweather", 1, 0, "WeatherDay");
     qmlRegisterType<WeatherHour>("kweather", 1, 0, "WeatherHour");
+
+    // load example test data
+
 
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 

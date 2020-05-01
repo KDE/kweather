@@ -6,7 +6,18 @@ WeatherHour::WeatherHour() {}
 
 WeatherHour::WeatherHour(AbstractWeatherForecast* forecast)
 {
-    
+    this->windDirection_ = forecast->windDirection();
+    this->weatherDescription_ = forecast->weatherDescription();
+    this->weatherIcon_ = forecast->weatherIcon();
+    this->precipitation_ = forecast->precipitation();
+    this->fog_ = forecast->fog();
+    this->cloudiness_ = forecast->cloudiness();
+    this->windSpeed_ = forecast->windSpeed();
+    this->temperature_ = forecast->maxTemp(); // TODO
+    this->humidity_ = forecast->humidity();
+    this->pressure_ = forecast->pressure();
+    this->hour_ = forecast->time().time().hour();
+    this->day_ = forecast->time().date().day();
 }
 
 /* ~~~ WeatherHourListModel ~~~ */
@@ -34,12 +45,13 @@ void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForeca
     hoursList.clear();
     emit endRemoveRows();
     
+    // insert forecasts
     emit beginInsertRows(QModelIndex(), 0, forecasts.count() - 1);
     
-    for (auto forecast : forecasts) {
-        hoursList.append(new WeatherHour(forecast)); // TODO
-    }
-    
+    for (auto forecast : forecasts)
+        hoursList.append(new WeatherHour(forecast));
+    std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour* h1, WeatherHour* h2)->bool{ return h1->hour() < h2->hour(); });
+
     emit endInsertRows();
 }
 

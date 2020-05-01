@@ -18,8 +18,3 @@ AbstractWeatherAPI::~AbstractWeatherAPI()
         delete d;
     }
 }
-
-QList<AbstractWeatherForecast *> AbstractWeatherAPI::updated()
-{
-    return this->mForecasts;
-}
