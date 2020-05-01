@@ -3,6 +3,8 @@
 #include "owmweatherapi.h"
 #include "weatherlocationmodel.h"
 #include <QDebug>
+#include <QFile>
+#include <QStandardPaths>
 #include <QTimer>
 WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI)
     : model_(model)
@@ -38,4 +40,21 @@ void WeatherForecastManager::update()
         wLocation->weatherBackendProvider()->setLocation(wLocation->latitude(), wLocation->longitude());
         wLocation->weatherBackendProvider()->update();
     }
+}
+
+void WeatherForecastManager::writeToCache(WeatherLocation &data)
+{
+    QFile file;
+    QString url;
+    url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+    url.append(QLatin1String("/kweather"));
+    url.append(QString("/%1/%2/").arg(QString::number(static_cast<int>(data.latitude() * 100))).arg(QString::number(static_cast<int>(data.longitude() * 100))));
+    // should be this path: /home/user/.cache/kweather/7000/3000 for location with coordinate 70.00 30.00
+    for (auto fc : data.forecasts()) {
+        file.setFileName(QString(url + QString::number(fc->time().toSecsSinceEpoch()))); // file name are unix timestamp
+        file.open(QIODevice::WriteOnly);                                                 // wipe out old data as well
+        file.write((char *)fc, sizeof(AbstractWeatherForecast));                         // write binary data into file
+        file.close();                                                                    // we could do some optimizations here
+                                                                                         // I want to use system call lol
+    }                                                                                    // on mobile platform we should be fine
 }

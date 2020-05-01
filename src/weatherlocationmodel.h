@@ -63,7 +63,7 @@ private:
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 
-    NMIWeatherAPI *weatherBackendProvider_; // OpenWeatherMap are not supported now anyway
+    NMIWeatherAPI *weatherBackendProvider_; // OpenWeatherMap is not supported now anyway
 
     QList<AbstractWeatherForecast *> forecasts_;
 };

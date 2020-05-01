@@ -16,12 +16,13 @@ class NMIWeatherAPI;
 class OWMWeatherAPI;
 class WeatherLocationListModel;
 class QTimer;
+class WeatherLocation;
 class WeatherForecastManager : public QObject
 {
     Q_OBJECT
 
 public:
-    static WeatherForecastManager& instance(WeatherLocationListModel& model);
+    static WeatherForecastManager &instance(WeatherLocationListModel &model);
 
 signals:
 
@@ -30,21 +31,21 @@ private slots:
     void update();
 
 protected:
-    explicit WeatherForecastManager(WeatherLocationListModel& model, int defaultAPI = NORWEGIAN);
+    explicit WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
 
 private:
     std::default_random_engine generator;
-    std::uniform_int_distribution<int>* distribution;
-    WeatherLocationListModel& model_;
+    std::uniform_int_distribution<int> *distribution;
+    WeatherLocationListModel &model_;
 
     int api_ = NORWEGIAN;
 
-    void writeToCache(const std::vector<AbstractWeatherForecast*>& data);
-    QTimer* timer;
+    void writeToCache(WeatherLocation &data);
+    QTimer *timer;
 
-    void readFromCache(QString& url);
-    WeatherForecastManager(const WeatherForecastManager&);
-    WeatherForecastManager& operator=(const WeatherForecastManager&);
+    void readFromCache(QString &url);
+    WeatherForecastManager(const WeatherForecastManager &);
+    WeatherForecastManager &operator=(const WeatherForecastManager &);
 };
 
 #endif // WEATHERFORECASTMANAGER_H
