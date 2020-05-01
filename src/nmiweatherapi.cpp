@@ -180,6 +180,22 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
         case QXmlStreamReader::EndElement:
 
             if (reader.name() == QLatin1String("time")) {
+                if (fc->time().time().hour() >= 18 || fc->time().time().hour() <= 6) // 18:00 to 6:00 is night. I don't care
+                {                                                                    // countries which span more than one timezone
+                                                                                     // but use one time
+                    if (fc->weatherIcon().back() == "y")                             // breeze icon which ends with 'y' is a 'day' icon
+                    {                                                                // for now(May 2020)
+                        QString tmp(fc->weatherIcon());
+                        tmp.chop(3);
+                        tmp.append("night");
+                        fc->setWeatherIcon(tmp);
+                    }
+                    if (fc->weatherIcon() == QLatin1String("weather-clear")) { // exception with weather-clear
+                        QString tmp(fc->weatherIcon());
+                        tmp.append("-night");
+                        fc->setWeatherIcon(tmp);
+                    }
+                }
                 return;
             }
             break;
