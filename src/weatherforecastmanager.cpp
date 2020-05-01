@@ -53,7 +53,7 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
     for (auto fc : data.forecasts()) {
         file.setFileName(QString(url + QString::number(fc->time().toSecsSinceEpoch()))); // file name are unix timestamp
         file.open(QIODevice::WriteOnly);                                                 // wipe out old data as well
-        file.write((char *)fc, sizeof(AbstractWeatherForecast));                         // write binary data into file
+        file.write((char *)fc, sizeof(*fc));                                             // write binary data into file
         file.close();                                                                    // we could do some optimizations here
                                                                                          // I want to use system call lol
     }                                                                                    // on mobile platform we should be fine
