@@ -28,8 +28,8 @@ void NMIWeatherAPI::update()
 {
     if (timeZone.isEmpty()) {
         tz = new GeoTimeZone(lat, lon);
-        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI::setTZ);
-    }
+        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI::setTZ); // if this failed, we will block forever, see line 106
+    }                                                                     // TODO: fix this
     if (!mForecasts.empty()) {
         for (auto fc : mForecasts)
             delete fc;
@@ -103,6 +103,8 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
     } while (stream.avail_out == 0);
     inflateEnd(&stream);
     reader.addData(uncomp);
+    while (timeZone.isEmpty()) // if we don't get timezone data, block
+        continue;
     xmlParse(reader, mForecasts);
     reply->deleteLater();
     emit updated();
@@ -129,6 +131,7 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
                     auto datetime = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
                     datetime.setTimeZone(QTimeZone(timeZone.toUtf8()));
                     datetime = datetime.toLocalTime();
+                    fc->setTime(datetime);
                 }
             }
             parseElement(reader, forecast);
