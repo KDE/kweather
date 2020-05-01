@@ -7,7 +7,7 @@
 #include "abstractweatherforecast.h"
 
 class QXmlStreamReader;
-
+class GeoTimeZone;
 // Norwegian Meteorological Institute Weather API Implementation
 // api.met.no
 
@@ -22,13 +22,14 @@ public:
     void setToken(QString &) override;
 
 private slots:
-
+    void setTZ();
     void parse(QNetworkReply *Reply) override;
 
 private:
     void xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list);
     void parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
-
+    QString timeZone;
+    GeoTimeZone *tz;
     // https://api.met.no/weatherapi/weathericon/1.1/documentation
     QHash<int, QString> map = {
         std::pair<int, QString>(1, QStringLiteral("weather-clear")),

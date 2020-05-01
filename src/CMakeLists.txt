@@ -10,6 +10,7 @@ set(kweather_SRCS
     nmiweatherapi.cpp
     owmweatherapi.cpp
     abstractweatherapi.cpp
+    geotimezone.cpp
     )
 
 qt5_add_resources(RESOURCES resources.qrc)

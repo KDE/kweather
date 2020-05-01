@@ -1,12 +1,12 @@
 #include "nmiweatherapi.h"
-
+#include "geotimezone.h"
 #include <QCoreApplication>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QTimeZone>
 #include <QUrlQuery>
 #include <QXmlStreamReader>
-
 #include <zlib.h>
 
 void NMIWeatherAPI::setLocation(float latitude, float longitude)
@@ -26,6 +26,10 @@ NMIWeatherAPI::NMIWeatherAPI()
 
 void NMIWeatherAPI::update()
 {
+    if (timeZone.isEmpty()) {
+        tz = new GeoTimeZone(lat, lon);
+        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI::setTZ);
+    }
     if (!mForecasts.empty()) {
         for (auto fc : mForecasts)
             delete fc;
@@ -122,7 +126,9 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
                     auto fc = new AbstractWeatherForecast();
                     list.push_back(fc);
                     forecast = fc;
-                    forecast->setTime(QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate)); // utc time
+                    auto datetime = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
+                    datetime.setTimeZone(QTimeZone(timeZone.toUtf8()));
+                    datetime = datetime.toLocalTime();
                 }
             }
             parseElement(reader, forecast);
@@ -180,4 +186,10 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
         }
         reader.readNext();
     }
+}
+
+void NMIWeatherAPI::setTZ()
+{
+    timeZone = tz->getTimeZone();
+    delete tz;
 }
