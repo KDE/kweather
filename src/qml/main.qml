@@ -46,7 +46,7 @@ Kirigami.ApplicationWindow
         ]
     }
     
-    ForecastPage {
+    ForecastContainerPage {
         id: forecastPage
     }
     

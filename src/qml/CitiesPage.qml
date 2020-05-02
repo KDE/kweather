@@ -12,7 +12,7 @@ Kirigami.ScrollablePage {
     
     Kirigami.CardsListView {
         id: citiesList
-        model: citiesModel
+        model: weatherLocationListModel
         
         /*Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
@@ -30,7 +30,7 @@ Kirigami.ScrollablePage {
                 iconName: "list-remove"
                 text: "Remove"
                 onTriggered: {
-                    // todo delete city
+                    weatherLocationListModel.remove(index);
                 }
             }
             
@@ -46,17 +46,10 @@ Kirigami.ScrollablePage {
                     
                     Kirigami.Heading {
                         level: 3
-                        text: model.name
+                        text: weatherLocationListModel.get(index).name
                     }
                 }
             }
         }
-        
-    }
-    
-    // mockup purposes
-    ListModel {
-        id: citiesModel
-        
     }
 }
