@@ -12,18 +12,18 @@ class WeatherLocation;
 class WeatherHour : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString windDirection READ windDirection WRITE setWindDirection)
-    Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription)
-    Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon)
-    Q_PROPERTY(float precipitation READ precipitation WRITE setPrecipitation)
-    Q_PROPERTY(float fog READ fog WRITE setFog)
-    Q_PROPERTY(int cloudiness READ cloudiness WRITE setCloudiness)
-    Q_PROPERTY(int windSpeed READ windSpeed WRITE setWindSpeed)
-    Q_PROPERTY(int temperature READ temperature WRITE setTemperature)
-    Q_PROPERTY(int humidity READ humidity WRITE setHumidity)
-    Q_PROPERTY(int pressure READ pressure WRITE setPressure)
-    Q_PROPERTY(int hour READ hour WRITE setHour)
-    Q_PROPERTY(int day READ day WRITE setDay)
+    Q_PROPERTY(QString windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
+    Q_PROPERTY(float precipitation READ precipitation WRITE setPrecipitation NOTIFY propertyChanged)
+    Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
+    Q_PROPERTY(int cloudiness READ cloudiness WRITE setCloudiness NOTIFY propertyChanged)
+    Q_PROPERTY(int windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
+    Q_PROPERTY(int temperature READ temperature WRITE setTemperature NOTIFY propertyChanged)
+    Q_PROPERTY(int humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
+    Q_PROPERTY(int pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
+    Q_PROPERTY(int hour READ hour WRITE setHour NOTIFY propertyChanged)
+    Q_PROPERTY(int day READ day WRITE setDay NOTIFY propertyChanged)
 
 public:
     explicit WeatherHour();
@@ -59,7 +59,10 @@ public:
     {
         return wh1.hour() < wh2.hour();
     }
-    
+
+signals:
+    void propertyChanged();
+
 private:
     QString windDirection_;
     QString weatherDescription_;
@@ -84,6 +87,7 @@ public:
 
     int rowCount(const QModelIndex& parent) const override;
     QVariant data(const QModelIndex& index, int role) const override;
+    Q_INVOKABLE WeatherHour* get(int index);
 
     Q_INVOKABLE void updateUi();
     

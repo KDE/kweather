@@ -12,11 +12,11 @@ class WeatherLocation;
 class WeatherDay : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString weatherDescription READ weatherDescription)
-    Q_PROPERTY(QString weatherIcon READ weatherIcon)
-    Q_PROPERTY(QDate date READ date)
-    Q_PROPERTY(int maxTemp READ maxTemp)
-    Q_PROPERTY(int minTemp READ minTemp)
+    Q_PROPERTY(QString weatherDescription READ weatherDescription NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY propertyChanged)
+    Q_PROPERTY(QDate date READ date NOTIFY propertyChanged)
+    Q_PROPERTY(int maxTemp READ maxTemp NOTIFY propertyChanged)
+    Q_PROPERTY(int minTemp READ minTemp NOTIFY propertyChanged)
 
 public:
     explicit WeatherDay();
@@ -28,6 +28,9 @@ public:
     inline QDate date() {return date_;}
     inline int maxTemp() {return maxTemp_;}
     inline int minTemp() {return minTemp_;}
+
+signals:
+    void propertyChanged();
 
 private:
     QString weatherDescription_;
@@ -46,6 +49,7 @@ public:
 
     int rowCount(const QModelIndex& parent) const override;
     QVariant data(const QModelIndex& index, int role) const override;
+    Q_INVOKABLE WeatherDay* get(int index);
 
     Q_INVOKABLE void updateUi();
 

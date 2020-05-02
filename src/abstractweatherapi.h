@@ -30,7 +30,6 @@ protected:
     QNetworkReply *mReply;
 
 signals:
-
     void updated(QList<AbstractWeatherForecast *> forecasts);
 
 public slots:

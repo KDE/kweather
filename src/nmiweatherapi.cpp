@@ -24,6 +24,10 @@ NMIWeatherAPI::NMIWeatherAPI()
 {
 }
 
+NMIWeatherAPI::~NMIWeatherAPI()
+{
+}
+
 void NMIWeatherAPI::update()
 {
     if (timeZone.isEmpty()) {

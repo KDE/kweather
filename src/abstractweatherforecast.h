@@ -7,18 +7,34 @@
 class AbstractWeatherForecast : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString locationName READ locationName WRITE setLocationName NOTIFY propertyChanged)
+    Q_PROPERTY(QString windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
+    Q_PROPERTY(QDateTime time READ time WRITE setTime NOTIFY propertyChanged)
+    Q_PROPERTY(float latitude READ latitude WRITE setLatitude NOTIFY propertyChanged)
+    Q_PROPERTY(float longitude READ longitude WRITE setLongitude NOTIFY propertyChanged)
+    Q_PROPERTY(float precipitation READ precipitation WRITE setPrecipitation NOTIFY propertyChanged)
+    Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
+    Q_PROPERTY(int cloudiness READ cloudiness WRITE setCloudiness NOTIFY propertyChanged)
+    Q_PROPERTY(int windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
+    Q_PROPERTY(int maxTemp READ maxTemp WRITE setMaxTemp NOTIFY propertyChanged)
+    Q_PROPERTY(int minTemp READ minTemp WRITE setMinTemp NOTIFY propertyChanged)
+    Q_PROPERTY(int humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
+    Q_PROPERTY(int pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
+
 public:
     AbstractWeatherForecast();
-    AbstractWeatherForecast(QString LocationName, QString WindDirection, QString WeatherDescription,
-                            QString WeatherIcon, QDateTime Time, float Lat, float Lon, float Precipitation, float Fog,
-                            int Cloudiness, int WindSpeed, int MaxTemp, int MinTemp, int Humidity, int Pressure);
+    AbstractWeatherForecast(QString locationName, QString windDirection, QString weatherDescription,
+                            QString weatherIcon, QDateTime time, float latitude, float longitude, float precipitation, float fog,
+                            int cloudiness, int windSpeed, int maxTemp, int minTemp, int humidity, int pressure);
     const QString& locationName();
     const QString& windDirection();
     const QString& weatherDescription();
     const QString& weatherIcon();
     inline const QDateTime time() { return time_; };
-    inline float lat() { return lat_; };
-    inline float lon() { return lon_; };
+    inline float latitude() { return latitude_; };
+    inline float longitude() { return longitude_; };
     inline float precipitation() { return precipitation_; };
     inline float fog() { return fog_; };
     inline int cloudiness() { return cloudiness_; };
@@ -32,8 +48,8 @@ public:
     inline void setWeatherDescription(QString d) { weatherDescription_ = d; };
     inline void setWeatherIcon(QString i) { weatherIcon_ = i; };
     inline void setTime(QDateTime t) { time_ = t; };
-    inline void setLat(float l) { lat_ = l; };
-    inline void setLon(float l) { lon_ = l; };
+    inline void setLatitude(float l) { latitude_ = l; };
+    inline void setLongitude(float l) { longitude_ = l; };
     inline void setPrecipitation(float p) { precipitation_ = p; };
     inline void setFog(float f) { fog_ = f; };
     inline void setCloudiness(int c) { cloudiness_ = c; };
@@ -43,14 +59,17 @@ public:
     inline void setHumidity(int h) { humidity_ = h; };
     inline void setPressure(int p) { pressure_ = p; };
 
+signals:
+    void propertyChanged();
+
 private:
     QString locationName_;
     QString windDirection_;
     QString weatherDescription_;
     QString weatherIcon_;
     QDateTime time_;
-    float lat_;
-    float lon_;
+    float latitude_;
+    float longitude_;
     float precipitation_;
     float fog_;
     int cloudiness_;

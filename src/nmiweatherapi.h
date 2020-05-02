@@ -17,6 +17,7 @@ class NMIWeatherAPI : public AbstractWeatherAPI
 
 public:
     NMIWeatherAPI();
+    ~NMIWeatherAPI() override;
     void update() override;
     void setLocation(float lat, float lon) override;
     void setToken(QString &) override;

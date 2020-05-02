@@ -1,4 +1,5 @@
 #include "weatherhourmodel.h"
+#include <QQmlEngine>
 
 /* ~~~ WeatherHour ~~~ */
 
@@ -38,6 +39,19 @@ QVariant WeatherHourListModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
+WeatherHour* WeatherHourListModel::get(int index) {
+    WeatherHour* ret;
+    if (index < 0 || index >= hoursList.count()) {
+        ret = new WeatherHour();
+    } else {
+        ret = hoursList.at(index);
+    }
+    // it's kind of dumb how much seems to be garbage collected by js...
+    // this fixes segfaults with scrolling with the hour view
+    QQmlEngine::setObjectOwnership(ret, QQmlEngine::CppOwnership);
+    return ret;
+}
+
 void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForecast*> forecasts) 
 {
     // clear forecasts
@@ -48,8 +62,11 @@ void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForeca
     // insert forecasts
     emit beginInsertRows(QModelIndex(), 0, forecasts.count() - 1);
     
-    for (auto forecast : forecasts)
+    for (auto forecast : forecasts) {
+        WeatherHour* weatherHour = new WeatherHour(forecast);
+        QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         hoursList.append(new WeatherHour(forecast));
+    }
     std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour* h1, WeatherHour* h2)->bool{ return h1->hour() < h2->hour(); });
 
     emit endInsertRows();

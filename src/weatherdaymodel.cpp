@@ -1,4 +1,6 @@
 #include "weatherdaymodel.h"
+#include <memory>
+#include <QQmlEngine>
 
 /* ~~~ WeatherDay ~~~ */
 
@@ -39,6 +41,13 @@ QVariant WeatherDayListModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
+WeatherDay* WeatherDayListModel::get(int index)
+{
+    if (index < 0 || index >= daysList.count())
+        return new WeatherDay();
+    return daysList.at(index);
+}
+
 void WeatherDayListModel::refreshDaysFromForecasts(QList<AbstractWeatherForecast*> forecasts) 
 {
     emit beginRemoveRows(QModelIndex(), 0, daysList.count() - 1);
@@ -61,7 +70,9 @@ void WeatherDayListModel::refreshDaysFromForecasts(QList<AbstractWeatherForecast
 
     // add weatherdays with forecast day lists
     for (const auto& mapPair : forecastMap) {
-        daysList.append(new WeatherDay(mapPair.second));
+        WeatherDay* weatherDay = new WeatherDay(mapPair.second);
+        QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+        daysList.append(weatherDay);
     }
     emit endInsertRows();
 }
