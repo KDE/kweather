@@ -28,20 +28,10 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
         timer->start(1000 * 3 * 3600 + rand());
 }
 
-WeatherForecastManager &WeatherForecastManager::instance()
+WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
 {
-    if (!myself) {
-        qDebug() << "WeatherForecastManager";
-        exit(1);
-    }
-    return *myself;
-}
-
-void WeatherForecastManager::setModel(WeatherLocationListModel &model)
-{
-    if (!myself) {
-        myself = new WeatherForecastManager(model);
-    }
+    static WeatherForecastManager singleton(model);
+    return singleton;
 }
 void WeatherForecastManager::update()
 {
@@ -60,23 +50,43 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
     url.append(QLatin1String("/kweather"));
     url.append(QString("/%1/%2/").arg(QString::number(static_cast<int>(data.latitude() * 100))).arg(QString::number(static_cast<int>(data.longitude() * 100))));
     // should be this path: /home/user/.cache/kweather/7000/3000 for location with coordinate 70.00 30.00
-    for (auto fc : data.forecasts()) {
-        file.setFileName(QString(url + QString::number(fc->time().toSecsSinceEpoch()))); // file name are unix timestamp
-        file.open(QIODevice::WriteOnly);                                                 // wipe out old data as well
-        file.write((char *)fc, sizeof(*fc));                                             // write binary data into file
-        file.close();                                                                    // we could do some optimizations here
-    }                                                                                    // I just realised that one file for each
-} // instance will occupy a lot of space even for a relative small block size, I will come up with a better idea later
+    file.setFileName(QString(url + QString::number(data.forecasts().back()->time().toSecsSinceEpoch()))); // file name is last forecast's unix time
+    for (auto fc : data.forecasts()) {                                                                    // this will later be used to determine if we want this cache or not
+        file.open(QIODevice::WriteOnly);                                                                  // wipe out old data as well
+        file.write((char *)fc, sizeof(*fc));                                                              // write binary data into file
+    }
+    file.close();
+}
+
+// ##### Work In Progress #####
 
 void WeatherForecastManager::readFromCache()
 {
+    int i = 0; // index for weatherlistmodel
     QFile reader;
     QDirIterator LatIt(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/kweather")); // list directory entries
     while (LatIt.hasNext()) {                                                                                         // list all longitude
         QDirIterator LonIt(LatIt.next());
         while (LonIt.hasNext()) {
-            QDirIterator forecastIt(LonIt.next(), QDirIterator::Subdirectories);
-            // stop here
+            // This is for each individual location
+            auto location = new WeatherLocation(); // one cache file corresponds to one location
+            reader.setFileName(LonIt.next());
+            if (LonIt.next().toLong() <= QDateTime::currentSecsSinceEpoch()) {
+                reader.remove();
+                model_.insert(i, location); // insert empty location and we are done
+                break;                      // if no usable cache, terminate
+            }
+            reader.open(QIODevice::ReadOnly);
+            // allocate new forecasts
+            QList<AbstractWeatherForecast *> forecasts;
+            auto fc = new AbstractWeatherForecast();
+            while (!reader.atEnd()) {
+                reader.read((char *)fc, sizeof(fc));
+                forecasts.push_back(fc);
+            }
+            location->updateData(forecasts);
+            model_.insert(i, location); // insert location to weatherlistmodel
         }
+        i++; // add one location count
     }
 }

@@ -2,8 +2,8 @@
 #define WEATHERLOCATIONMODEL_H
 #include "abstractweatherforecast.h"
 #include <QAbstractListModel>
-#include <QObject>
 #include <QDebug>
+#include <QObject>
 
 class WeatherDayListModel;
 class WeatherHourListModel;
@@ -15,24 +15,47 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
-    Q_PROPERTY(WeatherDayListModel* dayListModel READ weatherDayListModel NOTIFY propertyChanged)
-    Q_PROPERTY(WeatherHourListModel* hourListModel READ weatherHourListModel NOTIFY propertyChanged)
-    Q_PROPERTY(AbstractWeatherForecast* currentForecast READ currentForecast NOTIFY currentForecastChange)
+    Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
+    Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
+    Q_PROPERTY(AbstractWeatherForecast *currentForecast READ currentForecast NOTIFY currentForecastChange)
 
 public:
     explicit WeatherLocation();
     explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude);
     explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, QList<AbstractWeatherForecast *> forecasts_);
 
-    inline QString locationName() {return locationName_;}
-    inline float latitude() {return latitude_;}
-    inline float longitude() {return longitude_;}
-    inline AbstractWeatherForecast* currentForecast() {return currentForecast_;}
-    inline WeatherDayListModel *weatherDayListModel() {return weatherDayListModel_;}
-    inline WeatherHourListModel *weatherHourListModel() {return weatherHourListModel_;}
-    inline QList<AbstractWeatherForecast *> forecasts() {return forecasts_;}
-    inline NMIWeatherAPI *weatherBackendProvider() {return weatherBackendProvider_;}
-
+    inline QString locationName()
+    {
+        return locationName_;
+    }
+    inline float latitude()
+    {
+        return latitude_;
+    }
+    inline float longitude()
+    {
+        return longitude_;
+    }
+    inline AbstractWeatherForecast *currentForecast()
+    {
+        return currentForecast_;
+    }
+    inline WeatherDayListModel *weatherDayListModel()
+    {
+        return weatherDayListModel_;
+    }
+    inline WeatherHourListModel *weatherHourListModel()
+    {
+        return weatherHourListModel_;
+    }
+    inline QList<AbstractWeatherForecast *> forecasts()
+    {
+        return forecasts_;
+    }
+    inline NMIWeatherAPI *weatherBackendProvider()
+    {
+        return weatherBackendProvider_;
+    }
     void determineCurrentForecast();
 
 public slots:
@@ -52,7 +75,7 @@ private:
 
     NMIWeatherAPI *weatherBackendProvider_; // OpenWeatherMap is not supported now anyway
 
-    AbstractWeatherForecast* currentForecast_;
+    AbstractWeatherForecast *currentForecast_;
     QList<AbstractWeatherForecast *> forecasts_;
 };
 
@@ -69,7 +92,7 @@ public:
 
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
-    Q_INVOKABLE WeatherLocation* get(int index);
+    Q_INVOKABLE WeatherLocation *get(int index);
     inline QList<WeatherLocation *> &getList()
     {
         return locationsList;

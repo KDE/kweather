@@ -16,12 +16,10 @@
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
-#ifdef DEBUG
 AbstractWeatherForecast *tempBuilderUtil(int month, int day, int hour, QString windDirection, QString weatherDesc, QString weatherIcon, int temp, float humidity, float precipitation)
 {
     return new AbstractWeatherForecast("Toronto", windDirection, weatherDesc, weatherIcon, QDateTime(QDate(2020, month, day), QTime(hour, 0)), 32.6532, 79.3832, precipitation, 0, 0, 0.2, temp, temp, humidity, 1000.9);
 }
-#endif
 int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -35,7 +33,7 @@ int main(int argc, char *argv[])
 
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
-    WeatherForecastManager::setModel(*weatherLocationListModel);
+    WeatherForecastManager::instance(*weatherLocationListModel);
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
 
     // register QML types
@@ -45,7 +43,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
-#ifdef DEBUG
     // load example test data for testing purposes TODO
     WeatherLocation *testLocation = new WeatherLocation(new NMIWeatherAPI(), "Toronto", 43.6532, -79.3832);
     WeatherLocation *testLocation2 = new WeatherLocation(new NMIWeatherAPI(), "Singapore", 1.3521, 103.8198);
@@ -76,7 +73,6 @@ int main(int argc, char *argv[])
 
     weatherLocationListModel->insert(0, testLocation);
     weatherLocationListModel->insert(1, testLocation2);
-#endif
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 
     if (engine.rootObjects().isEmpty()) {

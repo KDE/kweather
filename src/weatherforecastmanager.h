@@ -22,8 +22,7 @@ class WeatherForecastManager : public QObject
     Q_OBJECT
 
 public:
-    static WeatherForecastManager &instance();
-    static void setModel(WeatherLocationListModel &model);
+    static WeatherForecastManager &instance(WeatherLocationListModel &model);
 
 signals:
 
@@ -31,20 +30,17 @@ signals:
 private slots:
     void update();
 
-protected:
-    explicit WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
-
 private:
     std::default_random_engine generator;
     std::uniform_int_distribution<int> *distribution;
     WeatherLocationListModel &model_;
-    static WeatherForecastManager *myself;
     int api_ = NORWEGIAN;
 
     void writeToCache(WeatherLocation &data);
     QTimer *timer;
 
     void readFromCache();
+    WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
     WeatherForecastManager(const WeatherForecastManager &);
     WeatherForecastManager &operator=(const WeatherForecastManager &);
 };
