@@ -22,7 +22,8 @@ class WeatherForecastManager : public QObject
     Q_OBJECT
 
 public:
-    static WeatherForecastManager &instance(WeatherLocationListModel &model);
+    static WeatherForecastManager &instance();
+    static void setModel(WeatherLocationListModel &model);
 
 signals:
 
@@ -37,7 +38,7 @@ private:
     std::default_random_engine generator;
     std::uniform_int_distribution<int> *distribution;
     WeatherLocationListModel &model_;
-
+    static WeatherForecastManager *myself;
     int api_ = NORWEGIAN;
 
     void writeToCache(WeatherLocation &data);

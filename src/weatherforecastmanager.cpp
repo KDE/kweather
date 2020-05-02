@@ -28,13 +28,21 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
         timer->start(1000 * 3 * 3600 + rand());
 }
 
-WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
+WeatherForecastManager &WeatherForecastManager::instance()
 {
-    static WeatherForecastManager singleton(model);
-
-    return singleton;
+    if (!myself) {
+        qDebug() << "WeatherForecastManager";
+        exit(1);
+    }
+    return *myself;
 }
 
+void WeatherForecastManager::setModel(WeatherLocationListModel &model)
+{
+    if (!myself) {
+        myself = new WeatherForecastManager(model);
+    }
+}
 void WeatherForecastManager::update()
 {
     auto locations = model_.getList();

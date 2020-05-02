@@ -11,16 +11,18 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#include "nmiweatherapi.h"
 #include "weatherdaymodel.h"
+#include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
-#include "nmiweatherapi.h"
-
-AbstractWeatherForecast* tempBuilderUtil(int month, int day, int hour, QString windDirection, QString weatherDesc, QString weatherIcon, int temp, float humidity, float precipitation) {
-    return new AbstractWeatherForecast("Toronto", windDirection, weatherDesc, weatherIcon, QDateTime(QDate(2020, month, day), QTime(hour, 0)), 32.6532, 79.3832, precipitation, 0, 0, 0.2,  temp, temp, humidity, 1000.9);
+#ifdef DEBUG
+AbstractWeatherForecast *tempBuilderUtil(int month, int day, int hour, QString windDirection, QString weatherDesc, QString weatherIcon, int temp, float humidity, float precipitation)
+{
+    return new AbstractWeatherForecast("Toronto", windDirection, weatherDesc, weatherIcon, QDateTime(QDate(2020, month, day), QTime(hour, 0)), 32.6532, 79.3832, precipitation, 0, 0, 0.2, temp, temp, humidity, 1000.9);
 }
-
-int main(int argc, char* argv[])
+#endif
+int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
@@ -28,13 +30,12 @@ int main(int argc, char* argv[])
 
     KLocalizedString::setApplicationDomain("kweather");
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KAboutData aboutData("kweather", "Weather", "0.1", "Weather application in Kirigami", KAboutLicense::GPL,
-                         i18n("© 2020 KDE Community"));
+    KAboutData aboutData("kweather", "Weather", "0.1", "Weather application in Kirigami", KAboutLicense::GPL, i18n("© 2020 KDE Community"));
     KAboutData::setApplicationData(aboutData);
 
     // initialize models in context
-    auto* weatherLocationListModel = new WeatherLocationListModel();
-
+    auto *weatherLocationListModel = new WeatherLocationListModel();
+    WeatherForecastManager::setModel(*weatherLocationListModel);
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
 
     // register QML types
@@ -44,11 +45,11 @@ int main(int argc, char* argv[])
     qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
-
+#ifdef DEBUG
     // load example test data for testing purposes TODO
-    WeatherLocation* testLocation = new WeatherLocation(new NMIWeatherAPI(), "Toronto", 43.6532, -79.3832);
-    WeatherLocation* testLocation2 = new WeatherLocation(new NMIWeatherAPI(), "Singapore", 1.3521, 103.8198);
-    QList<AbstractWeatherForecast*> list;
+    WeatherLocation *testLocation = new WeatherLocation(new NMIWeatherAPI(), "Toronto", 43.6532, -79.3832);
+    WeatherLocation *testLocation2 = new WeatherLocation(new NMIWeatherAPI(), "Singapore", 1.3521, 103.8198);
+    QList<AbstractWeatherForecast *> list;
     list.append(tempBuilderUtil(5, 1, 17, "west", "Mostly Cloudy", "weather-clouds", 19, 60.1, 0));
     list.append(tempBuilderUtil(5, 1, 18, "south", "Clear", "weather-clear", 20, 60.1, 0));
     list.append(tempBuilderUtil(5, 1, 19, "west", "Freezing Rain", "weather-freezing-rain", 21, 60.1, 15));
@@ -75,7 +76,7 @@ int main(int argc, char* argv[])
 
     weatherLocationListModel->insert(0, testLocation);
     weatherLocationListModel->insert(1, testLocation2);
-
+#endif
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 
     if (engine.rootObjects().isEmpty()) {
