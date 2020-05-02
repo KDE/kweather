@@ -21,7 +21,14 @@ public:
     void update() override;
     void setLocation(float lat, float lon) override;
     void setToken(QString &) override;
-
+    inline QString &getTimeZone()
+    {
+        return timeZone;
+    };
+    inline void setTimeZone(QString tz)
+    {
+        timeZone = tz;
+    };
 private slots:
     void setTZ();
     void parse(QNetworkReply *Reply) override;

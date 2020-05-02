@@ -35,7 +35,8 @@ private:
     std::uniform_int_distribution<int> *distribution;
     WeatherLocationListModel &model_;
     int api_ = NORWEGIAN;
-
+    QJsonDocument convertToJson(WeatherLocation &lc);
+    QList<WeatherLocation *> convertFromJson(QByteArray data);
     void writeToCache(WeatherLocation &data);
     QTimer *timer;
 
