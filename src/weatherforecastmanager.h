@@ -36,7 +36,7 @@ private:
     WeatherLocationListModel &model_;
     int api_ = NORWEGIAN;
     QJsonDocument convertToJson(WeatherLocation &lc);
-    QList<WeatherLocation *> convertFromJson(QByteArray data);
+    WeatherLocation *convertFromJson(QByteArray data);
     void writeToCache(WeatherLocation &data);
     QTimer *timer;
 

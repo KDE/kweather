@@ -76,7 +76,7 @@ void WeatherForecastManager::readFromCache()
                 break; // if no usable cache, terminate
             }
             reader.open(QIODevice::ReadOnly);
-            model_.getList() = convertFromJson(reader.readAll()); // Not sure, potential bug
+            model_.insert(i, convertFromJson(reader.readAll()));
         }
         i++; // add one location count
     }
@@ -114,7 +114,7 @@ QJsonDocument WeatherForecastManager::convertToJson(WeatherLocation &lc) // Qt u
     return doc;
 }
 
-QList<WeatherLocation *> WeatherForecastManager::convertFromJson(QByteArray data)
+WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
 {
     QList<AbstractWeatherForecast *> forecasts;
     QJsonDocument doc;
@@ -141,5 +141,5 @@ QList<WeatherLocation *> WeatherForecastManager::convertFromJson(QByteArray data
         forecasts.push_back(fc);
     }
     location->updateData(forecasts);
-    return forecasts;
+    return location;
 }
