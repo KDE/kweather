@@ -21,8 +21,8 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation)); // create cache location
     if (!dir.exists())
         dir.mkpath(".");
-    readFromCache();                                                     // load cache first
-    distribution = new std::uniform_int_distribution<int>(0, 30 * 3600); // uniform random update interval, 60 min to 90 min
+    readFromCache();                                                   // load cache first
+    distribution = new std::uniform_int_distribution<int>(0, 30 * 60); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
     cacheTimer = new QTimer(this);
     cacheTimer->start(1000 * 3600 * 3); // cache every three hours
@@ -31,9 +31,9 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     updateTimer->setSingleShot(true);
     connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
     if (api_ == NORWEGIAN)
-        updateTimer->start(1000 * 3600 + rand());
+        updateTimer->start(1000 * 3600 + rand() * 1000);
     else
-        updateTimer->start(1000 * 3 * 3600 + rand());
+        updateTimer->start(1000 * 3 * 3600 + rand() * 1000);
 }
 
 WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
@@ -48,7 +48,7 @@ void WeatherForecastManager::update()
         wLocation->weatherBackendProvider()->setLocation(wLocation->latitude(), wLocation->longitude());
         wLocation->weatherBackendProvider()->update();
     }
-    updateTimer->start(1000 * 3600 + rand()); // reset timer
+    updateTimer->start(1000 * 3600 + rand() * 1000); // reset timer
 }
 
 void WeatherForecastManager::writeToCache(WeatherLocation &data)
