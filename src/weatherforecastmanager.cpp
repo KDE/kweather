@@ -18,11 +18,14 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
         qDebug() << "wrong api";
         exit(1);
     }
+    QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation)); // create cache location
+    if (!dir.exists())
+        dir.mkpath(".");
     readFromCache();                                                     // load cache first
     distribution = new std::uniform_int_distribution<int>(0, 30 * 3600); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
     cacheTimer = new QTimer(this);
-    cacheTimer->start(3600 * 3); // cache every three hours
+    cacheTimer->start(1000 * 3600 * 3); // cache every three hours
     connect(cacheTimer, &QTimer::timeout, this, &WeatherForecastManager::cache);
     updateTimer = new QTimer(this);
     updateTimer->setSingleShot(true);
@@ -53,12 +56,14 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
     QFile file;
     QString url;
     url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    url.append(QLatin1String("/kweather"));
-    url.append(QString("/%1/%2/").arg(QString::number(static_cast<int>(data.latitude() * 100))).arg(QString::number(static_cast<int>(data.longitude() * 100))));
+    QDir dir(url.append(QString("/%1/%2/").arg(QString::number(static_cast<int>(data.latitude() * 100))).arg(QString::number(static_cast<int>(data.longitude() * 100))))); // create cache location
+    if (!dir.exists())
+        dir.mkpath(".");
     // should be this path: /home/user/.cache/kweather/7000/3000 for location with coordinate 70.00 30.00
+    qDebug() << url;
     file.setFileName(QString(url + QString::number(data.forecasts().back()->time().toSecsSinceEpoch()))); // file name is last forecast's unix time
     file.open(QIODevice::WriteOnly);                                                                      // this will later be used to determine if we want this cache or not
-    file.write(convertToJson(data).toBinaryData());                                                       // write json
+    file.write(convertToJson(data).toJson(QJsonDocument::Compact));                                       // write json
     file.close();
 }
 
@@ -75,6 +80,7 @@ void WeatherForecastManager::readFromCache()
         while (LonIt.hasNext()) {
             // This is for each individual location
             reader.setFileName(LonIt.next());
+            qDebug() << "file name" << reader.fileName();
             if (reader.fileName().toLong() <= QDateTime::currentSecsSinceEpoch()) {
                 reader.remove();
                 continue;
@@ -98,30 +104,30 @@ void WeatherForecastManager::readFromCache()
 QJsonDocument WeatherForecastManager::convertToJson(WeatherLocation &lc) // Qt uses QByteArray internally, pass by copy
 {
     QJsonObject info;
-    info.insert(QLatin1String("name"), lc.locationName());
-    info.insert(QLatin1String("latitude"), lc.latitude());
-    info.insert(QLatin1String("longitude"), lc.longitude());
-    info.insert(QLatin1String("timezone"), lc.weatherBackendProvider()->getTimeZone());
+    info[QLatin1String("name")] = lc.locationName();
+    info[QLatin1String("latitude")] = QString::number(lc.latitude());
+    info[QLatin1String("longitude")] = QString::number(lc.longitude());
+    info[QLatin1String("timezone")] = lc.weatherBackendProvider()->getTimeZone();
     QJsonObject main;
-    main.insert(QLatin1String("info"), info);
+    main[QLatin1String("info")] = info;
     QJsonArray array;
     for (auto fc : lc.forecasts()) {
         QJsonObject obj;
-        obj.insert(QLatin1String("time"), fc->time().toString(Qt::ISODate));
-        obj.insert(QLatin1String("weatherIcon"), fc->weatherIcon());
-        obj.insert(QLatin1String("weatherDescription"), fc->weatherDescription());
-        obj.insert(QLatin1String("maxTemp"), fc->maxTemp());
-        obj.insert(QLatin1String("minTemp"), fc->minTemp());
-        obj.insert(QLatin1String("windDirection"), fc->windDirection());
-        obj.insert(QLatin1String("windSpeed"), fc->windSpeed());
-        obj.insert(QLatin1String("precipitation"), fc->precipitation());
-        obj.insert(QLatin1String("fog"), fc->fog());
-        obj.insert(QLatin1String("cloudiness"), fc->cloudiness());
-        obj.insert(QLatin1String("humidity"), fc->humidity());
-        obj.insert(QLatin1String("pressure"), fc->pressure());
+        obj[QLatin1String("time")] = fc->time().toString(Qt::ISODate);
+        obj[QLatin1String("weatherIcon")] = fc->weatherIcon();
+        obj[QLatin1String("weatherDescription")] = fc->weatherDescription();
+        obj[QLatin1String("maxTemp")] = QString::number(fc->maxTemp());
+        obj[QLatin1String("minTemp")] = QString::number(fc->minTemp());
+        obj[QLatin1String("windDirection")] = fc->windDirection();
+        obj[QLatin1String("windSpeed")] = QString::number(fc->windSpeed());
+        obj[QLatin1String("precipitation")] = QString::number(fc->precipitation());
+        obj[QLatin1String("fog")] = QString::number(fc->fog());
+        obj[QLatin1String("cloudiness")] = QString::number(fc->cloudiness());
+        obj[QLatin1String("humidity")] = QString::number(fc->humidity());
+        obj[QLatin1String("pressure")] = QString::number(fc->pressure());
         array.push_back(obj);
     }
-    main.insert(QLatin1String("main"), array);
+    main[QLatin1String("main")] = array;
     QJsonDocument doc;
     doc.setObject(main);
     return doc;
@@ -159,6 +165,10 @@ WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
 
 void WeatherForecastManager::cache()
 {
+    qDebug() << "start caching";
+    auto list = model_.getList();
+    if (list.isEmpty())
+        return;
     for (auto lc : model_.getList()) {
         writeToCache(*lc);
     }
