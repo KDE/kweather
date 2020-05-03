@@ -38,8 +38,9 @@ private:
     QJsonDocument convertToJson(WeatherLocation &lc);
     WeatherLocation *convertFromJson(QByteArray data);
     void writeToCache(WeatherLocation &data);
-    QTimer *timer;
-
+    QTimer *updateTimer;
+    QTimer *cacheTimer;
+    void cache();
     void readFromCache();
     WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
     WeatherForecastManager(const WeatherForecastManager &);

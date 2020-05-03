@@ -9,7 +9,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QStandardPaths>
-#include <QTimeZone>
 #include <QTimer>
 WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI)
     : model_(model)
@@ -19,16 +18,19 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
         qDebug() << "wrong api";
         exit(1);
     }
+    readFromCache();                                                     // load cache first
     distribution = new std::uniform_int_distribution<int>(0, 30 * 3600); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
-
-    timer = new QTimer(this);
-    timer->setSingleShot(true);
-    connect(timer, &QTimer::timeout, this, &WeatherForecastManager::update);
+    cacheTimer = new QTimer(this);
+    cacheTimer->start(3600 * 3); // cache every three hours
+    connect(cacheTimer, &QTimer::timeout, this, &WeatherForecastManager::cache);
+    updateTimer = new QTimer(this);
+    updateTimer->setSingleShot(true);
+    connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
     if (api_ == NORWEGIAN)
-        timer->start(1000 * 3600 + rand());
+        updateTimer->start(1000 * 3600 + rand());
     else
-        timer->start(1000 * 3 * 3600 + rand());
+        updateTimer->start(1000 * 3 * 3600 + rand());
 }
 
 WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
@@ -43,6 +45,7 @@ void WeatherForecastManager::update()
         wLocation->weatherBackendProvider()->setLocation(wLocation->latitude(), wLocation->longitude());
         wLocation->weatherBackendProvider()->update();
     }
+    updateTimer->start(1000 * 3600 + rand()); // reset timer
 }
 
 void WeatherForecastManager::writeToCache(WeatherLocation &data)
@@ -63,7 +66,8 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
 
 void WeatherForecastManager::readFromCache()
 {
-    int i = 0; // index for weatherlistmodel
+    int i = 0;           // index for weatherlistmodel
+    QVector<int> vector; // sort out cache freshness
     QFile reader;
     QDirIterator LatIt(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/kweather"), QDir::NoDotAndDotDot); // list directory entries
     while (LatIt.hasNext()) {                                                                                                               // list all longitude
@@ -71,13 +75,22 @@ void WeatherForecastManager::readFromCache()
         while (LonIt.hasNext()) {
             // This is for each individual location
             reader.setFileName(LonIt.next());
-            if (reader.fileName().toLong() <= QDateTime::currentSecsSinceEpoch()) { // TODO: potential bug, has multiple cache but we only catch outdated one
+            if (reader.fileName().toLong() <= QDateTime::currentSecsSinceEpoch()) {
                 reader.remove();
-                break; // if no usable cache, terminate
+                continue;
             }
-            reader.open(QIODevice::ReadOnly);
-            model_.insert(i, convertFromJson(reader.readAll()));
+            vector.push_back(reader.fileName().toInt());
         }
+        std::sort(vector.begin(), vector.end()); // ascending
+        reader.setFileName(QString::number(*vector.end()));
+        reader.open(QIODevice::ReadOnly);
+        model_.insert(i, convertFromJson(reader.readAll())); // insert location into model
+        reader.close();
+        for (int j = 0; j < vector.count() - 1; j++) {
+            reader.setFileName(QString::number(vector.at(j)));
+            reader.remove(); // remove all not the freshest cache
+        }
+        vector.clear();
         i++; // add one location count
     }
 }
@@ -142,4 +155,11 @@ WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
     }
     location->updateData(forecasts);
     return location;
+}
+
+void WeatherForecastManager::cache()
+{
+    for (auto lc : model_.getList()) {
+        writeToCache(*lc);
+    }
 }
