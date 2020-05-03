@@ -36,7 +36,7 @@ private slots:
 private:
     void xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list);
     void parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
-    QString timeZone;
+    QString timeZone = "Asia/Singapore";
     GeoTimeZone *tz;
     // https://api.met.no/weatherapi/weathericon/1.1/documentation
     QHash<int, QString> map = {

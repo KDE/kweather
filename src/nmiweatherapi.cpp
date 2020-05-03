@@ -1,6 +1,7 @@
 #include "nmiweatherapi.h"
 #include "geotimezone.h"
 #include <QCoreApplication>
+#include <QFile>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
@@ -8,7 +9,6 @@
 #include <QUrlQuery>
 #include <QXmlStreamReader>
 #include <zlib.h>
-
 void NMIWeatherAPI::setLocation(float latitude, float longitude)
 {
     lat = latitude;
@@ -22,6 +22,7 @@ void NMIWeatherAPI::setToken(QString &)
 NMIWeatherAPI::NMIWeatherAPI()
     : AbstractWeatherAPI(-1)
 {
+    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
 }
 
 NMIWeatherAPI::~NMIWeatherAPI()
@@ -41,7 +42,7 @@ void NMIWeatherAPI::update()
     } // delete old data
 
     // ported from itinerary/weather
-    QUrl url;
+    /*QUrl url;
 
     url.setScheme(QStringLiteral("https"));
     url.setHost(QStringLiteral("api.met.no"));
@@ -61,13 +62,19 @@ void NMIWeatherAPI::update()
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
     req.setRawHeader("Accept-Encoding", "gzip");
-    mReply = mManager->get(req);
-    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
+    mReply = mManager->get(req);*/
+    parse(0);
 }
 
 void NMIWeatherAPI::parse(QNetworkReply *reply)
 {
-    const auto data = reply->readAll();
+    qDebug() << "data arrived";
+
+    QFile file;
+    file.setFileName("data");
+    file.open(QIODevice::ReadOnly);
+    auto data = file.readAll();
+    file.close();
     if ((data.size() < 4) || (data.at(0) != 0x1f) || (data.at(1) != char(0x8b))) {
         qWarning() << "Invalid gzip format";
         return;
@@ -92,7 +99,6 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
     }
 
     do {
-        qDebug() << "start parsing";
         stream.avail_out = sizeof(buffer);
         stream.next_out = buffer;
 
@@ -106,12 +112,21 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
         uncomp.append(reinterpret_cast<char *>(buffer), sizeof(buffer) - stream.avail_out);
     } while (stream.avail_out == 0);
     inflateEnd(&stream);
+    qDebug() << "uncompressed";
     reader.addData(uncomp);
-    while (timeZone.isEmpty()) // if we don't get timezone data, block
+    while (timeZone.isEmpty()) { // if we don't get timezone data, block
+        qDebug() << "no timezone";
         continue;
+    }
     xmlParse(reader, mForecasts);
     reply->deleteLater();
+    delete mForecasts.back(); // tmp fix
+    mForecasts.pop_back();
     emit updated(this->mForecasts);
+    for (auto fc : mForecasts) {
+        qDebug() << "time: " << fc->time().toString(Qt::ISODate);
+        qDebug() << "weatherIcon: " << fc->weatherIcon();
+    }
 }
 
 void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list)
@@ -120,7 +135,6 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
         auto fc = new AbstractWeatherForecast();
         list.push_back(fc);
     }
-
     while (!reader.atEnd()) {
         auto forecast = list.back();
         if (reader.readNextStartElement()) {
@@ -129,13 +143,11 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
             }
             if (reader.name() == QLatin1String("time")) {
                 if (reader.attributes().value(QLatin1String("from")).toString() == reader.attributes().value(QLatin1String("to")).toString()) {
-                    auto fc = new AbstractWeatherForecast();
-                    list.push_back(fc);
-                    forecast = fc;
                     auto datetime = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
-                    datetime.setTimeZone(QTimeZone(timeZone.toUtf8()));
+                    datetime.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
                     datetime = datetime.toLocalTime();
-                    fc->setTime(datetime);
+                    forecast->setTime(datetime);
+                    list.push_back(new AbstractWeatherForecast());
                 }
             }
             parseElement(reader, forecast);
@@ -187,13 +199,13 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
                 if (fc->time().time().hour() >= 18 || fc->time().time().hour() <= 6) // 18:00 to 6:00 is night. I don't care
                 {                                                                    // countries which span more than one timezone
                                                                                      // but use one time
-                    if (fc->weatherIcon().back() == "y")                             // breeze icon which ends with 'y' is a 'day' icon
-                    {                                                                // for now(May 2020)
+                    /*if (fc->weatherIcon().back() == "y")
+                    {                                                                // this breakes things
                         QString tmp(fc->weatherIcon());
                         tmp.chop(3);
                         tmp.append("night");
                         fc->setWeatherIcon(tmp);
-                    }
+                    }*/
                     if (fc->weatherIcon() == QLatin1String("weather-clear")) { // exception with weather-clear
                         QString tmp(fc->weatherIcon());
                         tmp.append("-night");
@@ -214,5 +226,6 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
 void NMIWeatherAPI::setTZ()
 {
     timeZone = tz->getTimeZone();
+    qDebug() << "timezone" << timeZone;
     delete tz;
 }

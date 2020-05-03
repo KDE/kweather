@@ -31,7 +31,7 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     updateTimer->setSingleShot(true);
     connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
     if (api_ == NORWEGIAN)
-        updateTimer->start(1000 * 3600 + rand() * 1000);
+        updateTimer->start(5000 /*1000 * 3600 + rand() * 1000*/);
     else
         updateTimer->start(1000 * 3 * 3600 + rand() * 1000);
 }

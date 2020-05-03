@@ -16,6 +16,8 @@ GeoTimeZone::GeoTimeZone(float lat, float lon, QObject *parent)
     query.addQueryItem(QLatin1String("lat"), QString::number(lat));
     query.addQueryItem(QLatin1String("lng"), QString::number(lon));
     query.addQueryItem(QLatin1String("username"), QLatin1String("kweatherdev"));
+    url.setQuery(query);
+    qDebug() << url;
     QNetworkRequest req(url);
     manager->get(req);
     connect(manager, &QNetworkAccessManager::finished, this, &GeoTimeZone::downloadFinished);
@@ -24,9 +26,10 @@ GeoTimeZone::GeoTimeZone(float lat, float lon, QObject *parent)
 void GeoTimeZone::downloadFinished(QNetworkReply *reply)
 {
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
-    tz = doc["timezoneID"].toString();
+    tz = doc["timezoneId"].toString();
     reply->deleteLater();
     emit finished();
+    qDebug() << tz;
 }
 
 QString GeoTimeZone::getTimeZone()
