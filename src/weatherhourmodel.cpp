@@ -17,8 +17,7 @@ WeatherHour::WeatherHour(AbstractWeatherForecast* forecast)
     this->temperature_ = forecast->maxTemp(); // TODO
     this->humidity_ = forecast->humidity();
     this->pressure_ = forecast->pressure();
-    this->hour_ = forecast->time().time().hour();
-    this->day_ = forecast->time().date().day();
+    this->date_ = QDateTime(forecast->time().date(), QTime(forecast->time().time().hour(), 0));
 }
 
 /* ~~~ WeatherHourListModel ~~~ */
@@ -63,11 +62,11 @@ void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForeca
     emit beginInsertRows(QModelIndex(), 0, forecasts.count() - 1);
     
     for (auto forecast : forecasts) {
-        WeatherHour* weatherHour = new WeatherHour(forecast);
+        auto* weatherHour = new WeatherHour(forecast);
         QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         hoursList.append(new WeatherHour(forecast));
     }
-    std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour* h1, WeatherHour* h2)->bool{ return h1->hour() < h2->hour(); });
+    std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour* h1, WeatherHour* h2)->bool{ return h1->date() < h2->date(); });
 
     emit endInsertRows();
 }

@@ -22,8 +22,7 @@ class WeatherHour : public QObject
     Q_PROPERTY(int temperature READ temperature WRITE setTemperature NOTIFY propertyChanged)
     Q_PROPERTY(int humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
     Q_PROPERTY(int pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
-    Q_PROPERTY(int hour READ hour WRITE setHour NOTIFY propertyChanged)
-    Q_PROPERTY(int day READ day WRITE setDay NOTIFY propertyChanged)
+    Q_PROPERTY(QDateTime date READ date WRITE setDate NOTIFY propertyChanged)
 
 public:
     explicit WeatherHour();
@@ -39,8 +38,7 @@ public:
     inline int temperature() const {return temperature_;}
     inline int humidity() const {return humidity_;}
     inline int pressure() const {return pressure_;}
-    inline int hour() const {return hour_;}
-    inline int day() const {return day_;}
+    inline QDateTime date() const {return date_;}
 
     inline void setWindDirection(QString windDirection) { this->windDirection_ = std::move(windDirection); }
     inline void setWeatherDescription(QString weatherDescription) { this->weatherDescription_ = std::move(weatherDescription); }
@@ -52,13 +50,7 @@ public:
     inline void setTemperature(int temperature) {this->temperature_ = temperature;}
     inline void setHumidity(int humidity) {this->humidity_ = humidity;}
     inline void setPressure(int pressure) {this->pressure_ = pressure;}
-    inline void setHour(int hour) {this->hour_ = hour;}
-    inline void setDay(int day) {this->day_ = day;}
-
-    static bool compare(const WeatherHour &wh1, const WeatherHour &wh2)
-    {
-        return wh1.hour() < wh2.hour();
-    }
+    inline void setDate(QDateTime date) {this->date_ = date;}
 
 signals:
     void propertyChanged();
@@ -75,8 +67,7 @@ private:
     int humidity_;
     int pressure_;
     
-    int hour_;
-    int day_;
+    QDateTime date_;
 };
 
 class WeatherHourListModel : public QAbstractListModel
