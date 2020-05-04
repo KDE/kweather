@@ -105,7 +105,10 @@ ListView {
                 MouseArea {
                     z: 1
                     anchors.fill: parent
-                    onClicked: dailyListView.currentIndex = index
+                    onClicked: {
+                        dailyListView.currentIndex = index
+                        weatherLocation.hourListModel.updateUi(index) // change hour view
+                    }
                 }
 
                 // actual day display

@@ -145,13 +145,14 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     Q_INVOKABLE WeatherHour *get(int index);
 
-    Q_INVOKABLE void updateUi();
-
+    Q_INVOKABLE void updateUi(int index);
 public slots:
     void refreshHoursFromForecasts(QList<AbstractWeatherForecast *> forecasts);
 
 private:
     QList<WeatherHour *> hoursList;
+    QList<int> dayList;
+    int day = 0;
 };
 
 #endif // WEATHERHOURMODEL_H

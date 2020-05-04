@@ -32,7 +32,7 @@ WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
 int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return hoursList.size();
+    return dayList.at(day + 1) - dayList.at(day);
 }
 
 QVariant WeatherHourListModel::data(const QModelIndex &index, int role) const
@@ -46,7 +46,7 @@ WeatherHour *WeatherHourListModel::get(int index)
     if (index < 0 || index >= hoursList.count()) {
         return {};
     } else {
-        ret = hoursList.at(index);
+        ret = hoursList.at(index + dayList.at(day));
     }
     // it's kind of dumb how much seems to be garbage collected by js...
     // this fixes segfaults with scrolling with the hour view
@@ -58,26 +58,34 @@ void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForeca
 {
     // clear forecasts
     emit layoutAboutToBeChanged();
-    emit beginRemoveRows(QModelIndex(), 0, hoursList.count() - 1);
+    day = 0;
     hoursList.clear();
-    emit endRemoveRows();
-
+    dayList.clear();
+    dayList.append(0);
     // insert forecasts
-    emit beginInsertRows(QModelIndex(), 0, forecasts.count() - 1);
-    int currentDay = forecasts[0]->time().date().day();
+    int currentDay = forecasts.at(0)->time().date().day();
+    int i = 0;
     for (auto forecast : forecasts) {
-        if (forecast->time().date().day() != currentDay)
-            break;
+        if (currentDay != forecast->time().date().day()) {
+            currentDay = forecast->time().date().day();
+            dayList.append(i);
+        }
         auto *weatherHour = new WeatherHour(forecast);
         QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-        hoursList.append(/*new WeatherHour(forecast)*/ weatherHour);
+        hoursList.append(weatherHour);
+        i++;
     }
+    dayList.append(i);
     std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour *h1, WeatherHour *h2) -> bool { return h1->date() < h2->date(); });
-
-    emit endInsertRows();
+    for (auto i : dayList) {
+        qDebug() << i;
+    }
     emit layoutChanged();
 }
 
-void WeatherHourListModel::updateUi()
+void WeatherHourListModel::updateUi(int index)
 {
+    emit layoutAboutToBeChanged();
+    day = index;
+    emit layoutChanged();
 }
