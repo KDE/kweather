@@ -208,7 +208,7 @@ ListView {
                         }
                         Label {
                             color: Kirigami.Theme.disabledTextColor
-                            text: weather.precipitation
+                            text: weather.precipitation.toFixed(2) * 100 + "%"
                         }
                     }
 
