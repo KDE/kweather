@@ -26,32 +26,97 @@ class WeatherHour : public QObject
 
 public:
     explicit WeatherHour();
-    explicit WeatherHour(AbstractWeatherForecast* forecast);
-    
-    inline QString windDirection() {return windDirection_;}
-    inline QString weatherDescription() {return weatherDescription_;}
-    inline QString weatherIcon() {return weatherIcon_;}
-    inline float precipitation() const {return precipitation_;}
-    inline float fog() const {return fog_;}
-    inline int cloudiness() const {return cloudiness_;}
-    inline int windSpeed() const {return windSpeed_;}
-    inline int temperature() const {return temperature_;}
-    inline int humidity() const {return humidity_;}
-    inline int pressure() const {return pressure_;}
-    inline QDateTime date() const {return date_;}
+    explicit WeatherHour(AbstractWeatherForecast *forecast);
 
-    inline void setWindDirection(QString windDirection) { this->windDirection_ = std::move(windDirection); }
-    inline void setWeatherDescription(QString weatherDescription) { this->weatherDescription_ = std::move(weatherDescription); }
-    inline void setWeatherIcon(QString weatherIcon) { this->weatherIcon_ = std::move(weatherIcon); }
-    inline void setPrecipitation(float precipitation) { this->precipitation_ = precipitation; }
-    inline void setFog(float fog) {this->fog_ = fog;}
-    inline void setCloudiness(int cloudiness) {this->cloudiness_ = cloudiness;}
-    inline void setWindSpeed(int windSpeed) {this->windSpeed_ = windSpeed;}
-    inline void setTemperature(int temperature) {this->temperature_ = temperature;}
-    inline void setHumidity(int humidity) {this->humidity_ = humidity;}
-    inline void setPressure(int pressure) {this->pressure_ = pressure;}
-    inline void setDate(QDateTime date) {this->date_ = date;}
+    inline QString windDirection()
+    {
+        return windDirection_;
+    }
+    inline QString weatherDescription()
+    {
+        return weatherDescription_;
+    }
+    inline QString weatherIcon()
+    {
+        return weatherIcon_;
+    }
+    inline float precipitation() const
+    {
+        return precipitation_;
+    }
+    inline float fog() const
+    {
+        return fog_;
+    }
+    inline int cloudiness() const
+    {
+        return cloudiness_;
+    }
+    inline int windSpeed() const
+    {
+        return windSpeed_;
+    }
+    inline int temperature() const
+    {
+        return temperature_;
+    }
+    inline int humidity() const
+    {
+        return humidity_;
+    }
+    inline int pressure() const
+    {
+        return pressure_;
+    }
+    inline QDateTime date() const
+    {
+        return date_;
+    }
 
+    inline void setWindDirection(QString windDirection)
+    {
+        this->windDirection_ = std::move(windDirection);
+    }
+    inline void setWeatherDescription(QString weatherDescription)
+    {
+        this->weatherDescription_ = std::move(weatherDescription);
+    }
+    inline void setWeatherIcon(QString weatherIcon)
+    {
+        this->weatherIcon_ = std::move(weatherIcon);
+    }
+    inline void setPrecipitation(float precipitation)
+    {
+        this->precipitation_ = precipitation;
+    }
+    inline void setFog(float fog)
+    {
+        this->fog_ = fog;
+    }
+    inline void setCloudiness(int cloudiness)
+    {
+        this->cloudiness_ = cloudiness;
+    }
+    inline void setWindSpeed(int windSpeed)
+    {
+        this->windSpeed_ = windSpeed;
+    }
+    inline void setTemperature(int temperature)
+    {
+        this->temperature_ = temperature;
+    }
+    inline void setHumidity(int humidity)
+    {
+        this->humidity_ = humidity;
+    }
+    inline void setPressure(int pressure)
+    {
+        this->pressure_ = pressure;
+    }
+    inline void setDate(QDateTime date)
+    {
+        this->date_ = date;
+    }
 signals:
     void propertyChanged();
 
@@ -66,7 +131,7 @@ private:
     int temperature_;
     int humidity_;
     int pressure_;
-    
+
     QDateTime date_;
 };
 
@@ -74,19 +139,19 @@ class WeatherHourListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    explicit WeatherHourListModel(WeatherLocation* location = nullptr);
+    explicit WeatherHourListModel(WeatherLocation *location = nullptr);
 
-    int rowCount(const QModelIndex& parent) const override;
-    QVariant data(const QModelIndex& index, int role) const override;
-    Q_INVOKABLE WeatherHour* get(int index);
+    int rowCount(const QModelIndex &parent) const override;
+    QVariant data(const QModelIndex &index, int role) const override;
+    Q_INVOKABLE WeatherHour *get(int index);
 
     Q_INVOKABLE void updateUi();
-    
+
 public slots:
-    void refreshHoursFromForecasts(QList<AbstractWeatherForecast*> forecasts);
-    
+    void refreshHoursFromForecasts(QList<AbstractWeatherForecast *> forecasts);
+
 private:
-    QList<WeatherHour*> hoursList;
+    QList<WeatherHour *> hoursList;
 };
 
 #endif // WEATHERHOURMODEL_H

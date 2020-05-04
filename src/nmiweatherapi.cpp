@@ -123,10 +123,6 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
     delete mForecasts.back(); // tmp fix
     mForecasts.pop_back();
     emit updated(this->mForecasts);
-    for (auto fc : mForecasts) {
-        qDebug() << "time: " << fc->time().toString(Qt::ISODate);
-        qDebug() << "weatherIcon: " << fc->weatherIcon();
-    }
 }
 
 void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list)

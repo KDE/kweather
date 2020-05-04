@@ -172,7 +172,6 @@ ListView {
                 implicitWidth: Kirigami.Units.gridUnit * 5
                 implicitHeight: Kirigami.Units.gridUnit * 8
                 color: "transparent"
-
                 property WeatherHour weather: weatherLocation.hourListModel.get(index)
 
                 // actual hour display

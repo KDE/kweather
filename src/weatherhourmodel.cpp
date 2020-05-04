@@ -3,9 +3,11 @@
 
 /* ~~~ WeatherHour ~~~ */
 
-WeatherHour::WeatherHour() {}
+WeatherHour::WeatherHour()
+{
+}
 
-WeatherHour::WeatherHour(AbstractWeatherForecast* forecast)
+WeatherHour::WeatherHour(AbstractWeatherForecast *forecast)
 {
     this->windDirection_ = forecast->windDirection();
     this->weatherDescription_ = forecast->weatherDescription();
@@ -22,26 +24,27 @@ WeatherHour::WeatherHour(AbstractWeatherForecast* forecast)
 
 /* ~~~ WeatherHourListModel ~~~ */
 
-WeatherHourListModel::WeatherHourListModel(WeatherLocation* location)
+WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
 {
     connect(location, &WeatherLocation::weatherRefresh, this, &WeatherHourListModel::refreshHoursFromForecasts);
 }
 
-int WeatherHourListModel::rowCount(const QModelIndex& parent) const
+int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return hoursList.size();
 }
 
-QVariant WeatherHourListModel::data(const QModelIndex& index, int role) const
+QVariant WeatherHourListModel::data(const QModelIndex &index, int role) const
 {
     return QVariant();
 }
 
-WeatherHour* WeatherHourListModel::get(int index) {
-    WeatherHour* ret;
+WeatherHour *WeatherHourListModel::get(int index)
+{
+    WeatherHour *ret;
     if (index < 0 || index >= hoursList.count()) {
-        ret = new WeatherHour();
+        return {};
     } else {
         ret = hoursList.at(index);
     }
@@ -51,24 +54,30 @@ WeatherHour* WeatherHourListModel::get(int index) {
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForecast*> forecasts) 
+void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForecast *> forecasts)
 {
     // clear forecasts
-    emit beginRemoveRows(QModelIndex(), 0, hoursList.count()-1);
+    emit layoutAboutToBeChanged();
+    emit beginRemoveRows(QModelIndex(), 0, hoursList.count() - 1);
     hoursList.clear();
     emit endRemoveRows();
-    
+
     // insert forecasts
     emit beginInsertRows(QModelIndex(), 0, forecasts.count() - 1);
-    
+    int currentDay = forecasts[0]->time().date().day();
     for (auto forecast : forecasts) {
-        auto* weatherHour = new WeatherHour(forecast);
+        if (forecast->time().date().day() != currentDay)
+            break;
+        auto *weatherHour = new WeatherHour(forecast);
         QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-        hoursList.append(new WeatherHour(forecast));
+        hoursList.append(/*new WeatherHour(forecast)*/ weatherHour);
     }
-    std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour* h1, WeatherHour* h2)->bool{ return h1->date() < h2->date(); });
+    std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour *h1, WeatherHour *h2) -> bool { return h1->date() < h2->date(); });
 
     emit endInsertRows();
+    emit layoutChanged();
 }
 
-void WeatherHourListModel::updateUi() {}
+void WeatherHourListModel::updateUi()
+{
+}
