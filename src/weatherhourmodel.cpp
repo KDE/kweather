@@ -32,6 +32,8 @@ WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
 int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
+    if (day >= dayList.count() || day < 0) return hoursList.count();
+    if (day == dayList.count()-1) return hoursList.count() - dayList.at(day);
     return dayList.at(day + 1) - dayList.at(day);
 }
 
@@ -43,7 +45,7 @@ QVariant WeatherHourListModel::data(const QModelIndex &index, int role) const
 WeatherHour *WeatherHourListModel::get(int index)
 {
     WeatherHour *ret;
-    if (index < 0 || index >= hoursList.count()) {
+    if (index < 0 || day >= dayList.count() || (index + dayList.at(day)) >= hoursList.count()) {
         return {};
     } else {
         ret = hoursList.at(index + dayList.at(day));
@@ -61,25 +63,22 @@ void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForeca
     day = 0;
     hoursList.clear();
     dayList.clear();
-    dayList.append(0);
     // insert forecasts
-    int currentDay = forecasts.at(0)->time().date().day();
-    int i = 0;
+    int currentDay = -1;
+    int index = 0;
     for (auto forecast : forecasts) {
         if (currentDay != forecast->time().date().day()) {
             currentDay = forecast->time().date().day();
-            dayList.append(i);
+            dayList.append(index);
         }
         auto *weatherHour = new WeatherHour(forecast);
         QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         hoursList.append(weatherHour);
-        i++;
+
+        index++;
     }
-    dayList.append(i);
+
     std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour *h1, WeatherHour *h2) -> bool { return h1->date() < h2->date(); });
-    for (auto i : dayList) {
-        qDebug() << i;
-    }
     emit layoutChanged();
 }
 

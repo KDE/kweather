@@ -182,8 +182,12 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
                 if (symId > 100) {
                     symId -= 100; // map polar night symbols
                 }
-                fc->setWeatherIcon(map.value(symId));
-                fc->setWeatherDescription(reader.attributes().value(QLatin1String("id")).toString());
+                if (fc->time().time().hour() >= 18 || fc->time().time().hour() <= 6) { // TODO use system sunrise and sunset instead
+                    fc->setWeatherIcon(apiDescMap[{symId, WeatherDescId::WeatherType::NIGHT}].icon);
+                } else {
+                    fc->setWeatherIcon(apiDescMap[{symId, WeatherDescId::WeatherType::DAY}].icon);
+                }
+                fc->setWeatherDescription(apiDescMap[{symId, WeatherDescId::WeatherType::NIGHT}].desc);
             } else if (reader.name() == QLatin1String("precipitation")) {
                 fc->setPrecipitation(reader.attributes().value(QLatin1String("value")).toFloat());
             }
@@ -192,22 +196,6 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
         case QXmlStreamReader::EndElement:
 
             if (reader.name() == QLatin1String("time")) {
-                if (fc->time().time().hour() >= 18 || fc->time().time().hour() <= 6) // 18:00 to 6:00 is night. I don't care
-                {                                                                    // countries which span more than one timezone
-                                                                                     // but use one time
-                    /*if (fc->weatherIcon().back() == "y")
-                    {                                                                // this breakes things
-                        QString tmp(fc->weatherIcon());
-                        tmp.chop(3);
-                        tmp.append("night");
-                        fc->setWeatherIcon(tmp);
-                    }*/
-                    if (fc->weatherIcon() == QLatin1String("weather-clear")) { // exception with weather-clear
-                        QString tmp(fc->weatherIcon());
-                        tmp.append("-night");
-                        fc->setWeatherIcon(tmp);
-                    }
-                }
                 return;
             }
             break;
