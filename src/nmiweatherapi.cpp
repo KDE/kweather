@@ -27,6 +27,9 @@ NMIWeatherAPI::NMIWeatherAPI()
 
 NMIWeatherAPI::~NMIWeatherAPI()
 {
+    if (!tz) {
+        delete tz;
+    }
 }
 
 void NMIWeatherAPI::update()
@@ -190,8 +193,8 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
                 fc->setMaxTemp(reader.attributes().value(QLatin1String("value")).toFloat());
             } else if (reader.name() == QLatin1String("symbol")) {
                 auto symId = reader.attributes().value(QLatin1String("number")).toInt();
-                if (symId > 100) // https://api.met.no/weatherapi/weathericon/1.1/documentation
-                    symId -= 100; // map polar night symbols
+                if (symId > 100)                            // https://api.met.no/weatherapi/weathericon/1.1/documentation
+                    symId -= 100;                           // map polar night symbols
                 fc->setWeatherIcon(QString::number(symId)); // set as id temporarily (time is not set yet, but we need it to determine day or night icon)
             } else if (reader.name() == QLatin1String("precipitation")) {
                 fc->setPrecipitation(reader.attributes().value(QLatin1String("value")).toFloat());

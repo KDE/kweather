@@ -82,6 +82,8 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     }
 
     emit layoutAboutToBeChanged();
+    for (auto query : resultsList) // memory leak precaution
+        delete query;
     resultsList.clear();
 
     QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
