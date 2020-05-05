@@ -72,7 +72,8 @@ void LocationQueryModel::setQuery()
 
 void LocationQueryModel::addLocation(int index)
 {
-    qDebug() << index;
+    index_ = index;
+    emit appendLocation();
 }
 
 void LocationQueryModel::handleQueryResults(QNetworkReply *reply)

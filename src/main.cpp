@@ -11,12 +11,12 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#include "locationquerymodel.h"
 #include "nmiweatherapi.h"
 #include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
-#include "locationquerymodel.h"
 AbstractWeatherForecast *tempBuilderUtil(int month, int day, int hour, QString windDirection, QString weatherDesc, QString weatherIcon, int temp, float humidity, float precipitation)
 {
     return new AbstractWeatherForecast("Toronto", windDirection, weatherDesc, weatherIcon, weatherIcon, QDateTime(QDate(2020, month, day), QTime(hour, 0)), 32.6532, 79.3832, precipitation, 0, 0, 0.2, temp, temp, humidity, 1000.9);
@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
-
+    // the longer the merrier, this add locations
+    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, [weatherLocationListModel, locationQueryModel] { weatherLocationListModel->addLocation(locationQueryModel->get(locationQueryModel->index_)); });
     // register QML types
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
     qmlRegisterType<WeatherDay>("kweather", 1, 0, "WeatherDay");

@@ -1,10 +1,10 @@
 #include "weatherlocationmodel.h"
 #include "abstractweatherforecast.h"
+#include "locationquerymodel.h"
 #include "nmiweatherapi.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
 #include <QQmlEngine>
-
 /* ~~~ WeatherLocation ~~~ */
 WeatherLocation::WeatherLocation()
 {
@@ -129,4 +129,14 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     if (oldIndex < 0 || oldIndex >= locationsList.count() || newIndex < 0 || newIndex >= locationsList.count())
         return;
     locationsList.move(oldIndex, newIndex);
+}
+
+void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
+{
+    qDebug() << "add location";
+    auto api = new NMIWeatherAPI();
+    api->setLocation(ret->latitude(), ret->latitude());
+    auto location = new WeatherLocation(api, ret->name(), ret->latitude(), ret->longitude());
+    api->update();
+    insert(this->locationsList.count(), location);
 }

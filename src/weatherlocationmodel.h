@@ -10,7 +10,7 @@ class WeatherHourListModel;
 class AbstractWeatherAPI;
 class NMIWeatherAPI;
 class AbstractWeatherForecast;
-
+class LocationQueryResult;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
@@ -98,6 +98,8 @@ public:
     {
         return locationsList;
     };
+public slots:
+    void addLocation(LocationQueryResult *ret);
 
 private:
     QList<WeatherLocation *> locationsList;

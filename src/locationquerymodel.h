@@ -62,7 +62,6 @@ class LocationQueryModel : public QAbstractListModel
     Q_OBJECT
 public:
     explicit LocationQueryModel();
-
     enum Roles {
         NameRole = Qt::DisplayRole,
     };
@@ -75,7 +74,9 @@ public:
     void setQuery();
     Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();
-
+    int index_;
+signals:
+    void appendLocation();
 public slots:
     void handleQueryResults(QNetworkReply *reply);
 
