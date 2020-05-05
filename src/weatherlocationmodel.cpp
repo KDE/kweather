@@ -57,7 +57,7 @@ void WeatherLocation::updateData(QList<AbstractWeatherForecast *> fc)
 void WeatherLocation::determineCurrentForecast()
 {
     if (forecasts().count() == 0) {
-        currentForecast_ = new AbstractWeatherForecast(locationName_, "", "Unknown", "weather-none-available", QDateTime::currentDateTime(), latitude(), longitude(), 0, 0, 0, 0, 0, 0, 0, 0);
+        currentForecast_ = new AbstractWeatherForecast(locationName_, "", "Unknown", "weather-none-available", "weather-none-available", QDateTime::currentDateTime(), latitude(), longitude(), 0, 0, 0, 0, 0, 0, 0, 0);
     } else {
         long long minSecs = -1;
         QDateTime current = QDateTime::currentDateTime();

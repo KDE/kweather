@@ -1,6 +1,7 @@
 #include "weatherdaymodel.h"
 #include <QQmlEngine>
 #include <memory>
+#include <set>
 
 /* ~~~ WeatherDay ~~~ */
 
@@ -11,13 +12,35 @@ WeatherDay::WeatherDay()
 WeatherDay::WeatherDay(QList<AbstractWeatherForecast *> forecasts)
 {
     int minTemp = 1e9, maxTemp = -1e9;
+
+    // rank weather (for what best describes the day overall)
+    QHash<QString, int> rank = { // only need neutral icons
+        {"weather-clear", 0},
+        {"weather-few-clouds", 1},
+        {"weather-clouds", 2},
+        {"weather-fog", 3},
+        {"weather-mist", 3},
+        {"weather-showers-scattered", 4},
+        {"weather-snow-scattered", 4},
+        {"weather-showers", 5},
+        {"weather-hail", 5},
+        {"weather-snow", 5},
+        {"weather-freezing-rain", 6},
+        {"weather-freezing-storm", 6},
+        {"weather-snow-rain", 6},
+        {"weather-storm", 7}
+    };
+
+    this->weatherDescription() = "";
     for (auto forecast : forecasts) {
         minTemp = std::min(minTemp, forecast->minTemp());
         maxTemp = std::max(maxTemp, forecast->maxTemp());
 
         this->date_ = forecast->time().date();
-        this->weatherDescription_ = forecast->weatherDescription();
-        this->weatherIcon_ = forecast->weatherIcon();
+        if (this->weatherDescription() == "" || rank[forecast->weatherIcon()] > rank[this->weatherIcon()]) {
+            this->weatherDescription_ = forecast->weatherDescription();
+            this->weatherIcon_ = forecast->neutralWeatherIcon();
+        }
     }
 
     if (minTemp != 1e9)
