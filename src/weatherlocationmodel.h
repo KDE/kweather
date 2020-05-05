@@ -4,6 +4,7 @@
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QObject>
+#include <utility>
 
 class WeatherDayListModel;
 class WeatherHourListModel;
@@ -15,6 +16,7 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
+    Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
     Q_PROPERTY(AbstractWeatherForecast *currentForecast READ currentForecast NOTIFY currentForecastChange)
@@ -56,6 +58,19 @@ public:
     {
         return weatherBackendProvider_;
     }
+    inline QString lastUpdatedFormatted()
+    {
+        return lastUpdated().toString("hh:mm ap");
+    }
+    inline QDateTime lastUpdated()
+    {
+        return lastUpdated_;
+    }
+    inline void setLastUpdated(QDateTime lastUpdated)
+    {
+        this->lastUpdated_ = std::move(lastUpdated);
+        emit propertyChanged();
+    }
     void determineCurrentForecast();
 
 public slots:
@@ -68,6 +83,7 @@ signals:
 
 private:
     QString locationName_;
+    QDateTime lastUpdated_;
     float latitude_, longitude_;
 
     WeatherDayListModel *weatherDayListModel_;
@@ -82,6 +98,7 @@ private:
 class WeatherLocationListModel : public QAbstractListModel
 {
     Q_OBJECT
+
 public:
     explicit WeatherLocationListModel(QObject *parent = nullptr);
 

@@ -53,7 +53,7 @@ ListView {
 
         Label {
             font: Kirigami.Theme.smallFont
-            text: "Updated at 10:09 pm"
+            text: qsTr("Updated at ") + weatherLocation.lastUpdated
             Layout.alignment: Qt.AlignHCenter
         }
 

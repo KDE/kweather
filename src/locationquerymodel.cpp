@@ -52,7 +52,6 @@ LocationQueryResult *LocationQueryModel::get(int index)
 void LocationQueryModel::textChanged(QString query, int i)
 {
     text_ = query;
-    qDebug() << text_;
 
     emit layoutAboutToBeChanged();
     // clear results list

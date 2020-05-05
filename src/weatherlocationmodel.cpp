@@ -10,6 +10,7 @@ WeatherLocation::WeatherLocation()
 {
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
+    this->lastUpdated_ = QDateTime::currentDateTime();
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
 }
@@ -22,6 +23,7 @@ WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString 
     this->longitude_ = longitude;
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
+    this->lastUpdated_ = QDateTime::currentDateTime();
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
     determineCurrentForecast();
@@ -38,6 +40,7 @@ WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString 
     this->forecasts_ = forecasts;
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
+    this->lastUpdated_ = QDateTime::currentDateTime();
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
     determineCurrentForecast();
@@ -50,6 +53,7 @@ void WeatherLocation::updateData(QList<AbstractWeatherForecast *> fc)
     forecasts_.clear(); // don't need to delete pointers, they were already deleted by api class
     forecasts_ = fc;    // just assign new list
     determineCurrentForecast();
+    this->lastUpdated_ = QDateTime::currentDateTime();
 
     emit weatherRefresh(fc);
 }
