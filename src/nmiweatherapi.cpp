@@ -143,6 +143,15 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
                     datetime.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
                     datetime = datetime.toLocalTime();
                     forecast->setTime(datetime);
+
+                    // resolve day or night weather icon (after forecast creation)
+                    forecast->setNeutralWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::NEUTRAL}].icon);
+                    if (forecast->time().time().hour() >= 18 || forecast->time().time().hour() <= 6) { // TODO use system sunrise and sunset instead
+                        forecast->setWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::NIGHT}].icon);
+                    } else {
+                        forecast->setWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].icon);
+                    }
+
                     list.push_back(new AbstractWeatherForecast());
                 }
             }
@@ -179,15 +188,10 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
                 fc->setMaxTemp(reader.attributes().value(QLatin1String("value")).toFloat());
             } else if (reader.name() == QLatin1String("symbol")) {
                 auto symId = reader.attributes().value(QLatin1String("number")).toInt();
-                if (symId > 100) {
+                if (symId > 100) // https://api.met.no/weatherapi/weathericon/1.1/documentation
                     symId -= 100; // map polar night symbols
-                }
-                if (fc->time().time().hour() >= 18 || fc->time().time().hour() <= 6) { // TODO use system sunrise and sunset instead
-                    fc->setWeatherIcon(apiDescMap[{symId, WeatherDescId::WeatherType::NIGHT}].icon);
-                } else {
-                    fc->setWeatherIcon(apiDescMap[{symId, WeatherDescId::WeatherType::DAY}].icon);
-                }
-                fc->setWeatherDescription(apiDescMap[{symId, WeatherDescId::WeatherType::NIGHT}].desc);
+                fc->setWeatherIcon(QString::number(symId)); // set as id temporarily (time is not set yet, but we need it to determine day or night icon)
+                fc->setWeatherDescription(apiDescMap[{symId, WeatherDescId::WeatherType::NEUTRAL}].desc);
             } else if (reader.name() == QLatin1String("precipitation")) {
                 fc->setPrecipitation(reader.attributes().value(QLatin1String("value")).toFloat());
             }

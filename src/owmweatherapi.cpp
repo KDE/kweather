@@ -39,7 +39,7 @@ void OWMWeatherAPI::parse(QNetworkReply* reply)
         mForecasts.push_back(new AbstractWeatherForecast(
             QString(mJson["city"]["country"].toString() + ", " + mJson["city"]["name"].toString()),
             getWindDirection(mArray.at(i)["wind"]["deg"].toDouble()), mArray.at(i)["weather"]["description"].toString(),
-            map[mArray.at(i)["weather"]["icon"].toString()], start.addSecs(3600 * i), lat, lon,
+            map[mArray.at(i)["weather"]["icon"].toString()], map[mArray.at(i)["weather"]["icon"].toString()], start.addSecs(3600 * i), lat, lon,
             mArray.at(i)["rain"]["3h"].toDouble() + mArray.at(i)["snow"]["3h"].toDouble(),
             -1.0, // api doesn't support fog
             mArray.at(i)["clouds"]["all"].toInt(), mArray.at(i)["wind"]["speed"].toInt(),

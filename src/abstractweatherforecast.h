@@ -11,6 +11,7 @@ class AbstractWeatherForecast : public QObject
     Q_PROPERTY(QString windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
     Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
     Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
+    Q_PROPERTY(QString neutralWeatherIcon READ neutralWeatherIcon WRITE setNeutralWeatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(QDateTime time READ time WRITE setTime NOTIFY propertyChanged)
     Q_PROPERTY(float latitude READ latitude WRITE setLatitude NOTIFY propertyChanged)
     Q_PROPERTY(float longitude READ longitude WRITE setLongitude NOTIFY propertyChanged)
@@ -26,12 +27,13 @@ class AbstractWeatherForecast : public QObject
 public:
     AbstractWeatherForecast();
     AbstractWeatherForecast(QString locationName, QString windDirection, QString weatherDescription,
-                            QString weatherIcon, QDateTime time, float latitude, float longitude, float precipitation, float fog,
+                            QString weatherIcon, QString neutralWeatherIcon, QDateTime time, float latitude, float longitude, float precipitation, float fog,
                             int cloudiness, int windSpeed, int maxTemp, int minTemp, int humidity, int pressure);
     const QString& locationName();
     const QString& windDirection();
     const QString& weatherDescription();
     const QString& weatherIcon();
+    const QString& neutralWeatherIcon();
     inline const QDateTime time() { return time_; };
     inline float latitude() { return latitude_; };
     inline float longitude() { return longitude_; };
@@ -47,6 +49,7 @@ public:
     inline void setWindDirection(QString d) { windDirection_ = d; };
     inline void setWeatherDescription(QString d) { weatherDescription_ = d; };
     inline void setWeatherIcon(QString i) { weatherIcon_ = i; };
+    inline void setNeutralWeatherIcon(QString i) { neutralWeatherIcon_ = i; };
     inline void setTime(QDateTime t) { time_ = t; };
     inline void setLatitude(float l) { latitude_ = l; };
     inline void setLongitude(float l) { longitude_ = l; };
@@ -67,6 +70,7 @@ private:
     QString windDirection_;
     QString weatherDescription_;
     QString weatherIcon_;
+    QString neutralWeatherIcon_; // weather icon without time of day
     QDateTime time_;
     float latitude_;
     float longitude_;

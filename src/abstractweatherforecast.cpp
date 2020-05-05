@@ -1,7 +1,7 @@
 #include "abstractweatherforecast.h"
 #include <limits>
 AbstractWeatherForecast::AbstractWeatherForecast(QString LocationName, QString WindDirection,
-                                                 QString WeatherDescription, QString WeatherIcon, QDateTime Time,
+                                                 QString WeatherDescription, QString WeatherIcon, QString neutralWeatherIcon, QDateTime Time,
                                                  float Lat, float Lon, float Precipitation = -1.0, float Fog = -1.0,
                                                  int Cloudiness = -1, int WindSpeed = -1,
                                                  int MaxTemp = std::numeric_limits<int>::min(),
@@ -11,6 +11,7 @@ AbstractWeatherForecast::AbstractWeatherForecast(QString LocationName, QString W
     , windDirection_(WindDirection)
     , weatherDescription_(WeatherDescription)
     , weatherIcon_(WeatherIcon)
+    , neutralWeatherIcon_(neutralWeatherIcon)
     , time_(Time)
     , latitude_(Lat)
     , longitude_(Lon)
@@ -45,4 +46,9 @@ const QString& AbstractWeatherForecast::weatherDescription()
 const QString& AbstractWeatherForecast::weatherIcon()
 {
     return weatherIcon_;
+}
+
+const QString& AbstractWeatherForecast::neutralWeatherIcon()
+{
+    return neutralWeatherIcon_;
 }

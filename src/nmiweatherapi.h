@@ -5,6 +5,7 @@
 
 #include <KLocalizedContext>
 #include <KLocalizedString>
+#include <unordered_map>
 
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
@@ -54,8 +55,13 @@ private:
             this->id = id;
             this->type = type;
         }
-        bool operator< (const WeatherDescId& rhs) const {
-            return id < rhs.id;
+        bool operator== (const WeatherDescId& rhs) const {
+            return id == rhs.id && type == rhs.type;
+        }
+    };
+    struct Hasher {
+        size_t operator()(const WeatherDescId& r) const {
+            return (std::hash<int>()(r.id) * 31) ^ std::hash<int>()(r.type);
         }
     };
 
@@ -78,7 +84,7 @@ private:
         return {WeatherDescId(id, WeatherDescId::NEUTRAL), ResolvedWeatherDesc("weather-storm-night", i18n("Storm"))};
     }
 
-    std::map<WeatherDescId, ResolvedWeatherDesc> apiDescMap = {
+    std::unordered_map<WeatherDescId, ResolvedWeatherDesc, Hasher> apiDescMap = {
         {WeatherDescId(1, WeatherDescId::NEUTRAL), ResolvedWeatherDesc("weather-clear", i18n("Clear"))}, // Sun (neutral)
         {WeatherDescId(1, WeatherDescId::DAY), ResolvedWeatherDesc("weather-clear", i18n("Clear"))}, // Sun (day)
         {WeatherDescId(1, WeatherDescId::NIGHT), ResolvedWeatherDesc("weather-clear-night", i18n("Clear"))}, // Sun (night)
