@@ -22,7 +22,7 @@ void NMIWeatherAPI::setToken(QString &)
 NMIWeatherAPI::NMIWeatherAPI()
     : AbstractWeatherAPI(-1)
 {
-    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
+//    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
 }
 
 NMIWeatherAPI::~NMIWeatherAPI()
@@ -45,14 +45,11 @@ void NMIWeatherAPI::update()
     } // delete old data
 
     // ported from itinerary/weather
-    /*QUrl url;
-
-    url.setScheme(QStringLiteral("https"));
-    url.setHost(QStringLiteral("api.met.no"));
-    url.setPath(QStringLiteral("/weatherapi/locationforecast/1.9/"));
+    QUrl url("https://api.met.no/weatherapi/locationforecast/1.9/");
     QUrlQuery query;
-    query.addQueryItem(QStringLiteral("lat"), QString::number(lat));
-    query.addQueryItem(QStringLiteral("lon"), QString::number(lon));
+    query.addQueryItem("lat", QString::number(lat));
+    query.addQueryItem("lon", QString::number(lon));
+
     url.setQuery(query);
 
     qDebug() << url;
@@ -65,19 +62,20 @@ void NMIWeatherAPI::update()
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
     req.setRawHeader("Accept-Encoding", "gzip");
-    mReply = mManager->get(req);*/
-    parse(0);
+    mReply = mManager->get(req);
+    connect(mReply, &QNetworkReply::finished, this, [this]() { this->parse(this->mReply); }, Qt::ConnectionType::UniqueConnection);
 }
 
 void NMIWeatherAPI::parse(QNetworkReply *reply)
 {
     qDebug() << "data arrived";
 
-    QFile file;
-    file.setFileName("data");
-    file.open(QIODevice::ReadOnly);
-    auto data = file.readAll();
-    file.close();
+//    QFile file;
+//    file.setFileName("data");
+//    file.open(QIODevice::ReadOnly);
+//    auto data = file.readAll();
+//    file.close();
+    auto data = reply->readAll();
     if ((data.size() < 4) || (data.at(0) != 0x1f) || (data.at(1) != char(0x8b))) {
         qWarning() << "Invalid gzip format";
         return;

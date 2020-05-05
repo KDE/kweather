@@ -18,15 +18,19 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
         qDebug() << "wrong api";
         exit(1);
     }
-    QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation)); // create cache location
+
+    // create cache location if it does not exist, and load cache
+    QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
     if (!dir.exists())
         dir.mkpath(".");
-    readFromCache();                                                   // load cache first
+    readFromCache();
+
     distribution = new std::uniform_int_distribution<int>(0, 30 * 60); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
     cacheTimer = new QTimer(this);
     cacheTimer->start(1000 * 3600 * 3); // cache every three hours
     connect(cacheTimer, &QTimer::timeout, this, &WeatherForecastManager::cache);
+
     updateTimer = new QTimer(this);
     updateTimer->setSingleShot(true);
     connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);

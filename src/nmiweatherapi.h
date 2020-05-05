@@ -6,6 +6,7 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <unordered_map>
+#include <utility>
 
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
@@ -31,7 +32,7 @@ public:
     };
     inline void setTimeZone(QString tz)
     {
-        timeZone = tz;
+        timeZone = std::move(tz);
     };
 private slots:
     void setTZ();
@@ -41,7 +42,6 @@ private:
     void xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list);
     void parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
     QString timeZone = "Asia/Singapore";
-    ;
     GeoTimeZone *tz;
     // https://api.met.no/weatherapi/weathericon/1.1/documentation
 
@@ -69,9 +69,7 @@ private:
 
     struct ResolvedWeatherDesc {
         QString icon, desc;
-        ResolvedWeatherDesc()
-        {
-        }
+        ResolvedWeatherDesc() = default;
         ResolvedWeatherDesc(QString icon, QString desc)
         {
             this->icon = icon;

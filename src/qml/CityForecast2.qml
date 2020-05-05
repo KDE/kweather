@@ -123,11 +123,11 @@ ListView {
 
                     Label {
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                        text: weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
+                        text: weather != null ? weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "") : ""
                     }
 
                     Kirigami.Icon {
-                        source: weather.weatherIcon
+                        source: weather != null ? weather.weatherIcon : ""
                         Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
                         Layout.minimumWidth: Layout.minimumHeight
                     }
@@ -135,17 +135,17 @@ ListView {
                         Label {
                             id: highTemp
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                            text: weather.maxTemp + "°"
+                            text: weather != null ? weather.maxTemp + "°" : ""
                         }
                         Label {
                             anchors.baseline: highTemp.baseline
                             color: Kirigami.Theme.disabledTextColor
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                            text: weather.minTemp + "°"
+                            text: weather != null ? weather.minTemp + "°" : ""
                         }
                     }
                     Label {
-                        text: weather.weatherDescription
+                        text: weather != null ? weather.weatherDescription : ""
                     }
                 }
             }
@@ -188,16 +188,16 @@ ListView {
                     spacing: Kirigami.Units.smallSpacing
 
                     Kirigami.Icon {
-                        source: weather.weatherIcon
+                        source: weather != null ? weather.weatherIcon : ""
                         Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
                         Layout.minimumWidth: Layout.minimumHeight
                     }
                     Label {
-                        text: weather.temperature + "°"
+                        text: weather != null ? weather.temperature + "°" : ""
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     }
                     Label {
-                        text: weather.weatherDescription
+                        text: weather != null ? weather.weatherDescription : ""
                     }
 
                     RowLayout {
@@ -208,14 +208,14 @@ ListView {
                         }
                         Label {
                             color: Kirigami.Theme.disabledTextColor
-                            text: weather.precipitation.toFixed(2) * 100 + "%"
+                            text: weather != null ? weather.precipitation.toFixed(1) + "mm" : ""
                         }
                     }
 
                     Label {
                         font.weight: Font.Bold
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                        text: weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "")
+                        text: weather != null ? weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "") : ""
                     }
                 }
             }
