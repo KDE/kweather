@@ -53,7 +53,21 @@ void LocationQueryModel::textChanged(QString query, int i)
 {
     text_ = query;
     qDebug() << text_;
-    inputTimer->start(i); // make request once input stopped for 2 secs
+
+    emit layoutAboutToBeChanged();
+    // clear results list
+    for (auto query : resultsList) // memory leak precaution
+        delete query;
+    resultsList.clear();
+
+    emit layoutChanged();
+    if (query != "") { // do not query nothing
+        loading_ = true;
+        networkError_ = false;
+        emit propertyChanged();
+
+        inputTimer->start(i); // make request once input stopped for 2 secs
+    }
 }
 
 void LocationQueryModel::setQuery()
@@ -78,14 +92,19 @@ void LocationQueryModel::addLocation(int index)
 
 void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
 {
+    loading_ = false;
     if (!reply || reply->error()) {
+        networkError_ = true;
+        qDebug()  << "Network error:" << reply->error();
+        emit propertyChanged();
         return;
     }
 
+    loading_ = false;
+    networkError_ = false;
+    emit propertyChanged();
+
     emit layoutAboutToBeChanged();
-    for (auto query : resultsList) // memory leak precaution
-        delete query;
-    resultsList.clear();
 
     QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
     QJsonObject root = document.object();

@@ -23,17 +23,13 @@ Kirigami.ScrollablePage {
                 easing.type: Easing.InOutQuad
             }
         }
-        
-        /*Kirigami.PlaceholderMessage {
-            anchors.centerIn: parent
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: Kirigami.Units.largeSpacing
+
+        PlaceholderMessage {
+            iconName: "globe"
+            text: i18n("Add a city")
             visible: citiesList.count == 0
-            text: "Add a city"
-            icon.name: "globe"
         }
-        */
+
         delegate: Kirigami.SwipeListItem {
 
             property WeatherLocation location: weatherLocationListModel.get(index)

@@ -60,6 +60,9 @@ private:
 class LocationQueryModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(bool loading READ loading NOTIFY propertyChanged)
+    Q_PROPERTY(bool networkError READ networkError NOTIFY propertyChanged)
+
 public:
     explicit LocationQueryModel();
     enum Roles {
@@ -70,17 +73,22 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
     Q_INVOKABLE LocationQueryResult *get(int index);
+    Q_INVOKABLE bool loading() {return loading_;}
+    Q_INVOKABLE bool networkError() {return networkError_;}
     Q_INVOKABLE void textChanged(QString query, int i = 2000);
     void setQuery();
     Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();
     int index_;
 signals:
+    void propertyChanged();
     void appendLocation();
 public slots:
     void handleQueryResults(QNetworkReply *reply);
 
 private:
+    bool loading_ = false, networkError_ = false;
+
     QList<LocationQueryResult *> resultsList;
     QTimer *inputTimer;
     QString text_;
