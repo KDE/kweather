@@ -1,17 +1,20 @@
 
 #include "locationquerymodel.h"
+#include <QTimer>
 #include <QtCore/QJsonArray>
 #include <QtCore/QJsonDocument>
 #include <QtCore/QJsonObject>
 #include <QtCore/QUrl>
 #include <QtCore/QUrlQuery>
 #include <QtNetwork/QNetworkConfigurationManager>
-
 LocationQueryModel::LocationQueryModel()
 {
     QNetworkConfigurationManager ncm;
     this->networkAccessManager = new QNetworkAccessManager(this);
     this->networkSession = new QNetworkSession(ncm.defaultConfiguration(), this);
+    inputTimer = new QTimer(this);
+    inputTimer->setSingleShot(true);
+    connect(inputTimer, &QTimer::timeout, this, &LocationQueryModel::setQuery);
 }
 
 int LocationQueryModel::rowCount(const QModelIndex &parent) const
@@ -46,18 +49,25 @@ LocationQueryResult *LocationQueryModel::get(int index)
     return resultsList.at(index);
 }
 
-void LocationQueryModel::setQuery(QString query)
+void LocationQueryModel::textChanged(QString query)
+{
+    text_ = query;
+    qDebug() << text_;
+    inputTimer->start(2000); // make request once input stopped for 2 secs
+}
+
+void LocationQueryModel::setQuery()
 {
     QUrl url("http://api.geonames.org/searchJSON");
     QUrlQuery urlQuery;
 
-    urlQuery.addQueryItem("q", query);
+    urlQuery.addQueryItem("q", text_);
     urlQuery.addQueryItem("maxRows", "50");
     urlQuery.addQueryItem("username", "kweatherdev");
     url.setQuery(urlQuery);
 
     QNetworkReply *rep = networkAccessManager->get(QNetworkRequest(url));
-    connect(rep, &QNetworkReply::finished, this, [this, rep]() {handleQueryResults(rep);});
+    connect(rep, &QNetworkReply::finished, this, [this, rep]() { handleQueryResults(rep); });
 }
 
 void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
@@ -76,12 +86,8 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     // add query results
     for (QJsonValueRef resRef : geonames) {
         QJsonObject res = resRef.toObject();
-        auto* result = new LocationQueryResult(res.value("latitude").toDouble(),
-                                                         res.value("longitude").toDouble(),
-                                                         res.value("toponymName").toString(),
-                                                         res.value("name").toString(),
-                                                         res.value("countryCode").toString(),
-                                                         res.value("countryName").toString());
+        auto *result = new LocationQueryResult(
+            res.value("latitude").toDouble(), res.value("longitude").toDouble(), res.value("toponymName").toString(), res.value("name").toString(), res.value("countryCode").toString(), res.value("countryName").toString());
         resultsList.append(result);
     }
 

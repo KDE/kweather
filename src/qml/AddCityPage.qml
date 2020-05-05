@@ -21,7 +21,7 @@ Kirigami.ScrollablePage {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.right: parent.right
-                onTextChanged: locationQueryModel.setQuery(text)
+                onTextChanged: locationQueryModel.textChanged(text)
             }
         }
 

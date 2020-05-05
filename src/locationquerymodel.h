@@ -5,17 +5,20 @@
 #include <QObject>
 #include <QtCore/QString>
 #include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkSession>
 #include <QtNetwork/QNetworkReply>
-
+#include <QtNetwork/QNetworkSession>
+class QTimer;
 // fetched from geonames
 class LocationQueryResult : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit LocationQueryResult() {}
-    explicit LocationQueryResult(float latitude, float longitude, QString toponymName, QString name, QString countryCode, QString countryName) {
+    explicit LocationQueryResult()
+    {
+    }
+    explicit LocationQueryResult(float latitude, float longitude, QString toponymName, QString name, QString countryCode, QString countryName)
+    {
         this->latitude_ = latitude;
         this->longitude_ = longitude;
         this->toponymName_ = toponymName;
@@ -24,18 +27,37 @@ public:
         this->countryName_ = countryName;
     }
 
-    inline float latitude() {return latitude_;}
-    inline float longitude() {return longitude_;}
-    inline QString toponymName() {return toponymName_;}
-    inline QString name() {return name_;}
-    inline QString countryCode() {return countryCode_;}
-    inline QString countryName() {return countryName_;}
+    inline float latitude()
+    {
+        return latitude_;
+    }
+    inline float longitude()
+    {
+        return longitude_;
+    }
+    inline QString toponymName()
+    {
+        return toponymName_;
+    }
+    inline QString name()
+    {
+        return name_;
+    }
+    inline QString countryCode()
+    {
+        return countryCode_;
+    }
+    inline QString countryName()
+    {
+        return countryName_;
+    }
+
 private:
     float latitude_, longitude_;
     QString toponymName_, name_, countryCode_, countryName_;
 };
 
-class LocationQueryModel: public QAbstractListModel
+class LocationQueryModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -45,22 +67,23 @@ public:
         NameRole = Qt::DisplayRole,
     };
 
-    int rowCount(const QModelIndex& parent) const override;
-    QVariant data(const QModelIndex& index, int role) const override;
+    int rowCount(const QModelIndex &parent) const override;
+    QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
-    Q_INVOKABLE LocationQueryResult* get(int index);
-
-    Q_INVOKABLE void setQuery(QString query);
+    Q_INVOKABLE LocationQueryResult *get(int index);
+    Q_INVOKABLE void textChanged(QString query);
+    void setQuery();
     Q_INVOKABLE void updateUi();
 
 public slots:
-    void handleQueryResults(QNetworkReply* reply);
+    void handleQueryResults(QNetworkReply *reply);
 
 private:
-    QList<LocationQueryResult*> resultsList;
-
-    QNetworkAccessManager* networkAccessManager;
-    QNetworkSession* networkSession;
+    QList<LocationQueryResult *> resultsList;
+    QTimer *inputTimer;
+    QString text_;
+    QNetworkAccessManager *networkAccessManager;
+    QNetworkSession *networkSession;
 };
 
 #endif // KWEATHER_LOCATIONQUERYMODEL_H
