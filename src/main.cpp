@@ -16,6 +16,7 @@
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
+#include "locationquerymodel.h"
 AbstractWeatherForecast *tempBuilderUtil(int month, int day, int hour, QString windDirection, QString weatherDesc, QString weatherIcon, int temp, float humidity, float precipitation)
 {
     return new AbstractWeatherForecast("Toronto", windDirection, weatherDesc, weatherIcon, weatherIcon, QDateTime(QDate(2020, month, day), QTime(hour, 0)), 32.6532, 79.3832, precipitation, 0, 0, 0.2, temp, temp, humidity, 1000.9);
@@ -33,8 +34,11 @@ int main(int argc, char *argv[])
 
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
+    auto *locationQueryModel = new LocationQueryModel();
     WeatherForecastManager::instance(*weatherLocationListModel);
+
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
+    engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
 
     // register QML types
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");

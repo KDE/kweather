@@ -59,6 +59,11 @@ Kirigami.ApplicationWindow
         id: settingsPage
         visible: false
     }
+
+    AddCityPage {
+        id: addCityPage
+        visible: false
+    }
     
     Kirigami.AboutPage {
         id: aboutPage

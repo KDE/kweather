@@ -92,6 +92,7 @@ public:
 
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
+    Q_INVOKABLE void move(int oldIndex, int newIndex);
     Q_INVOKABLE WeatherLocation *get(int index);
     inline QList<WeatherLocation *> &getList()
     {

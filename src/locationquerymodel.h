@@ -1,0 +1,66 @@
+#ifndef KWEATHER_LOCATIONQUERYMODEL_H
+#define KWEATHER_LOCATIONQUERYMODEL_H
+
+#include <QAbstractListModel>
+#include <QObject>
+#include <QtCore/QString>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkSession>
+#include <QtNetwork/QNetworkReply>
+
+// fetched from geonames
+class LocationQueryResult : public QObject
+{
+    Q_OBJECT
+
+public:
+    explicit LocationQueryResult() {}
+    explicit LocationQueryResult(float latitude, float longitude, QString toponymName, QString name, QString countryCode, QString countryName) {
+        this->latitude_ = latitude;
+        this->longitude_ = longitude;
+        this->toponymName_ = toponymName;
+        this->name_ = name;
+        this->countryCode_ = countryCode;
+        this->countryName_ = countryName;
+    }
+
+    inline float latitude() {return latitude_;}
+    inline float longitude() {return longitude_;}
+    inline QString toponymName() {return toponymName_;}
+    inline QString name() {return name_;}
+    inline QString countryCode() {return countryCode_;}
+    inline QString countryName() {return countryName_;}
+private:
+    float latitude_, longitude_;
+    QString toponymName_, name_, countryCode_, countryName_;
+};
+
+class LocationQueryModel: public QAbstractListModel
+{
+    Q_OBJECT
+public:
+    explicit LocationQueryModel();
+
+    enum Roles {
+        NameRole = Qt::DisplayRole,
+    };
+
+    int rowCount(const QModelIndex& parent) const override;
+    QVariant data(const QModelIndex& index, int role) const override;
+    QHash<int, QByteArray> roleNames() const override;
+    Q_INVOKABLE LocationQueryResult* get(int index);
+
+    Q_INVOKABLE void setQuery(QString query);
+    Q_INVOKABLE void updateUi();
+
+public slots:
+    void handleQueryResults(QNetworkReply* reply);
+
+private:
+    QList<LocationQueryResult*> resultsList;
+
+    QNetworkAccessManager* networkAccessManager;
+    QNetworkSession* networkSession;
+};
+
+#endif // KWEATHER_LOCATIONQUERYMODEL_H

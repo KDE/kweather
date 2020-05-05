@@ -16,7 +16,7 @@ WeatherHour::WeatherHour(AbstractWeatherForecast *forecast)
     this->fog_ = forecast->fog();
     this->cloudiness_ = forecast->cloudiness();
     this->windSpeed_ = forecast->windSpeed();
-    this->temperature_ = forecast->maxTemp(); // TODO
+    this->temperature_ = forecast->maxTemp();
     this->humidity_ = forecast->humidity();
     this->pressure_ = forecast->pressure();
     this->date_ = QDateTime(forecast->time().date(), QTime(forecast->time().time().hour(), 0));

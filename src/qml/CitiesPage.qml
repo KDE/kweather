@@ -9,11 +9,20 @@ Kirigami.ScrollablePage {
     
     actions.main: Kirigami.Action {
         iconName: "list-add"
+        text: "Add City"
+        onTriggered: pageStack.push(addCityPage)
     }
     
     ListView {
         id: citiesList
         model: weatherLocationListModel
+
+        moveDisplaced: Transition {
+            YAnimator {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
         
         /*Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
@@ -29,6 +38,7 @@ Kirigami.ScrollablePage {
 
             property WeatherLocation location: weatherLocationListModel.get(index)
 
+            id: listItem
             actions: Kirigami.Action {
                 iconName: "delete"
                 text: "Remove"
@@ -74,6 +84,12 @@ Kirigami.ScrollablePage {
                     Item {
                         Layout.fillWidth: true
                     }
+//                    Kirigami.ListItemDragHandle {
+//                        Layout.alignment: Qt.AlignRight
+//                        listItem: listItem
+//                        listView: citiesList
+//                        onMoveRequested: weatherLocationListModel.move(oldIndex, newIndex)
+//                    }
                 }
             }
         }

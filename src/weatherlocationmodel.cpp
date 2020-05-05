@@ -123,3 +123,10 @@ WeatherLocation *WeatherLocationListModel::get(int index)
 
     return locationsList.at(index);
 }
+
+void WeatherLocationListModel::move(int oldIndex, int newIndex)
+{
+    if (oldIndex < 0 || oldIndex >= locationsList.count() || newIndex < 0 || newIndex >= locationsList.count())
+        return;
+    locationsList.move(oldIndex, newIndex);
+}
