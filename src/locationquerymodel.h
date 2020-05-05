@@ -70,7 +70,7 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
     Q_INVOKABLE LocationQueryResult *get(int index);
-    Q_INVOKABLE void textChanged(QString query);
+    Q_INVOKABLE void textChanged(QString query, int i = 2000);
     void setQuery();
     Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();

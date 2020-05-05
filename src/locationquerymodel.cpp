@@ -49,11 +49,11 @@ LocationQueryResult *LocationQueryModel::get(int index)
     return resultsList.at(index);
 }
 
-void LocationQueryModel::textChanged(QString query)
+void LocationQueryModel::textChanged(QString query, int i)
 {
     text_ = query;
     qDebug() << text_;
-    inputTimer->start(2000); // make request once input stopped for 2 secs
+    inputTimer->start(i); // make request once input stopped for 2 secs
 }
 
 void LocationQueryModel::setQuery()

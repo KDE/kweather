@@ -22,6 +22,7 @@ Kirigami.ScrollablePage {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 onTextChanged: locationQueryModel.textChanged(text)
+                onEditingFinished: locationQueryModel.textChanged(text,0) // when return is pressed, query immediately
             }
         }
 
