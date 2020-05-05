@@ -119,7 +119,7 @@ void WeatherLocationListModel::remove(int index)
 WeatherLocation *WeatherLocationListModel::get(int index)
 {
     if ((index < 0) || (index >= locationsList.count()))
-        return new WeatherLocation(); // TODO risk of nullptr fields being deref
+        return {};
 
     return locationsList.at(index);
 }

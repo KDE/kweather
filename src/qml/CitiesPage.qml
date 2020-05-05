@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
+import kweather 1.0
 
 Kirigami.ScrollablePage {
     title: i18n("Cities")
@@ -10,7 +11,7 @@ Kirigami.ScrollablePage {
         iconName: "list-add"
     }
     
-    Kirigami.CardsListView {
+    ListView {
         id: citiesList
         model: weatherLocationListModel
         
@@ -24,29 +25,54 @@ Kirigami.ScrollablePage {
             icon.name: "globe"
         }
         */
-        delegate: Kirigami.Card {
-            
+        delegate: Kirigami.SwipeListItem {
+
+            property WeatherLocation location: weatherLocationListModel.get(index)
+
             actions: Kirigami.Action {
-                iconName: "list-remove"
+                iconName: "delete"
                 text: "Remove"
                 onTriggered: {
                     weatherLocationListModel.remove(index);
                 }
             }
-            
+
             contentItem: Item {
-                Column {
+                implicitWidth: delegateLayout.implicitWidth
+                implicitHeight: delegateLayout.implicitHeight
+                RowLayout {
+                    Layout.alignment: Qt.AlignLeft
                     id: delegateLayout
-                    
                     anchors {
                         left: parent.left
                         top: parent.top
                         right: parent.right
                     }
-                    
+                    spacing: Kirigami.Units.largeSpacing * 2
+
+                    ColumnLayout {
+                        Kirigami.Icon {
+                            Layout.alignment: Qt.AlignHCenter
+                            source: location.currentForecast.weatherIcon
+                            Layout.maximumHeight: Kirigami.Units.iconSizes.medium
+                            Layout.preferredWidth: height
+                            Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                        }
+                        Label {
+                            Layout.alignment: Qt.AlignHCenter
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.4
+                            text: location.currentForecast.maxTemp + "°"
+                        }
+                    }
+
                     Kirigami.Heading {
-                        level: 3
-                        text: weatherLocationListModel.get(index).name
+                        Layout.alignment: Qt.AlignLeft
+                        level: 1
+                        text: location.name
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
                     }
                 }
             }
