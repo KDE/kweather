@@ -32,6 +32,7 @@ Kirigami.ScrollablePage {
             Label {
                 text: model.name
             }
+            onClicked: locationQueryModel.addLocation(index)
         }
     }
 }

@@ -70,6 +70,11 @@ void LocationQueryModel::setQuery()
     connect(rep, &QNetworkReply::finished, this, [this, rep]() { handleQueryResults(rep); });
 }
 
+void LocationQueryModel::addLocation(int index)
+{
+    qDebug() << index;
+}
+
 void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
 {
     if (!reply || reply->error()) {

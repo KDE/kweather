@@ -73,6 +73,7 @@ public:
     Q_INVOKABLE LocationQueryResult *get(int index);
     Q_INVOKABLE void textChanged(QString query);
     void setQuery();
+    Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();
 
 public slots:
