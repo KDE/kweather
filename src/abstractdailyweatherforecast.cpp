@@ -1,10 +1,10 @@
 #include "abstractdailyweatherforecast.h"
 
-abstractdailyweatherforecast::abstractdailyweatherforecast()
+AbstractDailyWeatherForecast::AbstractDailyWeatherForecast()
 {
 }
 
-abstractdailyweatherforecast::abstractdailyweatherforecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date)
+AbstractDailyWeatherForecast::AbstractDailyWeatherForecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date)
     : maxTemp_(maxTemp)
     , minTemp_(minTemp)
     , precipitation_(precipitation)

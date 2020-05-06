@@ -6,6 +6,7 @@
 #include <vector>
 class QNetworkAccessManager;
 class QNetworkReply;
+class AbstractDailyWeatherForecast;
 class AbstractWeatherAPI : public QObject
 {
     Q_OBJECT
@@ -26,6 +27,7 @@ protected:
     float lon;
     QString *token_ = nullptr;
     QList<AbstractWeatherForecast *> mForecasts;
+    QList<AbstractDailyWeatherForecast *> mDailyForecasts;
     QNetworkAccessManager *mManager;
     QNetworkReply *mReply;
 

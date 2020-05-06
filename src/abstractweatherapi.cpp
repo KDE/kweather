@@ -1,4 +1,5 @@
 #include "abstractweatherapi.h"
+#include "abstractdailyweatherforecast.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 AbstractWeatherAPI::AbstractWeatherAPI(int interval, QString *token, QObject *parent)

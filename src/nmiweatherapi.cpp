@@ -1,4 +1,5 @@
 #include "nmiweatherapi.h"
+#include "abstractdailyweatherforecast.h"
 #include "geotimezone.h"
 #include <QCoreApplication>
 #include <QFile>
@@ -22,7 +23,7 @@ void NMIWeatherAPI::setToken(QString &)
 NMIWeatherAPI::NMIWeatherAPI()
     : AbstractWeatherAPI(-1)
 {
-//    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
+    //    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
 }
 
 NMIWeatherAPI::~NMIWeatherAPI()
@@ -63,18 +64,19 @@ void NMIWeatherAPI::update()
     // see §Compression on https://api.met.no/conditions_service.html
     req.setRawHeader("Accept-Encoding", "gzip");
     mReply = mManager->get(req);
-    connect(mReply, &QNetworkReply::finished, this, [this]() { this->parse(this->mReply); }, Qt::ConnectionType::UniqueConnection);
+    connect(
+        mReply, &QNetworkReply::finished, this, [this]() { this->parse(this->mReply); }, Qt::ConnectionType::UniqueConnection);
 }
 
 void NMIWeatherAPI::parse(QNetworkReply *reply)
 {
     qDebug() << "data arrived";
 
-//    QFile file;
-//    file.setFileName("data");
-//    file.open(QIODevice::ReadOnly);
-//    auto data = file.readAll();
-//    file.close();
+    //    QFile file;
+    //    file.setFileName("data");
+    //    file.open(QIODevice::ReadOnly);
+    //    auto data = file.readAll();
+    //    file.close();
     auto data = reply->readAll();
     if ((data.size() < 4) || (data.at(0) != 0x1f) || (data.at(1) != char(0x8b))) {
         qWarning() << "Invalid gzip format";
@@ -138,8 +140,29 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
             if (reader.name() == QLatin1String("weatherdata") || reader.name() == QLatin1String("meta") || reader.name() == QLatin1String("product")) {
                 continue;
             }
-            if (reader.name() == QLatin1String("time")) {
-                if (reader.attributes().value(QLatin1String("from")).toString() == reader.attributes().value(QLatin1String("to")).toString()) {
+            if (reader.name() == QLatin1String("time")) { /*
+                 if (reader.attributes().value(QLatin1String("from")).toString() == reader.attributes().value(QLatin1String("to")).toString()) {
+                     auto datetime = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
+                     datetime.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
+                     datetime = datetime.toLocalTime();
+                     forecast->setTime(datetime);
+
+                     // resolve day or night weather icon (after forecast creation)
+                     forecast->setNeutralWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::NEUTRAL}].icon);
+                     if (forecast->time().time().hour() >= 18 || forecast->time().time().hour() <= 6) { // TODO use system sunrise and sunset instead
+                         forecast->setWeatherDescription(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::NIGHT}].desc);
+                         forecast->setWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::NIGHT}].icon);
+                     } else {
+                         forecast->setWeatherDescription(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].desc);
+                         forecast->setWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].icon);
+                     }
+
+                     list.push_back(new AbstractWeatherForecast());
+                 }*/
+
+                switch (reader.attributes().value(QLatin1String("to")).toString().right(9).left(2).toInt() - reader.attributes().value(QLatin1String("from")).toString().right(9).left(2).toInt()) {
+                case 0: // hourly
+                {
                     auto datetime = QDateTime::fromString(reader.attributes().value(QLatin1String("from")).toString(), Qt::ISODate);
                     datetime.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
                     datetime = datetime.toLocalTime();
@@ -156,10 +179,23 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
                     }
 
                     list.push_back(new AbstractWeatherForecast());
+                    parseElement(reader, forecast);
+                    break;
+                }
+                case 1: // hourly
+                {
+                    parseElement(reader, forecast);
+                    break;
+                }
+                default: // six hour range
+                {
+                    mDailyForecasts.append(new AbstractDailyWeatherForecast());
+                    // TODO: construct daily object
+                } break;
                 }
             }
-            parseElement(reader, forecast);
         }
+        reader.skipCurrentElement();
     }
 }
 

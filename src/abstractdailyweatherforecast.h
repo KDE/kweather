@@ -2,11 +2,11 @@
 #define ABSTRACTDAILYWEATHERFORECAST_H
 #include <QDate>
 
-class abstractdailyweatherforecast
+class AbstractDailyWeatherForecast
 {
 public:
-    abstractdailyweatherforecast();
-    abstractdailyweatherforecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date);
+    AbstractDailyWeatherForecast();
+    AbstractDailyWeatherForecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date);
     inline void setMaxTemp(int maxTemp){maxTemp_ = maxTemp;};
     inline void setMinTemp(int minTemp){minTemp_ = minTemp;};
     inline void setPrecipitation(float precipitation){precipitation_=precipitation;};
