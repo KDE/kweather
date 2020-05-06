@@ -125,6 +125,14 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
     reply->deleteLater();
     delete mForecasts.back(); // tmp fix
     mForecasts.pop_back();
+    for (auto fc : mForecasts) {
+        qDebug() << fc->weatherIcon();
+    }
+    // TODO: construct daily forecast;
+    for (auto dc : dayCache) {
+        delete dc;
+    }
+    dayCache.clear();
     emit updated(this->mForecasts);
 }
 
@@ -167,7 +175,13 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
                     datetime.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
                     datetime = datetime.toLocalTime();
                     forecast->setTime(datetime);
-
+                    parseElement(reader, forecast);
+                    break;
+                }
+                case -23: // 23:00 to 0:00
+                case 1:   // hourly
+                {
+                    parseElement(reader, forecast);
                     // resolve day or night weather icon (after forecast creation)
                     forecast->setNeutralWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::NEUTRAL}].icon);
                     if (forecast->time().time().hour() >= 18 || forecast->time().time().hour() <= 6) { // TODO use system sunrise and sunset instead
@@ -177,25 +191,20 @@ void NMIWeatherAPI::xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherFore
                         forecast->setWeatherDescription(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].desc);
                         forecast->setWeatherIcon(apiDescMap[{forecast->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].icon);
                     }
-
+                    isOneHour = true;
                     list.push_back(new AbstractWeatherForecast());
-                    parseElement(reader, forecast);
-                    break;
-                }
-                case 1: // hourly
-                {
-                    parseElement(reader, forecast);
                     break;
                 }
                 default: // six hour range
                 {
-                    mDailyForecasts.append(new AbstractDailyWeatherForecast());
+                    dailyParse(reader, forecast);
+                    isOneHour = false;
                     // TODO: construct daily object
-                } break;
+                    break;
+                }
                 }
             }
         }
-        reader.skipCurrentElement();
     }
 }
 
@@ -227,8 +236,9 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
                 fc->setMaxTemp(reader.attributes().value(QLatin1String("value")).toFloat());
             } else if (reader.name() == QLatin1String("symbol")) {
                 auto symId = reader.attributes().value(QLatin1String("number")).toInt();
-                if (symId > 100)                            // https://api.met.no/weatherapi/weathericon/1.1/documentation
-                    symId -= 100;                           // map polar night symbols
+                if (symId > 100)  // https://api.met.no/weatherapi/weathericon/1.1/documentation
+                    symId -= 100; // map polar night symbols
+                qDebug() << symId;
                 fc->setWeatherIcon(QString::number(symId)); // set as id temporarily (time is not set yet, but we need it to determine day or night icon)
             } else if (reader.name() == QLatin1String("precipitation")) {
                 fc->setPrecipitation(reader.attributes().value(QLatin1String("value")).toFloat());
@@ -242,6 +252,58 @@ void NMIWeatherAPI::parseElement(QXmlStreamReader &reader, AbstractWeatherForeca
             }
             break;
 
+        default:
+            break;
+        }
+        reader.readNext();
+    }
+}
+
+void NMIWeatherAPI::dailyParse(QXmlStreamReader &reader, AbstractWeatherForecast *fc)
+{
+    dayCache.append(new AbstractDailyWeatherForecast());
+    auto dc = dayCache.back();
+    auto date = QDateTime::fromString(reader.attributes().value(QLatin1String("to")).toString(), Qt::ISODate);
+    date.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
+    date = date.toLocalTime();
+    dc->setDate(date);
+    while (!reader.atEnd()) {
+        switch (reader.tokenType()) {
+        case QXmlStreamReader::StartElement:
+            if (reader.name() == QLatin1String("maxTemperature")) {
+                const auto t = reader.attributes().value(QLatin1String("value")).toFloat();
+                dc->setMaxTemp(t);
+            } else if (reader.name() == QLatin1String("minTemperature")) {
+                dc->setMinTemp(reader.attributes().value(QLatin1String("value")).toFloat());
+            } else if (reader.name() == QLatin1String("precipitation")) {
+                dc->setPrecipitation(reader.attributes().value(QLatin1String("value")).toFloat());
+            } else if (reader.name() == QLatin1String("symbol")) {
+                auto symId = reader.attributes().value(QLatin1String("number")).toInt();
+                if (symId > 100)
+                    symId -= 100;
+                dc->setWeatherIcon(QString::number(symId));
+            }
+            break;
+        case QXmlStreamReader::EndElement:
+            if (reader.name() == QLatin1String("time")) {
+                if (isOneHour == false) { // if fc not fully constructed
+                    fc->setMaxTemp(dc->maxTemp());
+                    fc->setMinTemp(dc->minTemp());
+                    fc->setPrecipitation(dc->precipitation());
+                    fc->setWeatherIcon(dc->weatherIcon());
+                    fc->setNeutralWeatherIcon(apiDescMap[{fc->weatherIcon().toInt(), WeatherDescId::WeatherType::NEUTRAL}].icon);
+                    if (fc->time().time().hour() >= 18 || fc->time().time().hour() <= 6) { // TODO use system sunrise and sunset instead
+                        fc->setWeatherDescription(apiDescMap[{fc->weatherIcon().toInt(), WeatherDescId::WeatherType::NIGHT}].desc);
+                        fc->setWeatherIcon(apiDescMap[{fc->weatherIcon().toInt(), WeatherDescId::WeatherType::NIGHT}].icon);
+                    } else {
+                        fc->setWeatherDescription(apiDescMap[{fc->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].desc);
+                        fc->setWeatherIcon(apiDescMap[{fc->weatherIcon().toInt(), WeatherDescId::WeatherType::DAY}].icon);
+                    }
+                    mForecasts.push_back(new AbstractWeatherForecast());
+                }
+                return;
+            }
+            break;
         default:
             break;
         }

@@ -26,41 +26,135 @@ class AbstractWeatherForecast : public QObject
 
 public:
     AbstractWeatherForecast();
-    AbstractWeatherForecast(QString locationName, QString windDirection, QString weatherDescription,
-                            QString weatherIcon, QString neutralWeatherIcon, QDateTime time, float latitude, float longitude, float precipitation, float fog,
-                            int cloudiness, int windSpeed, int maxTemp, int minTemp, int humidity, int pressure);
-    const QString& locationName();
-    const QString& windDirection();
-    const QString& weatherDescription();
-    const QString& weatherIcon();
-    const QString& neutralWeatherIcon();
-    inline const QDateTime time() { return time_; };
-    inline float latitude() { return latitude_; };
-    inline float longitude() { return longitude_; };
-    inline float precipitation() { return precipitation_; };
-    inline float fog() { return fog_; };
-    inline int cloudiness() { return cloudiness_; };
-    inline int windSpeed() { return windSpeed_; };
-    inline int maxTemp() { return maxTemp_; };
-    inline int minTemp() { return minTemp_; };
-    inline int humidity() { return humidity_; };
-    inline int pressure() { return pressure_; };
-    inline void setLocationName(QString n) { locationName_ = n; };
-    inline void setWindDirection(QString d) { windDirection_ = d; };
-    inline void setWeatherDescription(QString d) { weatherDescription_ = d; };
-    inline void setWeatherIcon(QString i) { weatherIcon_ = i; };
-    inline void setNeutralWeatherIcon(QString i) { neutralWeatherIcon_ = i; };
-    inline void setTime(QDateTime t) { time_ = t; };
-    inline void setLatitude(float l) { latitude_ = l; };
-    inline void setLongitude(float l) { longitude_ = l; };
-    inline void setPrecipitation(float p) { precipitation_ = p; };
-    inline void setFog(float f) { fog_ = f; };
-    inline void setCloudiness(int c) { cloudiness_ = c; };
-    inline void setWindSpeed(int w) { windSpeed_ = w; };
-    inline void setMaxTemp(int m) { maxTemp_ = m; };
-    inline void setMinTemp(int m) { minTemp_ = m; };
-    inline void setHumidity(int h) { humidity_ = h; };
-    inline void setPressure(int p) { pressure_ = p; };
+    AbstractWeatherForecast(QString locationName,
+                            QString windDirection,
+                            QString weatherDescription,
+                            QString weatherIcon,
+                            QString neutralWeatherIcon,
+                            QDateTime time,
+                            float latitude,
+                            float longitude,
+                            float precipitation,
+                            float fog,
+                            int cloudiness,
+                            int windSpeed,
+                            int maxTemp,
+                            int minTemp,
+                            int humidity,
+                            int pressure);
+    const QString &locationName();
+    const QString &windDirection();
+    const QString &weatherDescription();
+    const QString &weatherIcon();
+    const QString &neutralWeatherIcon();
+    inline const QDateTime time()
+    {
+        return time_;
+    };
+    inline float latitude()
+    {
+        return latitude_;
+    };
+    inline float longitude()
+    {
+        return longitude_;
+    };
+    inline float precipitation()
+    {
+        return precipitation_;
+    };
+    inline float fog()
+    {
+        return fog_;
+    };
+    inline int cloudiness()
+    {
+        return cloudiness_;
+    };
+    inline int windSpeed()
+    {
+        return windSpeed_;
+    };
+    inline int maxTemp()
+    {
+        return maxTemp_;
+    };
+    inline int minTemp()
+    {
+        return minTemp_;
+    };
+    inline int humidity()
+    {
+        return humidity_;
+    };
+    inline int pressure()
+    {
+        return pressure_;
+    };
+    inline void setLocationName(QString n)
+    {
+        locationName_ = n;
+    };
+    inline void setWindDirection(QString d)
+    {
+        windDirection_ = d;
+    };
+    inline void setWeatherDescription(QString d)
+    {
+        weatherDescription_ = d;
+    };
+    inline void setWeatherIcon(QString i)
+    {
+        weatherIcon_ = i;
+    };
+    inline void setNeutralWeatherIcon(QString i)
+    {
+        neutralWeatherIcon_ = i;
+    };
+    inline void setTime(QDateTime t)
+    {
+        time_ = t;
+    };
+    inline void setLatitude(float l)
+    {
+        latitude_ = l;
+    };
+    inline void setLongitude(float l)
+    {
+        longitude_ = l;
+    };
+    inline void setPrecipitation(float p)
+    {
+        precipitation_ = p;
+    };
+    inline void setFog(float f)
+    {
+        fog_ = f;
+    };
+    inline void setCloudiness(int c)
+    {
+        cloudiness_ = c;
+    };
+    inline void setWindSpeed(int w)
+    {
+        windSpeed_ = w;
+    };
+    inline void setMaxTemp(int m)
+    {
+        maxTemp_ = m;
+    };
+    inline void setMinTemp(int m)
+    {
+        minTemp_ = m;
+    };
+    inline void setHumidity(int h)
+    {
+        humidity_ = h;
+    };
+    inline void setPressure(int p)
+    {
+        pressure_ = p;
+    };
 
 signals:
     void propertyChanged();

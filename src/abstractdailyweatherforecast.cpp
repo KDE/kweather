@@ -4,7 +4,7 @@ AbstractDailyWeatherForecast::AbstractDailyWeatherForecast()
 {
 }
 
-AbstractDailyWeatherForecast::AbstractDailyWeatherForecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date)
+AbstractDailyWeatherForecast::AbstractDailyWeatherForecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDateTime date)
     : maxTemp_(maxTemp)
     , minTemp_(minTemp)
     , precipitation_(precipitation)

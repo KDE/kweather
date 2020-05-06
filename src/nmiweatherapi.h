@@ -41,10 +41,12 @@ private slots:
 private:
     void xmlParse(QXmlStreamReader &reader, QList<AbstractWeatherForecast *> &list);
     void parseElement(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
+    void dailyParse(QXmlStreamReader &reader, AbstractWeatherForecast *fc);
     QString timeZone = "Asia/Singapore";
     GeoTimeZone *tz;
     // https://api.met.no/weatherapi/weathericon/1.1/documentation
-
+    QList<AbstractDailyWeatherForecast *> dayCache; // just a cache
+    bool isOneHour = true;                          // decide which interval we are at, true means we just had one hour interval
     struct WeatherDescId {
     public:
         int id;
