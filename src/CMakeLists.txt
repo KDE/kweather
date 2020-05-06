@@ -12,6 +12,7 @@ set(kweather_SRCS
     abstractweatherapi.cpp
     geotimezone.cpp
     locationquerymodel.cpp
+    abstractdailyweatherforecast.cpp
     )
 
 qt5_add_resources(RESOURCES resources.qrc)
