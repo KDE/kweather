@@ -125,14 +125,12 @@ void NMIWeatherAPI::parse(QNetworkReply *reply)
     reply->deleteLater();
     delete mForecasts.back(); // tmp fix
     mForecasts.pop_back();
-    for (auto fc : mForecasts) {
-        qDebug() << fc->weatherIcon();
-    }
-    // TODO: construct daily forecast;
-    for (auto dc : dayCache) {
+    dailyConstructor();        // construct daily forecast
+    for (auto dc : dayCache) { // clear cache
         delete dc;
     }
     dayCache.clear();
+    // TODO: emit AbstractForecast
     emit updated(this->mForecasts);
 }
 
@@ -309,6 +307,57 @@ void NMIWeatherAPI::dailyParse(QXmlStreamReader &reader, AbstractWeatherForecast
         }
         reader.readNext();
     }
+}
+
+/* ############################# WIP ################################ */
+
+void NMIWeatherAPI::dailyConstructor()
+{
+    // rank weather (for what best describes the day overall)
+    QHash<QString, int> rank = {// only need neutral icons
+                                {"weather-clear", 0},
+                                {"weather-few-clouds", 1},
+                                {"weather-clouds", 2},
+                                {"weather-fog", 3},
+                                {"weather-mist", 3},
+                                {"weather-showers-scattered", 4},
+                                {"weather-snow-scattered", 4},
+                                {"weather-showers", 5},
+                                {"weather-hail", 5},
+                                {"weather-snow", 5},
+                                {"weather-freezing-rain", 6},
+                                {"weather-freezing-storm", 6},
+                                {"weather-snow-rain", 6},
+                                {"weather-storm", 7}};
+    if (mDailyForecasts.isEmpty()) {
+        mDailyForecasts.append(new AbstractDailyWeatherForecast());
+    }
+    auto df = mDailyForecasts.back();
+    int maxTemperature = std::numeric_limits<int>::min();
+    int minTemperature = std::numeric_limits<int>::max();
+    auto currentDay = dayCache.at(0)->date();
+    for (auto dc : dayCache) {
+        if (currentDay.date().day() != dc->date().date().day()) {
+            df->setDate(currentDay);
+            df->setMaxTemp(maxTemperature);
+            df->setMinTemp(minTemperature);
+            mDailyForecasts.append(new AbstractDailyWeatherForecast());
+            df = mDailyForecasts.back();
+            maxTemperature = std::numeric_limits<int>::min();
+            minTemperature = std::numeric_limits<int>::max();
+            // dailyForecast.append();
+        }
+        minTemperature = std::min(minTemperature, dc->minTemp());
+        maxTemperature = std::max(maxTemperature, dc->maxTemp());
+        if (df->weatherDescription().isEmpty() || rank[dc->weatherIcon()] > rank[df->weatherIcon()]) {
+            df->setWeatherDescription(df->weatherDescription());
+            df->setWeatherIcon(df->weatherIcon());
+        }
+    }
+    // for the last day
+    df->setDate(currentDay);
+    df->setMaxTemp(maxTemperature);
+    df->setMinTemp(minTemperature);
 }
 
 void NMIWeatherAPI::setTZ()
