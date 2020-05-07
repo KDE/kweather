@@ -39,8 +39,8 @@ private slots:
     void parse(QNetworkReply *Reply) override;
 
 private:
-    void parseOneElement(QJsonObject& object, QHash<QDate, AbstractDailyWeatherForecast*>& dayCache, QList<AbstractHourlyWeatherForecast*>& hoursList);
-    QString timeZone = "Asia/Singapore";
+    void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList);
+    QString timeZone;
     GeoTimeZone *tz;
 
     struct ResolvedWeatherDesc {

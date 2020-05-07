@@ -1,7 +1,7 @@
 #include "nmiweatherapi2.h"
 #include "abstractdailyweatherforecast.h"
-#include "abstractweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
+#include "abstractweatherforecast.h"
 #include "geotimezone.h"
 
 #include <QCoreApplication>
@@ -31,7 +31,7 @@ void NMIWeatherAPI2::setToken(QString &)
 NMIWeatherAPI2::NMIWeatherAPI2()
     : AbstractWeatherAPI(-1)
 {
-    currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO Weather Location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast*>());
+    currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO Weather Location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     //    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
 }
 
@@ -46,7 +46,7 @@ void NMIWeatherAPI2::update()
 {
     if (timeZone.isEmpty()) {
         tz = new GeoTimeZone(lat, lon);
-        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI2::setTZ); // if this failed, we will block forever, see line 106
+        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI2::setTZ); // if this failed, we will block forever, see line 81
     }
 
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
@@ -65,7 +65,7 @@ void NMIWeatherAPI2::update()
 
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
-//    req.setRawHeader("Accept-Encoding", "gzip, deflate");
+    //    req.setRawHeader("Accept-Encoding", "gzip, deflate");
     mReply = mManager->get(req);
     connect(
         mReply, &QNetworkReply::finished, this, [this]() { this->parse(this->mReply); }, Qt::ConnectionType::UniqueConnection);
@@ -78,6 +78,9 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     // parse json
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     reply->deleteLater();
+    while (timeZone.isEmpty()) // block
+        continue;
+
     if (jsonDocument.isObject()) {
         QJsonObject obj = jsonDocument.object();
         QJsonObject prop = obj["properties"].toObject();
@@ -86,7 +89,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             QJsonArray timeseries = prop["timeseries"].toArray();
 
             QHash<QDate, AbstractDailyWeatherForecast *> dayCache;
-            QList<AbstractHourlyWeatherForecast*> hoursList;
+            QList<AbstractHourlyWeatherForecast *> hoursList;
 
             // loop over all forecast data
             for (QJsonValueRef ref : timeseries) {
@@ -105,7 +108,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
 
     // parsing failed, default forecast
     if (currentData_ == nullptr) {
-        currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO weather location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast*>());
+        currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO weather location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
 
     emit updated(this->currentData());
@@ -116,10 +119,12 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 {
     QJsonObject data = object["data"].toObject(), instant = data["instant"].toObject()["details"].toObject();
     // ignore last forecast, which does not have enough data
-    if (!data.contains("next_6_hours") && !data.contains("next_1_hours")) return;
+    if (!data.contains("next_6_hours") && !data.contains("next_1_hours"))
+        return;
 
     auto date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
-    auto* hourForecast = new AbstractHourlyWeatherForecast();
+    date.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
+    auto *hourForecast = new AbstractHourlyWeatherForecast();
 
     // set initial hour fields
     hourForecast->setDate(date); // the first time will be at the exact time of query, otherwise the beginning of each hour
@@ -161,7 +166,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     }
 
     // update day forecast with hour information if needed
-    AbstractDailyWeatherForecast* dayForecast = dayCache[date.date()];
+    AbstractDailyWeatherForecast *dayForecast = dayCache[date.date()];
 
     dayForecast->setPrecipitation(dayForecast->precipitation() + hourForecast->precipitationAmount());
     if (data.contains("next_6_hours")) {
@@ -172,22 +177,21 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
     // rank weather (for what best describes the day overall)
     QHash<QString, int> rank = {// only need neutral icons
-        {"weather-none-available", -1},
-        {"weather-clear", 0},
-        {"weather-few-clouds", 1},
-        {"weather-clouds", 2},
-        {"weather-fog", 3},
-        {"weather-mist", 3},
-        {"weather-showers-scattered", 4},
-        {"weather-snow-scattered", 4},
-        {"weather-showers", 5},
-        {"weather-hail", 5},
-        {"weather-snow", 5},
-        {"weather-freezing-rain", 6},
-        {"weather-freezing-storm", 6},
-        {"weather-snow-rain", 6},
-        {"weather-storm", 7}
-    };
+                                {"weather-none-available", -1},
+                                {"weather-clear", 0},
+                                {"weather-few-clouds", 1},
+                                {"weather-clouds", 2},
+                                {"weather-fog", 3},
+                                {"weather-mist", 3},
+                                {"weather-showers-scattered", 4},
+                                {"weather-snow-scattered", 4},
+                                {"weather-showers", 5},
+                                {"weather-hail", 5},
+                                {"weather-snow", 5},
+                                {"weather-freezing-rain", 6},
+                                {"weather-freezing-storm", 6},
+                                {"weather-snow-rain", 6},
+                                {"weather-storm", 7}};
 
     // set description and icon if it is higher ranked
     if (rank[hourForecast->neutralWeatherIcon()] >= rank[dayForecast->weatherIcon()]) {
@@ -203,5 +207,4 @@ void NMIWeatherAPI2::setTZ()
 {
     timeZone = tz->getTimeZone();
     qDebug() << "timezone" << timeZone;
-    delete tz;
 }
