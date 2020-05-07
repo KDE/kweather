@@ -31,7 +31,7 @@ void NMIWeatherAPI2::setToken(QString &)
 NMIWeatherAPI2::NMIWeatherAPI2()
     : AbstractWeatherAPI(-1)
 {
-    currentData_ = new AbstractWeatherForecast("TODO Weather Location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast*>());
+    currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO Weather Location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast*>());
     //    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
 }
 
@@ -47,7 +47,7 @@ void NMIWeatherAPI2::update()
     if (timeZone.isEmpty()) {
         tz = new GeoTimeZone(lat, lon);
         connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI2::setTZ); // if this failed, we will block forever, see line 106
-    }                                                                     // TODO: fix this
+    }
 
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
     QUrlQuery query;
@@ -65,7 +65,7 @@ void NMIWeatherAPI2::update()
 
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
-//    req.setRawHeader("Accept-Encoding", "gzip");
+//    req.setRawHeader("Accept-Encoding", "gzip, deflate");
     mReply = mManager->get(req);
     connect(
         mReply, &QNetworkReply::finished, this, [this]() { this->parse(this->mReply); }, Qt::ConnectionType::UniqueConnection);
@@ -97,7 +97,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             // delete old data
             delete currentData_;
             // process and build abstract forecast
-            currentData_ = new AbstractWeatherForecast("TODO Weather Location", lat, lon, hoursList, dayCache.values());
+            currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO Weather Location", lat, lon, hoursList, dayCache.values());
 
             // TODO set location currentData_.setLocation
         }
@@ -105,12 +105,13 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
 
     // parsing failed, default forecast
     if (currentData_ == nullptr) {
-        currentData_ = new AbstractWeatherForecast("TODO weather location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast*>());
+        currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO weather location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast*>());
     }
 
     emit updated(this->currentData());
 }
 
+// https://api.met.no/weatherapi/locationforecast/2.0/documentation
 void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList)
 {
     QJsonObject data = object["data"].toObject(), instant = data["instant"].toObject()["details"].toObject();

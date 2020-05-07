@@ -13,7 +13,6 @@
 #include <vector>
 class AbstractWeatherForecast;
 class NMIWeatherAPI2;
-class OWMWeatherAPI;
 class WeatherLocationListModel;
 class QTimer;
 class WeatherLocation;

@@ -56,12 +56,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
 
-
     // load example test data for testing purposes TODO
     auto *testLocation = new WeatherLocation(new NMIWeatherAPI2(), "Toronto", 43.6532, -79.3832);
     auto *testLocation2 = new WeatherLocation(new NMIWeatherAPI2(), "Singapore", 1.3521, 103.8198);
 
-    auto* forecast = new AbstractWeatherForecast("Toronto", 32.6532, 79.3832, QList<AbstractHourlyWeatherForecast*>(), QList<AbstractDailyWeatherForecast*>());
+    auto* forecast = new AbstractWeatherForecast(QDateTime::currentDateTime(), "Toronto", 32.6532, 79.3832, QList<AbstractHourlyWeatherForecast*>(), QList<AbstractDailyWeatherForecast*>());
 
     testLocation->updateData(forecast);
     testLocation2->updateData(forecast);

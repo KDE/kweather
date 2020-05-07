@@ -11,13 +11,15 @@ class AbstractWeatherForecast : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString locationName READ locationName WRITE setLocationName NOTIFY propertyChanged)
+    Q_PROPERTY(QDateTime timeCreated READ timeCreated WRITE setTimeCreated NOTIFY propertyChanged)
     Q_PROPERTY(float latitude READ latitude WRITE setLatitude NOTIFY propertyChanged)
     Q_PROPERTY(float longitude READ longitude WRITE setLongitude NOTIFY propertyChanged)
 
 public:
     AbstractWeatherForecast();
     ~AbstractWeatherForecast();
-    AbstractWeatherForecast(QString locationName,
+    AbstractWeatherForecast(QDateTime timeCreated_,
+                            QString locationName,
                             float latitude,
                             float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
     inline const QString &locationName()

@@ -18,7 +18,7 @@ class GeoTimeZone;
 
 class NMIWeatherAPI2 : public AbstractWeatherAPI
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     NMIWeatherAPI2();
@@ -148,6 +148,9 @@ private:
         {"heavysnowshowers_neutral", ResolvedWeatherDesc("weather-snow", i18n("Heavy Snow"))},
         {"heavysnowshowers_day", ResolvedWeatherDesc("weather-snow", i18n("Heavy Snow"))},
         {"heavysnowshowers_night", ResolvedWeatherDesc("weather-snow", i18n("Heavy Snow"))},
+        {"lightrain_neutral", ResolvedWeatherDesc("weather-showers-scattered", i18n("Light Rain"))},
+        {"lightrain_day", ResolvedWeatherDesc("weather-showers-scattered-day", i18n("Light Rain"))},
+        {"lightrain_night", ResolvedWeatherDesc("weather-showers-scattered-night", i18n("Light Rain"))},
         {"fair_neutral", ResolvedWeatherDesc("weather-few-clouds", i18n("Light Clouds"))},
         {"fair_day", ResolvedWeatherDesc("weather-few-clouds", i18n("Partly Sunny"))},
         {"fair_night", ResolvedWeatherDesc("weather-few-clouds-night", i18n("Light Clouds"))},
@@ -157,9 +160,6 @@ private:
         {"clearsky_neutral", ResolvedWeatherDesc("weather-clear", i18n("Clear"))},
         {"clearsky_day", ResolvedWeatherDesc("weather-clear", i18n("Clear"))},
         {"clearsky_night", ResolvedWeatherDesc("weather-clear-night", i18n("Clear"))},
-        {"lightrain_neutral", ResolvedWeatherDesc("weather-showers-scattered", i18n("Light Rain"))},
-        {"lightrain_day", ResolvedWeatherDesc("weather-showers-scattered-day", i18n("Light Rain"))},
-        {"lightrain_night", ResolvedWeatherDesc("weather-showers-scattered-night", i18n("Light Rain"))},
         {"lightrainshowers_neutral", ResolvedWeatherDesc("weather-showers-scattered", i18n("Light Rain"))},
         {"lightrainshowers_day", ResolvedWeatherDesc("weather-showers-scattered-day", i18n("Light Rain"))},
         {"lightrainshowers_night", ResolvedWeatherDesc("weather-showers-scattered-night", i18n("Light Rain"))},

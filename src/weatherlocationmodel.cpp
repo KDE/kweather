@@ -41,7 +41,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     this->forecast_ = forecast;
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = QDateTime::currentDateTime();
+    this->lastUpdated_ = forecast->timeCreated();
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
     determineCurrentForecast();
@@ -53,7 +53,7 @@ void WeatherLocation::updateData(AbstractWeatherForecast* fc)
 {
     forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
     determineCurrentForecast();
-    this->lastUpdated_ = QDateTime::currentDateTime();
+    this->lastUpdated_ = fc->timeCreated();
 
     emit weatherRefresh(fc);
 }

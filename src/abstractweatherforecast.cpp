@@ -3,9 +3,11 @@
 #include <utility>
 
 AbstractWeatherForecast::AbstractWeatherForecast() {}
-AbstractWeatherForecast::AbstractWeatherForecast(QString locationName,
+AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated,
+                                                 QString locationName,
                                                  float latitude,
                                                  float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts) :
+    timeCreated_(timeCreated),
     locationName_(std::move(locationName)),
     latitude_(latitude),
     longitude_(longitude),
