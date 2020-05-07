@@ -17,7 +17,6 @@ class WeatherHour : public QObject
     Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(float precipitation READ precipitation WRITE setPrecipitation NOTIFY propertyChanged)
     Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
-    Q_PROPERTY(int cloudiness READ cloudiness WRITE setCloudiness NOTIFY propertyChanged)
     Q_PROPERTY(int windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
     Q_PROPERTY(int temperature READ temperature WRITE setTemperature NOTIFY propertyChanged)
     Q_PROPERTY(int humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
@@ -47,10 +46,6 @@ public:
     inline float fog() const
     {
         return fog_;
-    }
-    inline int cloudiness() const
-    {
-        return cloudiness_;
     }
     inline int windSpeed() const
     {
@@ -93,10 +88,6 @@ public:
     {
         this->fog_ = fog;
     }
-    inline void setCloudiness(int cloudiness)
-    {
-        this->cloudiness_ = cloudiness;
-    }
     inline void setWindSpeed(int windSpeed)
     {
         this->windSpeed_ = windSpeed;
@@ -126,7 +117,6 @@ private:
     QString weatherIcon_;
     float precipitation_;
     float fog_;
-    int cloudiness_;
     int windSpeed_;
     int temperature_;
     int humidity_;

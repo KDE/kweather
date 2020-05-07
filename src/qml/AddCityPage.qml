@@ -43,14 +43,14 @@ Kirigami.ScrollablePage {
         PlaceholderMessage {
             iconName: "search"
             text: i18n("Search for a location")
-            visible: !locationQueryModel.loading && addCityList.count == 0 && searchQuery == ""
+            visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery == ""
         }
 
         // no results
         PlaceholderMessage {
             iconName: "search"
             text: i18n("No results")
-            visible: !locationQueryModel.loading && addCityList.count == 0 && searchQuery != ""
+            visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery != ""
         }
 
         // loading results indicator

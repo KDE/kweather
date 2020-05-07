@@ -27,11 +27,11 @@ public:
         this->countryName_ = countryName;
     }
 
-    inline float latitude()
+    inline float latitude() const
     {
         return latitude_;
     }
-    inline float longitude()
+    inline float longitude() const
     {
         return longitude_;
     }

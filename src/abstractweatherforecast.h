@@ -16,7 +16,7 @@ class AbstractWeatherForecast : public QObject
     Q_PROPERTY(float longitude READ longitude WRITE setLongitude NOTIFY propertyChanged)
 
 public:
-    AbstractWeatherForecast();
+    AbstractWeatherForecast(QDateTime timeCreated_ = QDateTime::currentDateTime());
     ~AbstractWeatherForecast();
     AbstractWeatherForecast(QDateTime timeCreated_,
                             QString locationName,

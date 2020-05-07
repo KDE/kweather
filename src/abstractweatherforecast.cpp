@@ -2,7 +2,9 @@
 #include <limits>
 #include <utility>
 
-AbstractWeatherForecast::AbstractWeatherForecast() {}
+AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated) {
+    this->timeCreated_ = timeCreated;
+}
 AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated,
                                                  QString locationName,
                                                  float latitude,

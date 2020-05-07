@@ -113,7 +113,7 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     for (QJsonValueRef resRef : geonames) {
         QJsonObject res = resRef.toObject();
         auto *result = new LocationQueryResult(
-            res.value("latitude").toDouble(), res.value("longitude").toDouble(), res.value("toponymName").toString(), res.value("name").toString(), res.value("countryCode").toString(), res.value("countryName").toString());
+            res.value("lat").toDouble(), res.value("lng").toDouble(), res.value("toponymName").toString(), res.value("name").toString(), res.value("countryCode").toString(), res.value("countryName").toString());
         resultsList.append(result);
     }
 

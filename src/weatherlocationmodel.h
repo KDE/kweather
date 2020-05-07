@@ -21,9 +21,8 @@ class WeatherLocation : public QObject
     Q_PROPERTY(AbstractHourlyWeatherForecast *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
 public:
-    explicit WeatherLocation();
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude);
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast_);
+    explicit WeatherLocation(AbstractWeatherForecast* forecast = nullptr);
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast = nullptr);
 
     inline QString locationName()
     {

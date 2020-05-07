@@ -7,29 +7,14 @@
 #include "weatherhourmodel.h"
 #include <QQmlEngine>
 /* ~~~ WeatherLocation ~~~ */
-WeatherLocation::WeatherLocation()
+WeatherLocation::WeatherLocation(AbstractWeatherForecast* forecast)
 {
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = QDateTime::currentDateTime();
+    this->forecast_ = forecast;
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
-}
-
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude)
-{
-    this->weatherBackendProvider_ = weatherBackendProvider;
-    this->locationName_ = locationName;
-    this->latitude_ = latitude;
-    this->longitude_ = longitude;
-    this->weatherDayListModel_ = new WeatherDayListModel(this);
-    this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = QDateTime::currentDateTime();
-    QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-    QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
-    determineCurrentForecast();
-
-    connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
 WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast)
@@ -41,7 +26,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     this->forecast_ = forecast;
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = forecast->timeCreated();
+    this->lastUpdated_ = forecast == nullptr ? QDateTime::currentDateTime() : forecast->timeCreated();
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
     determineCurrentForecast();
@@ -139,7 +124,7 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
     auto api = new NMIWeatherAPI2();
-    api->setLocation(ret->latitude(), ret->latitude());
+    api->setLocation(ret->latitude(), ret->longitude());
     auto location = new WeatherLocation(api, ret->name(), ret->latitude(), ret->longitude());
     api->update();
     insert(this->locationsList.count(), location);
