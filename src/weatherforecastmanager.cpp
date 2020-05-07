@@ -28,14 +28,15 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     distribution = new std::uniform_int_distribution<int>(0, 30 * 60); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
     cacheTimer = new QTimer(this);
-    cacheTimer->start(1000 * 3600 * 3); // cache every three hours
+    cacheTimer->setSingleShot(true);
+    cacheTimer->start(1000 * 10); // cache after 10 secs
     connect(cacheTimer, &QTimer::timeout, this, &WeatherForecastManager::cache);
 
     updateTimer = new QTimer(this);
     updateTimer->setSingleShot(true);
     connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
     if (api_ == NORWEGIAN)
-        updateTimer->start(5000 /*1000 * 3600 + rand() * 1000*/);
+        updateTimer->start(0); // update when open
     else
         updateTimer->start(1000 * 3 * 3600 + rand() * 1000);
 }
@@ -64,10 +65,9 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
     if (!dir.exists())
         dir.mkpath(".");
     // should be this path: /home/user/.cache/kweather/7000/3000 for location with coordinate 70.00 30.00
-    qDebug() << url;
-    // TODO
-    //    file.setFileName(QString(url + QString::number(data.forecasts().back()->time().toSecsSinceEpoch()))); // file name is last forecast's unix time
-    file.open(QIODevice::WriteOnly);                                // this will later be used to determine if we want this cache or not
+    file.setFileName(dir.path() + "/cache.json");
+    qDebug() << file.fileName();
+    file.open(QIODevice::WriteOnly);
     file.write(convertToJson(data).toJson(QJsonDocument::Compact)); // write json
     file.close();
 }
@@ -76,32 +76,19 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
 
 void WeatherForecastManager::readFromCache()
 {
-    int i = 0;           // index for weatherlistmodel
-    QVector<int> vector; // sort out cache freshness
+    int i = 0; // index for weatherlistmodel
     QFile reader;
     QDirIterator LatIt(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1String("/kweather"), QDir::NoDotAndDotDot); // list directory entries
     while (LatIt.hasNext()) {                                                                                                               // list all longitude
         QDirIterator LonIt(LatIt.next(), QDir::Files);
-        while (LonIt.hasNext()) {
-            // This is for each individual location
+        if (LonIt.hasNext()) {
             reader.setFileName(LonIt.next());
-            qDebug() << "file name" << reader.fileName();
-            if (reader.fileName().toLong() <= QDateTime::currentSecsSinceEpoch()) {
-                reader.remove();
+            if (reader.fileName().right(10) != QLatin1String("cache.json")) // if not cache file ignore
                 continue;
-            }
-            vector.push_back(reader.fileName().toInt());
+            reader.open(QIODevice::ReadOnly);
+            model_.insert(i, convertFromJson(reader.readAll())); // insert location into model
+            reader.close();
         }
-        std::sort(vector.begin(), vector.end()); // ascending
-        reader.setFileName(QString::number(*vector.end()));
-        reader.open(QIODevice::ReadOnly);
-        model_.insert(i, convertFromJson(reader.readAll())); // insert location into model
-        reader.close();
-        for (int j = 0; j < vector.count() - 1; j++) {
-            reader.setFileName(QString::number(vector.at(j)));
-            reader.remove(); // remove all not the freshest cache
-        }
-        vector.clear();
         i++; // add one location count
     }
 }
@@ -216,4 +203,5 @@ void WeatherForecastManager::cache()
     for (auto lc : model_.getList()) {
         writeToCache(*lc);
     }
+    cacheTimer->start(1000 * 3600 * 2); // cache every two hours
 }
