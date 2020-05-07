@@ -6,12 +6,12 @@ class AbstractDailyWeatherForecast
 {
 public:
     AbstractDailyWeatherForecast();
-    AbstractDailyWeatherForecast(int maxTemp, int minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDateTime date);
-    inline void setMaxTemp(int maxTemp)
+    AbstractDailyWeatherForecast(float maxTemp, float minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date);
+    inline void setMaxTemp(float maxTemp)
     {
         maxTemp_ = maxTemp;
     };
-    inline void setMinTemp(int minTemp)
+    inline void setMinTemp(float minTemp)
     {
         minTemp_ = minTemp;
     };
@@ -27,19 +27,19 @@ public:
     {
         weatherDescription_ = description;
     };
-    inline void setDate(QDateTime date)
+    inline void setDate(QDate date)
     {
         date_ = date;
     };
-    inline int maxTemp()
+    inline float maxTemp() const
     {
         return maxTemp_;
     };
-    inline int minTemp()
+    inline float minTemp() const
     {
         return minTemp_;
     };
-    inline float precipitation()
+    inline float precipitation() const
     {
         return precipitation_;
     };
@@ -51,18 +51,18 @@ public:
     {
         return weatherDescription_;
     };
-    inline QDateTime date()
+    inline QDate date()
     {
         return date_;
     };
 
 private:
-    int maxTemp_;
-    int minTemp_;
-    float precipitation_;
+    float maxTemp_{};
+    float minTemp_{};
+    float precipitation_{};
     QString weatherIcon_;
     QString weatherDescription_;
-    QDateTime date_;
+    QDate date_;
 };
 
 #endif // ABSTRACTDAILYWEATHERFORECAST_H
