@@ -17,7 +17,7 @@ public:
     explicit LocationQueryResult()
     {
     }
-    explicit LocationQueryResult(float latitude, float longitude, QString toponymName, QString name, QString countryCode, QString countryName)
+    explicit LocationQueryResult(float latitude, float longitude, QString toponymName, QString name, QString countryCode, QString countryName, QString geonameId)
     {
         this->latitude_ = latitude;
         this->longitude_ = longitude;
@@ -25,6 +25,7 @@ public:
         this->name_ = name;
         this->countryCode_ = countryCode;
         this->countryName_ = countryName;
+        this->geonameId_ = geonameId;
     }
 
     inline float latitude() const
@@ -51,10 +52,14 @@ public:
     {
         return countryName_;
     }
+    inline QString geonameId()
+    {
+        return geonameId_;
+    }
 
 private:
     float latitude_, longitude_;
-    QString toponymName_, name_, countryCode_, countryName_;
+    QString toponymName_, name_, countryCode_, countryName_, geonameId_;
 };
 
 class LocationQueryModel : public QAbstractListModel

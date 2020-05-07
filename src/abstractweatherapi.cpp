@@ -2,8 +2,10 @@
 #include "abstractdailyweatherforecast.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-AbstractWeatherAPI::AbstractWeatherAPI(int interval, QString *token, QObject *parent)
+#include <utility>
+AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, int interval, QString *token, QObject *parent)
     : QObject(parent)
+    , locationId_(std::move(locationId))
     , interval(interval)
     , token_(token)
 {

@@ -21,7 +21,7 @@ class NMIWeatherAPI2 : public AbstractWeatherAPI
     Q_OBJECT
 
 public:
-    NMIWeatherAPI2();
+    NMIWeatherAPI2(QString locationId);
     ~NMIWeatherAPI2() override;
     void update() override;
     void setLocation(float lat, float lon) override;

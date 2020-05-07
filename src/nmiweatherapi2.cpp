@@ -33,18 +33,15 @@ void NMIWeatherAPI2::setToken(QString &)
 {
 } // no token is needed
 
-NMIWeatherAPI2::NMIWeatherAPI2()
-    : AbstractWeatherAPI(-1)
+NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
+    : AbstractWeatherAPI(locationId, -1)
 {
-    currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO Weather Location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
-    //    connect(mManager, &QNetworkAccessManager::finished, this, &NMIWeatherAPI::parse);
+    currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
 }
 
 NMIWeatherAPI2::~NMIWeatherAPI2()
 {
-    if (!tz) {
-        delete tz;
-    }
+    if (!tz) delete tz;
 }
 
 void NMIWeatherAPI2::update()
@@ -98,7 +95,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             // delete old data
             delete currentData_;
             // process and build abstract forecast
-            currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO Weather Location", lat, lon, hoursList, dayCache.values());
+            currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hoursList, dayCache.values());
 
             // TODO set location currentData_.setLocation
         }
@@ -106,7 +103,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
 
     // parsing failed, default forecast
     if (currentData_ == nullptr) {
-        currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO weather location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
+        currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
     // sort daily forecast
     currentData_->sortDailyForecast();

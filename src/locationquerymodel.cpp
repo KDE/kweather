@@ -109,7 +109,7 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     QJsonObject root = document.object();
     // if no result
     if (root[QLatin1String("totalResultsCount")].toInt() == 0) {
-        resultsList.append(new LocationQueryResult(1000, 0, QLatin1String("No"), QLatin1String("Result"), QLatin1String("Found"), QString::fromUtf8("¯\(ツ)_/¯")));
+        resultsList.append(new LocationQueryResult(1000, 0, QLatin1String("No"), QLatin1String("Result"), QLatin1String("Found"), QString::fromUtf8("¯\(ツ)_/¯"), "ID"));
         return;
     }
     // if our api calls reached daily limit
@@ -125,7 +125,13 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     for (QJsonValueRef resRef : geonames) {
         QJsonObject res = resRef.toObject();
         auto *result = new LocationQueryResult(
-            res.value("lat").toString().toFloat(), res.value("lng").toString().toFloat(), res.value("toponymName").toString(), res.value("name").toString(), res.value("countryCode").toString(), res.value("countryName").toString());
+            res.value("lat").toString().toFloat(),
+            res.value("lng").toString().toFloat(),
+            res.value("toponymName").toString(),
+            res.value("name").toString(),
+            res.value("countryCode").toString(),
+            res.value("countryName").toString(),
+            QString(res.value("geonameId").toInt()));
         resultsList.append(result);
     }
 

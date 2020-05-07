@@ -11,7 +11,7 @@ class OWMWeatherAPI : public AbstractWeatherAPI
     Q_OBJECT
 
 public:
-    OWMWeatherAPI();
+    OWMWeatherAPI(QString locationName);
     ~OWMWeatherAPI();
     void setToken(QString& token) override;
     void setLocation(float latitude, float longitude) override;

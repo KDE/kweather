@@ -3,6 +3,7 @@
 #include "abstractweatherforecast.h"
 #include <QObject>
 #include <memory>
+#include <utility>
 #include <vector>
 class QNetworkAccessManager;
 class QNetworkReply;
@@ -12,11 +13,12 @@ class AbstractWeatherAPI : public QObject
     Q_OBJECT
 
 public:
-    explicit AbstractWeatherAPI(AbstractWeatherForecast *currentData = nullptr)
+    explicit AbstractWeatherAPI(QString locationId, AbstractWeatherForecast *currentData = nullptr)
     {
+        locationId_ = std::move(locationId);
         currentData_ = currentData;
     }
-    AbstractWeatherAPI(int interval, QString *token = nullptr, QObject *parent = nullptr);
+    AbstractWeatherAPI(QString locationId, int interval, QString *token = nullptr, QObject *parent = nullptr);
     virtual ~AbstractWeatherAPI();
     virtual void setLocation(float lat, float lon) = 0;
     virtual void update() = 0;
@@ -29,10 +31,19 @@ public:
     }
     void setCurrentData(AbstractWeatherForecast *forecast)
     {
-        this->currentData_ = forecast;
+        currentData_ = forecast;
+    }
+    QString locationName()
+    {
+        return locationId_;
+    }
+    void setLocationId(QString locationId)
+    {
+        locationId_ = locationId;
     }
 
 protected:
+    QString locationId_;
     float lat;
     float lon;
     QString *token_ = nullptr;

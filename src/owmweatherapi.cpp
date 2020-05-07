@@ -8,8 +8,8 @@
 #include <QUrlQuery>
 #include <memory>
 #include <vector>
-OWMWeatherAPI::OWMWeatherAPI()
-    : AbstractWeatherAPI(3)
+OWMWeatherAPI::OWMWeatherAPI(QString locationName)
+    : AbstractWeatherAPI(locationName, 3)
 {
 }
 
