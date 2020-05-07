@@ -27,8 +27,8 @@ public:
     explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
 
-    static WeatherLocation* fromJson(const QString& json);
-    QString toJson();
+    static WeatherLocation* fromJson(const QJsonObject& json);
+    QJsonObject toJson();
     void save();
 
     inline QString locationId()
@@ -116,6 +116,7 @@ public:
 
     Q_INVOKABLE void updateUi();
     void load();
+    void save();
 
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);

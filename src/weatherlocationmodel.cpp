@@ -8,8 +8,10 @@
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
 #include <QQmlEngine>
+#include <QtCore/QJsonArray>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
+const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";
 
 /* ~~~ WeatherLocation ~~~ */
 WeatherLocation::WeatherLocation(AbstractWeatherForecast *forecast)
@@ -43,28 +45,19 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
-WeatherLocation* WeatherLocation::fromJson(const QString& json)
+WeatherLocation* WeatherLocation::fromJson(const QJsonObject& obj)
 {
-    QJsonObject obj = QJsonDocument::fromJson(json.toUtf8()).object();
     return new WeatherLocation(new NMIWeatherAPI2(obj["locationId"].toString()), obj["locationId"].toString(), obj["locationName"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
 }
 
-QString WeatherLocation::toJson()
+QJsonObject WeatherLocation::toJson()
 {
     QJsonObject obj;
     obj["locationId"] = locationId();
     obj["locationName"] = locationName();
     obj["latitude"] = latitude();
     obj["longitude"] = longitude();
-    return QString(QJsonDocument(obj).toJson(QJsonDocument::Compact));
-}
-
-// save to config
-void WeatherLocation::save()
-{
-    auto config = KSharedConfig::openConfig();
-    KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
-    group.writeEntry(this->locationId(), this->toJson());
+    return obj;
 }
 
 void WeatherLocation::updateData(AbstractWeatherForecast *fc)
@@ -107,12 +100,26 @@ void WeatherLocationListModel::load()
     // load locations from kconfig
     auto config = KSharedConfig::openConfig();
     KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
-    for (QString key : group.keyList()) {
-        QString json = group.readEntry(key, "");
-        if (json != "") {
-            locationsList.append(WeatherLocation::fromJson(json));
-        }
+    QJsonDocument doc = QJsonDocument::fromJson(group.readEntry(WEATHER_LOCATIONS_CFG_KEY, "{}").toUtf8());
+
+    for (QJsonValueRef r : doc.array()) {
+        QJsonObject obj = r.toObject();
+        locationsList.append(WeatherLocation::fromJson(obj));
     }
+}
+
+void WeatherLocationListModel::save()
+{
+    QJsonArray arr;
+    for (auto lc : locationsList) {
+        arr.push_back(lc->toJson());
+    }
+    QJsonObject obj;
+    obj["list"] = arr;
+
+    auto config = KSharedConfig::openConfig();
+    KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
+    group.writeEntry(WEATHER_LOCATIONS_CFG_KEY, QString(QJsonDocument(arr).toJson(QJsonDocument::Compact)));
 }
 
 int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
@@ -138,12 +145,10 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
 
     QQmlEngine::setObjectOwnership(weatherLocation, QQmlEngine::CppOwnership);
     emit beginInsertRows(QModelIndex(), index, index);
-
-    // save to config
-    weatherLocation->save();
-
     locationsList.insert(index, weatherLocation);
     emit endInsertRows();
+
+    save();
 }
 
 void WeatherLocationListModel::remove(int index)
@@ -152,14 +157,10 @@ void WeatherLocationListModel::remove(int index)
         return;
 
     emit beginRemoveRows(QModelIndex(), index, index);
-
-    // remove from config
-    auto config = KSharedConfig::openConfig();
-    KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
-    group.deleteEntry(locationsList.at(index)->locationId());
-
     locationsList.removeAt(index);
     emit endRemoveRows();
+
+    save();
 }
 
 WeatherLocation *WeatherLocationListModel::get(int index)

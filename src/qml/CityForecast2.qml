@@ -26,7 +26,7 @@ ListView {
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
-                source: weatherLocation.currentWeather.neutralWeatherIcon
+                source: weatherLocation.currentWeather.weatherIcon
                 Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 18
                 Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 18
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 9
