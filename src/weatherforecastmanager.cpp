@@ -9,6 +9,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QStandardPaths>
+#include <QTimeZone>
 #include <QTimer>
 WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI)
     : model_(model)
@@ -141,6 +142,7 @@ QJsonDocument WeatherForecastManager::convertToJson(WeatherLocation &lc) // Qt u
 
 WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
 {
+    auto now = QDateTime::currentDateTime();
     auto forecast = new AbstractWeatherForecast();
     QList<AbstractHourlyWeatherForecast *> hourlyForecast;
     QList<AbstractDailyWeatherForecast *> dailyForecast;
@@ -162,8 +164,11 @@ WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
     auto location = new WeatherLocation(api, doc[QLatin1String("info")][QLatin1String("name")].toString(), doc[QLatin1String("info")][QLatin1String("latitude")].toDouble(), doc[QLatin1String("info")][QLatin1String("longitude")].toDouble());
 
     for (auto hour : hourArray) {
+        auto date = QDateTime::fromSecsSinceEpoch(hour.toObject()["time"].toInt());
+        if (date.secsTo(now) > 3600) // if not fresh, throw away
+            continue;
         auto fc = new AbstractHourlyWeatherForecast();
-        fc->setDate(QDateTime::fromSecsSinceEpoch(hour.toObject()["time"].toInt()));
+        fc->setDate(date);
         fc->setWeatherIcon(hour.toObject()["weatherIcon"].toString());
         fc->setWeatherDescription(hour.toObject()["weatherDescription"].toString());
         fc->setTemperature(hour.toObject()["temperature"].toInt());
@@ -178,14 +183,23 @@ WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
     }
 
     for (auto day : dayArray) {
+        auto date = QDate::fromString(day.toObject()["time"].toString(), Qt::ISODate);
+        if (date.daysTo(now.date()) != 0)
+            continue;
         auto fc = new AbstractDailyWeatherForecast();
-        fc->setDate(QDate::fromString(day.toObject()["time"].toString(), Qt::ISODate));
+        fc->setDate(date);
         fc->setWeatherIcon(day.toObject()["weatherIcon"].toString());
         fc->setWeatherDescription(day.toObject()["weatherDescription"].toString());
         fc->setMaxTemp(day.toObject()["maxTemp"].toInt());
         fc->setMinTemp(day.toObject()["minTemp"].toInt());
         fc->setPrecipitation(day.toObject()["precipitation"].toDouble());
         dailyForecast.push_back(fc);
+    }
+
+    // convert time to corresponding localtime
+
+    for (auto fc : hourlyForecast) {
+        fc->setDate(fc->date().toTimeZone(QTimeZone(QByteArray::fromStdString(doc[QLatin1String("info")][QLatin1String("timezone")].toString().toStdString()))));
     }
 
     forecast->setDailyForecasts(dailyForecast);
