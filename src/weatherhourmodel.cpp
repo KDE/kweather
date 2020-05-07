@@ -7,19 +7,18 @@ WeatherHour::WeatherHour()
 {
 }
 
-WeatherHour::WeatherHour(AbstractWeatherForecast *forecast)
+WeatherHour::WeatherHour(AbstractHourlyWeatherForecast *forecast)
 {
     this->windDirection_ = forecast->windDirection();
     this->weatherDescription_ = forecast->weatherDescription();
     this->weatherIcon_ = forecast->weatherIcon();
-    this->precipitation_ = forecast->precipitation();
+    this->precipitation_ = forecast->precipitationAmount();
     this->fog_ = forecast->fog();
-    this->cloudiness_ = forecast->cloudiness();
     this->windSpeed_ = forecast->windSpeed();
-    this->temperature_ = forecast->maxTemp();
+    this->temperature_ = forecast->temperature();
     this->humidity_ = forecast->humidity();
     this->pressure_ = forecast->pressure();
-    this->date_ = QDateTime(forecast->time().date(), QTime(forecast->time().time().hour(), 0));
+    this->date_ = QDateTime(forecast->date().date(), QTime(forecast->date().time().hour(), 0));
 }
 
 /* ~~~ WeatherHourListModel ~~~ */
@@ -56,7 +55,7 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForecast *> forecasts)
+void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast* forecast)
 {
     // clear forecasts
     emit layoutAboutToBeChanged();
@@ -66,9 +65,9 @@ void WeatherHourListModel::refreshHoursFromForecasts(QList<AbstractWeatherForeca
     // insert forecasts
     int currentDay = -1;
     int index = 0;
-    for (auto forecast : forecasts) {
-        if (currentDay != forecast->time().date().day()) {
-            currentDay = forecast->time().date().day();
+    for (auto forecast : forecast->hourlyForecasts()) {
+        if (currentDay != forecast->date().date().day()) {
+            currentDay = forecast->date().date().day();
             dayList.append(index);
         }
         auto *weatherHour = new WeatherHour(forecast);

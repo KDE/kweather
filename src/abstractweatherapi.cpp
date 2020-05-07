@@ -13,9 +13,5 @@ AbstractWeatherAPI::AbstractWeatherAPI(int interval, QString *token, QObject *pa
 AbstractWeatherAPI::~AbstractWeatherAPI()
 {
     delete mManager;
-
-    // delete all data
-    for (auto d : mForecasts) {
-        delete d;
-    }
+    delete currentData_;
 }

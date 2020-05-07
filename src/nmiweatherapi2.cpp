@@ -154,7 +154,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     auto* hourForecast = new AbstractHourlyWeatherForecast();
 
     // set initial hour fields
-    hourForecast->setDate(QDateTime(date.date(), QTime(date.time().hour(), 0)));
+    hourForecast->setDate(date); // the first time will be at the exact time of query, otherwise the beginning of each hour
     hourForecast->setTemperature(object.value("data.instant.air_temperature").toDouble());
     hourForecast->setPressure(object.value("data.instant.air_pressure_at_sea_level").toDouble());
     // TODO wind direction

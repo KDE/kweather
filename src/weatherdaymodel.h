@@ -21,7 +21,7 @@ class WeatherDay : public QObject
 public:
     explicit WeatherDay();
     // list of forecasts on this day
-    explicit WeatherDay(QList<AbstractWeatherForecast*> forecasts);
+    explicit WeatherDay(AbstractDailyWeatherForecast* dailyForecast);
 
     inline QString weatherDescription() {return weatherDescription_;}
     inline QString weatherIcon() {return weatherIcon_;}
@@ -54,7 +54,7 @@ public:
     Q_INVOKABLE void updateUi();
 
 public slots:
-    void refreshDaysFromForecasts(QList<AbstractWeatherForecast*> forecasts);
+    void refreshDaysFromForecasts(AbstractWeatherForecast* forecast);
     
 private:
     QList<WeatherDay*> daysList;

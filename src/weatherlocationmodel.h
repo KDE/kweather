@@ -19,12 +19,12 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
-    Q_PROPERTY(AbstractWeatherForecast *currentForecast READ currentForecast NOTIFY currentForecastChange)
+    Q_PROPERTY(AbstractHourlyWeatherForecast *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
 public:
     explicit WeatherLocation();
     explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude);
-    explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, QList<AbstractWeatherForecast *> forecasts_);
+    explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast_);
 
     inline QString locationName()
     {
@@ -38,9 +38,9 @@ public:
     {
         return longitude_;
     }
-    inline AbstractWeatherForecast *currentForecast()
+    inline AbstractHourlyWeatherForecast* currentWeather()
     {
-        return currentForecast_;
+        return currentWeather_;
     }
     inline WeatherDayListModel *weatherDayListModel()
     {
@@ -50,9 +50,9 @@ public:
     {
         return weatherHourListModel_;
     }
-    inline QList<AbstractWeatherForecast *> forecasts()
+    inline AbstractWeatherForecast* forecast()
     {
-        return forecasts_;
+        return forecast_;
     }
     inline NMIWeatherAPI *weatherBackendProvider()
     {
@@ -74,10 +74,10 @@ public:
     void determineCurrentForecast();
 
 public slots:
-    void updateData(QList<AbstractWeatherForecast *> fc);
+    void updateData(AbstractWeatherForecast* fc);
 
 signals:
-    void weatherRefresh(QList<AbstractWeatherForecast *> fc); // sent when weather data is refreshed
+    void weatherRefresh(AbstractWeatherForecast* fc); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
 
@@ -91,8 +91,8 @@ private:
 
     NMIWeatherAPI *weatherBackendProvider_; // OpenWeatherMap is not supported now anyway
 
-    AbstractWeatherForecast *currentForecast_;
-    QList<AbstractWeatherForecast *> forecasts_;
+    AbstractHourlyWeatherForecast* currentWeather_;
+    AbstractWeatherForecast* forecast_;
 };
 
 class WeatherLocationListModel : public QAbstractListModel

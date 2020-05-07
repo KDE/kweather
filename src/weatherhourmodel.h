@@ -26,7 +26,7 @@ class WeatherHour : public QObject
 
 public:
     explicit WeatherHour();
-    explicit WeatherHour(AbstractWeatherForecast *forecast);
+    explicit WeatherHour(AbstractHourlyWeatherForecast* forecast);
 
     inline QString windDirection()
     {
@@ -147,7 +147,7 @@ public:
 
     Q_INVOKABLE void updateUi(int index);
 public slots:
-    void refreshHoursFromForecasts(QList<AbstractWeatherForecast *> forecasts);
+    void refreshHoursFromForecasts(AbstractWeatherForecast* forecast);
 
 private:
     QList<WeatherHour *> hoursList;

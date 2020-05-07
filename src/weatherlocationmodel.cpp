@@ -31,13 +31,13 @@ WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString 
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
-WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, QList<AbstractWeatherForecast *> forecasts)
+WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast)
 {
     this->weatherBackendProvider_ = weatherBackendProvider;
     this->locationName_ = locationName;
     this->latitude_ = latitude;
     this->longitude_ = longitude;
-    this->forecasts_ = forecasts;
+    this->forecast_ = forecast;
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = QDateTime::currentDateTime();
@@ -48,10 +48,9 @@ WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString 
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
-void WeatherLocation::updateData(QList<AbstractWeatherForecast *> fc)
+void WeatherLocation::updateData(AbstractWeatherForecast* fc)
 {
-    forecasts_.clear(); // don't need to delete pointers, they were already deleted by api class
-    forecasts_ = fc;    // just assign new list
+    forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
     determineCurrentForecast();
     this->lastUpdated_ = QDateTime::currentDateTime();
 
@@ -60,21 +59,21 @@ void WeatherLocation::updateData(QList<AbstractWeatherForecast *> fc)
 
 void WeatherLocation::determineCurrentForecast()
 {
-    if (forecasts().count() == 0) {
-        currentForecast_ = new AbstractWeatherForecast(locationName_, "", "Unknown", "weather-none-available", "weather-none-available", QDateTime::currentDateTime(), latitude(), longitude(), 0, 0, 0, 0, 0, 0, 0, 0);
+    if (forecast()->hourlyForecasts().count() == 0) {
+        currentWeather_ = new AbstractHourlyWeatherForecast(QDateTime::currentDateTime(), "Unknown", "weather-none-available", "weather-none-available", 0, 0, AbstractHourlyWeatherForecast::WindDirection::N, 0, 0, 0, 0, 0);
     } else {
         long long minSecs = -1;
         QDateTime current = QDateTime::currentDateTime();
 
         // get closest forecast to current time
-        for (auto forecast : forecasts()) {
-            if (minSecs == -1 || minSecs > forecast->time().secsTo(current)) {
-                currentForecast_ = forecast;
-                minSecs = forecast->time().secsTo(current);
+        for (auto forecast : forecast()->hourlyForecasts()) {
+            if (minSecs == -1 || minSecs > forecast->date().secsTo(current)) {
+                currentWeather_ = forecast;
+                minSecs = forecast->date().secsTo(current);
             }
         }
     }
-    QQmlEngine::setObjectOwnership(currentForecast_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     emit currentForecastChange();
 }
 
