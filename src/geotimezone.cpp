@@ -26,6 +26,12 @@ GeoTimeZone::GeoTimeZone(float lat, float lon, QObject *parent)
 void GeoTimeZone::downloadFinished(QNetworkReply *reply)
 {
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
+    // if our api calls reached daily limit
+    if (doc[QLatin1String("status")][QLatin1String("value")].toInt() == 18) {
+        qWarning() << "api calls reached daily limit";
+        reply->deleteLater();
+        return;
+    }
     tz = doc["timezoneId"].toString();
     reply->deleteLater();
     emit finished();
