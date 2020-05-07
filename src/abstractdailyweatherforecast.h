@@ -9,6 +9,10 @@ class AbstractDailyWeatherForecast : public QObject
 public:
     AbstractDailyWeatherForecast();
     AbstractDailyWeatherForecast(float maxTemp, float minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date);
+
+    QJsonObject toJson();
+    static AbstractDailyWeatherForecast* fromJson(QJsonObject obj);
+
     inline void setMaxTemp(float maxTemp)
     {
         maxTemp_ = maxTemp;

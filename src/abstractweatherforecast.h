@@ -10,7 +10,6 @@
 class AbstractWeatherForecast : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString locationName READ locationName WRITE setLocationName NOTIFY propertyChanged)
     Q_PROPERTY(QDateTime timeCreated READ timeCreated WRITE setTimeCreated NOTIFY propertyChanged)
     Q_PROPERTY(float latitude READ latitude WRITE setLatitude NOTIFY propertyChanged)
     Q_PROPERTY(float longitude READ longitude WRITE setLongitude NOTIFY propertyChanged)
@@ -18,10 +17,14 @@ class AbstractWeatherForecast : public QObject
 public:
     AbstractWeatherForecast(QDateTime timeCreated_ = QDateTime::currentDateTime());
     ~AbstractWeatherForecast();
-    AbstractWeatherForecast(QDateTime timeCreated_, QString locationName, float latitude, float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
-    inline const QString &locationName()
+    AbstractWeatherForecast(QDateTime timeCreated_, QString locationId, float latitude, float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
+
+    QJsonObject toJson();
+    static AbstractWeatherForecast* fromJson(QJsonObject obj);
+
+    inline const QString &locationId()
     {
-        return locationName_;
+        return locationId_;
     }
     inline QDateTime timeCreated()
     {
@@ -44,9 +47,9 @@ public:
         return dailyForecasts_;
     }
 
-    inline void setLocationName(QString n)
+    inline void setLocationId(QString n)
     {
-        locationName_ = std::move(n);
+        locationId_ = std::move(n);
     }
     inline void setTimeCreated(QDateTime timeCreated)
     {
@@ -73,7 +76,7 @@ signals:
     void propertyChanged();
 
 private:
-    QString locationName_;
+    QString locationId_;
     QDateTime timeCreated_;
     float latitude_;
     float longitude_;

@@ -1,9 +1,12 @@
 #ifndef WEATHERLOCATIONMODEL_H
 #define WEATHERLOCATIONMODEL_H
 #include "abstractweatherforecast.h"
+#include "nmiweatherapi2.h"
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QObject>
+#include <QtCore/QJsonObject>
+#include <QtCore/QJsonDocument>
 #include <utility>
 
 class WeatherDayListModel;
@@ -22,8 +25,16 @@ class WeatherLocation : public QObject
 
 public:
     explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
 
+    static WeatherLocation* fromJson(const QString& json);
+    QString toJson();
+    void save();
+
+    inline QString locationId()
+    {
+        return locationId_;
+    }
     inline QString locationName()
     {
         return locationName_;
@@ -81,6 +92,7 @@ signals:
 
 private:
     QString locationName_;
+    QString locationId_;
     QDateTime lastUpdated_;
     float latitude_, longitude_;
 
@@ -103,6 +115,7 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
 
     Q_INVOKABLE void updateUi();
+    void load();
 
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);

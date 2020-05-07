@@ -28,6 +28,9 @@ public:
     AbstractHourlyWeatherForecast(QDateTime date, QString weatherDescription, QString weatherIcon, QString neutralWeatherIcon, float temperature, float pressure, WindDirection windDirection, float windSpeed,
                                   float humidity, float fog, float uvIndex, float precipitationAmount);
 
+    QJsonObject toJson();
+    static AbstractHourlyWeatherForecast* fromJson(QJsonObject obj);
+
     const QDateTime &date() const
     {
         return date_;
