@@ -5,14 +5,12 @@
 AbstractWeatherForecast::AbstractWeatherForecast() {}
 AbstractWeatherForecast::AbstractWeatherForecast(QString locationName,
                                                  float latitude,
-                                                 float longitude,
-                                                 QList<AbstractHourlyWeatherForecast *> hourlyForecasts,
-                                                 QList<AbstractDailyWeatherForecast *> dailyForecasts) :
+                                                 float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts) :
     locationName_(std::move(locationName)),
     latitude_(latitude),
     longitude_(longitude),
-    hourlyForecasts_(std::move(hourlyForecasts)),
-    dailyForecasts_(std::move(dailyForecasts))
+    hourlyForecasts_(hourlyForecasts),
+    dailyForecasts_(dailyForecasts)
 {
 }
 

@@ -12,8 +12,9 @@ class AbstractWeatherAPI : public QObject
     Q_OBJECT
 
 public:
-    explicit AbstractWeatherAPI()
+    explicit AbstractWeatherAPI(AbstractWeatherForecast* currentData = nullptr)
     {
+        currentData_ = currentData;
     }
     AbstractWeatherAPI(int interval, QString *token = nullptr, QObject *parent = nullptr);
     virtual ~AbstractWeatherAPI();

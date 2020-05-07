@@ -1,5 +1,5 @@
 #include "weatherforecastmanager.h"
-#include "nmiweatherapi.h"
+#include "nmiweatherapi2.h"
 #include "owmweatherapi.h"
 #include "weatherlocationmodel.h"
 #include <QDebug>
@@ -65,7 +65,8 @@ void WeatherForecastManager::writeToCache(WeatherLocation &data)
         dir.mkpath(".");
     // should be this path: /home/user/.cache/kweather/7000/3000 for location with coordinate 70.00 30.00
     qDebug() << url;
-    file.setFileName(QString(url + QString::number(data.forecasts().back()->time().toSecsSinceEpoch()))); // file name is last forecast's unix time
+    // TODO
+//    file.setFileName(QString(url + QString::number(data.forecasts().back()->time().toSecsSinceEpoch()))); // file name is last forecast's unix time
     file.open(QIODevice::WriteOnly);                                                                      // this will later be used to determine if we want this cache or not
     file.write(convertToJson(data).toJson(QJsonDocument::Compact));                                       // write json
     file.close();
@@ -111,26 +112,27 @@ QJsonDocument WeatherForecastManager::convertToJson(WeatherLocation &lc) // Qt u
     info[QLatin1String("name")] = lc.locationName();
     info[QLatin1String("latitude")] = QString::number(lc.latitude());
     info[QLatin1String("longitude")] = QString::number(lc.longitude());
-    info[QLatin1String("timezone")] = lc.weatherBackendProvider()->getTimeZone();
+//    info[QLatin1String("timezone")] = lc.weatherBackendProvider()->getTimeZone(); TODO
     QJsonObject main;
     main[QLatin1String("info")] = info;
     QJsonArray array;
-    for (auto fc : lc.forecasts()) {
-        QJsonObject obj;
-        obj[QLatin1String("time")] = fc->time().toString(Qt::ISODate);
-        obj[QLatin1String("weatherIcon")] = fc->weatherIcon();
-        obj[QLatin1String("weatherDescription")] = fc->weatherDescription();
-        obj[QLatin1String("maxTemp")] = QString::number(fc->maxTemp());
-        obj[QLatin1String("minTemp")] = QString::number(fc->minTemp());
-        obj[QLatin1String("windDirection")] = fc->windDirection();
-        obj[QLatin1String("windSpeed")] = QString::number(fc->windSpeed());
-        obj[QLatin1String("precipitation")] = QString::number(fc->precipitation());
-        obj[QLatin1String("fog")] = QString::number(fc->fog());
-        obj[QLatin1String("cloudiness")] = QString::number(fc->cloudiness());
-        obj[QLatin1String("humidity")] = QString::number(fc->humidity());
-        obj[QLatin1String("pressure")] = QString::number(fc->pressure());
-        array.push_back(obj);
-    }
+    // TODO
+//    for (auto fc : lc.forecasts()) {
+//        QJsonObject obj;
+//        obj[QLatin1String("time")] = fc->time().toString(Qt::ISODate);
+//        obj[QLatin1String("weatherIcon")] = fc->weatherIcon();
+//        obj[QLatin1String("weatherDescription")] = fc->weatherDescription();
+//        obj[QLatin1String("maxTemp")] = QString::number(fc->maxTemp());
+//        obj[QLatin1String("minTemp")] = QString::number(fc->minTemp());
+//        obj[QLatin1String("windDirection")] = fc->windDirection();
+//        obj[QLatin1String("windSpeed")] = QString::number(fc->windSpeed());
+//        obj[QLatin1String("precipitation")] = QString::number(fc->precipitation());
+//        obj[QLatin1String("fog")] = QString::number(fc->fog());
+//        obj[QLatin1String("cloudiness")] = QString::number(fc->cloudiness());
+//        obj[QLatin1String("humidity")] = QString::number(fc->humidity());
+//        obj[QLatin1String("pressure")] = QString::number(fc->pressure());
+//        array.push_back(obj);
+//    }
     main[QLatin1String("main")] = array;
     QJsonDocument doc;
     doc.setObject(main);
@@ -142,28 +144,29 @@ WeatherLocation *WeatherForecastManager::convertFromJson(QByteArray data)
     QList<AbstractWeatherForecast *> forecasts;
     QJsonDocument doc;
     doc.fromJson(data);
-    auto api = new NMIWeatherAPI();
+    auto api = new NMIWeatherAPI2();
     api->setLocation(doc["info"]["latitude"].toDouble(), doc["info"]["longitude"].toDouble());
     api->setTimeZone(doc["info"]["timezone"].toString());
     auto location = new WeatherLocation(api, doc["info"]["name"].toString(), doc["info"]["latitude"].toDouble(), doc["info"]["longitude"].toDouble()); // one cache file corresponds to one location
     QJsonArray array = doc["main"].toArray();
-    for (auto hour : array) {
-        auto fc = new AbstractWeatherForecast();
-        fc->setTime(QDateTime::fromString(hour.toObject()["time"].toString(), Qt::ISODate));
-        fc->setWeatherIcon(hour.toObject()["weatherIcon"].toString());
-        fc->setWeatherDescription(hour.toObject()["weatherDescription"].toString());
-        fc->setMaxTemp(hour.toObject()["maxTemp"].toInt());
-        fc->setMinTemp(hour.toObject()["minTemp"].toInt());
-        fc->setWindDirection(hour.toObject()["windDirection"].toString());
-        fc->setWindSpeed(hour.toObject()["windSpeed"].toInt());
-        fc->setPrecipitation(hour.toObject()["precipitation"].toDouble());
-        fc->setFog(hour.toObject()["fog"].toInt());
-        fc->setCloudiness(hour.toObject()["cloudiness"].toInt());
-        fc->setHumidity(hour.toObject()["humidity"].toInt());
-        fc->setPressure(hour.toObject()["pressure"].toInt());
-        forecasts.push_back(fc);
-    }
-    location->updateData(forecasts);
+    // TODO
+//    for (auto hour : array) {
+//        auto fc = new AbstractWeatherForecast();
+//        fc->setTime(QDateTime::fromString(hour.toObject()["time"].toString(), Qt::ISODate));
+//        fc->setWeatherIcon(hour.toObject()["weatherIcon"].toString());
+//        fc->setWeatherDescription(hour.toObject()["weatherDescription"].toString());
+//        fc->setMaxTemp(hour.toObject()["maxTemp"].toInt());
+//        fc->setMinTemp(hour.toObject()["minTemp"].toInt());
+//        fc->setWindDirection(hour.toObject()["windDirection"].toString());
+//        fc->setWindSpeed(hour.toObject()["windSpeed"].toInt());
+//        fc->setPrecipitation(hour.toObject()["precipitation"].toDouble());
+//        fc->setFog(hour.toObject()["fog"].toInt());
+//        fc->setCloudiness(hour.toObject()["cloudiness"].toInt());
+//        fc->setHumidity(hour.toObject()["humidity"].toInt());
+//        fc->setPressure(hour.toObject()["pressure"].toInt());
+//        forecasts.push_back(fc);
+//    }
+//    location->updateData(forecasts);
     return location;
 }
 

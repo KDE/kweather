@@ -36,15 +36,16 @@ void OWMWeatherAPI::parse(QNetworkReply* reply)
     start = start.toOffsetFromUtc(mJson["city"]["timezone"].toInt());
 
     for (int i = 0; i < 39; i++) {
-        mForecasts.push_back(new AbstractWeatherForecast(
-            QString(mJson["city"]["country"].toString() + ", " + mJson["city"]["name"].toString()),
-            getWindDirection(mArray.at(i)["wind"]["deg"].toDouble()), mArray.at(i)["weather"]["description"].toString(),
-            map[mArray.at(i)["weather"]["icon"].toString()], map[mArray.at(i)["weather"]["icon"].toString()], start.addSecs(3600 * i), lat, lon,
-            mArray.at(i)["rain"]["3h"].toDouble() + mArray.at(i)["snow"]["3h"].toDouble(),
-            -1.0, // api doesn't support fog
-            mArray.at(i)["clouds"]["all"].toInt(), mArray.at(i)["wind"]["speed"].toInt(),
-            mArray.at(i)["main"]["temp_max"].toInt(), mArray.at(i)["main"]["temp_min"].toInt(),
-            mArray.at(i)["main"]["humidity"].toInt(), mArray.at(i)["main"]["grnd_level"].toInt()));
+        // TODO reimplement
+//        mForecasts.push_back(new AbstractWeatherForecast(
+//            QString(mJson["city"]["country"].toString() + ", " + mJson["city"]["name"].toString()),
+//            getWindDirection(mArray.at(i)["wind"]["deg"].toDouble()), mArray.at(i)["weather"]["description"].toString(),
+//            map[mArray.at(i)["weather"]["icon"].toString()], map[mArray.at(i)["weather"]["icon"].toString()], start.addSecs(3600 * i), lat, lon,
+//            mArray.at(i)["rain"]["3h"].toDouble() + mArray.at(i)["snow"]["3h"].toDouble(),
+//            -1.0, // api doesn't support fog
+//            mArray.at(i)["clouds"]["all"].toInt(), mArray.at(i)["wind"]["speed"].toInt(),
+//            mArray.at(i)["main"]["temp_max"].toInt(), mArray.at(i)["main"]["temp_min"].toInt(),
+//            mArray.at(i)["main"]["humidity"].toInt(), mArray.at(i)["main"]["grnd_level"].toInt()));
     }
 }
 
@@ -77,11 +78,8 @@ QString OWMWeatherAPI::getWindDirection(double degrees)
 
 void OWMWeatherAPI::update()
 {
-    if (!mForecasts.isEmpty()) {
-        for (auto fc : mForecasts)
-            delete fc;
-        mForecasts.clear();
-    } // delete old data
+    delete currentData_;
+    // delete old data
     QUrlQuery query;
 
     query.addQueryItem(QStringLiteral("lat"), QString().setNum(lat));

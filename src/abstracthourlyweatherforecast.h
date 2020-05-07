@@ -12,7 +12,7 @@ class AbstractHourlyWeatherForecast : public QObject
     Q_PROPERTY(QString neutralWeatherIcon READ neutralWeatherIcon WRITE setNeutralWeatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(float temperature READ temperature WRITE setTemperature NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
-    Q_PROPERTY(int windDirection READ windDirection WRITE windDirection NOTIFY propertyChanged)
+//    Q_PROPERTY(int windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
     Q_PROPERTY(float windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
     Q_PROPERTY(float humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
     Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)

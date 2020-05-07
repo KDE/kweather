@@ -1,7 +1,8 @@
 #include "weatherlocationmodel.h"
+#include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
 #include "locationquerymodel.h"
-#include "nmiweatherapi.h"
+#include "nmiweatherapi2.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
 #include <QQmlEngine>
@@ -15,7 +16,7 @@ WeatherLocation::WeatherLocation()
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
 }
 
-WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude)
 {
     this->weatherBackendProvider_ = weatherBackendProvider;
     this->locationName_ = locationName;
@@ -31,7 +32,7 @@ WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString 
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
-WeatherLocation::WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast)
 {
     this->weatherBackendProvider_ = weatherBackendProvider;
     this->locationName_ = locationName;
@@ -59,7 +60,7 @@ void WeatherLocation::updateData(AbstractWeatherForecast* fc)
 
 void WeatherLocation::determineCurrentForecast()
 {
-    if (forecast()->hourlyForecasts().count() == 0) {
+    if (forecast() == nullptr || forecast()->hourlyForecasts().count() == 0) {
         currentWeather_ = new AbstractHourlyWeatherForecast(QDateTime::currentDateTime(), "Unknown", "weather-none-available", "weather-none-available", 0, 0, AbstractHourlyWeatherForecast::WindDirection::N, 0, 0, 0, 0, 0);
     } else {
         long long minSecs = -1;
@@ -137,7 +138,7 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
 void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
-    auto api = new NMIWeatherAPI();
+    auto api = new NMIWeatherAPI2();
     api->setLocation(ret->latitude(), ret->latitude());
     auto location = new WeatherLocation(api, ret->name(), ret->latitude(), ret->longitude());
     api->update();

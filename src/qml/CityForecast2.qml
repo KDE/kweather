@@ -26,7 +26,7 @@ ListView {
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
-                source: weatherLocation.currentForecast.weatherIcon
+                source: weatherLocation.currentWeather.weatherIcon
                 Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 18
                 Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 18
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 9
@@ -42,11 +42,11 @@ ListView {
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
-                    text: weatherLocation.currentForecast.weatherDescription
+                    text: weatherLocation.currentWeather.weatherDescription
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
-                    text: weatherLocation.currentForecast.maxTemp + "°" // TODO
+                    text: weatherLocation.currentWeather.temperature + "°" // TODO
                 }
             }
         }

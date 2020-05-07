@@ -1,9 +1,11 @@
 #ifndef ABSTRACTDAILYWEATHERFORECAST_H
 #define ABSTRACTDAILYWEATHERFORECAST_H
 #include <QDate>
+#include <QtCore/QObject>
 
-class AbstractDailyWeatherForecast
+class AbstractDailyWeatherForecast : public QObject
 {
+    Q_OBJECT
 public:
     AbstractDailyWeatherForecast();
     AbstractDailyWeatherForecast(float maxTemp, float minTemp, float precipitation, QString weatherIcon, QString weatherDescription, QDate date);

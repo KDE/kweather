@@ -19,9 +19,7 @@ public:
     ~AbstractWeatherForecast();
     AbstractWeatherForecast(QString locationName,
                             float latitude,
-                            float longitude,
-                            QList<AbstractHourlyWeatherForecast *> hourlyForecasts,
-                            QList<AbstractDailyWeatherForecast *> dailyForecasts);
+                            float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
     inline const QString &locationName()
     {
         return locationName_;

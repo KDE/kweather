@@ -9,7 +9,6 @@
 class WeatherDayListModel;
 class WeatherHourListModel;
 class AbstractWeatherAPI;
-class NMIWeatherAPI;
 class AbstractWeatherForecast;
 class LocationQueryResult;
 class WeatherLocation : public QObject
@@ -23,8 +22,8 @@ class WeatherLocation : public QObject
 
 public:
     explicit WeatherLocation();
-    explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude);
-    explicit WeatherLocation(NMIWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast_);
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude);
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast_);
 
     inline QString locationName()
     {
@@ -54,7 +53,7 @@ public:
     {
         return forecast_;
     }
-    inline NMIWeatherAPI *weatherBackendProvider()
+    inline AbstractWeatherAPI *weatherBackendProvider()
     {
         return weatherBackendProvider_;
     }
@@ -89,7 +88,7 @@ private:
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 
-    NMIWeatherAPI *weatherBackendProvider_; // OpenWeatherMap is not supported now anyway
+    AbstractWeatherAPI *weatherBackendProvider_; // OpenWeatherMap is not supported now anyway
 
     AbstractHourlyWeatherForecast* currentWeather_;
     AbstractWeatherForecast* forecast_;

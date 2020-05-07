@@ -65,12 +65,12 @@ void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast* fo
     // insert forecasts
     int currentDay = -1;
     int index = 0;
-    for (auto forecast : forecast->hourlyForecasts()) {
-        if (currentDay != forecast->date().date().day()) {
-            currentDay = forecast->date().date().day();
+    for (auto hourForecast : forecast->hourlyForecasts()) {
+        if (currentDay != hourForecast->date().date().day()) {
+            currentDay = hourForecast->date().date().day();
             dayList.append(index);
         }
-        auto *weatherHour = new WeatherHour(forecast);
+        auto *weatherHour = new WeatherHour(hourForecast);
         QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         hoursList.append(weatherHour);
 

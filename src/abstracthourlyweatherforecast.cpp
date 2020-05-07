@@ -24,6 +24,6 @@ AbstractHourlyWeatherForecast::AbstractHourlyWeatherForecast(QDateTime date,
     humidity_(humidity),
     fog_(fog),
     uvIndex_(uvIndex),
-    precipitationAmount_(precipitationAmount),
+    precipitationAmount_(precipitationAmount)
 {
 }

@@ -59,7 +59,7 @@ Kirigami.ScrollablePage {
                     ColumnLayout {
                         Kirigami.Icon {
                             Layout.alignment: Qt.AlignHCenter
-                            source: location.currentForecast.weatherIcon
+                            source: location.currentWeather.weatherIcon
                             Layout.maximumHeight: Kirigami.Units.iconSizes.medium
                             Layout.preferredWidth: height
                             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
@@ -67,7 +67,7 @@ Kirigami.ScrollablePage {
                         Label {
                             Layout.alignment: Qt.AlignHCenter
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.4
-                            text: location.currentForecast.maxTemp + "°"
+                            text: location.currentWeather.temperature + "°"
                         }
                     }
 
