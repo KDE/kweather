@@ -85,6 +85,8 @@ void LocationQueryModel::setQuery()
 
 void LocationQueryModel::addLocation(int index)
 {
+    if (resultsList.front()->latitude() == 1000)
+        return; // no result, don't add location
     index_ = index;
     emit appendLocation();
 }
@@ -103,11 +105,21 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     networkError_ = false;
     emit propertyChanged();
 
-    emit layoutAboutToBeChanged();
-
     QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
     QJsonObject root = document.object();
-
+    // if no result
+    if (root[QLatin1String("totalResultsCount")].toInt() == 0) {
+        resultsList.append(new LocationQueryResult(1000, 0, QLatin1String("No"), QLatin1String("Result"), QLatin1String("Found"), QString::fromUtf8("¯\(ツ)_/¯")));
+        return;
+    }
+    // if our api calls reached daily limit
+    if (root[QLatin1String("status")].toObject()[QLatin1String("value")].toInt() == 18) {
+        qWarning() << "api calls reached daily limit";
+        networkError_ = true;
+        emit propertyChanged();
+        return;
+    }
+    emit layoutAboutToBeChanged();
     QJsonArray geonames = root.value("geonames").toArray();
     // add query results
     for (QJsonValueRef resRef : geonames) {
