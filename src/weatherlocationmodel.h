@@ -21,8 +21,8 @@ class WeatherLocation : public QObject
     Q_PROPERTY(AbstractHourlyWeatherForecast *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
 public:
-    explicit WeatherLocation(AbstractWeatherForecast* forecast = nullptr);
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast = nullptr);
+    explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
 
     inline QString locationName()
     {
@@ -36,7 +36,7 @@ public:
     {
         return longitude_;
     }
-    inline AbstractHourlyWeatherForecast* currentWeather()
+    inline AbstractHourlyWeatherForecast *currentWeather()
     {
         return currentWeather_;
     }
@@ -48,7 +48,7 @@ public:
     {
         return weatherHourListModel_;
     }
-    inline AbstractWeatherForecast* forecast()
+    inline AbstractWeatherForecast *forecast()
     {
         return forecast_;
     }
@@ -72,10 +72,10 @@ public:
     void determineCurrentForecast();
 
 public slots:
-    void updateData(AbstractWeatherForecast* fc);
+    void updateData(AbstractWeatherForecast *fc);
 
 signals:
-    void weatherRefresh(AbstractWeatherForecast* fc); // sent when weather data is refreshed
+    void weatherRefresh(AbstractWeatherForecast *fc); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
 
@@ -87,10 +87,9 @@ private:
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 
-    AbstractWeatherAPI *weatherBackendProvider_; // OpenWeatherMap is not supported now anyway
-
-    AbstractHourlyWeatherForecast* currentWeather_;
-    AbstractWeatherForecast* forecast_;
+    AbstractWeatherAPI *weatherBackendProvider_;
+    AbstractHourlyWeatherForecast *currentWeather_;
+    AbstractWeatherForecast *forecast_;
 };
 
 class WeatherLocationListModel : public QAbstractListModel
@@ -108,7 +107,10 @@ public:
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void move(int oldIndex, int newIndex);
-    Q_INVOKABLE int count() {return locationsList.count();}
+    Q_INVOKABLE int count()
+    {
+        return locationsList.count();
+    }
     Q_INVOKABLE WeatherLocation *get(int index);
     inline QList<WeatherLocation *> &getList()
     {
