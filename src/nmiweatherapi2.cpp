@@ -135,15 +135,14 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     if (data.contains("next_1_hours")) {
         QJsonObject nextOneHours = data["next_1_hours"].toObject();
         symbolCode = nextOneHours["summary"].toObject()["symbol_code"].toString("unknown");
-        hourForecast->setPrecipitationAmount(nextOneHours["precipitation_amount"].toDouble());
+        hourForecast->setPrecipitationAmount(nextOneHours["details"].toObject()["precipitation_amount"].toDouble());
     } else {
         QJsonObject nextSixHours = data["next_6_hours"].toObject();
         symbolCode = nextSixHours["summary"].toObject()["symbol_code"].toString("unknown");
-        hourForecast->setPrecipitationAmount(nextSixHours["precipitation_amount"].toDouble());
+        hourForecast->setPrecipitationAmount(nextSixHours["details"].toObject()["precipitation_amount"].toDouble());
     }
 
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end - https://api.met.no/weatherapi/weathericon/2.0/legends
-//    qDebug() << symbolCode << (apiDescMap.find(symbolCode + "_day") != apiDescMap.end()); // TODO
     hourForecast->setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
 
     // figure out whether to use night or day weather icon and description
@@ -163,14 +162,9 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     // update day forecast with hour information if needed
     AbstractDailyWeatherForecast* dayForecast = dayCache[date.date()];
 
-    if (object.contains("data.next_1_hours")) {
-        QJsonObject nextOneHours = data["next_1_hours"].toObject();
-        dayForecast->setPrecipitation(dayForecast->precipitation() + nextOneHours["precipitation_amount"].toDouble());
-    } else {
-        QJsonObject nextSixHours = data["next_6_hours"].toObject();
-        dayForecast->setPrecipitation(dayForecast->precipitation() + nextSixHours["precipitation_amount"].toDouble());
-
-        QJsonObject details = nextSixHours["details"].toObject();
+    dayForecast->setPrecipitation(dayForecast->precipitation() + hourForecast->precipitationAmount());
+    if (data.contains("next_6_hours")) {
+        QJsonObject details = data["next_6_hours"].toObject()["details"].toObject();
         dayForecast->setMaxTemp(std::max(dayForecast->maxTemp(), (float)details["air_temperature_max"].toDouble()));
         dayForecast->setMinTemp(std::min(dayForecast->minTemp(), (float)details["air_temperature_min"].toDouble()));
     }
