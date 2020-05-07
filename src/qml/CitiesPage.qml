@@ -59,7 +59,7 @@ Kirigami.ScrollablePage {
                     ColumnLayout {
                         Kirigami.Icon {
                             Layout.alignment: Qt.AlignHCenter
-                            source: location.currentWeather.weatherIcon
+                            source: location.currentWeather.neutralWeatherIcon
                             Layout.maximumHeight: Kirigami.Units.iconSizes.medium
                             Layout.preferredWidth: height
                             Layout.preferredHeight: Kirigami.Units.iconSizes.medium

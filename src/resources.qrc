@@ -8,6 +8,7 @@
         <file>qml/SettingsPage.qml</file>
         <file>qml/AddCityPage.qml</file>
         <file>qml/PlaceholderMessage.qml</file>
+        <file>qml/Settings.qml</file>
         <file>resources/autumn.jpg</file>
     </qresource>
 </RCC>
