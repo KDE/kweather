@@ -7,7 +7,7 @@
 #include "weatherhourmodel.h"
 #include <QQmlEngine>
 /* ~~~ WeatherLocation ~~~ */
-WeatherLocation::WeatherLocation(AbstractWeatherForecast* forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherForecast *forecast)
 {
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
@@ -17,7 +17,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherForecast* forecast)
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
 }
 
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast* forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast)
 {
     this->weatherBackendProvider_ = weatherBackendProvider;
     this->locationName_ = locationName;
@@ -34,7 +34,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
-void WeatherLocation::updateData(AbstractWeatherForecast* fc)
+void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 {
     forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
     determineCurrentForecast();
@@ -124,6 +124,8 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
     auto api = new NMIWeatherAPI2();
+    qDebug() << "lat" << ret->latitude();
+    qDebug() << "lgn" << ret->longitude();
     api->setLocation(ret->latitude(), ret->longitude());
     auto location = new WeatherLocation(api, ret->name(), ret->latitude(), ret->longitude());
     api->update();

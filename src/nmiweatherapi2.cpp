@@ -22,6 +22,10 @@ void NMIWeatherAPI2::setLocation(float latitude, float longitude)
 {
     lat = latitude;
     lon = longitude;
+    if (timeZone.isEmpty()) {
+        tz = new GeoTimeZone(lat, lon);
+        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI2::setTZ);
+    }
 }
 
 void NMIWeatherAPI2::setToken(QString &)
@@ -44,11 +48,6 @@ NMIWeatherAPI2::~NMIWeatherAPI2()
 
 void NMIWeatherAPI2::update()
 {
-    if (timeZone.isEmpty()) {
-        tz = new GeoTimeZone(lat, lon);
-        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI2::setTZ); // if this failed, we will block forever, see line 81
-    }
-
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
     QUrlQuery query;
     query.addQueryItem("lat", QString::number(lat));
@@ -78,8 +77,6 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     // parse json
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     reply->deleteLater();
-    while (timeZone.isEmpty()) // block
-        continue;
 
     if (jsonDocument.isObject()) {
         QJsonObject obj = jsonDocument.object();
@@ -121,9 +118,11 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     // ignore last forecast, which does not have enough data
     if (!data.contains("next_6_hours") && !data.contains("next_1_hours"))
         return;
-
-    auto date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
-    date.setTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
+    QDateTime date;
+    if (timeZone.isEmpty())
+        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
+    else
+        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
     auto *hourForecast = new AbstractHourlyWeatherForecast();
 
     // set initial hour fields

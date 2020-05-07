@@ -78,7 +78,7 @@ void LocationQueryModel::setQuery()
     urlQuery.addQueryItem("maxRows", "50");
     urlQuery.addQueryItem("username", "kweatherdev");
     url.setQuery(urlQuery);
-
+    qDebug() << url.toString();
     QNetworkReply *rep = networkAccessManager->get(QNetworkRequest(url));
     connect(rep, &QNetworkReply::finished, this, [this, rep]() { handleQueryResults(rep); });
 }
@@ -94,7 +94,7 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     loading_ = false;
     if (!reply || reply->error()) {
         networkError_ = true;
-        qDebug()  << "Network error:" << reply->error();
+        qDebug() << "Network error:" << reply->error();
         emit propertyChanged();
         return;
     }
@@ -113,7 +113,7 @@ void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
     for (QJsonValueRef resRef : geonames) {
         QJsonObject res = resRef.toObject();
         auto *result = new LocationQueryResult(
-            res.value("lat").toDouble(), res.value("lng").toDouble(), res.value("toponymName").toString(), res.value("name").toString(), res.value("countryCode").toString(), res.value("countryName").toString());
+            res.value("lat").toString().toFloat(), res.value("lng").toString().toFloat(), res.value("toponymName").toString(), res.value("name").toString(), res.value("countryCode").toString(), res.value("countryName").toString());
         resultsList.append(result);
     }
 
