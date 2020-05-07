@@ -41,13 +41,19 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
     // the longer the merrier, this add locations
     QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, [weatherLocationListModel, locationQueryModel] { weatherLocationListModel->addLocation(locationQueryModel->get(locationQueryModel->index_)); });
+
     // register QML types
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
     qmlRegisterType<WeatherDay>("kweather", 1, 0, "WeatherDay");
     qmlRegisterType<WeatherHour>("kweather", 1, 0, "WeatherHour");
     qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
+    qmlRegisterType<AbstractHourlyWeatherForecast>("kweather", 1, 0, "AbstractHourlyWeatherForecast");
+    qmlRegisterType<AbstractDailyWeatherForecast>("kweather", 1, 0, "AbstractDailyWeatherForecast");
+    qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
+
+
     // load example test data for testing purposes TODO
     WeatherLocation *testLocation = new WeatherLocation(new NMIWeatherAPI(), "Toronto", 43.6532, -79.3832);
     WeatherLocation *testLocation2 = new WeatherLocation(new NMIWeatherAPI(), "Singapore", 1.3521, 103.8198);

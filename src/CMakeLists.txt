@@ -13,7 +13,7 @@ set(kweather_SRCS
     geotimezone.cpp
     locationquerymodel.cpp
     abstractdailyweatherforecast.cpp
-    )
+        abstracthourlyweatherforecast.cpp abstracthourlyweatherforecast.h nmiweatherapi2.cpp nmiweatherapi2.h)
 
 qt5_add_resources(RESOURCES resources.qrc)
 add_executable(kweather ${kweather_SRCS} ${RESOURCES})
