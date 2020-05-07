@@ -26,6 +26,8 @@ public:
 signals:
 
     void updated();
+public slots:
+    void cache();
 private slots:
     void update();
 
@@ -39,7 +41,6 @@ private:
     void writeToCache(WeatherLocation &data);
     QTimer *updateTimer;
     QTimer *cacheTimer;
-    void cache();
     void readFromCache();
     WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
     WeatherForecastManager(const WeatherForecastManager &);

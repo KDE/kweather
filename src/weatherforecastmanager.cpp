@@ -30,7 +30,6 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     auto rand = std::bind(*distribution, generator);
     cacheTimer = new QTimer(this);
     cacheTimer->setSingleShot(true);
-    cacheTimer->start(1000 * 60); // cache after 60 sec. TODO: use signal
     connect(cacheTimer, &QTimer::timeout, this, &WeatherForecastManager::cache);
 
     updateTimer = new QTimer(this);
@@ -55,6 +54,8 @@ void WeatherForecastManager::update()
         wLocation->weatherBackendProvider()->update();
     }
     updateTimer->start(1000 * 3600 + rand() * 1000); // reset timer
+
+    cacheTimer->start(1000 * 60); // cache after 60 sec.
 }
 
 void WeatherForecastManager::writeToCache(WeatherLocation &data)
@@ -218,5 +219,4 @@ void WeatherForecastManager::cache()
     for (auto lc : model_.getList()) {
         writeToCache(*lc);
     }
-    cacheTimer->start(1000 * 3600 * 2); // cache every two hours
 }
