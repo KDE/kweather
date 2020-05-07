@@ -46,7 +46,7 @@ ListView {
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
-                    text: weatherLocation.currentWeather.temperature.toFixed(1) + "°" // TODO
+                    text: Math.round(weatherLocation.currentWeather.temperature) + "°" // TODO
                 }
             }
         }

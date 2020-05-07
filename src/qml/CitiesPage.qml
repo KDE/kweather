@@ -67,7 +67,7 @@ Kirigami.ScrollablePage {
                         Label {
                             Layout.alignment: Qt.AlignHCenter
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.4
-                            text: location.currentWeather.temperature.toFixed(1) + "°"
+                            text: Math.round(location.currentWeather.temperature) + "°"
                         }
                     }
 
