@@ -110,7 +110,14 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     }
     // sort daily forecast
     currentData_->sortDailyForecast();
-
+    if (!isTimeZoneSet) {
+        if (!timeZone.isEmpty()) {
+            for (auto fc : currentData_->hourlyForecasts()) {
+                fc->setDate(fc->date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString()))));
+            }
+        } else
+            emit noTimeZone();
+    }
     emit updated(this->currentData());
 }
 
@@ -122,9 +129,10 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     if (!data.contains("next_6_hours") && !data.contains("next_1_hours"))
         return;
     QDateTime date;
-    if (timeZone.isEmpty())
+    if (timeZone.isEmpty()) {
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
-    else
+        isTimeZoneSet = false;
+    } else
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
     auto *hourForecast = new AbstractHourlyWeatherForecast();
 

@@ -34,6 +34,8 @@ public:
     {
         timeZone = std::move(tz);
     };
+signals:
+    void noTimeZone();
 private slots:
     void setTZ();
     void parse(QNetworkReply *Reply) override;
@@ -42,7 +44,7 @@ private:
     void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList);
     QString timeZone;
     GeoTimeZone *tz;
-
+    bool isTimeZoneSet = true; // determine whether timezone data is set when parsing
     struct ResolvedWeatherDesc {
         QString icon, desc;
         ResolvedWeatherDesc() = default;
