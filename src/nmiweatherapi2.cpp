@@ -15,6 +15,7 @@
 #include <QtCore/QJsonArray>
 #include <QtCore/QJsonDocument>
 #include <QtCore/QJsonObject>
+#include <algorithm>
 
 #include <zlib.h>
 
@@ -107,6 +108,8 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     if (currentData_ == nullptr) {
         currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), "TODO weather location", lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
+    // sort daily forecast
+    currentData_->sortDailyForecast();
 
     emit updated(this->currentData());
 }

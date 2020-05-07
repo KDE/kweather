@@ -18,10 +18,7 @@ class AbstractWeatherForecast : public QObject
 public:
     AbstractWeatherForecast(QDateTime timeCreated_ = QDateTime::currentDateTime());
     ~AbstractWeatherForecast();
-    AbstractWeatherForecast(QDateTime timeCreated_,
-                            QString locationName,
-                            float latitude,
-                            float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
+    AbstractWeatherForecast(QDateTime timeCreated_, QString locationName, float latitude, float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
     inline const QString &locationName()
     {
         return locationName_;
@@ -63,15 +60,15 @@ public:
     {
         longitude_ = l;
     }
-    void setHourlyForecasts(const QList<AbstractHourlyWeatherForecast*>& hourlyForecasts)
+    void setHourlyForecasts(const QList<AbstractHourlyWeatherForecast *> &hourlyForecasts)
     {
         hourlyForecasts_ = hourlyForecasts;
     }
-    void setDailyForecasts(const QList<AbstractDailyWeatherForecast*>& dailyForecasts)
+    void setDailyForecasts(const QList<AbstractDailyWeatherForecast *> &dailyForecasts)
     {
         dailyForecasts_ = dailyForecasts;
     }
-
+    void sortDailyForecast();
 signals:
     void propertyChanged();
 
