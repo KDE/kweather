@@ -15,7 +15,7 @@ class WeatherDay : public QObject
     Q_OBJECT
     Q_PROPERTY(QString weatherDescription READ weatherDescription NOTIFY propertyChanged)
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY propertyChanged)
-    Q_PROPERTY(QDate date READ date NOTIFY propertyChanged)
+    Q_PROPERTY(QDateTime date READ date NOTIFY propertyChanged)
     Q_PROPERTY(QString maxTemp READ maxTemp NOTIFY propertyChanged)
     Q_PROPERTY(QString minTemp READ minTemp NOTIFY propertyChanged)
 
@@ -26,7 +26,7 @@ public:
 
     inline QString weatherDescription() {return weatherDescription_;}
     inline QString weatherIcon() {return weatherIcon_;}
-    inline QDate date() {return date_;}
+    inline QDateTime date() {return QDateTime(date_);}
     inline QString maxTemp() {
         QSettings settings;
         if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {

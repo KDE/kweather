@@ -125,12 +125,16 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     // ignore last forecast, which does not have enough data
     if (!data.contains("next_6_hours") && !data.contains("next_1_hours"))
         return;
+
+    // correct date to corresponding timezone of location if possible
     QDateTime date;
     if (timeZone.isEmpty()) {
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
         isTimeZoneSet = false;
-    } else
+    } else {
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
+    }
+
     auto *hourForecast = new AbstractHourlyWeatherForecast();
 
     // set initial hour fields

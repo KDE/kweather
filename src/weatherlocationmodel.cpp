@@ -67,11 +67,11 @@ QJsonObject WeatherLocation::toJson()
 
 void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 {
-    bool isNewer = false;
-    if (forecast_ == nullptr || fc->timeCreated().toSecsSinceEpoch() > forecast_->timeCreated().toSecsSinceEpoch()) {
-        forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
-        isNewer = true;
-    }
+    // only update if the forecast is newer
+    if (forecast_ != nullptr && fc->timeCreated().toSecsSinceEpoch() < forecast_->timeCreated().toSecsSinceEpoch())
+        return;
+
+    forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
     emit weatherRefresh(fc);

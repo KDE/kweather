@@ -34,8 +34,8 @@ Kirigami.ApplicationWindow
                 onTriggered: switchToPage(forecastPage);
             },
             Kirigami.Action {
-                text: "Cities"
-                iconName: "weather-clear"
+                text: "Locations"
+                iconName: "globe"
                 onTriggered: switchToPage(citiesPage);
             },
             Kirigami.Action {
