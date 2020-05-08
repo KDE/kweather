@@ -7,6 +7,12 @@ import org.kde.kirigami 2.11 as Kirigami
 Kirigami.ScrollablePage {
     title: "Forecast"
 
+    PlaceholderMessage {
+        iconName: "globe"
+        text: i18n("No locations configured")
+        visible: forecastView.count == 0
+    }
+
     SwipeView {
         id: forecastView
         anchors.fill: parent

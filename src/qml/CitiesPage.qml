@@ -5,11 +5,11 @@ import org.kde.kirigami 2.12 as Kirigami
 import kweather 1.0
 
 Kirigami.ScrollablePage {
-    title: i18n("Cities")
+    title: i18n("Locations")
     
     actions.main: Kirigami.Action {
         iconName: "list-add"
-        text: "Add City"
+        text: "Add Location"
         onTriggered: pageStack.push(addCityPage)
     }
     
@@ -26,7 +26,7 @@ Kirigami.ScrollablePage {
 
         PlaceholderMessage {
             iconName: "globe"
-            text: i18n("Add a city")
+            text: i18n("Add a location")
             visible: citiesList.count == 0
         }
 
