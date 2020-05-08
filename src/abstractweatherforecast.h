@@ -20,7 +20,7 @@ public:
     AbstractWeatherForecast(QDateTime timeCreated_, QString locationId, float latitude, float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
 
     QJsonObject toJson();
-    static AbstractWeatherForecast* fromJson(QJsonObject obj);
+    static AbstractWeatherForecast *fromJson(QJsonObject obj);
 
     inline const QString &locationId()
     {

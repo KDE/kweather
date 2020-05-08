@@ -35,7 +35,6 @@ void GeoTimeZone::downloadFinished(QNetworkReply *reply)
     tz = doc["timezoneId"].toString();
     reply->deleteLater();
     emit finished();
-    qDebug() << tz;
 }
 
 QString GeoTimeZone::getTimeZone()

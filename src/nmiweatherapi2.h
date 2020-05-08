@@ -10,7 +10,6 @@
 
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
-
 class QXmlStreamReader;
 class GeoTimeZone;
 // Norwegian Meteorological Institute Weather API Implementation (v2)
@@ -26,7 +25,7 @@ public:
     void update() override;
     void setLocation(float lat, float lon) override;
     void setToken(QString &) override;
-    inline QString &getTimeZone()
+    inline QString &getTimeZone() override
     {
         return timeZone;
     };

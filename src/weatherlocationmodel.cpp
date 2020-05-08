@@ -67,17 +67,11 @@ QJsonObject WeatherLocation::toJson()
 
 void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 {
-    bool isNewer = false;
-    if (fc->timeCreated().toSecsSinceEpoch() > forecast_->timeCreated().toSecsSinceEpoch()) {
-        forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
-        isNewer = true;
-    }
+    forecast_ = fc;
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
-
     emit weatherRefresh(fc);
-    if (isNewer)
-        writeToCache(fc);
+    writeToCache(fc);
 }
 
 void WeatherLocation::determineCurrentForecast()
@@ -222,7 +216,7 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
 void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
-    auto api = new NMIWeatherAPI2(ret->name());
+    auto api = new NMIWeatherAPI2(ret->geonameId());
     qDebug() << "lat" << ret->latitude();
     qDebug() << "lgn" << ret->longitude();
     api->setLocation(ret->latitude(), ret->longitude());

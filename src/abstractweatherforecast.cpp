@@ -30,12 +30,10 @@ AbstractWeatherForecast *AbstractWeatherForecast::fromJson(QJsonObject obj)
     auto *fc = new AbstractWeatherForecast();
     fc->setTimeCreated(QDateTime::fromString(obj["timeCreated"].toString(), Qt::ISODate));
     fc->setLocationId(obj["locationId"].toString());
-    fc->setLatitude(obj["latitude"].toDouble());
-    fc->setLongitude(obj["longitude"].toDouble());
-
+    fc->setLatitude(obj["latitude"].toString().toDouble());
+    fc->setLongitude(obj["longitude"].toString().toDouble());
     QList<AbstractHourlyWeatherForecast *> hourList;
     QList<AbstractDailyWeatherForecast *> dayList;
-    auto now = QDateTime::currentDateTime().toSecsSinceEpoch();
     for (auto hour : obj["hourlyForecasts"].toArray())
         hourList.push_back(AbstractHourlyWeatherForecast::fromJson(hour.toObject()));
     for (auto day : obj["dailyForecasts"].toArray())
@@ -50,7 +48,7 @@ QJsonObject AbstractWeatherForecast::toJson()
 {
     QJsonObject obj;
     obj["timeCreated"] = this->timeCreated().toString(Qt::ISODate);
-    obj["locationId"] = this->locationId();
+    obj["locationId"] = QString(this->locationId());
     obj["latitude"] = QString::number(this->latitude());
     obj["longitude"] = QString::number(this->longitude());
 
