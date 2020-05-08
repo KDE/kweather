@@ -221,62 +221,103 @@ ListView {
             }
         }
 
-        // daily display
-        Kirigami.Card {
-            anchors.left: parent.left
-            anchors.right: parent.right
+//        // bottom cards
+//        ColumnLayout {
+//            Kirigami.CardsLayout {
+//
+//                property WeatherDay weather: weatherLocation.dayListModel.get(index)
+//
+//                Kirigami.AbstractCard {
+//                    width: pageForecast.width / 3
+//                    showClickFeedback: true
+//                    header: Kirigami.Heading {
+//                        text: i18n("Humidity")
+//                        level: 2
+//                    }
+//                    contentItem: ProgressCircle {
+//                        progress: 20
+//                        label: Label {
+//                            text: "50 %"
+//                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+//                        }
+//                        radius: 50
+//                    }
+//                }
+//
+//                Kirigami.AbstractCard {
+//                    width: pageForecast.width / 3
+//                    showClickFeedback: true
+//                    header: Kirigami.Heading {
+//                        text: i18n("Air Quality")
+//                        level: 2
+//                    }
+//                    contentItem: ProgressCircle {
+//                        progress: 39
+//                        label: Label {
+//                            text: "39"
+//                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+//                        }
+//                        radius: 50
+//                    }
+//                }
+//            }
+//        }
 
-            property WeatherDay weather: weatherLocation.dayListModel.get(index)
-
-            contentItem: Item {
-                implicitWidth: delegateLayout.implicitWidth
-                implicitHeight: delegateLayout.implicitHeight
-                RowLayout {
-                    id: delegateLayout
-                    anchors {
-                        left: parent.left
-                        top: parent.top
-                        right: parent.right
-                        leftMargin: Kirigami.Units.largeSpacing
-                        rightMargin: Kirigami.Units.largeSpacing
-                    }
-
-                    spacing: Kirigami.Units.largeSpacing * 2
-
-                    Kirigami.Icon {
-                        Layout.alignment: Qt.AlignHCenter
-                        source: "raindrop"
-                        Layout.maximumHeight: Kirigami.Units.iconSizes.medium
-                        Layout.preferredWidth: height
-                        Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-                    }
-
-
-                    // day and other info
-                    ColumnLayout {
-                        Kirigami.Heading {
-                            level: 2
-                            text: i18n("Probability of Precipitation")
-                        }
-                        Kirigami.Separator {
-                            Layout.fillWidth: true
-                        }
-                        // precipitation
-                        RowLayout {
-                            Kirigami.Icon {
-                                source: "raindrop"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight
-                            }
-                            Label {
-                                color: Kirigami.Theme.disabledTextColor
-                                text: "50 %" // TODO
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        Kirigami.Card {
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+//
+//            property WeatherDay weather: weatherLocation.dayListModel.get(index)
+//
+//            contentItem: Item {
+//                implicitWidth: delegateLayout.implicitWidth
+//                implicitHeight: delegateLayout.implicitHeight
+//                RowLayout {
+//                    id: delegateLayout
+//                    anchors {
+//                        left: parent.left
+//                        top: parent.top
+//                        right: parent.right
+//                        leftMargin: Kirigami.Units.largeSpacing
+//                        rightMargin: Kirigami.Units.largeSpacing
+//                    }
+//
+//                    spacing: Kirigami.Units.largeSpacing * 2
+//
+//                    Kirigami.Icon {
+//                        Layout.alignment: Qt.AlignHCenter
+//                        source: "raindrop"
+//                        Layout.maximumHeight: Kirigami.Units.iconSizes.medium
+//                        Layout.preferredWidth: height
+//                        Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+//                    }
+//
+//
+//                    // day and other info
+//                    ColumnLayout {
+//                        Kirigami.Heading {
+//                            level: 2
+//                            text: i18n("Probability of Precipitation")
+//                        }
+//                        Kirigami.Separator {
+//                            Layout.fillWidth: true
+//                        }
+//                        // precipitation
+//                        RowLayout {
+//                            Kirigami.Icon {
+//                                source: "raindrop"
+//                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+//                                Layout.minimumWidth: Layout.minimumHeight
+//                            }
+//                            Label {
+//                                color: Kirigami.Theme.disabledTextColor
+//                                text: "50 %" // TODO
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 }
 
