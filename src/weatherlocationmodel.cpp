@@ -49,7 +49,9 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
-    return new WeatherLocation(new NMIWeatherAPI2(obj["locationId"].toString()), obj["locationId"].toString(), obj["locationName"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
+    auto api = new NMIWeatherAPI2(obj["locationId"].toString());
+    api->setTimeZone(obj["timezone"].toString());
+    return new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
 }
 
 QJsonObject WeatherLocation::toJson()
@@ -59,17 +61,22 @@ QJsonObject WeatherLocation::toJson()
     obj["locationName"] = locationName();
     obj["latitude"] = latitude();
     obj["longitude"] = longitude();
+    obj["timezone"] = weatherBackendProvider_->getTimeZone();
     return obj;
 }
 
 void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 {
-    forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
+    bool isNewer = false;
+    if (fc->timeCreated().toSecsSinceEpoch() > forecast_->timeCreated().toSecsSinceEpoch()) {
+        forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
+        isNewer = true;
+    }
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
 
     emit weatherRefresh(fc);
-    if (fc->timeCreated() > forecast_->timeCreated())
+    if (isNewer)
         writeToCache(fc);
 }
 
@@ -103,7 +110,6 @@ void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
         dir.mkpath(".");
     // should be this path: /home/user/.cache/kweather/cache/7000/3000 for location with coordinate 70.00 30.00
     file.setFileName(dir.path() + "/cache.json");
-    qDebug() << file.fileName();
     file.open(QIODevice::WriteOnly);
     file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
     file.close();
@@ -127,7 +133,6 @@ void WeatherLocationListModel::load()
     auto config = KSharedConfig::openConfig();
     KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
     QJsonDocument doc = QJsonDocument::fromJson(group.readEntry(WEATHER_LOCATIONS_CFG_KEY, "{}").toUtf8());
-
     for (QJsonValueRef r : doc.array()) {
         QJsonObject obj = r.toObject();
         locationsList.append(WeatherLocation::fromJson(obj));

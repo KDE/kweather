@@ -20,7 +20,7 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     }
 
     // create cache location if it does not exist, and load cache
-    QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
+    QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache");
     if (!dir.exists())
         dir.mkpath(".");
     readFromCache();
@@ -60,10 +60,8 @@ void WeatherForecastManager::readFromCache()
 
     QFile reader;
     QDirIterator It(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
-    qDebug() << It.path();
     while (It.hasNext()) {
         reader.setFileName(It.next());
-        qDebug() << reader.fileName();
         if (reader.fileName().right(10) != QLatin1String("cache.json")) // if not cache file ignore
             continue;
         reader.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -73,7 +71,6 @@ void WeatherForecastManager::readFromCache()
         bool isFound = false; // if this location is needed
         // loop over existing locations and add cached weather forecast data if location found
         for (auto wl : model_.getList()) {
-            qDebug() << "locationID" << wl->locationId();
             if (fc->locationId() == wl->locationId()) {
                 isFound = true;
                 // add forecast if it does not exist, or is newer than existing data
@@ -83,8 +80,8 @@ void WeatherForecastManager::readFromCache()
                 break;
             }
         }
-        if (!isFound)
-            reader.remove();
+        // if (!isFound)
+        // reader.remove();
         reader.close();
         // delete if forecast was not used
     }
