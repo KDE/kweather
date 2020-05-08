@@ -24,10 +24,7 @@ public:
     static WeatherForecastManager &instance(WeatherLocationListModel &model);
 
 signals:
-
     void updated();
-public slots:
-    void cache();
 private slots:
     void update();
 
@@ -36,11 +33,8 @@ private:
     std::uniform_int_distribution<int> *distribution;
     WeatherLocationListModel &model_;
     int api_ = NORWEGIAN;
-    QJsonDocument convertToJson(AbstractWeatherForecast* lc);
-    AbstractWeatherForecast* convertFromJson(QByteArray data);
-    void writeToCache(AbstractWeatherForecast* data);
+    AbstractWeatherForecast *convertFromJson(QByteArray data);
     QTimer *updateTimer;
-    QTimer *cacheTimer;
     void readFromCache();
     WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
     WeatherForecastManager(const WeatherForecastManager &);

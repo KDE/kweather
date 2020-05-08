@@ -7,6 +7,8 @@
 #include "weatherhourmodel.h"
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
+#include <QDir>
+#include <QFile>
 #include <QQmlEngine>
 #include <QtCore/QJsonArray>
 
@@ -45,7 +47,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
 }
 
-WeatherLocation* WeatherLocation::fromJson(const QJsonObject& obj)
+WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
     return new WeatherLocation(new NMIWeatherAPI2(obj["locationId"].toString()), obj["locationId"].toString(), obj["locationName"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
 }
@@ -67,6 +69,8 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     this->lastUpdated_ = fc->timeCreated();
 
     emit weatherRefresh(fc);
+    if (fc->timeCreated() > forecast_->timeCreated())
+        writeToCache(fc);
 }
 
 void WeatherLocation::determineCurrentForecast()
@@ -87,6 +91,28 @@ void WeatherLocation::determineCurrentForecast()
     }
     QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     emit currentForecastChange();
+}
+
+void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
+{
+    QFile file;
+    QString url;
+    url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+    QDir dir(url.append(QString("/cache/%1/%2/").arg(QString::number(static_cast<int>(fc->latitude() * 100))).arg(QString::number(static_cast<int>(fc->longitude() * 100))))); // create cache location
+    if (!dir.exists())
+        dir.mkpath(".");
+    // should be this path: /home/user/.cache/kweather/cache/7000/3000 for location with coordinate 70.00 30.00
+    file.setFileName(dir.path() + "/cache.json");
+    qDebug() << file.fileName();
+    file.open(QIODevice::WriteOnly);
+    file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
+    file.close();
+}
+QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
+{
+    QJsonDocument doc;
+    doc.setObject(fc->toJson());
+    return doc;
 }
 
 /* ~~~ WeatherLocationListModel ~~~ */

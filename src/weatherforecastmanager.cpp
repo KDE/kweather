@@ -27,9 +27,6 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
 
     distribution = new std::uniform_int_distribution<int>(0, 30 * 60); // uniform random update interval, 60 min to 90 min
     auto rand = std::bind(*distribution, generator);
-    cacheTimer = new QTimer(this);
-    cacheTimer->setSingleShot(true);
-    connect(cacheTimer, &QTimer::timeout, this, &WeatherForecastManager::cache);
 
     updateTimer = new QTimer(this);
     updateTimer->setSingleShot(true);
@@ -53,45 +50,32 @@ void WeatherForecastManager::update()
         wLocation->weatherBackendProvider()->update();
     }
     updateTimer->start(1000 * 3600 + rand() * 1000); // reset timer
-
-    cacheTimer->start(1000 * 60); // cache after 60 sec.
-}
-
-void WeatherForecastManager::writeToCache(AbstractWeatherForecast* data)
-{
-    QFile file;
-    QString url;
-    url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QDir dir(url.append(QString("/cache/%1/%2/").arg(QString::number(static_cast<int>(data->latitude() * 100))).arg(QString::number(static_cast<int>(data->longitude() * 100))))); // create cache location
-    if (!dir.exists())
-        dir.mkpath(".");
-    // should be this path: /home/user/.cache/kweather/7000/3000 for location with coordinate 70.00 30.00
-    file.setFileName(dir.path() + "/cache.json");
-    qDebug() << file.fileName();
-    file.open(QIODevice::WriteOnly);
-    file.write(convertToJson(data).toJson(QJsonDocument::Compact)); // write json
-    file.close();
 }
 
 void WeatherForecastManager::readFromCache()
 {
-    QHash<WeatherLocation*, AbstractWeatherForecast*> map;
-    for (auto wl : model_.getList()) map[wl] = nullptr;
+    QHash<WeatherLocation *, AbstractWeatherForecast *> map;
+    for (auto wl : model_.getList())
+        map[wl] = nullptr;
 
     QFile reader;
     QDirIterator It(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
+    qDebug() << It.path();
     while (It.hasNext()) {
         reader.setFileName(It.next());
+        qDebug() << reader.fileName();
         if (reader.fileName().right(10) != QLatin1String("cache.json")) // if not cache file ignore
             continue;
         reader.open(QIODevice::ReadOnly | QIODevice::Text);
 
         // obtain weather forecast
-        AbstractWeatherForecast* fc = convertFromJson(reader.readAll());
-
+        AbstractWeatherForecast *fc = convertFromJson(reader.readAll());
+        bool isFound = false; // if this location is needed
         // loop over existing locations and add cached weather forecast data if location found
         for (auto wl : model_.getList()) {
+            qDebug() << "locationID" << wl->locationId();
             if (fc->locationId() == wl->locationId()) {
+                isFound = true;
                 // add forecast if it does not exist, or is newer than existing data
                 if (map[wl] == nullptr || map[wl]->timeCreated() < fc->timeCreated()) {
                     map[wl] = fc;
@@ -99,9 +83,10 @@ void WeatherForecastManager::readFromCache()
                 break;
             }
         }
-
-        // TODO delete if forecast was not used
+        if (!isFound)
+            reader.remove();
         reader.close();
+        // delete if forecast was not used
     }
 
     // add loaded locations from cache
@@ -112,27 +97,8 @@ void WeatherForecastManager::readFromCache()
     }
 }
 
-QJsonDocument WeatherForecastManager::convertToJson(AbstractWeatherForecast* fc) // Qt uses QByteArray internally, pass by copy
-{
-    QJsonDocument doc;
-    doc.setObject(fc->toJson());
-    return doc;
-}
-
-AbstractWeatherForecast* WeatherForecastManager::convertFromJson(QByteArray data)
+AbstractWeatherForecast *WeatherForecastManager::convertFromJson(QByteArray data)
 {
     QJsonObject doc = QJsonDocument::fromJson(data).object();
     return AbstractWeatherForecast::fromJson(doc);
-}
-
-void WeatherForecastManager::cache()
-{
-    qDebug() << "start caching";
-    auto list = model_.getList();
-    if (list.isEmpty())
-        return;
-    for (auto lc : model_.getList()) {
-        if (lc->forecast() != nullptr)
-            writeToCache(lc->forecast());
-    }
 }

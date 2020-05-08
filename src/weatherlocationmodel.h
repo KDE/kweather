@@ -5,8 +5,8 @@
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QObject>
-#include <QtCore/QJsonObject>
 #include <QtCore/QJsonDocument>
+#include <QtCore/QJsonObject>
 #include <utility>
 
 class WeatherDayListModel;
@@ -27,7 +27,7 @@ public:
     explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
 
-    static WeatherLocation* fromJson(const QJsonObject& json);
+    static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
 
@@ -91,6 +91,8 @@ signals:
     void propertyChanged(); // avoid warning
 
 private:
+    void writeToCache(AbstractWeatherForecast *fc);
+    QJsonDocument convertToJson(AbstractWeatherForecast *fc);
     QString locationName_;
     QString locationId_;
     QDateTime lastUpdated_;
