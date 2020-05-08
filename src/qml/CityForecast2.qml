@@ -46,7 +46,7 @@ ListView {
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
-                    text: Math.round(weatherLocation.currentWeather.temperature) + "°" // TODO
+                    text: weatherLocation.currentWeather.temperature
                 }
             }
         }
@@ -107,7 +107,7 @@ ListView {
                     anchors.fill: parent
                     onClicked: {
                         dailyListView.currentIndex = index
-                        weatherLocation.hourListModel.updateUi(index) // change hour view
+                        weatherLocation.hourListModel.updateHourView(index) // change hour view
                     }
                 }
 
@@ -135,13 +135,13 @@ ListView {
                         Label {
                             id: highTemp
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                            text: weather != null ? weather.maxTemp + "°" : ""
+                            text: weather != null ? weather.maxTemp : ""
                         }
                         Label {
                             anchors.baseline: highTemp.baseline
                             color: Kirigami.Theme.disabledTextColor
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                            text: weather != null ? weather.minTemp + "°" : ""
+                            text: weather != null ? weather.minTemp : ""
                         }
                     }
                     Label {
@@ -193,7 +193,7 @@ ListView {
                         Layout.minimumWidth: Layout.minimumHeight
                     }
                     Label {
-                        text: weather != null ? weather.temperature + "°" : ""
+                        text: weather != null ? weather.temperature : ""
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     }
                     Label {

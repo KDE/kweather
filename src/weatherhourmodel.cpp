@@ -81,9 +81,16 @@ void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast* fo
     emit layoutChanged();
 }
 
-void WeatherHourListModel::updateUi(int index)
+void WeatherHourListModel::updateHourView(int index)
 {
     emit layoutAboutToBeChanged();
     day = index;
     emit layoutChanged();
+}
+
+void WeatherHourListModel::updateUi()
+{
+    for (auto h : hoursList) {
+        emit h->propertyChanged();
+    }
 }

@@ -65,4 +65,7 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* fore
 
 void WeatherDayListModel::updateUi()
 {
+    for (auto h : daysList) {
+        emit h->propertyChanged();
+    }
 }

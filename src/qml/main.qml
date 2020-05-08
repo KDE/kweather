@@ -65,10 +65,6 @@ Kirigami.ApplicationWindow
         visible: false
     }
 
-    Settings {
-        id: settings
-    }
-    
     Kirigami.AboutPage {
         id: aboutPage
         visible: false

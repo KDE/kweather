@@ -89,10 +89,10 @@ void WeatherForecastManager::readFromCache()
         // obtain weather forecast
         AbstractWeatherForecast* fc = convertFromJson(reader.readAll());
 
-        // loop over existing locations and add weather forecast if location found
+        // loop over existing locations and add cached weather forecast data if location found
         for (auto wl : model_.getList()) {
             if (fc->locationId() == wl->locationId()) {
-                // add forecast if it does not exist, or is newer
+                // add forecast if it does not exist, or is newer than existing data
                 if (map[wl] == nullptr || map[wl]->timeCreated() < fc->timeCreated()) {
                     map[wl] = fc;
                 }

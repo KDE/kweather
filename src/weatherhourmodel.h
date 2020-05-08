@@ -4,6 +4,7 @@ class WeatherLocation;
 
 #include <QAbstractListModel>
 #include <QObject>
+#include <QtCore/QSettings>
 #include <utility>
 
 #include "abstractweatherforecast.h"
@@ -12,16 +13,16 @@ class WeatherLocation;
 class WeatherHour : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
-    Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
-    Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
-    Q_PROPERTY(float precipitation READ precipitation WRITE setPrecipitation NOTIFY propertyChanged)
-    Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
-    Q_PROPERTY(int windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
-    Q_PROPERTY(int temperature READ temperature WRITE setTemperature NOTIFY propertyChanged)
-    Q_PROPERTY(int humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
-    Q_PROPERTY(int pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
-    Q_PROPERTY(QDateTime date READ date WRITE setDate NOTIFY propertyChanged)
+    Q_PROPERTY(QString windDirection READ windDirection NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherDescription READ weatherDescription NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY propertyChanged)
+    Q_PROPERTY(float precipitation READ precipitation NOTIFY propertyChanged)
+    Q_PROPERTY(float fog READ fog NOTIFY propertyChanged)
+    Q_PROPERTY(float windSpeed READ windSpeed NOTIFY propertyChanged)
+    Q_PROPERTY(QString temperature READ temperature NOTIFY propertyChanged)
+    Q_PROPERTY(float humidity READ humidity NOTIFY propertyChanged)
+    Q_PROPERTY(float pressure READ pressure NOTIFY propertyChanged)
+    Q_PROPERTY(QDateTime date READ date NOTIFY propertyChanged)
 
 public:
     explicit WeatherHour();
@@ -41,27 +42,32 @@ public:
     }
     inline float precipitation() const
     {
-        return precipitation_;
+        return qRound(precipitation_);
     }
     inline float fog() const
     {
-        return fog_;
+        return qRound(fog_);
     }
-    inline int windSpeed() const
+    inline float windSpeed() const
     {
-        return windSpeed_;
+        return qRound(windSpeed_);
     }
-    inline int temperature() const
+    inline QString temperature() const
     {
-        return temperature_;
+        QSettings settings;
+        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+            return QString::number(qRound(temperature_ * 1.8 + 32)) + "°";
+        } else {
+            return QString::number(qRound(temperature_)) + "°";
+        }
     }
-    inline int humidity() const
+    inline float humidity() const
     {
-        return humidity_;
+        return qRound(humidity_);
     }
-    inline int pressure() const
+    inline float pressure() const
     {
-        return pressure_;
+        return qRound(pressure_);
     }
     inline QDateTime date() const
     {
@@ -88,19 +94,19 @@ public:
     {
         this->fog_ = fog;
     }
-    inline void setWindSpeed(int windSpeed)
+    inline void setWindSpeed(float windSpeed)
     {
         this->windSpeed_ = windSpeed;
     }
-    inline void setTemperature(int temperature)
+    inline void setTemperature(float temperature)
     {
         this->temperature_ = temperature;
     }
-    inline void setHumidity(int humidity)
+    inline void setHumidity(float humidity)
     {
         this->humidity_ = humidity;
     }
-    inline void setPressure(int pressure)
+    inline void setPressure(float pressure)
     {
         this->pressure_ = pressure;
     }
@@ -117,10 +123,10 @@ private:
     QString weatherIcon_;
     float precipitation_;
     float fog_;
-    int windSpeed_;
-    int temperature_;
-    int humidity_;
-    int pressure_;
+    float windSpeed_;
+    float temperature_;
+    float humidity_;
+    float pressure_;
 
     QDateTime date_;
 };
@@ -135,7 +141,8 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     Q_INVOKABLE WeatherHour *get(int index);
 
-    Q_INVOKABLE void updateUi(int index);
+    Q_INVOKABLE void updateHourView(int index);
+    Q_INVOKABLE void updateUi();
 public slots:
     void refreshHoursFromForecasts(AbstractWeatherForecast* forecast);
 

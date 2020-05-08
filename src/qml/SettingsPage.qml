@@ -32,7 +32,7 @@ Kirigami.ScrollablePage {
                     font.weight: Font.Bold
                 }
                 Label {
-                    text: i18n(settings.temperatureUnits)
+                    text: i18n(settingsModel.temperatureUnits)
                 }
             }
         }
@@ -68,16 +68,20 @@ Kirigami.ScrollablePage {
         standardButtons: Dialog.Close
         title: i18n("Temperature Units")
 
+        onAccepted: weatherLocationListModel.updateUi();
+        onRejected: weatherLocationListModel.updateUi();
+
         contentItem: ScrollView {
             ListView {
                 model: ["Celsius", "Fahrenheit"]
                 delegate: RadioDelegate {
                     width: parent.width
                     text: i18n(modelData)
-                    checked: settings.temperatureUnits == modelData
+                    checked: settingsModel.temperatureUnits == modelData
                     onCheckedChanged: {
-                        if (checked)
-                            settings.temperatureUnits = modelData;
+                        if (checked) {
+                            settingsModel.temperatureUnits = modelData;
+                        }
                     }
                 }
             }

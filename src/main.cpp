@@ -11,15 +11,16 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#include "abstractdailyweatherforecast.h"
+#include "abstracthourlyweatherforecast.h"
+#include "abstractweatherforecast.h"
 #include "locationquerymodel.h"
 #include "nmiweatherapi2.h"
+#include "settingsmodel.h"
 #include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
-#include "abstractweatherforecast.h"
-#include "abstracthourlyweatherforecast.h"
-#include "abstractdailyweatherforecast.h"
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
@@ -38,10 +39,12 @@ int main(int argc, char *argv[])
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
     auto *locationQueryModel = new LocationQueryModel();
+    auto *settingsModel = new SettingsModel();
     WeatherForecastManager::instance(*weatherLocationListModel);
 
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
+    engine.rootContext()->setContextProperty("settingsModel", settingsModel);
     // the longer the merrier, this add locations
     QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, [weatherLocationListModel, locationQueryModel] { weatherLocationListModel->addLocation(locationQueryModel->get(locationQueryModel->index_)); });
 

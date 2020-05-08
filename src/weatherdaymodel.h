@@ -4,6 +4,7 @@ class WeatherLocation;
 
 #include <QAbstractListModel>
 #include <QObject>
+#include <QtCore/QSettings>
 
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
@@ -15,8 +16,8 @@ class WeatherDay : public QObject
     Q_PROPERTY(QString weatherDescription READ weatherDescription NOTIFY propertyChanged)
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(QDate date READ date NOTIFY propertyChanged)
-    Q_PROPERTY(int maxTemp READ maxTemp NOTIFY propertyChanged)
-    Q_PROPERTY(int minTemp READ minTemp NOTIFY propertyChanged)
+    Q_PROPERTY(QString maxTemp READ maxTemp NOTIFY propertyChanged)
+    Q_PROPERTY(QString minTemp READ minTemp NOTIFY propertyChanged)
 
 public:
     explicit WeatherDay();
@@ -26,8 +27,22 @@ public:
     inline QString weatherDescription() {return weatherDescription_;}
     inline QString weatherIcon() {return weatherIcon_;}
     inline QDate date() {return date_;}
-    inline int maxTemp() {return maxTemp_;}
-    inline int minTemp() {return minTemp_;}
+    inline QString maxTemp() {
+        QSettings settings;
+        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+            return QString::number(qRound(maxTemp_ * 1.8 + 32)) + "°";
+        } else {
+            return QString::number(qRound(maxTemp_)) + "°";
+        }
+    }
+    inline QString minTemp() {
+        QSettings settings;
+        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+            return QString::number(qRound(minTemp_ * 1.8 + 32)) + "°";
+        } else {
+            return QString::number(qRound(minTemp_)) + "°";
+        }
+    }
 
 signals:
     void propertyChanged();
@@ -36,8 +51,8 @@ private:
     QString weatherDescription_;
     QString weatherIcon_;
     QDate date_;
-    int maxTemp_;
-    int minTemp_;
+    float maxTemp_;
+    float minTemp_;
 };
 
 // caches WeatherDays, until signal is called to update and regenerate

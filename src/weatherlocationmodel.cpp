@@ -136,6 +136,16 @@ QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) cons
 void WeatherLocationListModel::updateUi()
 {
     emit dataChanged(createIndex(0, 0), createIndex(locationsList.count() - 1, 0));
+    for (auto l : locationsList) {
+        emit l->propertyChanged();
+        l->weatherDayListModel()->updateUi();
+        l->weatherHourListModel()->updateUi();
+        if (l->forecast() != nullptr) {
+            for (auto h : l->forecast()->hourlyForecasts()) {
+                emit h->propertyChanged();
+            }
+        }
+    }
 }
 
 void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocation)

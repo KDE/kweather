@@ -1,8 +1,9 @@
 #ifndef KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H
 #define KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H
 
-#include <QObject>
 #include <QDateTime>
+#include <QObject>
+#include <QtCore/QSettings>
 
 class AbstractHourlyWeatherForecast : public QObject
 {
@@ -10,7 +11,7 @@ class AbstractHourlyWeatherForecast : public QObject
     Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
     Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(QString neutralWeatherIcon READ neutralWeatherIcon WRITE setNeutralWeatherIcon NOTIFY propertyChanged)
-    Q_PROPERTY(float temperature READ temperature WRITE setTemperature NOTIFY propertyChanged)
+    Q_PROPERTY(QString temperature READ temperatureFormatted NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
 //    Q_PROPERTY(int windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
     Q_PROPERTY(float windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
@@ -62,6 +63,15 @@ public:
     void setNeutralWeatherIcon(const QString &neutralWeatherIcon)
     {
         neutralWeatherIcon_ = neutralWeatherIcon;
+    }
+    QString temperatureFormatted() const
+    {
+        QSettings settings;
+        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+            return QString::number(qRound(temperature_ * 1.8 + 32)) + "°";
+        } else {
+            return QString::number(qRound(temperature_)) + "°";
+        }
     }
     float temperature() const
     {
