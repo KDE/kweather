@@ -5,7 +5,6 @@
 #include "geotimezone.h"
 
 #include <QCoreApplication>
-#include <QFile>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
@@ -16,8 +15,6 @@
 #include <QtCore/QJsonDocument>
 #include <QtCore/QJsonObject>
 #include <algorithm>
-
-#include <zlib.h>
 
 void NMIWeatherAPI2::setLocation(float latitude, float longitude)
 {
@@ -41,7 +38,8 @@ NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
 
 NMIWeatherAPI2::~NMIWeatherAPI2()
 {
-    if (!tz) delete tz;
+    if (!tz)
+        delete tz;
 }
 
 void NMIWeatherAPI2::update()

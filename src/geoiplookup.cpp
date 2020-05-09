@@ -38,7 +38,6 @@ void GeoIPLookup::process(QNetworkReply *reply)
 
     while (!reader->atEnd()) {
         reader->readNext();
-
         if (reader->name() == QLatin1String("CountryName"))
             locationName.append(reader->readElementText());
         else if (reader->name() == QLatin1String("RegionName"))
@@ -49,10 +48,8 @@ void GeoIPLookup::process(QNetworkReply *reply)
             latitude_ = reader->readElementText().toFloat();
         else if (reader->name() == QLatin1String("Longitude"))
             longitude_ = reader->readElementText().toFloat();
-        else if (reader->name() == "TimeZOne")
+        else if (reader->name() == "TimeZone")
             timeZone_ = reader->readElementText();
-        else
-            reader->readNext();
     }
     emit finished();
 }
