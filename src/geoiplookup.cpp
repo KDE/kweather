@@ -32,27 +32,27 @@ GeoIPLookup::GeoIPLookup()
     <TimeZone>Europe/Paris</TimeZone>
    </Response>
  */
-void GeoIPLookup::process(QNetworkReply* reply)
+void GeoIPLookup::process(QNetworkReply *reply)
 {
     auto reader = new QXmlStreamReader(reply->readAll());
 
     while (!reader->atEnd()) {
         reader->readNext();
 
-        if (reader->name() == QLatin1String("CountryName")) {
+        if (reader->name() == QLatin1String("CountryName"))
             locationName.append(reader->readElementText());
-            reader->readNext();
-            reader->readNext(); // to <RegionName>
+        else if (reader->name() == QLatin1String("RegionName"))
             locationName.append(", " + reader->readElementText());
-            reader->readNext();
+        else if (reader->name() == QLatin1String("City"))
             locationName.append(", " + reader->readElementText()); // <City>
-            reader->readNext();
-            reader->readNext(); // to <Latitude>
+        else if (reader->name() == QLatin1String("Latitude"))
             latitude_ = reader->readElementText().toFloat();
-            reader->readNext();
+        else if (reader->name() == QLatin1String("Longitude"))
             longitude_ = reader->readElementText().toFloat();
-            break;
-        }
+        else if (reader->name() == "TimeZOne")
+            timeZone_ = reader->readElementText();
+        else
+            reader->readNext();
     }
     emit finished();
 }
@@ -70,6 +70,11 @@ float GeoIPLookup::longitude()
 QString GeoIPLookup::name()
 {
     return locationName;
+}
+
+QString GeoIPLookup::timeZone()
+{
+    return timeZone_;
 }
 
 GeoIPLookup::~GeoIPLookup()

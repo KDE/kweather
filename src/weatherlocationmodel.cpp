@@ -1,6 +1,7 @@
 #include "weatherlocationmodel.h"
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
+#include "geoiplookup.h"
 #include "locationquerymodel.h"
 #include "nmiweatherapi2.h"
 #include "weatherdaymodel.h"
@@ -123,6 +124,10 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 {
     load();
+    if (locationsList.count() == 0) { // no location
+        geoPtr = new GeoIPLookup();
+        connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::getDefaultLocation);
+    }
 }
 
 void WeatherLocationListModel::load()
@@ -227,4 +232,16 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
     auto location = new WeatherLocation(api, ret->geonameId(), ret->name(), ret->latitude(), ret->longitude());
     api->update();
     insert(this->locationsList.count(), location);
+}
+
+void WeatherLocationListModel::getDefaultLocation()
+{
+    // default location, use timestamp as id
+    long id = QDateTime::currentSecsSinceEpoch();
+    auto api = new NMIWeatherAPI2(QString::number(id));
+    api->setTimeZone(geoPtr->timeZone());
+    api->setLocation(geoPtr->latitude(), geoPtr->longitude());
+    auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->latitude(), geoPtr->longitude());
+    api->update();
+    insert(0, location);
 }

@@ -14,6 +14,7 @@ class WeatherHourListModel;
 class AbstractWeatherAPI;
 class AbstractWeatherForecast;
 class LocationQueryResult;
+class GeoIPLookup;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
@@ -136,6 +137,8 @@ public slots:
     void addLocation(LocationQueryResult *ret);
 
 private:
+    void getDefaultLocation();
+    GeoIPLookup *geoPtr;
     QList<WeatherLocation *> locationsList;
 };
 
