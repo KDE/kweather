@@ -17,7 +17,9 @@ set(kweather_SRCS
     abstracthourlyweatherforecast.h
     nmiweatherapi2.cpp
     nmiweatherapi2.h
-        settingsmodel.cpp settingsmodel.h)
+        settingsmodel.cpp settingsmodel.h
+    sunriseset.cpp
+        )
 
 qt5_add_resources(RESOURCES resources.qrc)
 add_executable(kweather ${kweather_SRCS} ${RESOURCES})

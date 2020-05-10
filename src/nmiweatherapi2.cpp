@@ -3,6 +3,7 @@
 #include "abstracthourlyweatherforecast.h"
 #include "abstractweatherforecast.h"
 #include "geotimezone.h"
+#include "sunriseset.h"
 
 #include <QCoreApplication>
 #include <QNetworkAccessManager>
@@ -216,4 +217,7 @@ void NMIWeatherAPI2::setTZ()
 {
     timeZone = tz->getTimeZone();
     qDebug() << "timezone" << timeZone;
+    if (!rs) {
+        rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(tz->getTimeZone().toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
+    }
 }

@@ -12,6 +12,7 @@
 #include "abstractweatherforecast.h"
 class QXmlStreamReader;
 class GeoTimeZone;
+class SunRiseSet;
 // Norwegian Meteorological Institute Weather API Implementation (v2)
 // api.met.no
 
@@ -43,6 +44,9 @@ private:
     void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList);
     QString timeZone;
     GeoTimeZone *tz;
+    SunRiseSet *rs;
+    int sunRise_ = -1; // determine if set
+    int sunSet_;
     bool isTimeZoneSet = true; // determine whether timezone data is set when parsing
     struct ResolvedWeatherDesc {
         QString icon, desc;
