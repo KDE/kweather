@@ -219,5 +219,6 @@ void NMIWeatherAPI2::setTZ()
     qDebug() << "timezone" << timeZone;
     if (!rs) {
         rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(tz->getTimeZone().toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
+        connect(rs, &SunRiseSet::finished, this, [this] { this->isSunRiseSet = true; });
     }
 }

@@ -5,8 +5,8 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 
 Kirigami.ScrollablePage {
+    id: scrollablePage
     title: "Forecast"
-
     PlaceholderMessage {
         iconName: "globe"
         text: i18n("No locations configured")

@@ -45,8 +45,7 @@ private:
     QString timeZone;
     GeoTimeZone *tz;
     SunRiseSet *rs;
-    int sunRise_ = -1; // determine if set
-    int sunSet_;
+    bool isSunRiseSet = false;
     bool isTimeZoneSet = true; // determine whether timezone data is set when parsing
     struct ResolvedWeatherDesc {
         QString icon, desc;
