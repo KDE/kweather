@@ -9,7 +9,7 @@ Kirigami.ApplicationWindow
     title: i18n("Weather")
     visible: true
     
-    width: Kirigami.Units.gridUnit * 30
+    width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
 
     pageStack.initialPage: forecastPage

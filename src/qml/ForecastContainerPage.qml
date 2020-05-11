@@ -5,7 +5,7 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 
 Kirigami.ScrollablePage {
-    id: scrollablePage
+    id: page
     title: "Forecast"
     PlaceholderMessage {
         iconName: "globe"
@@ -13,11 +13,18 @@ Kirigami.ScrollablePage {
         visible: forecastView.count == 0
     }
 
+    Timer {
+        id: refreshRequestTimer
+        interval: 3000
+        onTriggered: page.refreshing = false
+    }
+
     SwipeView {
         id: forecastView
         anchors.fill: parent
 
         Repeater {
+            id: forecastViewRepeater
             model: weatherLocationListModel
             anchors.fill: parent
 

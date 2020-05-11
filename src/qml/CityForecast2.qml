@@ -5,57 +5,37 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 import kweather 1.0
 
-ListView {
+Kirigami.ScrollablePage {
+    id: page
+    Layout.fillWidth: true
+    verticalScrollBarPolicy: ScrollBar.AlwaysOff
+
     property WeatherLocation weatherLocation
 
-    Layout.alignment: Qt.AlignHCenter
-    anchors.fill: forecastView
-    property var tempContentY: 0;
-    property var ySizeFactor: 5;
-    onAtYBeginningChanged: {
-        if(atYBeginning){
-            tempContentY = contentY
-        }
-    }
-    BusyIndicator {
-        id: busyIndicator
-        anchors.centerIn: parent
-        running: locationQueryModel.loading
-        Layout.minimumWidth: Kirigami.Units.iconSizes.huge
-        Layout.minimumHeight: width
-    }
-    // if tempContentY - contentY > 10*ySizeFactor refresh forecast
-    onContentYChanged: {
-        if(atYBeginning){
-            if(Math.abs(tempContentY - contentY) > 10*ySizeFactor){
-                if(busyIndicator.running){
-                    return;
-                } else {
-                    busyIndicator.running = true
-                    weatherLocationListModel.update()
-                }
-            }
+    supportsRefreshing: true
+    onRefreshingChanged: {
+        if (refreshing) {
+            weatherLocation.updateBackend();
+        } else {
+            showPassiveNotification("Weather refreshed for " + weatherLocation.name);
         }
     }
     Connections {
         target: weatherLocation
-        onStopIndicator: {busyIndicator.running = false}
+        onStopLoadingIndicator: {page.refreshing = false}
     }
-    headerPositioning: ListView.InlineHeader
-    header: ColumnLayout {
-        id: topLayout
 
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.rightMargin: Kirigami.Units.gridUnit
-        anchors.leftMargin: Kirigami.Units.gridUnit
-
+    ColumnLayout {
+        Layout.fillWidth: true
+        anchors.leftMargin: 1
+        anchors.rightMargin: 1
         spacing: Kirigami.Units.largeSpacing * 2
 
         // weather header
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
+                Layout.alignment: Qt.AlignRight
                 source: weatherLocation.currentWeather.weatherIcon
                 Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 18
                 Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 18
@@ -64,6 +44,7 @@ ListView {
                 smooth: true
             }
             ColumnLayout {
+                Layout.alignment: Qt.AlignLeft
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                     font.weight: Font.Light
@@ -103,8 +84,7 @@ ListView {
             anchors.left: parent.left
             anchors.right: parent.right
             implicitHeight: Kirigami.Units.gridUnit * 8
-            spacing: Kirigami.Units.largeSpacing * 2
-            clip: true
+            spacing: Kirigami.Units.largeSpacing
 
             snapMode: ListView.SnapToItem
 
@@ -128,7 +108,6 @@ ListView {
                 implicitWidth: Kirigami.Units.gridUnit * 6
                 implicitHeight: Kirigami.Units.gridUnit * 8
                 color: "transparent"
-                anchors.fill: dayElement
 
                 property WeatherDay weather: weatherLocation.dayListModel.get(index)
 
@@ -161,7 +140,8 @@ ListView {
                         Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
                         Layout.minimumWidth: Layout.minimumHeight
                     }
-                    RowLayout {
+                    Row {
+                        spacing: Kirigami.Theme.defaultFont.pointSize * 0.6
                         Label {
                             id: highTemp
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
@@ -196,7 +176,6 @@ ListView {
             implicitHeight: Kirigami.Units.gridUnit * 9
             implicitWidth: parent.width
             spacing: Kirigami.Units.largeSpacing * 3
-            clip: true
 
             snapMode: ListView.SnapToItem
 
