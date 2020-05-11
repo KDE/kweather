@@ -32,6 +32,12 @@ public:
     QJsonObject toJson();
     void save();
 
+    Q_INVOKABLE void updateBackend()
+    {
+        if (weatherBackendProvider() != nullptr)
+            weatherBackendProvider()->update();
+    }
+
     inline QString locationId()
     {
         return locationId_;
@@ -90,7 +96,7 @@ signals:
     void weatherRefresh(AbstractWeatherForecast *fc); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
-    void stopIndicator();
+    void stopLoadingIndicator();
 
 private:
     void writeToCache(AbstractWeatherForecast *fc);
@@ -121,7 +127,6 @@ public:
     Q_INVOKABLE void updateUi();
     void load();
     void save();
-    Q_INVOKABLE void update();
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void move(int oldIndex, int newIndex);

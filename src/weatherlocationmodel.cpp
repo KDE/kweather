@@ -76,8 +76,10 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
     emit weatherRefresh(fc);
-    emit stopIndicator();
+    emit stopLoadingIndicator();
     writeToCache(fc);
+
+    emit propertyChanged();
 }
 
 void WeatherLocation::determineCurrentForecast()
@@ -245,13 +247,4 @@ void WeatherLocationListModel::getDefaultLocation()
     auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->latitude(), geoPtr->longitude());
     api->update();
     insert(0, location);
-}
-
-void WeatherLocationListModel::update()
-{
-    if (locationsList.count() != 0) // if we have location
-        for (auto lc : locationsList) {
-            lc->weatherBackendProvider()->update();
-        }
-    qDebug() << "refresh";
 }

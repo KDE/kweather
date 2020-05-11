@@ -58,6 +58,7 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* fore
         QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         daysList.append(weatherDay);
     }
+    std::sort(daysList.begin(), daysList.end(), [](WeatherDay *h1, WeatherDay *h2) -> bool { return h1->date() < h2->date(); });
 
     emit endInsertRows();
     emit layoutChanged();
@@ -68,4 +69,5 @@ void WeatherDayListModel::updateUi()
     for (auto h : daysList) {
         emit h->propertyChanged();
     }
+    emit dataChanged(createIndex(0, 0), createIndex(daysList.count() - 1, 0));
 }

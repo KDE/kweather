@@ -93,4 +93,5 @@ void WeatherHourListModel::updateUi()
     for (auto h : hoursList) {
         emit h->propertyChanged();
     }
+    emit dataChanged(createIndex(0, 0), createIndex(hoursList.count() - 1, 0));
 }
