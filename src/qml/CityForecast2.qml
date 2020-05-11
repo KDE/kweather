@@ -209,6 +209,7 @@ Kirigami.ScrollablePage {
                     }
 
                     RowLayout {
+                        visible: weather.precipitation > 0
                         Kirigami.Icon {
                             source: "raindrop"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
