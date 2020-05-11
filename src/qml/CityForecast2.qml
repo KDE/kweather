@@ -35,7 +35,7 @@ Kirigami.ScrollablePage {
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
-                Layout.alignment: Qt.AlignRight
+                id: weatherIcon
                 source: weatherLocation.currentWeather.weatherIcon
                 Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 18
                 Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 18
@@ -44,7 +44,6 @@ Kirigami.ScrollablePage {
                 smooth: true
             }
             ColumnLayout {
-                Layout.alignment: Qt.AlignLeft
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                     font.weight: Font.Light

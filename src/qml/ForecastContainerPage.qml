@@ -6,7 +6,7 @@ import org.kde.kirigami 2.11 as Kirigami
 
 Kirigami.ScrollablePage {
     id: page
-    title: "Forecast"
+    title: forecastView.count == 0 ? "Forecast" : weatherLocationListModel.get(forecastView.currentIndex).name
     PlaceholderMessage {
         iconName: "globe"
         text: i18n("No locations configured")
