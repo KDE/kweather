@@ -12,6 +12,7 @@ Kirigami.ScrollablePage {
 
     property WeatherLocation weatherLocation
 
+    // swipe down to refresh
     supportsRefreshing: true
     onRefreshingChanged: {
         if (refreshing) {
@@ -25,13 +26,12 @@ Kirigami.ScrollablePage {
         onStopLoadingIndicator: {page.refreshing = false}
     }
 
+    // weather header
     ColumnLayout {
         Layout.fillWidth: true
         anchors.leftMargin: 1
         anchors.rightMargin: 1
         spacing: Kirigami.Units.largeSpacing * 2
-
-        // weather header
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
@@ -67,6 +67,7 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
         }
 
+        // daily view
         Label {
             text: i18n("Daily")
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
@@ -74,8 +75,6 @@ Kirigami.ScrollablePage {
         Kirigami.Separator {
             Layout.fillWidth: true
         }
-
-        // daily
         ListView {
             orientation: ListView.Horizontal
             id: dailyListView
@@ -103,63 +102,12 @@ Kirigami.ScrollablePage {
             currentIndex: 0
 
             model: weatherLocation.dayListModel
-            delegate: Rectangle {
-                implicitWidth: Kirigami.Units.gridUnit * 6
-                implicitHeight: Kirigami.Units.gridUnit * 8
-                color: "transparent"
-
-                property WeatherDay weather: weatherLocation.dayListModel.get(index)
-
-                MouseArea {
-                    z: 1
-                    anchors.fill: parent
-                    onClicked: {
-                        dailyListView.currentIndex = index
-                        weatherLocation.hourListModel.updateHourView(index) // change hour view
-                    }
-                }
-
-                // actual day display
-                ColumnLayout {
-                    id: dayElement
-                    anchors.fill: parent
-                    anchors.leftMargin: Kirigami.Units.largeSpacing
-                    anchors.topMargin: Kirigami.Units.largeSpacing
-                    anchors.rightMargin: Kirigami.Units.largeSpacing
-                    anchors.bottomMargin: Kirigami.Units.largeSpacing
-                    spacing: Kirigami.Units.smallSpacing
-
-                    Label {
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                        text: weather != null ? weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "") : ""
-                    }
-
-                    Kirigami.Icon {
-                        source: weather != null ? weather.weatherIcon : ""
-                        Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
-                        Layout.minimumWidth: Layout.minimumHeight
-                    }
-                    Row {
-                        spacing: Kirigami.Theme.defaultFont.pointSize * 0.6
-                        Label {
-                            id: highTemp
-                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                            text: weather != null ? weather.maxTemp : ""
-                        }
-                        Label {
-                            anchors.baseline: highTemp.baseline
-                            color: Kirigami.Theme.disabledTextColor
-                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                            text: weather != null ? weather.minTemp : ""
-                        }
-                    }
-                    Label {
-                        text: weather != null ? weather.weatherDescription : ""
-                    }
-                }
+            delegate: WeatherDayDelegate {
+                weather: weatherLocation.dayListModel.get(index)
             }
         }
 
+        // hourly view
         Label {
             text: i18n("Hourly")
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
@@ -167,8 +115,6 @@ Kirigami.ScrollablePage {
         Kirigami.Separator {
             Layout.fillWidth: true
         }
-
-        // hourly
         ListView {
             orientation: ListView.Horizontal
 
@@ -179,54 +125,8 @@ Kirigami.ScrollablePage {
             snapMode: ListView.SnapToItem
 
             model: weatherLocation.hourListModel
-            delegate: Rectangle {
-                implicitWidth: Kirigami.Units.gridUnit * 5
-                implicitHeight: Kirigami.Units.gridUnit * 8
-                color: "transparent"
-                property WeatherHour weather: weatherLocation.hourListModel.get(index)
-
-                // actual hour display
-                ColumnLayout {
-                    id: hourElement
-                    anchors.fill: parent
-                    anchors.leftMargin: Kirigami.Units.largeSpacing
-                    anchors.topMargin: Kirigami.Units.largeSpacing
-                    anchors.rightMargin: Kirigami.Units.largeSpacing
-                    anchors.bottomMargin: Kirigami.Units.largeSpacing
-                    spacing: Kirigami.Units.smallSpacing
-
-                    Kirigami.Icon {
-                        source: weather != null ? weather.weatherIcon : ""
-                        Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
-                        Layout.minimumWidth: Layout.minimumHeight
-                    }
-                    Label {
-                        text: weather != null ? weather.temperature : ""
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                    }
-                    Label {
-                        text: weather != null ? weather.weatherDescription : ""
-                    }
-
-                    RowLayout {
-                        visible: weather.precipitation > 0
-                        Kirigami.Icon {
-                            source: "raindrop"
-                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight
-                        }
-                        Label {
-                            color: Kirigami.Theme.disabledTextColor
-                            text: weather != null ? weather.precipitation.toFixed(1) + "mm" : ""
-                        }
-                    }
-
-                    Label {
-                        font.weight: Font.Bold
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                        text: weather != null ? weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "") : ""
-                    }
-                }
+            delegate: WeatherHourDelegate {
+                weather: weatherLocation.hourListModel.get(index)
             }
         }
 

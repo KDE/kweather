@@ -34,13 +34,14 @@ Kirigami.ScrollablePage {
         }
     }
     PageIndicator {
+        z: 10
         id: indicator
 
         count: forecastView.count
         currentIndex: forecastView.currentIndex
 
-        anchors.top: forecastView.top
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: forecastView.bottom
+        anchors.horizontalCenter: forecastView.horizontalCenter
     }
 }
 
