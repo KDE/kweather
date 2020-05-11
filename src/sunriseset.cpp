@@ -15,7 +15,6 @@ SunRiseSet::SunRiseSet(float latitude, float longitude, int offset_secs)
     QUrlQuery query;
     query.addQueryItem(QLatin1String("lat"), QString::number(latitude));
     query.addQueryItem(QLatin1String("lon"), QString::number(longitude));
-    query.addQueryItem(QLatin1String("days"), "10");
     query.addQueryItem(QLatin1String("date"), QDate::currentDate().toString(QLatin1String("yyyy-MM-dd")));
     QString offset;
     if (offset_secs < 0) {
@@ -34,7 +33,6 @@ SunRiseSet::SunRiseSet(float latitude, float longitude, int offset_secs)
     } else {
         offset.append("0" + QString::number(min));
     }
-
     query.addQueryItem(QLatin1String("offset"), offset);
     url.setQuery(query);
     qDebug() << url;
@@ -47,12 +45,11 @@ void SunRiseSet::process(QNetworkReply *reply)
 {
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
     QJsonArray array = doc["location"].toObject()["time"].toArray();
-    for (auto sr : array) {
-        QJsonObject sunrise = sr.toObject()["sunrise"].toObject();
-        QJsonObject sunset = sr.toObject()["sunset"].toObject();
-        sunSet_.append(sunset["time"].toString().left(13).right(2).toInt());
-        sunRise_.append(sunrise["time"].toString().left(13).right(2).toInt());
-    }
+    QJsonObject sunrise = array.at(0).toObject()["sunrise"].toObject();
+    QJsonObject sunset = array.at(0).toObject()["sunset"].toObject();
+    sunSet_ = sunset["time"].toString().left(13).right(2).toInt();
+    sunRise_ = sunrise["time"].toString().left(13).right(2).toInt();
+
     emit finished();
     reply->deleteLater();
 }
@@ -62,12 +59,12 @@ SunRiseSet::~SunRiseSet()
     delete manager;
 }
 
-int SunRiseSet::sunSet(int day)
+int SunRiseSet::sunSet()
 {
-    return sunRise_.at(day);
+    return sunSet_;
 }
 
-int SunRiseSet::sunRise(int day)
+int SunRiseSet::sunRise()
 {
-    return sunSet_.at(day);
+    return sunRise_;
 }
