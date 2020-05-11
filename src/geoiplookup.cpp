@@ -40,8 +40,6 @@ void GeoIPLookup::process(QNetworkReply *reply)
         reader->readNext();
         if (reader->name() == QLatin1String("CountryName"))
             locationName.append(reader->readElementText());
-        else if (reader->name() == QLatin1String("RegionName"))
-            locationName.append(", " + reader->readElementText());
         else if (reader->name() == QLatin1String("City"))
             locationName.append(", " + reader->readElementText()); // <City>
         else if (reader->name() == QLatin1String("Latitude"))
