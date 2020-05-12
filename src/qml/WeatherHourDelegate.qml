@@ -37,7 +37,7 @@ Rectangle {
 
         // precipitation
         RowLayout {
-            visible: weather != null && weather.precipitation > 0
+            visible: weather != null
             Kirigami.Icon {
                 source: "raindrop"
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
