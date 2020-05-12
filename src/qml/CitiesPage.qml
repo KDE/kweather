@@ -50,6 +50,11 @@ Kirigami.ScrollablePage {
                 }
             }
 
+            onClicked: {
+                switchToPage(forecastPage);
+                forecastPage.pageIndex = index;
+            }
+
             contentItem: Item {
                 implicitWidth: delegateLayout.implicitWidth
                 implicitHeight: delegateLayout.implicitHeight

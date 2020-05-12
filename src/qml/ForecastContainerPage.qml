@@ -12,6 +12,8 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 
 Kirigami.ScrollablePage {
+    property alias pageIndex: forecastView.currentIndex
+
     id: page
     title: forecastView.count == 0 ? "Forecast" : weatherLocationListModel.get(forecastView.currentIndex).name
     PlaceholderMessage {

@@ -136,23 +136,28 @@ Kirigami.ScrollablePage {
             }
         }
 
+        Kirigami.Separator {}
+
         // bottom card (extra info for selected day)
         Kirigami.Card {
             Layout.fillWidth: true
 
             contentItem: Item {
-                implicitHeight: Kirigami.Units.gridUnit * 11
+                implicitHeight: column.height
                 Column {
+                    id: column
                     spacing: Kirigami.Units.largeSpacing
 
                     // precipitation
                     RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
                             source: "raindrop"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
                         Column {
+                            spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
                                 text: "Precipitation"
@@ -169,12 +174,14 @@ Kirigami.ScrollablePage {
 
                     // Humidity
                     RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
                             source: "compass"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
                         Column {
+                            spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
                                 text: "Humidity"
@@ -191,12 +198,14 @@ Kirigami.ScrollablePage {
 
                     // Atmospheric pressure
                     RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
                             source: "compass"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
                         Column {
+                            spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
                                 text: "Pressure"
@@ -213,12 +222,14 @@ Kirigami.ScrollablePage {
 
                     // UV Index
                     RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
                             source: "compass"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
                         Column {
+                            spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
                                 text: "UV index"
