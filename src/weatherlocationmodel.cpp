@@ -19,6 +19,7 @@
 #include <QFile>
 #include <QQmlEngine>
 #include <QtCore/QJsonArray>
+#include <stdlib.h>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
 const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";
@@ -99,9 +100,9 @@ void WeatherLocation::determineCurrentForecast()
 
         // get closest forecast to current time
         for (auto forecast : forecast()->hourlyForecasts()) {
-            if (minSecs == -1 || minSecs > forecast->date().secsTo(current)) {
+            if (minSecs == -1 || minSecs > llabs(forecast->date().secsTo(current))) {
                 currentWeather_ = forecast;
-                minSecs = forecast->date().secsTo(current);
+                minSecs = llabs(forecast->date().secsTo(current));
             }
         }
     }
