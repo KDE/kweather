@@ -216,7 +216,7 @@ Kirigami.ScrollablePage {
                                 text: "UV index"
                             }
                             Label {
-                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).uvIndex
+                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).uvIndex.toFixed(1)
                             }
                         }
                     }
