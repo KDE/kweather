@@ -102,7 +102,7 @@ Kirigami.ScrollablePage {
 
             model: weatherLocation.dayListModel
             delegate: WeatherDayDelegate {
-                weather: weatherLocation.dayListModel.get(index)
+                weather: weatherLocation == null ? null : weatherLocation.dayListModel.get(index)
             }
         }
 
@@ -125,10 +125,104 @@ Kirigami.ScrollablePage {
 
             model: weatherLocation.hourListModel
             delegate: WeatherHourDelegate {
-                weather: weatherLocation.hourListModel.get(index)
+                weather: weatherLocation == null ? null : weatherLocation.hourListModel.get(index)
             }
         }
 
+        Kirigami.Card {
+            Layout.fillWidth: true
+
+            contentItem: Item {
+                implicitHeight: Kirigami.Units.gridUnit * 11
+                Column {
+                    spacing: Kirigami.Units.largeSpacing
+
+                    // precipitation
+                    RowLayout {
+                        Kirigami.Icon {
+                            source: "raindrop"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight
+                        }
+                        Column {
+                            Label {
+                                font.weight: Font.Bold
+                                text: "Precipitation"
+                            }
+                            Label {
+                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).precipitation.toFixed(1) + "mm"
+                            }
+                        }
+                    }
+
+                    Kirigami.Separator {
+                        Layout.fillWidth: true
+                    }
+
+                    // Humidity
+                    RowLayout {
+                        Kirigami.Icon {
+                            source: "compass"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight
+                        }
+                        Column {
+                            Label {
+                                font.weight: Font.Bold
+                                text: "Humidity"
+                            }
+                            Label {
+                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).humidity.toFixed(1) + "%"
+                            }
+                        }
+                    }
+
+                    Kirigami.Separator {
+                        Layout.fillWidth: true
+                    }
+
+                    // Atmospheric pressure
+                    RowLayout {
+                        Kirigami.Icon {
+                            source: "compass"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight
+                        }
+                        Column {
+                            Label {
+                                font.weight: Font.Bold
+                                text: "Pressure"
+                            }
+                            Label {
+                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).pressure.toFixed(1) + "hPa"
+                            }
+                        }
+                    }
+
+                    Kirigami.Separator {
+                        Layout.fillWidth: true
+                    }
+
+                    // UV Index
+                    RowLayout {
+                        Kirigami.Icon {
+                            source: "compass"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight
+                        }
+                        Column {
+                            Label {
+                                font.weight: Font.Bold
+                                text: "UV index"
+                            }
+                            Label {
+                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).uvIndex
+                            }
+                        }
+                    }
+                }
+            }
+        }
         //        // bottom cards
         //        ColumnLayout {
         //            Kirigami.CardsLayout {
@@ -170,7 +264,6 @@ Kirigami.ScrollablePage {
         //                }
         //            }
         //        }
-
         //        Kirigami.Card {
         //            anchors.left: parent.left
         //            anchors.right: parent.right

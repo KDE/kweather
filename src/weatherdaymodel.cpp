@@ -16,6 +16,10 @@ WeatherDay::WeatherDay(AbstractDailyWeatherForecast* dailyForecast)
     this->weatherIcon_ = dailyForecast->weatherIcon();
     this->weatherDescription_ = dailyForecast->weatherDescription();
     this->date_ = dailyForecast->date();
+    this->precipitation_ = dailyForecast->precipitation();
+    this->uvIndex_ = dailyForecast->uvIndex();
+    this->humidity_ = dailyForecast->humidity();
+    this->pressure_ = dailyForecast->pressure();
 }
 
 /* ~~~ WeatherHourListModel ~~~ */

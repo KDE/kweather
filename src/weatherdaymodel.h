@@ -18,6 +18,10 @@ class WeatherDay : public QObject
     Q_PROPERTY(QDateTime date READ date NOTIFY propertyChanged)
     Q_PROPERTY(QString maxTemp READ maxTemp NOTIFY propertyChanged)
     Q_PROPERTY(QString minTemp READ minTemp NOTIFY propertyChanged)
+    Q_PROPERTY(float precipitation READ precipitation NOTIFY propertyChanged)
+    Q_PROPERTY(float uvIndex READ uvIndex NOTIFY propertyChanged)
+    Q_PROPERTY(float humidity READ humidity NOTIFY propertyChanged)
+    Q_PROPERTY(float pressure READ pressure NOTIFY propertyChanged)
 
 public:
     explicit WeatherDay();
@@ -43,6 +47,10 @@ public:
             return QString::number(qRound(minTemp_)) + "°";
         }
     }
+    inline float precipitation() {return precipitation_;}
+    inline float uvIndex() {return uvIndex_;}
+    inline float humidity() {return humidity_;}
+    inline float pressure() {return pressure_;}
 
 signals:
     void propertyChanged();
@@ -53,6 +61,10 @@ private:
     QDate date_;
     float maxTemp_;
     float minTemp_;
+    float precipitation_;
+    float uvIndex_;
+    float humidity_;
+    float pressure_;
 };
 
 // caches WeatherDays, until signal is called to update and regenerate

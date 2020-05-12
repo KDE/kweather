@@ -205,13 +205,17 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     }
     // add day if not already created
     if (!dayCache.contains(date.date())) {
-        dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, "weather-none-available", "", date.date());
+        dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
     }
 
     // update day forecast with hour information if needed
     AbstractDailyWeatherForecast *dayForecast = dayCache[date.date()];
 
     dayForecast->setPrecipitation(dayForecast->precipitation() + hourForecast->precipitationAmount());
+    dayForecast->setUvIndex(std::max(dayForecast->uvIndex(), hourForecast->uvIndex()));
+    dayForecast->setHumidity(std::max(dayForecast->humidity(), hourForecast->humidity()));
+    dayForecast->setPressure(std::max(dayForecast->pressure(), hourForecast->pressure()));
+
     if (data.contains("next_6_hours")) {
         QJsonObject details = data["next_6_hours"].toObject()["details"].toObject();
         dayForecast->setMaxTemp(std::max(dayForecast->maxTemp(), (float)details["air_temperature_max"].toDouble()));
