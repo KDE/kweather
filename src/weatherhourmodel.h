@@ -33,7 +33,7 @@ class WeatherHour : public QObject
 
 public:
     explicit WeatherHour();
-    explicit WeatherHour(AbstractHourlyWeatherForecast* forecast);
+    explicit WeatherHour(AbstractHourlyWeatherForecast *forecast);
 
     inline QString windDirection()
     {
@@ -49,7 +49,7 @@ public:
     }
     inline float precipitation() const
     {
-        return qRound(precipitation_);
+        return precipitation_;
     }
     inline float fog() const
     {
@@ -151,7 +151,7 @@ public:
     Q_INVOKABLE void updateHourView(int index);
     Q_INVOKABLE void updateUi();
 public slots:
-    void refreshHoursFromForecasts(AbstractWeatherForecast* forecast);
+    void refreshHoursFromForecasts(AbstractWeatherForecast *forecast);
 
 private:
     QList<WeatherHour *> hoursList;
