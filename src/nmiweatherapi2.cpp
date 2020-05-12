@@ -145,11 +145,30 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     hourForecast->setDate(date); // the first time will be at the exact time of query, otherwise the beginning of each hour
     hourForecast->setTemperature(instant["air_temperature"].toDouble());
     hourForecast->setPressure(instant["air_pressure_at_sea_level"].toDouble());
-    // TODO wind direction
     hourForecast->setWindSpeed(instant["wind_speed"].toDouble());
     hourForecast->setHumidity(instant["relative_humidity"].toDouble());
     hourForecast->setFog(instant["fog_area_fraction"].toDouble());
     hourForecast->setUvIndex(instant["ultraviolet_index_clear_sky"].toDouble());
+
+    // wind direction
+    double windDirectionDeg = instant["wind_from_direction"].toDouble();
+    if (windDirectionDeg < 22.5 || windDirectionDeg >= 337.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::S); // from N
+    } else if (windDirectionDeg > 22.5 || windDirectionDeg <= 67.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::SW); // from NE
+    } else if (windDirectionDeg > 67.5 || windDirectionDeg <= 112.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::W); // from E
+    } else if (windDirectionDeg > 112.5 || windDirectionDeg <= 157.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::NW); // from SE
+    } else if (windDirectionDeg > 157.5 || windDirectionDeg <= 202.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::N); // from S
+    } else if (windDirectionDeg > 202.5 || windDirectionDeg <= 247.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::NE); // from SW
+    } else if (windDirectionDeg > 247.5 || windDirectionDeg <= 292.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::E); // from W
+    } else if (windDirectionDeg > 292.5 || windDirectionDeg <= 337.5) {
+        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::SE); // from NW
+    }
 
     QString symbolCode;
     // some fields contain only "next_1_hours", and others may contain only "next_6_hours"

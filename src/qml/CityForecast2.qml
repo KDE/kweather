@@ -79,8 +79,7 @@ Kirigami.ScrollablePage {
             orientation: ListView.Horizontal
             id: dailyListView
 
-            anchors.left: parent.left
-            anchors.right: parent.right
+            Layout.fillWidth: true
             implicitHeight: Kirigami.Units.gridUnit * 8
             spacing: Kirigami.Units.largeSpacing
 

@@ -35,6 +35,7 @@ Rectangle {
             text: weather != null ? weather.weatherDescription : ""
         }
 
+        // precipitation
         RowLayout {
             visible: weather != null && weather.precipitation > 0
             Kirigami.Icon {
@@ -45,6 +46,19 @@ Rectangle {
             Label {
                 color: Kirigami.Theme.disabledTextColor
                 text: weather != null ? weather.precipitation.toFixed(1) + "mm" : ""
+            }
+        }
+
+        // wind
+        RowLayout {
+            Kirigami.Icon {
+                source: "arrow-right"
+                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                Layout.minimumWidth: Layout.minimumHeight
+            }
+            Label {
+                color: Kirigami.Theme.disabledTextColor
+                text: weather != null ? weather.windSpeed.toFixed(1) + "km/h" : ""
             }
         }
 
