@@ -198,8 +198,11 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
     emit beginInsertRows(QModelIndex(), index, index);
     locationsList.insert(index, weatherLocation);
     emit endInsertRows();
-
-    save();
+    if (!weatherLocation->weatherBackendProvider()->getTimeZone().isEmpty())
+        save();
+    else
+        connect(
+            weatherLocation->weatherBackendProvider(), &AbstractWeatherAPI::timeZoneSet, this, [this] { this->save(); }, Qt::UniqueConnection);
 }
 
 void WeatherLocationListModel::remove(int index)

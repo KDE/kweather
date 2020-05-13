@@ -61,7 +61,7 @@ protected:
 
 signals:
     void updated(AbstractWeatherForecast *forecast);
-
+    void timeZoneSet();
 public slots:
 
     virtual void parse(QNetworkReply *Reply) = 0;
