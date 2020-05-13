@@ -52,6 +52,8 @@ NMIWeatherAPI2::~NMIWeatherAPI2()
 
 void NMIWeatherAPI2::update()
 {
+    if (currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) // don't update if updated recently
+        return;
     day_ = 0;
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
     QUrlQuery query;
