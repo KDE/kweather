@@ -25,7 +25,7 @@ class WeatherHour : public QObject
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(float precipitation READ precipitation NOTIFY propertyChanged)
     Q_PROPERTY(float fog READ fog NOTIFY propertyChanged)
-    Q_PROPERTY(float windSpeed READ windSpeed NOTIFY propertyChanged)
+    Q_PROPERTY(QString windSpeed READ windSpeed NOTIFY propertyChanged)
     Q_PROPERTY(QString temperature READ temperature NOTIFY propertyChanged)
     Q_PROPERTY(float humidity READ humidity NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure NOTIFY propertyChanged)
@@ -55,17 +55,21 @@ public:
     {
         return qRound(fog_);
     }
-    inline float windSpeed() const
+    inline QString windSpeed() const
     {
-        return qRound(windSpeed_);
+        QSettings settings;
+        if (settings.value("Global/speedUnits", "Kph").toString() == "kph")
+            return QString::number(windSpeed_, 'g', 1) + "km/h";
+        else
+            return QString::number(windSpeed_ * 0.62, 'g', 1) + "mph";
     }
     inline QString temperature() const
     {
         QSettings settings;
         if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
-            return QString::number(qRound(temperature_ * 1.8 + 32)) + "°";
+            return QString::number(temperature_ * 1.8 + 32, 'f', 1) + "°";
         } else {
-            return QString::number(qRound(temperature_)) + "°";
+            return QString::number(temperature_, 'f', 1) + "°";
         }
     }
     inline float humidity() const

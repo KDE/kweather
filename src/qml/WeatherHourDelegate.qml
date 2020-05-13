@@ -65,7 +65,7 @@ Rectangle {
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
-                text: weather != null ? weather.windSpeed.toFixed(1) + "km/h" : ""
+                text: weather != null ? weather.windSpeed : ""
             }
         }
 

@@ -44,6 +44,27 @@ Kirigami.ScrollablePage {
             }
         }
 
+        ItemDelegate {
+            Layout.fillWidth: true
+            implicitHeight: Kirigami.Units.gridUnit * 3
+            onClicked: speedUnits.open()
+
+            ColumnLayout {
+                spacing: -5
+                anchors.leftMargin: Kirigami.Units.gridUnit
+                anchors.rightMargin: Kirigami.Units.gridUnit
+                anchors.fill: parent
+
+                Label {
+                    text: i18n("Speed Units")
+                    font.weight: Font.Bold
+                }
+                Label {
+                    text: i18n(settingsModel.speedUnits)
+                }
+            }
+        }
+
         Kirigami.Separator {
             Layout.fillWidth: true
         }
@@ -88,6 +109,40 @@ Kirigami.ScrollablePage {
                     onCheckedChanged: {
                         if (checked) {
                             settingsModel.temperatureUnits = modelData;
+                        }
+                    }
+                }
+            }
+            Component.onCompleted: background.visible = true
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        }
+    }
+
+    // speed unit dialog
+    Dialog {
+        id: speedUnits
+        modal: true
+        focus: true
+        x: (parent.width - width) / 2
+        y: parent.height / 2 - height
+        width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
+        height: Kirigami.Units.gridUnit * 20
+        standardButtons: Dialog.Close
+        title: i18n("Speed Units")
+
+        onAccepted: weatherLocationListModel.updateUi();
+        onRejected: weatherLocationListModel.updateUi();
+
+        contentItem: ScrollView {
+            ListView {
+                model: ["kph", "mph"]
+                delegate: RadioDelegate {
+                    width: parent.width
+                    text: i18n(modelData)
+                    checked: settingsModel.speedUnits == modelData
+                    onCheckedChanged: {
+                        if (checked) {
+                            settingsModel.speedUnits = modelData;
                         }
                     }
                 }
