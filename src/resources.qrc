@@ -15,7 +15,6 @@
         <file>qml/ForecastContainerPage.qml</file>
         <file>qml/SettingsPage.qml</file>
         <file>qml/AddCityPage.qml</file>
-        <file>qml/PlaceholderMessage.qml</file>
         <file>qml/ProgressCircle.qml</file>
         <file>resources/autumn.jpg</file>
     </qresource>

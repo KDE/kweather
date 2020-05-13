@@ -40,22 +40,37 @@ Kirigami.ScrollablePage {
         }
 
         // unable to connect message
-        PlaceholderMessage {
-            iconName: "network-disconnect"
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: Kirigami.Units.largeSpacing
+
+            icon.name: "network-disconnect"
             text: i18n("Unable to connect")
             visible: locationQueryModel.networkError
         }
 
         // default message (has not searched yet)
-        PlaceholderMessage {
-            iconName: "search"
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: Kirigami.Units.largeSpacing
+
+            icon.name: "search"
             text: i18n("Search for a location")
             visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery == ""
         }
 
         // no results
-        PlaceholderMessage {
-            iconName: "search"
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: Kirigami.Units.largeSpacing
+
+            icon.name: "search"
             text: i18n("No results")
             visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery != ""
         }

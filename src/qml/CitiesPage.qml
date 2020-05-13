@@ -31,8 +31,13 @@ Kirigami.ScrollablePage {
             }
         }
 
-        PlaceholderMessage {
-            iconName: "globe"
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: Kirigami.Units.largeSpacing
+
+            icon.name: "globe"
             text: i18n("Add a location")
             visible: citiesList.count == 0
         }

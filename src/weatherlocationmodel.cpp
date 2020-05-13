@@ -135,10 +135,6 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 {
     load();
-    if (locationsList.count() == 0) { // no location
-        geoPtr = new GeoIPLookup();
-        connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::getDefaultLocation);
-    }
 }
 
 void WeatherLocationListModel::load()
@@ -245,7 +241,13 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
     insert(this->locationsList.count(), location);
 }
 
-void WeatherLocationListModel::getDefaultLocation()
+void WeatherLocationListModel::requestCurrentLocation()
+{
+    geoPtr = new GeoIPLookup();
+    connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::addCurrentLocation);
+}
+
+void WeatherLocationListModel::addCurrentLocation()
 {
     // default location, use timestamp as id
     long id = QDateTime::currentSecsSinceEpoch();

@@ -146,11 +146,12 @@ public:
     {
         return locationsList;
     };
+    Q_INVOKABLE void requestCurrentLocation();
 public slots:
     void addLocation(LocationQueryResult *ret);
 
 private:
-    void getDefaultLocation();
+    void addCurrentLocation();
     GeoIPLookup *geoPtr;
     QList<WeatherLocation *> locationsList;
 };
