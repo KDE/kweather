@@ -20,7 +20,7 @@ class AbstractHourlyWeatherForecast : public QObject
     Q_PROPERTY(QString neutralWeatherIcon READ neutralWeatherIcon WRITE setNeutralWeatherIcon NOTIFY propertyChanged)
     Q_PROPERTY(QString temperature READ temperatureFormatted NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
-//    Q_PROPERTY(int windDirection READ windDirection WRITE setWindDirection NOTIFY propertyChanged)
+    Q_PROPERTY(QString windDirection READ windDirectionString NOTIFY propertyChanged)
     Q_PROPERTY(float windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
     Q_PROPERTY(float humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
     Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
@@ -99,6 +99,28 @@ public:
     WindDirection windDirection() const
     {
         return windDirection_;
+    }
+    QString windDirectionString() const
+    {
+        switch (windDirection()) {
+        case AbstractHourlyWeatherForecast::WindDirection::N:
+            return "N";
+        case AbstractHourlyWeatherForecast::WindDirection::NE:
+            return "NE";
+        case AbstractHourlyWeatherForecast::WindDirection::E:
+            return "E";
+        case AbstractHourlyWeatherForecast::WindDirection::SE:
+            return "SE";
+        case AbstractHourlyWeatherForecast::WindDirection::S:
+            return "S";
+        case AbstractHourlyWeatherForecast::WindDirection::SW:
+            return "SW";
+        case AbstractHourlyWeatherForecast::WindDirection::W:
+            return "W";
+        case AbstractHourlyWeatherForecast::WindDirection::NW:
+            return "NW";
+        }
+        return "";
     }
     void setWindDirection(WindDirection windDirection)
     {
