@@ -9,7 +9,6 @@
         <file>qml/main.qml</file>
         <file>qml/CitiesPage.qml</file>
         <file>qml/CityForecast.qml</file>
-        <file>qml/CityForecast2.qml</file>
         <file>qml/WeatherDayDelegate.qml</file>
         <file>qml/WeatherHourDelegate.qml</file>
         <file>qml/ForecastContainerPage.qml</file>
