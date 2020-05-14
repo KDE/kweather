@@ -26,6 +26,7 @@ set(kweather_SRCS
     nmiweatherapi2.h
         settingsmodel.cpp settingsmodel.h
     sunriseset.cpp
+    abstractsunrise.cpp
         )
 
 qt5_add_resources(RESOURCES resources.qrc)
