@@ -10,9 +10,6 @@
 #include <KConfigCore/KConfigGroup>
 #include <QDirIterator>
 #include <QFile>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
 #include <QStandardPaths>
 #include <QTimeZone>
 #include <QTimer>
@@ -31,17 +28,13 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     if (!dir.exists())
         dir.mkpath(".");
     readFromCache();
-
-    distribution = new std::uniform_int_distribution<int>(0, 30 * 60); // uniform random update interval, 60 min to 90 min
-    auto rand = std::bind(*distribution, generator);
-
     updateTimer = new QTimer(this);
     updateTimer->setSingleShot(true);
     connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
     if (api_ == NORWEGIAN)
         updateTimer->start(0); // update when open
     else
-        updateTimer->start(1000 * 3 * 3600 + rand() * 1000);
+        updateTimer->start(1000 * 3 * 3600 + random.bounded(0, 1800) * 1000);
 }
 
 WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
@@ -51,12 +44,13 @@ WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListMode
 }
 void WeatherForecastManager::update()
 {
+    qDebug() << "update start";
     auto locations = model_.getList();
     for (auto wLocation : locations) {
         wLocation->weatherBackendProvider()->setLocation(wLocation->latitude(), wLocation->longitude());
         wLocation->weatherBackendProvider()->update();
     }
-    updateTimer->start(1000 * 3600 + rand() * 1000); // reset timer
+    updateTimer->start(1000 * 3600 + random.bounded(0, 1800) * 1000); // reset timer
 }
 
 void WeatherForecastManager::readFromCache()
