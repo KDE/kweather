@@ -1,3 +1,10 @@
+#
+# Copyright 2020 Han Young <hanyoung@protonmail.com>
+# Copyright 2020 Devin Lin <espidev@gmail.com>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+
 set(kweather_SRCS
     main.cpp
     geoiplookup.cpp
@@ -17,7 +24,9 @@ set(kweather_SRCS
     abstracthourlyweatherforecast.h
     nmiweatherapi2.cpp
     nmiweatherapi2.h
-        settingsmodel.cpp settingsmodel.h)
+        settingsmodel.cpp settingsmodel.h
+    sunriseset.cpp
+        )
 
 qt5_add_resources(RESOURCES resources.qrc)
 add_executable(kweather ${kweather_SRCS} ${RESOURCES})

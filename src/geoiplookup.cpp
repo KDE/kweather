@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "geoiplookup.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -40,8 +47,6 @@ void GeoIPLookup::process(QNetworkReply *reply)
         reader->readNext();
         if (reader->name() == QLatin1String("CountryName"))
             locationName.append(reader->readElementText());
-        else if (reader->name() == QLatin1String("RegionName"))
-            locationName.append(", " + reader->readElementText());
         else if (reader->name() == QLatin1String("City"))
             locationName.append(", " + reader->readElementText()); // <City>
         else if (reader->name() == QLatin1String("Latitude"))

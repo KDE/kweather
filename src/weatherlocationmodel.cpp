@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "weatherlocationmodel.h"
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
@@ -12,6 +19,7 @@
 #include <QFile>
 #include <QQmlEngine>
 #include <QtCore/QJsonArray>
+#include <stdlib.h>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
 const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";
@@ -76,7 +84,10 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
     emit weatherRefresh(fc);
+    emit stopLoadingIndicator();
     writeToCache(fc);
+
+    emit propertyChanged();
 }
 
 void WeatherLocation::determineCurrentForecast()
@@ -89,9 +100,9 @@ void WeatherLocation::determineCurrentForecast()
 
         // get closest forecast to current time
         for (auto forecast : forecast()->hourlyForecasts()) {
-            if (minSecs == -1 || minSecs > forecast->date().secsTo(current)) {
+            if (minSecs == -1 || minSecs > llabs(forecast->date().secsTo(current))) {
                 currentWeather_ = forecast;
-                minSecs = forecast->date().secsTo(current);
+                minSecs = llabs(forecast->date().secsTo(current));
             }
         }
     }
@@ -124,10 +135,6 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 {
     load();
-    if (locationsList.count() == 0) { // no location
-        geoPtr = new GeoIPLookup();
-        connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::getDefaultLocation);
-    }
 }
 
 void WeatherLocationListModel::load()
@@ -191,8 +198,11 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
     emit beginInsertRows(QModelIndex(), index, index);
     locationsList.insert(index, weatherLocation);
     emit endInsertRows();
-
-    save();
+    if (!weatherLocation->weatherBackendProvider()->getTimeZone().isEmpty())
+        save();
+    else
+        connect(
+            weatherLocation->weatherBackendProvider(), &AbstractWeatherAPI::timeZoneSet, this, [this] { this->save(); }, Qt::UniqueConnection);
 }
 
 void WeatherLocationListModel::remove(int index)
@@ -234,7 +244,13 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
     insert(this->locationsList.count(), location);
 }
 
-void WeatherLocationListModel::getDefaultLocation()
+void WeatherLocationListModel::requestCurrentLocation()
+{
+    geoPtr = new GeoIPLookup();
+    connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::addCurrentLocation);
+}
+
+void WeatherLocationListModel::addCurrentLocation()
 {
     // default location, use timestamp as id
     long id = QDateTime::currentSecsSinceEpoch();

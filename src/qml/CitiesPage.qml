@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
@@ -24,8 +31,13 @@ Kirigami.ScrollablePage {
             }
         }
 
-        PlaceholderMessage {
-            iconName: "globe"
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: Kirigami.Units.largeSpacing
+
+            icon.name: "globe"
             text: i18n("Add a location")
             visible: citiesList.count == 0
         }
@@ -41,6 +53,11 @@ Kirigami.ScrollablePage {
                 onTriggered: {
                     weatherLocationListModel.remove(index);
                 }
+            }
+
+            onClicked: {
+                switchToPage(forecastPage);
+                forecastPage.pageIndex = index;
             }
 
             contentItem: Item {

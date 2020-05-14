@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef NMIWEATHERAPI2_H
 #define NMIWEATHERAPI2_H
 
@@ -10,8 +17,8 @@
 
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
-class QXmlStreamReader;
 class GeoTimeZone;
+class SunRiseSet;
 // Norwegian Meteorological Institute Weather API Implementation (v2)
 // api.met.no
 
@@ -43,6 +50,9 @@ private:
     void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList);
     QString timeZone;
     GeoTimeZone *tz;
+    SunRiseSet *rs;
+    int day_ = 0; // tmp, use to determine day for sunrise/set
+    bool isSunRiseSet = false;
     bool isTimeZoneSet = true; // determine whether timezone data is set when parsing
     struct ResolvedWeatherDesc {
         QString icon, desc;

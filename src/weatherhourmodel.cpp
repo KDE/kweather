@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "weatherhourmodel.h"
 #include <QQmlEngine>
 
@@ -9,7 +16,32 @@ WeatherHour::WeatherHour()
 
 WeatherHour::WeatherHour(AbstractHourlyWeatherForecast *forecast)
 {
-    this->windDirection_ = forecast->windDirection();
+    switch (forecast->windDirection()) {
+    case AbstractHourlyWeatherForecast::WindDirection::N:
+        this->windDirection_ = "N";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::NE:
+        this->windDirection_ = "NE";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::E:
+        this->windDirection_ = "E";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::SE:
+        this->windDirection_ = "SE";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::S:
+        this->windDirection_ = "S";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::SW:
+        this->windDirection_ = "SW";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::W:
+        this->windDirection_ = "W";
+        break;
+    case AbstractHourlyWeatherForecast::WindDirection::NW:
+        this->windDirection_ = "NW";
+        break;
+    }
     this->weatherDescription_ = forecast->weatherDescription();
     this->weatherIcon_ = forecast->weatherIcon();
     this->precipitation_ = forecast->precipitationAmount();
@@ -93,4 +125,5 @@ void WeatherHourListModel::updateUi()
     for (auto h : hoursList) {
         emit h->propertyChanged();
     }
+    emit dataChanged(createIndex(0, 0), createIndex(hoursList.count() - 1, 0));
 }

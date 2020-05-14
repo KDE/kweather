@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "weatherdaymodel.h"
 #include <QQmlEngine>
 #include <memory>
@@ -16,6 +23,10 @@ WeatherDay::WeatherDay(AbstractDailyWeatherForecast* dailyForecast)
     this->weatherIcon_ = dailyForecast->weatherIcon();
     this->weatherDescription_ = dailyForecast->weatherDescription();
     this->date_ = dailyForecast->date();
+    this->precipitation_ = dailyForecast->precipitation();
+    this->uvIndex_ = dailyForecast->uvIndex();
+    this->humidity_ = dailyForecast->humidity();
+    this->pressure_ = dailyForecast->pressure();
 }
 
 /* ~~~ WeatherHourListModel ~~~ */
@@ -58,6 +69,7 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* fore
         QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         daysList.append(weatherDay);
     }
+    std::sort(daysList.begin(), daysList.end(), [](WeatherDay *h1, WeatherDay *h2) -> bool { return h1->date() < h2->date(); });
 
     emit endInsertRows();
     emit layoutChanged();
@@ -68,4 +80,5 @@ void WeatherDayListModel::updateUi()
     for (auto h : daysList) {
         emit h->propertyChanged();
     }
+    emit dataChanged(createIndex(0, 0), createIndex(daysList.count() - 1, 0));
 }

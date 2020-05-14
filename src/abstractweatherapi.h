@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef ABSTRACTAPI_H
 #define ABSTRACTAPI_H
 #include "abstractweatherforecast.h"
@@ -54,7 +61,7 @@ protected:
 
 signals:
     void updated(AbstractWeatherForecast *forecast);
-
+    void timeZoneSet();
 public slots:
 
     virtual void parse(QNetworkReply *Reply) = 0;

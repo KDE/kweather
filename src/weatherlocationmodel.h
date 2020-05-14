@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef WEATHERLOCATIONMODEL_H
 #define WEATHERLOCATIONMODEL_H
 #include "abstractweatherforecast.h"
@@ -31,6 +38,12 @@ public:
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
+
+    Q_INVOKABLE void updateBackend()
+    {
+        if (weatherBackendProvider() != nullptr)
+            weatherBackendProvider()->update();
+    }
 
     inline QString locationId()
     {
@@ -90,6 +103,7 @@ signals:
     void weatherRefresh(AbstractWeatherForecast *fc); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
+    void stopLoadingIndicator();
 
 private:
     void writeToCache(AbstractWeatherForecast *fc);
@@ -120,7 +134,6 @@ public:
     Q_INVOKABLE void updateUi();
     void load();
     void save();
-
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void move(int oldIndex, int newIndex);
@@ -133,11 +146,12 @@ public:
     {
         return locationsList;
     };
+    Q_INVOKABLE void requestCurrentLocation();
 public slots:
     void addLocation(LocationQueryResult *ret);
 
 private:
-    void getDefaultLocation();
+    void addCurrentLocation();
     GeoIPLookup *geoPtr;
     QList<WeatherLocation *> locationsList;
 };

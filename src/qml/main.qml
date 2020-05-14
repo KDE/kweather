@@ -1,3 +1,10 @@
+/*
+ * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
@@ -9,7 +16,7 @@ Kirigami.ApplicationWindow
     title: i18n("Weather")
     visible: true
     
-    width: Kirigami.Units.gridUnit * 30
+    width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
 
     pageStack.initialPage: forecastPage
@@ -79,6 +86,24 @@ Kirigami.ApplicationWindow
             "otherText": "",
             "copyrightStatement": "© 2020 Plasma Development Team",
             "desktopFileName": "org.kde.kweather",
+            "authors": [
+                {
+                    "name": "Han Young",
+                    "emailAddress": "hanyoung@protonmail.com",
+                },
+                {
+                    "name": "Devin Lin",
+                    "emailAddress": "espidev@gmail.com",
+                    "webAddress": "https://espi.dev"
+                }
+            ],
+            "licenses": [
+                {
+                    "name": "GPL v2",
+                    "text": "long, boring, license text",
+                    "spdx": "GPL-v2.0",
+                }
+            ]
         }
     }
     

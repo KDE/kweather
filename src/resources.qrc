@@ -1,13 +1,19 @@
+<!--
+- Copyright 2020 Han Young <hanyoung@protonmail.com>
+- Copyright 2020 Devin Lin <espidev@gmail.com>
+- SPDX-License-Identifier: GPL-2.0-or-later
+-->
+
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
         <file>qml/CitiesPage.qml</file>
         <file>qml/CityForecast.qml</file>
-        <file>qml/CityForecast2.qml</file>
+        <file>qml/WeatherDayDelegate.qml</file>
+        <file>qml/WeatherHourDelegate.qml</file>
         <file>qml/ForecastContainerPage.qml</file>
         <file>qml/SettingsPage.qml</file>
         <file>qml/AddCityPage.qml</file>
-        <file>qml/PlaceholderMessage.qml</file>
         <file>qml/ProgressCircle.qml</file>
         <file>resources/autumn.jpg</file>
     </qresource>
