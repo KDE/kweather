@@ -12,23 +12,37 @@
 #include <QObject>
 class QNetworkAccessManager;
 class QNetworkReply;
+class AbstractSunrise;
 class SunRiseSet : public QObject
 {
     Q_OBJECT
 public:
     SunRiseSet(float latitude, float longitude, int offset);
+    void update(int days = 1);
+    void popDay(int days = 1)
+    {
+        if (days > sunrise_.count() || days < 0)
+            return;
+        while (days--) {
+            sunrise_.pop_front();
+        }
+    };
+    void setOffset(int offset)
+    {
+        offset_ = offset;
+    }
+    QList<AbstractSunrise *> get();
     ~SunRiseSet();
-    int sunSet();
-    int sunRise();
+
 signals:
     void finished();
 private slots:
     void process(QNetworkReply *reply);
 
 private:
+    float longitude_, latitude_, offset_;
     QNetworkAccessManager *manager;
-    int sunRise_;
-    int sunSet_;
+    QList<AbstractSunrise *> sunrise_;
 };
 
 #endif // SUNRISESET_H

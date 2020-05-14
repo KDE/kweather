@@ -6,6 +6,7 @@
  */
 
 #include "sunriseset.h"
+#include "abstractsunrise.h"
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -13,28 +14,39 @@
 #include <QNetworkReply>
 #include <QUrlQuery>
 SunRiseSet::SunRiseSet(float latitude, float longitude, int offset_secs)
+    : latitude_(latitude)
+    , longitude_(longitude)
+    , offset_(offset_secs)
 {
     manager = new QNetworkAccessManager();
+    connect(manager, &QNetworkAccessManager::finished, this, &SunRiseSet::process);
+}
+
+void SunRiseSet::update(int days)
+{
+    if (days > 15)
+        days = 15;
     QUrl url;
     url.setScheme(QStringLiteral("https"));
     url.setHost(QStringLiteral("api.met.no"));
     url.setPath(QStringLiteral("/weatherapi/sunrise/2.0/.json"));
     QUrlQuery query;
-    query.addQueryItem(QLatin1String("lat"), QString::number(latitude));
-    query.addQueryItem(QLatin1String("lon"), QString::number(longitude));
+    query.addQueryItem(QLatin1String("lat"), QString::number(latitude_));
+    query.addQueryItem(QLatin1String("lon"), QString::number(longitude_));
     query.addQueryItem(QLatin1String("date"), QDate::currentDate().toString(QLatin1String("yyyy-MM-dd")));
+    query.addQueryItem(QLatin1String("days"), QString::number(days));
     QString offset;
-    if (offset_secs < 0) {
-        offset_secs = -offset_secs;
+    if (offset < 0) {
+        offset_ = -offset_;
         offset.append("-");
     }
-    int hour = offset_secs / 3600;
+    int hour = offset_ / 3600;
     if (hour >= 10)
         offset.append(QString::number(hour) + ":");
     else {
         offset.append("0" + QString::number(hour) + ":");
     }
-    int min = (offset_secs - hour * 3600) / 60;
+    int min = (offset_ - hour * 3600) / 60;
     if (min >= 10) {
         offset.append(QString::number(min));
     } else {
@@ -45,17 +57,15 @@ SunRiseSet::SunRiseSet(float latitude, float longitude, int offset_secs)
     qDebug() << url;
     QNetworkRequest req(url);
     manager->get(req);
-    connect(manager, &QNetworkAccessManager::finished, this, &SunRiseSet::process);
 }
 
+//*~~~~~~~~ WIP ~~~~~~~~~*//
 void SunRiseSet::process(QNetworkReply *reply)
 {
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
     QJsonArray array = doc["location"].toObject()["time"].toArray();
     QJsonObject sunrise = array.at(0).toObject()["sunrise"].toObject();
     QJsonObject sunset = array.at(0).toObject()["sunset"].toObject();
-    sunSet_ = sunset["time"].toString().left(13).right(2).toInt();
-    sunRise_ = sunrise["time"].toString().left(13).right(2).toInt();
 
     emit finished();
     reply->deleteLater();
@@ -64,14 +74,7 @@ void SunRiseSet::process(QNetworkReply *reply)
 SunRiseSet::~SunRiseSet()
 {
     delete manager;
-}
-
-int SunRiseSet::sunSet()
-{
-    return sunSet_;
-}
-
-int SunRiseSet::sunRise()
-{
-    return sunRise_;
+    for (auto sr : sunrise_)
+        if (sr)
+            delete sr;
 }
