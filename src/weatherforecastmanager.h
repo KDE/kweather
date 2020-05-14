@@ -15,8 +15,7 @@
 // #########################
 
 #include <QObject>
-#include <memory>
-#include <random>
+#include <QRandomGenerator>
 #include <vector>
 class AbstractWeatherForecast;
 class NMIWeatherAPI2;
@@ -36,8 +35,7 @@ private slots:
     void update();
 
 private:
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> *distribution;
+    QRandomGenerator random;
     WeatherLocationListModel &model_;
     int api_ = NORWEGIAN;
     AbstractWeatherForecast *convertFromJson(QByteArray data);
