@@ -59,13 +59,23 @@ void SunRiseSet::update(int days)
     manager->get(req);
 }
 
-//*~~~~~~~~ WIP ~~~~~~~~~*//
 void SunRiseSet::process(QNetworkReply *reply)
 {
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
     QJsonArray array = doc["location"].toObject()["time"].toArray();
-    QJsonObject sunrise = array.at(0).toObject()["sunrise"].toObject();
-    QJsonObject sunset = array.at(0).toObject()["sunset"].toObject();
+    AbstractSunrise *sr;
+    for (auto ob : array) {
+        sr = new AbstractSunrise();
+        sr->setSunSet(QDateTime::fromString(ob.toObject()["sunset"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
+        sr->setSunRise(QDateTime::fromString(ob.toObject()["sunrise"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
+        sr->setMoonSet(QDateTime::fromString(ob.toObject()["moonset"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
+        sr->setMoonRise(QDateTime::fromString(ob.toObject()["moonrise"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
+        sr->setSolarMidnight(
+            QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["solarmidnight"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["solarmidnight"].toObject()["elevation"].toString().toDouble()));
+        sr->setHightMoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["high_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["high_moon"].toObject()["elevation"].toString().toDouble()));
+        sr->setLowMoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["low_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["low_moon"].toObject()["elevation"].toString().toDouble()));
+        sunrise_.push_back(sr);
+    }
 
     emit finished();
     reply->deleteLater();
