@@ -6,6 +6,7 @@
  */
 
 #include "abstractweatherforecast.h"
+#include "abstractsunrise.h"
 #include <QDebug>
 #include <QtCore/QJsonArray>
 #include <QtCore/QJsonObject>

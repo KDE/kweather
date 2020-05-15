@@ -20,6 +20,8 @@ class AbstractSunrise : public QObject
 public:
     AbstractSunrise(QDateTime &sunRise, QDateTime &sunSet, QDateTime &moonRise, QDateTime &moonSet, QPair<QDateTime, double> &highMoon, QPair<QDateTime, double> &lowMoon, QPair<QDateTime, double> &solarMidnight);
     AbstractSunrise();
+    AbstractSunrise *fromJson(QJsonObject obj);
+    QJsonObject toJson();
     QString highMoonTime() const
     {
         return highMoon_.first.time().toString();
@@ -76,7 +78,7 @@ public:
     {
         return moonSet_.time().toString();
     };
-    void setHightMoon(QPair<QDateTime, double> highMoon)
+    void setHighMoon(QPair<QDateTime, double> highMoon)
     {
         highMoon_ = highMoon;
     };

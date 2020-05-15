@@ -20,6 +20,7 @@
 
 #include "abstractdailyweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
+#include "abstractsunrise.h"
 #include "abstractweatherforecast.h"
 #include "locationquerymodel.h"
 #include "nmiweatherapi2.h"
@@ -65,6 +66,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
+    qmlRegisterType<AbstractSunrise>("kweather", 1, 0, "AbstractSunrise");
 
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 

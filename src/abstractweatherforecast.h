@@ -14,6 +14,7 @@
 #include <QObject>
 #include <utility>
 
+class AbstractSunrise;
 class AbstractWeatherForecast : public QObject
 {
     Q_OBJECT
@@ -53,7 +54,10 @@ public:
     {
         return dailyForecasts_;
     }
-
+    const QList<AbstractSunrise *> &sunrise()
+    {
+        return sunrise_;
+    };
     inline void setLocationId(QString n)
     {
         locationId_ = std::move(n);
@@ -78,6 +82,10 @@ public:
     {
         dailyForecasts_ = dailyForecasts;
     }
+    void setSunrise(const QList<AbstractSunrise *> &sunrise)
+    {
+        sunrise_ = sunrise;
+    };
     void sortDailyForecast();
 signals:
     void propertyChanged();
@@ -89,6 +97,7 @@ private:
     float longitude_;
     QList<AbstractHourlyWeatherForecast *> hourlyForecasts_;
     QList<AbstractDailyWeatherForecast *> dailyForecasts_;
+    QList<AbstractSunrise *> sunrise_;
 };
 
 #endif // ABSTRACTWEATHERFORECAST_H
