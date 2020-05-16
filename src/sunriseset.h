@@ -29,7 +29,7 @@ public:
         return sunrise_;
     };
     ~SunRiseSet();
-
+    bool isDayTime(QDateTime date);
 signals:
     void finished();
 private slots:

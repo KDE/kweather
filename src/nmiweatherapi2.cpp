@@ -42,13 +42,6 @@ NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
     : AbstractWeatherAPI(locationId, -1)
 {
     currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
-    if (!timeZone.isEmpty()) {
-        rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(tz->getTimeZone().toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
-        connect(rs, &SunRiseSet::finished, this, [this] {
-            this->isSunRiseSet = true;
-            currentData_->setSunrise(rs->get());
-        });
-    }
 }
 
 NMIWeatherAPI2::~NMIWeatherAPI2()
@@ -63,6 +56,14 @@ void NMIWeatherAPI2::update()
         currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) { // don't update if updated recently, and forecast is not empty
         emit updated(currentData_);
         return;
+    }
+    if (rs == nullptr && !timeZone.isEmpty()) {
+        qDebug() << "construct sunrise class";
+        rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(timeZone.toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
+        connect(rs, &SunRiseSet::finished, this, [this] {
+            this->isSunRiseSet = true;
+            currentData_->setSunrise(rs->get());
+        });
     }
     if (rs) {
         rs->popDay(); // remove old data
@@ -210,23 +211,24 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
     /* ~~~~~ WIP ~~~~~ */
     // figure out whether to use night or day weather icon and description
-    /*if (isSunRiseSet) {
-        if (hourForecast->date().time().hour() >= rs->sunSet() || hourForecast->date().time().hour() <= rs->sunRise()) {
+    if (isSunRiseSet) {
+        qDebug() << "sunrise set";
+        if (rs->isDayTime(hourForecast->date())) {
+            hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
+            hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
+        } else {
+            hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
+            hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
+        }
+    } else {
+        if (hourForecast->date().time().hour() >= 19 || hourForecast->date().time().hour() <= 6) { // TODO use system sunrise and sunset instead
             hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
             hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
         } else {
             hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
             hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
         }
-    } else {*/
-    if (hourForecast->date().time().hour() >= 19 || hourForecast->date().time().hour() <= 6) { // TODO use system sunrise and sunset instead
-        hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
-        hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
-    } else {
-        hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
-        hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
     }
-    // }
     // add day if not already created
     if (!dayCache.contains(date.date())) {
         dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
@@ -279,11 +281,4 @@ void NMIWeatherAPI2::setTZ()
     timeZone = tz->getTimeZone();
     qDebug() << "timezone" << timeZone;
     emit timeZoneSet();
-    if (!rs) {
-        rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(tz->getTimeZone().toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
-        connect(rs, &SunRiseSet::finished, this, [this] {
-            this->isSunRiseSet = true;
-            currentData_->setSunrise(rs->get());
-        });
-    }
 }

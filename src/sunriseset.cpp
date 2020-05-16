@@ -33,7 +33,7 @@ void SunRiseSet::update()
     query.addQueryItem(QLatin1String("lon"), QString::number(longitude_));
     // if we already have data, request data beyond the last day
     query.addQueryItem(QLatin1String("date"), sunrise_.isEmpty() ? QDate::currentDate().toString(QLatin1String("yyyy-MM-dd")) : QDate::currentDate().addDays(sunrise_.count()).toString(QLatin1String("yyyy-MM-dd")));
-    query.addQueryItem(QLatin1String("days"), sunrise_.isEmpty() ? QString::number(10) : QString::number(10 - sunrise_.count()));
+    query.addQueryItem(QLatin1String("days"), sunrise_.isEmpty() ? QString::number(10) : QString::number(11 - sunrise_.count()));
     QString offset;
     if (offset < 0) {
         offset_ = -offset_;
@@ -91,6 +91,20 @@ void SunRiseSet::popDay()
         }
     }
 };
+
+bool SunRiseSet::isDayTime(QDateTime date)
+{
+    for (auto sr : sunrise_) {
+        // if on the same day
+        if (sr->sunRise().date().daysTo(date.date()) == 0) {
+            if (sr->sunRise().secsTo(date) <= 0 || sr->sunSet().secsTo(date) >= 0)
+                return false;
+            else
+                return true;
+        }
+    }
+    return true;
+}
 
 SunRiseSet::~SunRiseSet()
 {
