@@ -10,6 +10,7 @@ class AbstractSunrise : public QObject
     Q_PROPERTY(QString highMoonTime READ highMoonTime NOTIFY propertyChanged)
     Q_PROPERTY(QString lowMoonTime READ lowMoonTime NOTIFY propertyChanged)
     Q_PROPERTY(QString solarMidnightTime READ solarMidnightTime NOTIFY propertyChanged)
+    Q_PROPERTY(QString solarNoonTime READ solarNoonTime NOTIFY propertyChanged)
     Q_PROPERTY(QString sunRiseStr READ sunRiseStr NOTIFY propertyChanged)
     Q_PROPERTY(QString sunSetStr READ sunSetStr NOTIFY propertyChanged)
     Q_PROPERTY(QString moonRiseStr READ moonRiseStr NOTIFY propertyChanged)
@@ -17,8 +18,16 @@ class AbstractSunrise : public QObject
     Q_PROPERTY(double highMoon READ highMoon NOTIFY propertyChanged)
     Q_PROPERTY(double lowMoon READ lowMoon NOTIFY propertyChanged)
     Q_PROPERTY(double solarMidnight READ solarMidnight NOTIFY propertyChanged)
+    Q_PROPERTY(double solarNoon READ solarNoon NOTIFY propertyChanged)
 public:
-    AbstractSunrise(QDateTime &sunRise, QDateTime &sunSet, QDateTime &moonRise, QDateTime &moonSet, QPair<QDateTime, double> &highMoon, QPair<QDateTime, double> &lowMoon, QPair<QDateTime, double> &solarMidnight);
+    AbstractSunrise(QDateTime &sunRise,
+                    QDateTime &sunSet,
+                    QDateTime &moonRise,
+                    QDateTime &moonSet,
+                    QPair<QDateTime, double> &highMoon,
+                    QPair<QDateTime, double> &lowMoon,
+                    QPair<QDateTime, double> &solarMidnight,
+                    QPair<QDateTime, double> &solarNoon);
     AbstractSunrise();
     AbstractSunrise *fromJson(QJsonObject obj);
     QJsonObject toJson();
@@ -42,9 +51,17 @@ public:
     {
         return solarMidnight_.first.time().toString();
     };
+    QString solarNoonTime() const
+    {
+        return solarNoon_.first.time().toString();
+    };
     double solarMidnight()
     {
         return solarMidnight_.second;
+    };
+    double solarNoon()
+    {
+        return solarNoon_.second;
     };
     QDateTime &sunRise()
     {
@@ -86,6 +103,10 @@ public:
     {
         solarMidnight_ = solarMidnight;
     };
+    void setSolarNoon(QPair<QDateTime, double> solarNoon)
+    {
+        solarNoon_ = solarNoon;
+    };
     void setLowMoon(QPair<QDateTime, double> lowMoon)
     {
         lowMoon_ = lowMoon;
@@ -112,6 +133,7 @@ signals:
 private:
     QPair<QDateTime, double> highMoon_;
     QPair<QDateTime, double> solarMidnight_;
+    QPair<QDateTime, double> solarNoon_;
     QPair<QDateTime, double> lowMoon_;
     QDateTime sunRise_;
     QDateTime sunSet_;

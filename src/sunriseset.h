@@ -18,20 +18,16 @@ class SunRiseSet : public QObject
     Q_OBJECT
 public:
     SunRiseSet(float latitude, float longitude, int offset);
-    void update(int days = 1);
-    void popDay(int days = 1)
-    {
-        if (days > sunrise_.count() || days < 0)
-            return;
-        while (days--) {
-            sunrise_.pop_front();
-        }
-    };
+    void update();
+    void popDay();
     void setOffset(int offset)
     {
         offset_ = offset;
     }
-    QList<AbstractSunrise *> get();
+    QList<AbstractSunrise *> get()
+    {
+        return sunrise_;
+    };
     ~SunRiseSet();
 
 signals:

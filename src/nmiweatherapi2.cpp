@@ -42,6 +42,13 @@ NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
     : AbstractWeatherAPI(locationId, -1)
 {
     currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
+    if (!timeZone.isEmpty()) {
+        rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(tz->getTimeZone().toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
+        connect(rs, &SunRiseSet::finished, this, [this] {
+            this->isSunRiseSet = true;
+            currentData_->setSunrise(rs->get());
+        });
+    }
 }
 
 NMIWeatherAPI2::~NMIWeatherAPI2()
@@ -57,7 +64,10 @@ void NMIWeatherAPI2::update()
         emit updated(currentData_);
         return;
     }
-
+    if (rs) {
+        rs->popDay(); // remove old data
+        rs->update();
+    }
     day_ = 0;
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
     QUrlQuery query;
@@ -271,6 +281,9 @@ void NMIWeatherAPI2::setTZ()
     emit timeZoneSet();
     if (!rs) {
         rs = new SunRiseSet(lat, lon, QTimeZone(QByteArray::fromStdString(tz->getTimeZone().toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
-        connect(rs, &SunRiseSet::finished, this, [this] { this->isSunRiseSet = true; });
+        connect(rs, &SunRiseSet::finished, this, [this] {
+            this->isSunRiseSet = true;
+            currentData_->setSunrise(rs->get());
+        });
     }
 }

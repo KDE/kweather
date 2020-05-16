@@ -22,10 +22,8 @@ SunRiseSet::SunRiseSet(float latitude, float longitude, int offset_secs)
     connect(manager, &QNetworkAccessManager::finished, this, &SunRiseSet::process);
 }
 
-void SunRiseSet::update(int days)
+void SunRiseSet::update()
 {
-    if (days > 15)
-        days = 15;
     QUrl url;
     url.setScheme(QStringLiteral("https"));
     url.setHost(QStringLiteral("api.met.no"));
@@ -33,8 +31,9 @@ void SunRiseSet::update(int days)
     QUrlQuery query;
     query.addQueryItem(QLatin1String("lat"), QString::number(latitude_));
     query.addQueryItem(QLatin1String("lon"), QString::number(longitude_));
-    query.addQueryItem(QLatin1String("date"), QDate::currentDate().toString(QLatin1String("yyyy-MM-dd")));
-    query.addQueryItem(QLatin1String("days"), QString::number(days));
+    // if we already have data, request data beyond the last day
+    query.addQueryItem(QLatin1String("date"), sunrise_.isEmpty() ? QDate::currentDate().toString(QLatin1String("yyyy-MM-dd")) : QDate::currentDate().addDays(sunrise_.count()).toString(QLatin1String("yyyy-MM-dd")));
+    query.addQueryItem(QLatin1String("days"), sunrise_.isEmpty() ? QString::number(10) : QString::number(10 - sunrise_.count()));
     QString offset;
     if (offset < 0) {
         offset_ = -offset_;
@@ -72,6 +71,7 @@ void SunRiseSet::process(QNetworkReply *reply)
         sr->setMoonRise(QDateTime::fromString(ob.toObject()["moonrise"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
         sr->setSolarMidnight(
             QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["solarmidnight"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["solarmidnight"].toObject()["elevation"].toString().toDouble()));
+        sr->setSolarNoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["solarnoon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["solarnoon"].toObject()["elevation"].toString().toDouble()));
         sr->setHighMoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["high_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["high_moon"].toObject()["elevation"].toString().toDouble()));
         sr->setLowMoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["low_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["low_moon"].toObject()["elevation"].toString().toDouble()));
         sunrise_.push_back(sr);
@@ -80,6 +80,17 @@ void SunRiseSet::process(QNetworkReply *reply)
     emit finished();
     reply->deleteLater();
 }
+
+void SunRiseSet::popDay()
+{
+    QDateTime today = QDateTime::currentDateTime();
+    for (auto day : sunrise_) {
+        if (day->sunRise().daysTo(today) > 0) {
+            sunrise_.pop_front();
+            delete day;
+        }
+    }
+};
 
 SunRiseSet::~SunRiseSet()
 {
