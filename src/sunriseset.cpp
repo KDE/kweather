@@ -97,7 +97,7 @@ bool SunRiseSet::isDayTime(QDateTime date)
     for (auto sr : sunrise_) {
         // if on the same day
         if (sr->sunRise().date().daysTo(date.date()) == 0) {
-            if (sr->sunRise().secsTo(date) <= 0 || sr->sunSet().secsTo(date) >= 0)
+            if (sr->sunRise().secsTo(date) <= 1800 || sr->sunSet().secsTo(date) >= 1800)
                 return false;
             else
                 return true;
