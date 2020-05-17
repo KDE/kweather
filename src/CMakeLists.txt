@@ -14,7 +14,6 @@ set(kweather_SRCS
     weatherlocationmodel.cpp
     weatherhourmodel.cpp
     weatherdaymodel.cpp
-    nmiweatherapi.cpp
     owmweatherapi.cpp
     abstractweatherapi.cpp
     geotimezone.cpp
@@ -41,7 +40,6 @@ target_link_libraries(kweather
         KF5::ConfigCore
         KF5::CoreAddons
         KF5::Notifications
-        ${ZLIB_LIBRARIES}
         )
 
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
