@@ -68,15 +68,21 @@ void WeatherForecastManager::readFromCache()
         reader.open(QIODevice::ReadOnly | QIODevice::Text);
         // obtain weather forecast
         AbstractWeatherForecast *fc = convertFromJson(reader.readAll());
+        bool isFound = false; // use to determine if we need to delete this cache
         // loop over existing locations and add cached weather forecast data if location found
         for (auto wl : model_.getList()) {
             if (fc->locationId() == wl->locationId()) {
+                isFound = true;
                 // add forecast if it does not exist, or is newer than existing data
                 if (map[wl] == nullptr || map[wl]->timeCreated() < fc->timeCreated()) {
                     map[wl] = fc;
                 }
                 break;
             }
+        }
+        if (!isFound) { // free memory, delete no longer needed cache
+            delete fc;
+            reader.remove();
         }
         reader.close();
     }
