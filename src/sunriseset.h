@@ -24,6 +24,10 @@ public:
     {
         offset_ = offset;
     }
+    void setData(QList<AbstractSunrise *> sunrise)
+    {
+        sunrise_ = sunrise;
+    };
     QList<AbstractSunrise *> get()
     {
         return sunrise_;

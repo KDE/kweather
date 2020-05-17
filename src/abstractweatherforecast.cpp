@@ -42,13 +42,18 @@ AbstractWeatherForecast *AbstractWeatherForecast::fromJson(QJsonObject obj)
     fc->setLongitude(obj["longitude"].toString().toDouble());
     QList<AbstractHourlyWeatherForecast *> hourList;
     QList<AbstractDailyWeatherForecast *> dayList;
+    QList<AbstractSunrise *> sunriseList;
+
     for (auto hour : obj["hourlyForecasts"].toArray())
         hourList.push_back(AbstractHourlyWeatherForecast::fromJson(hour.toObject()));
     for (auto day : obj["dailyForecasts"].toArray())
         dayList.push_back(AbstractDailyWeatherForecast::fromJson(day.toObject()));
+    for (auto sr : obj["sunrise"].toArray())
+        sunriseList.push_back(AbstractSunrise::fromJson(sr.toObject()));
 
     fc->setHourlyForecasts(hourList);
     fc->setDailyForecasts(dayList);
+    fc->setSunrise(sunriseList);
     return fc;
 }
 
@@ -62,14 +67,18 @@ QJsonObject AbstractWeatherForecast::toJson()
 
     QJsonArray hourArray;
     QJsonArray dayArray;
+    QJsonArray sunriseArray;
 
     for (auto fc : this->hourlyForecasts())
         hourArray.push_back(fc->toJson());
     for (auto fc : this->dailyForecasts())
         dayArray.push_back(fc->toJson());
+    for (auto fc : this->sunrise_)
+        sunriseArray.push_back(fc->toJson());
 
     obj["hourlyForecasts"] = hourArray;
     obj["dailyForecasts"] = dayArray;
+    obj["sunrise"] = sunriseArray;
     return obj;
 }
 

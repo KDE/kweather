@@ -29,7 +29,7 @@ public:
                     QPair<QDateTime, double> &solarMidnight,
                     QPair<QDateTime, double> &solarNoon);
     AbstractSunrise();
-    AbstractSunrise *fromJson(QJsonObject obj);
+    static AbstractSunrise *fromJson(QJsonObject obj);
     QJsonObject toJson();
     QString highMoonTime() const
     {

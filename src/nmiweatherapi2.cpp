@@ -209,10 +209,8 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end - https://api.met.no/weatherapi/weathericon/2.0/legends
     hourForecast->setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
 
-    /* ~~~~~ WIP ~~~~~ */
     // figure out whether to use night or day weather icon and description
     if (isSunRiseSet) {
-        qDebug() << "sunrise set";
         if (rs->isDayTime(hourForecast->date())) {
             hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
             hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
