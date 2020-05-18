@@ -12,8 +12,8 @@
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QObject>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QJsonObject>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <utility>
 
 class WeatherDayListModel;

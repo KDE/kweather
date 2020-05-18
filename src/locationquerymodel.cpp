@@ -7,12 +7,12 @@
 
 #include "locationquerymodel.h"
 #include <QTimer>
-#include <QtCore/QJsonArray>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QJsonObject>
-#include <QtCore/QUrl>
-#include <QtCore/QUrlQuery>
-#include <QtNetwork/QNetworkConfigurationManager>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
+#include <QUrlQuery>
+#include <QNetworkConfigurationManager>
 LocationQueryModel::LocationQueryModel()
 {
     this->networkAccessManager = new QNetworkAccessManager(this);

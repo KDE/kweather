@@ -8,8 +8,8 @@
 #include "abstractweatherforecast.h"
 #include "abstractsunrise.h"
 #include <QDebug>
-#include <QtCore/QJsonArray>
-#include <QtCore/QJsonObject>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <utility>
 AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated)
 {

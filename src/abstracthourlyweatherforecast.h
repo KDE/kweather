@@ -10,7 +10,7 @@
 
 #include <QDateTime>
 #include <QObject>
-#include <QtCore/QSettings>
+#include <QSettings>
 
 class AbstractHourlyWeatherForecast : public QObject
 {

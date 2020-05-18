@@ -8,7 +8,7 @@
 #ifndef ABSTRACTDAILYWEATHERFORECAST_H
 #define ABSTRACTDAILYWEATHERFORECAST_H
 #include <QDate>
-#include <QtCore/QObject>
+#include <QObject>
 
 class AbstractDailyWeatherForecast : public QObject
 {

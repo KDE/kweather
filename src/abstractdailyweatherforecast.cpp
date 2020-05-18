@@ -6,7 +6,7 @@
  */
 
 #include "abstractdailyweatherforecast.h"
-#include <QtCore/QJsonObject>
+#include <QJsonObject>
 
 AbstractDailyWeatherForecast::AbstractDailyWeatherForecast()
 {

@@ -7,7 +7,7 @@
 
 #include "abstracthourlyweatherforecast.h"
 
-#include <QtCore/QJsonObject>
+#include <QJsonObject>
 #include <utility>
 AbstractHourlyWeatherForecast::AbstractHourlyWeatherForecast(QDateTime date,
                                                              QString weatherDescription,
