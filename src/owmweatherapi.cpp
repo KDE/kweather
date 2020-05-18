@@ -12,15 +12,17 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QTimeZone>
 #include <QUrlQuery>
-#include <memory>
-#include <vector>
+
 OWMWeatherAPI::OWMWeatherAPI(QString locationName)
     : AbstractWeatherAPI(locationName, 3)
 {
 }
 
-OWMWeatherAPI::~OWMWeatherAPI() {}
+OWMWeatherAPI::~OWMWeatherAPI()
+{
+}
 
 void OWMWeatherAPI::setLocation(float latitude, float longitude)
 {
@@ -28,58 +30,54 @@ void OWMWeatherAPI::setLocation(float latitude, float longitude)
     lon = longitude;
 }
 
-void OWMWeatherAPI::setToken(QString& token)
+void OWMWeatherAPI::setToken(QString &token)
 {
     token_ = &token;
 }
 
-void OWMWeatherAPI::parse(QNetworkReply* reply)
+void OWMWeatherAPI::parse(QNetworkReply *reply)
 {
     QJsonDocument mJson = QJsonDocument::fromJson(reply->readAll());
+    auto forecasts = new AbstractWeatherForecast();
+    AbstractHourlyWeatherForecast *hourly;
+    QList<AbstractHourlyWeatherForecast *> hourlyList;
+    int offset = mJson["city"].toObject()["timezone"].toInt();
     QJsonArray mArray = mJson["list"].toArray();
-    QDateTime start;
-
-    start.setSecsSinceEpoch(mArray.at(0)["dt"].toInt());
-    start = start.toOffsetFromUtc(mJson["city"]["timezone"].toInt());
-
-    for (int i = 0; i < 39; i++) {
-        // TODO reimplement
-//        mForecasts.push_back(new AbstractWeatherForecast(
-//            QString(mJson["city"]["country"].toString() + ", " + mJson["city"]["name"].toString()),
-//            getWindDirection(mArray.at(i)["wind"]["deg"].toDouble()), mArray.at(i)["weather"]["description"].toString(),
-//            map[mArray.at(i)["weather"]["icon"].toString()], map[mArray.at(i)["weather"]["icon"].toString()], start.addSecs(3600 * i), lat, lon,
-//            mArray.at(i)["rain"]["3h"].toDouble() + mArray.at(i)["snow"]["3h"].toDouble(),
-//            -1.0, // api doesn't support fog
-//            mArray.at(i)["clouds"]["all"].toInt(), mArray.at(i)["wind"]["speed"].toInt(),
-//            mArray.at(i)["main"]["temp_max"].toInt(), mArray.at(i)["main"]["temp_min"].toInt(),
-//            mArray.at(i)["main"]["humidity"].toInt(), mArray.at(i)["main"]["grnd_level"].toInt()));
+    for (auto fc : mArray) {
+        hourly = new AbstractHourlyWeatherForecast();
+        hourly->setDate(QDateTime::fromSecsSinceEpoch(fc.toObject()["dt"].toInt()).toTimeZone(QTimeZone(offset)));
+        hourly->setFog(-1);
+        hourly->setUvIndex(-1);
+        hourly->setHumidity(fc.toObject()["main"].toObject()["humidity"].toInt());
+        hourly->setPressure(fc.toObject()["main"].toObject()["pressure"].toInt());
+        hourly->setWindSpeed(fc.toObject()["wind"].toObject()["speed"].toDouble());
+        hourly->setTemperature(fc.toObject()["main"].toObject()["temp"].toDouble());
+        hourly->setWeatherIcon(map[fc.toObject()["weather"].toArray().at(0)["icon"].toString()]);
+        hourly->setWindDirection(getWindDirection(fc.toObject()["wind"].toObject()["deg"].toInt()));
+        hourly->setWeatherDescription(fc.toObject()["weather"].toArray().at(0)["description"].toString());
+        hourly->setPrecipitationAmount(fc.toObject()["rain"].toObject()["3h"].toDouble() + fc.toObject()["snow"].toObject()["3h"].toDouble());
+        hourlyList.push_back(hourly);
     }
 }
 
-QString OWMWeatherAPI::getWindDirection(double degrees)
+AbstractHourlyWeatherForecast::WindDirection OWMWeatherAPI::getWindDirection(int windDirectionDeg)
 {
-    {
-        QString direction;
-
-        if ((degrees >= 0) && (degrees <= 30))
-            direction = "N";
-        else if ((degrees > 30) && (degrees <= 60))
-            direction = "NE";
-        else if ((degrees > 60) && (degrees <= 120))
-            direction = "E";
-        else if ((degrees > 120) && (degrees <= 150))
-            direction = "SE";
-        else if ((degrees > 150) && (degrees <= 210))
-            direction = "S";
-        else if ((degrees > 210) && (degrees <= 240))
-            direction = "SW";
-        else if ((degrees > 240) && (degrees <= 300))
-            direction = "W";
-        else if ((degrees > 300) && (degrees <= 330))
-            direction = "NW";
-        else if ((degrees > 330) && (degrees <= 360))
-            direction = "N";
-        return direction;
+    if (windDirectionDeg < 22.5 || windDirectionDeg >= 337.5) {
+        return AbstractHourlyWeatherForecast::S; // from N
+    } else if (windDirectionDeg > 22.5 || windDirectionDeg <= 67.5) {
+        return AbstractHourlyWeatherForecast::SW; // from NE
+    } else if (windDirectionDeg > 67.5 || windDirectionDeg <= 112.5) {
+        return AbstractHourlyWeatherForecast::W; // from E
+    } else if (windDirectionDeg > 112.5 || windDirectionDeg <= 157.5) {
+        return AbstractHourlyWeatherForecast::NW; // from SE
+    } else if (windDirectionDeg > 157.5 || windDirectionDeg <= 202.5) {
+        return AbstractHourlyWeatherForecast::N; // from S
+    } else if (windDirectionDeg > 202.5 || windDirectionDeg <= 247.5) {
+        return AbstractHourlyWeatherForecast::NE; // from SW
+    } else if (windDirectionDeg > 247.5 || windDirectionDeg <= 292.5) {
+        return AbstractHourlyWeatherForecast::E; // from W
+    } else if (windDirectionDeg > 292.5 || windDirectionDeg <= 337.5) {
+        return AbstractHourlyWeatherForecast::SE; // from NW
     }
 }
 
@@ -90,7 +88,7 @@ void OWMWeatherAPI::update()
     QUrlQuery query;
 
     query.addQueryItem(QStringLiteral("lat"), QString().setNum(lat));
-    query.addQueryItem(QStringLiteral("lat"), QString().setNum(lon));
+    query.addQueryItem(QStringLiteral("lgn"), QString().setNum(lon));
     query.addQueryItem(QStringLiteral("APPID"), *token_);
 
     QUrl url;
