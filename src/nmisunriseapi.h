@@ -13,11 +13,11 @@
 class QNetworkAccessManager;
 class QNetworkReply;
 class AbstractSunrise;
-class SunRiseSet : public QObject
+class NMISunriseAPI : public QObject
 {
     Q_OBJECT
 public:
-    SunRiseSet(float latitude, float longitude, int offset);
+    NMISunriseAPI(float latitude, float longitude, int offset);
     void update();
     void popDay();
     void setOffset(int offset)
@@ -32,7 +32,11 @@ public:
     {
         return sunrise_;
     };
-    ~SunRiseSet();
+    bool isEmpty() const
+    {
+        return noData;
+    }
+    ~NMISunriseAPI();
     bool isDayTime(QDateTime date);
 signals:
     void finished();
@@ -43,6 +47,7 @@ private:
     float longitude_, latitude_, offset_;
     QNetworkAccessManager *manager;
     QList<AbstractSunrise *> sunrise_;
+    bool noData = true;
 };
 
 #endif // SUNRISESET_H

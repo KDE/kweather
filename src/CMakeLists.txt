@@ -24,7 +24,7 @@ set(kweather_SRCS
     nmiweatherapi2.cpp
     nmiweatherapi2.h
         settingsmodel.cpp settingsmodel.h
-    sunriseset.cpp
+        nmisunriseapi.cpp
     abstractsunrise.cpp
         )
 
