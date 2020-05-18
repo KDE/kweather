@@ -19,21 +19,28 @@ Kirigami.ApplicationWindow
     width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
 
-    pageStack.initialPage: forecastPage
-    
+    pageStack.initialPage: initPage()
+
     function switchToPage(page) {
         while (pageStack.depth > 0) pageStack.pop();
         pageStack.push(page);
     }
-    
+
+    function initPage() {
+        if(weatherLocationListModel.count() === 0)
+            return defaultPage;
+        else
+            return forecastPage;
+    }
+
     globalDrawer: Kirigami.GlobalDrawer {
         title: "Weather"
         bannerImageSource: "qrc:/resources/autumn.jpg"
-        
+
         bannerVisible: true
 //         modal: !wideScreen
 //         width: 200
-        
+
         actions: [
             Kirigami.Action {
                 text: "Forecast"
@@ -52,16 +59,20 @@ Kirigami.ApplicationWindow
             }
         ]
     }
-    
+
+    DefaultPage{
+        id: defaultPage
+    }
+
     ForecastContainerPage {
         id: forecastPage
     }
-    
+
     CitiesPage {
         id: citiesPage
         visible: false
     }
-    
+
     SettingsPage {
         id: settingsPage
         visible: false
@@ -106,5 +117,5 @@ Kirigami.ApplicationWindow
             ]
         }
     }
-    
+
 }
