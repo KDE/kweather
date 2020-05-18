@@ -18,7 +18,7 @@
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
 class GeoTimeZone;
-class SunRiseSet;
+class NMISunriseAPI;
 // Norwegian Meteorological Institute Weather API Implementation (v2)
 // api.met.no
 
@@ -30,6 +30,7 @@ public:
     NMIWeatherAPI2(QString locationId);
     ~NMIWeatherAPI2() override;
     void update() override;
+    void updateSunriseData(bool uiUpdate);
     void setLocation(float lat, float lon) override;
     void setToken(QString &) override;
     inline QString &getTimeZone() override
@@ -48,12 +49,13 @@ private slots:
 
 private:
     void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList);
+
     QString timeZone;
     GeoTimeZone *tz;
-    SunRiseSet *rs = nullptr;
-    int day_ = 0; // tmp, use to determine day for sunrise/set
-    bool isSunRiseSet = false;
-    bool isTimeZoneSet = true; // determine whether timezone data is set when parsing
+    NMISunriseAPI *nmiSunriseAPI = nullptr; // sunrise api instance, updates the forecast when weather is obtained
+
+    bool creatingForecastLock = false; // whether it is the middle of creating a forecast from weather data
+
     struct ResolvedWeatherDesc {
         QString icon, desc;
         ResolvedWeatherDesc() = default;

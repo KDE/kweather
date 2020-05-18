@@ -97,7 +97,7 @@ private:
     float longitude_;
     QList<AbstractHourlyWeatherForecast *> hourlyForecasts_;
     QList<AbstractDailyWeatherForecast *> dailyForecasts_;
-    QList<AbstractSunrise *> sunrise_;
+    QList<AbstractSunrise *> sunrise_; // may be empty, as this is fetched from a separate api; do not display on ui if it is empty
 };
 
 #endif // ABSTRACTWEATHERFORECAST_H

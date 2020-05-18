@@ -16,23 +16,6 @@ Kirigami.ScrollablePage {
     id: page
     title: forecastView.count == 0 ? "Forecast" : weatherLocationListModel.get(forecastView.currentIndex).name
 
-    Kirigami.PlaceholderMessage {
-        anchors.centerIn: parent
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.margins: Kirigami.Units.largeSpacing
-
-        icon.name: "globe"
-        text: i18n("No locations configured")
-        visible: forecastView.count == 0
-
-        helpfulAction: Kirigami.Action {
-            iconName: "list-add"
-            text: i18n("Add current location")
-            onTriggered: weatherLocationListModel.requestCurrentLocation()
-        }
-    }
-
     SwipeView {
         id: forecastView
         anchors.fill: parent
@@ -54,8 +37,8 @@ Kirigami.ScrollablePage {
         count: forecastView.count
         currentIndex: forecastView.currentIndex
 
-        anchors.bottom: forecastView.bottom
-        anchors.horizontalCenter: forecastView.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 }
 

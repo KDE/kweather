@@ -15,6 +15,7 @@ class WeatherLocation;
 
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
+#include "abstractsunrise.h"
 
 // generated from the forecasts list
 class WeatherDay : public QObject
@@ -30,10 +31,14 @@ class WeatherDay : public QObject
     Q_PROPERTY(float humidity READ humidity NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure NOTIFY propertyChanged)
 
+    Q_PROPERTY(QString sunrise READ sunrise NOTIFY propertyChanged)
+    Q_PROPERTY(QString sunset READ sunset NOTIFY propertyChanged)
+    Q_PROPERTY(QString moonPhase READ moonPhase NOTIFY propertyChanged)
+
 public:
     explicit WeatherDay();
     // list of forecasts on this day
-    explicit WeatherDay(AbstractDailyWeatherForecast* dailyForecast);
+    explicit WeatherDay(AbstractDailyWeatherForecast* dailyForecast, AbstractSunrise* sunrise);
 
     inline QString weatherDescription() {return weatherDescription_;}
     inline QString weatherIcon() {return weatherIcon_;}
@@ -58,6 +63,9 @@ public:
     inline float uvIndex() {return uvIndex_;}
     inline float humidity() {return humidity_;}
     inline float pressure() {return pressure_;}
+    inline QString sunrise() {return sunrise_;}
+    inline QString sunset() {return sunset_;}
+    inline QString moonPhase() {return moonPhase_;}
 
 signals:
     void propertyChanged();
@@ -72,6 +80,10 @@ private:
     float uvIndex_;
     float humidity_;
     float pressure_;
+
+    QString sunrise_;
+    QString sunset_;
+    QString moonPhase_;
 };
 
 // caches WeatherDays, until signal is called to update and regenerate

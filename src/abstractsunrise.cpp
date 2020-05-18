@@ -11,7 +11,8 @@ AbstractSunrise::AbstractSunrise(QDateTime &sunRise,
                                  QPair<QDateTime, double> &highMoon,
                                  QPair<QDateTime, double> &lowMoon,
                                  QPair<QDateTime, double> &solarMidnight,
-                                 QPair<QDateTime, double> &solarNoon)
+                                 QPair<QDateTime, double> &solarNoon,
+                                 double moonPhase)
     : sunRise_(sunRise)
     , sunSet_(sunSet)
     , moonRise_(moonRise)
@@ -20,6 +21,7 @@ AbstractSunrise::AbstractSunrise(QDateTime &sunRise,
     , lowMoon_(lowMoon)
     , solarMidnight_(solarMidnight)
     , solarNoon_(solarNoon)
+    , moonPhase_(moonPhase)
 {
 }
 
@@ -38,6 +40,7 @@ QJsonObject AbstractSunrise::toJson()
     obj[QLatin1String("highmoonEle")] = highMoon_.second;
     obj[QLatin1String("solarmidnightEle")] = solarMidnight_.second;
     obj[QLatin1String("solarNoonEle")] = solarNoon_.second;
+    obj[QLatin1String("moonphase")] = moonPhase_;
     return obj;
 }
 
@@ -50,5 +53,6 @@ AbstractSunrise *AbstractSunrise::fromJson(QJsonObject obj)
     as->setHighMoon(QPair<QDateTime, double>(QDateTime::fromString(obj["highmoon"].toString(), Qt::ISODate), obj["highmoonEle"].toDouble()));
     as->setSolarMidnight(QPair<QDateTime, double>(QDateTime::fromString(obj["solarmidnight"].toString(), Qt::ISODate), obj["solarmidnightEle"].toDouble()));
     as->setSolarNoon(QPair<QDateTime, double>(QDateTime::fromString(obj["solarnoon"].toString(), Qt::ISODate), obj["solarnoonEle"].toDouble()));
+    as->setMoonPhase(obj["moonphase"].toDouble());
     return as;
 }

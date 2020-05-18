@@ -43,7 +43,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Notifications
 )
-find_package(ZLIB REQUIRED)
 
 ################# build and install #################
 add_subdirectory(src)
