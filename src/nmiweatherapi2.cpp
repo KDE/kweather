@@ -50,6 +50,29 @@ NMIWeatherAPI2::~NMIWeatherAPI2()
         delete tz;
 }
 
+void NMIWeatherAPI2::updateSunriseData(bool uiUpdate) {
+    if (nmiSunriseAPI == nullptr && !timeZone.isEmpty()) {
+        qDebug() << "construct sunrise class";
+        nmiSunriseAPI = new NMISunriseAPI(lat, lon, QTimeZone(QByteArray::fromStdString(timeZone.toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
+
+        connect(nmiSunriseAPI, &NMISunriseAPI::finished, this, [this, uiUpdate] {
+            if (currentData_ != nullptr) {
+                qDebug() << "sunrise data arrived";
+                currentData_->setSunrise(nmiSunriseAPI->get());
+
+                // TODO data race issues (from emitting updated too many times)
+                if (!creatingForecastLock && uiUpdate) {
+                    emit updated(currentData_); // update ui
+                }
+            }
+        });
+    }
+    if (nmiSunriseAPI != nullptr) {
+        nmiSunriseAPI->popDay(); // remove old data
+        nmiSunriseAPI->update();
+    }
+}
+
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty
@@ -60,26 +83,8 @@ void NMIWeatherAPI2::update()
     }
 
     // fetch sunrise information if the timezone is set
-    if (nmiSunriseAPI == nullptr && !timeZone.isEmpty()) {
-        qDebug() << "construct sunrise class";
-        nmiSunriseAPI = new NMISunriseAPI(lat, lon, QTimeZone(QByteArray::fromStdString(timeZone.toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
-
-        connect(nmiSunriseAPI, &NMISunriseAPI::finished, this, [this] {
-            if (currentData_ != nullptr) {
-                qDebug() << "sunrise data arrived";
-                currentData_->setSunrise(nmiSunriseAPI->get());
-
-                // TODO data race issues (from emitting updated too many times)
-//                if (!creatingForecastLock) {
-//                    emit updated(currentData_); // update ui
-//                }
-            }
-        });
-    }
-    if (nmiSunriseAPI != nullptr) {
-        nmiSunriseAPI->popDay(); // remove old data
-        nmiSunriseAPI->update();
-    }
+    // can't do ui updates because of data race issues
+    updateSunriseData(false);
 
     // query weather api
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
@@ -288,7 +293,12 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
 void NMIWeatherAPI2::setTZ()
 {
+    bool tzEmpty = timeZone == nullptr;
     timeZone = tz->getTimeZone();
     qDebug() << "timezone" << timeZone;
     emit timeZoneSet();
+
+    if (tzEmpty) { // in case the initial update did not call updateSunriseData because tz was not there
+        updateSunriseData(true);
+    }
 }

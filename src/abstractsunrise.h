@@ -27,7 +27,8 @@ public:
                     QPair<QDateTime, double> &highMoon,
                     QPair<QDateTime, double> &lowMoon,
                     QPair<QDateTime, double> &solarMidnight,
-                    QPair<QDateTime, double> &solarNoon);
+                    QPair<QDateTime, double> &solarNoon,
+                    double moonphase);
     AbstractSunrise();
     static AbstractSunrise *fromJson(QJsonObject obj);
     QJsonObject toJson();
@@ -79,6 +80,10 @@ public:
     {
         return moonSet_;
     };
+    double moonPhase()
+    {
+        return moonPhase_;
+    }
     QString sunRiseStr() const
     {
         return sunRise_.time().toString();
@@ -127,6 +132,10 @@ public:
     {
         moonSet_ = moonSet;
     };
+    void setMoonPhase(double moonPhase)
+    {
+        moonPhase_ = moonPhase;
+    }
 signals:
     void propertyChanged();
 
@@ -139,6 +148,7 @@ private:
     QDateTime sunSet_;
     QDateTime moonRise_;
     QDateTime moonSet_;
+    double moonPhase_;
 };
 
 #endif // ABSTRACTSUNRISE_H

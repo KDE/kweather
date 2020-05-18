@@ -18,6 +18,7 @@ Kirigami.ScrollablePage {
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
 
     property WeatherLocation weatherLocation
+    property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
 
     // swipe down to refresh
     supportsRefreshing: true
@@ -33,12 +34,14 @@ Kirigami.ScrollablePage {
         onStopLoadingIndicator: {page.refreshing = false}
     }
 
-    // weather header
+    // all elements are in a column
     ColumnLayout {
         Layout.fillWidth: true
         anchors.leftMargin: 1
         anchors.rightMargin: 1
         spacing: Kirigami.Units.largeSpacing * 2
+
+        // weather header
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
@@ -163,7 +166,7 @@ Kirigami.ScrollablePage {
                                 text: "Precipitation"
                             }
                             Label {
-                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).precipitation.toFixed(1) + "mm"
+                                text: currentDay == null ? "" : currentDay.precipitation.toFixed(1) + "mm"
                             }
                         }
                     }
@@ -187,7 +190,7 @@ Kirigami.ScrollablePage {
                                 text: "Humidity"
                             }
                             Label {
-                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).humidity.toFixed(1) + "%"
+                                text: currentDay == null ? "" : currentDay.humidity.toFixed(1) + "%"
                             }
                         }
                     }
@@ -211,7 +214,7 @@ Kirigami.ScrollablePage {
                                 text: "Pressure"
                             }
                             Label {
-                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).pressure.toFixed(1) + "hPa"
+                                text: currentDay == null ? "" : currentDay.pressure.toFixed(1) + "hPa"
                             }
                         }
                     }
@@ -235,7 +238,89 @@ Kirigami.ScrollablePage {
                                 text: "UV index"
                             }
                             Label {
-                                text: weatherLocation.dayListModel.get(dailyListView.currentIndex).uvIndex.toFixed(1)
+                                text: currentDay == null ? "" : currentDay.uvIndex.toFixed(1)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // sunrise/sunset card
+        Kirigami.Card {
+            Layout.fillWidth: true
+
+            contentItem: Item {
+                implicitHeight: sunsetColumn.height
+
+                Column {
+                    id: sunsetColumn
+                    spacing: Kirigami.Units.largeSpacing
+
+                    // Sunrise
+                    RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
+                        Kirigami.Icon {
+                            source: "compass"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
+                        }
+                        Column {
+                            spacing: Kirigami.Units.smallSpacing
+                            Label {
+                                font.weight: Font.Bold
+                                text: "Sunrise"
+                            }
+                            Label {
+                                text: currentDay == null ? "" : currentDay.sunrise
+                            }
+                        }
+                    }
+
+                    Kirigami.Separator {
+                        Layout.fillWidth: true
+                    }
+
+                    // Sunset
+                    RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
+                        Kirigami.Icon {
+                            source: "compass"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
+                        }
+                        Column {
+                            spacing: Kirigami.Units.smallSpacing
+                            Label {
+                                font.weight: Font.Bold
+                                text: "Sunset"
+                            }
+                            Label {
+                                text: currentDay == null ? "" : currentDay.sunset
+                            }
+                        }
+                    }
+
+                    Kirigami.Separator {
+                        Layout.fillWidth: true
+                    }
+
+                    // Moon phase
+                    RowLayout {
+                        spacing: Kirigami.Units.largeSpacing
+                        Kirigami.Icon {
+                            source: "weather-clear-night"
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.minimumWidth: Layout.minimumHeight * 1.5
+                        }
+                        Column {
+                            spacing: Kirigami.Units.smallSpacing
+                            Label {
+                                font.weight: Font.Bold
+                                text: "Moon Phase"
+                            }
+                            Label {
+                                text: currentDay == null ? "" : currentDay.moonPhase
                             }
                         }
                     }

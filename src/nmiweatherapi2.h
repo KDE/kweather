@@ -30,6 +30,7 @@ public:
     NMIWeatherAPI2(QString locationId);
     ~NMIWeatherAPI2() override;
     void update() override;
+    void updateSunriseData(bool uiUpdate);
     void setLocation(float lat, float lon) override;
     void setToken(QString &) override;
     inline QString &getTimeZone() override

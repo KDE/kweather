@@ -73,6 +73,7 @@ void NMISunriseAPI::process(QNetworkReply *reply)
         sr->setSolarNoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["solarnoon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["solarnoon"].toObject()["elevation"].toString().toDouble()));
         sr->setHighMoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["high_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["high_moon"].toObject()["elevation"].toString().toDouble()));
         sr->setLowMoon(QPair<QDateTime, double>(QDateTime::fromString(ob.toObject()["low_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"), ob.toObject()["low_moon"].toObject()["elevation"].toString().toDouble()));
+        sr->setMoonPhase(ob.toObject()["moonposition"].toObject()["phase"].toString().toDouble());
         sunrise_.push_back(sr);
     }
 
