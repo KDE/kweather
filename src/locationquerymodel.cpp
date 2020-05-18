@@ -85,8 +85,8 @@ void LocationQueryModel::setQuery()
     urlQuery.addQueryItem("username", "kweatherdev");
     url.setQuery(urlQuery);
     qDebug() << url.toString();
-    QNetworkReply *rep = networkAccessManager->get(QNetworkRequest(url));
-    connect(rep, &QNetworkReply::finished, this, [this, rep]() { handleQueryResults(rep); });
+    networkAccessManager->get(QNetworkRequest(url));
+    connect(networkAccessManager, &QNetworkAccessManager::finished, this, &LocationQueryModel::handleQueryResults);
 }
 
 void LocationQueryModel::addLocation(int index)
@@ -99,8 +99,9 @@ void LocationQueryModel::addLocation(int index)
 
 void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
 {
+    reply->deleteLater();
     loading_ = false;
-    if (!reply || reply->error()) {
+    if (reply->error()) {
         networkError_ = true;
         qDebug() << "Network error:" << reply->error();
         emit propertyChanged();
