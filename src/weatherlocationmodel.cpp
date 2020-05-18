@@ -18,7 +18,7 @@
 #include <QDir>
 #include <QFile>
 #include <QQmlEngine>
-#include <QtCore/QJsonArray>
+#include <QJsonArray>
 #include <stdlib.h>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";

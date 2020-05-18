@@ -11,7 +11,7 @@ class WeatherLocation;
 
 #include <QAbstractListModel>
 #include <QObject>
-#include <QtCore/QSettings>
+#include <QSettings>
 
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"

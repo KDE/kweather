@@ -19,9 +19,9 @@
 #include <QTimeZone>
 #include <QUrlQuery>
 #include <QXmlStreamReader>
-#include <QtCore/QJsonArray>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <algorithm>
 
 void NMIWeatherAPI2::setLocation(float latitude, float longitude)

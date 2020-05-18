@@ -10,10 +10,10 @@
 
 #include <QAbstractListModel>
 #include <QObject>
-#include <QtCore/QString>
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkSession>
+#include <QString>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkSession>
 class QTimer;
 // fetched from geonames
 class LocationQueryResult : public QObject

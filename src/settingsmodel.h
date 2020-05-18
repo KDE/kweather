@@ -8,8 +8,8 @@
 #ifndef KWEATHER_SETTINGSMODEL_H
 #define KWEATHER_SETTINGSMODEL_H
 
-#include <QtCore/QObject>
-#include <QtCore/QSettings>
+#include <QObject>
+#include <QSettings>
 class SettingsModel : public QObject
 {
     Q_OBJECT
