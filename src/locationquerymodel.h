@@ -13,7 +13,6 @@
 #include <QtCore/QString>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkSession>
 class QTimer;
 // fetched from geonames
 class LocationQueryResult : public QObject
@@ -105,7 +104,6 @@ private:
     QTimer *inputTimer;
     QString text_;
     QNetworkAccessManager *networkAccessManager;
-    QNetworkSession *networkSession;
 };
 
 #endif // KWEATHER_LOCATIONQUERYMODEL_H

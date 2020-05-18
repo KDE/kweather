@@ -15,9 +15,7 @@
 #include <QtNetwork/QNetworkConfigurationManager>
 LocationQueryModel::LocationQueryModel()
 {
-    QNetworkConfigurationManager ncm;
     this->networkAccessManager = new QNetworkAccessManager(this);
-    this->networkSession = new QNetworkSession(ncm.defaultConfiguration(), this);
     inputTimer = new QTimer(this);
     inputTimer->setSingleShot(true);
     connect(inputTimer, &QTimer::timeout, this, &LocationQueryModel::setQuery);
