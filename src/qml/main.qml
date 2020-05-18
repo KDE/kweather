@@ -45,7 +45,7 @@ Kirigami.ApplicationWindow
             Kirigami.Action {
                 text: "Forecast"
                 iconName: "weather-clear"
-                onTriggered: switchToPage(forecastPage);
+                onTriggered: switchToPage(initPage());
             },
             Kirigami.Action {
                 text: "Locations"
@@ -60,7 +60,7 @@ Kirigami.ApplicationWindow
         ]
     }
 
-    DefaultPage{
+    DefaultPage {
         id: defaultPage
     }
 

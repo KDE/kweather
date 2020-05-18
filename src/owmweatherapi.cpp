@@ -79,6 +79,7 @@ AbstractHourlyWeatherForecast::WindDirection OWMWeatherAPI::getWindDirection(int
     } else if (windDirectionDeg > 292.5 || windDirectionDeg <= 337.5) {
         return AbstractHourlyWeatherForecast::SE; // from NW
     }
+    return AbstractHourlyWeatherForecast::N;
 }
 
 void OWMWeatherAPI::update()

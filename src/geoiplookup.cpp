@@ -45,10 +45,12 @@ void GeoIPLookup::process(QNetworkReply *reply)
 
     while (!reader->atEnd()) {
         reader->readNext();
-        if (reader->name() == QLatin1String("CountryName"))
+//        if (reader->name() == QLatin1String("CountryName")) old format: Country, City
+//            locationName.append(reader->readElementText());
+//        else if (reader->name() == QLatin1String("City"))
+//            locationName.append(", " + reader->readElementText()); // <City>
+        if (reader->name() == QLatin1String("City"))
             locationName.append(reader->readElementText());
-        else if (reader->name() == QLatin1String("City"))
-            locationName.append(", " + reader->readElementText()); // <City>
         else if (reader->name() == QLatin1String("Latitude"))
             latitude_ = reader->readElementText().toFloat();
         else if (reader->name() == QLatin1String("Longitude"))
