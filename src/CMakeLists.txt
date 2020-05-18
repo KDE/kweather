@@ -24,24 +24,24 @@ set(kweather_SRCS
     abstracthourlyweatherforecast.h
     nmiweatherapi2.cpp
     nmiweatherapi2.h
-        settingsmodel.cpp settingsmodel.h
+    settingsmodel.cpp
     sunriseset.cpp
     abstractsunrise.cpp
-        )
+    resources.qrc
+)
 
-qt5_add_resources(RESOURCES resources.qrc)
-add_executable(kweather ${kweather_SRCS} ${RESOURCES})
+add_executable(kweather ${kweather_SRCS})
 target_link_libraries(kweather
-        Qt5::Core
-        Qt5::Qml
-        Qt5::QuickControls2
-        Qt5::Widgets
-        Qt5::Network
-        KF5::I18n
-        KF5::ConfigCore
-        KF5::CoreAddons
-        KF5::Notifications
-        ${ZLIB_LIBRARIES}
-        )
+    Qt5::Core
+    Qt5::Qml
+    Qt5::QuickControls2
+    Qt5::Widgets
+    Qt5::Network
+    KF5::I18n
+    KF5::ConfigCore
+    KF5::CoreAddons
+    KF5::Notifications
+    ${ZLIB_LIBRARIES}
+)
 
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})

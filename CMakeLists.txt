@@ -8,8 +8,8 @@
 project(kweather)
 
 cmake_minimum_required(VERSION 2.8.12)
-set(KF5_MIN_VERSION "5.18.0")
-set(QT_MIN_VERSION "5.5.0")
+set(KF5_MIN_VERSION "5.60.0")
+set(QT_MIN_VERSION "5.12.0")
 
 ################# Disallow in-source build #################
 
@@ -21,10 +21,10 @@ include(FeatureSummary)
 
 ################# set KDE specific information #################
 
-find_package(ECM 0.0.8 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
@@ -41,14 +41,9 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Kirigami2
     I18n
     CoreAddons
-    Config
     Notifications
 )
 find_package(ZLIB REQUIRED)
-
-################# Enable C++11 features for clang and gcc #################
-
-set(CMAKE_CXX_STANDARD 11)
 
 ################# build and install #################
 add_subdirectory(src)
