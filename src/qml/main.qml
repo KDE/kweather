@@ -38,8 +38,7 @@ Kirigami.ApplicationWindow
         bannerImageSource: "qrc:/resources/autumn.jpg"
 
         bannerVisible: true
-//         modal: !wideScreen
-//         width: 200
+        modal: !wideScreen
 
         actions: [
             Kirigami.Action {
