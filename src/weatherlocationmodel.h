@@ -11,9 +11,9 @@
 #include "nmiweatherapi2.h"
 #include <QAbstractListModel>
 #include <QDebug>
-#include <QObject>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QObject>
 #include <utility>
 
 class WeatherDayListModel;

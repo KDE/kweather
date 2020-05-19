@@ -17,9 +17,8 @@
 #include <KConfigCore/KSharedConfig>
 #include <QDir>
 #include <QFile>
-#include <QQmlEngine>
 #include <QJsonArray>
-#include <stdlib.h>
+#include <QQmlEngine>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
 const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";

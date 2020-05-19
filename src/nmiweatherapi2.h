@@ -54,8 +54,6 @@ private:
     GeoTimeZone *tz;
     NMISunriseAPI *nmiSunriseAPI = nullptr; // sunrise api instance, updates the forecast when weather is obtained
 
-    bool creatingForecastLock = false; // whether it is the middle of creating a forecast from weather data
-
     struct ResolvedWeatherDesc {
         QString icon, desc;
         ResolvedWeatherDesc() = default;

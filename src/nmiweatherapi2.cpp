@@ -61,7 +61,7 @@ void NMIWeatherAPI2::updateSunriseData(bool uiUpdate) {
                 currentData_->setSunrise(nmiSunriseAPI->get());
 
                 // TODO data race issues (from emitting updated too many times)
-                if (!creatingForecastLock && uiUpdate) {
+                if (uiUpdate) {
                     emit updated(currentData_); // update ui
                 }
             }
@@ -111,7 +111,6 @@ void NMIWeatherAPI2::update()
 
 void NMIWeatherAPI2::parse(QNetworkReply *reply)
 {
-    creatingForecastLock = true;
     qDebug() << "data arrived";
 
     // parse json for weather forecast
@@ -160,7 +159,6 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     } else
         emit noTimeZone();
 
-    creatingForecastLock = false;
     emit updated(this->currentData());
 }
 
@@ -299,6 +297,6 @@ void NMIWeatherAPI2::setTZ()
     emit timeZoneSet();
 
     if (tzEmpty) { // in case the initial update did not call updateSunriseData because tz was not there
-        updateSunriseData(true);
+        updateSunriseData(false); // TODO, change to true to update ui (currently causes segfaults)
     }
 }
