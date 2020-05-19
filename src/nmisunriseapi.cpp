@@ -25,6 +25,8 @@ NMISunriseAPI::NMISunriseAPI(float latitude, float longitude, int offset_secs)
 
 void NMISunriseAPI::update()
 {
+    if (sunrise_.count() == 11) // don't update if we have enough data
+        return;
     QUrl url;
     url.setScheme(QStringLiteral("https"));
     url.setHost(QStringLiteral("api.met.no"));
