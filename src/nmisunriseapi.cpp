@@ -38,13 +38,13 @@ void NMISunriseAPI::update()
 
     // calculate offset (form example: -04:00)
     QString offset = offset_ < 0 ? "-" : "+";
-    int hour = abs(offset_) / 3600;
+    int hour = std::abs(offset_) / 3600;
     if (hour >= 10)
         offset.append(QString::number(hour) + ":");
     else {
         offset.append("0" + QString::number(hour) + ":");
     }
-    int min = (abs(offset_) - hour * 3600) / 60;
+    int min = (std::abs(offset_) - hour * 3600) / 60;
     if (min >= 10) {
         offset.append(QString::number(min));
     } else {
