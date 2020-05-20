@@ -43,7 +43,10 @@ target_link_libraries(kweather
 )
 
 if (ANDROID)
-    target_link_libraries(kweather OpenSSL::SSL)
+    target_link_libraries(kweather
+        OpenSSL::SSL
+        Qt5::Svg
+    )
 
     kirigami_package_breeze_icons(ICONS
         raindrop
