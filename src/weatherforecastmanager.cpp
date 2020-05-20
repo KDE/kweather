@@ -48,7 +48,7 @@ void WeatherForecastManager::update()
     auto locations = model_.getList();
     for (auto wLocation : locations) {
         wLocation->weatherBackendProvider()->setLocation(wLocation->latitude(), wLocation->longitude());
-        wLocation->weatherBackendProvider()->update();
+        wLocation->update();
     }
     updateTimer->start(1000 * 3600 + random.bounded(0, 1800) * 1000); // reset timer
 }
@@ -90,7 +90,7 @@ void WeatherForecastManager::readFromCache()
     // add loaded locations from cache
     for (auto wl : model_.getList()) {
         if (map[wl] != nullptr) {
-            wl->updateData(map[wl]);
+            wl->initData(map[wl]);
         }
     }
 }

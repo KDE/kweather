@@ -9,29 +9,23 @@
 #include "abstractdailyweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
 #include "abstractweatherforecast.h"
-#include "geotimezone.h"
-#include "nmisunriseapi.h"
 
 #include <QCoreApplication>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QTimeZone>
 #include <QUrlQuery>
 #include <QXmlStreamReader>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
 #include <algorithm>
 
 void NMIWeatherAPI2::setLocation(float latitude, float longitude)
 {
     lat = latitude;
     lon = longitude;
-    if (timeZone.isEmpty()) {
-        tz = new GeoTimeZone(lat, lon);
-        connect(tz, &GeoTimeZone::finished, this, &NMIWeatherAPI2::setTZ);
-    }
 }
 
 void NMIWeatherAPI2::setToken(QString &)
@@ -46,45 +40,18 @@ NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
 
 NMIWeatherAPI2::~NMIWeatherAPI2()
 {
-    if (!tz)
-        delete tz;
-}
-
-void NMIWeatherAPI2::updateSunriseData(bool uiUpdate) {
-    if (nmiSunriseAPI == nullptr && !timeZone.isEmpty()) {
-        qDebug() << "construct sunrise class";
-        nmiSunriseAPI = new NMISunriseAPI(lat, lon, QTimeZone(QByteArray::fromStdString(timeZone.toStdString())).offsetFromUtc(QDateTime::currentDateTime()));
-
-        connect(nmiSunriseAPI, &NMISunriseAPI::finished, this, [this, uiUpdate] {
-            if (currentData_ != nullptr) {
-                qDebug() << "sunrise data arrived";
-                currentData_->setSunrise(nmiSunriseAPI->get());
-
-                // TODO data race issues (from emitting updated too many times)
-                if (uiUpdate) {
-                    emit updated(currentData_); // update ui
-                }
-            }
-        });
-    }
-    if (nmiSunriseAPI != nullptr) {
-        nmiSunriseAPI->popDay(); // remove old data
-        nmiSunriseAPI->update();
-    }
 }
 
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty
-    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() &&
-        currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
+    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() && currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
         emit updated(currentData_);
         return;
     }
 
     // fetch sunrise information if the timezone is set
     // can't do ui updates because of data race issues
-    updateSunriseData(false);
 
     // query weather api
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
@@ -145,16 +112,16 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
         currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
     // add sunrise information, if it has been fetched
-    if (nmiSunriseAPI != nullptr && !nmiSunriseAPI->isEmpty()) {
+    /*if (nmiSunriseAPI != nullptr && !nmiSunriseAPI->isEmpty()) {
         qDebug() << "set sunrise data";
         currentData_->setSunrise(nmiSunriseAPI->get());
     }
-
+    */
     // sort daily forecast
     currentData_->sortDailyForecast();
-    if (!timeZone.isEmpty()) {
+    if (!timeZone_->isEmpty()) {
         for (auto fc : currentData_->hourlyForecasts()) {
-            fc->setDate(fc->date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString()))));
+            fc->setDate(fc->date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_->toStdString()))));
         }
     } else
         emit noTimeZone();
@@ -172,10 +139,10 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
     // correct date to corresponding timezone of location if possible
     QDateTime date;
-    if (timeZone.isEmpty()) {
+    if (timeZone_->isEmpty()) {
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
     } else {
-        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone.toStdString())));
+        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_->toStdString())));
     }
 
     auto *hourForecast = new AbstractHourlyWeatherForecast();
@@ -225,7 +192,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     hourForecast->setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
 
     // figure out whether to use night or day weather icon and description
-    if (nmiSunriseAPI && !nmiSunriseAPI->isEmpty()) { // if there is sunrise/sunset data
+    /*if (nmiSunriseAPI && !nmiSunriseAPI->isEmpty()) { // if there is sunrise/sunset data
         if (nmiSunriseAPI->isDayTime(hourForecast->date())) {
             hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
             hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
@@ -233,15 +200,15 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
             hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
             hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
         }
-    } else { // if there is no sunrise/sunset data, just use 6am and 6pm
-        if (hourForecast->date().time().hour() >= 19 || hourForecast->date().time().hour() <= 6) { // TODO use system sunrise and sunset instead
-            hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
-            hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
-        } else {
-            hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
-            hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
-        }
+    } else { */                                                                                      // if there is no sunrise/sunset data, just use 6am and 6pm
+    if (hourForecast->date().time().hour() >= 19 || hourForecast->date().time().hour() <= 6) { // TODO use system sunrise and sunset instead
+        hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
+        hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
+    } else {
+        hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
+        hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
     }
+    // }
     // add day if not already created
     if (!dayCache.contains(date.date())) {
         dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
@@ -287,16 +254,4 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
     // add hour forecast to list
     hoursList.append(hourForecast);
-}
-
-void NMIWeatherAPI2::setTZ()
-{
-    bool tzEmpty = timeZone == nullptr;
-    timeZone = tz->getTimeZone();
-    qDebug() << "timezone" << timeZone;
-    emit timeZoneSet();
-
-    if (tzEmpty) { // in case the initial update did not call updateSunriseData because tz was not there
-        updateSunriseData(false); // TODO, change to true to update ui (currently causes segfaults)
-    }
 }

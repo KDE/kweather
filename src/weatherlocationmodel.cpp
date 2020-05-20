@@ -9,7 +9,9 @@
 #include "abstractweatherapi.h"
 #include "abstractweatherforecast.h"
 #include "geoiplookup.h"
+#include "geotimezone.h"
 #include "locationquerymodel.h"
+#include "nmisunriseapi.h"
 #include "nmiweatherapi2.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
@@ -19,6 +21,7 @@
 #include <QFile>
 #include <QJsonArray>
 #include <QQmlEngine>
+#include <QTimeZone>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
 const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";
@@ -34,14 +37,23 @@ WeatherLocation::WeatherLocation(AbstractWeatherForecast *forecast)
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
 }
 
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, AbstractWeatherForecast *forecast)
+    : weatherBackendProvider_(weatherBackendProvider)
+    , locationId_(locationId)
+    , locationName_(locationName)
+    , latitude_(latitude)
+    , longitude_(longitude)
+    , forecast_(forecast)
 {
-    this->weatherBackendProvider_ = weatherBackendProvider;
-    this->locationId_ = locationId;
-    this->locationName_ = locationName;
-    this->latitude_ = latitude;
-    this->longitude_ = longitude;
-    this->forecast_ = forecast;
+    if (timeZone.isEmpty()) { // if we don't have timezone, get it
+        geoTimeZone_ = new GeoTimeZone(latitude, longitude);
+        connect(geoTimeZone_, &GeoTimeZone::finished, this, [this] {
+            this->timeZone_ = geoTimeZone_->getTimeZone();
+            weatherBackendProvider_->setTimeZone(&this->timeZone());
+            emit timeZoneSet();
+        });
+    } else
+        timeZone_ = timeZone;
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = forecast == nullptr ? QDateTime::currentDateTime() : forecast->timeCreated();
@@ -58,8 +70,9 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
     auto api = new NMIWeatherAPI2(obj["locationId"].toString());
-    api->setTimeZone(obj["timezone"].toString());
-    return new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
+    auto weatherLocation = new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
+    api->setTimeZone(&weatherLocation->timeZone_);
+    return weatherLocation;
 }
 
 QJsonObject WeatherLocation::toJson()
@@ -107,6 +120,32 @@ void WeatherLocation::determineCurrentForecast()
     }
     QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
     emit currentForecastChange();
+}
+
+void WeatherLocation::initData(AbstractWeatherForecast *fc)
+{
+    forecast_ = fc;
+    int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
+    nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, offset);
+    nmiSunriseApi_->setData(fc->sunrise());
+    connect(nmiSunriseApi_, &NMISunriseAPI::finished, this, [this] {
+        forecast_->setSunrise(nmiSunriseApi_->get());
+        emit weatherRefresh(forecast_);
+        emit propertyChanged();
+    });
+}
+
+void WeatherLocation::update()
+{
+    weatherBackendProvider_->update();
+    if (nmiSunriseApi_) {
+        nmiSunriseApi_->popDay();
+        nmiSunriseApi_->update();
+    } else {
+        int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
+        nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, offset);
+        nmiSunriseApi_->update();
+    }
 }
 
 void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
@@ -201,7 +240,7 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
         save();
     else
         connect(
-            weatherLocation->weatherBackendProvider(), &AbstractWeatherAPI::timeZoneSet, this, [this] { this->save(); }, Qt::UniqueConnection);
+            weatherLocation, &WeatherLocation::timeZoneSet, this, [this] { this->save(); }, Qt::UniqueConnection);
 }
 
 void WeatherLocationListModel::remove(int index)
@@ -238,7 +277,7 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
     qDebug() << "lat" << ret->latitude();
     qDebug() << "lgn" << ret->longitude();
     api->setLocation(ret->latitude(), ret->longitude());
-    auto location = new WeatherLocation(api, ret->geonameId(), ret->name(), ret->latitude(), ret->longitude());
+    auto location = new WeatherLocation(api, ret->geonameId(), ret->name(), QString(), ret->latitude(), ret->longitude());
     api->update();
     insert(this->locationsList.count(), location);
 }
@@ -254,9 +293,9 @@ void WeatherLocationListModel::addCurrentLocation()
     // default location, use timestamp as id
     long id = QDateTime::currentSecsSinceEpoch();
     auto api = new NMIWeatherAPI2(QString::number(id));
-    api->setTimeZone(geoPtr->timeZone());
     api->setLocation(geoPtr->latitude(), geoPtr->longitude());
-    auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->latitude(), geoPtr->longitude());
+    auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
+    api->setTimeZone(&location->timeZone());
     api->update();
     insert(0, location);
 }

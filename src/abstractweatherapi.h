@@ -29,7 +29,10 @@ public:
     virtual ~AbstractWeatherAPI();
     virtual void setLocation(float lat, float lon) = 0;
     virtual void update() = 0;
-    virtual QString &getTimeZone() = 0;
+    virtual QString &getTimeZone()
+    {
+        return *timeZone_;
+    };
     const int interval = -1; // api update interval in hour
     virtual void setToken(QString &token) = 0;
     AbstractWeatherForecast *currentData()
@@ -48,9 +51,14 @@ public:
     {
         locationId_ = locationId;
     }
+    inline void setTimeZone(QString *tz)
+    {
+        timeZone_ = tz;
+    };
 
 protected:
     QString locationId_;
+    QString *timeZone_;
     float lat;
     float lon;
     QString *token_ = nullptr;
@@ -61,7 +69,6 @@ protected:
 
 signals:
     void updated(AbstractWeatherForecast *forecast);
-    void timeZoneSet();
 public slots:
 
     virtual void parse(QNetworkReply *Reply) = 0;
