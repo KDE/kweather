@@ -30,15 +30,11 @@ Kirigami.ScrollablePage {
             }
         }
     }
-    PageIndicator {
-        z: 10
-        id: indicator
 
+    // TODO figure out why pageindicator needs to be here in order for swipeview to display
+    PageIndicator {
         count: forecastView.count
         currentIndex: forecastView.currentIndex
-
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
     }
 }
 

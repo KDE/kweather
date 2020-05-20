@@ -17,6 +17,8 @@ Kirigami.ScrollablePage {
     Layout.fillWidth: true
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
 
+    background: null // transparent, since there is a page behind
+
     property WeatherLocation weatherLocation
     property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
 
@@ -92,6 +94,7 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             implicitHeight: Kirigami.Units.gridUnit * 8
             spacing: Kirigami.Units.largeSpacing
+            clip: true
 
             snapMode: ListView.SnapToItem
 
@@ -130,6 +133,7 @@ Kirigami.ScrollablePage {
             implicitHeight: Kirigami.Units.gridUnit * 9
             implicitWidth: parent.width
             spacing: Kirigami.Units.largeSpacing * 3
+            clip: true
 
             snapMode: ListView.SnapToItem
 
