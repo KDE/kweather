@@ -44,6 +44,10 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Notifications
 )
 
+if (ANDROID)
+   find_package(OpenSSL REQUIRED)
+endif()
+
 ################# build and install #################
 add_subdirectory(src)
 

@@ -33,6 +33,7 @@ Kirigami.ScrollablePage {
 
     // TODO figure out why pageindicator needs to be here in order for swipeview to display
     PageIndicator {
+        visible: forecastView.count > 1
         count: forecastView.count
         currentIndex: forecastView.currentIndex
     }

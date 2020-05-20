@@ -42,4 +42,55 @@ target_link_libraries(kweather
     KF5::Notifications
 )
 
+if (ANDROID)
+    target_link_libraries(kweather OpenSSL::SSL)
+
+    kirigami_package_breeze_icons(ICONS
+        raindrop
+        globe
+        settings-configure
+        network-disconnect
+        search
+        list-add
+        delete
+        compass
+
+        weather-clear
+        weather-clear-night
+        weather-clear-wind
+        weather-clear-wind-night
+        weather-clouds
+        weather-clouds-night
+        weather-clouds-wind
+        weather-clouds-wind-night
+        weather-few-clouds
+        weather-few-clouds-night
+        weather-few-clouds-wind
+        weather-few-clouds-wind-night
+        weather-fog
+        weather-freezing-rain
+        weather-hail
+        weather-many-clouds
+        weather-many-clouds-wind
+        weather-mist
+        weather-none-available
+        weather-overcast
+        weather-overcast-wind
+        weather-showers
+        weather-showers-day
+        weather-showers-night
+        weather-showers-scattered
+        weather-showers-scattered-day
+        weather-showers-scattered-night
+        weather-snow
+        weather-snow-rain
+        weather-snow-scattered
+        weather-snow-scattered-day
+        weather-snow-scattered-night
+        weather-storm
+        weather-storm-day
+        weather-storm-night
+    )
+endif()
+
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
