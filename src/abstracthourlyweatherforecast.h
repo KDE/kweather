@@ -21,7 +21,7 @@ class AbstractHourlyWeatherForecast : public QObject
     Q_PROPERTY(QString temperature READ temperatureFormatted NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
     Q_PROPERTY(QString windDirection READ windDirectionString NOTIFY propertyChanged)
-    Q_PROPERTY(float windSpeed READ windSpeed WRITE setWindSpeed NOTIFY propertyChanged)
+    Q_PROPERTY(QString windSpeed READ windSpeedDisplay NOTIFY propertyChanged)
     Q_PROPERTY(float humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
     Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
     Q_PROPERTY(float uvIndex READ uvIndex WRITE setUvIndex NOTIFY propertyChanged)
@@ -125,6 +125,14 @@ public:
     void setWindDirection(WindDirection windDirection)
     {
         windDirection_ = windDirection;
+    }
+    QString windSpeedDisplay() const
+    {
+        QSettings settings;
+        if (settings.value("Global/speedUnits", "Kph").toString() == "kph")
+            return QString::number(windSpeed_, 'g', 1) + "km/h";
+        else
+            return QString::number(windSpeed_ * 0.62, 'g', 1) + "mph";
     }
     float windSpeed() const
     {

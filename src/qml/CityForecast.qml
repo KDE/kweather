@@ -43,41 +43,48 @@ Kirigami.ScrollablePage {
         anchors.rightMargin: 1
         spacing: Kirigami.Units.largeSpacing * 2
 
-        // weather header
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
                 source: weatherLocation.currentWeather.weatherIcon
-                Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 18
-                Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 18
+                Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 19
+                Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 19
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 9
                 Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 9
                 smooth: true
+                Layout.alignment: Qt.AlignHCenter
             }
+
+            // weather header
             ColumnLayout {
                 Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3.5
                     font.weight: Font.Light
-                    color: Kirigami.Theme.focusColor
-                    text: weatherLocation.name
+                    text: weatherLocation.currentWeather.temperature
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                    font.weight: Font.Bold
                     text: weatherLocation.currentWeather.weatherDescription
                 }
                 Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
-                    text: weatherLocation.currentWeather.temperature
+                    color: Kirigami.Theme.disabledTextColor
+                    Layout.topMargin: Kirigami.Units.largeSpacing
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
+                    text: qsTr("Updated at ") + weatherLocation.lastUpdated
                 }
             }
         }
 
-        Label {
-            font: Kirigami.Theme.smallFont
-            text: qsTr("Updated at ") + weatherLocation.lastUpdated
-            Layout.alignment: Qt.AlignHCenter
-        }
+//        Label { // TODO wind speed text looks ugly
+//            Layout.alignment: Qt.AlignHCenter
+//            color: Kirigami.Theme.disabledTextColor
+////            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
+//            text: weatherLocation.currentWeather.windSpeed + " " + weatherLocation.currentWeather.windDirection
+//        }
+
+        Kirigami.Separator {}
 
         // daily view
         Label {
