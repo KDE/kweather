@@ -14,7 +14,7 @@ Kirigami.ScrollablePage {
     property alias pageIndex: forecastView.currentIndex
 
     id: page
-    title: forecastView.count == 0 ? "Forecast" : weatherLocationListModel.get(forecastView.currentIndex).name
+    title: forecastView.count == 0 ? i18n("Forecast") : weatherLocationListModel.get(forecastView.currentIndex).name
 
     SwipeView {
         id: forecastView

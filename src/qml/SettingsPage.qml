@@ -38,7 +38,7 @@ Kirigami.ScrollablePage {
                     font.weight: Font.Bold
                 }
                 Label {
-                    text: i18n(settingsModel.temperatureUnits)
+                    text: settingsModel.temperatureUnits
                 }
             }
         }
@@ -63,7 +63,7 @@ Kirigami.ScrollablePage {
                     font.weight: Font.Bold
                 }
                 Label {
-                    text: i18n(settingsModel.speedUnits)
+                    text: settingsModel.speedUnits
                 }
             }
         }
@@ -104,10 +104,10 @@ Kirigami.ScrollablePage {
 
         contentItem: ScrollView {
             ListView {
-                model: ["Celsius", "Fahrenheit"]
+                model: [i18n("Celsius"), i18n("Fahrenheit")]
                 delegate: RadioDelegate {
                     width: parent.width
-                    text: i18n(modelData)
+                    text: modelData
                     checked: settingsModel.temperatureUnits == modelData
                     onCheckedChanged: {
                         if (checked) {
@@ -138,10 +138,10 @@ Kirigami.ScrollablePage {
 
         contentItem: ScrollView {
             ListView {
-                model: ["kph", "mph"]
+                model: [i18nc("kilometers per hour", "kph"), i18nc("miles per hour", "mph")]
                 delegate: RadioDelegate {
                     width: parent.width
-                    text: i18n(modelData)
+                    text: modelData
                     checked: settingsModel.speedUnits == modelData
                     onCheckedChanged: {
                         if (checked) {

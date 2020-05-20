@@ -11,7 +11,7 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.ScrollablePage {
-    title: "Add city"
+    title: i18n("Add city")
 
     property string searchQuery: ""
 

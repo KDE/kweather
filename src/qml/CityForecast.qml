@@ -28,7 +28,7 @@ Kirigami.ScrollablePage {
         if (refreshing) {
             weatherLocation.updateBackend();
         } else {
-            showPassiveNotification("Weather refreshed for " + weatherLocation.name);
+            showPassiveNotification(i18n("Weather refreshed for ") + weatherLocation.name);
         }
     }
     Connections {
@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                     color: Kirigami.Theme.disabledTextColor
                     Layout.topMargin: Kirigami.Units.largeSpacing
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                    text: qsTr("Updated at ") + weatherLocation.lastUpdated
+                    text: i18n("Updated at ") + weatherLocation.lastUpdated
                 }
             }
         }
@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "Precipitation"
+                                text: i18n("Precipitation")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.precipitation.toFixed(1) + "mm"
@@ -198,7 +198,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "Humidity"
+                                text: i18n("Humidity")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.humidity.toFixed(1) + "%"
@@ -222,7 +222,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "Pressure"
+                                text: i18n("Pressure")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.pressure.toFixed(1) + "hPa"
@@ -246,7 +246,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "UV index"
+                                text: i18n("UV index")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.uvIndex.toFixed(1)
@@ -280,7 +280,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "Sunrise"
+                                text: i18n("Sunrise")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.sunrise
@@ -304,7 +304,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "Sunset"
+                                text: i18n("Sunset")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.sunset
@@ -328,7 +328,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Label {
                                 font.weight: Font.Bold
-                                text: "Moon Phase"
+                                text: i18n("Moon Phase")
                             }
                             Label {
                                 text: currentDay == null ? "" : currentDay.moonPhase

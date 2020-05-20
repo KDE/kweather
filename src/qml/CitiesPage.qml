@@ -16,7 +16,7 @@ Kirigami.ScrollablePage {
     
     actions.main: Kirigami.Action {
         iconName: "list-add"
-        text: "Add Location"
+        text: i18n("Add Location")
         onTriggered: pageStack.push(addCityPage)
     }
     
@@ -49,7 +49,7 @@ Kirigami.ScrollablePage {
             id: listItem
             actions: Kirigami.Action {
                 iconName: "delete"
-                text: "Remove"
+                text: i18n("Remove")
                 onTriggered: {
                     weatherLocationListModel.remove(index);
                 }

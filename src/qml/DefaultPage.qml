@@ -12,7 +12,7 @@ import org.kde.kirigami 2.12 as Kirigami
 
 // page shown if there are no weather locations configured
 Kirigami.ScrollablePage {
-    title: "Forecast"
+    title: i18n("Forecast")
 
     ListView { // empty list view to centre placeholdermessage
         Kirigami.PlaceholderMessage {

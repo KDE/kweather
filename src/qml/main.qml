@@ -34,7 +34,7 @@ Kirigami.ApplicationWindow
     }
 
     globalDrawer: Kirigami.GlobalDrawer {
-        title: "Weather"
+        title: i18n("Weather")
         bannerImageSource: "qrc:/resources/autumn.jpg"
 
         bannerVisible: true
