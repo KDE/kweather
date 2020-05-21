@@ -9,6 +9,7 @@
 #include "abstractdailyweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
 #include "abstractweatherforecast.h"
+#include "iconmap.h"
 
 #include <QCoreApplication>
 #include <QJsonArray>
@@ -19,8 +20,6 @@
 #include <QNetworkRequest>
 #include <QTimeZone>
 #include <QUrlQuery>
-#include <QXmlStreamReader>
-#include <algorithm>
 
 void NMIWeatherAPI2::setLocation(float latitude, float longitude)
 {
@@ -111,12 +110,6 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     if (currentData_ == nullptr) {
         currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
-    // add sunrise information, if it has been fetched
-    /*if (nmiSunriseAPI != nullptr && !nmiSunriseAPI->isEmpty()) {
-        qDebug() << "set sunrise data";
-        currentData_->setSunrise(nmiSunriseAPI->get());
-    }
-    */
     // sort daily forecast
     currentData_->sortDailyForecast();
     if (!timeZone_->isEmpty()) {
@@ -190,25 +183,8 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end - https://api.met.no/weatherapi/weathericon/2.0/legends
     hourForecast->setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
+    hourForecast->setSymbolCode(symbolCode);
 
-    // figure out whether to use night or day weather icon and description
-    /*if (nmiSunriseAPI && !nmiSunriseAPI->isEmpty()) { // if there is sunrise/sunset data
-        if (nmiSunriseAPI->isDayTime(hourForecast->date())) {
-            hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
-            hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
-        } else {
-            hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
-            hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
-        }
-    } else { */                                                                                      // if there is no sunrise/sunset data, just use 6am and 6pm
-    if (hourForecast->date().time().hour() >= 19 || hourForecast->date().time().hour() <= 6) { // TODO use system sunrise and sunset instead
-        hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_night"].desc);
-        hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_night"].icon);
-    } else {
-        hourForecast->setWeatherDescription(apiDescMap[symbolCode + "_day"].desc);
-        hourForecast->setWeatherIcon(apiDescMap[symbolCode + "_day"].icon);
-    }
-    // }
     // add day if not already created
     if (!dayCache.contains(date.date())) {
         dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());

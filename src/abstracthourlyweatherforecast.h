@@ -8,6 +8,7 @@
 #ifndef KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H
 #define KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H
 
+#include "iconmap.h"
 #include <QDateTime>
 #include <QObject>
 #include <QSettings>
@@ -28,16 +29,24 @@ class AbstractHourlyWeatherForecast : public QObject
     Q_PROPERTY(float precipitationAmount READ precipitationAmount WRITE setPrecipitationAmount NOTIFY propertyChanged)
 
 public:
-    enum WindDirection {
-        N, NW, W, SW, S, SE, E, NE
-    };
+    enum WindDirection { N, NW, W, SW, S, SE, E, NE };
 
     AbstractHourlyWeatherForecast() = default;
-    AbstractHourlyWeatherForecast(QDateTime date, QString weatherDescription, QString weatherIcon, QString neutralWeatherIcon, float temperature, float pressure, WindDirection windDirection, float windSpeed,
-                                  float humidity, float fog, float uvIndex, float precipitationAmount);
+    AbstractHourlyWeatherForecast(QDateTime date,
+                                  QString weatherDescription,
+                                  QString weatherIcon,
+                                  QString neutralWeatherIcon,
+                                  float temperature,
+                                  float pressure,
+                                  WindDirection windDirection,
+                                  float windSpeed,
+                                  float humidity,
+                                  float fog,
+                                  float uvIndex,
+                                  float precipitationAmount);
 
     QJsonObject toJson();
-    static AbstractHourlyWeatherForecast* fromJson(QJsonObject obj);
+    static AbstractHourlyWeatherForecast *fromJson(QJsonObject obj);
 
     const QDateTime &date() const
     {
@@ -59,6 +68,16 @@ public:
     {
         return weatherIcon_;
     }
+    void setWeatherIcon(bool isDay)
+    {
+        if (isDay) {
+            setWeatherDescription(apiDescMap[symbolCode_ + "_day"].desc);
+            weatherIcon_ = apiDescMap[symbolCode_ + "_day"].icon;
+        } else {
+            setWeatherDescription(apiDescMap[symbolCode_ + "_night"].desc);
+            weatherIcon_ = apiDescMap[symbolCode_ + "_night"].icon;
+        }
+    }
     void setWeatherIcon(const QString &weatherIcon)
     {
         weatherIcon_ = weatherIcon;
@@ -70,6 +89,10 @@ public:
     void setNeutralWeatherIcon(const QString &neutralWeatherIcon)
     {
         neutralWeatherIcon_ = neutralWeatherIcon;
+    }
+    void setSymbolCode(const QString &symbolCode)
+    {
+        symbolCode_ = symbolCode;
     }
     QString temperatureFormatted() const
     {
@@ -183,14 +206,15 @@ private:
     QString weatherDescription_;
     QString weatherIcon_;
     QString neutralWeatherIcon_; // weather icon without time of day
-    float temperature_{}; // celsius
-    float pressure_{}; // hPa
+    QString symbolCode_;
+    float temperature_ {}; // celsius
+    float pressure_ {};    // hPa
     WindDirection windDirection_;
-    float windSpeed_{}; // m/s
-    float humidity_{}; // %
-    float fog_{}; // %
-    float uvIndex_{}; // 0-1
-    float precipitationAmount_{}; // mm
+    float windSpeed_ {};           // m/s
+    float humidity_ {};            // %
+    float fog_ {};                 // %
+    float uvIndex_ {};             // 0-1
+    float precipitationAmount_ {}; // mm
 };
 
 #endif // KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H

@@ -15,6 +15,7 @@
 #include "nmiweatherapi2.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
+
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
 #include <QDir>
@@ -99,6 +100,19 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     if (forecast_ != nullptr && fc->timeCreated().toSecsSinceEpoch() < forecast_->timeCreated().toSecsSinceEpoch())
         return;
 
+    if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
+        for (auto hourForecast : fc->hourlyForecasts()) {
+            hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
+        }
+    } else {
+        for (auto hourForecast : fc->hourlyForecasts()) {
+            if (hourForecast->date().time().hour() < 7 || hourForecast->date().time().hour() >= 18) // 6:00 - 18:00 is day
+                hourForecast->setWeatherIcon(false);
+            else
+                hourForecast->setWeatherIcon(true);
+        }
+    }
+
     forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
@@ -152,6 +166,9 @@ void WeatherLocation::insertSunriseData()
     sunriseList = nmiSunriseApi_->get();
     if (forecast_) {
         forecast_->setSunrise(sunriseList);
+        for (auto hourForecast : forecast_->hourlyForecasts()) {
+            hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
+        }
         emit weatherRefresh(forecast_);
         emit propertyChanged();
         writeToCache(forecast_);
