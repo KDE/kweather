@@ -102,6 +102,7 @@ public:
     }
     void determineCurrentForecast();
     void initData(AbstractWeatherForecast *fc);
+    void insertSunriseData();
     void update();
 
 public slots:
@@ -122,7 +123,7 @@ private:
     QString locationId_;
     QDateTime lastUpdated_;
     float latitude_, longitude_;
-
+    QList<AbstractSunrise *> sunriseList;
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 

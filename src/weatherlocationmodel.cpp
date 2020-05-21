@@ -50,10 +50,17 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
         connect(geoTimeZone_, &GeoTimeZone::finished, this, [this] {
             this->timeZone_ = geoTimeZone_->getTimeZone();
             weatherBackendProvider_->setTimeZone(&this->timeZone());
+            if (!nmiSunriseApi_) {
+                nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+                connect(nmiSunriseApi_, &NMISunriseAPI::finished, this, &WeatherLocation::insertSunriseData);
+            }
             emit timeZoneSet();
         });
-    } else
-        timeZone_ = timeZone;
+    } else {
+        timeZone_ = std::move(timeZone);
+        nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+        connect(nmiSunriseApi_, &NMISunriseAPI::finished, this, &WeatherLocation::insertSunriseData);
+    }
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = forecast == nullptr ? QDateTime::currentDateTime() : forecast->timeCreated();
@@ -82,7 +89,7 @@ QJsonObject WeatherLocation::toJson()
     obj["locationName"] = locationName();
     obj["latitude"] = latitude();
     obj["longitude"] = longitude();
-    obj["timezone"] = weatherBackendProvider_->getTimeZone();
+    obj["timezone"] = timeZone_;
     return obj;
 }
 
@@ -95,9 +102,10 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
-    emit weatherRefresh(fc);
+    forecast_->setSunrise(sunriseList);
+    emit weatherRefresh(forecast_);
     emit stopLoadingIndicator();
-    writeToCache(fc);
+    writeToCache(forecast_);
 
     emit propertyChanged();
 }
@@ -126,13 +134,10 @@ void WeatherLocation::initData(AbstractWeatherForecast *fc)
 {
     forecast_ = fc;
     int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
-    nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, offset);
     nmiSunriseApi_->setData(fc->sunrise());
-    connect(nmiSunriseApi_, &NMISunriseAPI::finished, this, [this] {
-        forecast_->setSunrise(nmiSunriseApi_->get());
-        emit weatherRefresh(forecast_);
-        emit propertyChanged();
-    });
+    for (auto ab : nmiSunriseApi_->get())
+        qDebug() << ab->sunSetStr();
+    insertSunriseData();
 }
 
 void WeatherLocation::update()
@@ -141,10 +146,16 @@ void WeatherLocation::update()
     if (nmiSunriseApi_) {
         nmiSunriseApi_->popDay();
         nmiSunriseApi_->update();
-    } else {
-        int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
-        nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, offset);
-        nmiSunriseApi_->update();
+    }
+}
+
+void WeatherLocation::insertSunriseData()
+{
+    sunriseList = nmiSunriseApi_->get();
+    if (forecast_) {
+        emit weatherRefresh(forecast_);
+        emit propertyChanged();
+        writeToCache(forecast_);
     }
 }
 
@@ -236,7 +247,7 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
     emit beginInsertRows(QModelIndex(), index, index);
     locationsList.insert(index, weatherLocation);
     emit endInsertRows();
-    if (!weatherLocation->weatherBackendProvider()->getTimeZone().isEmpty())
+    if (!weatherLocation->timeZone().isEmpty())
         save();
     else
         connect(
@@ -296,6 +307,6 @@ void WeatherLocationListModel::addCurrentLocation()
     api->setLocation(geoPtr->latitude(), geoPtr->longitude());
     auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
     api->setTimeZone(&location->timeZone());
-    api->update();
+    location->update();
     insert(0, location);
 }
