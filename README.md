@@ -10,4 +10,5 @@ A weather application for Plasma Mobile.
 ## Backends used
 * api.met.no - Weather data, sunrise/sunset data
 * geonames.org - Coordinates -> Timezone
+* geoip.ubuntu.com - IP -> Coordinates
 * openweathermap.org - Weather data (not implemented)
