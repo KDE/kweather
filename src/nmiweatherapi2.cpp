@@ -224,7 +224,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
 
     // set description and icon if it is higher ranked
     if (rank[hourForecast->neutralWeatherIcon()] >= rank[dayForecast->weatherIcon()]) {
-        dayForecast->setWeatherDescription(hourForecast->weatherDescription());
+        dayForecast->setWeatherDescription(apiDescMap[symbolCode + "_neutral"].desc);
         dayForecast->setWeatherIcon(hourForecast->neutralWeatherIcon());
     }
 

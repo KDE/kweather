@@ -149,7 +149,10 @@ void WeatherLocation::initData(AbstractWeatherForecast *fc)
     forecast_ = fc;
     int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
     nmiSunriseApi_->setData(fc->sunrise());
-    insertSunriseData();
+    sunriseList = nmiSunriseApi_->get();
+    determineCurrentForecast();
+    emit weatherRefresh(forecast_);
+    emit propertyChanged();
 }
 
 void WeatherLocation::update()
@@ -194,6 +197,16 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
     QJsonDocument doc;
     doc.setObject(fc->toJson());
     return doc;
+}
+
+WeatherLocation::~WeatherLocation()
+{
+    if (nmiSunriseApi_ != nullptr)
+        delete nmiSunriseApi_;
+    if (weatherBackendProvider_ != nullptr)
+        delete weatherBackendProvider_;
+    if (geoTimeZone_ != nullptr)
+        delete geoTimeZone_;
 }
 
 /* ~~~ WeatherLocationListModel ~~~ */
@@ -276,7 +289,9 @@ void WeatherLocationListModel::remove(int index)
         return;
 
     emit beginRemoveRows(QModelIndex(), index, index);
+    auto location = locationsList.at(index);
     locationsList.removeAt(index);
+    delete location;
     emit endRemoveRows();
 
     save();

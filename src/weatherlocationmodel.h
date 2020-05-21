@@ -36,7 +36,7 @@ class WeatherLocation : public QObject
 public:
     explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
-    //~WeatherLocation();
+    ~WeatherLocation();
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
