@@ -22,6 +22,8 @@ class AbstractWeatherAPI;
 class AbstractWeatherForecast;
 class LocationQueryResult;
 class GeoIPLookup;
+class GeoTimeZone;
+class NMISunriseAPI;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
@@ -33,8 +35,8 @@ class WeatherLocation : public QObject
 
 public:
     explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
-
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
+    ~WeatherLocation();
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
@@ -53,6 +55,10 @@ public:
     {
         return locationName_;
     }
+    inline QString &timeZone()
+    {
+        return timeZone_;
+    };
     inline float latitude()
     {
         return latitude_;
@@ -95,6 +101,9 @@ public:
         emit propertyChanged();
     }
     void determineCurrentForecast();
+    void initData(AbstractWeatherForecast *fc);
+    void insertSunriseData();
+    void update();
 
 public slots:
     void updateData(AbstractWeatherForecast *fc);
@@ -102,6 +111,7 @@ public slots:
 signals:
     void weatherRefresh(AbstractWeatherForecast *fc); // sent when weather data is refreshed
     void currentForecastChange();
+    void timeZoneSet();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
 
@@ -109,16 +119,19 @@ private:
     void writeToCache(AbstractWeatherForecast *fc);
     QJsonDocument convertToJson(AbstractWeatherForecast *fc);
     QString locationName_;
+    QString timeZone_;
     QString locationId_;
     QDateTime lastUpdated_;
     float latitude_, longitude_;
-
+    QList<AbstractSunrise *> sunriseList;
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 
     AbstractWeatherAPI *weatherBackendProvider_;
     AbstractHourlyWeatherForecast *currentWeather_;
     AbstractWeatherForecast *forecast_;
+    NMISunriseAPI *nmiSunriseApi_;
+    GeoTimeZone *geoTimeZone_;
 };
 
 class WeatherLocationListModel : public QAbstractListModel

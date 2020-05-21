@@ -26,6 +26,7 @@ set(kweather_SRCS
     settingsmodel.cpp
     nmisunriseapi.cpp
     abstractsunrise.cpp
+    iconmap.h
     resources.qrc
 )
 
