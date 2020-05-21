@@ -135,8 +135,6 @@ void WeatherLocation::initData(AbstractWeatherForecast *fc)
     forecast_ = fc;
     int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
     nmiSunriseApi_->setData(fc->sunrise());
-    for (auto ab : nmiSunriseApi_->get())
-        qDebug() << ab->sunSetStr();
     insertSunriseData();
 }
 
@@ -153,6 +151,7 @@ void WeatherLocation::insertSunriseData()
 {
     sunriseList = nmiSunriseApi_->get();
     if (forecast_) {
+        forecast_->setSunrise(sunriseList);
         emit weatherRefresh(forecast_);
         emit propertyChanged();
         writeToCache(forecast_);
@@ -289,7 +288,7 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
     qDebug() << "lgn" << ret->longitude();
     api->setLocation(ret->latitude(), ret->longitude());
     auto location = new WeatherLocation(api, ret->geonameId(), ret->name(), QString(), ret->latitude(), ret->longitude());
-    api->update();
+    location->update();
     insert(this->locationsList.count(), location);
 }
 
