@@ -58,14 +58,14 @@ public:
 
 protected:
     QString locationId_;
-    QString *timeZone_;
+    QString *timeZone_ = nullptr;
     float lat;
     float lon;
     QString *token_ = nullptr;
     QNetworkAccessManager *mManager;
     QNetworkReply *mReply;
 
-    AbstractWeatherForecast *currentData_;
+    AbstractWeatherForecast *currentData_ = nullptr;
 
 signals:
     void updated(AbstractWeatherForecast *forecast);

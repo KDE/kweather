@@ -39,7 +39,7 @@ private:
     WeatherLocationListModel &model_;
     int api_ = NORWEGIAN;
     AbstractWeatherForecast *convertFromJson(QByteArray data);
-    QTimer *updateTimer;
+    QTimer *updateTimer = nullptr;
     void readFromCache();
     WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
     WeatherForecastManager(const WeatherForecastManager &);

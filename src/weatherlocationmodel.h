@@ -127,11 +127,11 @@ private:
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 
-    AbstractWeatherAPI *weatherBackendProvider_;
-    AbstractHourlyWeatherForecast *currentWeather_;
-    AbstractWeatherForecast *forecast_;
-    NMISunriseAPI *nmiSunriseApi_;
-    GeoTimeZone *geoTimeZone_;
+    AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
+    AbstractHourlyWeatherForecast *currentWeather_ = nullptr;
+    AbstractWeatherForecast *forecast_ = nullptr;
+    NMISunriseAPI *nmiSunriseApi_ = nullptr;
+    GeoTimeZone *geoTimeZone_ = nullptr;
 };
 
 class WeatherLocationListModel : public QAbstractListModel
@@ -165,7 +165,7 @@ public slots:
 
 private:
     void addCurrentLocation();
-    GeoIPLookup *geoPtr;
+    GeoIPLookup *geoPtr = nullptr;
     QList<WeatherLocation *> locationsList;
 };
 

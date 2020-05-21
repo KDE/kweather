@@ -36,8 +36,8 @@ private slots:
     void process(QNetworkReply *reply);
 
 private:
-    QNetworkAccessManager *mManager;
-    QNetworkReply *mReply;
+    QNetworkAccessManager *mManager = nullptr;
+    QNetworkReply *mReply = nullptr;
     QString locationName;
     QString timeZone_;
     float latitude_;

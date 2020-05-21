@@ -45,7 +45,7 @@ private slots:
 
 private:
     float longitude_, latitude_, offset_;
-    QNetworkAccessManager *manager;
+    QNetworkAccessManager *manager = nullptr;
     QList<AbstractSunrise *> sunrise_;
     bool noData = true;
 };

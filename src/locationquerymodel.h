@@ -9,11 +9,11 @@
 #define KWEATHER_LOCATIONQUERYMODEL_H
 
 #include <QAbstractListModel>
-#include <QObject>
-#include <QString>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkSession>
+#include <QObject>
+#include <QString>
 class QTimer;
 // fetched from geonames
 class LocationQueryResult : public QObject
@@ -85,8 +85,14 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
     Q_INVOKABLE LocationQueryResult *get(int index);
-    Q_INVOKABLE bool loading() {return loading_;}
-    Q_INVOKABLE bool networkError() {return networkError_;}
+    Q_INVOKABLE bool loading()
+    {
+        return loading_;
+    }
+    Q_INVOKABLE bool networkError()
+    {
+        return networkError_;
+    }
     Q_INVOKABLE void textChanged(QString query, int i = 2000);
     void setQuery();
     Q_INVOKABLE void addLocation(int index);
@@ -102,7 +108,7 @@ private:
     bool loading_ = false, networkError_ = false;
 
     QList<LocationQueryResult *> resultsList;
-    QTimer *inputTimer;
+    QTimer *inputTimer = nullptr;
     QString text_;
     QNetworkAccessManager *networkAccessManager;
 };

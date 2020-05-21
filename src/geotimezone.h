@@ -22,9 +22,10 @@ signals:
     void finished();
 private slots:
     void downloadFinished(QNetworkReply *reply);
+
 private:
     QString tz;
-    QNetworkAccessManager* manager;
+    QNetworkAccessManager *manager = nullptr;
 };
 
 #endif // GEOTIMEZONE_H
