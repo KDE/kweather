@@ -47,12 +47,14 @@ QJsonObject AbstractSunrise::toJson()
 AbstractSunrise *AbstractSunrise::fromJson(QJsonObject obj)
 {
     auto as = new AbstractSunrise();
-    as->setSunSet(QDateTime::fromString(obj["sunrise"].toString(), Qt::ISODate));
+    as->setSunSet(QDateTime::fromString(obj["sunset"].toString(), Qt::ISODate));
     as->setSunRise(QDateTime::fromString(obj["sunrise"].toString(), Qt::ISODate));
     as->setLowMoon(QPair<QDateTime, double>(QDateTime::fromString(obj["lowmoon"].toString(), Qt::ISODate), obj["lowmoonEle"].toDouble()));
     as->setHighMoon(QPair<QDateTime, double>(QDateTime::fromString(obj["highmoon"].toString(), Qt::ISODate), obj["highmoonEle"].toDouble()));
     as->setSolarMidnight(QPair<QDateTime, double>(QDateTime::fromString(obj["solarmidnight"].toString(), Qt::ISODate), obj["solarmidnightEle"].toDouble()));
     as->setSolarNoon(QPair<QDateTime, double>(QDateTime::fromString(obj["solarnoon"].toString(), Qt::ISODate), obj["solarnoonEle"].toDouble()));
     as->setMoonPhase(obj["moonphase"].toDouble());
+    as->setMoonSet(QDateTime::fromString(obj["moonset"].toString(), Qt::ISODate));
+    as->setMoonRise(QDateTime::fromString(obj["moonrise"].toString(), Qt::ISODate));
     return as;
 }
