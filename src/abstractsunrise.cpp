@@ -19,16 +19,16 @@ AbstractSunrise::AbstractSunrise(QDateTime &sunRise,
                                  QPair<QDateTime, double> &solarMidnight,
                                  QPair<QDateTime, double> &solarNoon,
                                  double moonPhase)
-    : sunRise_(sunRise)
-    , sunSet_(sunSet)
-    , moonRise_(moonRise)
-    , moonSet_(moonSet)
-    , highMoon_(highMoon)
-    , lowMoon_(lowMoon)
-    , solarMidnight_(solarMidnight)
-    , solarNoon_(solarNoon)
-    , moonPhase_(moonPhase)
 {
+    this->sunRise_ = sunRise.isValid() ? sunRise : QDateTime::currentDateTime();
+    this->sunSet_ = sunSet.isValid() ? sunSet : QDateTime::currentDateTime();
+    this->moonRise_ = moonRise.isValid() ? moonRise : QDateTime::currentDateTime();
+    this->moonSet_ = moonSet.isValid() ? moonSet : QDateTime::currentDateTime();
+    this->highMoon_ = highMoon;
+    this->lowMoon_ = lowMoon;
+    this->solarMidnight_ = solarMidnight;
+    this->solarNoon_ = solarNoon;
+    this->moonPhase_ = moonPhase;
 }
 
 QJsonObject AbstractSunrise::toJson()

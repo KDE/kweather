@@ -150,10 +150,10 @@ private:
     QPair<QDateTime, double> solarMidnight_;
     QPair<QDateTime, double> solarNoon_;
     QPair<QDateTime, double> lowMoon_;
-    QDateTime sunRise_;
-    QDateTime sunSet_;
-    QDateTime moonRise_;
-    QDateTime moonSet_;
+    QDateTime sunRise_ = QDateTime::currentDateTime();
+    QDateTime sunSet_ = QDateTime::currentDateTime();
+    QDateTime moonRise_ = QDateTime::currentDateTime();
+    QDateTime moonSet_ = QDateTime::currentDateTime();
     double moonPhase_;
 };
 
