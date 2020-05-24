@@ -34,11 +34,19 @@ WeatherLocation::WeatherLocation(AbstractWeatherForecast *forecast)
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = QDateTime::currentDateTime();
     this->forecast_ = forecast;
-    QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    QQmlEngine::setObjectOwnership(this->weatherDayListModel_,
+                                   QQmlEngine::CppOwnership); // prevent segfaults from js garbage
+                                                              // collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
 }
 
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, AbstractWeatherForecast *forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
+                                 QString locationId,
+                                 QString locationName,
+                                 QString timeZone,
+                                 float latitude,
+                                 float longitude,
+                                 AbstractWeatherForecast *forecast)
     : weatherBackendProvider_(weatherBackendProvider)
     , locationId_(locationId)
     , locationName_(locationName)
@@ -52,20 +60,26 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
             this->timeZone_ = geoTimeZone_->getTimeZone();
             weatherBackendProvider_->setTimeZone(&this->timeZone());
             if (!nmiSunriseApi_) {
-                nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+                nmiSunriseApi_ =
+                    new NMISunriseAPI(latitude_,
+                                      longitude_,
+                                      QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
                 connect(nmiSunriseApi_, &NMISunriseAPI::finished, this, &WeatherLocation::insertSunriseData);
             }
             emit timeZoneSet();
         });
     } else {
         timeZone_ = std::move(timeZone);
-        nmiSunriseApi_ = new NMISunriseAPI(latitude_, longitude_, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+        nmiSunriseApi_ = new NMISunriseAPI(
+            latitude_, longitude_, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
         connect(nmiSunriseApi_, &NMISunriseAPI::finished, this, &WeatherLocation::insertSunriseData);
     }
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = forecast == nullptr ? QDateTime::currentDateTime() : forecast->timeCreated();
-    QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    QQmlEngine::setObjectOwnership(this->weatherDayListModel_,
+                                   QQmlEngine::CppOwnership); // prevent segfaults from js garbage
+                                                              // collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
     determineCurrentForecast();
 
@@ -78,7 +92,8 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
     auto api = new NMIWeatherAPI2(obj["locationId"].toString());
-    auto weatherLocation = new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
+    auto weatherLocation = new WeatherLocation(
+        api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
     api->setTimeZone(&weatherLocation->timeZone_);
     return weatherLocation;
 }
@@ -99,21 +114,22 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     // only update if the forecast is newer
     if (forecast_ != nullptr && fc->timeCreated().toSecsSinceEpoch() < forecast_->timeCreated().toSecsSinceEpoch())
         return;
-
-    if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
-        for (auto hourForecast : fc->hourlyForecasts()) {
-            hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
+    if (fc->hourlyForecasts().at(0)->weatherIcon().isEmpty())        // if we don't have icon, prevent set icon twice when loading from cache
+        if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
+            for (auto hourForecast : fc->hourlyForecasts()) {
+                hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
+            }
+        } else {
+            for (auto hourForecast : fc->hourlyForecasts()) {
+                if (hourForecast->date().time().hour() < 7 || hourForecast->date().time().hour() >= 18) // 6:00 - 18:00 is day
+                    hourForecast->setWeatherIcon(false);
+                else
+                    hourForecast->setWeatherIcon(true);
+            }
         }
-    } else {
-        for (auto hourForecast : fc->hourlyForecasts()) {
-            if (hourForecast->date().time().hour() < 7 || hourForecast->date().time().hour() >= 18) // 6:00 - 18:00 is day
-                hourForecast->setWeatherIcon(false);
-            else
-                hourForecast->setWeatherIcon(true);
-        }
-    }
 
-    forecast_ = fc; // don't need to delete pointers, they were already deleted by api class
+    forecast_ = fc; // don't need to delete pointers, they were already deleted
+                    // by api class
     determineCurrentForecast();
     this->lastUpdated_ = fc->timeCreated();
     forecast_->setSunrise(sunriseList);
@@ -127,7 +143,18 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 void WeatherLocation::determineCurrentForecast()
 {
     if (forecast() == nullptr || forecast()->hourlyForecasts().count() == 0) {
-        currentWeather_ = new AbstractHourlyWeatherForecast(QDateTime::currentDateTime(), "Unknown", "weather-none-available", "weather-none-available", 0, 0, AbstractHourlyWeatherForecast::WindDirection::N, 0, 0, 0, 0, 0);
+        currentWeather_ = new AbstractHourlyWeatherForecast(QDateTime::currentDateTime(),
+                                                            "Unknown",
+                                                            "weather-none-available",
+                                                            "weather-none-available",
+                                                            0,
+                                                            0,
+                                                            AbstractHourlyWeatherForecast::WindDirection::N,
+                                                            0,
+                                                            0,
+                                                            0,
+                                                            0,
+                                                            0);
     } else {
         long long minSecs = -1;
         QDateTime current = QDateTime::currentDateTime();
@@ -140,14 +167,15 @@ void WeatherLocation::determineCurrentForecast()
             }
         }
     }
-    QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js
+                                                                               // garbage collecting
     emit currentForecastChange();
 }
 
 void WeatherLocation::initData(AbstractWeatherForecast *fc)
 {
     forecast_ = fc;
-    int offset = QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc();
+    weatherBackendProvider_->setCurrentData(forecast_);
     nmiSunriseApi_->setData(fc->sunrise());
     sunriseList = nmiSunriseApi_->get();
     determineCurrentForecast();
@@ -183,10 +211,13 @@ void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
     QFile file;
     QString url;
     url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QDir dir(url.append(QString("/cache/%1/%2/").arg(QString::number(static_cast<int>(fc->latitude() * 100))).arg(QString::number(static_cast<int>(fc->longitude() * 100))))); // create cache location
+    QDir dir(url.append(QString("/cache/%1/%2/")
+                            .arg(QString::number(static_cast<int>(fc->latitude() * 100)))
+                            .arg(QString::number(static_cast<int>(fc->longitude() * 100))))); // create cache location
     if (!dir.exists())
         dir.mkpath(".");
-    // should be this path: /home/user/.cache/kweather/cache/7000/3000 for location with coordinate 70.00 30.00
+    // should be this path: /home/user/.cache/kweather/cache/7000/3000 for
+    // location with coordinate 70.00 30.00
     file.setFileName(dir.path() + "/cache.json");
     file.open(QIODevice::WriteOnly);
     file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json

@@ -34,7 +34,9 @@ void NMIWeatherAPI2::setToken(QString &)
 NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
     : AbstractWeatherAPI(locationId, -1)
 {
-    currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
+    // currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(),
+    // locationId, lat, lon, QList<AbstractHourlyWeatherForecast *>(),
+    // QList<AbstractDailyWeatherForecast *>());
 }
 
 NMIWeatherAPI2::~NMIWeatherAPI2()
@@ -44,7 +46,8 @@ NMIWeatherAPI2::~NMIWeatherAPI2()
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty
-    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() && currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
+    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() &&
+        currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
         emit updated(currentData_);
         return;
     }
@@ -65,7 +68,9 @@ void NMIWeatherAPI2::update()
     req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
 
     // see §Identification on https://api.met.no/conditions_service.html
-    req.setHeader(QNetworkRequest::UserAgentHeader, QString(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion() + QLatin1String(" (kde-pim@kde.org)")));
+    req.setHeader(
+        QNetworkRequest::UserAgentHeader,
+        QString(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion() + QLatin1String(" (kde-pim@kde.org)")));
 
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
@@ -108,7 +113,8 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
 
     // parsing failed, default forecast
     if (currentData_ == nullptr) {
-        currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
+        currentData_ = new AbstractWeatherForecast(
+            QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
     // sort daily forecast
     currentData_->sortDailyForecast();
@@ -123,7 +129,9 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
 }
 
 // https://api.met.no/weatherapi/locationforecast/2.0/documentation
-void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList)
+void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
+                                     QHash<QDate, AbstractDailyWeatherForecast *> &dayCache,
+                                     QList<AbstractHourlyWeatherForecast *> &hoursList)
 {
     QJsonObject data = object["data"].toObject(), instant = data["instant"].toObject()["details"].toObject();
     // ignore last forecast, which does not have enough data
@@ -141,7 +149,8 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     auto *hourForecast = new AbstractHourlyWeatherForecast();
 
     // set initial hour fields
-    hourForecast->setDate(date); // the first time will be at the exact time of query, otherwise the beginning of each hour
+    hourForecast->setDate(date); // the first time will be at the exact time of
+                                 // query, otherwise the beginning of each hour
     hourForecast->setTemperature(instant["air_temperature"].toDouble());
     hourForecast->setPressure(instant["air_pressure_at_sea_level"].toDouble());
     hourForecast->setWindSpeed(instant["wind_speed"].toDouble());
@@ -170,7 +179,8 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
     }
 
     QString symbolCode;
-    // some fields contain only "next_1_hours", and others may contain only "next_6_hours"
+    // some fields contain only "next_1_hours", and others may contain only
+    // "next_6_hours"
     if (data.contains("next_1_hours")) {
         QJsonObject nextOneHours = data["next_1_hours"].toObject();
         symbolCode = nextOneHours["summary"].toObject()["symbol_code"].toString("unknown");
@@ -181,7 +191,8 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractD
         hourForecast->setPrecipitationAmount(nextSixHours["details"].toObject()["precipitation_amount"].toDouble());
     }
 
-    symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end - https://api.met.no/weatherapi/weathericon/2.0/legends
+    symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end -
+                                           // https://api.met.no/weatherapi/weathericon/2.0/legends
     hourForecast->setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
     hourForecast->setSymbolCode(symbolCode);
 
