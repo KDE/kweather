@@ -105,7 +105,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             }
 
             // delete old data
-            delete currentData_;
+//            delete currentData_; currently causes segfaults because the pointer is still used by other threads
             // process and build abstract forecast
             currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hoursList, dayCache.values());
         }
