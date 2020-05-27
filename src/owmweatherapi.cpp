@@ -44,8 +44,9 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
     int offset = mJson["city"].toObject()["timezone"].toInt();
     QJsonArray mArray = mJson["list"].toArray();
     for (auto fc : mArray) {
+        auto date = QDateTime::fromSecsSinceEpoch(fc.toObject()["dt"].toInt()).toTimeZone(QTimeZone(offset));
         hourly = new AbstractHourlyWeatherForecast();
-        hourly->setDate(QDateTime::fromSecsSinceEpoch(fc.toObject()["dt"].toInt()).toTimeZone(QTimeZone(offset)));
+        hourly->setDate(date);
         hourly->setFog(-1);
         hourly->setUvIndex(-1);
         hourly->setHumidity(fc.toObject()["main"].toObject()["humidity"].toInt());
@@ -57,7 +58,50 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         hourly->setWeatherDescription(fc.toObject()["weather"].toArray().at(0)["description"].toString());
         hourly->setPrecipitationAmount(fc.toObject()["rain"].toObject()["3h"].toDouble() + fc.toObject()["snow"].toObject()["3h"].toDouble());
         hourlyList.push_back(hourly);
+        // add day if not already created
+        if (!dayCache.contains(date.date())) {
+            dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
+        }
+
+        // update day forecast with hour information if needed
+        AbstractDailyWeatherForecast *dayForecast = dayCache[date.date()];
+
+        dayForecast->setPrecipitation(dayForecast->precipitation() + hourly->precipitationAmount());
+        dayForecast->setUvIndex(std::max(dayForecast->uvIndex(), hourly->uvIndex()));
+        dayForecast->setHumidity(std::max(dayForecast->humidity(), hourly->humidity()));
+        dayForecast->setPressure(std::max(dayForecast->pressure(), hourly->pressure()));
+
+        dayForecast->setMaxTemp(std::max(dayForecast->maxTemp(), (float)fc.toObject()["main"].toObject()["temp_max"].toDouble()));
+        dayForecast->setMinTemp(std::min(dayForecast->minTemp(), (float)fc.toObject()["main"].toObject()["temp_min"].toDouble()));
+
+        // rank weather (for what best describes the day overall)
+        QHash<QString, int> rank = {
+            // only need neutral icons
+
+            {"weather-clear", 0},
+            {"weather-clear-night", 0},
+            {"weather-few-clouds", 1},
+            {"weather-clouds", 2},
+            {"weather-clouds-night", 2},
+            {"weather-mist", 2},
+            {"weather-many-clouds", 3},
+            {"weather-showers-day", 4},
+            {"weather-snowers-night", 4},
+            {"weather-showers-scattered-day", 5},
+            {"weather-showers-scattered-night", 5},
+            {"weather-snow-scattered-day", 5},
+            {"weather-snow-scattered-night", 5},
+            {"weather-storm-day", 6},
+            {"weather-storm-night", 6},
+        };
+
+        // set description and icon if it is higher ranked
+        if (rank[hourly->weatherIcon()] >= rank[dayForecast->weatherIcon()]) {
+            dayForecast->setWeatherDescription(hourly->weatherDescription());
+            dayForecast->setWeatherIcon(hourly->weatherIcon());
+        }
     }
+    emit updated(forecasts);
 }
 
 AbstractHourlyWeatherForecast::WindDirection OWMWeatherAPI::getWindDirection(int windDirectionDeg)

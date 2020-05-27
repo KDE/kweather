@@ -29,7 +29,7 @@ private slots:
     void parse(QNetworkReply *Reply) override;
 
 private:
-    QHash<QDateTime, AbstractDailyWeatherForecast *> dayCache;
+    QHash<QDate, AbstractDailyWeatherForecast *> dayCache;
     AbstractHourlyWeatherForecast::WindDirection getWindDirection(int windDirectionDeg);
     QHash<QString, QString> map = {std::pair<QString, QString>(QStringLiteral("01d"), QStringLiteral("weather-clear")),
                                    std::pair<QString, QString>(QStringLiteral("01n"), QStringLiteral("weather-clear-night")),
@@ -46,7 +46,7 @@ private:
                                    std::pair<QString, QString>(QStringLiteral("11d"), QStringLiteral("weather-storm-day")),
                                    std::pair<QString, QString>(QStringLiteral("11n"), QStringLiteral("weather-storm-night")),
                                    std::pair<QString, QString>(QStringLiteral("13d"), QStringLiteral("weather-snow-scattered-day")),
-                                   std::pair<QString, QString>(QStringLiteral("13n"), QStringLiteral("weather-storm-scattered-night")),
+                                   std::pair<QString, QString>(QStringLiteral("13n"), QStringLiteral("weather-snow-scattered-night")),
                                    std::pair<QString, QString>(QStringLiteral("50d"), QStringLiteral("weather-mist")),
                                    std::pair<QString, QString>(QStringLiteral("50n"), QStringLiteral("weather-mist"))};
 };
