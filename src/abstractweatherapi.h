@@ -55,6 +55,7 @@ public:
     {
         timeZone_ = tz;
     };
+    AbstractHourlyWeatherForecast::WindDirection getWindDirect(double deg);
 
 protected:
     QString locationId_;

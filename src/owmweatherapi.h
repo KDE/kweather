@@ -30,7 +30,6 @@ private slots:
 
 private:
     QHash<QDate, AbstractDailyWeatherForecast *> dayCache;
-    AbstractHourlyWeatherForecast::WindDirection getWindDirection(int windDirectionDeg);
     QHash<QString, QString> map = {std::pair<QString, QString>(QStringLiteral("01d"), QStringLiteral("weather-clear")),
                                    std::pair<QString, QString>(QStringLiteral("01n"), QStringLiteral("weather-clear-night")),
                                    std::pair<QString, QString>(QStringLiteral("02d"), QStringLiteral("weather-clouds")),

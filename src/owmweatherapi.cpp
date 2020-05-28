@@ -54,7 +54,7 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         hourly->setWindSpeed(fc.toObject()["wind"].toObject()["speed"].toDouble());
         hourly->setTemperature(fc.toObject()["main"].toObject()["temp"].toDouble());
         hourly->setWeatherIcon(map[fc.toObject()["weather"].toArray().at(0)["icon"].toString()]);
-        hourly->setWindDirection(getWindDirection(fc.toObject()["wind"].toObject()["deg"].toInt()));
+        hourly->setWindDirection(getWindDirect(fc.toObject()["wind"].toObject()["deg"].toDouble()));
         hourly->setWeatherDescription(fc.toObject()["weather"].toArray().at(0)["description"].toString());
         hourly->setPrecipitationAmount(fc.toObject()["rain"].toObject()["3h"].toDouble() + fc.toObject()["snow"].toObject()["3h"].toDouble());
         hourlyList.push_back(hourly);
@@ -101,29 +101,8 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
             dayForecast->setWeatherIcon(hourly->weatherIcon());
         }
     }
+    forecasts->sortDailyForecast();
     emit updated(forecasts);
-}
-
-AbstractHourlyWeatherForecast::WindDirection OWMWeatherAPI::getWindDirection(int windDirectionDeg)
-{
-    if (windDirectionDeg < 22.5 || windDirectionDeg >= 337.5) {
-        return AbstractHourlyWeatherForecast::S; // from N
-    } else if (windDirectionDeg > 22.5 || windDirectionDeg <= 67.5) {
-        return AbstractHourlyWeatherForecast::SW; // from NE
-    } else if (windDirectionDeg > 67.5 || windDirectionDeg <= 112.5) {
-        return AbstractHourlyWeatherForecast::W; // from E
-    } else if (windDirectionDeg > 112.5 || windDirectionDeg <= 157.5) {
-        return AbstractHourlyWeatherForecast::NW; // from SE
-    } else if (windDirectionDeg > 157.5 || windDirectionDeg <= 202.5) {
-        return AbstractHourlyWeatherForecast::N; // from S
-    } else if (windDirectionDeg > 202.5 || windDirectionDeg <= 247.5) {
-        return AbstractHourlyWeatherForecast::NE; // from SW
-    } else if (windDirectionDeg > 247.5 || windDirectionDeg <= 292.5) {
-        return AbstractHourlyWeatherForecast::E; // from W
-    } else if (windDirectionDeg > 292.5 || windDirectionDeg <= 337.5) {
-        return AbstractHourlyWeatherForecast::SE; // from NW
-    }
-    return AbstractHourlyWeatherForecast::N;
 }
 
 void OWMWeatherAPI::update()

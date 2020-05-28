@@ -105,7 +105,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             }
 
             // delete old data
-//            delete currentData_; currently causes segfaults because the pointer is still used by other threads
+            //            delete currentData_; currently causes segfaults because the pointer is still used by other threads
             // process and build abstract forecast
             currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hoursList, dayCache.values());
         }
@@ -160,23 +160,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     // wind direction
     double windDirectionDeg = instant["wind_from_direction"].toDouble();
-    if (windDirectionDeg < 22.5 || windDirectionDeg >= 337.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::S); // from N
-    } else if (windDirectionDeg > 22.5 || windDirectionDeg <= 67.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::SW); // from NE
-    } else if (windDirectionDeg > 67.5 || windDirectionDeg <= 112.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::W); // from E
-    } else if (windDirectionDeg > 112.5 || windDirectionDeg <= 157.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::NW); // from SE
-    } else if (windDirectionDeg > 157.5 || windDirectionDeg <= 202.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::N); // from S
-    } else if (windDirectionDeg > 202.5 || windDirectionDeg <= 247.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::NE); // from SW
-    } else if (windDirectionDeg > 247.5 || windDirectionDeg <= 292.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::E); // from W
-    } else if (windDirectionDeg > 292.5 || windDirectionDeg <= 337.5) {
-        hourForecast->setWindDirection(AbstractHourlyWeatherForecast::SE); // from NW
-    }
+    hourForecast->setWindDirection(getWindDirect(windDirectionDeg));
 
     QString symbolCode;
     // some fields contain only "next_1_hours", and others may contain only

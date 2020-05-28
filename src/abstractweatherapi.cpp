@@ -24,3 +24,25 @@ AbstractWeatherAPI::~AbstractWeatherAPI()
     delete mManager;
     delete currentData_;
 }
+
+AbstractHourlyWeatherForecast::WindDirection AbstractWeatherAPI::getWindDirect(double deg)
+{
+    if (deg < 22.5 || deg >= 337.5) {
+        return AbstractHourlyWeatherForecast::S; // from N
+    } else if (deg > 22.5 || deg <= 67.5) {
+        return AbstractHourlyWeatherForecast::SW; // from NE
+    } else if (deg > 67.5 || deg <= 112.5) {
+        return AbstractHourlyWeatherForecast::W; // from E
+    } else if (deg > 112.5 || deg <= 157.5) {
+        return AbstractHourlyWeatherForecast::NW; // from SE
+    } else if (deg > 157.5 || deg <= 202.5) {
+        return AbstractHourlyWeatherForecast::N; // from S
+    } else if (deg > 202.5 || deg <= 247.5) {
+        return AbstractHourlyWeatherForecast::NE; // from SW
+    } else if (deg > 247.5 || deg <= 292.5) {
+        return AbstractHourlyWeatherForecast::E; // from W
+    } else if (deg > 292.5 || deg <= 337.5) {
+        return AbstractHourlyWeatherForecast::SE; // from NW
+    }
+    return AbstractHourlyWeatherForecast::N;
+}
