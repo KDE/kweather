@@ -13,6 +13,7 @@
 #include "locationquerymodel.h"
 #include "nmisunriseapi.h"
 #include "nmiweatherapi2.h"
+#include "owmweatherapi.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
 
@@ -46,6 +47,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
                                  QString timeZone,
                                  float latitude,
                                  float longitude,
+                                 int backend,
                                  AbstractWeatherForecast *forecast)
     : weatherBackendProvider_(weatherBackendProvider)
     , locationId_(locationId)
@@ -53,6 +55,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
     , latitude_(latitude)
     , longitude_(longitude)
     , forecast_(forecast)
+    , backend_(backend)
 {
     if (timeZone.isEmpty()) { // if we don't have timezone, get it
         geoTimeZone_ = new GeoTimeZone(latitude, longitude);
@@ -91,11 +94,27 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
-    auto api = new NMIWeatherAPI2(obj["locationId"].toString());
-    auto weatherLocation = new WeatherLocation(
-        api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
-    api->setTimeZone(&weatherLocation->timeZone_);
-    return weatherLocation;
+    if (obj["backend"].toInt() == 0) {
+        auto api = new NMIWeatherAPI2(obj["locationId"].toString());
+        auto weatherLocation = new WeatherLocation(api,
+                                                   obj["locationId"].toString(),
+                                                   obj["locationName"].toString(),
+                                                   obj["timezone"].toString(),
+                                                   obj["latitude"].toDouble(),
+                                                   obj["longitude"].toDouble());
+        api->setTimeZone(&weatherLocation->timeZone_);
+        return weatherLocation;
+    } else {
+        auto api = new OWMWeatherAPI(obj["locationID"].toString());
+        auto weatherLocation = new WeatherLocation(api,
+                                                   obj["locationId"].toString(),
+                                                   obj["locationName"].toString(),
+                                                   obj["timezone"].toString(),
+                                                   obj["latitude"].toDouble(),
+                                                   obj["longitude"].toDouble());
+        api->setTimeZone(&weatherLocation->timeZone_);
+        return weatherLocation;
+    }
 }
 
 QJsonObject WeatherLocation::toJson()
@@ -106,6 +125,7 @@ QJsonObject WeatherLocation::toJson()
     obj["latitude"] = latitude();
     obj["longitude"] = longitude();
     obj["timezone"] = timeZone_;
+    obj["backend"] = backend_;
     return obj;
 }
 

@@ -35,7 +35,14 @@ class WeatherLocation : public QObject
 
 public:
     explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, AbstractWeatherForecast *forecast = nullptr);
+    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
+                             QString locationId,
+                             QString locationName,
+                             QString timeZone,
+                             float latitude,
+                             float longitude,
+                             int backend = 0,
+                             AbstractWeatherForecast *forecast = nullptr);
     ~WeatherLocation();
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
@@ -104,6 +111,7 @@ public:
     void initData(AbstractWeatherForecast *fc);
     void insertSunriseData();
     void update();
+    // Q_INVOKABLE void changeBackend(int i = 0); // change backend on the fly
 
 public slots:
     void updateData(AbstractWeatherForecast *fc);
@@ -116,6 +124,7 @@ signals:
     void stopLoadingIndicator();
 
 private:
+    int backend_ = 0; // 0 for NMI, 1 for OWM
     void writeToCache(AbstractWeatherForecast *fc);
     QJsonDocument convertToJson(AbstractWeatherForecast *fc);
     QString locationName_;
