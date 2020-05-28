@@ -63,16 +63,14 @@ void WeatherForecastManager::readFromCache()
     QDirIterator It(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
     while (It.hasNext()) {
         reader.setFileName(It.next());
-        if (reader.fileName().right(10) != QLatin1String("cache.json")) // if not cache file ignore
-            continue;
-        reader.open(QIODevice::ReadOnly | QIODevice::Text);
-        // obtain weather forecast
-        AbstractWeatherForecast *fc = convertFromJson(reader.readAll());
-        bool isFound = false; // use to determine if we need to delete this cache
+        QFileInfo fileName(reader); // strip absolute path
+        bool isFound = false;       // indicate should we load this cache
         // loop over existing locations and add cached weather forecast data if location found
         for (auto wl : model_.getList()) {
-            if (fc->locationId() == wl->locationId()) {
+            if (fileName.fileName() == wl->locationId()) {
                 isFound = true;
+                reader.open(QIODevice::ReadOnly);
+                AbstractWeatherForecast *fc = convertFromJson(reader.readAll());
                 // add forecast if it does not exist, or is newer than existing data
                 if (map[wl] == nullptr || map[wl]->timeCreated() < fc->timeCreated()) {
                     map[wl] = fc;
@@ -80,8 +78,7 @@ void WeatherForecastManager::readFromCache()
                 break;
             }
         }
-        if (!isFound) { // free memory, delete no longer needed cache
-            delete fc;
+        if (!isFound) { // delete no longer needed cache
             reader.remove();
         }
         reader.close();

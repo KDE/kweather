@@ -229,16 +229,13 @@ void WeatherLocation::insertSunriseData()
 void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
 {
     QFile file;
-    QString url;
-    url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QDir dir(url.append(QString("/cache/%1/%2/")
-                            .arg(QString::number(static_cast<int>(fc->latitude() * 100)))
-                            .arg(QString::number(static_cast<int>(fc->longitude() * 100))))); // create cache location
+    QString url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+    QDir dir(url.append(QString("/cache"))); // create cache location
     if (!dir.exists())
         dir.mkpath(".");
-    // should be this path: /home/user/.cache/kweather/cache/7000/3000 for
-    // location with coordinate 70.00 30.00
-    file.setFileName(dir.path() + "/cache.json");
+    // should be this path: /home/user/.cache/kweather/cache/1234567 for
+    // location with locationID 1234567
+    file.setFileName(dir.path() + "/" + this->locationId());
     file.open(QIODevice::WriteOnly);
     file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
     file.close();
