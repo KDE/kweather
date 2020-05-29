@@ -71,11 +71,11 @@ public:
     void setWeatherIcon(bool isDay)
     {
         if (isDay) {
-            setWeatherDescription(apiDescMap[symbolCode_ + "_day"].desc);
-            weatherIcon_ = apiDescMap[symbolCode_ + "_day"].icon;
+            setWeatherDescription(apiDescMap.at(symbolCode_ + "_day").desc);
+            weatherIcon_ = apiDescMap.at(symbolCode_ + "_day").icon;
         } else {
-            setWeatherDescription(apiDescMap[symbolCode_ + "_night"].desc);
-            weatherIcon_ = apiDescMap[symbolCode_ + "_night"].icon;
+            setWeatherDescription(apiDescMap.at(symbolCode_ + "_night").desc);
+            weatherIcon_ = apiDescMap.at(symbolCode_ + "_night").icon;
         }
     }
     void setWeatherIcon(const QString &weatherIcon)

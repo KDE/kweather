@@ -21,7 +21,7 @@ struct ResolvedWeatherDesc {
 };
 
 // https://api.met.no/weatherapi/weathericon/2.0/legends
-static std::unordered_map<QString, ResolvedWeatherDesc> apiDescMap = {
+static const std::unordered_map<QString, ResolvedWeatherDesc> apiDescMap = {
     {"heavyrainandthunder_neutral", ResolvedWeatherDesc("weather-storm", i18n("Storm"))},
     {"heavyrainandthunder_day", ResolvedWeatherDesc("weather-storm-day", i18n("Storm"))},
     {"heavyrainandthunder_night", ResolvedWeatherDesc("weather-storm-night", i18n("Storm"))},

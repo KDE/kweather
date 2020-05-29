@@ -74,34 +74,12 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         dayForecast->setMaxTemp(std::max(dayForecast->maxTemp(), (float)fc.toObject()["main"].toObject()["temp_max"].toDouble()));
         dayForecast->setMinTemp(std::min(dayForecast->minTemp(), (float)fc.toObject()["main"].toObject()["temp_min"].toDouble()));
 
-        // rank weather (for what best describes the day overall)
-        QHash<QString, int> rank = {
-            // only need neutral icons
-
-            {"weather-clear", 0},
-            {"weather-clear-night", 0},
-            {"weather-few-clouds", 1},
-            {"weather-clouds", 2},
-            {"weather-clouds-night", 2},
-            {"weather-mist", 2},
-            {"weather-many-clouds", 3},
-            {"weather-showers-day", 4},
-            {"weather-snowers-night", 4},
-            {"weather-showers-scattered-day", 5},
-            {"weather-showers-scattered-night", 5},
-            {"weather-snow-scattered-day", 5},
-            {"weather-snow-scattered-night", 5},
-            {"weather-storm-day", 6},
-            {"weather-storm-night", 6},
-        };
-
         // set description and icon if it is higher ranked
         if (rank[hourly->weatherIcon()] >= rank[dayForecast->weatherIcon()]) {
             dayForecast->setWeatherDescription(hourly->weatherDescription());
             dayForecast->setWeatherIcon(hourly->weatherIcon());
         }
     }
-    forecasts->sortDailyForecast();
     emit updated(forecasts);
 }
 
@@ -125,3 +103,43 @@ void OWMWeatherAPI::update()
     mReply = mManager->get(req);
     connect(mManager, &QNetworkAccessManager::finished, this, &OWMWeatherAPI::parse);
 }
+
+/*~~~~~~~~~ static member ~~~~~~~~*/
+const QHash<QString, int> OWMWeatherAPI::rank = {
+    // only need neutral icons
+
+    {"weather-clear", 0},
+    {"weather-clear-night", 0},
+    {"weather-few-clouds", 1},
+    {"weather-clouds", 2},
+    {"weather-clouds-night", 2},
+    {"weather-mist", 2},
+    {"weather-many-clouds", 3},
+    {"weather-showers-day", 4},
+    {"weather-snowers-night", 4},
+    {"weather-showers-scattered-day", 5},
+    {"weather-showers-scattered-night", 5},
+    {"weather-snow-scattered-day", 5},
+    {"weather-snow-scattered-night", 5},
+    {"weather-storm-day", 6},
+    {"weather-storm-night", 6},
+};
+
+const QHash<QString, QString> OWMWeatherAPI::map = {std::pair<QString, QString>(QStringLiteral("01d"), QStringLiteral("weather-clear")),
+                                                    std::pair<QString, QString>(QStringLiteral("01n"), QStringLiteral("weather-clear-night")),
+                                                    std::pair<QString, QString>(QStringLiteral("02d"), QStringLiteral("weather-clouds")),
+                                                    std::pair<QString, QString>(QStringLiteral("02n"), QStringLiteral("weather-clouds-night")),
+                                                    std::pair<QString, QString>(QStringLiteral("03d"), QStringLiteral("weather-many-clouds")),
+                                                    std::pair<QString, QString>(QStringLiteral("03n"), QStringLiteral("weather-many-clouds")),
+                                                    std::pair<QString, QString>(QStringLiteral("04d"), QStringLiteral("weather-many-clouds")),
+                                                    std::pair<QString, QString>(QStringLiteral("04n"), QStringLiteral("weather-many-clouds")),
+                                                    std::pair<QString, QString>(QStringLiteral("09d"), QStringLiteral("weather-showers-day")),
+                                                    std::pair<QString, QString>(QStringLiteral("09n"), QStringLiteral("weather-showers-night")),
+                                                    std::pair<QString, QString>(QStringLiteral("10d"), QStringLiteral("weather-showers-scattered-day")),
+                                                    std::pair<QString, QString>(QStringLiteral("10n"), QStringLiteral("weather-showers-scattered-night")),
+                                                    std::pair<QString, QString>(QStringLiteral("11d"), QStringLiteral("weather-storm-day")),
+                                                    std::pair<QString, QString>(QStringLiteral("11n"), QStringLiteral("weather-storm-night")),
+                                                    std::pair<QString, QString>(QStringLiteral("13d"), QStringLiteral("weather-snow-scattered-day")),
+                                                    std::pair<QString, QString>(QStringLiteral("13n"), QStringLiteral("weather-snow-scattered-night")),
+                                                    std::pair<QString, QString>(QStringLiteral("50d"), QStringLiteral("weather-mist")),
+                                                    std::pair<QString, QString>(QStringLiteral("50n"), QStringLiteral("weather-mist"))};

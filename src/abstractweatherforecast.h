@@ -25,7 +25,12 @@ class AbstractWeatherForecast : public QObject
 public:
     AbstractWeatherForecast(QDateTime timeCreated_ = QDateTime::currentDateTime());
     ~AbstractWeatherForecast();
-    AbstractWeatherForecast(QDateTime timeCreated_, QString locationId, float latitude, float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts);
+    AbstractWeatherForecast(QDateTime timeCreated_,
+                            QString locationId,
+                            float latitude,
+                            float longitude,
+                            QList<AbstractHourlyWeatherForecast *> hourlyForecasts,
+                            QList<AbstractDailyWeatherForecast *> dailyForecasts);
 
     QJsonObject toJson();
     static AbstractWeatherForecast *fromJson(QJsonObject obj);
@@ -86,7 +91,6 @@ public:
     {
         sunrise_ = sunrise;
     };
-    void sortDailyForecast();
 signals:
     void propertyChanged();
 

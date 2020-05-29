@@ -31,6 +31,7 @@ private slots:
 
 private:
     void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast *> &dayCache, QList<AbstractHourlyWeatherForecast *> &hoursList);
+    // rank weather (for what best describes the day overall)
+    static const QHash<QString, int> rank;
 };
-
 #endif

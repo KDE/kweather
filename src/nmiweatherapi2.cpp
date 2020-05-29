@@ -117,7 +117,6 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
     }
     // sort daily forecast
-    currentData_->sortDailyForecast();
     if (!timeZone_->isEmpty()) {
         for (auto fc : currentData_->hourlyForecasts()) {
             fc->setDate(fc->date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_->toStdString()))));
@@ -177,7 +176,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end -
                                            // https://api.met.no/weatherapi/weathericon/2.0/legends
-    hourForecast->setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
+    hourForecast->setNeutralWeatherIcon(apiDescMap.at(symbolCode + "_neutral").icon);
     hourForecast->setSymbolCode(symbolCode);
 
     // add day if not already created
@@ -199,30 +198,30 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
         dayForecast->setMinTemp(std::min(dayForecast->minTemp(), (float)details["air_temperature_min"].toDouble()));
     }
 
-    // rank weather (for what best describes the day overall)
-    QHash<QString, int> rank = {// only need neutral icons
-                                {"weather-none-available", -1},
-                                {"weather-clear", 0},
-                                {"weather-few-clouds", 1},
-                                {"weather-clouds", 2},
-                                {"weather-fog", 3},
-                                {"weather-mist", 3},
-                                {"weather-showers-scattered", 4},
-                                {"weather-snow-scattered", 4},
-                                {"weather-showers", 5},
-                                {"weather-hail", 5},
-                                {"weather-snow", 5},
-                                {"weather-freezing-rain", 6},
-                                {"weather-freezing-storm", 6},
-                                {"weather-snow-rain", 6},
-                                {"weather-storm", 7}};
-
     // set description and icon if it is higher ranked
     if (rank[hourForecast->neutralWeatherIcon()] >= rank[dayForecast->weatherIcon()]) {
-        dayForecast->setWeatherDescription(apiDescMap[symbolCode + "_neutral"].desc);
+        dayForecast->setWeatherDescription(apiDescMap.at(symbolCode + "_neutral").desc);
         dayForecast->setWeatherIcon(hourForecast->neutralWeatherIcon());
     }
 
     // add hour forecast to list
     hoursList.append(hourForecast);
 }
+
+/*~~~~~~~~~~ static member ~~~~~~~~~~~*/
+const QHash<QString, int> NMIWeatherAPI2::rank = { // only need neutral icons
+    {"weather-none-available", -1},
+    {"weather-clear", 0},
+    {"weather-few-clouds", 1},
+    {"weather-clouds", 2},
+    {"weather-fog", 3},
+    {"weather-mist", 3},
+    {"weather-showers-scattered", 4},
+    {"weather-snow-scattered", 4},
+    {"weather-showers", 5},
+    {"weather-hail", 5},
+    {"weather-snow", 5},
+    {"weather-freezing-rain", 6},
+    {"weather-freezing-storm", 6},
+    {"weather-snow-rain", 6},
+    {"weather-storm", 7}};

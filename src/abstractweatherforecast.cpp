@@ -15,7 +15,12 @@ AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated)
 {
     this->timeCreated_ = timeCreated;
 }
-AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated, QString locationId, float latitude, float longitude, QList<AbstractHourlyWeatherForecast *> hourlyForecasts, QList<AbstractDailyWeatherForecast *> dailyForecasts)
+AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated,
+                                                 QString locationId,
+                                                 float latitude,
+                                                 float longitude,
+                                                 QList<AbstractHourlyWeatherForecast *> hourlyForecasts,
+                                                 QList<AbstractDailyWeatherForecast *> dailyForecasts)
     : timeCreated_(timeCreated)
     , locationId_(std::move(locationId))
     , latitude_(latitude)
@@ -80,20 +85,4 @@ QJsonObject AbstractWeatherForecast::toJson()
     obj["dailyForecasts"] = dayArray;
     obj["sunrise"] = sunriseArray;
     return obj;
-}
-
-void AbstractWeatherForecast::sortDailyForecast()
-{
-    // insert sort, because we only have 9 items to sort, reduce overhead
-    int i;
-    AbstractDailyWeatherForecast *k;
-    for (int j = 2; j < this->dailyForecasts().count(); j++) {
-        k = this->dailyForecasts().at(j);
-        i = j - 1;
-        while (i >= 0 && this->dailyForecasts().at(i)->date().daysTo(k->date()) < 0) {
-            this->dailyForecasts_.replace(i + 1, this->dailyForecasts_.at(i));
-            i--;
-        }
-        this->dailyForecasts_.replace(i + 1, k);
-    }
 }
