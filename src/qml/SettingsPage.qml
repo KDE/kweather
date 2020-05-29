@@ -72,6 +72,32 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
         }
 
+
+        ItemDelegate {
+            Layout.fillWidth: true
+            implicitHeight: Kirigami.Units.gridUnit * 3
+            onClicked: apiToken.open()
+
+            ColumnLayout {
+                spacing: -5
+                anchors.leftMargin: Kirigami.Units.gridUnit
+                anchors.rightMargin: Kirigami.Units.gridUnit
+                anchors.fill: parent
+
+                Label {
+                    text: i18n("API Token")
+                    font.weight: Font.Bold
+                }
+                Label {
+                    text: settingsModel.OWMToken.length == 0 ? i18n("Not Set") : i18n("Added")
+                }
+            }
+        }
+
+        Kirigami.Separator {
+            Layout.fillWidth: true
+        }
+
         ItemDelegate {
             Layout.fillWidth: true
             font.bold: true
@@ -153,6 +179,42 @@ Kirigami.ScrollablePage {
             Component.onCompleted: background.visible = true
             ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         }
+    }
+
+    // API Token dialog
+    Dialog {
+        id: apiToken
+        modal: true
+        focus: true
+        x: (parent.width - width) / 2
+        y: parent.height / 2 - height
+        width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
+        height: Kirigami.Units.gridUnit * 20
+        standardButtons: Dialog.Close | Dialog.Save
+        title: i18n("API Token")
+
+        onAccepted: settingsModel.OWMToken = textField.text;
+
+        contentItem: ColumnLayout {
+            Layout.fillWidth: true
+            TextField {
+                id: textField
+                text: settingsModel.OWMToken.length == 0 ? null : settingsModel.OWMToken
+                placeholderText: i18n("Add your open weather map token here... ")
+                anchors.top: parent.Top
+                width: parent.width
+            }
+
+            TextArea {
+                id: warningText
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                text: i18n("Add your own OpenWeatherMap API token. Token added is stored as PLAIN TEXT in system.")
+                readOnly: true
+                wrapMode: TextEdit.WordWrap
+            }
+        }
+        Component.onCompleted: background.visible = true
     }
     
 }

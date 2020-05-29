@@ -15,6 +15,7 @@ class SettingsModel : public QObject
     Q_OBJECT
     Q_PROPERTY(QString temperatureUnits READ temperatureUnits WRITE setTemperatureUnits NOTIFY propertyChanged)
     Q_PROPERTY(QString speedUnits READ speedUnits WRITE setSpeedUnits NOTIFY propertyChanged)
+    Q_PROPERTY(QString OWMToken READ OWMToken WRITE setOWMToken NOTIFY propertyChanged)
 
 public:
     inline QString temperatureUnits()
@@ -43,6 +44,18 @@ public:
         emit propertyChanged();
     }
 
+    inline void setOWMToken(QString token)
+    {
+        QSettings settings;
+        settings.setValue("Global/OWMToken", token);
+        emit propertyChanged();
+    }
+
+    inline QString OWMToken()
+    {
+        QSettings settings;
+        return settings.value("Global/OWMToken").toString();
+    }
 signals:
     void propertyChanged();
 };
