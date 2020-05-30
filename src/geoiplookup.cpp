@@ -41,14 +41,18 @@ GeoIPLookup::GeoIPLookup()
  */
 void GeoIPLookup::process(QNetworkReply *reply)
 {
+    if (reply->error()) {
+        qDebug() << "Network error:" << reply->error();
+        return;
+    }
     auto reader = new QXmlStreamReader(reply->readAll());
 
     while (!reader->atEnd()) {
         reader->readNext();
-//        if (reader->name() == QLatin1String("CountryName")) old format: Country, City
-//            locationName.append(reader->readElementText());
-//        else if (reader->name() == QLatin1String("City"))
-//            locationName.append(", " + reader->readElementText()); // <City>
+        //        if (reader->name() == QLatin1String("CountryName")) old format: Country, City
+        //            locationName.append(reader->readElementText());
+        //        else if (reader->name() == QLatin1String("City"))
+        //            locationName.append(", " + reader->readElementText()); // <City>
         if (reader->name() == QLatin1String("City"))
             locationName.append(reader->readElementText());
         else if (reader->name() == QLatin1String("Latitude"))
