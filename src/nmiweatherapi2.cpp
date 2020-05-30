@@ -195,7 +195,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end -
                                            // https://api.met.no/weatherapi/weathericon/2.0/legends
-    hourForecast->setNeutralWeatherIcon(Kweather::apiDescMap.at(symbolCode + "_neutral").icon);
+    hourForecast->setNeutralWeatherIcon(Kweather::apiDescMap.find(symbolCode + "_neutral")->second.icon);
     hourForecast->setSymbolCode(symbolCode);
 
     // add day if not already created
@@ -219,7 +219,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     // set description and icon if it is higher ranked
     if (rank[hourForecast->neutralWeatherIcon()] >= rank[dayForecast->weatherIcon()]) {
-        dayForecast->setWeatherDescription(Kweather::apiDescMap.at(symbolCode + "_neutral").desc);
+        dayForecast->setWeatherDescription(Kweather::apiDescMap.find(symbolCode + "_neutral")->second.desc);
         dayForecast->setWeatherIcon(hourForecast->neutralWeatherIcon());
     }
 

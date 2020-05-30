@@ -71,11 +71,11 @@ public:
     {
         using namespace Kweather;
         if (isDay) {
-            setWeatherDescription(apiDescMap.at(symbolCode_ + "_day").desc);
-            weatherIcon_ = apiDescMap.at(symbolCode_ + "_day").icon;
+            setWeatherDescription(apiDescMap.find(symbolCode_ + "_day")->second.desc);
+            weatherIcon_ = apiDescMap.find(symbolCode_ + "_day")->second.icon;
         } else {
-            setWeatherDescription(apiDescMap.at(symbolCode_ + "_night").desc);
-            weatherIcon_ = apiDescMap.at(symbolCode_ + "_night").icon;
+            setWeatherDescription(apiDescMap.find(symbolCode_ + "_night")->second.desc);
+            weatherIcon_ = apiDescMap.find(symbolCode_ + "_night")->second.icon;
         }
     }
     void setWeatherIcon(const QString &weatherIcon)
