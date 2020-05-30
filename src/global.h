@@ -12,6 +12,8 @@
 #include <unordered_map>
 namespace Kweather
 {
+enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
+
 struct ResolvedWeatherDesc {
     QString icon, desc;
     ResolvedWeatherDesc() = default;

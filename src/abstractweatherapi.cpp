@@ -25,24 +25,24 @@ AbstractWeatherAPI::~AbstractWeatherAPI()
     delete currentData_;
 }
 
-AbstractHourlyWeatherForecast::WindDirection AbstractWeatherAPI::getWindDirect(double deg)
+Kweather::WindDirection AbstractWeatherAPI::getWindDirect(double deg)
 {
     if (deg < 22.5 || deg >= 337.5) {
-        return AbstractHourlyWeatherForecast::S; // from N
+        return Kweather::WindDirection::S; // from N
     } else if (deg > 22.5 || deg <= 67.5) {
-        return AbstractHourlyWeatherForecast::SW; // from NE
+        return Kweather::WindDirection::SW; // from NE
     } else if (deg > 67.5 || deg <= 112.5) {
-        return AbstractHourlyWeatherForecast::W; // from E
+        return Kweather::WindDirection::W; // from E
     } else if (deg > 112.5 || deg <= 157.5) {
-        return AbstractHourlyWeatherForecast::NW; // from SE
+        return Kweather::WindDirection::NW; // from SE
     } else if (deg > 157.5 || deg <= 202.5) {
-        return AbstractHourlyWeatherForecast::N; // from S
+        return Kweather::WindDirection::N; // from S
     } else if (deg > 202.5 || deg <= 247.5) {
-        return AbstractHourlyWeatherForecast::NE; // from SW
+        return Kweather::WindDirection::NE; // from SW
     } else if (deg > 247.5 || deg <= 292.5) {
-        return AbstractHourlyWeatherForecast::E; // from W
+        return Kweather::WindDirection::E; // from W
     } else if (deg > 292.5 || deg <= 337.5) {
-        return AbstractHourlyWeatherForecast::SE; // from NW
+        return Kweather::WindDirection::SE; // from NW
     }
-    return AbstractHourlyWeatherForecast::N;
+    return Kweather::WindDirection::N;
 }

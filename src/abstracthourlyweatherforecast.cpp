@@ -15,37 +15,37 @@ AbstractHourlyWeatherForecast::AbstractHourlyWeatherForecast(QDateTime date,
                                                              QString neutralWeatherIcon,
                                                              float temperature,
                                                              float pressure,
-                                                             AbstractHourlyWeatherForecast::WindDirection windDirection,
+                                                             Kweather::WindDirection windDirection,
                                                              float windSpeed,
                                                              float humidity,
                                                              float fog,
                                                              float uvIndex,
-                                                             float precipitationAmount) :
-    date_(std::move(date)),
-    weatherDescription_(std::move(weatherDescription)),
-    weatherIcon_(weatherIcon),
-    neutralWeatherIcon_(neutralWeatherIcon),
-    temperature_(temperature),
-    pressure_(pressure),
-    windDirection_(windDirection),
-    windSpeed_(windSpeed),
-    humidity_(humidity),
-    fog_(fog),
-    uvIndex_(uvIndex),
-    precipitationAmount_(precipitationAmount)
+                                                             float precipitationAmount)
+    : date_(std::move(date))
+    , weatherDescription_(std::move(weatherDescription))
+    , weatherIcon_(weatherIcon)
+    , neutralWeatherIcon_(neutralWeatherIcon)
+    , temperature_(temperature)
+    , pressure_(pressure)
+    , windDirection_(windDirection)
+    , windSpeed_(windSpeed)
+    , humidity_(humidity)
+    , fog_(fog)
+    , uvIndex_(uvIndex)
+    , precipitationAmount_(precipitationAmount)
 {
 }
 
-AbstractHourlyWeatherForecast* AbstractHourlyWeatherForecast::fromJson(QJsonObject obj)
+AbstractHourlyWeatherForecast *AbstractHourlyWeatherForecast::fromJson(QJsonObject obj)
 {
-    auto* fc = new AbstractHourlyWeatherForecast();
+    auto *fc = new AbstractHourlyWeatherForecast();
     fc->setDate(QDateTime::fromString(obj["date"].toString(), Qt::ISODate));
     fc->setWeatherDescription(obj["weatherDescription"].toString());
     fc->setWeatherIcon(obj["weatherIcon"].toString());
     fc->setNeutralWeatherIcon(obj["neutralWeatherIcon"].toString());
     fc->setTemperature(obj["temperature"].toDouble());
     fc->setPressure(obj["pressure"].toDouble());
-    fc->setWindDirection(static_cast<WindDirection>(obj["windDirection"].toInt()));
+    fc->setWindDirection(static_cast<Kweather::WindDirection>(obj["windDirection"].toInt()));
     fc->setWindSpeed(obj["windSpeed"].toDouble());
     fc->setHumidity(obj["humidity"].toDouble());
     fc->setFog(obj["fog"].toDouble());

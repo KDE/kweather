@@ -17,28 +17,28 @@ WeatherHour::WeatherHour()
 WeatherHour::WeatherHour(AbstractHourlyWeatherForecast *forecast)
 {
     switch (forecast->windDirection()) {
-    case AbstractHourlyWeatherForecast::WindDirection::N:
+    case Kweather::WindDirection::N:
         this->windDirection_ = "N";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::NE:
+    case Kweather::WindDirection::NE:
         this->windDirection_ = "NE";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::E:
+    case Kweather::WindDirection::E:
         this->windDirection_ = "E";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::SE:
+    case Kweather::WindDirection::SE:
         this->windDirection_ = "SE";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::S:
+    case Kweather::WindDirection::S:
         this->windDirection_ = "S";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::SW:
+    case Kweather::WindDirection::SW:
         this->windDirection_ = "SW";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::W:
+    case Kweather::WindDirection::W:
         this->windDirection_ = "W";
         break;
-    case AbstractHourlyWeatherForecast::WindDirection::NW:
+    case Kweather::WindDirection::NW:
         this->windDirection_ = "NW";
         break;
     }
@@ -63,8 +63,10 @@ WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
 int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    if (day >= dayList.count() || day < 0) return hoursList.count();
-    if (day == dayList.count()-1) return hoursList.count() - dayList.at(day);
+    if (day >= dayList.count() || day < 0)
+        return hoursList.count();
+    if (day == dayList.count() - 1)
+        return hoursList.count() - dayList.at(day);
     return dayList.at(day + 1) - dayList.at(day);
 }
 
@@ -87,7 +89,7 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast* forecast)
+void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast *forecast)
 {
     // clear forecasts
     emit layoutAboutToBeChanged();

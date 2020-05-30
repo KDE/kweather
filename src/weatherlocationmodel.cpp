@@ -163,18 +163,8 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 void WeatherLocation::determineCurrentForecast()
 {
     if (forecast() == nullptr || forecast()->hourlyForecasts().count() == 0) {
-        currentWeather_ = new AbstractHourlyWeatherForecast(QDateTime::currentDateTime(),
-                                                            "Unknown",
-                                                            "weather-none-available",
-                                                            "weather-none-available",
-                                                            0,
-                                                            0,
-                                                            AbstractHourlyWeatherForecast::WindDirection::N,
-                                                            0,
-                                                            0,
-                                                            0,
-                                                            0,
-                                                            0);
+        currentWeather_ = new AbstractHourlyWeatherForecast(
+            QDateTime::currentDateTime(), "Unknown", "weather-none-available", "weather-none-available", 0, 0, Kweather::WindDirection::N, 0, 0, 0, 0, 0);
     } else {
         long long minSecs = -1;
         QDateTime current = QDateTime::currentDateTime();

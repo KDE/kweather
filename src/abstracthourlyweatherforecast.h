@@ -10,6 +10,7 @@
 
 #include "global.h"
 #include <QDateTime>
+#include <QDebug>
 #include <QObject>
 #include <QSettings>
 
@@ -29,8 +30,6 @@ class AbstractHourlyWeatherForecast : public QObject
     Q_PROPERTY(float precipitationAmount READ precipitationAmount WRITE setPrecipitationAmount NOTIFY propertyChanged)
 
 public:
-    enum WindDirection { N, NW, W, SW, S, SE, E, NE };
-
     AbstractHourlyWeatherForecast() = default;
     AbstractHourlyWeatherForecast(QDateTime date,
                                   QString weatherDescription,
@@ -38,7 +37,7 @@ public:
                                   QString neutralWeatherIcon,
                                   float temperature,
                                   float pressure,
-                                  WindDirection windDirection,
+                                  Kweather::WindDirection windDirection,
                                   float windSpeed,
                                   float humidity,
                                   float fog,
@@ -71,7 +70,6 @@ public:
     void setWeatherIcon(bool isDay)
     {
         using namespace Kweather;
-
         if (isDay) {
             setWeatherDescription(apiDescMap.at(symbolCode_ + "_day").desc);
             weatherIcon_ = apiDescMap.at(symbolCode_ + "_day").icon;
@@ -121,33 +119,33 @@ public:
     {
         pressure_ = pressure;
     }
-    WindDirection windDirection() const
+    Kweather::WindDirection windDirection() const
     {
         return windDirection_;
     }
     QString windDirectionString() const
     {
         switch (windDirection()) {
-        case AbstractHourlyWeatherForecast::WindDirection::N:
+        case Kweather::WindDirection::N:
             return "N";
-        case AbstractHourlyWeatherForecast::WindDirection::NE:
+        case Kweather::WindDirection::NE:
             return "NE";
-        case AbstractHourlyWeatherForecast::WindDirection::E:
+        case Kweather::WindDirection::E:
             return "E";
-        case AbstractHourlyWeatherForecast::WindDirection::SE:
+        case Kweather::WindDirection::SE:
             return "SE";
-        case AbstractHourlyWeatherForecast::WindDirection::S:
+        case Kweather::WindDirection::S:
             return "S";
-        case AbstractHourlyWeatherForecast::WindDirection::SW:
+        case Kweather::WindDirection::SW:
             return "SW";
-        case AbstractHourlyWeatherForecast::WindDirection::W:
+        case Kweather::WindDirection::W:
             return "W";
-        case AbstractHourlyWeatherForecast::WindDirection::NW:
+        case Kweather::WindDirection::NW:
             return "NW";
         }
         return "";
     }
-    void setWindDirection(WindDirection windDirection)
+    void setWindDirection(Kweather::WindDirection windDirection)
     {
         windDirection_ = windDirection;
     }
@@ -211,7 +209,7 @@ private:
     QString symbolCode_;
     float temperature_ {}; // celsius
     float pressure_ {};    // hPa
-    WindDirection windDirection_;
+    Kweather::WindDirection windDirection_;
     float windSpeed_ {};           // m/s
     float humidity_ {};            // %
     float fog_ {};                 // %
