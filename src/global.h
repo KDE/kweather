@@ -10,6 +10,8 @@
 #include <KLocalizedString>
 #include <QString>
 #include <unordered_map>
+namespace Kweather
+{
 struct ResolvedWeatherDesc {
     QString icon, desc;
     ResolvedWeatherDesc() = default;
@@ -143,4 +145,5 @@ static const std::unordered_map<QString, ResolvedWeatherDesc> apiDescMap = {
     {"heavyrain_day", ResolvedWeatherDesc("weather-showers-day", i18n("Heavy Rain"))},
     {"heavyrain_night", ResolvedWeatherDesc("weather-showers-night", i18n("Heavy Rain"))},
 };
+}
 #endif // ICONMAP_H

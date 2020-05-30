@@ -8,7 +8,7 @@
 #ifndef KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H
 #define KWEATHER_ABSTRACTHOURLYWEATHERFORECAST_H
 
-#include "iconmap.h"
+#include "global.h"
 #include <QDateTime>
 #include <QObject>
 #include <QSettings>
@@ -70,6 +70,8 @@ public:
     }
     void setWeatherIcon(bool isDay)
     {
+        using namespace Kweather;
+
         if (isDay) {
             setWeatherDescription(apiDescMap.at(symbolCode_ + "_day").desc);
             weatherIcon_ = apiDescMap.at(symbolCode_ + "_day").icon;

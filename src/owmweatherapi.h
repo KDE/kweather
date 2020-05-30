@@ -29,8 +29,5 @@ private slots:
 
 private:
     QHash<QDate, AbstractDailyWeatherForecast *> dayCache;
-    // rank weather (for what best describes the day overall)
-    static const QHash<QString, int> rank;
-    static const QHash<QString, QString> map;
 };
 #endif // OPENWEATHERMAP_H

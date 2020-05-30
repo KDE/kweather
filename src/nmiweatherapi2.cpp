@@ -9,7 +9,7 @@
 #include "abstractdailyweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
 #include "abstractweatherforecast.h"
-#include "iconmap.h"
+#include "global.h"
 
 #include <QCoreApplication>
 #include <QJsonArray>
@@ -132,6 +132,25 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
                                      QHash<QDate, AbstractDailyWeatherForecast *> &dayCache,
                                      QList<AbstractHourlyWeatherForecast *> &hoursList)
 {
+    /*~~~~~~~~~~ static variable ~~~~~~~~~~~*/
+    // rank weather (for what best describes the day overall)
+    static const QHash<QString, int> rank = {// only need neutral icons
+                                             {"weather-none-available", -1},
+                                             {"weather-clear", 0},
+                                             {"weather-few-clouds", 1},
+                                             {"weather-clouds", 2},
+                                             {"weather-fog", 3},
+                                             {"weather-mist", 3},
+                                             {"weather-showers-scattered", 4},
+                                             {"weather-snow-scattered", 4},
+                                             {"weather-showers", 5},
+                                             {"weather-hail", 5},
+                                             {"weather-snow", 5},
+                                             {"weather-freezing-rain", 6},
+                                             {"weather-freezing-storm", 6},
+                                             {"weather-snow-rain", 6},
+                                             {"weather-storm", 7}};
+
     QJsonObject data = object["data"].toObject(), instant = data["instant"].toObject()["details"].toObject();
     // ignore last forecast, which does not have enough data
     if (!data.contains("next_6_hours") && !data.contains("next_1_hours"))
@@ -176,7 +195,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end -
                                            // https://api.met.no/weatherapi/weathericon/2.0/legends
-    hourForecast->setNeutralWeatherIcon(apiDescMap.at(symbolCode + "_neutral").icon);
+    hourForecast->setNeutralWeatherIcon(Kweather::apiDescMap.at(symbolCode + "_neutral").icon);
     hourForecast->setSymbolCode(symbolCode);
 
     // add day if not already created
@@ -200,28 +219,10 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     // set description and icon if it is higher ranked
     if (rank[hourForecast->neutralWeatherIcon()] >= rank[dayForecast->weatherIcon()]) {
-        dayForecast->setWeatherDescription(apiDescMap.at(symbolCode + "_neutral").desc);
+        dayForecast->setWeatherDescription(Kweather::apiDescMap.at(symbolCode + "_neutral").desc);
         dayForecast->setWeatherIcon(hourForecast->neutralWeatherIcon());
     }
 
     // add hour forecast to list
     hoursList.append(hourForecast);
 }
-
-/*~~~~~~~~~~ static member ~~~~~~~~~~~*/
-const QHash<QString, int> NMIWeatherAPI2::rank = { // only need neutral icons
-    {"weather-none-available", -1},
-    {"weather-clear", 0},
-    {"weather-few-clouds", 1},
-    {"weather-clouds", 2},
-    {"weather-fog", 3},
-    {"weather-mist", 3},
-    {"weather-showers-scattered", 4},
-    {"weather-snow-scattered", 4},
-    {"weather-showers", 5},
-    {"weather-hail", 5},
-    {"weather-snow", 5},
-    {"weather-freezing-rain", 6},
-    {"weather-freezing-storm", 6},
-    {"weather-snow-rain", 6},
-    {"weather-storm", 7}};
