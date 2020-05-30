@@ -15,7 +15,7 @@ namespace Kweather
 enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
 enum class Backend { NMI, OWM };
 struct ResolvedWeatherDesc {
-    QString icon, desc;
+    QString icon = "weather-none-available", desc = "Unknown";
     ResolvedWeatherDesc() = default;
     ResolvedWeatherDesc(QString icon, QString desc)
     {
@@ -25,7 +25,7 @@ struct ResolvedWeatherDesc {
 };
 
 // https://api.met.no/weatherapi/weathericon/2.0/legends
-static const std::unordered_map<QString, ResolvedWeatherDesc> apiDescMap = {
+static const QMap<QString, ResolvedWeatherDesc> apiDescMap = {
     {"heavyrainandthunder_neutral", ResolvedWeatherDesc("weather-storm", i18n("Storm"))},
     {"heavyrainandthunder_day", ResolvedWeatherDesc("weather-storm-day", i18n("Storm"))},
     {"heavyrainandthunder_night", ResolvedWeatherDesc("weather-storm-night", i18n("Storm"))},
