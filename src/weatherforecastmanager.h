@@ -8,12 +8,7 @@
 #ifndef WEATHERFORECASTMANAGER_H
 #define WEATHERFORECASTMANAGER_H
 
-// ####### API MACRO #######
-#define NORWEGIAN 0
-#define OPENWEATHER 1
-
-// #########################
-
+#include "global.h"
 #include <QObject>
 #include <QRandomGenerator>
 #include <vector>
@@ -37,11 +32,10 @@ private slots:
 private:
     QRandomGenerator random;
     WeatherLocationListModel &model_;
-    int api_ = NORWEGIAN;
     AbstractWeatherForecast *convertFromJson(QByteArray data);
     QTimer *updateTimer = nullptr;
     void readFromCache();
-    WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI = NORWEGIAN);
+    WeatherForecastManager(WeatherLocationListModel &model);
     WeatherForecastManager(const WeatherForecastManager &);
     WeatherForecastManager &operator=(const WeatherForecastManager &);
 };

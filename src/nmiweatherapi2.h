@@ -23,7 +23,6 @@ public:
     ~NMIWeatherAPI2() override;
     void update() override;
     void setLocation(float lat, float lon) override;
-    void setToken(QString &) override;
 signals:
     void noTimeZone();
 private slots:

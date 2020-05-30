@@ -10,11 +10,10 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <utility>
-AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, int interval, QString *token, QObject *parent)
+AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, int interval, QObject *parent)
     : QObject(parent)
     , locationId_(std::move(locationId))
     , interval(interval)
-    , token_(token)
 {
     mManager = new QNetworkAccessManager();
 }

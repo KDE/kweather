@@ -30,11 +30,6 @@ void OWMWeatherAPI::setLocation(float latitude, float longitude)
     lon = longitude;
 }
 
-void OWMWeatherAPI::setToken(QString &token)
-{
-    token_ = &token;
-}
-
 void OWMWeatherAPI::parse(QNetworkReply *reply)
 {
     /*~~~~~~~~~ static variable ~~~~~~~~*/
@@ -83,6 +78,16 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
     /*~~~~~~~~~~~ end of static variable ~~~~~~~~~~*/
 
     QJsonDocument mJson = QJsonDocument::fromJson(reply->readAll());
+    if (mJson["cod"].toInt() == 401) // API Token invalid
+    {
+        emit TokenInvalid();
+        return;
+    }
+    if (mJson["cod"].toInt() == 429) // calls reached limit
+    {
+        emit TooManyCalls();
+        return;
+    }
     auto forecasts = new AbstractWeatherForecast();
     AbstractHourlyWeatherForecast *hourly;
     QList<AbstractHourlyWeatherForecast *> hourlyList;
@@ -133,10 +138,10 @@ void OWMWeatherAPI::update()
     delete currentData_;
     // delete old data
     QUrlQuery query;
-
+    QSettings settings;
     query.addQueryItem(QStringLiteral("lat"), QString().setNum(lat));
     query.addQueryItem(QStringLiteral("lgn"), QString().setNum(lon));
-    query.addQueryItem(QStringLiteral("APPID"), *token_);
+    query.addQueryItem(QStringLiteral("APPID"), settings.value("Global/OWMToken").toString());
 
     QUrl url;
 

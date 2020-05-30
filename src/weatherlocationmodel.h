@@ -41,7 +41,7 @@ public:
                              QString timeZone,
                              float latitude,
                              float longitude,
-                             int backend = 0,
+                             Kweather::Backend backend = Kweather::Backend::NMI,
                              AbstractWeatherForecast *forecast = nullptr);
     ~WeatherLocation();
     static WeatherLocation *fromJson(const QJsonObject &json);
@@ -111,7 +111,7 @@ public:
     void initData(AbstractWeatherForecast *fc);
     void insertSunriseData();
     void update();
-    // Q_INVOKABLE void changeBackend(int i = 0); // change backend on the fly
+    void changeBackend(Kweather::Backend backend); // change backend on the fly
 
 public slots:
     void updateData(AbstractWeatherForecast *fc);
@@ -124,7 +124,7 @@ signals:
     void stopLoadingIndicator();
 
 private:
-    int backend_ = 0; // 0 for NMI, 1 for OWM
+    Kweather::Backend backend_ = Kweather::Backend::NMI;
     void writeToCache(AbstractWeatherForecast *fc);
     QJsonDocument convertToJson(AbstractWeatherForecast *fc);
     QString locationName_;

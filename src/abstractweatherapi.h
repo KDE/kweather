@@ -25,7 +25,7 @@ public:
         locationId_ = std::move(locationId);
         currentData_ = currentData;
     }
-    AbstractWeatherAPI(QString locationId, int interval, QString *token = nullptr, QObject *parent = nullptr);
+    AbstractWeatherAPI(QString locationId, int interval, QObject *parent = nullptr);
     virtual ~AbstractWeatherAPI();
     virtual void setLocation(float lat, float lon) = 0;
     virtual void update() = 0;
@@ -34,7 +34,6 @@ public:
         return *timeZone_;
     };
     const int interval = -1; // api update interval in hour
-    virtual void setToken(QString &token) = 0;
     AbstractWeatherForecast *currentData()
     {
         return currentData_;
@@ -62,7 +61,6 @@ protected:
     QString *timeZone_ = nullptr;
     float lat;
     float lon;
-    QString *token_ = nullptr;
     QNetworkAccessManager *mManager;
     QNetworkReply *mReply;
 

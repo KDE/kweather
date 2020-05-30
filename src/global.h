@@ -13,7 +13,7 @@
 namespace Kweather
 {
 enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
-
+enum class Backend { NMI, OWM };
 struct ResolvedWeatherDesc {
     QString icon, desc;
     ResolvedWeatherDesc() = default;

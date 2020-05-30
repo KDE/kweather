@@ -47,7 +47,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
                                  QString timeZone,
                                  float latitude,
                                  float longitude,
-                                 int backend,
+                                 Kweather::Backend backend,
                                  AbstractWeatherForecast *forecast)
     : weatherBackendProvider_(weatherBackendProvider)
     , locationId_(locationId)
@@ -125,7 +125,7 @@ QJsonObject WeatherLocation::toJson()
     obj["latitude"] = latitude();
     obj["longitude"] = longitude();
     obj["timezone"] = timeZone_;
-    obj["backend"] = backend_;
+    obj["backend"] = static_cast<int>(backend_);
     return obj;
 }
 
@@ -235,6 +235,30 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
     QJsonDocument doc;
     doc.setObject(fc->toJson());
     return doc;
+}
+
+void WeatherLocation::changeBackend(Kweather::Backend backend)
+{
+    if (backend != backend_) {
+        backend_ = backend;
+        AbstractWeatherAPI *tmp = nullptr;
+        switch (backend_) {
+        case Kweather::Backend::OWM:
+            tmp = new OWMWeatherAPI(weatherBackendProvider_->locationName());
+            delete weatherBackendProvider_;
+            weatherBackendProvider_ = tmp;
+            this->update();
+            break;
+        case Kweather::Backend::NMI:
+            tmp = new NMIWeatherAPI2(weatherBackendProvider_->locationName());
+            delete weatherBackendProvider_;
+            weatherBackendProvider_ = tmp;
+            this->update();
+            break;
+        default:
+            return;
+        }
+    }
 }
 
 WeatherLocation::~WeatherLocation()

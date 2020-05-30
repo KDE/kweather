@@ -14,15 +14,9 @@
 #include <QTimeZone>
 #include <QTimer>
 
-WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, int defaultAPI)
+WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model)
     : model_(model)
-    , api_(defaultAPI)
 {
-    if (defaultAPI != NORWEGIAN && defaultAPI != OPENWEATHER) {
-        qDebug() << "wrong api";
-        exit(1);
-    }
-
     // create cache location if it does not exist, and load cache
     QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache");
     if (!dir.exists())
@@ -31,10 +25,7 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model, 
     updateTimer = new QTimer(this);
     updateTimer->setSingleShot(true);
     connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
-    if (api_ == NORWEGIAN)
-        updateTimer->start(0); // update when open
-    else
-        updateTimer->start(1000 * 3 * 3600 + random.bounded(0, 1800) * 1000);
+    updateTimer->start(0); // update when open
 }
 
 WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)

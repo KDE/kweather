@@ -27,10 +27,6 @@ void NMIWeatherAPI2::setLocation(float latitude, float longitude)
     lon = longitude;
 }
 
-void NMIWeatherAPI2::setToken(QString &)
-{
-} // no token is needed
-
 NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
     : AbstractWeatherAPI(locationId, -1)
 {
