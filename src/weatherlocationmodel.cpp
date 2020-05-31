@@ -10,13 +10,13 @@
 #include "abstractweatherforecast.h"
 #include "geoiplookup.h"
 #include "geotimezone.h"
+#include "global.h"
 #include "locationquerymodel.h"
 #include "nmisunriseapi.h"
 #include "nmiweatherapi2.h"
 #include "owmweatherapi.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
-#include "global.h"
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
@@ -95,27 +95,24 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
+    AbstractWeatherAPI *api;
+    Kweather::Backend backendEnum;
     if (obj["backend"].toInt() == 0) {
-        auto api = new NMIWeatherAPI2(obj["locationId"].toString());
-        auto weatherLocation = new WeatherLocation(api,
-                                                   obj["locationId"].toString(),
-                                                   obj["locationName"].toString(),
-                                                   obj["timezone"].toString(),
-                                                   obj["latitude"].toDouble(),
-                                                   obj["longitude"].toDouble());
-        api->setTimeZone(&weatherLocation->timeZone_);
-        return weatherLocation;
+        api = new NMIWeatherAPI2(obj["locationId"].toString());
+        backendEnum = Kweather::Backend::NMI;
     } else {
-        auto api = new OWMWeatherAPI(obj["locationID"].toString());
-        auto weatherLocation = new WeatherLocation(api,
-                                                   obj["locationId"].toString(),
-                                                   obj["locationName"].toString(),
-                                                   obj["timezone"].toString(),
-                                                   obj["latitude"].toDouble(),
-                                                   obj["longitude"].toDouble());
-        api->setTimeZone(&weatherLocation->timeZone_);
-        return weatherLocation;
+        api = new OWMWeatherAPI(obj["locationID"].toString());
+        backendEnum = Kweather::Backend::OWM;
     }
+    auto weatherLocation = new WeatherLocation(api,
+                                               obj["locationId"].toString(),
+                                               obj["locationName"].toString(),
+                                               obj["timezone"].toString(),
+                                               obj["latitude"].toDouble(),
+                                               obj["longitude"].toDouble(),
+                                               backendEnum);
+    api->setTimeZone(&weatherLocation->timeZone_);
+    return weatherLocation;
 }
 
 QJsonObject WeatherLocation::toJson()
@@ -135,7 +132,8 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     // only update if the forecast is newer
     if (forecast_ != nullptr && fc->timeCreated().toSecsSinceEpoch() < forecast_->timeCreated().toSecsSinceEpoch())
         return;
-    if (fc->hourlyForecasts().isEmpty() || fc->hourlyForecasts().at(0)->weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
+    if (fc->hourlyForecasts().isEmpty() ||
+        fc->hourlyForecasts().at(0)->weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
         if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
             for (auto hourForecast : fc->hourlyForecasts()) {
                 hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
@@ -208,9 +206,10 @@ void WeatherLocation::insertSunriseData()
     sunriseList = nmiSunriseApi_->get();
     if (forecast_) {
         forecast_->setSunrise(sunriseList);
-        for (auto hourForecast : forecast_->hourlyForecasts()) {
-            hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
-        }
+        if (!forecast_->hourlyForecasts().at(0)->neutralWeatherIcon().isEmpty()) // only update icon for NMI backend
+            for (auto hourForecast : forecast_->hourlyForecasts()) {
+                hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
+            }
         emit weatherRefresh(forecast_);
         emit propertyChanged();
         writeToCache(forecast_);
@@ -378,22 +377,25 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
 void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
-    AbstractWeatherAPI* api;
-
+    AbstractWeatherAPI *api;
+    Kweather::Backend backednEnum;
     QSettings qsettings;
     QString backend = qsettings.value("Global/defaultBackend", Kweather::API_NMI).toString();
     if (backend == Kweather::API_NMI) {
         api = new NMIWeatherAPI2(ret->geonameId());
+        backednEnum = Kweather::Backend::NMI;
     } else if (backend == Kweather::API_OWM) {
         api = new OWMWeatherAPI(ret->geonameId());
+        backednEnum = Kweather::Backend::OWM;
     } else {
         api = new NMIWeatherAPI2(ret->geonameId());
+        backednEnum = Kweather::Backend::NMI;
     }
 
     qDebug() << "lat" << ret->latitude();
     qDebug() << "lgn" << ret->longitude();
     api->setLocation(ret->latitude(), ret->longitude());
-    auto location = new WeatherLocation(api, ret->geonameId(), ret->name(), QString(), ret->latitude(), ret->longitude());
+    auto location = new WeatherLocation(api, ret->geonameId(), ret->name(), QString(), ret->latitude(), ret->longitude(), backednEnum);
     location->update();
     insert(this->locationsList.count(), location);
 }

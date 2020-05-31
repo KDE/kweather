@@ -11,4 +11,4 @@ A weather application for Plasma Mobile.
 * api.met.no - Weather data, sunrise/sunset data
 * geonames.org - Coordinates -> Timezone
 * geoip.ubuntu.com - IP -> Coordinates
-* openweathermap.org - Weather data (not implemented)
+* openweathermap.org - Weather data (optional, require API token)

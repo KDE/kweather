@@ -131,13 +131,22 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
     }
 
     auto forecasts = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hourlyList, dayCache.values());
+    auto old = currentData_;
+    currentData_ = forecasts;
+    // delete old data
+    delete old;
     emit updated(forecasts);
 }
 
 void OWMWeatherAPI::update()
 {
-    delete currentData_;
-    // delete old data
+    // don't update if updated recently, and forecast is not empty
+    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() &&
+        currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
+        emit updated(currentData_);
+        return;
+    }
+
     QUrlQuery query;
     QSettings settings;
     query.addQueryItem(QLatin1String("lat"), QString().setNum(lat));

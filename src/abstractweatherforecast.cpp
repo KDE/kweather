@@ -19,8 +19,8 @@ AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated,
                                                  QString locationId,
                                                  float latitude,
                                                  float longitude,
-                                                 QList<AbstractHourlyWeatherForecast *> hourlyForecasts,
-                                                 QList<AbstractDailyWeatherForecast *> dailyForecasts)
+                                                 QList<std::shared_ptr<AbstractHourlyWeatherForecast>> hourlyForecasts,
+                                                 QList<std::shared_ptr<AbstractDailyWeatherForecast>> dailyForecasts)
     : timeCreated_(timeCreated)
     , locationId_(std::move(locationId))
     , latitude_(latitude)
@@ -32,27 +32,23 @@ AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated,
 
 AbstractWeatherForecast::~AbstractWeatherForecast()
 {
-    for (auto hour : hourlyForecasts_)
-        delete hour;
-    for (auto day : dailyForecasts_)
-        delete day;
 }
 
-AbstractWeatherForecast *AbstractWeatherForecast::fromJson(QJsonObject obj)
+std::shared_ptr<AbstractWeatherForecast> AbstractWeatherForecast::fromJson(QJsonObject obj)
 {
-    auto *fc = new AbstractWeatherForecast();
+    auto fc = std::shared_ptr<AbstractWeatherForecast>(new AbstractWeatherForecast());
     fc->setTimeCreated(QDateTime::fromString(obj["timeCreated"].toString(), Qt::ISODate));
     fc->setLocationId(obj["locationId"].toString());
     fc->setLatitude(obj["latitude"].toString().toDouble());
     fc->setLongitude(obj["longitude"].toString().toDouble());
-    QList<AbstractHourlyWeatherForecast *> hourList;
-    QList<AbstractDailyWeatherForecast *> dayList;
+    QList<std::shared_ptr<AbstractHourlyWeatherForecast>> hourList;
+    QList<std::shared_ptr<AbstractDailyWeatherForecast>> dayList;
     QList<AbstractSunrise *> sunriseList;
 
     for (auto hour : obj["hourlyForecasts"].toArray())
-        hourList.push_back(AbstractHourlyWeatherForecast::fromJson(hour.toObject()));
+        hourList.push_back(std::shared_ptr<AbstractHourlyWeatherForecast>(AbstractHourlyWeatherForecast::fromJson(hour.toObject())));
     for (auto day : obj["dailyForecasts"].toArray())
-        dayList.push_back(AbstractDailyWeatherForecast::fromJson(day.toObject()));
+        dayList.push_back(std::shared_ptr<AbstractDailyWeatherForecast>(AbstractDailyWeatherForecast::fromJson(day.toObject())));
     for (auto sr : obj["sunrise"].toArray())
         sunriseList.push_back(AbstractSunrise::fromJson(sr.toObject()));
 

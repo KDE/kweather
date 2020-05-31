@@ -12,6 +12,7 @@
 #include "abstracthourlyweatherforecast.h"
 #include <QDateTime>
 #include <QObject>
+#include <memory>
 #include <utility>
 
 class AbstractSunrise;
@@ -29,11 +30,11 @@ public:
                             QString locationId,
                             float latitude,
                             float longitude,
-                            QList<AbstractHourlyWeatherForecast *> hourlyForecasts,
-                            QList<AbstractDailyWeatherForecast *> dailyForecasts);
+                            QList<std::shared_ptr<AbstractHourlyWeatherForecast>> hourlyForecasts,
+                            QList<std::shared_ptr<AbstractDailyWeatherForecast>> dailyForecasts);
 
     QJsonObject toJson();
-    static AbstractWeatherForecast *fromJson(QJsonObject obj);
+    static std::shared_ptr<AbstractWeatherForecast> fromJson(QJsonObject obj);
 
     inline const QString &locationId()
     {
@@ -51,11 +52,11 @@ public:
     {
         return longitude_;
     }
-    const QList<AbstractHourlyWeatherForecast *> &hourlyForecasts() const
+    const QList<std::shared_ptr<AbstractHourlyWeatherForecast>> &hourlyForecasts() const
     {
         return hourlyForecasts_;
     }
-    const QList<AbstractDailyWeatherForecast *> &dailyForecasts() const
+    const QList<std::shared_ptr<AbstractDailyWeatherForecast>> &dailyForecasts() const
     {
         return dailyForecasts_;
     }
@@ -79,11 +80,11 @@ public:
     {
         longitude_ = l;
     }
-    void setHourlyForecasts(const QList<AbstractHourlyWeatherForecast *> &hourlyForecasts)
+    void setHourlyForecasts(const QList<std::shared_ptr<AbstractHourlyWeatherForecast>> &hourlyForecasts)
     {
         hourlyForecasts_ = hourlyForecasts;
     }
-    void setDailyForecasts(const QList<AbstractDailyWeatherForecast *> &dailyForecasts)
+    void setDailyForecasts(const QList<std::shared_ptr<AbstractDailyWeatherForecast>> &dailyForecasts)
     {
         dailyForecasts_ = dailyForecasts;
     }
@@ -99,8 +100,8 @@ private:
     QDateTime timeCreated_;
     float latitude_;
     float longitude_;
-    QList<AbstractHourlyWeatherForecast *> hourlyForecasts_;
-    QList<AbstractDailyWeatherForecast *> dailyForecasts_;
+    QList<std::shared_ptr<AbstractHourlyWeatherForecast>> hourlyForecasts_;
+    QList<std::shared_ptr<AbstractDailyWeatherForecast>> dailyForecasts_;
     QList<AbstractSunrise *> sunrise_; // may be empty, as this is fetched from a separate api; do not display on ui if it is empty
 };
 

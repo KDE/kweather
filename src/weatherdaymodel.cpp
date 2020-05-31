@@ -15,7 +15,7 @@ WeatherDay::WeatherDay()
 {
 }
 
-WeatherDay::WeatherDay(AbstractDailyWeatherForecast* dailyForecast, AbstractSunrise* sunrise)
+WeatherDay::WeatherDay(AbstractDailyWeatherForecast *dailyForecast, AbstractSunrise *sunrise)
 {
     this->maxTemp_ = dailyForecast->maxTemp();
     this->minTemp_ = dailyForecast->minTemp();
@@ -48,7 +48,7 @@ WeatherDay::WeatherDay(AbstractDailyWeatherForecast* dailyForecast, AbstractSunr
     }
 }
 
-/* ~~~ WeatherHourListModel ~~~ */
+/* ~~~ WeatherDayListModel ~~~ */
 
 WeatherDayListModel::WeatherDayListModel(WeatherLocation *location)
 {
@@ -73,10 +73,11 @@ WeatherDay *WeatherDayListModel::get(int index)
     return daysList.at(index);
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* forecasts)
+void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast *forecasts)
 {
     emit layoutAboutToBeChanged();
     emit beginRemoveRows(QModelIndex(), 0, daysList.count() - 1);
+    auto oldList = daysList;
     daysList.clear();
     emit endRemoveRows();
 
@@ -84,7 +85,7 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* fore
 
     // add weatherdays with forecast day lists
     for (auto forecast : forecasts->dailyForecasts()) {
-        AbstractSunrise* daySunrise = nullptr;
+        AbstractSunrise *daySunrise = nullptr;
 
         // find sunrise data, if it exists
         for (auto sunrise : forecasts->sunrise()) {
@@ -94,7 +95,7 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* fore
             }
         }
 
-        WeatherDay* weatherDay = new WeatherDay(forecast, daySunrise);
+        WeatherDay *weatherDay = new WeatherDay(forecast, daySunrise);
         QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         daysList.append(weatherDay);
     }
@@ -102,6 +103,8 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast* fore
 
     emit endInsertRows();
     emit layoutChanged();
+    for (auto ptr : oldList)
+        delete ptr;
 }
 
 void WeatherDayListModel::updateUi()

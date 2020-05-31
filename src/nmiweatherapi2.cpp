@@ -48,7 +48,6 @@ void NMIWeatherAPI2::update()
         return;
     }
 
-    // fetch sunrise information if the timezone is set
     // can't do ui updates because of data race issues
 
     // query weather api
