@@ -16,6 +16,7 @@
 #include "owmweatherapi.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
+#include "global.h"
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
@@ -377,7 +378,18 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
 void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
-    auto api = new NMIWeatherAPI2(ret->geonameId());
+    AbstractWeatherAPI* api;
+
+    QSettings qsettings;
+    QString backend = qsettings.value("Global/defaultBackend", Kweather::API_NMI).toString();
+    if (backend == Kweather::API_NMI) {
+        api = new NMIWeatherAPI2(ret->geonameId());
+    } else if (backend == Kweather::API_OWM) {
+        api = new OWMWeatherAPI(ret->geonameId());
+    } else {
+        api = new NMIWeatherAPI2(ret->geonameId());
+    }
+
     qDebug() << "lat" << ret->latitude();
     qDebug() << "lgn" << ret->longitude();
     api->setLocation(ret->latitude(), ret->longitude());

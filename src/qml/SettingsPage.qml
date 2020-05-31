@@ -122,8 +122,8 @@ Kirigami.ScrollablePage {
         y: parent.height / 2 - height
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
         height: Kirigami.Units.gridUnit * 20
-        standardButtons: Dialog.Close
         title: i18n("Temperature Units")
+        standardButtons: Dialog.Close
 
         onAccepted: weatherLocationListModel.updateUi();
         onRejected: weatherLocationListModel.updateUi();
@@ -156,8 +156,8 @@ Kirigami.ScrollablePage {
         y: parent.height / 2 - height
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
         height: Kirigami.Units.gridUnit * 20
-        standardButtons: Dialog.Close
         title: i18n("Speed Units")
+        standardButtons: Dialog.Close
 
         onAccepted: weatherLocationListModel.updateUi();
         onRejected: weatherLocationListModel.updateUi();
@@ -189,30 +189,33 @@ Kirigami.ScrollablePage {
         x: (parent.width - width) / 2
         y: parent.height / 2 - height
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
-        height: Kirigami.Units.gridUnit * 20
-        standardButtons: Dialog.Close | Dialog.Save
-        title: i18n("API Token")
+        height: Kirigami.Units.gridUnit * 10
+        title: i18n("OpenWeatherMap API Token")
+        standardButtons: Dialog.Close
 
         onAccepted: settingsModel.OWMToken = textField.text;
 
         contentItem: ColumnLayout {
             Layout.fillWidth: true
+            spacing: Kirigami.Units.smallSpacing
+            Label {
+                color: Kirigami.Theme.disabledTextColor
+                text: "Add your own OpenWeatherMap API token."
+            }
+            Label {
+                color: Kirigami.Theme.disabledTextColor
+                text: "Token added is stored as PLAIN TEXT in system."
+            }
+            Kirigami.Separator {}
             TextField {
                 id: textField
                 text: settingsModel.OWMToken.length == 0 ? null : settingsModel.OWMToken
-                placeholderText: i18n("Add your open weather map token here... ")
+                placeholderText: i18n("Add your API token here... ")
                 anchors.top: parent.Top
                 width: parent.width
-            }
-
-            TextArea {
-                id: warningText
-                Layout.fillHeight: true
                 Layout.fillWidth: true
-                text: i18n("Add your own OpenWeatherMap API token. Token added is stored as PLAIN TEXT in system.")
-                readOnly: true
-                wrapMode: TextEdit.WordWrap
             }
+            Kirigami.Separator {}
         }
         Component.onCompleted: background.visible = true
     }

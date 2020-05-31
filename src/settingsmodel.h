@@ -10,12 +10,14 @@
 
 #include <QObject>
 #include <QSettings>
+#include <global.h>
 class SettingsModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString temperatureUnits READ temperatureUnits WRITE setTemperatureUnits NOTIFY propertyChanged)
     Q_PROPERTY(QString speedUnits READ speedUnits WRITE setSpeedUnits NOTIFY propertyChanged)
     Q_PROPERTY(QString OWMToken READ OWMToken WRITE setOWMToken NOTIFY propertyChanged)
+    Q_PROPERTY(QString defaultBackend READ defaultBackend WRITE setDefaultBackend NOTIFY propertyChanged)
 
 public:
     inline QString temperatureUnits()
@@ -55,6 +57,19 @@ public:
     {
         QSettings settings;
         return settings.value("Global/OWMToken").toString();
+    }
+
+    inline QString defaultBackend()
+    {
+        QSettings settings;
+        return settings.value("Global/defaultBackend", Kweather::API_NMI).toString();
+    }
+
+    inline void setDefaultBackend(QString backend)
+    {
+        QSettings settings;
+        settings.setValue("Global/defaultBackend", backend);
+        emit propertyChanged();
     }
 signals:
     void propertyChanged();

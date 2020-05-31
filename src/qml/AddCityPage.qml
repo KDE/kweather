@@ -24,18 +24,41 @@ Kirigami.ScrollablePage {
             anchors.rightMargin: Kirigami.Units.largeSpacing * 2
             height: search.height * 1.5
 
-            TextField {
-                id: search
-                placeholderText: i18n("Search for a place...")
+            Row {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.right: parent.right
-                onTextChanged: {
-                    searchQuery = text
-                    locationQueryModel.textChanged(text)
+                anchors.top: parent.top
+                anchors.topMargin: Kirigami.Units.largeSpacing
+                Layout.fillWidth: true
+
+                TextField {
+                    id: search
+                    anchors.right: sourceButton.left
+                    anchors.left: parent.left
+
+                    placeholderText: i18n("Search for a place...")
+                    onTextChanged: {
+                        searchQuery = text
+                        locationQueryModel.textChanged(text)
+                    }
+                    onEditingFinished: locationQueryModel.textChanged(text, 0) // when return is pressed, query immediately
                 }
-                onEditingFinished: locationQueryModel.textChanged(text,0) // when return is pressed, query immediately
+                Button {
+                    id: sourceButton
+                    icon.name: "settings-configure"
+                    width: height
+                    anchors.right: searchButton.left
+                    onClicked: apiSelector.open()
+                }
+                Button {
+                    id: searchButton
+                    icon.name: "search"
+                    width: height
+                    anchors.right: parent.right
+                    onClicked: locationQueryModel.textChanged(searchQuery, 0)
+                }
             }
         }
 
@@ -95,6 +118,38 @@ Kirigami.ScrollablePage {
             }
         }
     }
+
+    // api source selector
+    Kirigami.OverlaySheet {
+        id: apiSelector
+        header: Label {
+            text: i18n("Select Weather Source")
+        }
+
+        ListView {
+            Layout.leftMargin: Kirigami.Units.gridUnit
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 25
+            model: ListModel {
+                ListElement {
+                    display: "api.met.no (Norwegian Weather Service)"
+                    name: "nmiweatherapi"
+                }
+                ListElement {
+                    display: "api.openweathermap.org (OpenWeather)"
+                    name: "owmweatherapi"
+                }
+            }
+
+            delegate: RadioDelegate {
+                width: parent.width
+                text: model.display
+                checked: settingsModel.defaultBackend == model.name
+                onCheckedChanged: {
+                    if (checked) {
+                        settingsModel.defaultBackend = model.name;
+                    }
+                }
+            }
+        }
+    }
 }
-
-

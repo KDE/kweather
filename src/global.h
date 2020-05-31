@@ -24,6 +24,9 @@ struct ResolvedWeatherDesc {
     }
 };
 
+static const QString API_NMI = "nmiweatherapi";
+static const QString API_OWM = "owmweatherapi";
+
 // https://api.met.no/weatherapi/weathericon/2.0/legends
 static const QMap<QString, ResolvedWeatherDesc> apiDescMap = {
     {"heavyrainandthunder_neutral", ResolvedWeatherDesc("weather-storm", i18n("Storm"))},
