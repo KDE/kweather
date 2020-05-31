@@ -140,15 +140,17 @@ void OWMWeatherAPI::update()
     // delete old data
     QUrlQuery query;
     QSettings settings;
-    query.addQueryItem(QStringLiteral("lat"), QString().setNum(lat));
-    query.addQueryItem(QStringLiteral("lgn"), QString().setNum(lon));
-    query.addQueryItem(QStringLiteral("APPID"), settings.value("Global/OWMToken").toString());
+    query.addQueryItem(QLatin1String("lat"), QString().setNum(lat));
+    query.addQueryItem(QLatin1String("lon"), QString().setNum(lon));
+    query.addQueryItem(QLatin1String("APPID"), settings.value("Global/OWMToken").toString());
+    query.addQueryItem(QLatin1String("units"), QLatin1String("metric"));
 
     QUrl url;
-
-    url.setScheme(QStringLiteral("http"));
-    url.setHost(QStringLiteral("api.openweathermap.org"));
-    url.setPath(QStringLiteral("/forecast"));
+    url.setScheme(QLatin1String("http"));
+    url.setHost(QLatin1String("api.openweathermap.org"));
+    url.setPath(QLatin1String("/data/2.5/forecast"));
+    url.setQuery(query);
+    qDebug() << url;
 
     QNetworkRequest req(url);
     mReply = mManager->get(req);
