@@ -135,7 +135,7 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
     // only update if the forecast is newer
     if (forecast_ != nullptr && fc->timeCreated().toSecsSinceEpoch() < forecast_->timeCreated().toSecsSinceEpoch())
         return;
-    if (fc->hourlyForecasts().at(0)->weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
+    if (fc->hourlyForecasts().isEmpty() || fc->hourlyForecasts().at(0)->weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
         if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
             for (auto hourForecast : fc->hourlyForecasts()) {
                 hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon

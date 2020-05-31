@@ -88,7 +88,6 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         emit TooManyCalls();
         return;
     }
-    auto forecasts = new AbstractWeatherForecast();
     AbstractHourlyWeatherForecast *hourly;
     QList<AbstractHourlyWeatherForecast *> hourlyList;
     int offset = mJson["city"].toObject()["timezone"].toInt();
@@ -130,6 +129,8 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
             dayForecast->setWeatherIcon(hourly->weatherIcon());
         }
     }
+
+    auto forecasts = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hourlyList, dayCache.values());
     emit updated(forecasts);
 }
 
