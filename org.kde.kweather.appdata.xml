@@ -7,11 +7,15 @@
 <component type="desktop-application">
   <id>org.kde.kweather</id>
   <name>Weather</name>
+  <name xml:lang="x-test">xxWeatherxx</name>
   <summary>A convergent weather application.</summary>
+  <summary xml:lang="x-test">xxA convergent weather application.xx</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2+</project_license>
   <developer_name>KDE Community</developer_name>
+  <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
   <description>
     <p>KWeather is a full-featured weather application that is mobile friendly.</p>
+    <p xml:lang="x-test">xxKWeather is a full-featured weather application that is mobile friendly.xx</p>
   </description>
 </component>
