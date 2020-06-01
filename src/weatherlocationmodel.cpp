@@ -206,7 +206,7 @@ void WeatherLocation::insertSunriseData()
     sunriseList = nmiSunriseApi_->get();
     if (forecast_) {
         forecast_->setSunrise(sunriseList);
-        if (!forecast_->hourlyForecasts().at(0)->neutralWeatherIcon().isEmpty()) // only update icon for NMI backend
+        if (!forecast_->hourlyForecasts().isEmpty() && !forecast_->hourlyForecasts().at(0)->neutralWeatherIcon().isEmpty()) // only update icon for NMI backend
             for (auto hourForecast : forecast_->hourlyForecasts()) {
                 hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
             }
