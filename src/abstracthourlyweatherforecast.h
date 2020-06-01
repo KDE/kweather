@@ -14,23 +14,22 @@
 #include <QObject>
 #include <QSettings>
 
-class AbstractHourlyWeatherForecast : public QObject
+class AbstractHourlyWeatherForecast
 {
-    Q_OBJECT
-    Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
-    Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
-    Q_PROPERTY(QString neutralWeatherIcon READ neutralWeatherIcon WRITE setNeutralWeatherIcon NOTIFY propertyChanged)
-    Q_PROPERTY(QString temperature READ temperatureFormatted NOTIFY propertyChanged)
-    Q_PROPERTY(float pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
-    Q_PROPERTY(QString windDirection READ windDirectionString NOTIFY propertyChanged)
-    Q_PROPERTY(QString windSpeed READ windSpeedDisplay NOTIFY propertyChanged)
-    Q_PROPERTY(float humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
-    Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
-    Q_PROPERTY(float uvIndex READ uvIndex WRITE setUvIndex NOTIFY propertyChanged)
-    Q_PROPERTY(float precipitationAmount READ precipitationAmount WRITE setPrecipitationAmount NOTIFY propertyChanged)
+//    Q_PROPERTY(QString weatherDescription READ weatherDescription WRITE setWeatherDescription NOTIFY propertyChanged)
+//    Q_PROPERTY(QString weatherIcon READ weatherIcon WRITE setWeatherIcon NOTIFY propertyChanged)
+//    Q_PROPERTY(QString neutralWeatherIcon READ neutralWeatherIcon WRITE setNeutralWeatherIcon NOTIFY propertyChanged)
+//    Q_PROPERTY(QString temperature READ temperatureFormatted NOTIFY propertyChanged)
+//    Q_PROPERTY(float pressure READ pressure WRITE setPressure NOTIFY propertyChanged)
+//    Q_PROPERTY(QString windDirection READ windDirectionString NOTIFY propertyChanged)
+//    Q_PROPERTY(QString windSpeed READ windSpeedDisplay NOTIFY propertyChanged)
+//    Q_PROPERTY(float humidity READ humidity WRITE setHumidity NOTIFY propertyChanged)
+//    Q_PROPERTY(float fog READ fog WRITE setFog NOTIFY propertyChanged)
+//    Q_PROPERTY(float uvIndex READ uvIndex WRITE setUvIndex NOTIFY propertyChanged)
+//    Q_PROPERTY(float precipitationAmount READ precipitationAmount WRITE setPrecipitationAmount NOTIFY propertyChanged)
 
 public:
-    AbstractHourlyWeatherForecast() = default;
+    AbstractHourlyWeatherForecast();
     AbstractHourlyWeatherForecast(QDateTime date,
                                   QString weatherDescription,
                                   QString weatherIcon,
@@ -45,7 +44,7 @@ public:
                                   float precipitationAmount);
 
     QJsonObject toJson();
-    static AbstractHourlyWeatherForecast *fromJson(QJsonObject obj);
+    static AbstractHourlyWeatherForecast fromJson(QJsonObject obj);
 
     const QDateTime &date() const
     {
@@ -198,8 +197,8 @@ public:
         precipitationAmount_ = precipitationAmount;
     }
 
-signals:
-    void propertyChanged();
+//signals:
+//    void propertyChanged();
 
 private:
     QDateTime date_;

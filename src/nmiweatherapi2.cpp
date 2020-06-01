@@ -42,8 +42,8 @@ NMIWeatherAPI2::~NMIWeatherAPI2()
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty
-    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() &&
-        currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
+    if (!currentData_.dailyForecasts().empty() && !currentData_.hourlyForecasts().empty() &&
+        currentData_.timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
         emit updated(currentData_);
         return;
     }
@@ -90,8 +90,8 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
         if (prop.contains("timeseries")) {
             QJsonArray timeseries = prop["timeseries"].toArray();
 
-            QHash<QDate, AbstractDailyWeatherForecast *> dayCache;
-            QList<AbstractHourlyWeatherForecast *> hoursList;
+            QHash<QDate, AbstractDailyWeatherForecast> dayCache;
+            QList<AbstractHourlyWeatherForecast> hoursList;
 
             // loop over all forecast data
             for (QJsonValueRef ref : timeseries) {
@@ -99,33 +99,26 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
                 parseOneElement(refObj, dayCache, hoursList);
             }
 
-            // delete old data
-            //            delete currentData_; currently causes segfaults because the pointer is still used by other threads
             // process and build abstract forecast
-            currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hoursList, dayCache.values());
+            currentData_ = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hoursList, dayCache.values());
         }
     }
 
-    // parsing failed, default forecast
-    if (currentData_ == nullptr) {
-        currentData_ = new AbstractWeatherForecast(
-            QDateTime::currentDateTime(), locationId_, lat, lon, QList<AbstractHourlyWeatherForecast *>(), QList<AbstractDailyWeatherForecast *>());
-    }
     // sort daily forecast
-    if (!timeZone_->isEmpty()) {
-        for (auto fc : currentData_->hourlyForecasts()) {
-            fc->setDate(fc->date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_->toStdString()))));
+    if (!timeZone_.isEmpty()) {
+        for (auto fc : currentData_.hourlyForecasts()) {
+            fc.setDate(fc.date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))));
         }
     } else
         emit noTimeZone();
 
-    emit updated(this->currentData());
+    emit updated(currentData_);
 }
 
 // https://api.met.no/weatherapi/locationforecast/2.0/documentation
 void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
-                                     QHash<QDate, AbstractDailyWeatherForecast *> &dayCache,
-                                     QList<AbstractHourlyWeatherForecast *> &hoursList)
+                                     QHash<QDate, AbstractDailyWeatherForecast> &dayCache,
+                                     QList<AbstractHourlyWeatherForecast> &hoursList)
 {
     /*~~~~~~~~~~ static variable ~~~~~~~~~~~*/
     // rank weather (for what best describes the day overall)
@@ -153,27 +146,27 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
 
     // correct date to corresponding timezone of location if possible
     QDateTime date;
-    if (timeZone_->isEmpty()) {
+    if (timeZone_.isEmpty()) {
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
     } else {
-        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_->toStdString())));
+        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString())));
     }
 
-    auto *hourForecast = new AbstractHourlyWeatherForecast();
+    AbstractHourlyWeatherForecast hourForecast;
 
     // set initial hour fields
-    hourForecast->setDate(date); // the first time will be at the exact time of
+    hourForecast.setDate(date); // the first time will be at the exact time of
                                  // query, otherwise the beginning of each hour
-    hourForecast->setTemperature(instant["air_temperature"].toDouble());
-    hourForecast->setPressure(instant["air_pressure_at_sea_level"].toDouble());
-    hourForecast->setWindSpeed(instant["wind_speed"].toDouble());
-    hourForecast->setHumidity(instant["relative_humidity"].toDouble());
-    hourForecast->setFog(instant["fog_area_fraction"].toDouble());
-    hourForecast->setUvIndex(instant["ultraviolet_index_clear_sky"].toDouble());
+    hourForecast.setTemperature(instant["air_temperature"].toDouble());
+    hourForecast.setPressure(instant["air_pressure_at_sea_level"].toDouble());
+    hourForecast.setWindSpeed(instant["wind_speed"].toDouble());
+    hourForecast.setHumidity(instant["relative_humidity"].toDouble());
+    hourForecast.setFog(instant["fog_area_fraction"].toDouble());
+    hourForecast.setUvIndex(instant["ultraviolet_index_clear_sky"].toDouble());
 
     // wind direction
     double windDirectionDeg = instant["wind_from_direction"].toDouble();
-    hourForecast->setWindDirection(getWindDirect(windDirectionDeg));
+    hourForecast.setWindDirection(getWindDirect(windDirectionDeg));
 
     QString symbolCode;
     // some fields contain only "next_1_hours", and others may contain only
@@ -181,41 +174,41 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
     if (data.contains("next_1_hours")) {
         QJsonObject nextOneHours = data["next_1_hours"].toObject();
         symbolCode = nextOneHours["summary"].toObject()["symbol_code"].toString("unknown");
-        hourForecast->setPrecipitationAmount(nextOneHours["details"].toObject()["precipitation_amount"].toDouble());
+        hourForecast.setPrecipitationAmount(nextOneHours["details"].toObject()["precipitation_amount"].toDouble());
     } else {
         QJsonObject nextSixHours = data["next_6_hours"].toObject();
         symbolCode = nextSixHours["summary"].toObject()["symbol_code"].toString("unknown");
-        hourForecast->setPrecipitationAmount(nextSixHours["details"].toObject()["precipitation_amount"].toDouble());
+        hourForecast.setPrecipitationAmount(nextSixHours["details"].toObject()["precipitation_amount"].toDouble());
     }
 
     symbolCode = symbolCode.split('_')[0]; // trim _[day/night] from end -
                                            // https://api.met.no/weatherapi/weathericon/2.0/legends
-    hourForecast->setNeutralWeatherIcon(Kweather::apiDescMap[symbolCode + "_neutral"].icon);
-    hourForecast->setSymbolCode(symbolCode);
+    hourForecast.setNeutralWeatherIcon(apiDescMap[symbolCode + "_neutral"].icon);
+    hourForecast.setSymbolCode(symbolCode);
 
     // add day if not already created
     if (!dayCache.contains(date.date())) {
-        dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
+        dayCache[date.date()] = AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "Unknown", date.date());
     }
 
     // update day forecast with hour information if needed
-    AbstractDailyWeatherForecast *dayForecast = dayCache[date.date()];
+    AbstractDailyWeatherForecast& dayForecast = dayCache[date.date()];
 
-    dayForecast->setPrecipitation(dayForecast->precipitation() + hourForecast->precipitationAmount());
-    dayForecast->setUvIndex(std::max(dayForecast->uvIndex(), hourForecast->uvIndex()));
-    dayForecast->setHumidity(std::max(dayForecast->humidity(), hourForecast->humidity()));
-    dayForecast->setPressure(std::max(dayForecast->pressure(), hourForecast->pressure()));
+    dayForecast.setPrecipitation(dayForecast.precipitation() + hourForecast.precipitationAmount());
+    dayForecast.setUvIndex(std::max(dayForecast.uvIndex(), hourForecast.uvIndex()));
+    dayForecast.setHumidity(std::max(dayForecast.humidity(), hourForecast.humidity()));
+    dayForecast.setPressure(std::max(dayForecast.pressure(), hourForecast.pressure()));
 
     if (data.contains("next_6_hours")) {
         QJsonObject details = data["next_6_hours"].toObject()["details"].toObject();
-        dayForecast->setMaxTemp(std::max(dayForecast->maxTemp(), (float)details["air_temperature_max"].toDouble()));
-        dayForecast->setMinTemp(std::min(dayForecast->minTemp(), (float)details["air_temperature_min"].toDouble()));
+        dayForecast.setMaxTemp(std::max(dayForecast.maxTemp(), (float)details["air_temperature_max"].toDouble()));
+        dayForecast.setMinTemp(std::min(dayForecast.minTemp(), (float)details["air_temperature_min"].toDouble()));
     }
 
     // set description and icon if it is higher ranked
-    if (rank[hourForecast->neutralWeatherIcon()] >= rank[dayForecast->weatherIcon()]) {
-        dayForecast->setWeatherDescription(Kweather::apiDescMap[symbolCode + "_neutral"].desc);
-        dayForecast->setWeatherIcon(hourForecast->neutralWeatherIcon());
+    if (rank[hourForecast.neutralWeatherIcon()] >= rank[dayForecast.weatherIcon()]) {
+        dayForecast.setWeatherDescription(apiDescMap[symbolCode + "_neutral"].desc);
+        dayForecast.setWeatherIcon(hourForecast.neutralWeatherIcon());
     }
 
     // add hour forecast to list

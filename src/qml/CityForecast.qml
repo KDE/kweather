@@ -61,7 +61,7 @@ Kirigami.ScrollablePage {
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3.5
                     font.weight: Font.Light
-                    text: weatherLocation.currentWeather.temperature
+                    text: weatherLocation.currentWeather.temperatureRounded
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5

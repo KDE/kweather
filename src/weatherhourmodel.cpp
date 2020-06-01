@@ -12,11 +12,15 @@
 
 WeatherHour::WeatherHour()
 {
+    this->weatherDescription_ = "Unknown";
+    this->weatherIcon_ = "weather-none-available";
+    this->date_ = QDateTime::currentDateTime();
+    this->windDirection_ = "N";
 }
 
-WeatherHour::WeatherHour(AbstractHourlyWeatherForecast *forecast)
+WeatherHour::WeatherHour(AbstractHourlyWeatherForecast &forecast)
 {
-    switch (forecast->windDirection()) {
+    switch (forecast.windDirection()) {
     case Kweather::WindDirection::N:
         this->windDirection_ = "N";
         break;
@@ -42,15 +46,15 @@ WeatherHour::WeatherHour(AbstractHourlyWeatherForecast *forecast)
         this->windDirection_ = "NW";
         break;
     }
-    this->weatherDescription_ = forecast->weatherDescription();
-    this->weatherIcon_ = forecast->weatherIcon();
-    this->precipitation_ = forecast->precipitationAmount();
-    this->fog_ = forecast->fog();
-    this->windSpeed_ = forecast->windSpeed();
-    this->temperature_ = forecast->temperature();
-    this->humidity_ = forecast->humidity();
-    this->pressure_ = forecast->pressure();
-    this->date_ = QDateTime(forecast->date().date(), QTime(forecast->date().time().hour(), 0));
+    this->weatherDescription_ = forecast.weatherDescription();
+    this->weatherIcon_ = forecast.weatherIcon();
+    this->precipitation_ = forecast.precipitationAmount();
+    this->fog_ = forecast.fog();
+    this->windSpeed_ = forecast.windSpeed();
+    this->temperature_ = forecast.temperature();
+    this->humidity_ = forecast.humidity();
+    this->pressure_ = forecast.pressure();
+    this->date_ = QDateTime(forecast.date().date(), QTime(forecast.date().time().hour(), 0));
 }
 
 /* ~~~ WeatherHourListModel ~~~ */
@@ -89,7 +93,7 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast *forecast)
+void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast& forecast)
 {
     // clear forecasts
     emit layoutAboutToBeChanged();
@@ -99,9 +103,9 @@ void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast *fo
     // insert forecasts
     int currentDay = -1;
     int index = 0;
-    for (auto hourForecast : forecast->hourlyForecasts()) {
-        if (currentDay != hourForecast->date().date().day()) {
-            currentDay = hourForecast->date().date().day();
+    for (auto hourForecast : forecast.hourlyForecasts()) {
+        if (currentDay != hourForecast.date().date().day()) {
+            currentDay = hourForecast.date().date().day();
             dayList.append(index);
         }
         auto *weatherHour = new WeatherHour(hourForecast);

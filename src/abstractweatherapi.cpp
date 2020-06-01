@@ -21,7 +21,6 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, int interval, QObject
 AbstractWeatherAPI::~AbstractWeatherAPI()
 {
     delete mManager;
-    delete currentData_;
 }
 
 Kweather::WindDirection AbstractWeatherAPI::getWindDirect(double deg)

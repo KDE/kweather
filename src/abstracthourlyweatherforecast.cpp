@@ -9,6 +9,15 @@
 
 #include <QJsonObject>
 #include <utility>
+
+AbstractHourlyWeatherForecast::AbstractHourlyWeatherForecast()
+{
+    date_ = QDateTime::currentDateTime();
+    weatherDescription_ = "Unknown";
+    weatherIcon_ = "weather-none-available";
+    neutralWeatherIcon_ = "weather-none-available";
+}
+
 AbstractHourlyWeatherForecast::AbstractHourlyWeatherForecast(QDateTime date,
                                                              QString weatherDescription,
                                                              QString weatherIcon,
@@ -36,21 +45,21 @@ AbstractHourlyWeatherForecast::AbstractHourlyWeatherForecast(QDateTime date,
 {
 }
 
-AbstractHourlyWeatherForecast *AbstractHourlyWeatherForecast::fromJson(QJsonObject obj)
+AbstractHourlyWeatherForecast AbstractHourlyWeatherForecast::fromJson(QJsonObject obj)
 {
-    auto *fc = new AbstractHourlyWeatherForecast();
-    fc->setDate(QDateTime::fromString(obj["date"].toString(), Qt::ISODate));
-    fc->setWeatherDescription(obj["weatherDescription"].toString());
-    fc->setWeatherIcon(obj["weatherIcon"].toString());
-    fc->setNeutralWeatherIcon(obj["neutralWeatherIcon"].toString());
-    fc->setTemperature(obj["temperature"].toDouble());
-    fc->setPressure(obj["pressure"].toDouble());
-    fc->setWindDirection(static_cast<Kweather::WindDirection>(obj["windDirection"].toInt()));
-    fc->setWindSpeed(obj["windSpeed"].toDouble());
-    fc->setHumidity(obj["humidity"].toDouble());
-    fc->setFog(obj["fog"].toDouble());
-    fc->setUvIndex(obj["uvIndex"].toDouble());
-    fc->setPrecipitationAmount(obj["precipitationAmount"].toDouble());
+    AbstractHourlyWeatherForecast fc;
+    fc.setDate(QDateTime::fromString(obj["date"].toString(), Qt::ISODate));
+    fc.setWeatherDescription(obj["weatherDescription"].toString());
+    fc.setWeatherIcon(obj["weatherIcon"].toString());
+    fc.setNeutralWeatherIcon(obj["neutralWeatherIcon"].toString());
+    fc.setTemperature(obj["temperature"].toDouble());
+    fc.setPressure(obj["pressure"].toDouble());
+    fc.setWindDirection(static_cast<Kweather::WindDirection>(obj["windDirection"].toInt()));
+    fc.setWindSpeed(obj["windSpeed"].toDouble());
+    fc.setHumidity(obj["humidity"].toDouble());
+    fc.setFog(obj["fog"].toDouble());
+    fc.setUvIndex(obj["uvIndex"].toDouble());
+    fc.setPrecipitationAmount(obj["precipitationAmount"].toDouble());
     return fc;
 }
 

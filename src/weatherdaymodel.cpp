@@ -15,36 +15,34 @@ WeatherDay::WeatherDay()
 {
 }
 
-WeatherDay::WeatherDay(AbstractDailyWeatherForecast *dailyForecast, AbstractSunrise *sunrise)
+WeatherDay::WeatherDay(AbstractDailyWeatherForecast& dailyForecast, AbstractSunrise& sunrise)
 {
-    this->maxTemp_ = dailyForecast->maxTemp();
-    this->minTemp_ = dailyForecast->minTemp();
-    this->weatherIcon_ = dailyForecast->weatherIcon();
-    this->weatherDescription_ = dailyForecast->weatherDescription();
-    this->date_ = dailyForecast->date();
-    this->precipitation_ = dailyForecast->precipitation();
-    this->uvIndex_ = dailyForecast->uvIndex();
-    this->humidity_ = dailyForecast->humidity();
-    this->pressure_ = dailyForecast->pressure();
+    this->maxTemp_ = dailyForecast.maxTemp();
+    this->minTemp_ = dailyForecast.minTemp();
+    this->weatherIcon_ = dailyForecast.weatherIcon();
+    this->weatherDescription_ = dailyForecast.weatherDescription();
+    this->date_ = dailyForecast.date();
+    this->precipitation_ = dailyForecast.precipitation();
+    this->uvIndex_ = dailyForecast.uvIndex();
+    this->humidity_ = dailyForecast.humidity();
+    this->pressure_ = dailyForecast.pressure();
 
-    if (sunrise != nullptr) {
-        this->sunrise_ = sunrise->sunRise().toString("hh:mm ap");
-        this->sunset_ = sunrise->sunSet().toString("hh:mm ap");
-        if (sunrise->moonPhase() <= 5) {
-            this->moonPhase_ = "New Moon";
-        } else if (sunrise->moonPhase() <= 25) {
-            this->moonPhase_ = "Waxing Crescent";
-        } else if (sunrise->moonPhase() <= 45) {
-            this->moonPhase_ = "Waxing Gibbous";
-        } else if (sunrise->moonPhase() <= 55) {
-            this->moonPhase_ = "Full Moon";
-        } else if (sunrise->moonPhase() <= 75) {
-            this->moonPhase_ = "Waning Gibbous";
-        } else if (sunrise->moonPhase() <= 95) {
-            this->moonPhase_ = "Waning Crescent";
-        } else {
-            this->moonPhase_ = "New Moon";
-        }
+    this->sunrise_ = sunrise.sunRise().toString("hh:mm ap");
+    this->sunset_ = sunrise.sunSet().toString("hh:mm ap");
+    if (sunrise.moonPhase() <= 5) {
+        this->moonPhase_ = "New Moon";
+    } else if (sunrise.moonPhase() <= 25) {
+        this->moonPhase_ = "Waxing Crescent";
+    } else if (sunrise.moonPhase() <= 45) {
+        this->moonPhase_ = "Waxing Gibbous";
+    } else if (sunrise.moonPhase() <= 55) {
+        this->moonPhase_ = "Full Moon";
+    } else if (sunrise.moonPhase() <= 75) {
+        this->moonPhase_ = "Waning Gibbous";
+    } else if (sunrise.moonPhase() <= 95) {
+        this->moonPhase_ = "Waning Crescent";
+    } else {
+        this->moonPhase_ = "New Moon";
     }
 }
 
@@ -73,7 +71,7 @@ WeatherDay *WeatherDayListModel::get(int index)
     return daysList.at(index);
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast *forecasts)
+void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast& forecasts)
 {
     emit layoutAboutToBeChanged();
     emit beginRemoveRows(QModelIndex(), 0, daysList.count() - 1);
@@ -81,15 +79,15 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast *fore
     daysList.clear();
     emit endRemoveRows();
 
-    emit beginInsertRows(QModelIndex(), 0, forecasts->dailyForecasts().count() - 1);
+    emit beginInsertRows(QModelIndex(), 0, forecasts.dailyForecasts().count() - 1);
 
     // add weatherdays with forecast day lists
-    for (auto forecast : forecasts->dailyForecasts()) {
-        AbstractSunrise *daySunrise = nullptr;
+    for (auto forecast : forecasts.dailyForecasts()) {
+        AbstractSunrise daySunrise;
 
         // find sunrise data, if it exists
-        for (auto sunrise : forecasts->sunrise()) {
-            if (sunrise->sunRise().date().daysTo(forecast->date()) == 0) {
+        for (auto sunrise : forecasts.sunrise()) {
+            if (sunrise.sunRise().date().daysTo(forecast.date()) == 0) {
                 daySunrise = sunrise;
                 break;
             }

@@ -28,8 +28,5 @@ signals:
 private slots:
 
     void parse(QNetworkReply *Reply) override;
-
-private:
-    QHash<QDate, AbstractDailyWeatherForecast *> dayCache;
 };
 #endif // OPENWEATHERMAP_H

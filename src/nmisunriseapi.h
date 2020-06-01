@@ -24,11 +24,11 @@ public:
     {
         offset_ = offset;
     }
-    void setData(QList<AbstractSunrise *> sunrise)
+    void setData(QList<AbstractSunrise> sunrise)
     {
         sunrise_ = sunrise;
     };
-    QList<AbstractSunrise *> get()
+    QList<AbstractSunrise> get()
     {
         return sunrise_;
     };
@@ -46,7 +46,7 @@ private slots:
 private:
     float longitude_, latitude_, offset_;
     QNetworkAccessManager *manager = nullptr;
-    QList<AbstractSunrise *> sunrise_;
+    QList<AbstractSunrise> sunrise_;
     bool noData = true;
 };
 

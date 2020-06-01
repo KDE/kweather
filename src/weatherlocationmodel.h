@@ -9,6 +9,7 @@
 #define WEATHERLOCATIONMODEL_H
 #include "abstractweatherforecast.h"
 #include "nmiweatherapi2.h"
+#include "weatherhourmodel.h"
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QJsonDocument>
@@ -18,6 +19,7 @@
 
 class WeatherDayListModel;
 class WeatherHourListModel;
+class WeatherHour;
 class AbstractWeatherAPI;
 class AbstractWeatherForecast;
 class LocationQueryResult;
@@ -31,10 +33,10 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
-    Q_PROPERTY(AbstractHourlyWeatherForecast *currentWeather READ currentWeather NOTIFY currentForecastChange)
+    Q_PROPERTY(WeatherHour *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
 public:
-    explicit WeatherLocation(AbstractWeatherForecast *forecast = nullptr);
+    WeatherLocation(AbstractWeatherForecast forecast = AbstractWeatherForecast());
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
                              QString locationId,
                              QString locationName,
@@ -42,7 +44,7 @@ public:
                              float latitude,
                              float longitude,
                              Kweather::Backend backend = Kweather::Backend::NMI,
-                             AbstractWeatherForecast *forecast = nullptr);
+                             AbstractWeatherForecast forecast = AbstractWeatherForecast());
     ~WeatherLocation();
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
@@ -74,8 +76,9 @@ public:
     {
         return longitude_;
     }
-    inline AbstractHourlyWeatherForecast *currentWeather()
+    inline WeatherHour *currentWeather()
     {
+//        return currentWeather_ == nullptr ? new WeatherHour() : currentWeather_;
         return currentWeather_;
     }
     inline WeatherDayListModel *weatherDayListModel()
@@ -86,7 +89,7 @@ public:
     {
         return weatherHourListModel_;
     }
-    inline AbstractWeatherForecast *forecast()
+    inline AbstractWeatherForecast forecast()
     {
         return forecast_;
     }
@@ -108,16 +111,16 @@ public:
         emit propertyChanged();
     }
     void determineCurrentForecast();
-    void initData(AbstractWeatherForecast *fc);
+    void initData(AbstractWeatherForecast fc);
     void insertSunriseData();
     void update();
     void changeBackend(Kweather::Backend backend); // change backend on the fly
 
 public slots:
-    void updateData(AbstractWeatherForecast *fc);
+    void updateData(AbstractWeatherForecast& fc);
 
 signals:
-    void weatherRefresh(AbstractWeatherForecast *fc); // sent when weather data is refreshed
+    void weatherRefresh(AbstractWeatherForecast &fc); // sent when weather data is refreshed
     void currentForecastChange();
     void timeZoneSet();
     void propertyChanged(); // avoid warning
@@ -125,20 +128,22 @@ signals:
 
 private:
     Kweather::Backend backend_ = Kweather::Backend::NMI;
-    void writeToCache(AbstractWeatherForecast *fc);
-    QJsonDocument convertToJson(AbstractWeatherForecast *fc);
+    void writeToCache(AbstractWeatherForecast& fc);
+    QJsonDocument convertToJson(AbstractWeatherForecast& fc);
     QString locationName_;
     QString timeZone_;
     QString locationId_;
     QDateTime lastUpdated_;
     float latitude_, longitude_;
-    QList<AbstractSunrise *> sunriseList;
+
     WeatherDayListModel *weatherDayListModel_;
     WeatherHourListModel *weatherHourListModel_;
 
+    QList<AbstractSunrise> sunriseList;
+    AbstractWeatherForecast forecast_;
+    WeatherHour *currentWeather_ = nullptr;
+
     AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
-    AbstractHourlyWeatherForecast *currentWeather_ = nullptr;
-    AbstractWeatherForecast *forecast_ = nullptr;
     NMISunriseAPI *nmiSunriseApi_ = nullptr;
     GeoTimeZone *geoTimeZone_ = nullptr;
 };

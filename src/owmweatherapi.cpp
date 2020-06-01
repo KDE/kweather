@@ -88,61 +88,60 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         emit TooManyCalls();
         return;
     }
-    AbstractHourlyWeatherForecast *hourly;
-    QList<AbstractHourlyWeatherForecast *> hourlyList;
+    AbstractHourlyWeatherForecast hourly;
+    QList<AbstractHourlyWeatherForecast> hourlyList;
+    QHash<QDate, AbstractDailyWeatherForecast> dayCache;
+
     int offset = mJson["city"].toObject()["timezone"].toInt();
     QJsonArray mArray = mJson["list"].toArray();
     for (auto fc : mArray) {
         auto date = QDateTime::fromSecsSinceEpoch(fc.toObject()["dt"].toInt()).toTimeZone(QTimeZone(offset));
-        hourly = new AbstractHourlyWeatherForecast();
-        hourly->setDate(date);
-        hourly->setFog(-1);
-        hourly->setUvIndex(-1);
-        hourly->setHumidity(fc.toObject()["main"].toObject()["humidity"].toInt());
-        hourly->setPressure(fc.toObject()["main"].toObject()["pressure"].toInt());
-        hourly->setWindSpeed(fc.toObject()["wind"].toObject()["speed"].toDouble());
-        hourly->setTemperature(fc.toObject()["main"].toObject()["temp"].toDouble());
-        hourly->setWeatherIcon(map[fc.toObject()["weather"].toArray().at(0)["icon"].toString()]);
-        hourly->setWindDirection(getWindDirect(fc.toObject()["wind"].toObject()["deg"].toDouble()));
-        hourly->setWeatherDescription(fc.toObject()["weather"].toArray().at(0)["description"].toString());
-        hourly->setPrecipitationAmount(fc.toObject()["rain"].toObject()["3h"].toDouble() + fc.toObject()["snow"].toObject()["3h"].toDouble());
+        hourly = AbstractHourlyWeatherForecast();
+        hourly.setDate(date);
+        hourly.setFog(-1);
+        hourly.setUvIndex(-1);
+        hourly.setHumidity(fc.toObject()["main"].toObject()["humidity"].toInt());
+        hourly.setPressure(fc.toObject()["main"].toObject()["pressure"].toInt());
+        hourly.setWindSpeed(fc.toObject()["wind"].toObject()["speed"].toDouble());
+        hourly.setTemperature(fc.toObject()["main"].toObject()["temp"].toDouble());
+        hourly.setWeatherIcon(map[fc.toObject()["weather"].toArray().at(0)["icon"].toString()]);
+        hourly.setWindDirection(getWindDirect(fc.toObject()["wind"].toObject()["deg"].toDouble()));
+        hourly.setWeatherDescription(fc.toObject()["weather"].toArray().at(0)["description"].toString());
+        hourly.setPrecipitationAmount(fc.toObject()["rain"].toObject()["3h"].toDouble() + fc.toObject()["snow"].toObject()["3h"].toDouble());
         hourlyList.push_back(hourly);
         // add day if not already created
         if (!dayCache.contains(date.date())) {
-            dayCache[date.date()] = new AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
+            dayCache[date.date()] = AbstractDailyWeatherForecast(-1e9, 1e9, 0, 0, 0, 0, "weather-none-available", "", date.date());
         }
 
         // update day forecast with hour information if needed
-        AbstractDailyWeatherForecast *dayForecast = dayCache[date.date()];
+        AbstractDailyWeatherForecast& dayForecast = dayCache[date.date()];
 
-        dayForecast->setPrecipitation(dayForecast->precipitation() + hourly->precipitationAmount());
-        dayForecast->setUvIndex(std::max(dayForecast->uvIndex(), hourly->uvIndex()));
-        dayForecast->setHumidity(std::max(dayForecast->humidity(), hourly->humidity()));
-        dayForecast->setPressure(std::max(dayForecast->pressure(), hourly->pressure()));
+        dayForecast.setPrecipitation(dayForecast.precipitation() + hourly.precipitationAmount());
+        dayForecast.setUvIndex(std::max(dayForecast.uvIndex(), hourly.uvIndex()));
+        dayForecast.setHumidity(std::max(dayForecast.humidity(), hourly.humidity()));
+        dayForecast.setPressure(std::max(dayForecast.pressure(), hourly.pressure()));
 
-        dayForecast->setMaxTemp(std::max(dayForecast->maxTemp(), (float)fc.toObject()["main"].toObject()["temp_max"].toDouble()));
-        dayForecast->setMinTemp(std::min(dayForecast->minTemp(), (float)fc.toObject()["main"].toObject()["temp_min"].toDouble()));
+        dayForecast.setMaxTemp(std::max(dayForecast.maxTemp(), (float)fc.toObject()["main"].toObject()["temp_max"].toDouble()));
+        dayForecast.setMinTemp(std::min(dayForecast.minTemp(), (float)fc.toObject()["main"].toObject()["temp_min"].toDouble()));
 
         // set description and icon if it is higher ranked
-        if (rank[hourly->weatherIcon()] >= rank[dayForecast->weatherIcon()]) {
-            dayForecast->setWeatherDescription(hourly->weatherDescription());
-            dayForecast->setWeatherIcon(hourly->weatherIcon());
+        if (rank[hourly.weatherIcon()] >= rank[dayForecast.weatherIcon()]) {
+            dayForecast.setWeatherDescription(hourly.weatherDescription());
+            dayForecast.setWeatherIcon(hourly.weatherIcon());
         }
     }
 
-    auto forecasts = new AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hourlyList, dayCache.values());
-    auto old = currentData_;
+    auto forecasts = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hourlyList, dayCache.values());
     currentData_ = forecasts;
-    // delete old data
-    delete old;
     emit updated(forecasts);
 }
 
 void OWMWeatherAPI::update()
 {
     // don't update if updated recently, and forecast is not empty
-    if (currentData_ != nullptr && !currentData_->dailyForecasts().empty() && !currentData_->hourlyForecasts().empty() &&
-        currentData_->timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
+    if (!currentData_.dailyForecasts().empty() && !currentData_.hourlyForecasts().empty() &&
+        currentData_.timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
         emit updated(currentData_);
         return;
     }

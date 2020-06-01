@@ -20,7 +20,9 @@ class AbstractWeatherAPI : public QObject
     Q_OBJECT
 
 public:
-    explicit AbstractWeatherAPI(QString locationId, AbstractWeatherForecast *currentData = nullptr)
+    const int interval = -1; // api update interval in hour
+
+    explicit AbstractWeatherAPI(QString locationId, AbstractWeatherForecast currentData = AbstractWeatherForecast())
     {
         locationId_ = std::move(locationId);
         currentData_ = currentData;
@@ -31,14 +33,13 @@ public:
     virtual void update() = 0;
     virtual QString &getTimeZone()
     {
-        return *timeZone_;
+        return timeZone_;
     };
-    const int interval = -1; // api update interval in hour
-    AbstractWeatherForecast *currentData()
+    AbstractWeatherForecast& currentData()
     {
         return currentData_;
     }
-    void setCurrentData(AbstractWeatherForecast *forecast)
+    void setCurrentData(AbstractWeatherForecast forecast)
     {
         currentData_ = forecast;
     }
@@ -50,7 +51,7 @@ public:
     {
         locationId_ = locationId;
     }
-    inline void setTimeZone(QString *tz)
+    inline void setTimeZone(QString tz)
     {
         timeZone_ = tz;
     };
@@ -58,18 +59,17 @@ public:
 
 protected:
     QString locationId_;
-    QString *timeZone_ = nullptr;
-    float lat;
-    float lon;
+    QString timeZone_;
+    float lat, lon;
+
     QNetworkAccessManager *mManager;
     QNetworkReply *mReply;
 
-    AbstractWeatherForecast *currentData_ = nullptr;
+    AbstractWeatherForecast currentData_;
 
 signals:
-    void updated(AbstractWeatherForecast *forecast);
+    void updated(AbstractWeatherForecast& forecast);
 public slots:
-
     virtual void parse(QNetworkReply *Reply) = 0;
 };
 

@@ -7,16 +7,14 @@
 
 #ifndef WEATHERHOURMODEL_H
 #define WEATHERHOURMODEL_H
-class WeatherLocation;
 
 #include <QAbstractListModel>
 #include <QObject>
 #include <QSettings>
-#include <utility>
-
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
 
+class WeatherLocation;
 class WeatherHour : public QObject
 {
     Q_OBJECT
@@ -27,13 +25,14 @@ class WeatherHour : public QObject
     Q_PROPERTY(float fog READ fog NOTIFY propertyChanged)
     Q_PROPERTY(QString windSpeed READ windSpeed NOTIFY propertyChanged)
     Q_PROPERTY(QString temperature READ temperature NOTIFY propertyChanged)
+    Q_PROPERTY(QString temperatureRounded READ temperatureRounded NOTIFY propertyChanged)
     Q_PROPERTY(float humidity READ humidity NOTIFY propertyChanged)
     Q_PROPERTY(float pressure READ pressure NOTIFY propertyChanged)
     Q_PROPERTY(QDateTime date READ date NOTIFY propertyChanged)
 
 public:
     explicit WeatherHour();
-    explicit WeatherHour(AbstractHourlyWeatherForecast *forecast);
+    explicit WeatherHour(AbstractHourlyWeatherForecast &forecast);
 
     inline QString windDirection()
     {
@@ -70,6 +69,15 @@ public:
             return QString::number(temperature_ * 1.8 + 32, 'f', 1) + "°";
         } else {
             return QString::number(temperature_, 'f', 1) + "°";
+        }
+    }
+    QString temperatureRounded() const
+    {
+        QSettings settings;
+        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+            return QString::number(qRound(temperature_ * 1.8 + 32)) + "°";
+        } else {
+            return QString::number(qRound(temperature_)) + "°";
         }
     }
     inline float humidity() const
@@ -145,8 +153,9 @@ private:
 class WeatherHourListModel : public QAbstractListModel
 {
     Q_OBJECT
+
 public:
-    explicit WeatherHourListModel(WeatherLocation *location = nullptr);
+    explicit WeatherHourListModel(WeatherLocation* location = nullptr);
 
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -155,7 +164,7 @@ public:
     Q_INVOKABLE void updateHourView(int index);
     Q_INVOKABLE void updateUi();
 public slots:
-    void refreshHoursFromForecasts(AbstractWeatherForecast *forecast);
+    void refreshHoursFromForecasts(AbstractWeatherForecast& forecast);
 
 private:
     QList<WeatherHour *> hoursList;

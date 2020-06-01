@@ -46,29 +46,30 @@ void WeatherForecastManager::update()
 
 void WeatherForecastManager::readFromCache()
 {
-    QHash<WeatherLocation *, AbstractWeatherForecast *> map;
-    for (auto wl : model_.getList())
-        map[wl] = nullptr;
+    QHash<WeatherLocation *, AbstractWeatherForecast> map;
 
     QFile reader;
-    QDirIterator It(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
-    while (It.hasNext()) {
-        reader.setFileName(It.next());
+    QDirIterator iterator(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
+
+    while (iterator.hasNext()) {
+        reader.setFileName(iterator.next());
         QFileInfo fileName(reader); // strip absolute path
         bool isFound = false;       // indicate should we load this cache
+
         // loop over existing locations and add cached weather forecast data if location found
         for (auto wl : model_.getList()) {
             if (fileName.fileName() == wl->locationId()) {
                 isFound = true;
                 reader.open(QIODevice::ReadOnly);
-                AbstractWeatherForecast *fc = convertFromJson(reader.readAll());
+                AbstractWeatherForecast fc = convertFromJson(reader.readAll());
                 // add forecast if it does not exist, or is newer than existing data
-                if (map[wl] == nullptr || map[wl]->timeCreated() < fc->timeCreated()) {
+                if (map[wl].timeCreated() < fc.timeCreated()) {
                     map[wl] = fc;
                 }
                 break;
             }
         }
+
         if (!isFound) { // delete no longer needed cache
             reader.remove();
         }
@@ -77,13 +78,11 @@ void WeatherForecastManager::readFromCache()
 
     // add loaded locations from cache
     for (auto wl : model_.getList()) {
-        if (map[wl] != nullptr) {
-            wl->initData(map[wl]);
-        }
+        wl->initData(map[wl]);
     }
 }
 
-AbstractWeatherForecast *WeatherForecastManager::convertFromJson(QByteArray data)
+AbstractWeatherForecast WeatherForecastManager::convertFromJson(QByteArray data)
 {
     QJsonObject doc = QJsonDocument::fromJson(data).object();
     return AbstractWeatherForecast::fromJson(doc);

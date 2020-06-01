@@ -32,7 +32,7 @@ private slots:
 private:
     QRandomGenerator random;
     WeatherLocationListModel &model_;
-    AbstractWeatherForecast *convertFromJson(QByteArray data);
+    AbstractWeatherForecast convertFromJson(QByteArray data);
     QTimer *updateTimer = nullptr;
     void readFromCache();
     WeatherForecastManager(WeatherLocationListModel &model);

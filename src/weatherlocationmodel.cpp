@@ -30,7 +30,7 @@ const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
 const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";
 
 /* ~~~ WeatherLocation ~~~ */
-WeatherLocation::WeatherLocation(AbstractWeatherForecast *forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherForecast forecast)
 {
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
@@ -49,7 +49,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
                                  float latitude,
                                  float longitude,
                                  Kweather::Backend backend,
-                                 AbstractWeatherForecast *forecast)
+                                 AbstractWeatherForecast forecast)
     : weatherBackendProvider_(weatherBackendProvider)
     , locationId_(locationId)
     , locationName_(locationName)
@@ -62,7 +62,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
         geoTimeZone_ = new GeoTimeZone(latitude, longitude);
         connect(geoTimeZone_, &GeoTimeZone::finished, this, [this] {
             this->timeZone_ = geoTimeZone_->getTimeZone();
-            weatherBackendProvider_->setTimeZone(&this->timeZone());
+            weatherBackendProvider_->setTimeZone(this->timeZone());
             if (!nmiSunriseApi_) {
                 nmiSunriseApi_ =
                     new NMISunriseAPI(latitude_,
@@ -80,11 +80,13 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
     }
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = forecast == nullptr ? QDateTime::currentDateTime() : forecast->timeCreated();
+    this->lastUpdated_ = forecast.timeCreated();
+
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_,
                                    QQmlEngine::CppOwnership); // prevent segfaults from js garbage
                                                               // collecting
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
+
     determineCurrentForecast();
 
     if (weatherBackendProvider != nullptr)
@@ -110,8 +112,9 @@ WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
                                                obj["timezone"].toString(),
                                                obj["latitude"].toDouble(),
                                                obj["longitude"].toDouble(),
-                                               backendEnum);
-    api->setTimeZone(&weatherLocation->timeZone_);
+                                               backendEnum,
+                                               AbstractWeatherForecast());
+    api->setTimeZone(weatherLocation->timeZone_);
     return weatherLocation;
 }
 
@@ -127,31 +130,30 @@ QJsonObject WeatherLocation::toJson()
     return obj;
 }
 
-void WeatherLocation::updateData(AbstractWeatherForecast *fc)
+void WeatherLocation::updateData(AbstractWeatherForecast& fc)
 {
     // only update if the forecast is newer
-    if (forecast_ != nullptr && fc->timeCreated().toSecsSinceEpoch() < forecast_->timeCreated().toSecsSinceEpoch())
-        return;
-    if (fc->hourlyForecasts().isEmpty() ||
-        fc->hourlyForecasts().at(0)->weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
+//    if (fc.timeCreated().toSecsSinceEpoch() < forecast_.timeCreated().toSecsSinceEpoch())
+//        return;
+    if (fc.hourlyForecasts().isEmpty() || fc.hourlyForecasts().at(0).weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
         if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
-            for (auto hourForecast : fc->hourlyForecasts()) {
-                hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
+            for (auto hourForecast : fc.hourlyForecasts()) {
+                hourForecast.setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast.date())); // set day/night icon
             }
         } else {
-            for (auto hourForecast : fc->hourlyForecasts()) {
-                if (hourForecast->date().time().hour() < 7 || hourForecast->date().time().hour() >= 18) // 6:00 - 18:00 is day
-                    hourForecast->setWeatherIcon(false);
+            for (auto hourForecast : fc.hourlyForecasts()) {
+                if (hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18) // 6:00 - 18:00 is day
+                    hourForecast.setWeatherIcon(false);
                 else
-                    hourForecast->setWeatherIcon(true);
+                    hourForecast.setWeatherIcon(true);
             }
         }
     }
-    forecast_ = fc; // don't need to delete pointers, they were already deleted
-                    // by api class
+    forecast_ = fc;
+    forecast_.setSunrise(sunriseList);
     determineCurrentForecast();
-    this->lastUpdated_ = fc->timeCreated();
-    forecast_->setSunrise(sunriseList);
+    lastUpdated_ = fc.timeCreated();
+
     emit weatherRefresh(forecast_);
     emit stopLoadingIndicator();
     writeToCache(forecast_);
@@ -161,18 +163,17 @@ void WeatherLocation::updateData(AbstractWeatherForecast *fc)
 
 void WeatherLocation::determineCurrentForecast()
 {
-    if (forecast() == nullptr || forecast()->hourlyForecasts().count() == 0) {
-        currentWeather_ = new AbstractHourlyWeatherForecast(
-            QDateTime::currentDateTime(), "Unknown", "weather-none-available", "weather-none-available", 0, 0, Kweather::WindDirection::N, 0, 0, 0, 0, 0);
+    if (forecast().hourlyForecasts().count() == 0) {
+        currentWeather_ = new WeatherHour();
     } else {
         long long minSecs = -1;
         QDateTime current = QDateTime::currentDateTime();
 
         // get closest forecast to current time
-        for (auto forecast : forecast()->hourlyForecasts()) {
-            if (minSecs == -1 || minSecs > llabs(forecast->date().secsTo(current))) {
-                currentWeather_ = forecast;
-                minSecs = llabs(forecast->date().secsTo(current));
+        for (auto forecast : forecast().hourlyForecasts()) {
+            if (minSecs == -1 || minSecs > llabs(forecast.date().secsTo(current))) {
+                currentWeather_ = new WeatherHour(forecast);
+                minSecs = llabs(forecast.date().secsTo(current));
             }
         }
     }
@@ -181,11 +182,11 @@ void WeatherLocation::determineCurrentForecast()
     emit currentForecastChange();
 }
 
-void WeatherLocation::initData(AbstractWeatherForecast *fc)
+void WeatherLocation::initData(AbstractWeatherForecast fc)
 {
     forecast_ = fc;
     weatherBackendProvider_->setCurrentData(forecast_);
-    nmiSunriseApi_->setData(fc->sunrise());
+    nmiSunriseApi_->setData(fc.sunrise());
     sunriseList = nmiSunriseApi_->get();
     determineCurrentForecast();
     emit weatherRefresh(forecast_);
@@ -204,19 +205,17 @@ void WeatherLocation::update()
 void WeatherLocation::insertSunriseData()
 {
     sunriseList = nmiSunriseApi_->get();
-    if (forecast_) {
-        forecast_->setSunrise(sunriseList);
-        if (!forecast_->hourlyForecasts().isEmpty() && !forecast_->hourlyForecasts().at(0)->neutralWeatherIcon().isEmpty()) // only update icon for NMI backend
-            for (auto hourForecast : forecast_->hourlyForecasts()) {
-                hourForecast->setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast->date())); // set day/night icon
-            }
-        emit weatherRefresh(forecast_);
-        emit propertyChanged();
-        writeToCache(forecast_);
-    }
+    forecast_.setSunrise(sunriseList);
+    if (!forecast_.hourlyForecasts().isEmpty() && !forecast_.hourlyForecasts().at(0).neutralWeatherIcon().isEmpty()) // only update icon for NMI backend
+        for (auto hourForecast : forecast_.hourlyForecasts()) {
+            hourForecast.setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast.date())); // set day/night icon
+        }
+    emit weatherRefresh(forecast_);
+    emit propertyChanged();
+    writeToCache(forecast_);
 }
 
-void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
+void WeatherLocation::writeToCache(AbstractWeatherForecast& fc)
 {
     QFile file;
     QString url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
@@ -230,10 +229,10 @@ void WeatherLocation::writeToCache(AbstractWeatherForecast *fc)
     file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
     file.close();
 }
-QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast *fc)
+QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast& fc)
 {
     QJsonDocument doc;
-    doc.setObject(fc->toJson());
+    doc.setObject(fc.toJson());
     return doc;
 }
 
@@ -321,11 +320,6 @@ void WeatherLocationListModel::updateUi()
         emit l->propertyChanged();
         l->weatherDayListModel()->updateUi();
         l->weatherHourListModel()->updateUi();
-        if (l->forecast() != nullptr) {
-            for (auto h : l->forecast()->hourlyForecasts()) {
-                emit h->propertyChanged();
-            }
-        }
     }
 }
 
@@ -413,7 +407,7 @@ void WeatherLocationListModel::addCurrentLocation()
     auto api = new NMIWeatherAPI2(QString::number(id));
     api->setLocation(geoPtr->latitude(), geoPtr->longitude());
     auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
-    api->setTimeZone(&location->timeZone());
+    api->setTimeZone(location->timeZone());
     location->update();
     insert(0, location);
 }

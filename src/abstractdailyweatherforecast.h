@@ -10,15 +10,15 @@
 #include <QDate>
 #include <QObject>
 
-class AbstractDailyWeatherForecast : public QObject
+class AbstractDailyWeatherForecast
 {
-    Q_OBJECT
+
 public:
     AbstractDailyWeatherForecast();
     AbstractDailyWeatherForecast(float maxTemp, float minTemp, float precipitation, float uvIndex, float humidity, float pressure, QString weatherIcon, QString weatherDescription, QDate date);
 
     QJsonObject toJson();
-    static AbstractDailyWeatherForecast* fromJson(QJsonObject obj);
+    static AbstractDailyWeatherForecast fromJson(QJsonObject obj);
 
     inline void setMaxTemp(float maxTemp)
     {

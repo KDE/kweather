@@ -60,13 +60,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
     qmlRegisterType<WeatherDay>("kweather", 1, 0, "WeatherDay");
     qmlRegisterType<WeatherHour>("kweather", 1, 0, "WeatherHour");
-    qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
-    qmlRegisterType<AbstractHourlyWeatherForecast>("kweather", 1, 0, "AbstractHourlyWeatherForecast");
-    qmlRegisterType<AbstractDailyWeatherForecast>("kweather", 1, 0, "AbstractDailyWeatherForecast");
-    qmlRegisterType<AbstractWeatherForecast>("kweather", 1, 0, "AbstractWeatherForecast");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
-    qmlRegisterType<AbstractSunrise>("kweather", 1, 0, "AbstractSunrise");
 
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 

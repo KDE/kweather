@@ -10,6 +10,9 @@
 
 AbstractDailyWeatherForecast::AbstractDailyWeatherForecast()
 {
+    weatherDescription_ = "Unknown";
+    weatherIcon_ = "weather-none-available";
+    date_ = QDate::currentDate();
 }
 
 AbstractDailyWeatherForecast::AbstractDailyWeatherForecast(float maxTemp, float minTemp, float precipitation, float uvIndex, float humidity, float pressure, QString weatherIcon, QString weatherDescription, QDate date)
@@ -25,18 +28,18 @@ AbstractDailyWeatherForecast::AbstractDailyWeatherForecast(float maxTemp, float 
 {
 }
 
-AbstractDailyWeatherForecast* AbstractDailyWeatherForecast::fromJson(QJsonObject obj)
+AbstractDailyWeatherForecast AbstractDailyWeatherForecast::fromJson(QJsonObject obj)
 {
-    auto* fc = new AbstractDailyWeatherForecast();
-    fc->setMaxTemp(obj["maxTemp"].toDouble());
-    fc->setMinTemp(obj["minTemp"].toDouble());
-    fc->setPrecipitation(obj["precipitation"].toDouble());
-    fc->setUvIndex(obj["uvIndex"].toDouble());
-    fc->setHumidity(obj["humidity"].toDouble());
-    fc->setPressure(obj["pressure"].toDouble());
-    fc->setWeatherIcon(obj["weatherIcon"].toString());
-    fc->setWeatherDescription(obj["weatherDescription"].toString());
-    fc->setDate(QDate::fromString(obj["date"].toString(), Qt::ISODate));
+    AbstractDailyWeatherForecast fc;
+    fc.setMaxTemp(obj["maxTemp"].toDouble());
+    fc.setMinTemp(obj["minTemp"].toDouble());
+    fc.setPrecipitation(obj["precipitation"].toDouble());
+    fc.setUvIndex(obj["uvIndex"].toDouble());
+    fc.setHumidity(obj["humidity"].toDouble());
+    fc.setPressure(obj["pressure"].toDouble());
+    fc.setWeatherIcon(obj["weatherIcon"].toString());
+    fc.setWeatherDescription(obj["weatherDescription"].toString());
+    fc.setDate(QDate::fromString(obj["date"].toString(), Qt::ISODate));
     return fc;
 }
 
