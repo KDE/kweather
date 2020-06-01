@@ -39,6 +39,16 @@ NMIWeatherAPI2::~NMIWeatherAPI2()
 {
 }
 
+QString NMIWeatherAPI2::getSymbolCodeDescription(bool isDay, QString symbolCode)
+{
+    return isDay ? apiDescMap[symbolCode + "_day"].desc : apiDescMap[symbolCode + "_night"].desc;
+}
+
+QString NMIWeatherAPI2::getSymbolCodeIcon(bool isDay, QString symbolCode)
+{
+    return isDay ? apiDescMap[symbolCode + "_day"].icon : apiDescMap[symbolCode + "_night"].icon;
+}
+
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty

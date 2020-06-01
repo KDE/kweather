@@ -21,6 +21,8 @@ public:
     ~OWMWeatherAPI();
     void setLocation(float latitude, float longitude) override;
     void update() override;
+    virtual QString getSymbolCodeDescription(bool isDay, QString symbolCode) override;
+    virtual QString getSymbolCodeIcon(bool isDay, QString symbolCode) override;
 signals:
     void TokenInvalid();
     void TooManyCalls();

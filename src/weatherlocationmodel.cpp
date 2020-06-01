@@ -63,6 +63,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
         connect(geoTimeZone_, &GeoTimeZone::finished, this, [this] {
             this->timeZone_ = geoTimeZone_->getTimeZone();
             weatherBackendProvider_->setTimeZone(this->timeZone());
+            // use timezone data to get sunrise/sunset information
             if (!nmiSunriseApi_) {
                 nmiSunriseApi_ =
                     new NMISunriseAPI(latitude_,
@@ -82,9 +83,9 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = forecast.timeCreated();
 
+    // prevent segfaults from js garbage collection
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_,
-                                   QQmlEngine::CppOwnership); // prevent segfaults from js garbage
-                                                              // collecting
+                                   QQmlEngine::CppOwnership);
     QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
 
     determineCurrentForecast();
@@ -135,20 +136,23 @@ void WeatherLocation::updateData(AbstractWeatherForecast& fc)
     // only update if the forecast is newer
 //    if (fc.timeCreated().toSecsSinceEpoch() < forecast_.timeCreated().toSecsSinceEpoch())
 //        return;
-    if (fc.hourlyForecasts().isEmpty() || fc.hourlyForecasts().at(0).weatherIcon().isEmpty()) {      // if we don't have icon, prevent set icon twice when loading from cache
+
+    for (int i = 0; i < fc.hourlyForecasts().count(); i++) {
+        auto hourForecast = fc.hourlyForecasts()[i];
+
+        bool isDay;
         if (sunriseList.count() != 0 && nmiSunriseApi_ != nullptr) { // if we have sunrise data
-            for (auto hourForecast : fc.hourlyForecasts()) {
-                hourForecast.setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast.date())); // set day/night icon
-            }
+            isDay = nmiSunriseApi_->isDayTime(hourForecast.date());
         } else {
-            for (auto hourForecast : fc.hourlyForecasts()) {
-                if (hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18) // 6:00 - 18:00 is day
-                    hourForecast.setWeatherIcon(false);
-                else
-                    hourForecast.setWeatherIcon(true);
-            }
+            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
         }
+
+        hourForecast.setWeatherIcon(weatherBackendProvider_->getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
+        hourForecast.setWeatherDescription(weatherBackendProvider_->getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
+
+        fc.hourlyForecasts()[i] = hourForecast;
     }
+
     forecast_ = fc;
     forecast_.setSunrise(sunriseList);
     determineCurrentForecast();
@@ -206,10 +210,14 @@ void WeatherLocation::insertSunriseData()
 {
     sunriseList = nmiSunriseApi_->get();
     forecast_.setSunrise(sunriseList);
-    if (!forecast_.hourlyForecasts().isEmpty() && !forecast_.hourlyForecasts().at(0).neutralWeatherIcon().isEmpty()) // only update icon for NMI backend
-        for (auto hourForecast : forecast_.hourlyForecasts()) {
-            hourForecast.setWeatherIcon(nmiSunriseApi_->isDayTime(hourForecast.date())); // set day/night icon
+    if (!forecast_.hourlyForecasts().isEmpty() && !forecast_.hourlyForecasts().at(0).neutralWeatherIcon().isEmpty()) { // only update icon for NMI backend
+        for (int i = 0; i < forecast_.hourlyForecasts().count(); i++) {
+            auto hourForecast = forecast_.hourlyForecasts()[i];
+            hourForecast.setWeatherIcon(weatherBackendProvider_->getSymbolCodeIcon(nmiSunriseApi_->isDayTime(hourForecast.date()), hourForecast.symbolCode())); // set day/night icon
+            hourForecast.setWeatherDescription(weatherBackendProvider_->getSymbolCodeDescription(nmiSunriseApi_->isDayTime(hourForecast.date()), hourForecast.symbolCode()));
+            forecast_.hourlyForecasts()[i] = hourForecast;
         }
+    }
     emit weatherRefresh(forecast_);
     emit propertyChanged();
     writeToCache(forecast_);

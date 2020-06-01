@@ -52,7 +52,7 @@ public:
     {
         return longitude_;
     }
-    const QList<AbstractHourlyWeatherForecast> &hourlyForecasts() const
+    QList<AbstractHourlyWeatherForecast> &hourlyForecasts()
     {
         return hourlyForecasts_;
     }

@@ -25,6 +25,8 @@ public:
     ~NMIWeatherAPI2() override;
     void update() override;
     void setLocation(float lat, float lon) override;
+    virtual QString getSymbolCodeDescription(bool isDay, QString symbolCode) override;
+    virtual QString getSymbolCodeIcon(bool isDay, QString symbolCode) override;
 signals:
     void noTimeZone();
 private slots:

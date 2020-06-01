@@ -30,6 +30,16 @@ void OWMWeatherAPI::setLocation(float latitude, float longitude)
     lon = longitude;
 }
 
+QString OWMWeatherAPI::getSymbolCodeDescription(bool isDay, QString symbolCode)
+{
+    return "unknown"; // TODO
+}
+
+QString OWMWeatherAPI::getSymbolCodeIcon(bool isDay, QString symbolCode)
+{
+    return "unknown"; // TODO
+}
+
 void OWMWeatherAPI::parse(QNetworkReply *reply)
 {
     /*~~~~~~~~~ static variable ~~~~~~~~*/

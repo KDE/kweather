@@ -66,17 +66,6 @@ public:
     {
         return weatherIcon_;
     }
-    void setWeatherIcon(bool isDay)
-    {
-        using namespace Kweather;
-        if (isDay) {
-            setWeatherDescription(apiDescMap[symbolCode_ + "_day"].desc);
-            weatherIcon_ = apiDescMap[symbolCode_ + "_day"].icon;
-        } else {
-            setWeatherDescription(apiDescMap[symbolCode_ + "_night"].desc);
-            weatherIcon_ = apiDescMap[symbolCode_ + "_night"].icon;
-        }
-    }
     void setWeatherIcon(const QString &weatherIcon)
     {
         weatherIcon_ = weatherIcon;
@@ -88,6 +77,10 @@ public:
     void setNeutralWeatherIcon(const QString &neutralWeatherIcon)
     {
         neutralWeatherIcon_ = neutralWeatherIcon;
+    }
+    const QString &symbolCode() const
+    {
+        return symbolCode_;
     }
     void setSymbolCode(const QString &symbolCode)
     {

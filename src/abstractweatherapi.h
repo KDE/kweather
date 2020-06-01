@@ -30,6 +30,8 @@ public:
     AbstractWeatherAPI(QString locationId, int interval, QObject *parent = nullptr);
     virtual ~AbstractWeatherAPI();
     virtual void setLocation(float lat, float lon) = 0;
+    virtual QString getSymbolCodeDescription(bool isDay, QString symbolCode) = 0;
+    virtual QString getSymbolCodeIcon(bool isDay, QString symbolCode) = 0;
     virtual void update() = 0;
     virtual QString &getTimeZone()
     {
