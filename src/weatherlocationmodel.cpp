@@ -270,12 +270,9 @@ void WeatherLocation::changeBackend(Kweather::Backend backend)
 
 WeatherLocation::~WeatherLocation()
 {
-    if (nmiSunriseApi_ != nullptr)
-        delete nmiSunriseApi_;
-    if (weatherBackendProvider_ != nullptr)
-        delete weatherBackendProvider_;
-    if (geoTimeZone_ != nullptr)
-        delete geoTimeZone_;
+    delete nmiSunriseApi_;
+    delete weatherBackendProvider_;
+    delete geoTimeZone_;
 }
 
 /* ~~~ WeatherLocationListModel ~~~ */
@@ -355,7 +352,7 @@ void WeatherLocationListModel::remove(int index)
     emit beginRemoveRows(QModelIndex(), index, index);
     auto location = locationsList.at(index);
     locationsList.removeAt(index);
-    delete location;
+//    delete location; TODO deletion has a chance of causing segfaults
     emit endRemoveRows();
 
     save();
