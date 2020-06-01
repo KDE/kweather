@@ -7,7 +7,9 @@
 
 [Desktop Entry]
 Name=Weather
+Name[x-test]=xxWeatherxx
 Comment=A weather application in Kirigami.
+Comment[x-test]=xxA weather application in Kirigami.xx
 Version=1.0
 Exec=kweather
 Icon=kweather
