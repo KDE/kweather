@@ -17,12 +17,11 @@ class OWMWeatherAPI : public AbstractWeatherAPI
     Q_OBJECT
 
 public:
-    OWMWeatherAPI(QString locationName);
+    OWMWeatherAPI(QString locationId, QString timeZone, double latitude, double longitude);
     ~OWMWeatherAPI();
-    void setLocation(float latitude, float longitude) override;
+
     void update() override;
-    virtual QString getSymbolCodeDescription(bool isDay, QString symbolCode) override;
-    virtual QString getSymbolCodeIcon(bool isDay, QString symbolCode) override;
+    void applySunriseDataToForecast() override;
 signals:
     void TokenInvalid();
     void TooManyCalls();

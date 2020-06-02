@@ -9,20 +9,61 @@
 #include "abstractdailyweatherforecast.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <utility>
-AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, int interval, QObject *parent)
+#include <QTimeZone>
+
+AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int interval, double latitude, double longitude, QObject *parent)
     : QObject(parent)
     , locationId_(std::move(locationId))
+    , timeZone_(std::move(timeZone))
     , interval(interval)
+    , latitude_(latitude)
+    , longitude_(longitude)
 {
     mManager = new QNetworkAccessManager();
+    sunriseApi_ = new NMISunriseAPI(latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+    connect(sunriseApi_, &NMISunriseAPI::finished, this, [this]() {
+        qDebug() << "obtained sunrise data " << sunriseApi_->get().count();
+
+        setCurrentSunriseData(sunriseApi_->get());
+        applySunriseDataToForecast();
+        if (!currentData_.hourlyForecasts().empty())
+            emit updated(currentData_); // update ui
+    });
+
+    sunriseApi_->update();
 }
 
 AbstractWeatherAPI::~AbstractWeatherAPI()
 {
     delete mManager;
+    delete sunriseApi_;
 }
 
+QString &AbstractWeatherAPI::timeZone()
+{
+    return timeZone_;
+};
+AbstractWeatherForecast& AbstractWeatherAPI::currentData()
+{
+    return currentData_;
+}
+void AbstractWeatherAPI::setCurrentData(AbstractWeatherForecast forecast)
+{
+    currentData_ = forecast;
+}
+void AbstractWeatherAPI::setLocation(float lat, float lon)
+{
+    latitude_ = lat;
+    longitude_ = lon;
+}
+QList<AbstractSunrise> AbstractWeatherAPI::currentSunriseData()
+{
+    return currentSunriseData_;
+}
+void AbstractWeatherAPI::setCurrentSunriseData(QList<AbstractSunrise> sunrise)
+{
+    currentSunriseData_ = sunrise;
+}
 Kweather::WindDirection AbstractWeatherAPI::getWindDirect(double deg)
 {
     if (deg < 22.5 || deg >= 337.5) {

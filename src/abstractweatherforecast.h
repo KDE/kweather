@@ -18,11 +18,6 @@
 
 class AbstractWeatherForecast
 {
-//    Q_OBJECT
-//    Q_PROPERTY(QDateTime timeCreated READ timeCreated WRITE setTimeCreated NOTIFY propertyChanged)
-//    Q_PROPERTY(float latitude READ latitude WRITE setLatitude NOTIFY propertyChanged)
-//    Q_PROPERTY(float longitude READ longitude WRITE setLongitude NOTIFY propertyChanged)
-
 public:
     AbstractWeatherForecast(QDateTime timeCreated_ = QDateTime::currentDateTime());
     ~AbstractWeatherForecast();
@@ -33,9 +28,12 @@ public:
                             QList<AbstractHourlyWeatherForecast> hourlyForecasts,
                             QList<AbstractDailyWeatherForecast> dailyForecasts);
 
-    QJsonObject toJson();
     static AbstractWeatherForecast fromJson(QJsonObject obj);
 
+    QJsonObject toJson();
+    
+
+    // getter/setter
     inline const QString &locationId()
     {
         return locationId_;

@@ -32,6 +32,9 @@ AbstractWeatherForecast::AbstractWeatherForecast(QDateTime timeCreated,
 
 AbstractWeatherForecast::~AbstractWeatherForecast()
 {
+    hourlyForecasts_.clear();
+    dailyForecasts_.clear();
+    sunrise_.clear();
 }
 
 AbstractWeatherForecast AbstractWeatherForecast::fromJson(QJsonObject obj)

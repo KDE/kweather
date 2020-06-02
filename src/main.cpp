@@ -14,16 +14,12 @@
 #include <QtQml>
 
 #include <KAboutData>
-#include <KConfig>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
 #include "abstractdailyweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
-#include "abstractsunrise.h"
-#include "abstractweatherforecast.h"
 #include "locationquerymodel.h"
-#include "nmiweatherapi2.h"
 #include "settingsmodel.h"
 #include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"

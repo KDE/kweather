@@ -36,7 +36,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(WeatherHour *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
 public:
-    WeatherLocation(AbstractWeatherForecast forecast = AbstractWeatherForecast());
+    WeatherLocation();
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
                              QString locationId,
                              QString locationName,
@@ -112,9 +112,8 @@ public:
     }
     void determineCurrentForecast();
     void initData(AbstractWeatherForecast fc);
-    void insertSunriseData();
     void update();
-    void changeBackend(Kweather::Backend backend); // change backend on the fly
+//    void changeBackend(Kweather::Backend backend); // change backend on the fly
 
 public slots:
     void updateData(AbstractWeatherForecast& fc);
@@ -134,17 +133,15 @@ private:
     QString timeZone_;
     QString locationId_;
     QDateTime lastUpdated_;
-    float latitude_, longitude_;
+    float latitude_{}, longitude_{};
 
-    WeatherDayListModel *weatherDayListModel_;
-    WeatherHourListModel *weatherHourListModel_;
+    WeatherDayListModel *weatherDayListModel_{};
+    WeatherHourListModel *weatherHourListModel_{};
 
-    QList<AbstractSunrise> sunriseList;
     AbstractWeatherForecast forecast_;
     WeatherHour *currentWeather_ = nullptr;
 
     AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
-    NMISunriseAPI *nmiSunriseApi_ = nullptr;
     GeoTimeZone *geoTimeZone_ = nullptr;
 };
 

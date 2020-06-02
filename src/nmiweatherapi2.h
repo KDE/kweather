@@ -21,12 +21,13 @@ class NMIWeatherAPI2 : public AbstractWeatherAPI
     Q_OBJECT
 
 public:
-    NMIWeatherAPI2(QString locationId);
-    ~NMIWeatherAPI2() override;
+    NMIWeatherAPI2(QString locationId, QString timeZone, double latitude, double longitude);
     void update() override;
-    void setLocation(float lat, float lon) override;
-    virtual QString getSymbolCodeDescription(bool isDay, QString symbolCode) override;
-    virtual QString getSymbolCodeIcon(bool isDay, QString symbolCode) override;
+    void applySunriseDataToForecast() override;
+
+    QString getSymbolCodeDescription(bool isDay, QString symbolCode);
+    QString getSymbolCodeIcon(bool isDay, QString symbolCode);
+
 signals:
     void noTimeZone();
 private slots:

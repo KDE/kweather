@@ -7,11 +7,14 @@
 
 #ifndef ABSTRACTAPI_H
 #define ABSTRACTAPI_H
+
 #include "abstractweatherforecast.h"
+#include "nmisunriseapi.h"
 #include <QObject>
 #include <memory>
 #include <utility>
 #include <vector>
+
 class QNetworkAccessManager;
 class QNetworkReply;
 class AbstractDailyWeatherForecast;
@@ -22,52 +25,32 @@ class AbstractWeatherAPI : public QObject
 public:
     const int interval = -1; // api update interval in hour
 
-    explicit AbstractWeatherAPI(QString locationId, AbstractWeatherForecast currentData = AbstractWeatherForecast())
-    {
-        locationId_ = std::move(locationId);
-        currentData_ = currentData;
-    }
-    AbstractWeatherAPI(QString locationId, int interval, QObject *parent = nullptr);
-    virtual ~AbstractWeatherAPI();
-    virtual void setLocation(float lat, float lon) = 0;
-    virtual QString getSymbolCodeDescription(bool isDay, QString symbolCode) = 0;
-    virtual QString getSymbolCodeIcon(bool isDay, QString symbolCode) = 0;
+    AbstractWeatherAPI(QString locationId, QString timeZone, int interval, double latitude, double longitude, QObject *parent = nullptr);
+    ~AbstractWeatherAPI() override;
+
     virtual void update() = 0;
-    virtual QString &getTimeZone()
-    {
-        return timeZone_;
-    };
-    AbstractWeatherForecast& currentData()
-    {
-        return currentData_;
-    }
-    void setCurrentData(AbstractWeatherForecast forecast)
-    {
-        currentData_ = forecast;
-    }
-    QString locationName()
-    {
-        return locationId_;
-    }
-    void setLocationId(QString locationId)
-    {
-        locationId_ = locationId;
-    }
-    inline void setTimeZone(QString tz)
-    {
-        timeZone_ = tz;
-    };
+    virtual void applySunriseDataToForecast() = 0;
+
+    AbstractWeatherForecast& currentData();
+    void setCurrentData(AbstractWeatherForecast forecast);
+    QList<AbstractSunrise> currentSunriseData();
+    void setCurrentSunriseData(QList<AbstractSunrise> currentSunriseData);
+    void setLocation(float lat, float lon);
+    QString &timeZone();
     Kweather::WindDirection getWindDirect(double deg);
 
 protected:
     QString locationId_;
     QString timeZone_;
-    float lat, lon;
+    float latitude_, longitude_;
 
     QNetworkAccessManager *mManager;
     QNetworkReply *mReply;
 
     AbstractWeatherForecast currentData_;
+    QList<AbstractSunrise> currentSunriseData_;
+
+    NMISunriseAPI* sunriseApi_;
 
 signals:
     void updated(AbstractWeatherForecast& forecast);

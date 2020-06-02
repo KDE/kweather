@@ -14,30 +14,43 @@
 #include <QNetworkRequest>
 #include <QTimeZone>
 #include <QUrlQuery>
+#include <utility>
 
-OWMWeatherAPI::OWMWeatherAPI(QString locationName)
-    : AbstractWeatherAPI(locationName, 3)
+OWMWeatherAPI::OWMWeatherAPI(QString locationId, QString timeZone, double latitude, double longitude)
+    : AbstractWeatherAPI(std::move(locationId), std::move(timeZone), 3, latitude, longitude)
 {
 }
 
-OWMWeatherAPI::~OWMWeatherAPI()
-{
-}
+OWMWeatherAPI::~OWMWeatherAPI() = default;
 
-void OWMWeatherAPI::setLocation(float latitude, float longitude)
-{
-    lat = latitude;
-    lon = longitude;
-}
-
-QString OWMWeatherAPI::getSymbolCodeDescription(bool isDay, QString symbolCode)
+QString getSymbolCodeDescription(bool isDay, QString symbolCode)
 {
     return "unknown"; // TODO
 }
 
-QString OWMWeatherAPI::getSymbolCodeIcon(bool isDay, QString symbolCode)
+QString getSymbolCodeIcon(bool isDay, QString symbolCode)
 {
     return "unknown"; // TODO
+}
+
+void OWMWeatherAPI::applySunriseDataToForecast()
+{
+    currentData_.setSunrise(currentSunriseData_);
+    for (int i = 0; i < currentData_.hourlyForecasts().count(); i++) {
+        auto hourForecast = currentData_.hourlyForecasts()[i];
+
+        bool isDay;
+        if (currentSunriseData_.count() != 0) { // if we have sunrise data
+            isDay = sunriseApi_->isDayTime(hourForecast.date());
+        } else {
+            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
+        }
+
+        hourForecast.setWeatherIcon(getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
+        hourForecast.setWeatherDescription(getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
+
+        currentData_.hourlyForecasts()[i] = hourForecast;
+    }
 }
 
 void OWMWeatherAPI::parse(QNetworkReply *reply)
@@ -142,7 +155,7 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         }
     }
 
-    auto forecasts = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hourlyList, dayCache.values());
+    auto forecasts = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, latitude_, longitude_, hourlyList, dayCache.values());
     currentData_ = forecasts;
     emit updated(forecasts);
 }
@@ -158,8 +171,8 @@ void OWMWeatherAPI::update()
 
     QUrlQuery query;
     QSettings settings;
-    query.addQueryItem(QLatin1String("lat"), QString().setNum(lat));
-    query.addQueryItem(QLatin1String("lon"), QString().setNum(lon));
+    query.addQueryItem(QLatin1String("lat"), QString().setNum(latitude_));
+    query.addQueryItem(QLatin1String("lon"), QString().setNum(longitude_));
     query.addQueryItem(QLatin1String("APPID"), settings.value("Global/OWMToken").toString());
     query.addQueryItem(QLatin1String("units"), QLatin1String("metric"));
 

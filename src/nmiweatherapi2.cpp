@@ -21,23 +21,9 @@
 #include <QTimeZone>
 #include <QUrlQuery>
 
-void NMIWeatherAPI2::setLocation(float latitude, float longitude)
-{
-    lat = latitude;
-    lon = longitude;
-}
-
-NMIWeatherAPI2::NMIWeatherAPI2(QString locationId)
-    : AbstractWeatherAPI(locationId, -1)
-{
-    // currentData_ = new AbstractWeatherForecast(QDateTime::currentDateTime(),
-    // locationId, lat, lon, QList<AbstractHourlyWeatherForecast *>(),
-    // QList<AbstractDailyWeatherForecast *>());
-}
-
-NMIWeatherAPI2::~NMIWeatherAPI2()
-{
-}
+NMIWeatherAPI2::NMIWeatherAPI2(QString locationId, QString timeZone, double latitude, double longitude)
+    : AbstractWeatherAPI(locationId, timeZone, -1, latitude, longitude)
+{}
 
 QString NMIWeatherAPI2::getSymbolCodeDescription(bool isDay, QString symbolCode)
 {
@@ -49,6 +35,26 @@ QString NMIWeatherAPI2::getSymbolCodeIcon(bool isDay, QString symbolCode)
     return isDay ? apiDescMap[symbolCode + "_day"].icon : apiDescMap[symbolCode + "_night"].icon;
 }
 
+void NMIWeatherAPI2::applySunriseDataToForecast()
+{
+    currentData_.setSunrise(currentSunriseData_);
+    for (int i = 0; i < currentData_.hourlyForecasts().count(); i++) {
+        auto hourForecast = currentData_.hourlyForecasts()[i];
+
+        bool isDay;
+        if (currentSunriseData_.count() != 0) { // if we have sunrise data
+            isDay = sunriseApi_->isDayTime(hourForecast.date());
+        } else {
+            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
+        }
+
+        hourForecast.setWeatherIcon(getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
+        hourForecast.setWeatherDescription(getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
+
+        currentData_.hourlyForecasts()[i] = hourForecast;
+    }
+}
+
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty
@@ -58,13 +64,11 @@ void NMIWeatherAPI2::update()
         return;
     }
 
-    // can't do ui updates because of data race issues
-
     // query weather api
     QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
     QUrlQuery query;
-    query.addQueryItem("lat", QString::number(lat));
-    query.addQueryItem("lon", QString::number(lon));
+    query.addQueryItem("lat", QString::number(latitude_));
+    query.addQueryItem("lon", QString::number(longitude_));
 
     url.setQuery(query);
 
@@ -110,17 +114,15 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
             }
 
             // process and build abstract forecast
-            currentData_ = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, lat, lon, hoursList, dayCache.values());
+            currentData_ = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, latitude_, longitude_, hoursList, dayCache.values());
         }
     }
 
-    // sort daily forecast
-    if (!timeZone_.isEmpty()) {
-        for (auto fc : currentData_.hourlyForecasts()) {
-            fc.setDate(fc.date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))));
-        }
-    } else
-        emit noTimeZone();
+    for (auto fc : currentData_.hourlyForecasts()) {
+        fc.setDate(fc.date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))));
+    }
+
+    applySunriseDataToForecast(); // applies sunrise data whether we have it or not
 
     emit updated(currentData_);
 }
