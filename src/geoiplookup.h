@@ -28,7 +28,7 @@ public:
     float longitude();
     QString timeZone();
 signals:
-
+    void networkError();
     void finished();
 
 private slots:

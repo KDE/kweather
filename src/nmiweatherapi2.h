@@ -25,13 +25,11 @@ public:
     void update() override;
     void applySunriseDataToForecast() override;
 
-    QString getSymbolCodeDescription(bool isDay, QString symbolCode);
-    QString getSymbolCodeIcon(bool isDay, QString symbolCode);
+    QString getSymbolCodeDescription(bool isDay, const QString& symbolCode);
+    QString getSymbolCodeIcon(bool isDay, const QString& symbolCode);
 
-signals:
-    void noTimeZone();
 private slots:
-    void parse(QNetworkReply *Reply) override;
+    void parse(QNetworkReply *reply) override;
 
 private:
     void parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast> &dayCache, QList<AbstractHourlyWeatherForecast> &hoursList);

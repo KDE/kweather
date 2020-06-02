@@ -105,8 +105,8 @@ QJsonObject WeatherLocation::toJson()
 void WeatherLocation::updateData(AbstractWeatherForecast& fc)
 {
     // only update if the forecast is newer
-//    if (fc.timeCreated().toSecsSinceEpoch() < forecast_.timeCreated().toSecsSinceEpoch())
-//        return;
+    if (fc.timeCreated().toSecsSinceEpoch() < forecast_.timeCreated().toSecsSinceEpoch())
+        return;
     forecast_ = fc;
     determineCurrentForecast();
     lastUpdated_ = fc.timeCreated();
@@ -203,7 +203,6 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast& fc)
 WeatherLocation::~WeatherLocation()
 {
     delete weatherBackendProvider_;
-    delete geoTimeZone_;
 }
 
 /* ~~~ WeatherLocationListModel ~~~ */
@@ -309,6 +308,13 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 
     // obtain timezone
     auto *tz = new GeoTimeZone(ret->latitude(), ret->longitude());
+
+    // unsuccessful timezone fetch
+    connect(tz, &GeoTimeZone::networkError, this, [this] {
+        emit networkErrorCreating();
+    });
+
+    // successful timezone fetch
     connect(tz, &GeoTimeZone::finished, this, [this, locId, locName, lat, lon, tz] {
         qDebug() << "obtained timezone data";
 
@@ -337,9 +343,15 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
     });
 }
 
+// invoked by frontend
 void WeatherLocationListModel::requestCurrentLocation()
 {
     geoPtr = new GeoIPLookup();
+    // failure
+    connect(geoPtr, &GeoIPLookup::networkError, this, [this]() {
+        emit networkErrorCreatingDefault();
+    });
+    // success
     connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::addCurrentLocation);
 }
 
@@ -353,4 +365,5 @@ void WeatherLocationListModel::addCurrentLocation()
     location->update();
 
     insert(0, location);
+    emit successfullyCreatedDefault();
 }

@@ -12,18 +12,6 @@
 #include <QPair>
 class AbstractSunrise
 {
-//    Q_PROPERTY(QString highMoonTime READ highMoonTime NOTIFY propertyChanged)
-//    Q_PROPERTY(QString lowMoonTime READ lowMoonTime NOTIFY propertyChanged)
-//    Q_PROPERTY(QString solarMidnightTime READ solarMidnightTime NOTIFY propertyChanged)
-//    Q_PROPERTY(QString solarNoonTime READ solarNoonTime NOTIFY propertyChanged)
-//    Q_PROPERTY(QString sunRiseStr READ sunRiseStr NOTIFY propertyChanged)
-//    Q_PROPERTY(QString sunSetStr READ sunSetStr NOTIFY propertyChanged)
-//    Q_PROPERTY(QString moonRiseStr READ moonRiseStr NOTIFY propertyChanged)
-//    Q_PROPERTY(QString moonSetStr READ moonSetStr NOTIFY propertyChanged)
-//    Q_PROPERTY(double highMoon READ highMoon NOTIFY propertyChanged)
-//    Q_PROPERTY(double lowMoon READ lowMoon NOTIFY propertyChanged)
-//    Q_PROPERTY(double solarMidnight READ solarMidnight NOTIFY propertyChanged)
-//    Q_PROPERTY(double solarNoon READ solarNoon NOTIFY propertyChanged)
 public:
     AbstractSunrise(QDateTime &sunRise,
                     QDateTime &sunSet,
@@ -141,8 +129,6 @@ public:
     {
         moonPhase_ = moonPhase;
     }
-signals:
-    void propertyChanged();
 
 private:
     QPair<QDateTime, double> highMoon_;

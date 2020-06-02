@@ -19,7 +19,12 @@ Kirigami.ScrollablePage {
         text: i18n("Add Location")
         onTriggered: pageStack.push(addCityPage)
     }
-    
+
+    Connections {
+        target: weatherLocationListModel
+        onNetworkErrorCreating: showPassiveNotification("Unable to fetch timezone information")
+    }
+
     ListView {
         id: citiesList
         model: weatherLocationListModel

@@ -20,6 +20,7 @@ public:
     QString getTimeZone();
 signals:
     void finished();
+    void networkError();
 private slots:
     void downloadFinished(QNetworkReply *reply);
 

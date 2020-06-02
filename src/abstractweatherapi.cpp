@@ -22,7 +22,7 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int
     mManager = new QNetworkAccessManager();
     sunriseApi_ = new NMISunriseAPI(latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
     connect(sunriseApi_, &NMISunriseAPI::finished, this, [this]() {
-        qDebug() << "obtained sunrise data " << sunriseApi_->get().count();
+        qDebug() << "obtained sunrise data";
 
         setCurrentSunriseData(sunriseApi_->get());
         applySunriseDataToForecast();

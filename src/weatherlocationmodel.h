@@ -121,28 +121,27 @@ public slots:
 signals:
     void weatherRefresh(AbstractWeatherForecast &fc); // sent when weather data is refreshed
     void currentForecastChange();
-    void timeZoneSet();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
 
 private:
     Kweather::Backend backend_ = Kweather::Backend::NMI;
+
     void writeToCache(AbstractWeatherForecast& fc);
     QJsonDocument convertToJson(AbstractWeatherForecast& fc);
-    QString locationName_;
-    QString timeZone_;
-    QString locationId_;
-    QDateTime lastUpdated_;
-    float latitude_{}, longitude_{};
 
-    WeatherDayListModel *weatherDayListModel_{};
-    WeatherHourListModel *weatherHourListModel_{};
+    QString locationName_, locationId_;
+    QString timeZone_;
+    QDateTime lastUpdated_;
+    float latitude_, longitude_;
+
+    WeatherDayListModel *weatherDayListModel_ = nullptr;
+    WeatherHourListModel *weatherHourListModel_ = nullptr;
 
     AbstractWeatherForecast forecast_;
     WeatherHour *currentWeather_ = nullptr;
 
     AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
-    GeoTimeZone *geoTimeZone_ = nullptr;
 };
 
 class WeatherLocationListModel : public QAbstractListModel
@@ -171,9 +170,12 @@ public:
         return locationsList;
     };
     Q_INVOKABLE void requestCurrentLocation();
+signals:
+    void networkErrorCreating(); // error creating a location
+    void networkErrorCreatingDefault(); // error getting current location
+    void successfullyCreatedDefault(); // successful in getting current location
 public slots:
     void addLocation(LocationQueryResult *ret);
-
 private:
     void addCurrentLocation();
     GeoIPLookup *geoPtr = nullptr;

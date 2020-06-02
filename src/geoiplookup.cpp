@@ -41,8 +41,10 @@ GeoIPLookup::GeoIPLookup()
  */
 void GeoIPLookup::process(QNetworkReply *reply)
 {
+    reply->deleteLater();
     if (reply->error()) {
         qDebug() << "Network error:" << reply->error();
+        emit networkError();
         return;
     }
     auto reader = new QXmlStreamReader(reply->readAll());

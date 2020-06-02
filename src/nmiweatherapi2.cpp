@@ -20,17 +20,18 @@
 #include <QNetworkRequest>
 #include <QTimeZone>
 #include <QUrlQuery>
+#include <utility>
 
 NMIWeatherAPI2::NMIWeatherAPI2(QString locationId, QString timeZone, double latitude, double longitude)
-    : AbstractWeatherAPI(locationId, timeZone, -1, latitude, longitude)
+    : AbstractWeatherAPI(std::move(locationId), std::move(timeZone), -1, latitude, longitude)
 {}
 
-QString NMIWeatherAPI2::getSymbolCodeDescription(bool isDay, QString symbolCode)
+QString NMIWeatherAPI2::getSymbolCodeDescription(bool isDay, const QString& symbolCode)
 {
     return isDay ? apiDescMap[symbolCode + "_day"].desc : apiDescMap[symbolCode + "_night"].desc;
 }
 
-QString NMIWeatherAPI2::getSymbolCodeIcon(bool isDay, QString symbolCode)
+QString NMIWeatherAPI2::getSymbolCodeIcon(bool isDay, const QString& symbolCode)
 {
     return isDay ? apiDescMap[symbolCode + "_day"].icon : apiDescMap[symbolCode + "_night"].icon;
 }

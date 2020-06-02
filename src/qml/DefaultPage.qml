@@ -14,8 +14,29 @@ import org.kde.kirigami 2.12 as Kirigami
 Kirigami.ScrollablePage {
     title: i18n("Forecast")
 
+    property bool loading: false
+
+    Connections {
+        target: weatherLocationListModel
+        onNetworkErrorCreatingDefault: {
+            showPassiveNotification(i18n("Network error when obtaining current location"));
+            loading = false;
+        }
+        onSuccessfullyCreatedDefault: {
+            switchToPage(forecastPage);
+            loading = false;
+        }
+    }
+
     ListView { // empty list view to centre placeholdermessage
+        BusyIndicator {
+            anchors.centerIn: parent
+            running: loading
+            Layout.minimumWidth: Kirigami.Units.iconSizes.huge
+            Layout.minimumHeight: width
+        }
         Kirigami.PlaceholderMessage {
+            visible: !loading
             anchors.centerIn: parent
             anchors.margins: Kirigami.Units.largeSpacing
 
@@ -25,8 +46,9 @@ Kirigami.ScrollablePage {
             helpfulAction: Kirigami.Action {
                 iconName: "list-add"
                 text: i18n("Add current location")
-                onTriggered: {weatherLocationListModel.requestCurrentLocation()
-                    switchToPage(forecastPage)
+                onTriggered: {
+                    weatherLocationListModel.requestCurrentLocation()
+                    loading = true
                 }
             }
         }
