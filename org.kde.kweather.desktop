@@ -7,8 +7,14 @@
 
 [Desktop Entry]
 Name=Weather
+Name[cs]=Počasí
+Name[nl]=Het weer
+Name[uk]=Погода
 Name[x-test]=xxWeatherxx
 Comment=A weather application in Kirigami.
+Comment[cs]=Předpověď počasí v Kirigami.
+Comment[nl]=Een weer-toepassing in Kirigami.
+Comment[uk]=Програма прогнозів погоди на Kirigami.
 Comment[x-test]=xxA weather application in Kirigami.xx
 Version=1.0
 Exec=kweather
