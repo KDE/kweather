@@ -39,6 +39,7 @@ public:
     ~NMISunriseAPI();
     bool isDayTime(QDateTime date);
 signals:
+    void networkError();
     void finished();
 private slots:
     void process(QNetworkReply *reply);

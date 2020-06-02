@@ -65,6 +65,13 @@ void NMISunriseAPI::update()
 
 void NMISunriseAPI::process(QNetworkReply *reply)
 {
+    reply->deleteLater();
+    if (reply->error()) {
+        qDebug() << "nmisunriseapi network error:" << reply->errorString();
+        emit networkError();
+        return;
+    }
+
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
     QJsonArray array = doc["location"].toObject()["time"].toArray();
     for (int i = 0; i <= array.count() - 2; i++) // we don't want last one

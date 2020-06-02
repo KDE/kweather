@@ -21,6 +21,7 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int
 {
     mManager = new QNetworkAccessManager();
     sunriseApi_ = new NMISunriseAPI(latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+
     connect(sunriseApi_, &NMISunriseAPI::finished, this, [this]() {
         qDebug() << "obtained sunrise data";
 
@@ -29,14 +30,18 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int
         if (!currentData_.hourlyForecasts().empty())
             emit updated(currentData_); // update ui
     });
-
-    sunriseApi_->update();
+    // TODO handle sunriseapi failure signal
 }
 
 AbstractWeatherAPI::~AbstractWeatherAPI()
 {
     delete mManager;
     delete sunriseApi_;
+}
+
+void AbstractWeatherAPI::fetchSunriseData()
+{
+    sunriseApi_->update();
 }
 
 QString &AbstractWeatherAPI::timeZone()

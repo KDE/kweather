@@ -55,6 +55,13 @@ void OWMWeatherAPI::applySunriseDataToForecast()
 
 void OWMWeatherAPI::parse(QNetworkReply *reply)
 {
+    reply->deleteLater();
+    if (reply->error()) {
+        qDebug() << "network error when fetching forecast:" << reply->errorString();
+        emit networkError();
+        return;
+    }
+
     /*~~~~~~~~~ static variable ~~~~~~~~*/
     // rank weather (for what best describes the day overall)
     static const QHash<QString, int> rank = {

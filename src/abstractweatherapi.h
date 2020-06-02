@@ -31,6 +31,9 @@ public:
     virtual void update() = 0;
     virtual void applySunriseDataToForecast() = 0;
 
+    // MUST BE CALLED if not loading sunrise data from cache
+    void fetchSunriseData(); // call api for sunrise/sunset data
+
     AbstractWeatherForecast& currentData();
     void setCurrentData(AbstractWeatherForecast forecast);
     QList<AbstractSunrise> currentSunriseData();
@@ -54,6 +57,7 @@ protected:
 
 signals:
     void updated(AbstractWeatherForecast& forecast);
+    void networkError();
 public slots:
     virtual void parse(QNetworkReply *Reply) = 0;
 };

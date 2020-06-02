@@ -70,7 +70,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
-    AbstractWeatherAPI *api;
+    AbstractWeatherAPI *api; // don't fetch sunrise information, since it will be loaded from cache
     Kweather::Backend backendEnum;
     if (obj["backend"].toInt() == 0) {
         api = new NMIWeatherAPI2(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
@@ -334,6 +334,7 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
             api = new NMIWeatherAPI2(locId, tz->getTimeZone(), lat, lon);
             backendEnum = Kweather::Backend::NMI;
         }
+        api->fetchSunriseData();
 
         // add location
         auto* location = new WeatherLocation(api, locId, locName, tz->getTimeZone(), lat, lon, backendEnum);
@@ -361,6 +362,7 @@ void WeatherLocationListModel::addCurrentLocation()
     long id = QDateTime::currentSecsSinceEpoch();
 
     auto api = new NMIWeatherAPI2(QString::number(id), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
+    api->fetchSunriseData();
     auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
     location->update();
 

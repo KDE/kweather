@@ -92,11 +92,16 @@ void NMIWeatherAPI2::update()
 
 void NMIWeatherAPI2::parse(QNetworkReply *reply)
 {
-    qDebug() << "data arrived";
+    reply->deleteLater();
+    if (reply->error()) {
+        qDebug() << "network error when fetching forecast:" << reply->errorString();
+        emit networkError();
+        return;
+    }
 
+    qDebug() << "data arrived";
     // parse json for weather forecast
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    reply->deleteLater();
 
     if (jsonDocument.isObject()) {
         QJsonObject obj = jsonDocument.object();

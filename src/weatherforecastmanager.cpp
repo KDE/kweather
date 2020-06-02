@@ -38,7 +38,6 @@ void WeatherForecastManager::update()
     qDebug() << "update start";
     auto locations = model_.getList();
     for (auto wLocation : locations) {
-        wLocation->weatherBackendProvider()->setLocation(wLocation->latitude(), wLocation->longitude());
         wLocation->update();
     }
     updateTimer->start(1000 * 3600 + random.bounded(0, 1800) * 1000); // reset timer
@@ -62,10 +61,8 @@ void WeatherForecastManager::readFromCache()
                 isFound = true;
                 reader.open(QIODevice::ReadOnly);
                 AbstractWeatherForecast fc = convertFromJson(reader.readAll());
-                // add forecast if it does not exist, or is newer than existing data
-                if (map[wl].timeCreated() < fc.timeCreated()) {
-                    map[wl] = fc;
-                }
+
+                map[wl] = fc;
                 break;
             }
         }
@@ -76,9 +73,14 @@ void WeatherForecastManager::readFromCache()
         reader.close();
     }
 
-    // add loaded locations from cache
+    // add to loaded locations from cache
     for (auto wl : model_.getList()) {
-        wl->initData(map[wl]);
+        if (map.find(wl) != map.end()) { // is in cache
+            wl->initData(map[wl]);
+        } else {
+            // need to fetch sunrise data since it's not loaded from cache
+            wl->weatherBackendProvider()->fetchSunriseData();
+        }
     }
 }
 
