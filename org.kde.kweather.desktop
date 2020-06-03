@@ -9,11 +9,13 @@
 Name=Weather
 Name[cs]=Počasí
 Name[nl]=Het weer
+Name[pt]=Meteorologia
 Name[uk]=Погода
 Name[x-test]=xxWeatherxx
 Comment=A weather application in Kirigami.
 Comment[cs]=Předpověď počasí v Kirigami.
 Comment[nl]=Een weer-toepassing in Kirigami.
+Comment[pt]=Uma aplicação meteorológica feita com o Kirigami.
 Comment[uk]=Програма прогнозів погоди на Kirigami.
 Comment[x-test]=xxA weather application in Kirigami.xx
 Version=1.0
