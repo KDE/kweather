@@ -7,18 +7,26 @@
 <component type="desktop-application">
   <id>org.kde.kweather</id>
   <name>Weather</name>
+  <name xml:lang="nl">Weer</name>
+  <name xml:lang="pt">Tempo</name>
   <name xml:lang="uk">Погода</name>
   <name xml:lang="x-test">xxWeatherxx</name>
   <summary>A convergent weather application.</summary>
+  <summary xml:lang="nl">Een convergente weer-toepassing.</summary>
+  <summary xml:lang="pt">Uma aplicação meteorológica convergente.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди.</summary>
   <summary xml:lang="x-test">xxA convergent weather application.xx</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2+</project_license>
   <developer_name>KDE Community</developer_name>
+  <developer_name xml:lang="nl">KDE gemeenschap</developer_name>
+  <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
   <description>
     <p>KWeather is a full-featured weather application that is mobile friendly.</p>
+    <p xml:lang="nl">KWeather is een weertoepassing vol met mogelijkheden die vriendelijk is op het mobieltje.</p>
+    <p xml:lang="pt">O KWeather é uma aplicação meteorológica completa que é amigável para dispositivos móveis.</p>
     <p xml:lang="uk">KWeather — повноцінна програма для показу погоди, якою можна користуватися на мобільних пристроях.</p>
     <p xml:lang="x-test">xxKWeather is a full-featured weather application that is mobile friendly.xx</p>
   </description>
