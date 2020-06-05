@@ -200,17 +200,16 @@ Kirigami.ScrollablePage {
             spacing: Kirigami.Units.smallSpacing
             Label {
                 color: Kirigami.Theme.disabledTextColor
-                text: "Add your own OpenWeatherMap API token."
+                text: i18n("Add your own OpenWeatherMap API token.")
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
-                text: "Token added is stored as PLAIN TEXT in system."
+                text: i18n("Token added is stored as PLAIN TEXT in system.")
             }
             Kirigami.Separator {}
             TextField {
                 id: textField
-                text: settingsModel.OWMToken.length == 0 ? null : settingsModel.OWMToken
-                placeholderText: i18n("Add your API token here... ")
+                placeholderText: settingsModel.OWMToken.length == 0 ? i18n("Add your API token here... ") : settingsModel.OWMToken
                 anchors.top: parent.Top
                 width: parent.width
                 Layout.fillWidth: true
