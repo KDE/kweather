@@ -194,6 +194,8 @@ void WeatherLocation::changeBackend(Kweather::Backend backend)
         }
         weatherBackendProvider_ = tmp;
         connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
+        weatherBackendProvider_->setCurrentSunriseData(old->currentSunriseData());
+        weatherBackendProvider_->fetchSunriseData();
         this->update();
         old->deleteLater();
     }

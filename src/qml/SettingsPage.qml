@@ -191,7 +191,7 @@ Kirigami.ScrollablePage {
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
         height: Kirigami.Units.gridUnit * 10
         title: i18n("OpenWeatherMap API Token")
-        standardButtons: Dialog.Close
+        standardButtons: Dialog.Close | Dialog.Save
 
         onAccepted: settingsModel.OWMToken = textField.text;
 

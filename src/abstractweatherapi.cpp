@@ -20,7 +20,8 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int
     , longitude_(longitude)
 {
     mManager = new QNetworkAccessManager();
-    sunriseApi_ = new NMISunriseAPI(latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+    sunriseApi_ = new NMISunriseAPI(
+        latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
 
     connect(sunriseApi_, &NMISunriseAPI::finished, this, [this]() {
         qDebug() << "obtained sunrise data";
@@ -48,7 +49,7 @@ QString &AbstractWeatherAPI::timeZone()
 {
     return timeZone_;
 };
-AbstractWeatherForecast& AbstractWeatherAPI::currentData()
+AbstractWeatherForecast &AbstractWeatherAPI::currentData()
 {
     return currentData_;
 }
@@ -68,6 +69,7 @@ QList<AbstractSunrise> AbstractWeatherAPI::currentSunriseData()
 void AbstractWeatherAPI::setCurrentSunriseData(QList<AbstractSunrise> sunrise)
 {
     currentSunriseData_ = sunrise;
+    sunriseApi_->setData(sunrise);
 }
 Kweather::WindDirection AbstractWeatherAPI::getWindDirect(double deg)
 {
