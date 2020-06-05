@@ -52,14 +52,22 @@ Kirigami.ScrollablePage {
             property WeatherLocation location: weatherLocationListModel.get(index)
 
             id: listItem
-            actions: Kirigami.Action {
-                iconName: "delete"
-                text: i18n("Remove")
-                onTriggered: {
-                    weatherLocationListModel.remove(index);
-                }
-            }
+            actions:[
+                Kirigami.Action {
+                    iconName: "delete"
+                    text: i18n("Remove")
+                    onTriggered: {
+                        weatherLocationListModel.remove(index);
+                    }
+                },
 
+                Kirigami.Action {
+                    iconName: "breeze-settings"
+                    text: i18n("Change Backend")
+                    onTriggered: {
+                        WeatherLocation.changeBackend(1); // 0 for nmi, 1 for owm
+                    }
+                }]
             onClicked: {
                 switchToPage(forecastPage);
                 forecastPage.pageIndex = index;
@@ -102,12 +110,12 @@ Kirigami.ScrollablePage {
                     Item {
                         Layout.fillWidth: true
                     }
-//                    Kirigami.ListItemDragHandle {
-//                        Layout.alignment: Qt.AlignRight
-//                        listItem: listItem
-//                        listView: citiesList
-//                        onMoveRequested: weatherLocationListModel.move(oldIndex, newIndex)
-//                    }
+                    //                    Kirigami.ListItemDragHandle {
+                    //                        Layout.alignment: Qt.AlignRight
+                    //                        listItem: listItem
+                    //                        listView: citiesList
+                    //                        onMoveRequested: weatherLocationListModel.move(oldIndex, newIndex)
+                    //                    }
                 }
             }
         }
