@@ -13,7 +13,7 @@ import kweather 1.0
 
 Kirigami.ScrollablePage {
     title: i18n("Locations")
-    
+    property int currentIndex: 0;
     actions.main: Kirigami.Action {
         iconName: "list-add"
         text: i18n("Add Location")
@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
             property WeatherLocation location: weatherLocationListModel.get(index)
 
             id: listItem
-            actions:[
+            actions: [
                 Kirigami.Action {
                     iconName: "delete"
                     text: i18n("Remove")
@@ -60,14 +60,15 @@ Kirigami.ScrollablePage {
                         weatherLocationListModel.remove(index);
                     }
                 },
-
                 Kirigami.Action {
-                    iconName: "breeze-settings"
-                    text: i18n("Change Backend")
+                    iconName: "preferences-system"
+                    text: i18n("Select Backend")
                     onTriggered: {
-                        WeatherLocation.changeBackend(1); // 0 for nmi, 1 for owm
+                        currentIndex = index;
+                        selectBackend.open();
                     }
-                }]
+                }
+            ]
             onClicked: {
                 switchToPage(forecastPage);
                 forecastPage.pageIndex = index;
@@ -118,6 +119,41 @@ Kirigami.ScrollablePage {
                     //                    }
                 }
             }
+        }
+    }
+    // select backend dialog
+    Dialog {
+        property WeatherLocation location: weatherLocationListModel.get(currentIndex)
+        property var mBackend: location.backend
+        id: selectBackend
+        modal: true
+        focus: true
+        x: (parent.width - width) / 2
+        y: parent.height / 2 - height
+        width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
+        height: Kirigami.Units.gridUnit * 20
+        title: i18n("Select Backend")
+        standardButtons: Dialog.Close | Dialog.Save
+
+        onAccepted: weatherLocationListModel.changeBackend(currentIndex,mBackend)
+        onRejected: weatherLocationListModel.updateUi();
+
+        contentItem: ScrollView {
+            ListView {
+                model: [i18n("Norway Meteorologisk Institutt"), i18n("OpenWeatherMap")]
+                delegate: RadioDelegate {
+                    width: parent.width
+                    text: modelData
+                    checked: location.backend === modelData
+                    onCheckedChanged: {
+                        if (checked) {
+                            mBackend = modelData
+                        }
+                    }
+                }
+            }
+            Component.onCompleted: background.visible = true
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         }
     }
 }
