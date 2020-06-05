@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
                     width: parent.width
                     text: modelData
                     checked: selectBackend.mBackend === modelData
-                    visible: !(modelData == "OpenWeatherMap") || (settingsModel.OWMToken.length != 0)
+                    enabled: !(modelData == "OpenWeatherMap") || (settingsModel.OWMToken.length != 0)
                     onCheckedChanged: {
                         if (checked) {
                             selectBackend.mBackend = modelData
