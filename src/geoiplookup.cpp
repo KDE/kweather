@@ -12,10 +12,7 @@
 GeoIPLookup::GeoIPLookup()
 {
     mManager = new QNetworkAccessManager();
-    QUrl url;
-    url.setScheme(QStringLiteral("http"));
-    url.setHost(QStringLiteral("geoip.ubuntu.com"));
-    url.setPath(QStringLiteral("/lookup"));
+    QUrl url(QStringLiteral("https://geoip.ubuntu.com/lookup"));
     QNetworkRequest req(url);
     mReply = mManager->get(req);
     connect(mManager, &QNetworkAccessManager::finished, this, &GeoIPLookup::process);
@@ -43,7 +40,7 @@ void GeoIPLookup::process(QNetworkReply *reply)
 {
     reply->deleteLater();
     if (reply->error()) {
-        qDebug() << "Network error:" << reply->error();
+        qDebug() << "Network error:" << reply->errorString();
         emit networkError();
         return;
     }
