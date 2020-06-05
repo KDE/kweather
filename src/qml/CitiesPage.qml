@@ -123,8 +123,8 @@ Kirigami.ScrollablePage {
     }
     // select backend dialog
     Dialog {
-        property WeatherLocation location: weatherLocationListModel.get(currentIndex)
-        property var mBackend: location.backend
+        property WeatherLocation mLocation: weatherLocationListModel.get(currentIndex)
+        property var mBackend: mLocation.backend
         id: selectBackend
         modal: true
         focus: true
@@ -140,14 +140,14 @@ Kirigami.ScrollablePage {
 
         contentItem: ScrollView {
             ListView {
-                model: [i18n("Norway Meteorologisk Institutt"), i18n("OpenWeatherMap")]
+                model: [i18nc("Norway Meteorologisk Institutt","Norway Meteorologisk Institutt"), i18nc("OpenWeatherMap","OpenWeatherMap")]
                 delegate: RadioDelegate {
                     width: parent.width
                     text: modelData
-                    checked: location.backend === modelData
+                    checked: selectBackend.mBackend === modelData
                     onCheckedChanged: {
                         if (checked) {
-                            mBackend = modelData
+                            selectBackend.mBackend = modelData
                         }
                     }
                 }

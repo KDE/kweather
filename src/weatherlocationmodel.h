@@ -30,6 +30,7 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
+    Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
@@ -113,8 +114,18 @@ public:
     void determineCurrentForecast();
     void initData(AbstractWeatherForecast fc);
     void update();
-    Q_INVOKABLE void changeBackend(int backend); // change backend on the fly
-
+    void changeBackend(Kweather::Backend backend); // change backend on the fly
+    inline QString backend()
+    {
+        switch (backend_) {
+        case Kweather::Backend::NMI:
+            return Kweather::API_NMI;
+        case Kweather::Backend::OWM:
+            return Kweather::API_OWM;
+        default:
+            return {};
+        }
+    };
 public slots:
     void updateData(AbstractWeatherForecast &fc);
 
@@ -170,12 +181,13 @@ public:
         return locationsList;
     };
     Q_INVOKABLE void requestCurrentLocation();
+    Q_INVOKABLE void changeBackend(int index, QString backend);
+public slots:
+    void addLocation(LocationQueryResult *ret);
 signals:
     void networkErrorCreating();        // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault();  // successful in getting current location
-public slots:
-    void addLocation(LocationQueryResult *ret);
 
 private:
     void addCurrentLocation();

@@ -38,7 +38,14 @@ WeatherLocation::WeatherLocation()
     this->lastUpdated_ = QDateTime::currentDateTime();
 }
 
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, Kweather::Backend backend, AbstractWeatherForecast forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
+                                 QString locationId,
+                                 QString locationName,
+                                 QString timeZone,
+                                 float latitude,
+                                 float longitude,
+                                 Kweather::Backend backend,
+                                 AbstractWeatherForecast forecast)
     : backend_(backend)
     , locationName_(std::move(locationName))
     , timeZone_(std::move(timeZone))
@@ -72,7 +79,14 @@ WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
         api = new OWMWeatherAPI(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
         backendEnum = Kweather::Backend::OWM;
     }
-    auto weatherLocation = new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble(), backendEnum, AbstractWeatherForecast());
+    auto weatherLocation = new WeatherLocation(api,
+                                               obj["locationId"].toString(),
+                                               obj["locationName"].toString(),
+                                               obj["timezone"].toString(),
+                                               obj["latitude"].toDouble(),
+                                               obj["longitude"].toDouble(),
+                                               backendEnum,
+                                               AbstractWeatherForecast());
     return weatherLocation;
 }
 
@@ -162,12 +176,12 @@ QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast &fc)
     return doc;
 }
 
-void WeatherLocation::changeBackend(int backend)
+void WeatherLocation::changeBackend(Kweather::Backend backend)
 {
-    if (backend != static_cast<int>(backend_)) {
-        backend_ = static_cast<Kweather::Backend>(backend);
+    if (backend != backend_) {
         auto old = weatherBackendProvider_;
-        AbstractWeatherAPI *tmp;
+        backend_ = backend;
+        AbstractWeatherAPI *tmp = nullptr;
         switch (backend_) {
         case Kweather::Backend::OWM:
             tmp = new OWMWeatherAPI(this->locationId(), this->timeZone(), this->latitude_, this->longitude());
@@ -349,4 +363,18 @@ void WeatherLocationListModel::addCurrentLocation()
 
     insert(0, location);
     emit successfullyCreatedDefault();
+}
+
+void WeatherLocationListModel::changeBackend(int index, QString backend)
+{
+    if (index < 0 || index >= this->locationsList.count())
+        return;
+    if (backend == Kweather::API_OWM) {
+        this->get(index)->changeBackend(Kweather::Backend::OWM);
+    } else if (backend == Kweather::API_NMI) {
+        this->get(index)->changeBackend(Kweather::Backend::NMI);
+    } else {
+        return;
+    }
+    this->save();
 }
