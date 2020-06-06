@@ -35,22 +35,23 @@ QString getSymbolCodeIcon(bool isDay, QString symbolCode)
 
 void OWMWeatherAPI::applySunriseDataToForecast()
 {
-    currentData_.setSunrise(currentSunriseData_);
-    for (int i = 0; i < currentData_.hourlyForecasts().count(); i++) {
-        auto hourForecast = currentData_.hourlyForecasts()[i];
+    //    currentData_.setSunrise(currentSunriseData_);
+    //    for (int i = 0; i < currentData_.hourlyForecasts().count(); i++) {
+    //        auto hourForecast = currentData_.hourlyForecasts()[i];
 
-        bool isDay;
-        if (currentSunriseData_.count() != 0) { // if we have sunrise data
-            isDay = sunriseApi_->isDayTime(hourForecast.date());
-        } else {
-            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
-        }
+    //        bool isDay;
+    //        if (currentSunriseData_.count() != 0) { // if we have sunrise data
+    //            isDay = sunriseApi_->isDayTime(hourForecast.date());
+    //        } else {
+    //            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
+    //        }
 
-        hourForecast.setWeatherIcon(getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
-        hourForecast.setWeatherDescription(getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
+    //        hourForecast.setWeatherIcon(getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
+    //        hourForecast.setWeatherDescription(getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
 
-        currentData_.hourlyForecasts()[i] = hourForecast;
-    }
+    //        currentData_.hourlyForecasts()[i] = hourForecast;
+    //    }
+    return;
 }
 
 void OWMWeatherAPI::parse(QNetworkReply *reply)
@@ -88,10 +89,10 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
 
     static const QHash<QString, QString> map = {std::pair<QString, QString>(QStringLiteral("01d"), QStringLiteral("weather-clear")),
                                                 std::pair<QString, QString>(QStringLiteral("01n"), QStringLiteral("weather-clear-night")),
-                                                std::pair<QString, QString>(QStringLiteral("02d"), QStringLiteral("weather-clouds")),
-                                                std::pair<QString, QString>(QStringLiteral("02n"), QStringLiteral("weather-clouds-night")),
-                                                std::pair<QString, QString>(QStringLiteral("03d"), QStringLiteral("weather-many-clouds")),
-                                                std::pair<QString, QString>(QStringLiteral("03n"), QStringLiteral("weather-many-clouds")),
+                                                std::pair<QString, QString>(QStringLiteral("02d"), QStringLiteral("weather-few-clouds")),
+                                                std::pair<QString, QString>(QStringLiteral("02n"), QStringLiteral("weather-few-clouds-night")),
+                                                std::pair<QString, QString>(QStringLiteral("03d"), QStringLiteral("weather-clouds")),
+                                                std::pair<QString, QString>(QStringLiteral("03n"), QStringLiteral("weather-clouds-night")),
                                                 std::pair<QString, QString>(QStringLiteral("04d"), QStringLiteral("weather-many-clouds")),
                                                 std::pair<QString, QString>(QStringLiteral("04n"), QStringLiteral("weather-many-clouds")),
                                                 std::pair<QString, QString>(QStringLiteral("09d"), QStringLiteral("weather-showers-day")),
@@ -145,7 +146,7 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         }
 
         // update day forecast with hour information if needed
-        AbstractDailyWeatherForecast& dayForecast = dayCache[date.date()];
+        AbstractDailyWeatherForecast &dayForecast = dayCache[date.date()];
 
         dayForecast.setPrecipitation(dayForecast.precipitation() + hourly.precipitationAmount());
         dayForecast.setUvIndex(std::max(dayForecast.uvIndex(), hourly.uvIndex()));
