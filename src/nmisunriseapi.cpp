@@ -28,10 +28,7 @@ void NMISunriseAPI::update()
 {
     if (sunrise_.count() >= 10) // don't update if we have enough data
         return;
-    QUrl url;
-    url.setScheme(QStringLiteral("https"));
-    url.setHost(QStringLiteral("api.met.no"));
-    url.setPath(QStringLiteral("/weatherapi/sunrise/2.0/.json"));
+    QUrl url(QStringLiteral("https://api.met.no/weatherapi/sunrise/2.0/.json"));
     QUrlQuery query;
     query.addQueryItem(QLatin1String("lat"), QString::number(latitude_));
     query.addQueryItem(QLatin1String("lon"), QString::number(longitude_));
