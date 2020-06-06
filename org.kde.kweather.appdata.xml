@@ -9,18 +9,22 @@
   <name>Weather</name>
   <name xml:lang="ca">Meteorologia</name>
   <name xml:lang="cs">Počasí</name>
+  <name xml:lang="et">Ilm</name>
   <name xml:lang="fr">Météo</name>
   <name xml:lang="nl">Weer</name>
   <name xml:lang="pt">Tempo</name>
+  <name xml:lang="pt-BR">Meteorologia</name>
   <name xml:lang="sk">Počasie</name>
   <name xml:lang="sl">Weather</name>
   <name xml:lang="uk">Погода</name>
   <name xml:lang="x-test">xxWeatherxx</name>
   <summary>A convergent weather application.</summary>
   <summary xml:lang="ca">Una aplicació convergent de meteorologia.</summary>
+  <summary xml:lang="et">Konvergentne ilmarakendus.</summary>
   <summary xml:lang="fr">Une application météo convergente.</summary>
   <summary xml:lang="nl">Een convergente weer-toepassing.</summary>
   <summary xml:lang="pt">Uma aplicação meteorológica convergente.</summary>
+  <summary xml:lang="pt-BR">Um aplicativo de meteorologia convergente.</summary>
   <summary xml:lang="sl">Osredotočen program za spremljanje vremena.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди.</summary>
   <summary xml:lang="x-test">xxA convergent weather application.xx</summary>
@@ -29,9 +33,11 @@
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
+  <developer_name xml:lang="et">KDE kogukond</developer_name>
   <developer_name xml:lang="fr">Communauté KDE</developer_name>
   <developer_name xml:lang="nl">KDE gemeenschap</developer_name>
   <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
+  <developer_name xml:lang="pt-BR">Comunidade KDE</developer_name>
   <developer_name xml:lang="sk">KDE komunita</developer_name>
   <developer_name xml:lang="sl">Skupnost KDE</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
@@ -39,9 +45,11 @@
   <description>
     <p>KWeather is a full-featured weather application that is mobile friendly.</p>
     <p xml:lang="ca">El KWeather és una aplicació de meteorologia plena de funcionalitats que és fàcil d'emprar al mòbil.</p>
+    <p xml:lang="et">KWeather on rohkete võimalustega mobiilisõbralik ilmarakendus.</p>
     <p xml:lang="fr">KWeather est une application météo pleine de fonctionnalités et adapté au mobile.</p>
     <p xml:lang="nl">KWeather is een weertoepassing vol met mogelijkheden die vriendelijk is op het mobieltje.</p>
     <p xml:lang="pt">O KWeather é uma aplicação meteorológica completa que é amigável para dispositivos móveis.</p>
+    <p xml:lang="pt-BR">O KWeather é um aplicativo de meteorologia completo que é compatível com dispositivos móveis.</p>
     <p xml:lang="sl">KWeather je obsežen program za spremljanje vremena, ki je prilagojen mobilnim napravam.</p>
     <p xml:lang="uk">KWeather — повноцінна програма для показу погоди, якою можна користуватися на мобільних пристроях.</p>
     <p xml:lang="x-test">xxKWeather is a full-featured weather application that is mobile friendly.xx</p>
