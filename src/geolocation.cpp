@@ -14,19 +14,15 @@
 #include <QNetworkReply>
 #include <QUrlQuery>
 
-GeoLocation::GeoLocation(QObject* parent)
+GeoLocation::GeoLocation(QObject *parent)
     : QObject(parent)
 {
     mManager = new QNetworkAccessManager();
 }
 
-void GeoLocation::setName(QString& location)
+void GeoLocation::setName(QString &location)
 {
-    QUrl url;
-
-    url.setScheme(QStringLiteral("https"));
-    url.setHost(QStringLiteral("nominatim.openstreetmap.org"));
-    url.setPath(QStringLiteral("/search"));
+    QUrl url(QStringLiteral("https://nominatim.openstreetmap.org/search"));
     QUrlQuery query;
     query.addQueryItem(QStringLiteral("q"), location);
     query.addQueryItem(QStringLiteral("format"), "json");
@@ -36,7 +32,7 @@ void GeoLocation::setName(QString& location)
     connect(mManager, &QNetworkAccessManager::finished, this, &GeoLocation::process);
 }
 
-void GeoLocation::process(QNetworkReply* reply)
+void GeoLocation::process(QNetworkReply *reply)
 {
     if (mLocation.isEmpty())
         mLocation.clear();

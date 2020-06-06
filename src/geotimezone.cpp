@@ -15,10 +15,7 @@ GeoTimeZone::GeoTimeZone(float lat, float lon, QObject *parent)
     : QObject(parent)
 {
     manager = new QNetworkAccessManager();
-    QUrl url;
-    url.setScheme(QStringLiteral("http"));
-    url.setHost(QStringLiteral("api.geonames.org"));
-    url.setPath(QStringLiteral("/timezoneJSON"));
+    QUrl url(QStringLiteral("http://api.geonames.org/timezoneJSON"));
     QUrlQuery query;
     query.addQueryItem(QLatin1String("lat"), QString::number(lat));
     query.addQueryItem(QLatin1String("lng"), QString::number(lon));
