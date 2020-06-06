@@ -52,7 +52,6 @@ if (ANDROID)
     kirigami_package_breeze_icons(ICONS
         raindrop
         globe
-        preferences-system
         settings-configure
         network-disconnect
         search

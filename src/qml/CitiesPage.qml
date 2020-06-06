@@ -61,7 +61,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    iconName: "preferences-system"
+                    iconName: "settings-configure"
                     text: i18n("Select Backend")
                     onTriggered: {
                         currentIndex = index;
