@@ -145,6 +145,7 @@ void WeatherLocation::initData(AbstractWeatherForecast fc)
     forecast_ = fc;
     weatherBackendProvider_->setCurrentData(forecast_);
     weatherBackendProvider_->setCurrentSunriseData(fc.sunrise());
+    weatherBackendProvider_->fetchSunriseData(); // TODO detect if we need to actually fetch sunrise data
     determineCurrentForecast();
     emit weatherRefresh(forecast_);
     emit propertyChanged();
