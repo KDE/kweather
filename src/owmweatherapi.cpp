@@ -35,7 +35,7 @@ OWMWeatherAPI::~OWMWeatherAPI() = default;
 
 void OWMWeatherAPI::applySunriseDataToForecast()
 {
-    //    currentData_.setSunrise(currentSunriseData_);
+    currentData_.setSunrise(currentSunriseData_);
     //    for (int i = 0; i < currentData_.hourlyForecasts().count(); i++) {
     //        auto hourForecast = currentData_.hourlyForecasts()[i];
 
