@@ -23,34 +23,9 @@ OWMWeatherAPI::OWMWeatherAPI(QString locationId, QString timeZone, double latitu
 
 OWMWeatherAPI::~OWMWeatherAPI() = default;
 
-// QString getSymbolCodeDescription(bool isDay, QString symbolCode)
-//{
-//    return "unknown"; // TODO
-//}
-
-// QString getSymbolCodeIcon(bool isDay, QString symbolCode)
-//{
-//    return "unknown"; // TODO
-//}
-
 void OWMWeatherAPI::applySunriseDataToForecast()
 {
     currentData_.setSunrise(currentSunriseData_);
-    //    for (int i = 0; i < currentData_.hourlyForecasts().count(); i++) {
-    //        auto hourForecast = currentData_.hourlyForecasts()[i];
-
-    //        bool isDay;
-    //        if (currentSunriseData_.count() != 0) { // if we have sunrise data
-    //            isDay = sunriseApi_->isDayTime(hourForecast.date());
-    //        } else {
-    //            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
-    //        }
-
-    //        hourForecast.setWeatherIcon(getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
-    //        hourForecast.setWeatherDescription(getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
-
-    //        currentData_.hourlyForecasts()[i] = hourForecast;
-    //    }
     return;
 }
 
@@ -71,59 +46,24 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         {"weather-clear", 0},
         {"weather-clear-night", 0},
         {"weather-few-clouds", 1},
+        {"weather-few-clouds-night", 1},
         {"weather-clouds", 2},
         {"weather-clouds-night", 2},
         {"weather-mist", 2},
         {"weather-many-clouds", 3},
+        {"weather-showers", 4},
         {"weather-showers-day", 4},
-        {"weather-snowers-night", 4},
+        {"weather-showers-night", 4},
         {"weather-showers-scattered-day", 5},
         {"weather-showers-scattered-night", 5},
+        {"weather-snow", 5},
         {"weather-snow-scattered-day", 5},
         {"weather-snow-scattered-night", 5},
+        {"weather-storm", 6},
         {"weather-storm-day", 6},
         {"weather-storm-night", 6},
     };
 
-    // map for weather ID to icon
-
-    static const QHash<QString, QString> map = {std::pair<QString, QString>(QStringLiteral("01d"), QStringLiteral("weather-clear")),
-                                                std::pair<QString, QString>(QStringLiteral("01n"), QStringLiteral("weather-clear-night")),
-                                                std::pair<QString, QString>(QStringLiteral("02d"), QStringLiteral("weather-few-clouds")),
-                                                std::pair<QString, QString>(QStringLiteral("02n"), QStringLiteral("weather-few-clouds-night")),
-                                                std::pair<QString, QString>(QStringLiteral("03d"), QStringLiteral("weather-clouds")),
-                                                std::pair<QString, QString>(QStringLiteral("03n"), QStringLiteral("weather-clouds-night")),
-                                                std::pair<QString, QString>(QStringLiteral("04d"), QStringLiteral("weather-many-clouds")),
-                                                std::pair<QString, QString>(QStringLiteral("04n"), QStringLiteral("weather-many-clouds")),
-                                                std::pair<QString, QString>(QStringLiteral("09d"), QStringLiteral("weather-showers-day")),
-                                                std::pair<QString, QString>(QStringLiteral("09n"), QStringLiteral("weather-showers-night")),
-                                                std::pair<QString, QString>(QStringLiteral("10d"), QStringLiteral("weather-showers-scattered-day")),
-                                                std::pair<QString, QString>(QStringLiteral("10n"), QStringLiteral("weather-showers-scattered-night")),
-                                                std::pair<QString, QString>(QStringLiteral("11d"), QStringLiteral("weather-storm-day")),
-                                                std::pair<QString, QString>(QStringLiteral("11n"), QStringLiteral("weather-storm-night")),
-                                                std::pair<QString, QString>(QStringLiteral("13d"), QStringLiteral("weather-snow-scattered-day")),
-                                                std::pair<QString, QString>(QStringLiteral("13n"), QStringLiteral("weather-snow-scattered-night")),
-                                                std::pair<QString, QString>(QStringLiteral("50d"), QStringLiteral("weather-mist")),
-                                                std::pair<QString, QString>(QStringLiteral("50n"), QStringLiteral("weather-mist"))};
-    // neutral icon
-    static const QHash<QString, QString> neutralMap = {std::pair<QString, QString>(QStringLiteral("01d"), QStringLiteral("weather-clear")),
-                                                       std::pair<QString, QString>(QStringLiteral("01n"), QStringLiteral("weather-clear")),
-                                                       std::pair<QString, QString>(QStringLiteral("02d"), QStringLiteral("weather-few-clouds")),
-                                                       std::pair<QString, QString>(QStringLiteral("02n"), QStringLiteral("weather-few-clouds")),
-                                                       std::pair<QString, QString>(QStringLiteral("03d"), QStringLiteral("weather-clouds")),
-                                                       std::pair<QString, QString>(QStringLiteral("03n"), QStringLiteral("weather-clouds")),
-                                                       std::pair<QString, QString>(QStringLiteral("04d"), QStringLiteral("weather-many-clouds")),
-                                                       std::pair<QString, QString>(QStringLiteral("04n"), QStringLiteral("weather-many-clouds")),
-                                                       std::pair<QString, QString>(QStringLiteral("09d"), QStringLiteral("weather-showers-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("09n"), QStringLiteral("weather-showers-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("10d"), QStringLiteral("weather-showers-scattered-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("10n"), QStringLiteral("weather-showers-scattered-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("11d"), QStringLiteral("weather-storm-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("11n"), QStringLiteral("weather-storm-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("13d"), QStringLiteral("weather-snow-scattered-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("13n"), QStringLiteral("weather-snow-scattered-day")),
-                                                       std::pair<QString, QString>(QStringLiteral("50d"), QStringLiteral("weather-mist")),
-                                                       std::pair<QString, QString>(QStringLiteral("50n"), QStringLiteral("weather-mist"))};
     /*~~~~~~~~~~~ end of static variable ~~~~~~~~~~*/
 
     QJsonDocument mJson = QJsonDocument::fromJson(reply->readAll());
@@ -153,10 +93,10 @@ void OWMWeatherAPI::parse(QNetworkReply *reply)
         hourly.setPressure(fc.toObject()["main"].toObject()["pressure"].toInt());
         hourly.setWindSpeed(fc.toObject()["wind"].toObject()["speed"].toDouble());
         hourly.setTemperature(fc.toObject()["main"].toObject()["temp"].toDouble());
-        hourly.setNeutralWeatherIcon(neutralMap[fc.toObject()["weather"].toArray().at(0)["icon"].toString()]);
-        hourly.setWeatherIcon(map[fc.toObject()["weather"].toArray().at(0)["icon"].toString()]);
+        hourly.setNeutralWeatherIcon(neutralApiDescMap[fc.toObject()["weather"].toArray().at(0)["icon"].toString()].icon);
+        hourly.setWeatherIcon(apiDescMap[fc.toObject()["weather"].toArray().at(0)["icon"].toString()].icon);
         hourly.setWindDirection(getWindDirect(fc.toObject()["wind"].toObject()["deg"].toDouble()));
-        hourly.setWeatherDescription(fc.toObject()["weather"].toArray().at(0)["description"].toString());
+        hourly.setWeatherDescription(apiDescMap[fc.toObject()["weather"].toArray().at(0)["icon"].toString()].desc /*fc.toObject()["weather"].toArray().at(0)["description"].toString()*/);
         hourly.setPrecipitationAmount(fc.toObject()["rain"].toObject()["3h"].toDouble() + fc.toObject()["snow"].toObject()["3h"].toDouble());
         hourlyList.push_back(hourly);
         // add day if not already created
