@@ -35,7 +35,7 @@ QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
     auto query = resultsList[index.row()];
 
     if (role == NameRole) {
-        return query->name() + ", " + query->countryName();
+        return query->toponymName() + ", " + query->countryName();
     }
 
     return QVariant();

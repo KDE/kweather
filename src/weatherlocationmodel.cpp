@@ -302,7 +302,7 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
 void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 {
     qDebug() << "add location";
-    auto locId = ret->geonameId(), locName = ret->name();
+    auto locId = ret->geonameId(), locName = ret->toponymName();
     auto lat = ret->latitude(), lon = ret->longitude();
 
     // obtain timezone
