@@ -26,7 +26,6 @@ OWMWeatherAPI::~OWMWeatherAPI() = default;
 void OWMWeatherAPI::applySunriseDataToForecast()
 {
     currentData_.setSunrise(currentSunriseData_);
-    return;
 }
 
 void OWMWeatherAPI::parse(QNetworkReply *reply)

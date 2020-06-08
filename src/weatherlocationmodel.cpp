@@ -104,9 +104,6 @@ QJsonObject WeatherLocation::toJson()
 
 void WeatherLocation::updateData(AbstractWeatherForecast &fc)
 {
-    // only update if the forecast is newer
-    if (fc.timeCreated().toSecsSinceEpoch() < forecast_.timeCreated().toSecsSinceEpoch())
-        return;
     forecast_ = fc;
     determineCurrentForecast();
     lastUpdated_ = fc.timeCreated();
