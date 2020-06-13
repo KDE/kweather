@@ -22,7 +22,7 @@ Kirigami.ScrollablePage {
 
     Connections {
         target: weatherLocationListModel
-        onNetworkErrorCreating: showPassiveNotification("Unable to fetch timezone information")
+        onNetworkErrorCreating: showPassiveNotification(i18n("Unable to fetch timezone information"))
     }
 
     ListView {

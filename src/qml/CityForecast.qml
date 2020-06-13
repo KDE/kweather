@@ -28,7 +28,7 @@ Kirigami.ScrollablePage {
         if (refreshing) {
             weatherLocation.updateBackend();
         } else {
-            showPassiveNotification(i18n("Weather refreshed for ") + weatherLocation.name);
+            showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name);
         }
     }
     Connections {
@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                     color: Kirigami.Theme.disabledTextColor
                     Layout.topMargin: Kirigami.Units.largeSpacing
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                    text: i18n("Updated at ") + weatherLocation.lastUpdated
+                    text: i18n("Updated at %1", weatherLocation.lastUpdated)
                 }
             }
         }
@@ -201,7 +201,7 @@ Kirigami.ScrollablePage {
                                 text: i18n("Humidity")
                             }
                             Label {
-                                text: currentDay == null ? "" : currentDay.humidity.toFixed(1) + "%"
+                                text: currentDay == null ? "" : i18n("%1%", currentDay.humidity.toFixed(1))
                             }
                         }
                     }
@@ -225,7 +225,7 @@ Kirigami.ScrollablePage {
                                 text: i18n("Pressure")
                             }
                             Label {
-                                text: currentDay == null ? "" : currentDay.pressure.toFixed(1) + "hPa"
+                                text: currentDay == null ? "" : i18n("%1hPa", currentDay.pressure.toFixed(1))
                             }
                         }
                     }

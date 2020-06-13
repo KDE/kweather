@@ -52,7 +52,7 @@ Rectangle {
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
-                text: weather != null ? weather.precipitation.toFixed(1) + "mm" : ""
+                text: weather != null ? i18n("%1mm", weather.precipitation.toFixed(1)) : ""
             }
         }
 

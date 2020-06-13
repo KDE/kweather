@@ -42,17 +42,17 @@ Kirigami.ApplicationWindow
 
         actions: [
             Kirigami.Action {
-                text: "Forecast"
+                text: i18n("Forecast")
                 iconName: "weather-clear"
                 onTriggered: switchToPage(initPage());
             },
             Kirigami.Action {
-                text: "Locations"
+                text: i18n("Locations")
                 iconName: "globe"
                 onTriggered: switchToPage(citiesPage);
             },
             Kirigami.Action {
-                text: "Settings"
+                text: i18n("Settings")
                 iconName: "settings-configure"
                 onTriggered: switchToPage(settingsPage);
             }
@@ -86,23 +86,23 @@ Kirigami.ApplicationWindow
         id: aboutPage
         visible: false
         aboutData: {
-            "displayName": "Weather",
+            "displayName": i18n("Weather"),
             "productName": "kirigami/weather",
             "componentName": "kweather",
-            "shortDescription": "A mobile friendly weather app built with Kirigami.",
+            "shortDescription": i18n("A mobile friendly weather app built with Kirigami."),
             "homepage": "",
             "bugAddress": "",
             "version": "0.1",
             "otherText": "",
-            "copyrightStatement": "© 2020 Plasma Development Team",
+            "copyrightStatement": i18n("© 2020 Plasma Development Team"),
             "desktopFileName": "org.kde.kweather",
             "authors": [
                 {
-                    "name": "Han Young",
+                    "name": i18n("Han Young"),
                     "emailAddress": "hanyoung@protonmail.com",
                 },
                 {
-                    "name": "Devin Lin",
+                    "name": i18n("Devin Lin"),
                     "emailAddress": "espidev@gmail.com",
                     "webAddress": "https://espi.dev"
                 }
