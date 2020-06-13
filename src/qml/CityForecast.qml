@@ -28,7 +28,7 @@ Kirigami.ScrollablePage {
         if (refreshing) {
             weatherLocation.updateBackend();
         } else {
-            showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name);
+            showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
     }
     Connections {
