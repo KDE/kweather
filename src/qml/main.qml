@@ -49,7 +49,7 @@ Kirigami.ApplicationWindow
             Kirigami.Action {
                 text: i18n("Locations")
                 iconName: "globe"
-                onTriggered: switchToPage(citiesPage);
+                onTriggered: switchToPage(locationsPage);
             },
             Kirigami.Action {
                 text: i18n("Settings")
@@ -67,8 +67,8 @@ Kirigami.ApplicationWindow
         id: forecastPage
     }
 
-    CitiesPage {
-        id: citiesPage
+    LocationsPage {
+        id: locationsPage
         visible: false
     }
 
@@ -77,8 +77,8 @@ Kirigami.ApplicationWindow
         visible: false
     }
 
-    AddCityPage {
-        id: addCityPage
+    AddLocationPage {
+        id: addLocationPage
         visible: false
     }
 

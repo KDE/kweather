@@ -77,13 +77,6 @@ Kirigami.ScrollablePage {
             }
         }
 
-//        Label { // TODO wind speed text looks ugly
-//            Layout.alignment: Qt.AlignHCenter
-//            color: Kirigami.Theme.disabledTextColor
-////            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-//            text: weatherLocation.currentWeather.windSpeed + " " + weatherLocation.currentWeather.windDirection
-//        }
-
         Kirigami.Separator {}
 
         // daily view

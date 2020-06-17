@@ -11,7 +11,7 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.ScrollablePage {
-    title: i18n("Add city")
+    title: i18n("Add location")
 
     property string searchQuery: ""
 
@@ -114,7 +114,7 @@ Kirigami.ScrollablePage {
             }
             onClicked: {
                 locationQueryModel.addLocation(index);
-                switchToPage(citiesPage);
+                switchToPage(locationsPage);
             }
         }
     }

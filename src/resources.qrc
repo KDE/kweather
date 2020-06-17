@@ -6,13 +6,13 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
-        <file>qml/CitiesPage.qml</file>
-        <file>qml/CityForecast.qml</file>
+        <file>qml/LocationsPage.qml</file>
+        <file>qml/LocationForecast.qml</file>
         <file>qml/WeatherDayDelegate.qml</file>
         <file>qml/WeatherHourDelegate.qml</file>
         <file>qml/ForecastContainerPage.qml</file>
         <file>qml/SettingsPage.qml</file>
-        <file>qml/AddCityPage.qml</file>
+        <file>qml/AddLocationPage.qml</file>
         <file>qml/ProgressCircle.qml</file>
         <file>resources/autumn.jpg</file>
         <file>qml/DefaultPage.qml</file>

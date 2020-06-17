@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
     actions.main: Kirigami.Action {
         iconName: "list-add"
         text: i18n("Add Location")
-        onTriggered: pageStack.push(addCityPage)
+        onTriggered: pageStack.push(addLocationPage)
     }
 
     Connections {

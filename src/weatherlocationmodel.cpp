@@ -278,7 +278,7 @@ void WeatherLocationListModel::remove(int index)
     emit beginRemoveRows(QModelIndex(), index, index);
     auto location = locationsList.at(index);
     locationsList.removeAt(index);
-    //    delete location; TODO deletion has a chance of causing segfaults
+    delete location;
     emit endRemoveRows();
 
     save();
