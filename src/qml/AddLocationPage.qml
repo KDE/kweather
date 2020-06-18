@@ -25,8 +25,6 @@ Kirigami.ScrollablePage {
             height: search.height * 1.5
 
             Row {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.top

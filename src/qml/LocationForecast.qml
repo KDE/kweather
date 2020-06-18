@@ -117,6 +117,69 @@ Kirigami.ScrollablePage {
             delegate: WeatherDayDelegate {
                 weather: weatherLocation == null ? null : weatherLocation.dayListModel.get(index)
             }
+
+            // left right mouse controls
+            MouseArea {
+                id: dayMouseArea
+                anchors.fill: parent
+                hoverEnabled: true
+                z: -1
+            }
+            Button {
+                icon.name: "arrow-left"
+                icon.color: "black"
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                visible: dayMouseArea.containsMouse || leftMouseArea.containsMouse
+                onClicked: {
+                    if (dailyListView.currentIndex > 0) {
+                        dailyListView.currentIndex--;
+                        weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
+                    }
+                }
+                MouseArea {
+                    id: leftMouseArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: parent.clicked()
+                    onPressed: {
+                        parent.checkable = true;
+                        parent.checked = true;
+                    }
+                    onReleased: {
+                        parent.checkable = false;
+                        parent.checked = false;
+                    }
+                }
+            }
+            Button {
+                icon.name: "arrow-right"
+                icon.color: "black"
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                visible: dayMouseArea.containsMouse || rightMouseArea.containsMouse
+                onClicked: {
+                    if (dailyListView.currentIndex < dailyListView.count-1) {
+                        dailyListView.currentIndex++;
+                        weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
+                    }
+                }
+                MouseArea {
+                    id: rightMouseArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: parent.clicked()
+                    onPressed: {
+                        parent.checkable = true;
+                        parent.checked = true;
+                    }
+                    onReleased: {
+                        parent.checkable = false;
+                        parent.checked = false;
+                    }
+                }
+            }
+
         }
 
         // hourly view
@@ -128,6 +191,7 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
         }
         ListView {
+            id: weatherHourListView
             orientation: ListView.Horizontal
 
             implicitHeight: Kirigami.Units.gridUnit * 9
@@ -141,6 +205,46 @@ Kirigami.ScrollablePage {
             delegate: WeatherHourDelegate {
                 weather: weatherLocation == null ? null : weatherLocation.hourListModel.get(index)
             }
+
+            // left right mouse controls
+            MouseArea {
+                id: hourMouseArea
+                anchors.fill: parent
+                hoverEnabled: true
+            }
+            Button {
+                id: control
+                icon.name: "arrow-left"
+                icon.color: "black"
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                visible: hourMouseArea.containsMouse
+                SmoothedAnimation {
+                    target: weatherHourListView
+                    property: "contentX"
+                    running: control.pressed
+                    to: 0
+                    velocity: 500
+                    maximumEasingTime: 0
+                }
+            }
+            Button {
+                id: control2
+                icon.name: "arrow-right"
+                icon.color: "black"
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                visible: hourMouseArea.containsMouse
+                SmoothedAnimation {
+                    target: weatherHourListView
+                    property: "contentX"
+                    running: control2.pressed
+                    to: weatherHourListView.contentWidth - weatherHourListView.width
+                    velocity: 500
+                    maximumEasingTime: 0
+                }
+            }
+
         }
 
         Kirigami.Separator {}
