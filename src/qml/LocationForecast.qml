@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                 icon.color: "black"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                visible: dayMouseArea.containsMouse || leftMouseArea.containsMouse
+                visible: (dayMouseArea.containsMouse || leftMouseArea.containsMouse) && dailyListView.currentIndex != 0
                 onClicked: {
                     if (dailyListView.currentIndex > 0) {
                         dailyListView.currentIndex--;
@@ -157,7 +157,7 @@ Kirigami.ScrollablePage {
                 icon.color: "black"
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: dayMouseArea.containsMouse || rightMouseArea.containsMouse
+                visible: (dayMouseArea.containsMouse || rightMouseArea.containsMouse) && dailyListView.currentIndex != dailyListView.count - 1
                 onClicked: {
                     if (dailyListView.currentIndex < dailyListView.count-1) {
                         dailyListView.currentIndex++;
@@ -218,7 +218,7 @@ Kirigami.ScrollablePage {
                 icon.color: "black"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                visible: hourMouseArea.containsMouse
+                visible: hourMouseArea.containsMouse && weatherHourListView.contentX != 0
                 SmoothedAnimation {
                     target: weatherHourListView
                     property: "contentX"
@@ -234,7 +234,7 @@ Kirigami.ScrollablePage {
                 icon.color: "black"
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: hourMouseArea.containsMouse
+                visible: hourMouseArea.containsMouse && weatherHourListView.contentX != weatherHourListView.contentWidth - weatherHourListView.width
                 SmoothedAnimation {
                     target: weatherHourListView
                     property: "contentX"
