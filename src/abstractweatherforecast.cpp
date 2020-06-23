@@ -47,11 +47,20 @@ AbstractWeatherForecast AbstractWeatherForecast::fromJson(QJsonObject obj)
     QList<AbstractHourlyWeatherForecast> hourList;
     QList<AbstractDailyWeatherForecast> dayList;
     QList<AbstractSunrise> sunriseList;
+    auto now = QDateTime::currentDateTime();
 
-    for (auto hour : obj["hourlyForecasts"].toArray())
-        hourList.push_back(AbstractHourlyWeatherForecast::fromJson(hour.toObject()));
-    for (auto day : obj["dailyForecasts"].toArray())
-        dayList.push_back(AbstractDailyWeatherForecast::fromJson(day.toObject()));
+    for (auto hour : obj["hourlyForecasts"].toArray()) {
+        auto hours = AbstractHourlyWeatherForecast::fromJson(hour.toObject());
+        if (hours.date().secsTo(now) > 3600) // if more than one hour ago, discard
+            continue;
+        hourList.push_back(hours);
+    }
+    for (auto day : obj["dailyForecasts"].toArray()) {
+        auto days = AbstractDailyWeatherForecast::fromJson(day.toObject());
+        if (days.date().daysTo(now.date()) > 0) // discard if from previous days
+            continue;
+        dayList.push_back(days);
+    }
     for (auto sr : obj["sunrise"].toArray())
         sunriseList.push_back(AbstractSunrise::fromJson(sr.toObject()));
 
