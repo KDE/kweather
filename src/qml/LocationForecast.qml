@@ -14,7 +14,6 @@ import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
-    Layout.fillWidth: true
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
 
     background: null // transparent, since there is a page behind
@@ -38,9 +37,6 @@ Kirigami.ScrollablePage {
 
     // all elements are in a column
     ColumnLayout {
-        Layout.fillWidth: true
-        anchors.leftMargin: 1
-        anchors.rightMargin: 1
         spacing: Kirigami.Units.largeSpacing * 2
 
         RowLayout {
@@ -127,7 +123,6 @@ Kirigami.ScrollablePage {
             }
             Button {
                 icon.name: "arrow-left"
-                icon.color: "black"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 visible: (dayMouseArea.containsMouse || leftMouseArea.containsMouse) && dailyListView.currentIndex != 0
@@ -154,7 +149,6 @@ Kirigami.ScrollablePage {
             }
             Button {
                 icon.name: "arrow-right"
-                icon.color: "black"
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 visible: (dayMouseArea.containsMouse || rightMouseArea.containsMouse) && dailyListView.currentIndex != dailyListView.count - 1
@@ -215,7 +209,6 @@ Kirigami.ScrollablePage {
             Button {
                 id: control
                 icon.name: "arrow-left"
-                icon.color: "black"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 visible: hourMouseArea.containsMouse && weatherHourListView.contentX != 0
@@ -231,7 +224,6 @@ Kirigami.ScrollablePage {
             Button {
                 id: control2
                 icon.name: "arrow-right"
-                icon.color: "black"
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 visible: hourMouseArea.containsMouse && weatherHourListView.contentX != weatherHourListView.contentWidth - weatherHourListView.width
