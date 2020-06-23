@@ -9,8 +9,11 @@ project(kweather)
 
 cmake_minimum_required(VERSION 2.8.12)
 set(KF5_MIN_VERSION "5.60.0")
-set(QT_MIN_VERSION "5.12.0")
-
+if (ANDROID)
+    set(QT_MIN_VERSION "5.15.0") # the QTimezone doesn't work with Qt version before 5.15 beta 3
+else()
+    set(QT_MIN_VERSION "5.12.0")
+endif()
 ################# Disallow in-source build #################
 
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
