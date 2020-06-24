@@ -16,6 +16,21 @@ Kirigami.ScrollablePage {
     id: page
     title: forecastView.count == 0 ? i18n("Forecast") : weatherLocationListModel.get(forecastView.currentIndex).name
 
+    // left right arrows for desktop
+    actions.contextualActions: [
+        Kirigami.Action {
+                iconName: "arrow-left"
+                onTriggered: forecastView.currentIndex--
+                enabled: forecastView.currentIndex > 0
+        },
+        Kirigami.Action {
+            iconName: "arrow-right"
+            onTriggered: forecastView.currentIndex++
+            enabled: forecastView.currentIndex < forecastView.count-1
+        }
+    ]
+
+    // individual locations
     SwipeView {
         id: forecastView
         anchors.fill: parent
@@ -33,6 +48,7 @@ Kirigami.ScrollablePage {
 
     // TODO figure out why pageindicator needs to be here in order for swipeview to display
     PageIndicator {
+        anchors.horizontalCenter: page.horizontalCenter
         visible: forecastView.count > 1
         count: forecastView.count
         currentIndex: forecastView.currentIndex
