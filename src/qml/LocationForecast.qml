@@ -48,10 +48,10 @@ Kirigami.ScrollablePage {
             Kirigami.Icon {
                 id: weatherIcon
                 source: weatherLocation.currentWeather == null ? "weather-none-available" : weatherLocation.currentWeather.weatherIcon
-                Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 19
-                Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 19
-                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 9
-                Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 9
+                Layout.preferredHeight: Kirigami.Units.iconSizes.enormous
+                Layout.preferredWidth: Kirigami.Units.iconSizes.enormous
+                Layout.minimumHeight: Kirigami.Units.iconSizes.large
+                Layout.minimumWidth: Kirigami.Units.iconSizes.large
                 smooth: true
                 Layout.alignment: Qt.AlignHCenter
             }

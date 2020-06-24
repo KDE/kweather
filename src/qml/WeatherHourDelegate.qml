@@ -31,8 +31,8 @@ Rectangle {
 
         Kirigami.Icon {
             source: weather != null ? weather.weatherIcon : ""
-            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
-            Layout.minimumWidth: Layout.minimumHeight
+            Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+            Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
             text: weather != null ? weather.temperature : ""
@@ -47,8 +47,8 @@ Rectangle {
             visible: weather != null
             Kirigami.Icon {
                 source: "raindrop"
-                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                Layout.minimumWidth: Layout.minimumHeight
+                Layout.preferredHeight: Kirigami.Units.iconSizes.small
+                Layout.preferredWidth: Kirigami.Units.iconSizes.small
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
@@ -60,8 +60,8 @@ Rectangle {
         RowLayout {
             Kirigami.Icon {
                 source: "arrow-right"
-                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                Layout.minimumWidth: Layout.minimumHeight
+                Layout.preferredHeight: Kirigami.Units.iconSizes.small
+                Layout.preferredWidth: Kirigami.Units.iconSizes.small
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
