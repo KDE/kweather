@@ -14,12 +14,18 @@ import kweather 1.0
 Kirigami.ScrollablePage {
     title: i18n("Locations")
     property int currentIndex: 0;
-    actions.main: Kirigami.Action {
-        iconName: "list-add"
-        text: i18n("Add Location")
-        onTriggered: pageStack.push(addLocationPage)
+    actions{
+        right: Kirigami.Action {
+            iconName: "list-add"
+            text: i18n("Add Location")
+            onTriggered: pageStack.push(addLocationPage)
+        }
+        left: Kirigami.Action {
+            iconName: "list-add"
+            text: i18n("Add Current Location")
+            onTriggered: weatherLocationListModel.requestCurrentLocation()
+        }
     }
-
     Connections {
         target: weatherLocationListModel
         onNetworkErrorCreating: showPassiveNotification(i18n("Unable to fetch timezone information"))
