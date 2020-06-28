@@ -188,7 +188,7 @@ Kirigami.ScrollablePage {
             id: weatherHourListView
             orientation: ListView.Horizontal
 
-            implicitHeight: Kirigami.Units.gridUnit * 9
+            implicitHeight: Kirigami.Units.gridUnit * 10.5
             implicitWidth: parent.width
             spacing: Kirigami.Units.largeSpacing * 3
             clip: true

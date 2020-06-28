@@ -14,7 +14,7 @@ import kweather 1.0
 
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 5
-    implicitHeight: Kirigami.Units.gridUnit * 8
+    implicitHeight: Kirigami.Units.gridUnit * 10
     color: "transparent"
 
     property WeatherHour weather
