@@ -82,6 +82,16 @@ Kirigami.ScrollablePage {
             icon.name: "search"
             text: i18n("Search for a location")
             visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery == ""
+
+            helpfulAction: Kirigami.Action {
+                iconName: "list-add"
+                text: i18n("Add current location")
+                onTriggered: {
+                    weatherLocationListModel.requestCurrentLocation()
+                    defaultPage.loading = true
+                    switchToPage(defaultPage)
+                }
+            }
         }
 
         // no results

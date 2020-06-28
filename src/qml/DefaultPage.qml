@@ -25,6 +25,8 @@ Kirigami.ScrollablePage {
         onSuccessfullyCreatedDefault: {
             switchToPage(forecastPage);
             loading = false;
+            // switch to current
+            forecastPage.forecastView.currentIndex = forecastPage.forecastView.count-1
         }
     }
 
