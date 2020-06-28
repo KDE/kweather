@@ -44,10 +44,10 @@ Kirigami.ScrollablePage {
             Kirigami.Icon {
                 id: weatherIcon
                 source: weatherLocation.currentWeather == null ? "weather-none-available" : weatherLocation.currentWeather.weatherIcon
-                Layout.preferredHeight: Kirigami.Units.iconSizes.enormous
-                Layout.preferredWidth: Kirigami.Units.iconSizes.enormous
-                Layout.minimumHeight: Kirigami.Units.iconSizes.large
-                Layout.minimumWidth: Kirigami.Units.iconSizes.large
+                Layout.preferredHeight: Kirigami.Units.iconSizes.huge * 1.3
+                Layout.preferredWidth: Kirigami.Units.iconSizes.huge * 1.3
+                Layout.minimumHeight: Kirigami.Units.iconSizes.huge * 1.3
+                Layout.minimumWidth: Kirigami.Units.iconSizes.huge * 1.3
                 smooth: true
                 Layout.alignment: Qt.AlignHCenter
             }
@@ -55,12 +55,12 @@ Kirigami.ScrollablePage {
             // weather header
             ColumnLayout {
                 Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3.5
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
                     text: weatherLocation.currentWeather == null ? "0" : weatherLocation.currentWeather.temperatureRounded
                 }
                 Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
                     text: weatherLocation.currentWeather == null ? "Unknown" : weatherLocation.currentWeather.weatherDescription
                 }
