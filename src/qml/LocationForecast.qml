@@ -303,7 +303,7 @@ Kirigami.ScrollablePage {
                     RowLayout {
                         spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
-                            source: "compass"
+                            source: "speedometer"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                             Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
@@ -361,7 +361,7 @@ Kirigami.ScrollablePage {
                     RowLayout {
                         spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
-                            source: "compass"
+                            source: "go-up"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                             Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
@@ -385,7 +385,7 @@ Kirigami.ScrollablePage {
                     RowLayout {
                         spacing: Kirigami.Units.largeSpacing
                         Kirigami.Icon {
-                            source: "compass"
+                            source: "go-down"
                             Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                             Layout.minimumWidth: Layout.minimumHeight * 1.5
                         }
