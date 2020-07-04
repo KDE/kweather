@@ -213,7 +213,7 @@ WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 void WeatherLocationListModel::load()
 {
     // load locations from kconfig
-    auto config = KSharedConfig::openConfig();
+    auto config = KSharedConfig::openConfig(QString(), KSharedConfig::FullConfig, QStandardPaths::AppConfigLocation);
     KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
     QJsonDocument doc = QJsonDocument::fromJson(group.readEntry(WEATHER_LOCATIONS_CFG_KEY, "{}").toUtf8());
     for (QJsonValueRef r : doc.array()) {
@@ -231,7 +231,7 @@ void WeatherLocationListModel::save()
     QJsonObject obj;
     obj["list"] = arr;
 
-    auto config = KSharedConfig::openConfig();
+    auto config = KSharedConfig::openConfig(QString(), KSharedConfig::FullConfig, QStandardPaths::AppConfigLocation);
     KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
     group.writeEntry(WEATHER_LOCATIONS_CFG_KEY, QString(QJsonDocument(arr).toJson(QJsonDocument::Compact)));
 }
