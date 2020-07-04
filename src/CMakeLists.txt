@@ -23,12 +23,13 @@ set(kweather_SRCS
     abstracthourlyweatherforecast.h
     nmiweatherapi2.cpp
     nmiweatherapi2.h
-    settingsmodel.cpp
     nmisunriseapi.cpp
     abstractsunrise.cpp
     global.h
     resources.qrc
 )
+
+kconfig_add_kcfg_files(kweather_SRCS kweathersettings.kcfgc GENERATE_MOC)
 
 add_executable(kweather ${kweather_SRCS})
 target_link_libraries(kweather
@@ -39,6 +40,7 @@ target_link_libraries(kweather
     Qt5::Network
     KF5::I18n
     KF5::ConfigCore
+    KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
 )

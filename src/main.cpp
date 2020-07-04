@@ -20,11 +20,11 @@
 #include "abstractdailyweatherforecast.h"
 #include "abstracthourlyweatherforecast.h"
 #include "locationquerymodel.h"
-#include "settingsmodel.h"
 #include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocationmodel.h"
+#include "kweathersettings.h"
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
@@ -43,12 +43,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
     auto *locationQueryModel = new LocationQueryModel();
-    auto *settingsModel = new SettingsModel();
     WeatherForecastManager::instance(*weatherLocationListModel);
+
+    KWeatherSettings settings;
 
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
-    engine.rootContext()->setContextProperty("settingsModel", settingsModel);
+    engine.rootContext()->setContextProperty("settingsModel", &settings);
     // the longer the merrier, this add locations
     QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, [weatherLocationListModel, locationQueryModel] { weatherLocationListModel->addLocation(locationQueryModel->get(locationQueryModel->index_)); });
 

@@ -138,6 +138,7 @@ Kirigami.ScrollablePage {
                     onCheckedChanged: {
                         if (checked) {
                             settingsModel.temperatureUnits = modelData;
+                            settingsModel.save()
                         }
                     }
                 }
@@ -172,6 +173,7 @@ Kirigami.ScrollablePage {
                     onCheckedChanged: {
                         if (checked) {
                             settingsModel.speedUnits = modelData;
+                            settingsModel.save()
                         }
                     }
                 }
@@ -193,7 +195,10 @@ Kirigami.ScrollablePage {
         title: i18n("OpenWeatherMap API Token")
         standardButtons: Dialog.Close | Dialog.Save
 
-        onAccepted: settingsModel.OWMToken = textField.text;
+        onAccepted: {
+            settingsModel.OWMToken = textField.text
+            settingsModel.save()
+        }
 
         contentItem: ColumnLayout {
             Layout.fillWidth: true

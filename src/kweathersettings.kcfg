@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kweatherrc" />
+  <group name="General">
+    <entry name="temperatureUnits" type="String">
+      <label>Temperature Unit</label>
+      <default>Celsius</default>
+    </entry>
+    <entry name="speedUnits" type="String">
+      <label>Speed Unit</label>
+      <default>kph</default>
+    </entry>
+    <entry name="OWMToken" type="String">
+      <label>OpenWeatherMap API token</label>
+      <default></default>
+    </entry>
+    <entry name="defaultBackend" type="String">
+      <label>Default Backend</label>
+      <default>Norway Meteorologisk Institutt</default>
+    </entry>
+  </group>
+</kcfg>
