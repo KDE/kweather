@@ -59,6 +59,10 @@ if (ANDROID)
         search
         list-add
         delete
+        arrow-right
+        speedometer
+        go-up
+        go-down
         compass
 
         weather-clear
