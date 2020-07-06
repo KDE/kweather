@@ -11,8 +11,10 @@
 #include <QAbstractListModel>
 #include <QObject>
 #include <QSettings>
+
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
+#include "kweathersettings.h"
 
 class WeatherLocation;
 class WeatherHour : public QObject
@@ -57,7 +59,7 @@ public:
     inline QString windSpeed() const
     {
         QSettings settings;
-        if (settings.value("Global/speedUnits", "Kph").toString() == "kph")
+        if (KWeatherSettings().speedUnits() == "kph")
             return QString::number(windSpeed_, 'g', 1) + "km/h";
         else
             return QString::number(windSpeed_ * 0.62, 'g', 1) + "mph";
@@ -65,7 +67,7 @@ public:
     inline QString temperature() const
     {
         QSettings settings;
-        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+        if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
             return QString::number(temperature_ * 1.8 + 32, 'f', 1) + "°";
         } else {
             return QString::number(temperature_, 'f', 1) + "°";
@@ -74,7 +76,7 @@ public:
     QString temperatureRounded() const
     {
         QSettings settings;
-        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+        if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
             return QString::number(qRound(temperature_ * 1.8 + 32)) + "°";
         } else {
             return QString::number(qRound(temperature_)) + "°";

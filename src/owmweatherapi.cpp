@@ -6,6 +6,8 @@
  */
 
 #include "owmweatherapi.h"
+#include "kweathersettings.h"
+
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -136,10 +138,9 @@ void OWMWeatherAPI::update()
     }
 
     QUrlQuery query;
-    QSettings settings;
     query.addQueryItem(QLatin1String("lat"), QString().setNum(latitude_));
     query.addQueryItem(QLatin1String("lon"), QString().setNum(longitude_));
-    query.addQueryItem(QLatin1String("APPID"), settings.value("Global/OWMToken").toString());
+    query.addQueryItem(QLatin1String("APPID"), KWeatherSettings().oWMToken());
     query.addQueryItem(QLatin1String("units"), QLatin1String("metric"));
 
     QUrl url;

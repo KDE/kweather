@@ -16,6 +16,7 @@ class WeatherLocation;
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
 #include "abstractsunrise.h"
+#include "kweathersettings.h"
 
 // generated from the forecasts list
 class WeatherDay : public QObject
@@ -45,7 +46,7 @@ public:
     inline QDateTime date() {return QDateTime(date_);}
     inline QString maxTemp() {
         QSettings settings;
-        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+        if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
             return QString::number(qRound(maxTemp_ * 1.8 + 32)) + "°";
         } else {
             return QString::number(qRound(maxTemp_)) + "°";
@@ -53,7 +54,7 @@ public:
     }
     inline QString minTemp() {
         QSettings settings;
-        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
+        if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
             return QString::number(qRound(minTemp_ * 1.8 + 32)) + "°";
         } else {
             return QString::number(qRound(minTemp_)) + "°";

@@ -89,7 +89,7 @@ Kirigami.ScrollablePage {
                     font.weight: Font.Bold
                 }
                 Label {
-                    text: settingsModel.OWMToken.length == 0 ? i18n("Not Set") : i18n("Added")
+                    text: settingsModel.OWMToken == undefined || settingsModel.OWMToken.length == 0 ? i18n("Not Set") : i18n("Added")
                 }
             }
         }
@@ -118,8 +118,7 @@ Kirigami.ScrollablePage {
         id: temperatureUnits
         modal: true
         focus: true
-        x: (parent.width - width) / 2
-        y: parent.height / 2 - height
+        anchors.centerIn: Overlay.overlay
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
         height: Kirigami.Units.gridUnit * 20
         title: i18n("Temperature Units")
@@ -153,8 +152,7 @@ Kirigami.ScrollablePage {
         id: speedUnits
         modal: true
         focus: true
-        x: (parent.width - width) / 2
-        y: parent.height / 2 - height
+        anchors.centerIn: Overlay.overlay
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
         height: Kirigami.Units.gridUnit * 20
         title: i18n("Speed Units")
@@ -188,8 +186,7 @@ Kirigami.ScrollablePage {
         id: apiToken
         modal: true
         focus: true
-        x: (parent.width - width) / 2
-        y: parent.height / 2 - height
+        anchors.centerIn: Overlay.overlay
         width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
         height: Kirigami.Units.gridUnit * 10
         title: i18n("OpenWeatherMap API Token")
@@ -214,9 +211,9 @@ Kirigami.ScrollablePage {
             Kirigami.Separator {}
             TextField {
                 id: textField
-                placeholderText: settingsModel.OWMToken.length == 0 ? i18n("Add your API token here... ") : settingsModel.OWMToken
+                placeholderText: settingsModel.OWMToken == undefined || settingsModel.OWMToken.length == 0 ? i18n("Add your API token here... ") : settingsModel.OWMToken
                 anchors.top: parent.Top
-                width: parent.width
+//                width: parent.width
                 Layout.fillWidth: true
             }
             Kirigami.Separator {}

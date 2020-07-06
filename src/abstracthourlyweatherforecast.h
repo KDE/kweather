@@ -12,7 +12,6 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QObject>
-#include <QSettings>
 
 class AbstractHourlyWeatherForecast
 {
@@ -74,15 +73,6 @@ public:
     void setSymbolCode(const QString &symbolCode)
     {
         symbolCode_ = symbolCode;
-    }
-    QString temperatureFormatted() const
-    {
-        QSettings settings;
-        if (settings.value("Global/temperatureUnits", "Celsius").toString() == "Fahrenheit") {
-            return QString::number(qRound(temperature_ * 1.8 + 32)) + "°";
-        } else {
-            return QString::number(qRound(temperature_)) + "°";
-        }
     }
     float temperature() const
     {
