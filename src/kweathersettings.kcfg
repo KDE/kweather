@@ -19,7 +19,7 @@
     </entry>
     <entry name="defaultBackend" type="String">
       <label>Default Backend</label>
-      <default>Norway Meteorologisk Institutt</default>
+      <default>nmiweatherapi</default>
     </entry>
   </group>
 </kcfg>

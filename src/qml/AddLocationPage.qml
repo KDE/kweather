@@ -155,6 +155,7 @@ Kirigami.ScrollablePage {
                 onCheckedChanged: {
                     if (checked) {
                         settingsModel.defaultBackend = model.name;
+                        settingsModel.save();
                     }
                 }
             }
