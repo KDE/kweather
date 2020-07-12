@@ -115,65 +115,39 @@ Kirigami.ScrollablePage {
             }
 
             // left right mouse controls
-            MouseArea {
+            HoverHandler {
                 id: dayMouseArea
-                anchors.fill: parent
-                hoverEnabled: true
-                z: -1
             }
             Button {
                 icon.name: "arrow-left"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                visible: (dayMouseArea.containsMouse || leftMouseArea.containsMouse) && dailyListView.currentIndex != 0
+                visible: (dayMouseArea.hovered || leftMouseArea.hovered) && dailyListView.currentIndex != 0
                 onClicked: {
                     if (dailyListView.currentIndex > 0) {
                         dailyListView.currentIndex--;
                         weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
                     }
                 }
-                MouseArea {
+                HoverHandler {
                     id: leftMouseArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: parent.clicked()
-                    onPressed: {
-                        parent.checkable = true;
-                        parent.checked = true;
-                    }
-                    onReleased: {
-                        parent.checkable = false;
-                        parent.checked = false;
-                    }
                 }
             }
             Button {
                 icon.name: "arrow-right"
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: (dayMouseArea.containsMouse || rightMouseArea.containsMouse) && dailyListView.currentIndex != dailyListView.count - 1
+                visible: (dayMouseArea.hovered || rightMouseArea.hovered) && dailyListView.currentIndex != dailyListView.count - 1
                 onClicked: {
                     if (dailyListView.currentIndex < dailyListView.count-1) {
                         dailyListView.currentIndex++;
                         weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
                     }
                 }
-                MouseArea {
+                HoverHandler {
                     id: rightMouseArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: parent.clicked()
-                    onPressed: {
-                        parent.checkable = true;
-                        parent.checked = true;
-                    }
-                    onReleased: {
-                        parent.checkable = false;
-                        parent.checked = false;
-                    }
                 }
             }
-
         }
 
         // hourly view
@@ -201,17 +175,15 @@ Kirigami.ScrollablePage {
             }
 
             // left right mouse controls
-            MouseArea {
+            HoverHandler {
                 id: hourMouseArea
-                anchors.fill: parent
-                hoverEnabled: true
             }
             Button {
                 id: control
                 icon.name: "arrow-left"
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                visible: hourMouseArea.containsMouse && weatherHourListView.contentX != 0
+                visible: hourMouseArea.hovered && weatherHourListView.contentX != 0
                 SmoothedAnimation {
                     target: weatherHourListView
                     property: "contentX"
@@ -226,7 +198,7 @@ Kirigami.ScrollablePage {
                 icon.name: "arrow-right"
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                visible: hourMouseArea.containsMouse && weatherHourListView.contentX != weatherHourListView.contentWidth - weatherHourListView.width
+                visible: hourMouseArea.hovered && weatherHourListView.contentX != weatherHourListView.contentWidth - weatherHourListView.width
                 SmoothedAnimation {
                     target: weatherHourListView
                     property: "contentX"
