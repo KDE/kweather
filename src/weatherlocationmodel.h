@@ -7,9 +7,11 @@
 
 #ifndef WEATHERLOCATIONMODEL_H
 #define WEATHERLOCATIONMODEL_H
+
 #include "abstractweatherforecast.h"
 #include "nmiweatherapi2.h"
 #include "weatherhourmodel.h"
+
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QJsonDocument>
@@ -162,8 +164,13 @@ class WeatherLocationListModel : public QAbstractListModel
 public:
     explicit WeatherLocationListModel(QObject *parent = nullptr);
 
+    enum Roles {
+        LocationRole = Qt::UserRole
+    };
+
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
+    QHash<int, QByteArray> roleNames() const override;
 
     Q_INVOKABLE void updateUi();
     void load();

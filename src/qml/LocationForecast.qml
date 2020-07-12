@@ -111,7 +111,7 @@ Kirigami.ScrollablePage {
 
             model: weatherLocation.dayListModel
             delegate: WeatherDayDelegate {
-                weather: weatherLocation == null ? null : weatherLocation.dayListModel.get(index)
+                weather: dayItem
             }
 
             // left right mouse controls
@@ -197,7 +197,7 @@ Kirigami.ScrollablePage {
 
             model: weatherLocation.hourListModel
             delegate: WeatherHourDelegate {
-                weather: weatherLocation == null ? null : weatherLocation.hourListModel.get(index)
+                weather: hourItem
             }
 
             // left right mouse controls

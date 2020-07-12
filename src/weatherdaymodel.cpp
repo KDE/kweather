@@ -6,8 +6,6 @@
  */
 
 #include "weatherdaymodel.h"
-#include <QQmlEngine>
-#include <set>
 
 /* ~~~ WeatherDay ~~~ */
 
@@ -61,7 +59,18 @@ int WeatherDayListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherDayListModel::data(const QModelIndex &index, int role) const
 {
-    return QVariant();
+    if (!index.isValid() || index.row() >= daysList.count() || index.row() < 0) {
+        return {};
+    }
+    if (role == Roles::DayItemRole) {
+        return QVariant::fromValue(daysList.at(index.row()));
+    }
+    return {};
+}
+
+QHash<int, QByteArray> WeatherDayListModel::roleNames() const
+{
+    return {{Roles::DayItemRole, "dayItem"}};
 }
 
 WeatherDay *WeatherDayListModel::get(int index)

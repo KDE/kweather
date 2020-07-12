@@ -30,16 +30,16 @@ Rectangle {
         spacing: Kirigami.Units.smallSpacing
 
         Kirigami.Icon {
-            source: weather != null ? weather.weatherIcon : ""
+            source: weather.weatherIcon
             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
-            text: weather != null ? weather.temperature : ""
+            text: weather.temperature
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
         }
         Label {
-            text: weather != null ? weather.weatherDescription : ""
+            text: weather.weatherDescription
         }
 
         // precipitation
@@ -52,7 +52,7 @@ Rectangle {
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
-                text: weather != null ? i18n("%1mm", weather.precipitation.toFixed(1)) : ""
+                text: i18n("%1mm", weather.precipitation.toFixed(1))
             }
         }
 
@@ -65,14 +65,14 @@ Rectangle {
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
-                text: weather != null ? weather.windSpeed : ""
+                text: weather.windSpeed
             }
         }
 
         Label {
             font.weight: Font.Bold
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-            text: weather != null ? weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "") : ""
+            text: weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "")
         }
     }
 }

@@ -49,9 +49,6 @@ Kirigami.ScrollablePage {
         }
 
         delegate: Kirigami.SwipeListItem {
-
-            property WeatherLocation location: weatherLocationListModel.get(index)
-
             id: listItem
             actions: [
                 Kirigami.Action {

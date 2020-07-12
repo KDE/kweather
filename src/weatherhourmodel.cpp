@@ -6,7 +6,6 @@
  */
 
 #include "weatherhourmodel.h"
-#include <QQmlEngine>
 
 /* ~~~ WeatherHour ~~~ */
 
@@ -76,7 +75,18 @@ int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherHourListModel::data(const QModelIndex &index, int role) const
 {
-    return QVariant();
+    if (!index.isValid() || index.row() >= hoursList.count() || index.row() < 0) {
+        return {};
+    }
+    if (role == Roles::HourItemRole) {
+        return QVariant::fromValue(hoursList.at(index.row()));
+    }
+    return {};
+}
+
+QHash<int, QByteArray> WeatherHourListModel::roleNames() const
+{
+    return {{Roles::HourItemRole, "hourItem"}};
 }
 
 WeatherHour *WeatherHourListModel::get(int index)

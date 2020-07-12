@@ -11,6 +11,7 @@
 #include <QAbstractListModel>
 #include <QObject>
 #include <QSettings>
+#include <QQmlEngine>
 
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
@@ -159,8 +160,13 @@ class WeatherHourListModel : public QAbstractListModel
 public:
     explicit WeatherHourListModel(WeatherLocation* location = nullptr);
 
+    enum Roles {
+        HourItemRole = Qt::UserRole
+    };
+
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
+    QHash<int, QByteArray> roleNames() const override;
     Q_INVOKABLE WeatherHour *get(int index);
 
     Q_INVOKABLE void updateHourView(int index);

@@ -40,11 +40,11 @@ Rectangle {
 
         Label {
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-            text: weather != null ? weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "") : ""
+            text: weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
         }
 
         Kirigami.Icon {
-            source: weather != null ? weather.weatherIcon : ""
+            source: weather.weatherIcon
             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
@@ -53,17 +53,17 @@ Rectangle {
             Label {
                 id: highTemp
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                text: weather != null ? weather.maxTemp : ""
+                text: weather.maxTemp
             }
             Label {
                 anchors.baseline: highTemp.baseline
                 color: Kirigami.Theme.disabledTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                text: weather != null ? weather.minTemp : ""
+                text: weather.minTemp
             }
         }
         Label {
-            text: weather != null ? weather.weatherDescription : ""
+            text: weather.weatherDescription
         }
     }
 }

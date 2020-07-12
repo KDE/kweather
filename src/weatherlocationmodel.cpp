@@ -244,7 +244,18 @@ int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) const
 {
-    return QVariant();
+    if (!index.isValid() || index.row() >= locationsList.count() || index.row() < 0) {
+        return {};
+    }
+    if (role == Roles::LocationRole) {
+        return QVariant::fromValue(locationsList.at(index.row()));
+    }
+    return {};
+}
+
+QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
+{
+    return {{Roles::LocationRole, "location"}};
 }
 
 void WeatherLocationListModel::updateUi()

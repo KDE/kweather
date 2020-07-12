@@ -41,7 +41,7 @@ Kirigami.ScrollablePage {
             anchors.fill: parent
 
             LocationForecast {
-                weatherLocation: weatherLocationListModel.get(index)
+                weatherLocation: location
             }
         }
     }

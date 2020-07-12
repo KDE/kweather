@@ -12,6 +12,8 @@ class WeatherLocation;
 #include <QAbstractListModel>
 #include <QObject>
 #include <QSettings>
+#include <QQmlEngine>
+#include <set>
 
 #include "abstractweatherforecast.h"
 #include "weatherlocationmodel.h"
@@ -94,8 +96,13 @@ class WeatherDayListModel : public QAbstractListModel
 public:
     explicit WeatherDayListModel(WeatherLocation* location = nullptr);
 
+    enum Roles {
+        DayItemRole = Qt::UserRole
+    };
+
     int rowCount(const QModelIndex& parent) const override;
     QVariant data(const QModelIndex& index, int role) const override;
+    QHash<int, QByteArray> roleNames() const override;
     Q_INVOKABLE WeatherDay* get(int index);
 
     Q_INVOKABLE void updateUi();
