@@ -20,6 +20,11 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int
     , longitude_(longitude)
 {
     mManager = new QNetworkAccessManager();
+
+    mManager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+    mManager->setStrictTransportSecurityEnabled(true);
+    mManager->enableStrictTransportSecurityStore(true);
+
     sunriseApi_ = new NMISunriseAPI(
         latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
 

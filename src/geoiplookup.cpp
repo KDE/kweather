@@ -12,6 +12,11 @@
 GeoIPLookup::GeoIPLookup()
 {
     mManager = new QNetworkAccessManager();
+
+    mManager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+    mManager->setStrictTransportSecurityEnabled(true);
+    mManager->enableStrictTransportSecurityStore(true);
+
     QUrl url(QStringLiteral("https://geoip.ubuntu.com/lookup"));
     QNetworkRequest req(url);
     mReply = mManager->get(req);

@@ -21,6 +21,11 @@ NMISunriseAPI::NMISunriseAPI(float latitude, float longitude, int offset_secs)
     , offset_(offset_secs)
 {
     manager = new QNetworkAccessManager();
+
+    manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+    manager->setStrictTransportSecurityEnabled(true);
+    manager->enableStrictTransportSecurityStore(true);
+
     connect(manager, &QNetworkAccessManager::finished, this, &NMISunriseAPI::process);
 }
 

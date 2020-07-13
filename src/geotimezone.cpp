@@ -15,6 +15,11 @@ GeoTimeZone::GeoTimeZone(float lat, float lon, QObject *parent)
     : QObject(parent)
 {
     manager = new QNetworkAccessManager();
+
+    manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+    manager->setStrictTransportSecurityEnabled(true);
+    manager->enableStrictTransportSecurityStore(true);
+
     QUrl url(QStringLiteral("http://api.geonames.org/timezoneJSON"));
     QUrlQuery query;
     query.addQueryItem(QLatin1String("lat"), QString::number(lat));

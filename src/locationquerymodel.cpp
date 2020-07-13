@@ -15,7 +15,12 @@
 #include <QNetworkConfigurationManager>
 LocationQueryModel::LocationQueryModel()
 {
-    this->networkAccessManager = new QNetworkAccessManager(this);
+    networkAccessManager = new QNetworkAccessManager(this);
+
+    networkAccessManager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+    networkAccessManager->setStrictTransportSecurityEnabled(true);
+    networkAccessManager->enableStrictTransportSecurityStore(true);
+
     inputTimer = new QTimer(this);
     inputTimer->setSingleShot(true);
     connect(inputTimer, &QTimer::timeout, this, &LocationQueryModel::setQuery);

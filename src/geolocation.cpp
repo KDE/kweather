@@ -18,6 +18,10 @@ GeoLocation::GeoLocation(QObject *parent)
     : QObject(parent)
 {
     mManager = new QNetworkAccessManager();
+
+    mManager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+    mManager->setStrictTransportSecurityEnabled(true);
+    mManager->enableStrictTransportSecurityStore(true);
 }
 
 void GeoLocation::setName(QString &location)
