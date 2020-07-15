@@ -8,6 +8,7 @@
 [Desktop Entry]
 Name=Weather
 Name[ca]=Meteorologia
+Name[ca@valencia]=Meteorologia
 Name[cs]=Počasí
 Name[es]=Meteorología
 Name[fi]=Weather
@@ -24,6 +25,7 @@ Name[uk]=Погода
 Name[x-test]=xxWeatherxx
 Comment=A weather application in Kirigami.
 Comment[ca]=Una aplicació de meteorologia en Kirigami.
+Comment[ca@valencia]=Una aplicació de meteorologia en Kirigami.
 Comment[cs]=Předpověď počasí v Kirigami.
 Comment[es]=Aplicación meteorológica en Kirigami.
 Comment[fi]=Sääsovellus Kirigamilla.
