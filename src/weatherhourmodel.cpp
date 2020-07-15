@@ -75,11 +75,11 @@ int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherHourListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= hoursList.count() || index.row() < 0) {
+    if (!index.isValid() || index.row() < 0 || day >= dayList.count() || (index.row() + dayList.at(day)) >= hoursList.count()) {
         return {};
     }
     if (role == Roles::HourItemRole) {
-        return QVariant::fromValue(hoursList.at(index.row()));
+        return QVariant::fromValue(hoursList.at(index.row() + dayList.at(day)));
     }
     return {};
 }
