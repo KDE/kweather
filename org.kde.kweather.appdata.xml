@@ -8,6 +8,7 @@
   <id>org.kde.kweather</id>
   <name>Weather</name>
   <name xml:lang="ca">Meteorologia</name>
+  <name xml:lang="ca-valencia">Meteorologia</name>
   <name xml:lang="cs">Počasí</name>
   <name xml:lang="es">Meteorología</name>
   <name xml:lang="et">Ilm</name>
@@ -24,6 +25,7 @@
   <name xml:lang="x-test">xxWeatherxx</name>
   <summary>A convergent weather application.</summary>
   <summary xml:lang="ca">Una aplicació convergent de meteorologia.</summary>
+  <summary xml:lang="ca-valencia">Una aplicació convergent de meteorologia.</summary>
   <summary xml:lang="es">Aplicación meteorológica convergente.</summary>
   <summary xml:lang="et">Konvergentne ilmarakendus.</summary>
   <summary xml:lang="fr">Une application météo convergente.</summary>
@@ -40,6 +42,7 @@
   <project_license>GPL-2+</project_license>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
+  <developer_name xml:lang="ca-valencia">La comunitat KDE</developer_name>
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
   <developer_name xml:lang="es">Comunidad KDE</developer_name>
   <developer_name xml:lang="et">KDE kogukond</developer_name>
@@ -57,6 +60,7 @@
   <description>
     <p>KWeather is a full-featured weather application that is mobile friendly.</p>
     <p xml:lang="ca">El KWeather és una aplicació de meteorologia plena de funcionalitats que és fàcil d'emprar al mòbil.</p>
+    <p xml:lang="ca-valencia">El KWeather és una aplicació de meteorologia plena de funcionalitats que és fàcil d'emprar al mòbil.</p>
     <p xml:lang="es">KWeather es una completa aplicación meteorológica para móviles.</p>
     <p xml:lang="et">KWeather on rohkete võimalustega mobiilisõbralik ilmarakendus.</p>
     <p xml:lang="fr">KWeather est une application météo pleine de fonctionnalités et adapté au mobile.</p>
