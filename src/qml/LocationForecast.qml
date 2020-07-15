@@ -117,6 +117,7 @@ Kirigami.ScrollablePage {
             // left right mouse controls
             HoverHandler {
                 id: dayMouseArea
+                acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
             }
             Button {
                 icon.name: "arrow-left"
@@ -131,6 +132,7 @@ Kirigami.ScrollablePage {
                 }
                 HoverHandler {
                     id: leftMouseArea
+                    acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
                 }
             }
             Button {
@@ -146,6 +148,7 @@ Kirigami.ScrollablePage {
                 }
                 HoverHandler {
                     id: rightMouseArea
+                    acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
                 }
             }
         }
@@ -177,6 +180,7 @@ Kirigami.ScrollablePage {
             // left right mouse controls
             HoverHandler {
                 id: hourMouseArea
+                acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
             }
             Button {
                 id: control
