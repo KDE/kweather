@@ -43,6 +43,7 @@ target_link_libraries(kweather
     KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
+    KF5::DBusAddons
 )
 
 if (ANDROID)

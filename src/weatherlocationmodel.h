@@ -31,6 +31,7 @@ class NMISunriseAPI;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kweather.WeatherLocation")
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
     Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
@@ -52,30 +53,33 @@ public:
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
-
+    Q_SCRIPTABLE QString getWeatherData()
+    {
+        return QJsonDocument(this->forecast().toJson()).toJson();
+    }
     Q_INVOKABLE void updateBackend()
     {
         if (weatherBackendProvider() != nullptr)
             weatherBackendProvider()->update();
     }
 
-    inline QString locationId()
+    Q_SCRIPTABLE inline QString locationId()
     {
         return locationId_;
     }
-    inline QString locationName()
+    Q_SCRIPTABLE inline QString locationName()
     {
         return locationName_;
     }
-    inline QString &timeZone()
+    Q_SCRIPTABLE inline QString &timeZone()
     {
         return timeZone_;
     };
-    inline float latitude()
+    Q_SCRIPTABLE inline double latitude()
     {
         return latitude_;
     }
-    inline float longitude()
+    Q_SCRIPTABLE inline double longitude()
     {
         return longitude_;
     }
@@ -100,7 +104,7 @@ public:
     {
         return weatherBackendProvider_;
     }
-    inline QString lastUpdatedFormatted()
+    Q_SCRIPTABLE inline QString lastUpdatedFormatted()
     {
         return lastUpdated().toString("hh:mm ap");
     }
@@ -133,8 +137,8 @@ public slots:
 
 signals:
     void weatherRefresh(AbstractWeatherForecast &fc); // sent when weather data is refreshed
-    void currentForecastChange();
-    void propertyChanged(); // avoid warning
+    Q_SCRIPTABLE void currentForecastChange();
+    Q_SCRIPTABLE void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
 
 private:
@@ -160,13 +164,11 @@ private:
 class WeatherLocationListModel : public QAbstractListModel
 {
     Q_OBJECT
-
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kweather.LocationModel")
 public:
     explicit WeatherLocationListModel(QObject *parent = nullptr);
 
-    enum Roles {
-        LocationRole = Qt::UserRole
-    };
+    enum Roles { LocationRole = Qt::UserRole };
 
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -195,6 +197,8 @@ signals:
     void networkErrorCreating();        // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault();  // successful in getting current location
+    Q_SCRIPTABLE void removed(QString locationID);
+    Q_SCRIPTABLE void added(QString locationID);
 
 private:
     void addCurrentLocation();
