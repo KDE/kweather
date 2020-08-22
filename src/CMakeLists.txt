@@ -103,5 +103,5 @@ if (ANDROID)
         weather-storm-night
     )
 endif()
-
+add_subdirectory(plasmoid)
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
