@@ -13,16 +13,54 @@ import org.kde.kirigami 2.11 as Kirigami
 Item {
     Plasmoid.backgroundHints: "NoBackground";
     Plasmoid.fullRepresentation: Item {
-        Layout.preferredHeight: Kirigami.Units.gridUnit * 30
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 8
+        RowLayout {
+            id: weatherHeader
+            ColumnLayout {
+                Text {
+                    text: plasmoid.nativeInterface.cityName
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                }
+                Text {
+                    text: plasmoid.nativeInterface.tempNow
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                }
+                Text {
+                    text: plasmoid.nativeInterface.description
+                }
+            }
 
-        Flow {
-            Repeater {
-            model: plasmoid.nativeInterface.source()
-                Kirigami.Icon {
-                    source: modelData
-                    width: 50
-                    height: 50
+            ColumnLayout {
+                id: weatherList
+                Flow {
+                    Repeater {
+                        model: plasmoid.nativeInterface.date
+                        Text {
+                            text: modelData
+                            width: 80
+                            horizontalAlignment: Qt.AlignHCenter
+                        }
+                    }
+                }
+                Flow {
+                    Repeater {
+                        model: plasmoid.nativeInterface.forecast
+                        Kirigami.Icon {
+                            source: modelData
+                            width: 80
+                            height: 50
+                        }
+                    }
+                }
+                Flow {
+                    Repeater {
+                        model: plasmoid.nativeInterface.maxMinTemp
+                        Text {
+                            text: modelData
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.8
+                            width: 80
+                            horizontalAlignment: Qt.AlignHCenter
+                        }
+                    }
                 }
             }
         }
