@@ -17,6 +17,7 @@ class KWeather_1x4 : public Plasma::Applet
     Q_PROPERTY(QString cityName READ cityName NOTIFY locationChanged)
     Q_PROPERTY(QString description READ description NOTIFY dataUpdated)
     Q_PROPERTY(QString tempNow READ tempNow NOTIFY dataUpdated)
+    Q_PROPERTY(bool isSingleLocation READ isSingleLocation NOTIFY locationChanged)
 public:
     KWeather_1x4(QObject *parent, const QVariantList &args);
     QStringList date()
@@ -43,6 +44,11 @@ public:
     {
         return m_tempNow;
     };
+    bool isSingleLocation()
+    {
+        return m_isSingleLocation;
+    };
+    Q_INVOKABLE void nextLocation();
 signals:
     void dateChanged();
     void dataUpdated();
@@ -64,6 +70,11 @@ private:
     QString m_description;
     QString m_tempNow;
     QList<QString> locationList;
+
+    int m_currentLocationIndex = 0;
+    bool m_isCelsius;
+    bool m_isSingleLocation;
+    QDate m_currentDate;
 };
 
 #endif
