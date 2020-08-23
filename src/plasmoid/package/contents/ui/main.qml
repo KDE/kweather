@@ -10,24 +10,28 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.kirigami 2.11 as Kirigami
+import QtGraphicalEffects 1.12
 
 Item {
-    Plasmoid.backgroundHints: "NoBackground";
+    Plasmoid.backgroundHints: "ShadowBackground";
     Plasmoid.fullRepresentation: Item {
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 18
+        Layout.preferredWidth: weatherHeader.width
         RowLayout {
             id: weatherHeader
             ColumnLayout {
                 Text {
                     text: plasmoid.nativeInterface.cityName
+                    color: "white"
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
                 }
                 Text {
                     text: plasmoid.nativeInterface.tempNow
+                    color: "white"
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                 }
                 Text {
                     text: plasmoid.nativeInterface.description
+                    color: "white"
                 }
             }
 
@@ -38,6 +42,7 @@ Item {
                         model: plasmoid.nativeInterface.date
                         Text {
                             text: modelData
+                            color: "white"
                             width: Kirigami.Units.gridUnit * 4
                             horizontalAlignment: Qt.AlignHCenter
                         }
@@ -58,6 +63,7 @@ Item {
                         model: plasmoid.nativeInterface.maxMinTemp
                         Text {
                             text: modelData
+                            color: "white"
                             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.8
                             width: Kirigami.Units.gridUnit * 4
                             horizontalAlignment: Qt.AlignHCenter
