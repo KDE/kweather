@@ -20,6 +20,11 @@
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
+
+#ifndef Q_OS_ANRDOID
+#include <QDBusConnection>
+#endif
+
 #include <QDir>
 #include <QFile>
 #include <QJsonArray>
@@ -38,14 +43,7 @@ WeatherLocation::WeatherLocation()
     this->lastUpdated_ = QDateTime::currentDateTime();
 }
 
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
-                                 QString locationId,
-                                 QString locationName,
-                                 QString timeZone,
-                                 float latitude,
-                                 float longitude,
-                                 Kweather::Backend backend,
-                                 AbstractWeatherForecast forecast)
+WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, Kweather::Backend backend, AbstractWeatherForecast forecast)
     : backend_(backend)
     , locationName_(std::move(locationName))
     , timeZone_(std::move(timeZone))
@@ -79,14 +77,7 @@ WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
         api = new OWMWeatherAPI(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
         backendEnum = Kweather::Backend::OWM;
     }
-    auto weatherLocation = new WeatherLocation(api,
-                                               obj["locationId"].toString(),
-                                               obj["locationName"].toString(),
-                                               obj["timezone"].toString(),
-                                               obj["latitude"].toDouble(),
-                                               obj["longitude"].toDouble(),
-                                               backendEnum,
-                                               AbstractWeatherForecast());
+    auto weatherLocation = new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble(), backendEnum, AbstractWeatherForecast());
     return weatherLocation;
 }
 
@@ -208,6 +199,10 @@ WeatherLocation::~WeatherLocation()
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 {
     load();
+
+#ifndef Q_OS_ANRDOID
+    QDBusConnection::sessionBus().registerObject("/", this, QDBusConnection::ExportScriptableContents);
+#endif
 }
 
 void WeatherLocationListModel::load()
@@ -220,6 +215,13 @@ void WeatherLocationListModel::load()
         QJsonObject obj = r.toObject();
         locationsList.append(WeatherLocation::fromJson(obj));
     }
+
+#ifndef Q_OS_ANRDOID
+    for (auto loc : this->locationsList) {
+        QDBusConnection::sessionBus().registerObject("/locations/" + loc->locationId(), loc, QDBusConnection::ExportScriptableContents);
+        Q_EMIT added(loc->locationId());
+    }
+#endif
 }
 
 void WeatherLocationListModel::save()
@@ -285,10 +287,10 @@ void WeatherLocationListModel::remove(int index)
 {
     if ((index < 0) || (index >= locationsList.count()))
         return;
-
     emit beginRemoveRows(QModelIndex(), index, index);
     auto location = locationsList.at(index);
     locationsList.removeAt(index);
+    Q_EMIT removed(location->locationId());
     delete location;
     emit endRemoveRows();
 
@@ -349,6 +351,11 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
         location->update();
 
         insert(this->locationsList.count(), location);
+
+#ifndef Q_OS_ANRDOID
+        QDBusConnection::sessionBus().registerObject("/locations/" + location->locationId(), location, QDBusConnection::ExportScriptableContents);
+        Q_EMIT added(location->locationId());
+#endif
     });
 }
 
@@ -373,6 +380,11 @@ void WeatherLocationListModel::addCurrentLocation()
     location->update();
 
     insert(this->locationsList.count(), location);
+
+#ifndef Q_OS_ANRDOID
+    QDBusConnection::sessionBus().registerObject("/locations/" + location->locationId(), location, QDBusConnection::ExportScriptableContents);
+    Q_EMIT added(location->locationId());
+#endif
     emit successfullyCreatedDefault();
 }
 

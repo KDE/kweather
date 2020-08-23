@@ -43,6 +43,7 @@ target_link_libraries(kweather
     KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
+    KF5::DBusAddons
 )
 
 if (ANDROID)
@@ -103,4 +104,7 @@ if (ANDROID)
     )
 endif()
 
+if (UNIX)
+add_subdirectory(plasmoid)
+endif()
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
