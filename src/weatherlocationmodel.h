@@ -197,8 +197,11 @@ signals:
     void networkErrorCreating();        // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault();  // successful in getting current location
+
+#ifndef Q_OS_ANRDOID
     Q_SCRIPTABLE void removed(QString locationID);
     Q_SCRIPTABLE void added(QString locationID);
+#endif
 
 private:
     void addCurrentLocation();

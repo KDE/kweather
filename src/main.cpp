@@ -14,7 +14,11 @@
 #include <QtQml>
 
 #include <KAboutData>
+
+#ifndef Q_OS_ANRDOID
 #include <KDBusService>
+#endif
+
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -41,8 +45,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KAboutData aboutData("kweather", i18n("Weather"), "0.2", i18n("Weather application in Kirigami"), KAboutLicense::GPL, i18n("© 2020 KDE Community"));
     KAboutData::setApplicationData(aboutData);
 
+#ifndef Q_OS_ANRDOID
     // only allow one instance
     KDBusService service(KDBusService::Unique);
+#endif
+
     // allow to stay running when last window is closed
     app.setQuitOnLastWindowClosed(false);
 
@@ -73,9 +80,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     }
 
     QObject *rootObject = engine.rootObjects().first();
+
+#ifndef Q_OS_ANRDOID
     QObject::connect(&service, &KDBusService::activateRequested, rootObject, [=](const QStringList &arguments, const QString &workingDirectory) {
         Q_UNUSED(workingDirectory)
         QMetaObject::invokeMethod(rootObject, "show");
     });
+#endif
+
     return app.exec();
 }
