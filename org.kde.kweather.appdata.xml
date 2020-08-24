@@ -14,6 +14,7 @@
   <name xml:lang="es">Meteorología</name>
   <name xml:lang="et">Ilm</name>
   <name xml:lang="eu">Eguraldia</name>
+  <name xml:lang="fi">Weather</name>
   <name xml:lang="fr">Météo</name>
   <name xml:lang="it">Meteo</name>
   <name xml:lang="nl">Weer</name>
@@ -32,6 +33,7 @@
   <summary xml:lang="es">Aplicación meteorológica convergente.</summary>
   <summary xml:lang="et">Konvergentne ilmarakendus.</summary>
   <summary xml:lang="eu">Eguraldi aplikazio konbergente bat.</summary>
+  <summary xml:lang="fi">Tuttavallinen sääsovellus.</summary>
   <summary xml:lang="fr">Une application météo convergente.</summary>
   <summary xml:lang="it">Un'applicazione meteo convergente.</summary>
   <summary xml:lang="nl">Een convergente weer-toepassing.</summary>
@@ -52,6 +54,7 @@
   <developer_name xml:lang="es">Comunidad KDE</developer_name>
   <developer_name xml:lang="et">KDE kogukond</developer_name>
   <developer_name xml:lang="eu">KDEren komunitatea</developer_name>
+  <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
   <developer_name xml:lang="fr">Communauté KDE</developer_name>
   <developer_name xml:lang="it">Comunità KDE</developer_name>
   <developer_name xml:lang="nl">KDE gemeenschap</developer_name>
@@ -71,6 +74,7 @@
     <p xml:lang="es">KWeather es una completa aplicación meteorológica para móviles.</p>
     <p xml:lang="et">KWeather on rohkete võimalustega mobiilisõbralik ilmarakendus.</p>
     <p xml:lang="eu">KWeather ezaugarri ugariko eguraldi aplikazio bat da, mugikorrekiko lagunkoia dena.</p>
+    <p xml:lang="fi">KWeather on täysominaisuuksinen mobiiliystävällinen sääsovellus.</p>
     <p xml:lang="fr">KWeather est une application météo pleine de fonctionnalités et adapté au mobile.</p>
     <p xml:lang="it">KWeather è un'applicazione meteo completa per dispositivi mobili.</p>
     <p xml:lang="nl">KWeather is een weertoepassing vol met mogelijkheden die vriendelijk is op het mobieltje.</p>
