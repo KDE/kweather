@@ -72,11 +72,12 @@ Item {
                 }
             }
 
-            Button {
+            ToolButton {
                 Layout.fillHeight: true
                 Layout.preferredWidth: Kirigami.Units.gridUnit * 1.5
                 visible: !plasmoid.nativeInterface.isSingleLocation
-                text: ">"
+                flat: false
+                icon.name: "arrow-right"
                 onClicked: plasmoid.nativeInterface.nextLocation()
             }
         }
