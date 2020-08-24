@@ -61,6 +61,12 @@ install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kweather.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES kweather.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
 
+configure_file(org.kde.kweather.service.in
+               ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service
+        DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
+
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 # add clang-format target for all our real source files
 include(KDEClangFormat)

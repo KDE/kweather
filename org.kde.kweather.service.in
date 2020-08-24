@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.kde.kweather
+Exec=@CMAKE_INSTALL_PREFIX@/bin/kweather --daemon

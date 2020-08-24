@@ -33,7 +33,13 @@
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
-
+QCommandLineParser *createParser()
+{
+    QCommandLineParser *parser = new QCommandLineParser;
+    parser->addOption(QCommandLineOption(QStringLiteral("daemon"), i18n("Run in background mode")));
+    parser->addHelpOption();
+    return parser;
+}
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -79,13 +85,19 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         return -1;
     }
 
-    QObject *rootObject = engine.rootObjects().first();
-
 #ifndef Q_OS_ANRDOID
-    QObject::connect(&service, &KDBusService::activateRequested, rootObject, [=](const QStringList &arguments, const QString &workingDirectory) {
-        Q_UNUSED(workingDirectory)
-        QMetaObject::invokeMethod(rootObject, "show");
-    });
+    {
+        QScopedPointer<QCommandLineParser> parser(createParser());
+        parser->process(app);
+        QObject *rootObject = engine.rootObjects().first();
+        if (!parser->isSet(QStringLiteral("daemon"))) {
+            QMetaObject::invokeMethod(rootObject, "show");
+        }
+        QObject::connect(&service, &KDBusService::activateRequested, rootObject, [=](const QStringList &arguments, const QString &workingDirectory) {
+            Q_UNUSED(workingDirectory)
+            QMetaObject::invokeMethod(rootObject, "show");
+        });
+    }
 #endif
 
     return app.exec();

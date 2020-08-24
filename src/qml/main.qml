@@ -14,7 +14,7 @@ Kirigami.ApplicationWindow
 {
     id: appwindow
     title: i18n("Weather")
-    visible: true
+    visible: false // don't open in daemon mode
     
     width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
