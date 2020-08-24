@@ -66,7 +66,7 @@ void NMIWeatherAPI2::update()
     }
 
     // query weather api
-    QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/");
+    QUrl url("https://api.met.no/weatherapi/locationforecast/2.0/complete");
     QUrlQuery query;
     query.addQueryItem("lat", QString::number(latitude_));
     query.addQueryItem("lon", QString::number(longitude_));
