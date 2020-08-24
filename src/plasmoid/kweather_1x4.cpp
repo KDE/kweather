@@ -90,9 +90,9 @@ void KWeather_1x4::parse(QJsonDocument doc)
             break;
         m_forecast.append(days.toObject()["weatherIcon"].toString());
         if (m_isCelsius)
-            m_maxMinTemp.append(QString::number(days.toObject()["maxTemp"].toInt()) + "°C/" + QString::number(days.toObject()["minTemp"].toInt()) + "°C");
+            m_maxMinTemp.append(QString::number(static_cast<int>(days.toObject()["maxTemp"].toDouble())) + "°C/" + QString::number(static_cast<int>(days.toObject()["minTemp"].toDouble())) + "°C");
         else
-            m_maxMinTemp.append(QString::number(days.toObject()["maxTemp"].toInt() * 1.8 + 32) + "°/" + QString::number(days.toObject()["minTemp"].toInt() * 1.8 + 32) + "°");
+            m_maxMinTemp.append(QString::number(static_cast<int>(days.toObject()["maxTemp"].toDouble() * 1.8 + 32)) + "°/" + QString::number(static_cast<int>(days.toObject()["minTemp"].toDouble() * 1.8 + 32)) + "°");
     }
     Q_EMIT dataUpdated();
     if (m_currentDate.daysTo(QDate::currentDate()) >= 1) {
