@@ -1,6 +1,20 @@
 [Desktop Entry]
 Name=KWeather_1x4
+Name[ca]=KWeather_1x4
+Name[ca@valencia]=KWeather_1x4
+Name[nl]=KWeather_1x4
+Name[pt]=KWeather_1x4
+Name[sv]=KWeather 1 x 4
+Name[uk]=KWeather_1x4
+Name[x-test]=xxKWeather_1x4xx
 Comment=KWeather_1x4 widget
+Comment[ca]=Estri del KWeather_1x4
+Comment[ca@valencia]=Estri del KWeather_1x4
+Comment[nl]=KWeather_1x4 widget
+Comment[pt]=Elemento do KWeather_1x4
+Comment[sv]=KWeather 1 x 4 grafisk komponent
+Comment[uk]=Віджет KWeather_1x4
+Comment[x-test]=xxKWeather_1x4 widgetxx
 
 
 Icon=kweather
