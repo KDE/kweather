@@ -4,11 +4,29 @@
 - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 
-# KWeather
-A weather application for Plasma Mobile.
+# KWeather <img src="kweather.svg" width="40"/>
+A convergent weather application for Plasma.
 
-## Backends used
+## Features
+* Daily and hourly weather data from various weather backends
+* Plasmoids that can be used on desktop and mobile
+
+## Links
+* Project page: https://invent.kde.org/plasma-mobile/kweather
+* Issues: https://invent.kde.org/plasma-mobile/kweather/-/issues
+* Development channel: https://matrix.to/#/#plasmamobile:matrix.org
+
+## Installing
+```
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
+## Online APIs used
 * api.met.no - Weather data, sunrise/sunset data
 * geonames.org - Coordinates -> Timezone
 * geoip.ubuntu.com - IP -> Coordinates
-* openweathermap.org - Weather data (optional, require API token)
+* openweathermap.org - Weather data (optional, requires API token)
