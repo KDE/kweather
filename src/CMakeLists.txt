@@ -43,7 +43,6 @@ target_link_libraries(kweather
     KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
-    KF5::DBusAddons
 )
 
 if (ANDROID)
@@ -102,6 +101,8 @@ if (ANDROID)
         weather-storm-day
         weather-storm-night
     )
+else()
+    target_link_libraries(kweather KF5::DBusAddons)
 endif()
 
 if (UNIX AND (NOT ANDROID))
