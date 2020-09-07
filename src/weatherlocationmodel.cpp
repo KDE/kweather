@@ -21,7 +21,7 @@
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
 #include <QDBusConnection>
 #endif
 
@@ -200,7 +200,7 @@ WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 {
     load();
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
     QDBusConnection::sessionBus().registerObject("/", this, QDBusConnection::ExportScriptableContents);
 #endif
 }
@@ -216,7 +216,7 @@ void WeatherLocationListModel::load()
         locationsList.append(WeatherLocation::fromJson(obj));
     }
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
     for (auto loc : this->locationsList) {
         QDBusConnection::sessionBus().registerObject("/locations/" + loc->locationId(), loc, QDBusConnection::ExportScriptableContents);
         Q_EMIT added(loc->locationId());
@@ -352,7 +352,7 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
 
         insert(this->locationsList.count(), location);
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
         QDBusConnection::sessionBus().registerObject("/locations/" + location->locationId(), location, QDBusConnection::ExportScriptableContents);
         Q_EMIT added(location->locationId());
 #endif
@@ -381,7 +381,7 @@ void WeatherLocationListModel::addCurrentLocation()
 
     insert(this->locationsList.count(), location);
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
     QDBusConnection::sessionBus().registerObject("/locations/" + location->locationId(), location, QDBusConnection::ExportScriptableContents);
     Q_EMIT added(location->locationId());
 #endif

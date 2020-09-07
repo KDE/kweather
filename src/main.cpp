@@ -15,7 +15,7 @@
 
 #include <KAboutData>
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
 #include <KDBusService>
 #endif
 
@@ -51,7 +51,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KAboutData aboutData("kweather", i18n("Weather"), "0.2", i18n("Weather application in Kirigami"), KAboutLicense::GPL, i18n("© 2020 KDE Community"));
     KAboutData::setApplicationData(aboutData);
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
     // only allow one instance
     KDBusService service(KDBusService::Unique);
 #endif
@@ -85,7 +85,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         return -1;
     }
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
     {
         QScopedPointer<QCommandLineParser> parser(createParser());
         parser->process(app);

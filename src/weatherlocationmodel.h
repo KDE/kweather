@@ -198,7 +198,7 @@ signals:
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault();  // successful in getting current location
 
-#ifndef Q_OS_ANRDOID
+#ifndef Q_OS_ANDROID
     Q_SCRIPTABLE void removed(QString locationID);
     Q_SCRIPTABLE void added(QString locationID);
 #endif
