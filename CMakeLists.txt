@@ -51,7 +51,7 @@ if (ANDROID)
    find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Svg)
    find_package(OpenSSL REQUIRED)
 else()
-   find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma DBusAddons)
+   find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
 
 ################# build and install #################
