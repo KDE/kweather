@@ -45,8 +45,8 @@ Rectangle {
 
         Kirigami.Icon {
             source: weather.weatherIcon
-            Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-            Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 3.5
+            Layout.minimumWidth: Layout.minimumHeight
         }
         Row {
             spacing: Kirigami.Theme.defaultFont.pointSize * 0.6
