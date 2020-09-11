@@ -14,11 +14,6 @@
 #include <QtQml>
 
 #include <KAboutData>
-
-#ifndef Q_OS_ANDROID
-#include <KDBusService>
-#endif
-
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -33,13 +28,6 @@
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
-QCommandLineParser *createParser()
-{
-    QCommandLineParser *parser = new QCommandLineParser;
-    parser->addOption(QCommandLineOption(QStringLiteral("daemon"), i18n("Run in background mode")));
-    parser->addHelpOption();
-    return parser;
-}
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -50,14 +38,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     KAboutData aboutData("kweather", i18n("Weather"), "0.2", i18n("Weather application in Kirigami"), KAboutLicense::GPL, i18n("© 2020 KDE Community"));
     KAboutData::setApplicationData(aboutData);
-
-#ifndef Q_OS_ANDROID
-    // only allow one instance
-    KDBusService service(KDBusService::Unique);
-#endif
-
-    // allow to stay running when last window is closed
-    app.setQuitOnLastWindowClosed(false);
 
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
@@ -84,21 +64,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
-
-#ifndef Q_OS_ANDROID
-    {
-        QScopedPointer<QCommandLineParser> parser(createParser());
-        parser->process(app);
-        QObject *rootObject = engine.rootObjects().first();
-        if (!parser->isSet(QStringLiteral("daemon"))) {
-            QMetaObject::invokeMethod(rootObject, "show");
-        }
-        QObject::connect(&service, &KDBusService::activateRequested, rootObject, [=](const QStringList &arguments, const QString &workingDirectory) {
-            Q_UNUSED(workingDirectory)
-            QMetaObject::invokeMethod(rootObject, "show");
-        });
-    }
-#endif
 
     return app.exec();
 }

@@ -101,8 +101,6 @@ if (ANDROID)
         weather-storm-day
         weather-storm-night
     )
-else()
-    target_link_libraries(kweather KF5::DBusAddons)
 endif()
 
 if (UNIX AND (NOT ANDROID))

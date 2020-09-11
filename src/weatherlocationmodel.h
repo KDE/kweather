@@ -31,7 +31,6 @@ class NMISunriseAPI;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kweather.WeatherLocation")
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
     Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
@@ -53,33 +52,30 @@ public:
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
-    Q_SCRIPTABLE QString getWeatherData()
-    {
-        return QJsonDocument(this->forecast().toJson()).toJson();
-    }
+
     Q_INVOKABLE void updateBackend()
     {
         if (weatherBackendProvider() != nullptr)
             weatherBackendProvider()->update();
     }
 
-    Q_SCRIPTABLE inline QString locationId()
+    inline QString locationId()
     {
         return locationId_;
     }
-    Q_SCRIPTABLE inline QString locationName()
+    inline QString locationName()
     {
         return locationName_;
     }
-    Q_SCRIPTABLE inline QString &timeZone()
+    inline QString &timeZone()
     {
         return timeZone_;
     };
-    Q_SCRIPTABLE inline double latitude()
+    inline float latitude()
     {
         return latitude_;
     }
-    Q_SCRIPTABLE inline double longitude()
+    inline float longitude()
     {
         return longitude_;
     }
@@ -104,7 +100,7 @@ public:
     {
         return weatherBackendProvider_;
     }
-    Q_SCRIPTABLE inline QString lastUpdatedFormatted()
+    inline QString lastUpdatedFormatted()
     {
         return lastUpdated().toString("hh:mm ap");
     }
@@ -137,8 +133,8 @@ public slots:
 
 signals:
     void weatherRefresh(AbstractWeatherForecast &fc); // sent when weather data is refreshed
-    Q_SCRIPTABLE void currentForecastChange();
-    Q_SCRIPTABLE void propertyChanged(); // avoid warning
+    void currentForecastChange();
+    void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
 
 private:
@@ -164,7 +160,7 @@ private:
 class WeatherLocationListModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kweather.LocationModel")
+
 public:
     explicit WeatherLocationListModel(QObject *parent = nullptr);
 
@@ -197,9 +193,6 @@ signals:
     void networkErrorCreating();        // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault();  // successful in getting current location
-
-    Q_SCRIPTABLE void removed(QString locationID);
-    Q_SCRIPTABLE void added(QString locationID);
 
 private:
     void addCurrentLocation();

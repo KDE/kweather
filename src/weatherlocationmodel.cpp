@@ -20,11 +20,6 @@
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
-
-#ifndef Q_OS_ANDROID
-#include <QDBusConnection>
-#endif
-
 #include <QDir>
 #include <QFile>
 #include <QJsonArray>
@@ -199,10 +194,6 @@ WeatherLocation::~WeatherLocation()
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 {
     load();
-
-#ifndef Q_OS_ANDROID
-    QDBusConnection::sessionBus().registerObject("/", this, QDBusConnection::ExportScriptableContents);
-#endif
 }
 
 void WeatherLocationListModel::load()
@@ -215,13 +206,6 @@ void WeatherLocationListModel::load()
         QJsonObject obj = r.toObject();
         locationsList.append(WeatherLocation::fromJson(obj));
     }
-
-#ifndef Q_OS_ANDROID
-    for (auto loc : this->locationsList) {
-        QDBusConnection::sessionBus().registerObject("/locations/" + loc->locationId(), loc, QDBusConnection::ExportScriptableContents);
-        Q_EMIT added(loc->locationId());
-    }
-#endif
 }
 
 void WeatherLocationListModel::save()
@@ -287,10 +271,10 @@ void WeatherLocationListModel::remove(int index)
 {
     if ((index < 0) || (index >= locationsList.count()))
         return;
+
     emit beginRemoveRows(QModelIndex(), index, index);
     auto location = locationsList.at(index);
     locationsList.removeAt(index);
-    Q_EMIT removed(location->locationId());
     delete location;
     emit endRemoveRows();
 
@@ -351,11 +335,6 @@ void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
         location->update();
 
         insert(this->locationsList.count(), location);
-
-#ifndef Q_OS_ANDROID
-        QDBusConnection::sessionBus().registerObject("/locations/" + location->locationId(), location, QDBusConnection::ExportScriptableContents);
-        Q_EMIT added(location->locationId());
-#endif
     });
 }
 
@@ -380,11 +359,6 @@ void WeatherLocationListModel::addCurrentLocation()
     location->update();
 
     insert(this->locationsList.count(), location);
-
-#ifndef Q_OS_ANDROID
-    QDBusConnection::sessionBus().registerObject("/locations/" + location->locationId(), location, QDBusConnection::ExportScriptableContents);
-    Q_EMIT added(location->locationId());
-#endif
     emit successfullyCreatedDefault();
 }
 
