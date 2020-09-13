@@ -45,6 +45,8 @@ Kirigami.ScrollablePage {
                 source: weatherLocation.currentWeather == null ? "weather-none-available" : weatherLocation.currentWeather.weatherIcon
                 Layout.preferredHeight: width
                 Layout.preferredWidth: page.width * 0.8 - headerText.width
+                Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
+                Layout.maximumWidth: Kirigami.Theme.defaultFont.pointSize * 15
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 5
                 Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 5
                 smooth: true
