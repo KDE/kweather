@@ -38,22 +38,21 @@ Kirigami.ScrollablePage {
     // all elements are in a column
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing * 2
-
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
                 source: weatherLocation.currentWeather == null ? "weather-none-available" : weatherLocation.currentWeather.weatherIcon
-                Layout.preferredHeight: Kirigami.Theme.defaultFont.pointSize * 15
-                Layout.preferredWidth: Kirigami.Theme.defaultFont.pointSize * 15
-                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 15
-                Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 15
+                Layout.preferredHeight: width
+                Layout.preferredWidth: page.width * 0.8 - headerText.width
+                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 5
+                Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 5
                 smooth: true
-                Layout.alignment: Qt.AlignHCenter
             }
 
             // weather header
             ColumnLayout {
+                id: headerText
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
