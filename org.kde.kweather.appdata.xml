@@ -27,6 +27,7 @@
   <name xml:lang="sv">Väder</name>
   <name xml:lang="uk">Погода</name>
   <name xml:lang="x-test">xxWeatherxx</name>
+  <name xml:lang="zh-CN">天气</name>
   <summary>A convergent weather application.</summary>
   <summary xml:lang="ca">Una aplicació convergent de meteorologia.</summary>
   <summary xml:lang="ca-valencia">Una aplicació convergent de meteorologia.</summary>
@@ -46,6 +47,7 @@
   <summary xml:lang="sv">Ett bekvämt väderprogram.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди.</summary>
   <summary xml:lang="x-test">xxA convergent weather application.xx</summary>
+  <summary xml:lang="zh-CN">一个融合的天气应用。</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2+</project_license>
   <developer_name>KDE Community</developer_name>
@@ -69,6 +71,7 @@
   <developer_name xml:lang="sv">KDE-gemenskapen</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
+  <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
   <description>
     <p>KWeather is a full-featured weather application that is mobile friendly.</p>
     <p xml:lang="ca">El KWeather és una aplicació de meteorologia plena de funcionalitats que és fàcil d'emprar al mòbil.</p>
@@ -89,5 +92,6 @@
     <p xml:lang="sv">Kväder är ett väderprogram med alla funktioner som är mobilvänligt.</p>
     <p xml:lang="uk">KWeather — повноцінна програма для показу погоди, якою можна користуватися на мобільних пристроях.</p>
     <p xml:lang="x-test">xxKWeather is a full-featured weather application that is mobile friendly.xx</p>
+    <p xml:lang="zh-CN">KWeather 是一个全功能的移动友好天气应用程序。</p>
   </description>
 </component>
