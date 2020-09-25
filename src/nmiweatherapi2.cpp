@@ -24,14 +24,15 @@
 
 NMIWeatherAPI2::NMIWeatherAPI2(QString locationId, QString timeZone, double latitude, double longitude)
     : AbstractWeatherAPI(std::move(locationId), std::move(timeZone), -1, latitude, longitude)
-{}
+{
+}
 
-QString NMIWeatherAPI2::getSymbolCodeDescription(bool isDay, const QString& symbolCode)
+QString NMIWeatherAPI2::getSymbolCodeDescription(bool isDay, const QString &symbolCode)
 {
     return isDay ? apiDescMap[symbolCode + "_day"].desc : apiDescMap[symbolCode + "_night"].desc;
 }
 
-QString NMIWeatherAPI2::getSymbolCodeIcon(bool isDay, const QString& symbolCode)
+QString NMIWeatherAPI2::getSymbolCodeIcon(bool isDay, const QString &symbolCode)
 {
     return isDay ? apiDescMap[symbolCode + "_day"].icon : apiDescMap[symbolCode + "_night"].icon;
 }
@@ -59,8 +60,7 @@ void NMIWeatherAPI2::applySunriseDataToForecast()
 void NMIWeatherAPI2::update()
 {
     // don't update if updated recently, and forecast is not empty
-    if (!currentData_.dailyForecasts().empty() && !currentData_.hourlyForecasts().empty() &&
-        currentData_.timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
+    if (!currentData_.dailyForecasts().empty() && !currentData_.hourlyForecasts().empty() && currentData_.timeCreated().secsTo(QDateTime::currentDateTime()) < 300) {
         emit updated(currentData_);
         return;
     }
@@ -78,9 +78,7 @@ void NMIWeatherAPI2::update()
     req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
 
     // see §Identification on https://api.met.no/conditions_service.html
-    req.setHeader(
-        QNetworkRequest::UserAgentHeader,
-        QString(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion() + QLatin1String(" (kde-pim@kde.org)")));
+    req.setHeader(QNetworkRequest::UserAgentHeader, QString(QCoreApplication::applicationName() + QLatin1Char(' ') + QCoreApplication::applicationVersion() + QLatin1String(" (kde-pim@kde.org)")));
 
     // TODO see §Cache on https://api.met.no/conditions_service.html
     // see §Compression on https://api.met.no/conditions_service.html
@@ -125,7 +123,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
     }
 
     for (auto fc : currentData_.hourlyForecasts()) {
-        fc.setDate(fc.date().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))));
+        fc.setDate(fc.date().toTimeZone(QTimeZone(timeZone_.toUtf8())));
     }
 
     applySunriseDataToForecast(); // applies sunrise data whether we have it or not
@@ -134,9 +132,7 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
 }
 
 // https://api.met.no/weatherapi/locationforecast/2.0/documentation
-void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
-                                     QHash<QDate, AbstractDailyWeatherForecast> &dayCache,
-                                     QList<AbstractHourlyWeatherForecast> &hoursList)
+void NMIWeatherAPI2::parseOneElement(QJsonObject &object, QHash<QDate, AbstractDailyWeatherForecast> &dayCache, QList<AbstractHourlyWeatherForecast> &hoursList)
 {
     /*~~~~~~~~~~ static variable ~~~~~~~~~~~*/
     // rank weather (for what best describes the day overall)
@@ -167,14 +163,14 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
     if (timeZone_.isEmpty()) {
         date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate);
     } else {
-        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString())));
+        date = QDateTime::fromString(object.value("time").toString(), Qt::ISODate).toTimeZone(QTimeZone(timeZone_.toUtf8()));
     }
 
     AbstractHourlyWeatherForecast hourForecast;
 
     // set initial hour fields
     hourForecast.setDate(date); // the first time will be at the exact time of
-                                 // query, otherwise the beginning of each hour
+                                // query, otherwise the beginning of each hour
     hourForecast.setTemperature(instant["air_temperature"].toDouble());
     hourForecast.setPressure(instant["air_pressure_at_sea_level"].toDouble());
     hourForecast.setWindSpeed(instant["wind_speed"].toDouble());
@@ -210,7 +206,7 @@ void NMIWeatherAPI2::parseOneElement(QJsonObject &object,
     }
 
     // update day forecast with hour information if needed
-    AbstractDailyWeatherForecast& dayForecast = dayCache[date.date()];
+    AbstractDailyWeatherForecast &dayForecast = dayCache[date.date()];
 
     dayForecast.setPrecipitation(dayForecast.precipitation() + hourForecast.precipitationAmount());
     dayForecast.setUvIndex(std::max(dayForecast.uvIndex(), hourForecast.uvIndex()));

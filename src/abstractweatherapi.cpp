@@ -25,8 +25,7 @@ AbstractWeatherAPI::AbstractWeatherAPI(QString locationId, QString timeZone, int
     mManager->setStrictTransportSecurityEnabled(true);
     mManager->enableStrictTransportSecurityStore(true);
 
-    sunriseApi_ = new NMISunriseAPI(
-        latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(QByteArray::fromStdString(timeZone_.toStdString()))).offsetFromUtc());
+    sunriseApi_ = new NMISunriseAPI(latitude, longitude, QDateTime::currentDateTime().toTimeZone(QTimeZone(timeZone_.toUtf8())).offsetFromUtc());
 
     connect(sunriseApi_, &NMISunriseAPI::finished, this, [this]() {
         qDebug() << "obtained sunrise data";
