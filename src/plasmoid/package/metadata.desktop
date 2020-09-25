@@ -16,6 +16,7 @@ Name[sl]=KWeather 1x4
 Name[sv]=KWeather 1 x 4
 Name[uk]=KWeather_1x4
 Name[x-test]=xxKWeather_1x4xx
+Name[zh_CN]=KWeather_1x4
 Comment=KWeather_1x4 widget
 Comment[ca]=Estri del KWeather_1x4
 Comment[ca@valencia]=Estri del KWeather_1x4
@@ -33,6 +34,7 @@ Comment[sl]=Gradnik KWeather 1x4
 Comment[sv]=KWeather 1 x 4 grafisk komponent
 Comment[uk]=Віджет KWeather_1x4
 Comment[x-test]=xxKWeather_1x4 widgetxx
+Comment[zh_CN]=KWeather_1x4 部件
 
 
 Icon=kweather
