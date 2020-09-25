@@ -20,7 +20,7 @@ NMISunriseAPI::NMISunriseAPI(float latitude, float longitude, int offset_secs)
     , longitude_(longitude)
     , offset_(offset_secs)
 {
-    manager = new QNetworkAccessManager();
+    manager = new QNetworkAccessManager(this);
 
     manager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
     manager->setStrictTransportSecurityEnabled(true);
@@ -113,7 +113,15 @@ void NMISunriseAPI::popDay()
         }
     }
 };
-
+void NMISunriseAPI::setData(QList<AbstractSunrise> sunrise)
+{
+    for (auto d : sunrise) {
+        if (d.sunRise() < QDateTime::currentDateTime())
+            sunrise.pop_front();
+    }
+    sunrise_ = sunrise;
+    update();
+}
 bool NMISunriseAPI::isDayTime(QDateTime date)
 {
     for (auto sr : sunrise_) {
@@ -123,10 +131,7 @@ bool NMISunriseAPI::isDayTime(QDateTime date)
             return !(sr.sunRise().secsTo(date) <= -1800 || sr.sunSet().secsTo(date) >= -1800);
         }
     }
-    return true;
-}
 
-NMISunriseAPI::~NMISunriseAPI()
-{
-    delete manager;
+    // not found
+    return (date.time().hour() >= 6 && date.time().hour() <= 18);
 }

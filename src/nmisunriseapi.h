@@ -24,10 +24,7 @@ public:
     {
         offset_ = offset;
     }
-    void setData(QList<AbstractSunrise> sunrise)
-    {
-        sunrise_ = sunrise;
-    };
+    void setData(QList<AbstractSunrise> sunrise);
     QList<AbstractSunrise> get()
     {
         return sunrise_;
@@ -36,7 +33,6 @@ public:
     {
         return noData;
     }
-    ~NMISunriseAPI();
     bool isDayTime(QDateTime date);
 signals:
     void networkError();
