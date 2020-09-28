@@ -11,6 +11,7 @@
   <name xml:lang="ca-valencia">Meteorologia</name>
   <name xml:lang="cs">Počasí</name>
   <name xml:lang="el">Καιρός</name>
+  <name xml:lang="en-GB">Weather</name>
   <name xml:lang="es">Meteorología</name>
   <name xml:lang="et">Ilm</name>
   <name xml:lang="eu">Eguraldia</name>
@@ -32,6 +33,7 @@
   <summary xml:lang="ca">Una aplicació convergent de meteorologia.</summary>
   <summary xml:lang="ca-valencia">Una aplicació convergent de meteorologia.</summary>
   <summary xml:lang="el">Μία εστιασμένη εφαρμογή πρόγνωσης καιρού.</summary>
+  <summary xml:lang="en-GB">A convergent weather application.</summary>
   <summary xml:lang="es">Aplicación meteorológica convergente.</summary>
   <summary xml:lang="et">Konvergentne ilmarakendus.</summary>
   <summary xml:lang="eu">Eguraldi aplikazio konbergente bat.</summary>
@@ -55,6 +57,7 @@
   <developer_name xml:lang="ca-valencia">La comunitat KDE</developer_name>
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
   <developer_name xml:lang="el">Η Κοινότητα του KDE</developer_name>
+  <developer_name xml:lang="en-GB">KDE Community</developer_name>
   <developer_name xml:lang="es">Comunidad KDE</developer_name>
   <developer_name xml:lang="et">KDE kogukond</developer_name>
   <developer_name xml:lang="eu">KDEren komunitatea</developer_name>
@@ -77,6 +80,7 @@
     <p xml:lang="ca">El KWeather és una aplicació de meteorologia plena de funcionalitats que és fàcil d'emprar al mòbil.</p>
     <p xml:lang="ca-valencia">El KWeather és una aplicació de meteorologia plena de funcionalitats que és fàcil d'emprar al mòbil.</p>
     <p xml:lang="el">To KWeather είναι μία πλήρης χαρακτηριστικών εφαρμογή πρόγνωσης καιρού φιλική με κινητές συσκευές.</p>
+    <p xml:lang="en-GB">KWeather is a full-featured weather application that is mobile friendly.</p>
     <p xml:lang="es">KWeather es una completa aplicación meteorológica para móviles.</p>
     <p xml:lang="et">KWeather on rohkete võimalustega mobiilisõbralik ilmarakendus.</p>
     <p xml:lang="eu">KWeather ezaugarri ugariko eguraldi aplikazio bat da, mugikorrekiko lagunkoia dena.</p>
