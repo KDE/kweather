@@ -13,7 +13,7 @@ WeatherDay::WeatherDay()
 {
 }
 
-WeatherDay::WeatherDay(AbstractDailyWeatherForecast& dailyForecast, AbstractSunrise& sunrise)
+WeatherDay::WeatherDay(AbstractDailyWeatherForecast &dailyForecast, AbstractSunrise &sunrise)
 {
     this->maxTemp_ = dailyForecast.maxTemp();
     this->minTemp_ = dailyForecast.minTemp();
@@ -80,7 +80,7 @@ WeatherDay *WeatherDayListModel::get(int index)
     return daysList.at(index);
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast& forecasts)
+void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast &forecasts)
 {
     emit layoutAboutToBeChanged();
     emit beginRemoveRows(QModelIndex(), 0, daysList.count() - 1);
@@ -106,7 +106,6 @@ void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast& fore
         QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
         daysList.append(weatherDay);
     }
-    std::sort(daysList.begin(), daysList.end(), [](WeatherDay *h1, WeatherDay *h2) -> bool { return h1->date() < h2->date(); });
 
     emit endInsertRows();
     emit layoutChanged();

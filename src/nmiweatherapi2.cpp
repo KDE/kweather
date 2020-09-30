@@ -117,8 +117,12 @@ void NMIWeatherAPI2::parse(QNetworkReply *reply)
                 parseOneElement(refObj, dayCache, hoursList);
             }
 
+            // sort the daily forecasts
+            auto daysList = dayCache.values();
+            std::sort(daysList.begin(), daysList.end(), [](AbstractDailyWeatherForecast h1, AbstractDailyWeatherForecast h2) -> bool { return h1.date() < h2.date(); });
+
             // process and build abstract forecast
-            currentData_ = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, latitude_, longitude_, hoursList, dayCache.values());
+            currentData_ = AbstractWeatherForecast(QDateTime::currentDateTime(), locationId_, latitude_, longitude_, hoursList, daysList);
         }
     }
 
