@@ -20,12 +20,9 @@ set(kweather_SRCS
     locationquerymodel.cpp
     abstractdailyweatherforecast.cpp
     abstracthourlyweatherforecast.cpp
-    abstracthourlyweatherforecast.h
     nmiweatherapi2.cpp
-    nmiweatherapi2.h
     nmisunriseapi.cpp
     abstractsunrise.cpp
-    global.h
     resources.qrc
 )
 
