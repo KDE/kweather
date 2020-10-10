@@ -50,11 +50,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KAboutData aboutData("kweather", i18n("Weather"), "0.2", i18n("Weather application in Kirigami"), KAboutLicense::GPL, i18n("© 2020 KDE Community"));
     KAboutData::setApplicationData(aboutData);
 
-    // load setup wizard if first launch
-    if (setupWizard()) {
-        engine.load(QUrl(QStringLiteral("qrc:///qml/setupWizard.qml")));
-    }
-
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
     auto *locationQueryModel = new LocationQueryModel();
@@ -75,7 +70,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
 
-    engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
+    // load setup wizard if first launch
+    if (setupWizard()) {
+        engine.load(QUrl(QStringLiteral("qrc:///qml/setupWizard.qml")));
+    } else {
+        engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
+    }
 
     if (engine.rootObjects().isEmpty()) {
         return -1;

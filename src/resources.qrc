@@ -1,8 +1,3 @@
-<!--
- Copyright 2020 Han Young <hanyoung@protonmail.com>
- Copyright 2020 Devin Lin <espidev@gmail.com>
- SPDX-License-Identifier: GPL-2.0-or-later
--->
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
@@ -16,5 +11,6 @@
         <file>qml/ProgressCircle.qml</file>
         <file>resources/autumn.jpg</file>
         <file>qml/DefaultPage.qml</file>
+        <file>qml/setupWizard.qml</file>
     </qresource>
 </RCC>
