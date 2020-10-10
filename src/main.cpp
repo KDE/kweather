@@ -31,9 +31,7 @@ class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
 bool setupWizard()
 {
-    KConfig config;
-    KConfigGroup generalGroup(&config, "General");
-    QString theme = generalGroup.readEntry("theme", QString());
+    auto theme = KWeatherSettings().theme();
 
     // first launch
     if (theme.isEmpty()) {

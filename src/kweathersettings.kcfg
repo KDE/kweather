@@ -5,6 +5,10 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kweatherrc" />
   <group name="General">
+    <entry name="theme" type="String">
+       <label>theme</label>
+       <default></default>
+    </entry>
     <entry name="temperatureUnits" type="String">
       <label>Temperature Unit</label>
       <default>Celsius</default>
