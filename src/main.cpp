@@ -14,6 +14,7 @@
 #include <QtQml>
 
 #include <KAboutData>
+#include <KConfigCore/KConfig>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -28,6 +29,18 @@
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
+bool setupWizard()
+{
+    KConfig config;
+    KConfigGroup generalGroup(&config, "General");
+    QString theme = generalGroup.readEntry("theme", QString());
+
+    // first launch
+    if (theme.isEmpty()) {
+        return true;
+    } else
+        return false;
+}
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -38,6 +51,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     KAboutData aboutData("kweather", i18n("Weather"), "0.2", i18n("Weather application in Kirigami"), KAboutLicense::GPL, i18n("© 2020 KDE Community"));
     KAboutData::setApplicationData(aboutData);
+
+    // load setup wizard if first launch
+    if (setupWizard()) {
+        engine.load(QUrl(QStringLiteral("qrc:///qml/setupWizard.qml")));
+    }
 
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
