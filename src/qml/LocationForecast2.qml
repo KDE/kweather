@@ -69,7 +69,7 @@ Kirigami.ScrollablePage {
             Label {
                 Layout.topMargin: Kirigami.Units.largeSpacing
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                color: KWeatherStyle.disabledTextColor
+                color: "white"
                 text: i18n("Updated at %1", weatherLocation.lastUpdated)
             }
         }

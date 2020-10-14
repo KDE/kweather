@@ -55,7 +55,7 @@ Rectangle {
                 color: weatherLocation.iconColor
             }
             Label {
-                color: Kirigami.Theme.disabledTextColor
+                color: KWeatherStyle.disabledTextColor
                 text: i18n("%1mm", weather.precipitation.toFixed(1))
             }
         }
@@ -69,7 +69,7 @@ Rectangle {
                 color: weatherLocation.iconColor
             }
             Label {
-                color: Kirigami.Theme.disabledTextColor
+                color: KWeatherStyle.disabledTextColor
                 text: weather.windSpeed
             }
         }

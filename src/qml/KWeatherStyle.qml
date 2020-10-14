@@ -9,5 +9,5 @@ import QtQuick 2.0
 
 QtObject {
     property color textColor: "#eeeeee"
-    property color disabledTextColor: "#cccccc"
+    property color disabledTextColor: "#9e9e9e"
 }
