@@ -52,10 +52,10 @@ Rectangle {
                 source: "raindrop"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
                 Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                color: weatherLocation.iconColor
+                color: settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : ""
             }
             Label {
-                color: KWeatherStyle.disabledTextColor
+                color: settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
                 text: i18n("%1mm", weather.precipitation.toFixed(1))
             }
         }
@@ -66,10 +66,10 @@ Rectangle {
                 source: "arrow-right"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
                 Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                color: weatherLocation.iconColor
+                color: settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : ""
             }
             Label {
-                color: KWeatherStyle.disabledTextColor
+                color: settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
                 text: weather.windSpeed
             }
         }
