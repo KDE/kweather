@@ -31,5 +31,7 @@
         <file>qml/backgrounds/components/Rain.qml</file>
         <file>qml/backgrounds/components/Cloud.qml</file>
         <file>qml/backgrounds/components/Cloudy.qml</file>
+        <file>resources/KWeather_DYNAMIC.png</file>
+        <file>resources/KWeather_FLAT.png</file>
     </qresource>
 </RCC>

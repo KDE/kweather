@@ -32,7 +32,8 @@ class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
 bool setupWizard()
 {
-    auto theme = KWeatherSettings().theme();
+    return true;
+    auto theme = KWeatherSettings().forecastStyle();
 
     // first launch
     if (theme.isEmpty()) {
