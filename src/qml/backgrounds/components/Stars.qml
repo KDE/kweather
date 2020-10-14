@@ -25,6 +25,9 @@ Item {
             layer.samples: 4
             opacity: 1
             
+            vendorExtensionsEnabled: true
+            asynchronous: true
+            
             NumberAnimation on opacity {
                 to: 0
                 duration: Math.max(1000, 10000 * Math.random())

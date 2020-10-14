@@ -22,6 +22,9 @@ Rectangle {
         opacity: 0.5
         layer.enabled: true
         layer.samples: 4
+        
+        vendorExtensionsEnabled: true
+        asynchronous: true
 
         ShapePath {
             fillColor: "#ffff00"
