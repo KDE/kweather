@@ -63,7 +63,7 @@ Shape {
 
         PathAngleArc {
             id: angleArc
-            centerX: rootShape.centerX; centerY: rootShape.centerY
+            centerX: rootShape.centerX + rotationSensor.offsetX(); centerY: rootShape.centerY + rotationSensor.offsetY()
             radiusX: rootShape.radius; radiusY: radiusX
             startAngle: 0
             sweepAngle: 360

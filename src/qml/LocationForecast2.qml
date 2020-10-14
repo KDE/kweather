@@ -9,6 +9,8 @@ import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtCharts 2.3
+import QtSensors 5.15
+
 import org.kde.kirigami 2.12 as Kirigami
 import kweather 1.0
 import "backgrounds"
@@ -18,7 +20,30 @@ Kirigami.ScrollablePage {
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
     property WeatherLocation weatherLocation
     property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
-
+    
+    RotationSensor {
+        id: rotationSensor
+        property double initialX
+        property double initialY
+        property double initialZ
+        
+        function offsetX() {
+            return rotationSensor.reading === null ? 0 : initialX - rotationSensor.reading.x;
+        }
+        function offsetY() {
+            return rotationSensor.reading === null ? 0 : initialY - rotationSensor.reading.y;
+        }
+        function offsetZ() {
+            return rotationSensor.reading === null ? 0 : initialZ - rotationSensor.reading.z;
+        }
+        Component.onCompleted: {
+            let reading = rotationSensor.reading;
+            initialX = reading.x;
+            initialY = reading.y;
+            initialZ = reading.z;
+        }
+    }
+    
     background: Loader {
         id: background
         anchors.fill: parent
