@@ -6,7 +6,7 @@
  */
 
 #include "weatherhourmodel.h"
-
+#include "weatherlocation.h"
 /* ~~~ WeatherHour ~~~ */
 
 WeatherHour::WeatherHour()
@@ -103,7 +103,7 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast& forecast)
+void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast &forecast)
 {
     // clear forecasts
     emit layoutAboutToBeChanged();

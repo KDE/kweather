@@ -11,6 +11,7 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.11 as Kirigami
 
 Kirigami.ScrollablePage {
+    id: settingsRoot
     title: i18n("Settings")
 
     topPadding: 0
@@ -22,6 +23,31 @@ Kirigami.ScrollablePage {
     ColumnLayout {
         spacing: 0
 
+        ItemDelegate {
+            Layout.fillWidth: true
+            implicitHeight: Kirigami.Units.gridUnit * 3
+            onClicked: forecastStyle.open()
+            
+            ColumnLayout {
+                spacing: -5
+                anchors.leftMargin: Kirigami.Units.gridUnit
+                anchors.rightMargin: Kirigami.Units.gridUnit
+                anchors.fill: parent
+                
+                Label {
+                    text: i18n("Forecast Style")
+                    font.weight: Font.Bold
+                }
+                Label {
+                    text: settingsModel.forecastStyle
+                }
+            }
+        }
+        
+        Kirigami.Separator {
+            Layout.fillWidth: true
+        }
+        
         ItemDelegate {
             Layout.fillWidth: true
             implicitHeight: Kirigami.Units.gridUnit * 3
@@ -113,6 +139,41 @@ Kirigami.ScrollablePage {
         }
     }
 
+    // forecast style sheet
+    Kirigami.OverlaySheet {
+        id: forecastStyle
+        parent: applicationWindow().overlay
+        
+        header: Kirigami.Heading {
+            text: i18n("Forecast Style")
+        }
+        
+        footer: RowLayout {
+            Button {
+                text: i18n("Close")
+                Layout.alignment: Qt.AlignRight
+                onClicked: forecastStyle.close()
+            }
+        }
+        
+        ListView {
+            Layout.leftMargin: Kirigami.Units.gridUnit
+            Layout.preferredWidth: settingsRoot.width - Kirigami.Units.gridUnit * 8
+            model: [i18n("Flat"), i18n("Dynamic")]
+            delegate: RadioDelegate {
+                width: parent.width
+                text: modelData
+                checked: settingsModel.forecastStyle == modelData
+                onCheckedChanged: {
+                    if (checked) {
+                        settingsModel.forecastStyle = modelData;
+                        settingsModel.save();
+                    }
+                }
+            }
+        }
+    }
+    
     // temperature unit dialog
     Dialog {
         id: temperatureUnits

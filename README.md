@@ -16,6 +16,13 @@ A convergent weather application for Plasma.
 * Issues: https://invent.kde.org/plasma-mobile/kweather/-/issues
 * Development channel: https://matrix.to/#/#plasmamobile:matrix.org
 
+## Dependencies
+If you are the packaging the application, it's worth looking at the [neon deb package](https://invent.kde.org/neon/mobile/kweather).
+* Kirigami
+* Qt Quick Controls
+* Qt Quick Shapes
+* Qt Charts
+
 ## Installing
 ```
 mkdir build

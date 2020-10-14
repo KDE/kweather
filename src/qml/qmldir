@@ -1,0 +1,2 @@
+module KWeatherStyle
+singleton KWeatherStyle 1.0 KWeatherStyle.qml 

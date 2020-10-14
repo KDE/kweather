@@ -57,19 +57,19 @@ public:
     {
         return solarNoon_.second;
     };
-    QDateTime &sunRise()
+    const QDateTime &sunRise() const
     {
         return sunRise_;
     };
-    QDateTime &sunSet()
+    const QDateTime &sunSet() const
     {
         return sunSet_;
     };
-    QDateTime &moonRise()
+    const QDateTime &moonRise() const
     {
         return moonRise_;
     };
-    QDateTime &moonSet()
+    const QDateTime &moonSet() const
     {
         return moonSet_;
     };

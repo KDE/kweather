@@ -14,6 +14,7 @@
 #include <QNetworkReply>
 #include <QUrlQuery>
 #include <QtMath>
+#include <QTimeZone>
 
 NMISunriseAPI::NMISunriseAPI(float latitude, float longitude, int offset_secs)
     : latitude_(latitude)
@@ -38,9 +39,7 @@ void NMISunriseAPI::update()
     query.addQueryItem(QLatin1String("lat"), QString::number(latitude_));
     query.addQueryItem(QLatin1String("lon"), QString::number(longitude_));
     // if we already have data, request data beyond the last day
-    query.addQueryItem(QLatin1String("date"),
-                       sunrise_.isEmpty() ? QDate::currentDate().toString(QLatin1String("yyyy-MM-dd"))
-                                          : QDate::currentDate().addDays(sunrise_.count()).toString(QLatin1String("yyyy-MM-dd")));
+    query.addQueryItem(QLatin1String("date"), sunrise_.isEmpty() ? QDate::currentDate().toString(QLatin1String("yyyy-MM-dd")) : QDate::currentDate().addDays(sunrise_.count()).toString(QLatin1String("yyyy-MM-dd")));
     query.addQueryItem(QLatin1String("days"), sunrise_.isEmpty() ? QString::number(10) : QString::number(11 - sunrise_.count()));
 
     // calculate offset (form example: -04:00)
@@ -73,6 +72,8 @@ void NMISunriseAPI::process(QNetworkReply *reply)
         emit networkError();
         return;
     }
+    
+    QTimeZone tz = QTimeZone(offset_);
 
     QJsonDocument doc = QJsonDocument::fromJson(reply->readAll());
     QJsonArray array = doc["location"].toObject()["time"].toArray();
@@ -83,19 +84,22 @@ void NMISunriseAPI::process(QNetworkReply *reply)
         sr.setSunRise(QDateTime::fromString(array.at(i).toObject()["sunrise"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
         sr.setMoonSet(QDateTime::fromString(array.at(i).toObject()["moonset"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
         sr.setMoonRise(QDateTime::fromString(array.at(i).toObject()["moonrise"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"));
-        sr.setSolarMidnight(QPair<QDateTime, double>(
-            QDateTime::fromString(array.at(i).toObject()["solarmidnight"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
-            array.at(i).toObject()["solarmidnight"].toObject()["elevation"].toString().toDouble()));
-        sr.setSolarNoon(
-            QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["solarnoon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
-                                     array.at(i).toObject()["solarnoon"].toObject()["elevation"].toString().toDouble()));
-        sr.setHighMoon(
-            QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["high_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
-                                     array.at(i).toObject()["high_moon"].toObject()["elevation"].toString().toDouble()));
-        sr.setLowMoon(
-            QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["low_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
-                                     array.at(i).toObject()["low_moon"].toObject()["elevation"].toString().toDouble()));
+        sr.setSolarMidnight(QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["solarmidnight"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
+                                                     array.at(i).toObject()["solarmidnight"].toObject()["elevation"].toString().toDouble()));
+        sr.setSolarNoon(QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["solarnoon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
+                                                 array.at(i).toObject()["solarnoon"].toObject()["elevation"].toString().toDouble()));
+        sr.setHighMoon(QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["high_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
+                                                array.at(i).toObject()["high_moon"].toObject()["elevation"].toString().toDouble()));
+        sr.setLowMoon(QPair<QDateTime, double>(QDateTime::fromString(array.at(i).toObject()["low_moon"].toObject()["time"].toString().left(19), "yyyy-MM-ddThh:mm:ss"),
+                                               array.at(i).toObject()["low_moon"].toObject()["elevation"].toString().toDouble()));
         sr.setMoonPhase(array.at(i).toObject()["moonposition"].toObject()["phase"].toString().toDouble());
+        
+        // use proper timezone (not local time)
+        sr.setSunSet(QDateTime(sr.sunSet().date(), sr.sunSet().time(), tz));
+        sr.setSunRise(QDateTime(sr.sunRise().date(), sr.sunRise().time(), tz));
+        sr.setMoonSet(QDateTime(sr.moonSet().date(), sr.moonSet().time(), tz));
+        sr.setMoonRise(QDateTime(sr.moonRise().date(), sr.moonRise().time(), tz));
+        
         sunrise_.push_back(sr);
     }
 
@@ -115,23 +119,26 @@ void NMISunriseAPI::popDay()
 };
 void NMISunriseAPI::setData(QList<AbstractSunrise> sunrise)
 {
-    for (auto d : sunrise) {
-        if (d.sunRise().date() < QDate::currentDate())
-            sunrise.pop_front();
+    while (sunrise.front().sunRise().date() < QDate::currentDate()) {
+        sunrise.pop_front();
     }
     sunrise_ = sunrise;
     update();
 }
 bool NMISunriseAPI::isDayTime(QDateTime date)
 {
-    for (auto sr : sunrise_) {
+    return NMISunriseAPI::isDayTime(date, this->sunrise_);
+}
+bool NMISunriseAPI::isDayTime(QDateTime date, QList<AbstractSunrise> sunrise)
+{
+    for (auto sr : sunrise) {
         // if on the same day
-        if (sr.sunRise().date().daysTo(date.date()) == 0) {
+        if (sr.sunRise().date().daysTo(date.date()) == 0 && sr.sunRise().date().day() == date.date().day()) {
             // 30 min threshold
-            return !(sr.sunRise().secsTo(date) <= -1800 || sr.sunSet().secsTo(date) >= -1800);
+            return sr.sunRise().addSecs(-1800) <= date && sr.sunSet().addSecs(1800) >= date;
         }
     }
 
     // not found
-    return (date.time().hour() >= 6 && date.time().hour() <= 18);
+    return date.time().hour() >= 6 && date.time().hour() <= 18;
 }

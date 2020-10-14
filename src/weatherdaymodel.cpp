@@ -6,7 +6,7 @@
  */
 
 #include "weatherdaymodel.h"
-
+#include "weatherlocation.h"
 /* ~~~ WeatherDay ~~~ */
 
 WeatherDay::WeatherDay()

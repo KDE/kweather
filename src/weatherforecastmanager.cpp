@@ -6,6 +6,7 @@
  */
 
 #include "weatherforecastmanager.h"
+#include "weatherlocation.h"
 #include "weatherlocationmodel.h"
 #include <KConfigCore/KConfigGroup>
 #include <QDirIterator>
