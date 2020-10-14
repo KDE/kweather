@@ -18,6 +18,7 @@ Rectangle {
     color: "transparent"
 
     property WeatherHour weather
+    property color textColor
 
     // actual hour display
     ColumnLayout {
@@ -37,9 +38,11 @@ Rectangle {
         Label {
             text: weather.temperature
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+            color: textColor
         }
         Label {
             text: weather.weatherDescription
+            color: textColor
         }
 
         // precipitation
@@ -49,6 +52,7 @@ Rectangle {
                 source: "raindrop"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
                 Layout.preferredWidth: Kirigami.Units.iconSizes.small
+                color: weatherLocation.iconColor
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
@@ -62,6 +66,7 @@ Rectangle {
                 source: "arrow-right"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
                 Layout.preferredWidth: Kirigami.Units.iconSizes.small
+                color: weatherLocation.iconColor
             }
             Label {
                 color: Kirigami.Theme.disabledTextColor
@@ -73,6 +78,7 @@ Rectangle {
             font.weight: Font.Bold
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
             text: weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "")
+            color: textColor
         }
     }
 }

@@ -24,6 +24,7 @@
 #include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
+#include "weatherlocation.h"
 #include "weatherlocationmodel.h"
 
 class AbstractHourlyWeatherForecast;

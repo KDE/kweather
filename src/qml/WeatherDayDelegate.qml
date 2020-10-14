@@ -18,6 +18,7 @@ Rectangle {
     color: "transparent"
 
     property WeatherDay weather
+    property color textColor
 
     MouseArea {
         z: 1
@@ -41,6 +42,7 @@ Rectangle {
         Label {
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
             text: weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
+            color: textColor
         }
 
         Kirigami.Icon {
@@ -54,6 +56,7 @@ Rectangle {
                 id: highTemp
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                 text: weather.maxTemp
+                color: textColor
             }
             Label {
                 anchors.baseline: highTemp.baseline
@@ -64,6 +67,7 @@ Rectangle {
         }
         Label {
             text: weather.weatherDescription
+            color: textColor
         }
     }
 }

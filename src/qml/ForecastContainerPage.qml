@@ -39,9 +39,28 @@ Kirigami.ScrollablePage {
             id: forecastViewRepeater
             model: weatherLocationListModel
             anchors.fill: parent
-
-            LocationForecast {
-                weatherLocation: location
+            
+            Loader {
+                id: locationLoader
+                
+                Component.onCompleted: updateForecastStyle()
+                
+                function updateForecastStyle() {
+                    if (settingsModel.forecastStyle === "Dynamic") {
+                        console.log("loaded dynamic view");
+                        locationLoader.setSource("LocationForecast2.qml", {"weatherLocation": location});
+                    } else { // "Flat"
+                        console.log("loaded flat view");
+                        locationLoader.setSource("LocationForecast.qml", {"weatherLocation": location});
+                    }
+                }
+                
+                Connections {
+                    target: settingsModel
+                    function onForecastStyleChanged() {
+                        updateForecastStyle();
+                    }
+                }
             }
         }
     }

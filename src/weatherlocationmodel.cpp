@@ -6,189 +6,20 @@
  */
 
 #include "weatherlocationmodel.h"
-#include "abstractweatherapi.h"
-#include "abstractweatherforecast.h"
 #include "geoiplookup.h"
 #include "geotimezone.h"
-#include "global.h"
 #include "locationquerymodel.h"
-#include "nmisunriseapi.h"
-#include "nmiweatherapi2.h"
 #include "owmweatherapi.h"
 #include "weatherdaymodel.h"
-#include "weatherhourmodel.h"
+#include "weatherlocation.h"
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
-#include <QDir>
-#include <QFile>
+
 #include <QJsonArray>
-#include <QQmlEngine>
-#include <QTimeZone>
-#include <utility>
 
-const QString WEATHER_LOCATIONS_CFG_GROUP = "WeatherLocations";
-const QString WEATHER_LOCATIONS_CFG_KEY = "locationsList";
-
-/* ~~~ WeatherLocation ~~~ */
-WeatherLocation::WeatherLocation()
-{
-    this->weatherDayListModel_ = new WeatherDayListModel(this);
-    this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = QDateTime::currentDateTime();
-}
-
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, Kweather::Backend backend, AbstractWeatherForecast forecast)
-    : backend_(backend)
-    , locationName_(std::move(locationName))
-    , timeZone_(std::move(timeZone))
-    , latitude_(latitude)
-    , longitude_(longitude)
-    , locationId_(std::move(locationId))
-    , forecast_(forecast)
-    , weatherBackendProvider_(weatherBackendProvider)
-{
-    this->weatherDayListModel_ = new WeatherDayListModel(this);
-    this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = forecast.timeCreated();
-
-    // prevent segfaults from js garbage collection
-    QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership);
-    QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
-
-    determineCurrentForecast();
-
-    connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
-}
-
-WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
-{
-    AbstractWeatherAPI *api; // don't fetch sunrise information, since it will be loaded from cache
-    Kweather::Backend backendEnum;
-    if (obj["backend"].toInt() == 0) {
-        api = new NMIWeatherAPI2(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
-        backendEnum = Kweather::Backend::NMI;
-    } else {
-        api = new OWMWeatherAPI(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
-        backendEnum = Kweather::Backend::OWM;
-    }
-    auto weatherLocation = new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble(), backendEnum, AbstractWeatherForecast());
-    return weatherLocation;
-}
-
-QJsonObject WeatherLocation::toJson()
-{
-    QJsonObject obj;
-    obj["locationId"] = locationId();
-    obj["locationName"] = locationName();
-    obj["latitude"] = latitude();
-    obj["longitude"] = longitude();
-    obj["timezone"] = timeZone_;
-    obj["backend"] = static_cast<int>(backend_);
-    return obj;
-}
-
-void WeatherLocation::updateData(AbstractWeatherForecast &fc)
-{
-    forecast_ = fc;
-    determineCurrentForecast();
-    lastUpdated_ = fc.timeCreated();
-
-    emit weatherRefresh(forecast_);
-    emit stopLoadingIndicator();
-    writeToCache(forecast_);
-
-    emit propertyChanged();
-}
-
-void WeatherLocation::determineCurrentForecast()
-{
-    delete currentWeather_;
-
-    if (forecast().hourlyForecasts().count() == 0) {
-        currentWeather_ = new WeatherHour();
-    } else {
-        long long minSecs = -1;
-        QDateTime current = QDateTime::currentDateTime();
-
-        // get closest forecast to current time
-        for (auto forecast : forecast_.hourlyForecasts()) {
-            if (minSecs == -1 || minSecs > llabs(forecast.date().secsTo(current))) {
-                currentWeather_ = new WeatherHour(forecast);
-                minSecs = llabs(forecast.date().secsTo(current));
-            }
-        }
-    }
-    QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-    emit currentForecastChange();
-}
-
-void WeatherLocation::initData(AbstractWeatherForecast fc)
-{
-    forecast_ = fc;
-    weatherBackendProvider_->setCurrentData(forecast_);
-    weatherBackendProvider_->setCurrentSunriseData(fc.sunrise());
-    weatherBackendProvider_->fetchSunriseData(); // TODO detect if we need to actually fetch sunrise data
-    determineCurrentForecast();
-    emit weatherRefresh(forecast_);
-    emit propertyChanged();
-}
-
-void WeatherLocation::update()
-{
-    weatherBackendProvider_->update();
-}
-
-void WeatherLocation::writeToCache(AbstractWeatherForecast &fc)
-{
-    QFile file;
-    QString url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QDir dir(url.append(QString("/cache"))); // create cache location
-    if (!dir.exists())
-        dir.mkpath(".");
-    // should be this path: /home/user/.cache/kweather/cache/1234567 for
-    // location with locationID 1234567
-    file.setFileName(dir.path() + "/" + this->locationId());
-    file.open(QIODevice::WriteOnly);
-    file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
-    file.close();
-}
-QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast &fc)
-{
-    QJsonDocument doc;
-    doc.setObject(fc.toJson());
-    return doc;
-}
-
-void WeatherLocation::changeBackend(Kweather::Backend backend)
-{
-    if (backend != backend_) {
-        auto old = weatherBackendProvider_;
-        backend_ = backend;
-        AbstractWeatherAPI *tmp = nullptr;
-        switch (backend_) {
-        case Kweather::Backend::OWM:
-            tmp = new OWMWeatherAPI(this->locationId(), this->timeZone(), this->latitude_, this->longitude());
-            break;
-        case Kweather::Backend::NMI:
-            tmp = new NMIWeatherAPI2(this->locationId(), this->timeZone(), this->latitude_, this->longitude());
-            break;
-        default:
-            return;
-        }
-        weatherBackendProvider_ = tmp;
-        connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
-        weatherBackendProvider_->setCurrentSunriseData(old->currentSunriseData());
-        weatherBackendProvider_->fetchSunriseData();
-        this->update();
-        old->deleteLater();
-    }
-}
-
-WeatherLocation::~WeatherLocation()
-{
-    delete weatherBackendProvider_;
-}
+const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
+const QString WEATHER_LOCATIONS_CFG_KEY = QStringLiteral("locationsList");
 
 /* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)

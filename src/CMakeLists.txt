@@ -12,6 +12,7 @@ set(kweather_SRCS
     abstractweatherforecast.cpp
     weatherforecastmanager.cpp
     weatherlocationmodel.cpp
+    weatherlocation.cpp
     weatherhourmodel.cpp
     weatherdaymodel.cpp
     owmweatherapi.cpp
@@ -35,6 +36,7 @@ target_link_libraries(kweather
     Qt5::QuickControls2
     Qt5::Widgets
     Qt5::Network
+    Qt5::Charts
     KF5::I18n
     KF5::ConfigCore
     KF5::ConfigGui

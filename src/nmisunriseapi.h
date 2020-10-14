@@ -34,6 +34,7 @@ public:
         return noData;
     }
     bool isDayTime(QDateTime date);
+    static bool isDayTime(QDateTime date, QList<AbstractSunrise> sunrise);
 signals:
     void networkError();
     void finished();

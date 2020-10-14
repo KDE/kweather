@@ -47,9 +47,9 @@ void NMIWeatherAPI2::applySunriseDataToForecast()
         if (currentSunriseData_.count() != 0) { // if we have sunrise data
             isDay = sunriseApi_->isDayTime(hourForecast.date());
         } else {
-            isDay = hourForecast.date().time().hour() < 7 || hourForecast.date().time().hour() >= 18; // 6:00 - 18:00 is day
+            isDay = hourForecast.date().time().hour() >= 6 && hourForecast.date().time().hour() <= 18; // 6:00 - 18:00 is day
         }
-
+        
         hourForecast.setWeatherIcon(getSymbolCodeIcon(isDay, hourForecast.symbolCode())); // set day/night icon
         hourForecast.setWeatherDescription(getSymbolCodeDescription(isDay, hourForecast.symbolCode()));
 

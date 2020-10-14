@@ -12,7 +12,6 @@
 
 class AbstractDailyWeatherForecast
 {
-
 public:
     AbstractDailyWeatherForecast();
     AbstractDailyWeatherForecast(float maxTemp, float minTemp, float precipitation, float uvIndex, float humidity, float pressure, QString weatherIcon, QString weatherDescription, QDate date);
@@ -88,18 +87,18 @@ public:
     {
         return weatherDescription_;
     }
-    inline QDate date()
+    inline QDate date() const
     {
         return date_;
     }
 
 private:
-    float maxTemp_{};
-    float minTemp_{};
-    float precipitation_{}; // mm
-    float uvIndex_{}; // 0-1
-    float humidity_{}; // %
-    float pressure_{}; // hPa
+    float maxTemp_ {};
+    float minTemp_ {};
+    float precipitation_ {}; // mm
+    float uvIndex_ {};       // 0-1
+    float humidity_ {};      // %
+    float pressure_ {};      // hPa
     QString weatherIcon_;
     QString weatherDescription_;
     QDate date_;

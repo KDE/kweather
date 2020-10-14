@@ -1,8 +1,3 @@
-<!--
- Copyright 2020 Han Young <hanyoung@protonmail.com>
- Copyright 2020 Devin Lin <espidev@gmail.com>
- SPDX-License-Identifier: GPL-2.0-or-later
--->
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
@@ -16,5 +11,24 @@
         <file>qml/ProgressCircle.qml</file>
         <file>resources/autumn.jpg</file>
         <file>qml/DefaultPage.qml</file>
+        <file>qml/LocationForecast2.qml</file>
+        <file>qml/backgrounds/ClearDay.qml</file>
+        <file>qml/backgrounds/ClearNight.qml</file>
+        <file>qml/backgrounds/CloudyDay.qml</file>
+        <file>qml/backgrounds/CloudyNight.qml</file>
+        <file>qml/backgrounds/Misty.qml</file>
+        <file>qml/backgrounds/PartlyCloudyDay.qml</file>
+        <file>qml/backgrounds/PartlyCloudyNight.qml</file>
+        <file>qml/backgrounds/RainyDay.qml</file>
+        <file>qml/backgrounds/RainyNight.qml</file>
+        <file>qml/backgrounds/SnowyDay.qml</file>
+        <file>qml/backgrounds/SnowyNight.qml</file>
+        <file>qml/KWeatherStyle.qml</file>
+        <file>qml/qmldir</file>
+        <file>qml/backgrounds/components/Stars.qml</file>
+        <file>qml/backgrounds/components/Snow.qml</file>
+        <file>qml/backgrounds/components/Rain.qml</file>
+        <file>qml/backgrounds/components/Cloud.qml</file>
+        <file>qml/backgrounds/components/Cloudy.qml</file>
     </qresource>
 </RCC>
