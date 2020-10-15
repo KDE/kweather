@@ -17,36 +17,32 @@ Kirigami.ApplicationWindow
     width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
 
+    ButtonGroup {
+        id: radioButton
+    }
+
     ColumnLayout {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        Layout.alignment: Qt.AlignHCenter
-        RowLayout {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
-            Image {
-                source: "qrc:/resources/flat.jpg"
-                width: parent.width * 0.4
-            }
-
-            Image {
-                source: "qrc:/resources/animated.jpg"
-                width: parent.width * 0.4
-            }
+        Image {
+            id: dynamicImage
+            source: "qrc:/resources/KWeather_DYNAMIC.png"
+            width: parent.width * 0.4
         }
+        RadioButton {
+            text: i18n("Dynamic")
+            checked: true
+            ButtonGroup.group: radioButton
+        }
+    }
 
-        RowLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            RadioButton {
-                text: i18n("flat")
-                checked: true
-            }
-
-            RadioButton {
-                text: i18n("animated")
-            }
+    ColumnLayout {
+        anchors.right: parent.right
+        Image {
+            source: "qrc:/resources/KWeather_FLAT.png"
+            width: parent.width * 0.4
+        }
+        RadioButton {
+            text: i18n("Flat")
+            ButtonGroup.group: radioButton
         }
     }
 
