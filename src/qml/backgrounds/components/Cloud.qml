@@ -23,7 +23,6 @@ Shape {
     property alias color: shapePath.fillColor
     
     vendorExtensionsEnabled: true
-    asynchronous: true
     
     NumberAnimation on radius {
         duration: 4000
