@@ -113,6 +113,7 @@ Kirigami.ScrollablePage {
             model: weatherLocation.dayListModel
             delegate: WeatherDayDelegate {
                 weather: dayItem
+                textColor: Kirigami.Theme.textColor
             }
 
             // left right mouse controls
@@ -176,6 +177,7 @@ Kirigami.ScrollablePage {
             model: weatherLocation.hourListModel
             delegate: WeatherHourDelegate {
                 weather: hourItem
+                textColor: Kirigami.Theme.textColor
             }
 
             // left right mouse controls

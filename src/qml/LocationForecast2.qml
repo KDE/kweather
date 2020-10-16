@@ -55,21 +55,27 @@ Kirigami.ScrollablePage {
             id: headerText
             Layout.fillWidth: true
             Label {
-                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 5
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
                 font.weight: Font.Light
                 color: "white"
+                Layout.alignment: Qt.AlignLeft
+                horizontalAlignment: Text.AlignLeft
                 text: weatherLocation.currentWeather == null ? "0" : weatherLocation.currentWeather.temperatureRounded
             }
             Label {
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                 font.weight: Font.Bold
                 color: "white"
+                Layout.alignment: Qt.AlignLeft
+                horizontalAlignment: Text.AlignLeft
                 text: weatherLocation.currentWeather == null ? "Unknown" : weatherLocation.currentWeather.weatherDescription
             }
             Label {
                 Layout.topMargin: Kirigami.Units.largeSpacing
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                color: KWeatherStyle.disabledTextColor
+                color: "white"
+                Layout.alignment: Qt.AlignLeft
+                horizontalAlignment: Text.AlignLeft
                 text: i18n("Updated at %1", weatherLocation.lastUpdated)
             }
         }
