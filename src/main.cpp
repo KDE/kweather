@@ -32,13 +32,12 @@ class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
 bool setupWizard()
 {
-    return true;
     auto theme = KWeatherSettings().forecastStyle();
 
     // first launch
-    if (theme.isEmpty()) {
+    if (theme.isEmpty())
         return true;
-    } else
+    else
         return false;
 }
 Q_DECL_EXPORT int main(int argc, char *argv[])
