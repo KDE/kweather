@@ -5,6 +5,10 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kweatherrc" />
   <group name="General">
+    <entry name="firstStartup" type="Bool">
+      <label>First Startup</label>
+      <default>true</default>
+    </entry>
     <entry name="forecastStyle" type="String">
       <label>Forecast Style</label>
       <default>Dynamic</default>

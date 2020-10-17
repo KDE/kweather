@@ -30,16 +30,7 @@
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
-bool setupWizard()
-{
-    auto theme = KWeatherSettings().forecastStyle();
 
-    // first launch
-    if (theme.isEmpty())
-        return true;
-    else
-        return false;
-}
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -72,11 +63,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
 
     // load setup wizard if first launch
-    if (setupWizard()) {
-        engine.load(QUrl(QStringLiteral("qrc:///qml/setupWizard.qml")));
-    } else {
-        engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
-    }
+    engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 
     if (engine.rootObjects().isEmpty()) {
         return -1;

@@ -20,6 +20,14 @@ Kirigami.ApplicationWindow
 
     pageStack.initialPage: initPage()
 
+    Component.onCompleted: {
+        if (settingsModel.firstStartup) {
+            let component = Qt.createComponent("qrc:/qml/SetupWizard.qml");
+            let window = component.createObject(appwindow)
+            window.show()
+        }
+    }
+    
     function switchToPage(page) {
         while (pageStack.depth > 0) pageStack.pop();
         pageStack.push(page);

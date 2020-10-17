@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>resources/autumn.jpg</file>
         <file>qml/main.qml</file>
         <file>qml/LocationsPage.qml</file>
         <file>qml/LocationForecast.qml</file>
@@ -9,9 +10,8 @@
         <file>qml/SettingsPage.qml</file>
         <file>qml/AddLocationPage.qml</file>
         <file>qml/ProgressCircle.qml</file>
-        <file>resources/autumn.jpg</file>
         <file>qml/DefaultPage.qml</file>
-        <file>qml/setupWizard.qml</file>
+        <file>qml/SetupWizard.qml</file>
         <file>qml/LocationForecast2.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>

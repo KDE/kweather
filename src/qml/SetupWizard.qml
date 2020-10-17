@@ -17,6 +17,7 @@ Kirigami.ApplicationWindow
 
     width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
+    
     Rectangle {
         id: headerText
         color: "#3daee2"
@@ -106,6 +107,7 @@ Kirigami.ApplicationWindow
             onClicked: {
                 mainLoader.source = "main.qml";
                 appwindow.visible = false;
+                settingsModel.firstStartup = false;
             }
         }
     }
