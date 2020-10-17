@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/autumn.jpg</file>
+        <file>resources/kweather.svg</file>
         <file>qml/main.qml</file>
         <file>qml/LocationsPage.qml</file>
         <file>qml/LocationForecast.qml</file>

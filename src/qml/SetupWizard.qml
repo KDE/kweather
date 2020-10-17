@@ -1,5 +1,6 @@
 /*
  * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -7,7 +8,7 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.11 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 import kweather 1.0
 
 Kirigami.ApplicationWindow
@@ -17,97 +18,162 @@ Kirigami.ApplicationWindow
 
     width: Kirigami.Units.gridUnit * 27
     height: Kirigami.Units.gridUnit * 45
-    
-    Rectangle {
-        id: headerText
-        color: "#3daee2"
-        width: parent.width
-        height: headerLayout.height
-        ColumnLayout {
-            id: headerLayout
-            Layout.fillWidth: true
-            Label {
-                text: i18n("Select theme")
-                Layout.fillWidth: true
-                color: "white"
-                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 5
-            }
-
-            Label {
-                text: i18n("You can change the theme later too")
-                Layout.fillWidth: true
-                color: "white"
-                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-            }
-        }
-    }
-
-
-    Rectangle {
-        id: themeImgBackground
-        color: "#aaaaaa"
-        anchors.top: headerText.bottom
-        width: parent.width
-        height: themeImg.height
-        Image {
-            id: themeImg
-            width: parent.width
-            fillMode: Image.PreserveAspectFit
-            source: "qrc:/resources/KWeather_DYNAMIC.png"
-        }
-    }
-
-    ListView {
-        id: themeView
-        anchors.top: themeImgBackground.bottom
-        width: parent.width
-        height: 500
-        model: ListModel {
-            ListElement {
-                name: "Dynamic"
-            }
-            ListElement {
-                name: "Flat"
+   
+    SwipeView {
+        id: view
+        anchors.fill: parent
+        currentIndex: 0
+        interactive: false
+        
+        // landing page
+        Item {
+            Rectangle {
+                id: landingPage
+                color: Kirigami.Theme.viewBackgroundColor
+                width: parent.width
+                height: parent.height
+                
+                ColumnLayout {
+                    anchors.centerIn: parent
+                    spacing: Kirigami.Units.largeSpacing * 3
+                    
+                    Label {
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                        font.weight: Font.Light
+                        text: i18n("Welcome to KWeather")
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    }
+                    
+                    Kirigami.Icon {
+                        source: "qrc:/resources/kweather.svg"
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        implicitHeight: Kirigami.Units.gridUnit * 8
+                        implicitWidth: implicitHeight
+                    }
+                    
+                    ToolButton {
+                        text: i18n("Continue")
+                        icon.name: "go-next-symbolic"
+                        onClicked: view.currentIndex++
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        flat: false
+                    }
+                }
             }
         }
+        
+        // select forecast style page
+        Item {
+            Rectangle {
+                id: themePage
+                color: Kirigami.Theme.viewBackgroundColor
+                width: parent.width
+                height: parent.height
+                
+                ColumnLayout {
+                    anchors.centerIn: parent
+                    spacing: Kirigami.Units.largeSpacing * 3
+                    
+                    Label {
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                        font.weight: Font.Light
+                        text: i18n("Select forecast theme")
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    }
+                    
+                    Label {
+                        text: i18n("You can change the theme later in the settings.")
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    }
+                    
+                    Flow {
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        spacing: Kirigami.Units.largeSpacing
+                        
+                        // flat
+                        Kirigami.ShadowedRectangle {
+                            color: settingsModel.forecastStyle === "Flat" ? Kirigami.Theme.highlightColor : Kirigami.Theme.viewBackgroundColor
+                            radius: Kirigami.Units.smallSpacing
+                            width: flatColumn.width + Kirigami.Units.largeSpacing * 2
+                            height: flatColumn.height + Kirigami.Units.largeSpacing * 2
 
-        delegate: Kirigami.BasicListItem {
-            id: wrapper
-            Label {
-                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                text: name
-                color: wrapper.ListView.isCurrentItem ? "white" : "#3daee2"
-                Layout.alignment: Qt.AlignLeft
-            }
-        }
+                            shadow.size: Kirigami.Units.largeSpacing
+                            shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                            shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                            
+                            ColumnLayout {
+                                id: flatColumn
+                                spacing: Kirigami.Units.largeSpacing
+                                anchors.centerIn: parent
+                                Label {
+                                    text: i18n("Flat (Performance)")
+                                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                }
+                                
+                                Image {
+                                    width: Kirigami.Units.gridUnit * 14
+                                    fillMode: Image.PreserveAspectFit
+                                    source: "qrc:/resources/KWeather_FLAT.png"
+                                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                }
+                            }
+                            
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: settingsModel.forecastStyle = "Flat"
+                            }
+                        }
+                        
+                        // dynamic
+                        Kirigami.ShadowedRectangle {
+                            color: settingsModel.forecastStyle === "Dynamic" ? Kirigami.Theme.highlightColor : Kirigami.Theme.viewBackgroundColor
+                            radius: Kirigami.Units.smallSpacing
+                            width: dynamicColumn.width + Kirigami.Units.largeSpacing * 2
+                            height: dynamicColumn.height + Kirigami.Units.largeSpacing * 2
 
-        onCurrentIndexChanged: {
-            if(currentIndex == 1){
-                themeImg.source = "qrc:/resources/KWeather_FLAT.png"
-                settingsModel.forecastStyle = "Flat"
-            }
-            else{
-                themeImg.source = "qrc:/resources/KWeather_DYNAMIC.png"
-                settingsModel.forecastStyle = "Dynamic"
-            }
-        }
-    }
-
-    Loader {
-        id: mainLoader
-    }
-
-    footer: Item {
-        height: Kirigami.Units.gridUnit + confirmBtn.height
-        Button {
-            id: confirmBtn
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            text: i18n("NEXT")
-            onClicked: {
-                mainLoader.source = "main.qml";
-                appwindow.visible = false;
-                settingsModel.firstStartup = false;
+                            shadow.size: Kirigami.Units.largeSpacing
+                            shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                            shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                            
+                            ColumnLayout {
+                                id: dynamicColumn
+                                spacing: Kirigami.Units.largeSpacing
+                                anchors.centerIn: parent
+                                Label {
+                                    text: i18n("Dynamic (Animated)")
+                                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                }
+                                
+                                Image {
+                                    width: Kirigami.Units.gridUnit * 14
+                                    fillMode: Image.PreserveAspectFit
+                                    source: "qrc:/resources/KWeather_DYNAMIC.png"
+                                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                                }
+                            }
+                            
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: settingsModel.forecastStyle = "Dynamic"
+                            }
+                        }
+                    }
+                    
+                    ToolButton {
+                        text: i18n("Finish")
+                        icon.name: "go-next-symbolic"
+                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                        flat: false
+                        onClicked: {
+                            // setup finished
+                            //mainLoader.source = "main.qml";
+                            appwindow.visible = false;
+                            appwindow.close();
+                            settingsModel.firstStartup = false;
+                        }
+                    }
+                }
             }
         }
     }
