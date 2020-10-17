@@ -15,8 +15,8 @@ Kirigami.ApplicationWindow
     id: appwindow
     title: i18n("Weather")
     
-    width: Kirigami.Units.gridUnit * 27
-    height: Kirigami.Units.gridUnit * 45
+    width: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 27 : Kirigami.Units.gridUnit * 40
+    height: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 45 : Kirigami.Units.gridUnit * 35
 
     pageStack.initialPage: initPage()
 
@@ -37,7 +37,7 @@ Kirigami.ApplicationWindow
     }
 
     function initPage() {
-        if(weatherLocationListModel.count() === 0)
+        if (weatherLocationListModel.count() === 0)
             return defaultPage;
         else
             return forecastPage;
@@ -48,8 +48,19 @@ Kirigami.ApplicationWindow
         bannerImageSource: "qrc:/resources/autumn.jpg"
 
         bannerVisible: true
+        
         modal: !wideScreen
+        collapsible: true
+        collapsed: wideScreen
+        width: collapsed ? Kirigami.Units.gridUnit * 2.5 : Kirigami.Units.gridUnit * 15
 
+        Behavior on width {
+            NumberAnimation {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
+        
         actions: [
             Kirigami.Action {
                 text: i18n("Forecast")
