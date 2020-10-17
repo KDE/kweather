@@ -22,10 +22,13 @@ Kirigami.ApplicationWindow
 
     Component.onCompleted: {
         if (settingsModel.firstStartup) {
-            let component = Qt.createComponent("qrc:/qml/SetupWizard.qml");
-            let window = component.createObject(appwindow)
-            window.show()
+            setupWizardLoader.source = "qrc:/qml/SetupWizard.qml";
+            setupWizardLoader.item.open();
         }
+    }
+    
+    Loader {
+        id: setupWizardLoader
     }
     
     function switchToPage(page) {
