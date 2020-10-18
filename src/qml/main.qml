@@ -45,14 +45,15 @@ Kirigami.ApplicationWindow
 
     globalDrawer: Kirigami.GlobalDrawer {
         title: i18n("Weather")
-        bannerImageSource: "qrc:/resources/autumn.jpg"
-
-        bannerVisible: true
+        titleIcon: "kweather"
         
-        modal: !wideScreen
+        property bool isWidescreen: appwindow.width > appwindow.height
+        
+        bannerVisible: true
+        modal: !isWidescreen
         collapsible: true
-        collapsed: wideScreen
-        width: collapsed ? Kirigami.Units.gridUnit * 2.5 : Kirigami.Units.gridUnit * 15
+        collapsed: isWidescreen
+        width: collapsed ? Kirigami.Units.gridUnit * 2.5 : Kirigami.Units.gridUnit * 12
 
         Behavior on width {
             NumberAnimation {
