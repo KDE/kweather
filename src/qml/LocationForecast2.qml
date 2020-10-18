@@ -26,6 +26,7 @@ Kirigami.ScrollablePage {
         id: background
         anchors.fill: parent
         source: weatherLocation.backgroundComponent
+        onSourceChanged: background.item["inView"] = inView
     }
     
     // swipe down to refresh
