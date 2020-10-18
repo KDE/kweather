@@ -1,7 +1,8 @@
 {
     "id": "org.kde.kweather",
+    "branch": "master",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
+    "runtime-version": "5.15",
     "sdk": "org.kde.Sdk",
     "command": "kweather",
     "tags": ["nightly"],
@@ -11,8 +12,6 @@
         "--share=network",
         "--socket=x11",
         "--socket=wayland",
-        "--device=dri",
-        "--filesystem=home",
         "--talk-name=org.freedesktop.Notifications"
     ],
     "separate-locales": false,
@@ -21,8 +20,9 @@
         {
             "name": "kweather",
             "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]
+            "sources": [ 
+                { "type": "git", "url": "https://invent.kde.org/plasma-mobile/kweather.git"} 
+            ]
         }
     ]
 }

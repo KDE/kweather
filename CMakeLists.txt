@@ -14,11 +14,6 @@ if (ANDROID)
 else()
     set(QT_MIN_VERSION "5.12.0")
 endif()
-################# Disallow in-source build #################
-
-if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-   message(FATAL_ERROR "This application requires an out of source build. Please create a separate build directory.")
-endif()
 
 include(FeatureSummary)
 
