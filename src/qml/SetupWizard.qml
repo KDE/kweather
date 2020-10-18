@@ -38,13 +38,16 @@ Popup
     SwipeView {
         id: view
         anchors.fill: parent
+        clip: true
         currentIndex: 0
         interactive: false
         
         // landing page
         Item {
             ColumnLayout {
-                anchors.centerIn: parent
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.right: parent.right
                 spacing: Kirigami.Units.largeSpacing * 3
                 
                 Label {
@@ -52,6 +55,7 @@ Popup
                     font.weight: Font.Light
                     text: i18n("Welcome to KWeather")
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    wrapMode: Label.WordWrap
                 }
                 
                 Kirigami.Icon {
@@ -120,8 +124,8 @@ Popup
                             id: flatColumn
                             anchors.centerIn: parent
                             spacing: -Kirigami.Units.gridUnit * 2
-                            width: Kirigami.Units.gridUnit * 8
-                            height: Kirigami.Units.gridUnit * 15
+                            width: Kirigami.Units.gridUnit * 7
+                            height: Kirigami.Units.gridUnit * 14
                             Label {
                                 text: i18n("Flat (Performance)")
                                 Layout.alignment: Qt.AlignHCenter
@@ -167,8 +171,8 @@ Popup
                             id: dynamicColumn
                             anchors.centerIn: parent
                             spacing: -Kirigami.Units.gridUnit * 2
-                            width: Kirigami.Units.gridUnit * 8
-                            height: Kirigami.Units.gridUnit * 15
+                            width: Kirigami.Units.gridUnit * 7
+                            height: Kirigami.Units.gridUnit * 14
                             Label {
                                 text: i18n("Dynamic (Animated)")
                                 Layout.alignment: Qt.AlignHCenter
