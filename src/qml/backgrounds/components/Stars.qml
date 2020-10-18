@@ -14,6 +14,7 @@ Item {
     id: rootItem
     anchors.fill: parent
     property double starRadius: Math.max(1, Math.min(width, height) / 800)
+    property bool inView: false
     
     Repeater {
         model: 30
@@ -31,6 +32,7 @@ Item {
             NumberAnimation on opacity {
                 to: 0
                 duration: Math.max(1000, 10000 * Math.random())
+                running: inView
                 easing.type: Easing.InOutQuad
                 onFinished: {
                     if (shape.opacity === 0) {
@@ -38,7 +40,8 @@ Item {
                     } else {
                         to = 0;
                     }
-                    restart();
+                    if(inView)
+                        restart();
                 }
             }
             

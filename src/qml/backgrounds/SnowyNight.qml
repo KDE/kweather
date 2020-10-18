@@ -18,7 +18,9 @@ Rectangle {
         GradientStop { color: "#263238"; position: 1.0 }
     }
     
-    Stars {}
+    Stars {
+        inView: parent.inView
+    }
     Snow {
         z: 2
         backGroundColor: "transparent"

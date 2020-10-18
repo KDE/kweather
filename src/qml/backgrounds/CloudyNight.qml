@@ -17,7 +17,9 @@ Rectangle {
         GradientStop { color: "#263238"; position: 1.0 }
     }
     
-    Stars {}
+    Stars {
+        inView: parent.inView
+    }
     
     Cloudy {
         cloudColor: "#b0bec5"

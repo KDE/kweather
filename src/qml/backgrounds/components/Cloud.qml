@@ -31,7 +31,8 @@ Shape {
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minRadius + Math.random() * maxRadiusChange;
-            restart();
+            if(inView)
+                restart();
         }
     }
     
@@ -41,7 +42,8 @@ Shape {
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minX + Math.random() * maxCoordChange;
-            restart();
+            if(inView)
+                restart();
         }
     }
     
@@ -51,7 +53,8 @@ Shape {
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minY + Math.random() * maxCoordChange;
-            restart();
+            if(inView)
+                restart();
         }
     }
     

@@ -12,6 +12,7 @@ import org.kde.kirigami 2.11 as Kirigami
 import "components"
 
 Rectangle {
+    property bool inView: false
     anchors.fill: parent
     color: "#455a64"
     gradient: Gradient {
@@ -19,5 +20,7 @@ Rectangle {
         GradientStop { position: 1.0; color: "#263238" }
     }
     
-    Stars {}
+    Stars {
+        inView: parent.inView
+    }
 }
