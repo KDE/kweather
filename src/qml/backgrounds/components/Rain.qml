@@ -22,7 +22,7 @@ Canvas {
                 var p = particles[c];
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p.x + p.l * p.xs, p.y + p.l * p.ys);
+                ctx.lineTo(p.x, p.y + p.l * p.ys);
                 ctx.stroke();
             }
             move();
@@ -31,7 +31,6 @@ Canvas {
         function move() {
             for (var b = 0; b < particles.length; b++) {
                 var p = particles[b];
-                p.x += p.xs;
                 p.y += p.ys;
                 if (p.x > width || p.y > height) {
                     p.x = Math.random() * width;
@@ -42,7 +41,7 @@ Canvas {
         draw();
     }
     Timer {
-        interval: 30
+        interval: 16
         running: true
         repeat: true
         onTriggered: parent.requestPaint()
@@ -50,13 +49,12 @@ Canvas {
 
     Component.onCompleted: {
         var init = [];
-        var maxParts = 300;
+        var maxParts = 80;
         for (var a = 0; a < maxParts; a++) {
             init.push({
                           x: Math.random() * width,
                           y: Math.random() * height,
-                          l: Math.random() * 5,
-                          xs: -4 + Math.random() * 4 + 2,
+                          l: 2 + Math.random() * 4,
                           ys: Math.random() * 10 + 10
                       })
         }
@@ -67,87 +65,3 @@ Canvas {
         }
     }
 }
-//Item {
-//    property alias backGroundColor: cloud.backGroundColor
-//    anchors.fill: parent
-//    Cloudy {
-//        id: cloud
-//        anchors.fill: parent
-//    }
-
-//    RowLayout {
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        spacing: parent.width / 4
-//        Rectangle {
-//            width: 2
-//            height: 80
-//            color: "white"
-//            opacity: 0.8
-//            y: - height
-//        }
-//        Rectangle {
-//            width: 2
-//            height: 50
-//            color: "white"
-//            opacity: 0.5
-//            y: - height
-//        }
-//        Rectangle {
-//            width: 3
-//            height: 80
-//            color: "white"
-//            opacity: 0.7
-//            y: - height
-//        }
-//        Rectangle {
-//            width: 5
-//            height: 80
-//            color: "white"
-//            opacity: 0.4
-//            y: - height
-//        }
-//        y: 80
-//        SequentialAnimation on y {
-//            loops: Animation.Infinite
-//            PropertyAnimation { to: 400; duration: 4000 }
-//        }
-//    }
-
-//    RowLayout {
-//        anchors.leftMargin: 50
-//        spacing: parent.width / 4
-//        Rectangle {
-//            width: 2
-//            height: 80
-//            color: "white"
-//            opacity: 0.8
-//            y: - height
-//        }
-//        Rectangle {
-//            width: 2
-//            height: 50
-//            color: "white"
-//            opacity: 0.5
-//            y: - height
-//        }
-//        Rectangle {
-//            width: 3
-//            height: 80
-//            color: "white"
-//            opacity: 0.7
-//            y: - height
-//        }
-//        Rectangle {
-//            width: 5
-//            height: 80
-//            color: "white"
-//            opacity: 0.4
-//            y: - height
-//        }
-//        y: 150
-//        SequentialAnimation on y {
-//            loops: Animation.Infinite
-//            PropertyAnimation { to: 500; duration: 5000 }
-//        }
-//    }
-//}
