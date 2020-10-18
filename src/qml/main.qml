@@ -45,7 +45,7 @@ Kirigami.ApplicationWindow
 
     globalDrawer: Kirigami.GlobalDrawer {
         title: i18n("Weather")
-        titleIcon: "kweather"
+        titleIcon: "qrc:/resources/kweather.svg"
         
         property bool isWidescreen: appwindow.width > appwindow.height
         
