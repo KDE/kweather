@@ -39,12 +39,21 @@ Kirigami.ScrollablePage {
             id: forecastViewRepeater
             model: weatherLocationListModel
             anchors.fill: parent
-            
+
             Loader {
                 id: locationLoader
-                
-                Component.onCompleted: updateForecastStyle()
-                
+                property bool inView: SwipeView.isCurrentItem
+                onInViewChanged: {
+                    locationLoader.item["inView"] = inView;
+                }
+
+                Component.onCompleted: init()
+
+                function init(){
+                    updateForecastStyle();
+                    locationLoader.item["inView"] = locationLoader.inView;
+                }
+
                 function updateForecastStyle() {
                     if (settingsModel.forecastStyle === "Dynamic") {
                         console.log("loaded dynamic view");

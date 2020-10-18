@@ -9,6 +9,7 @@ import QtQuick.Layouts 1.2
 Canvas {
     id: mycanvas
 
+    property bool inView: true
     property var particles: []
     onPaint: {
         var ctx = getContext("2d");
@@ -41,8 +42,9 @@ Canvas {
         draw();
     }
     Timer {
+        id: animationTimer
         interval: 16
-        running: true
+        running: inView
         repeat: true
         onTriggered: parent.requestPaint()
     }

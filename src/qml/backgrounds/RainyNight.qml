@@ -11,6 +11,7 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 import "components"
 Rectangle {
+    property bool inView: false
     gradient: Gradient {
         GradientStop { color: "#455a64"; position: 0.0 }
         GradientStop { color: "#263238"; position: 1.0 }
@@ -22,5 +23,6 @@ Rectangle {
 
     Rain {
         anchors.fill: parent
+        inView: parent.inView
     }
 }

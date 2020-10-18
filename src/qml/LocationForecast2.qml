@@ -15,9 +15,12 @@ import "backgrounds"
 
 Kirigami.ScrollablePage {
     id: page
+    property bool inView: false
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
     property WeatherLocation weatherLocation
     property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
+
+    onInViewChanged: background.item["inView"] = inView
 
     background: Loader {
         id: background
