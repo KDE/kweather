@@ -19,6 +19,7 @@ Rectangle {
     
     Cloudy {
         cloudColor: "#b0bec5"
+        inView: parent.inView
     }
 
     Rain {

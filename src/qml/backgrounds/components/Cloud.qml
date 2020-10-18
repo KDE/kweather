@@ -12,6 +12,7 @@ import org.kde.kirigami 2.11 as Kirigami
 
 Shape {
     id: rootShape
+    property bool inView: false
     property double maxRadiusChange
     property double maxCoordChange
     property double minRadius
@@ -26,7 +27,7 @@ Shape {
     
     NumberAnimation on radius {
         duration: 4000
-        running: true
+        running: inView
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minRadius + Math.random() * maxRadiusChange;
@@ -36,7 +37,7 @@ Shape {
     
     NumberAnimation on centerX {
         duration: 2600
-        running: true
+        running: inView
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minX + Math.random() * maxCoordChange;
@@ -46,7 +47,7 @@ Shape {
     
     NumberAnimation on centerY {
         duration: 3400
-        running: true
+        running: inView
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minY + Math.random() * maxCoordChange;

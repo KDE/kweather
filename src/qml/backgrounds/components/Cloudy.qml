@@ -16,8 +16,10 @@ Item {
     property color cloudColor: "white"
     property double unitSize: width / 100 // 100 is full width of screen
     property double heightUnitSize: height / 100
+    property bool inView: false
     
     Cloud {
+        inView: parent.inView
         opacity: 0.5
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 3
@@ -27,6 +29,7 @@ Item {
         minY: heightUnitSize * -3
     }
     Cloud {
+        inView: parent.inView
         opacity: 0.5
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 2
@@ -36,6 +39,7 @@ Item {
         minY: heightUnitSize * 20
     }
     Cloud {
+        inView: parent.inView
         opacity: 0.5
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 3
@@ -45,6 +49,7 @@ Item {
         minY: heightUnitSize * 7
     }
     Cloud {
+        inView: parent.inView
         opacity: 0.5
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 2
@@ -54,6 +59,7 @@ Item {
         minY: heightUnitSize * -6
     }
     Cloud {
+        inView: parent.inView
         opacity: 0.5
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 3
@@ -63,6 +69,7 @@ Item {
         minY: heightUnitSize * 6
     }
     Cloud {
+        inView: parent.inView
         opacity: 0.6
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 3
@@ -72,6 +79,7 @@ Item {
         minY: heightUnitSize * 10
     }
     Cloud {
+        inView: parent.inView
         opacity: 0.5
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 5

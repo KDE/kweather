@@ -12,6 +12,7 @@ import org.kde.kirigami 2.11 as Kirigami
 import "components"
 
 Rectangle {
+    property bool inView: false
     gradient: Gradient {
         GradientStop { color: "#3daee2"; position: 0.0 }
         GradientStop { color: "#3daee2"; position: 1.0 }
@@ -23,6 +24,7 @@ Rectangle {
     }
     Cloudy {
         cloudColor: "white"
+        inView: parent.inView
     }
 }
 
