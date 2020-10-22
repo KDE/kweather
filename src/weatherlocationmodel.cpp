@@ -196,7 +196,7 @@ void WeatherLocationListModel::addCurrentLocation()
     auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
     location->update();
 
-    insert(this->locationsList.count(), location);
+    insert(0, location);
     emit successfullyCreatedDefault();
 }
 
