@@ -48,7 +48,14 @@ Kirigami.ScrollablePage {
             visible: citiesList.count == 0
         }
 
-        delegate: Kirigami.SwipeListItem {
+        delegate: Kirigami.DelegateRecycler {
+            width: citiesList.width
+            sourceComponent: delegateComponent
+        }
+    }
+    Component {
+        id: delegateComponent
+        Kirigami.SwipeListItem {
             id: listItem
             actions: [
                 Kirigami.Action {
@@ -85,6 +92,13 @@ Kirigami.ScrollablePage {
                     }
                     spacing: Kirigami.Units.largeSpacing * 2
 
+                    Kirigami.ListItemDragHandle {
+                        listItem: listItem
+                        listView: citiesList
+                        onMoveRequested: {
+                            weatherLocationListModel.move(oldIndex, newIndex)
+                        }
+                    }
                     ColumnLayout {
                         Kirigami.Icon {
                             Layout.alignment: Qt.AlignHCenter
@@ -109,16 +123,11 @@ Kirigami.ScrollablePage {
                     Item {
                         Layout.fillWidth: true
                     }
-                    //                    Kirigami.ListItemDragHandle {
-                    //                        Layout.alignment: Qt.AlignRight
-                    //                        listItem: listItem
-                    //                        listView: citiesList
-                    //                        onMoveRequested: weatherLocationListModel.move(oldIndex, newIndex)
-                    //                    }
                 }
             }
         }
     }
+
     // select backend dialog
     Dialog {
         property WeatherLocation mLocation: weatherLocationListModel.get(currentIndex)

@@ -122,9 +122,16 @@ WeatherLocation *WeatherLocationListModel::get(int index)
 
 void WeatherLocationListModel::move(int oldIndex, int newIndex)
 {
-    if (oldIndex < 0 || oldIndex >= locationsList.count() || newIndex < 0 || newIndex >= locationsList.count())
+    if (oldIndex < 0 || oldIndex >= locationsList.size() || newIndex < 0 || newIndex >= locationsList.size())
         return;
+
+    // to my surprise, we have to do this
+    if (newIndex > oldIndex)
+        std::swap(newIndex, oldIndex);
+
+    Q_EMIT beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
     locationsList.move(oldIndex, newIndex);
+    Q_EMIT endMoveRows();
 }
 
 void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
