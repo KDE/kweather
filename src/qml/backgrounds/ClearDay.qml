@@ -16,6 +16,7 @@ Rectangle {
     anchors.fill: parent
     color: "#ffc107"
 
+    property bool inView: false
     property double unitSize: width / 100 // 100 is full width of screen
     property double innerRotation: 0
     property double outerRotation: 0
@@ -27,7 +28,8 @@ Rectangle {
         running: true
         onFinished: {
             innerRotation = 0
-            restart();
+            if(inView)
+                restart();
         }
     }
     
@@ -37,7 +39,8 @@ Rectangle {
         running: true
         onFinished: {
             outerRotation = 0
-            restart();
+            if(inView)
+                restart();
         }
     }
     
@@ -47,7 +50,8 @@ Rectangle {
         running: true
         onFinished: {
             outerOuterRotation = 0
-            restart();
+            if(inView)
+                restart();
         }
     }
     // outer outer sun
