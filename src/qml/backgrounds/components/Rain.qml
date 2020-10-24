@@ -11,6 +11,8 @@ Canvas {
 
     property bool inView: true
     property var particles: []
+
+    renderStrategy: Canvas.Threaded
     onPaint: {
         var ctx = getContext("2d");
         ctx.strokeStyle = 'rgba(255,255,255,0.5)';
