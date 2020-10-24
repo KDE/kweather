@@ -23,7 +23,7 @@ Shape {
     property double centerY: minY
     property alias color: shapePath.fillColor
     
-    vendorExtensionsEnabled: true
+    //vendorExtensionsEnabled: true
     
     NumberAnimation on radius {
         duration: 4000
