@@ -54,6 +54,7 @@ Popup
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                     font.weight: Font.Light
                     text: i18n("Welcome to KWeather")
+                    font.family: lightHeadingFont.name
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     wrapMode: Label.WordWrap
                 }
@@ -87,6 +88,7 @@ Popup
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.6
                     font.weight: Font.Light
                     text: i18n("Select forecast theme")
+                    font.family: lightHeadingFont.name
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 }
                 
@@ -127,7 +129,7 @@ Popup
                             width: Kirigami.Units.gridUnit * 7
                             height: Kirigami.Units.gridUnit * 14
                             Label {
-                                text: i18n("Flat (Performance)")
+                                text: i18n("Flat")
                                 Layout.alignment: Qt.AlignHCenter
                             }
                             
@@ -174,7 +176,7 @@ Popup
                             width: Kirigami.Units.gridUnit * 7
                             height: Kirigami.Units.gridUnit * 14
                             Label {
-                                text: i18n("Dynamic (Animated)")
+                                text: i18n("Dynamic")
                                 Layout.alignment: Qt.AlignHCenter
                             }
                             

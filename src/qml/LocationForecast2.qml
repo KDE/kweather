@@ -65,14 +65,16 @@ Kirigami.ScrollablePage {
                 Layout.alignment: Qt.AlignLeft
                 horizontalAlignment: Text.AlignLeft
                 text: weatherLocation.currentWeather == null ? "0" : weatherLocation.currentWeather.temperatureRounded
+                font.family: lightHeadingFont.name
             }
             Label {
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                font.weight: Font.Bold
+                font.weight: Font.DemiBold
                 color: "white"
                 Layout.alignment: Qt.AlignLeft
                 horizontalAlignment: Text.AlignLeft
                 text: weatherLocation.currentWeather == null ? "Unknown" : weatherLocation.currentWeather.weatherDescription
+                font.family: lightHeadingFont.name
             }
             Label {
                 Layout.topMargin: Kirigami.Units.largeSpacing

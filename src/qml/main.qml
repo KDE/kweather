@@ -80,6 +80,11 @@ Kirigami.ApplicationWindow
             }
         ]
     }
+    
+    FontLoader {
+        id: lightHeadingFont
+        source: "/resources/NotoSans-Light.ttf"
+    }
 
     DefaultPage {
         id: defaultPage
