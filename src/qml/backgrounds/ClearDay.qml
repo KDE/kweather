@@ -22,36 +22,40 @@ Rectangle {
     property double outerRotation: 0
     property double outerOuterRotation: 0
     
+    onInViewChanged: {
+        // prevent reset from slowing down rotation
+        innerRotation = 0;
+        outerRotation = 0;
+        outerOuterRotation = 0;
+    }
+    
     NumberAnimation on innerRotation {
         to: 360
         duration: 20000
-        running: true
+        running: rootBackground.inView
         onFinished: {
             innerRotation = 0
-            if(inView)
-                restart();
+            restart();
         }
     }
     
     NumberAnimation on outerRotation {
         to: 360
         duration: 15000
-        running: true
+        running: rootBackground.inView
         onFinished: {
             outerRotation = 0
-            if(inView)
-                restart();
+            restart();
         }
     }
     
     NumberAnimation on outerOuterRotation {
         to: 360
         duration: 12000
-        running: true
+        running: rootBackground.inView
         onFinished: {
             outerOuterRotation = 0
-            if(inView)
-                restart();
+            restart();
         }
     }
     // outer outer sun
