@@ -7,24 +7,24 @@
 
 set(kweather_SRCS
     main.cpp
-    geoiplookup.cpp
-    geolocation.cpp
-    abstractweatherforecast.cpp
-    weatherforecastmanager.cpp
-    weatherlocationmodel.cpp
-    weatherlocation.cpp
-    weatherhourmodel.cpp
-    weatherdaymodel.cpp
-    owmweatherapi.cpp
-    abstractweatherapi.cpp
-    geotimezone.cpp
-    locationquerymodel.cpp
-    abstractdailyweatherforecast.cpp
-    abstracthourlyweatherforecast.cpp
-    nmiweatherapi2.cpp
-    nmisunriseapi.cpp
-    abstractsunrise.cpp
-    resources.qrc
+#    geoiplookup.cpp
+#    geolocation.cpp
+#    abstractweatherforecast.cpp
+#    weatherforecastmanager.cpp
+#    weatherlocationmodel.cpp
+#    weatherlocation.cpp
+#    weatherhourmodel.cpp
+#    weatherdaymodel.cpp
+#    owmweatherapi.cpp
+#    abstractweatherapi.cpp
+#    geotimezone.cpp
+#    locationquerymodel.cpp
+#    abstractdailyweatherforecast.cpp
+#    abstracthourlyweatherforecast.cpp
+#    nmiweatherapi2.cpp
+#    nmisunriseapi.cpp
+#    abstractsunrise.cpp
+#    resources.qrc
 )
 
 kconfig_add_kcfg_files(kweather_SRCS kweathersettings.kcfgc GENERATE_MOC)
@@ -42,6 +42,7 @@ target_link_libraries(kweather
     KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
+    KF5::KWeatherCore
 )
 
 if (ANDROID)
@@ -102,7 +103,7 @@ if (ANDROID)
     )
 endif()
 
-if (UNIX AND (NOT ANDROID))
-add_subdirectory(plasmoid)
-endif()
+#if (UNIX AND (NOT ANDROID))
+#add_subdirectory(plasmoid)
+#endif()
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
