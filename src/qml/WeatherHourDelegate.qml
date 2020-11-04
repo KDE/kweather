@@ -36,7 +36,7 @@ Rectangle {
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
-            text: weather.temperature
+            text: weather.temperatureRounded
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
             color: textColor
         }
