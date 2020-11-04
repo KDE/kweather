@@ -6,6 +6,7 @@
  */
 
 #include "weatherday.h"
+#include "global.h"
 WeatherDay::WeatherDay()
 {
 }
@@ -53,21 +54,13 @@ const QDate &WeatherDay::date() const
 {
     return m_date;
 }
-QString WeatherDay::tempConverter(double temp)
-{
-    if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
-        return QString::number(qRound(temp * 1.8 + 32)) + "°";
-    } else {
-        return QString::number(qRound(temp)) + "°";
-    }
-};
 QString WeatherDay::maxTemp() const
 {
-    return tempConverter(m_maxTemp);
+    return Kweather::tempConverter(m_maxTemp);
 }
 QString WeatherDay::minTemp() const
 {
-    return tempConverter(m_minTemp);
+    return Kweather::tempConverter(m_minTemp);
 }
 float WeatherDay::precipitation() const
 {

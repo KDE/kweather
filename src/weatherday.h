@@ -8,8 +8,6 @@
 #pragma once
 #include <KWeatherCore/DailyForecast>
 #include <QObject>
-
-#include "kweathersettings.h"
 class WeatherDay : public QObject
 {
     Q_OBJECT
@@ -61,6 +59,4 @@ private:
     QString m_sunrise;
     QString m_sunset;
     QString m_moonPhase;
-
-    static QString tempConverter(double temp);
 };

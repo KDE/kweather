@@ -4,14 +4,22 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
-#ifndef ICONMAP_H
-#define ICONMAP_H
+#pragma once
+#include "kweathersettings.h"
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <QString>
 #include <unordered_map>
 namespace Kweather
 {
+QString tempConverter(double temp)
+{
+    if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
+        return QString::number(qRound(temp * 1.8 + 32)) + "°";
+    } else {
+        return QString::number(qRound(temp)) + "°";
+    }
+};
 enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
 enum class Backend { NMI, OWM };
 struct ResolvedWeatherDesc {
@@ -28,4 +36,3 @@ static const QString API_NMI = "Norway Meteorologisk Institutt";
 static const QString API_OWM = "OpenWeatherMap";
 
 }
-#endif // ICONMAP_H

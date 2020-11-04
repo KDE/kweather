@@ -14,6 +14,7 @@ set(kweather_SRCS
     weatherlocationmodel.cpp
     weatherlocation.cpp
     weatherhourmodel.cpp
+    weatherhour.cpp
     weatherdaymodel.cpp
     weatherday.cpp
     owmweatherapi.cpp
