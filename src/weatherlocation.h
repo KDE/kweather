@@ -7,22 +7,17 @@
 
 #pragma once
 
-#include "abstractweatherforecast.h"
-#include "nmiweatherapi2.h"
 #include "weatherhourmodel.h"
 
+#include <KWeatherCore/WeatherForecastSource>
 #include <QAbstractListModel>
-#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QObject>
-#include <utility>
 
 class WeatherDayListModel;
 class WeatherHourListModel;
 class WeatherHour;
-class AbstractWeatherAPI;
-class AbstractWeatherForecast;
 namespace QtCharts
 {
 class QAbstractSeries;
@@ -53,149 +48,49 @@ class WeatherLocation : public QObject
 
 public:
     WeatherLocation();
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
-                             QString locationId,
-                             QString locationName,
-                             QString timeZone,
-                             float latitude,
-                             float longitude,
-                             Kweather::Backend backend = Kweather::Backend::NMI,
-                             AbstractWeatherForecast forecast = AbstractWeatherForecast());
-    ~WeatherLocation();
+    explicit WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, const KWeatherCore::WeatherForecast &forecast);
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
 
-    Q_INVOKABLE void updateBackend()
-    {
-        if (weatherBackendProvider() != nullptr)
-            weatherBackendProvider()->update();
-    }
-
-    inline QString locationId()
-    {
-        return locationId_;
-    }
-    inline QString locationName()
-    {
-        return locationName_;
-    }
-    inline QString &timeZone()
-    {
-        return timeZone_;
-    };
-    inline float latitude()
-    {
-        return latitude_;
-    }
-    inline float longitude()
-    {
-        return longitude_;
-    }
-    inline WeatherHour *currentWeather()
-    {
-        //        return currentWeather_ == nullptr ? new WeatherHour() : currentWeather_;
-        return currentWeather_;
-    }
-    inline WeatherDayListModel *weatherDayListModel()
-    {
-        return weatherDayListModel_;
-    }
-    inline WeatherHourListModel *weatherHourListModel()
-    {
-        return weatherHourListModel_;
-    }
-    inline AbstractWeatherForecast forecast()
-    {
-        return forecast_;
-    }
-    inline AbstractWeatherAPI *weatherBackendProvider()
-    {
-        return weatherBackendProvider_;
-    }
-    inline QString lastUpdatedFormatted()
-    {
-        return lastUpdated().toString("hh:mm ap");
-    }
-    inline QDateTime lastUpdated()
-    {
-        return lastUpdated_;
-    }
-    inline void setLastUpdated(QDateTime lastUpdated)
-    {
-        this->lastUpdated_ = std::move(lastUpdated);
-        emit propertyChanged();
-    }
-    void determineCurrentForecast();
-    void determineCurrentBackgroundWeatherComponent();
-    void initData(AbstractWeatherForecast fc);
+    const QString &locationId() const;
+    const QString &locationName() const;
+    const QString &timeZone() const;
+    float latitude() const;
+    float longitude() const;
+    WeatherHour *currentWeather() const;
+    WeatherDayListModel *weatherDayListModel() const;
+    WeatherHourListModel *weatherHourListModel() const;
+    QString lastUpdatedFormatted() const;
+    const QDateTime &lastUpdated() const;
+    void setLastUpdated(const QDateTime &lastUpdated);
+    void initData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> fc);
     void update();
-    void changeBackend(Kweather::Backend backend); // change backend on the fly
-    inline QString backend()
-    {
-        switch (backend_) {
-        case Kweather::Backend::NMI:
-            return Kweather::API_NMI;
-        case Kweather::Backend::OWM:
-            return Kweather::API_OWM;
-        default:
-            return {};
-        }
-    };
 
-    const QString &backgroundComponent() const
-    {
-        return m_backgroundComponent;
-    };
-    const QString &backgroundColor() const
-    {
-        return m_backgroundColor;
-    };
-    const QString &textColor() const
-    {
-        return m_textColor;
-    };
-    const QString &cardBackgroundColor() const
-    {
-        return m_cardBackgroundColor;
-    };
-    const QString &cardTextColor() const
-    {
-        return m_cardTextColor;
-    };
-    const QString &iconColor() const
-    {
-        return m_iconColor;
-    }
-    const double maxTempLimit() const
-    {
-        return m_maxTempLimit;
-    }
-    const double minTempLimit() const
-    {
-        return m_minTempLimit;
-    }
-
-    bool darkTheme() const
-    {
-        return m_isDarkTheme;
-    }
+    const QString &backgroundComponent() const;
+    const QString &backgroundColor() const;
+    const QString &textColor() const;
+    const QString &cardBackgroundColor() const;
+    const QString &cardTextColor() const;
+    const QString &iconColor() const;
+    double maxTempLimit() const;
+    double minTempLimit() const;
+    bool darkTheme() const;
     Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
     Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
-public slots:
-    void updateData(AbstractWeatherForecast &fc);
 
-signals:
-    void weatherRefresh(AbstractWeatherForecast &fc); // sent when weather data is refreshed
+Q_SIGNALS:
     void currentForecastChange();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
+    void weatherRefresh(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
+private Q_SLOTS:
+    void determineCurrentForecast();
+    void determineCurrentBackgroundWeatherComponent();
 
 private:
-    Kweather::Backend backend_ = Kweather::Backend::NMI;
-
-    void writeToCache(AbstractWeatherForecast &fc);
-    QJsonDocument convertToJson(AbstractWeatherForecast &fc);
+    void writeToCache(const KWeatherCore::WeatherForecast &fc);
+    QJsonDocument convertToJson(const KWeatherCore::WeatherForecast &fc);
 
     // background related fields
     QString m_backgroundColor;
@@ -213,21 +108,20 @@ private:
     bool m_isDarkTheme = false;
 
     // QtChart Axes
-    QtCharts::QDateTimeAxis *m_axisX {nullptr};
-    QtCharts::QValueAxis *m_axisY {nullptr};
+    QtCharts::QDateTimeAxis *m_axisX = nullptr;
+    QtCharts::QValueAxis *m_axisY = nullptr;
 
-    QString locationName_, locationId_;
-    QString timeZone_;
-    QDateTime lastUpdated_;
-    float latitude_, longitude_;
+    QString m_locationName, m_locationId;
+    QString m_timeZone;
+    QDateTime m_lastUpdated;
+    float m_latitude, m_longitude;
 
-    WeatherDayListModel *weatherDayListModel_ = nullptr;
-    WeatherHourListModel *weatherHourListModel_ = nullptr;
+    KWeatherCore::WeatherForecastSource m_weatherSource;
 
-    AbstractWeatherForecast forecast_;
-    WeatherHour *currentWeather_ = nullptr;
+    WeatherDayListModel *m_weatherDayListModel = nullptr;
+    WeatherHourListModel *m_weatherHourListModel = nullptr;
 
-    AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
+    WeatherHour *m_currentWeather = nullptr;
 
     void updateSeries();
     void updateAxes();

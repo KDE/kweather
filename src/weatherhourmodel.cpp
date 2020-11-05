@@ -5,10 +5,10 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 #include "weatherhourmodel.h"
-#include "weatherhour.h"
 #include "weatherlocation.h"
 #include <QQmlEngine>
 WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
+    : QAbstractListModel(location)
 {
     connect(location, &WeatherLocation::weatherRefresh, this, &WeatherHourListModel::refreshHoursFromForecasts);
 }
@@ -53,7 +53,7 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(const KWeatherCore::WeatherForecast &forecast)
+void WeatherHourListModel::refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast)
 {
     // clear forecasts
     Q_EMIT layoutAboutToBeChanged();
@@ -65,7 +65,7 @@ void WeatherHourListModel::refreshHoursFromForecasts(const KWeatherCore::Weather
     hoursVec.clear();
     dayVec.clear();
     // insert forecasts
-    for (auto day : forecast.dailyWeatherForecast()) {
+    for (auto day : forecast->dailyWeatherForecast()) {
         dayVec.append(day.hourlyWeatherForecast().size());
         for (auto hour : day.hourlyWeatherForecast()) {
             auto *weatherHour = new WeatherHour(hour);
@@ -89,4 +89,9 @@ void WeatherHourListModel::updateUi()
         Q_EMIT h->propertyChanged();
     }
     Q_EMIT dataChanged(createIndex(0, 0), createIndex(hoursVec.size() - 1, 0));
+}
+
+WeatherHour *WeatherHourListModel::currentForecast() const
+{
+    return hoursVec.first();
 }

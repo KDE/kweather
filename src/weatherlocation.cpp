@@ -6,15 +6,6 @@
  */
 
 #include "weatherlocation.h"
-#include "abstractweatherapi.h"
-#include "abstractweatherforecast.h"
-#include "geoiplookup.h"
-#include "geotimezone.h"
-#include "global.h"
-#include "locationquerymodel.h"
-#include "nmisunriseapi.h"
-#include "nmiweatherapi2.h"
-#include "owmweatherapi.h"
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
 
@@ -31,46 +22,35 @@
 
 WeatherLocation::WeatherLocation()
 {
-    this->weatherDayListModel_ = new WeatherDayListModel(this);
-    this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = QDateTime::currentDateTime();
+    this->m_weatherDayListModel = new WeatherDayListModel(this);
+    this->m_weatherHourListModel = new WeatherHourListModel(this);
+    this->m_lastUpdated = QDateTime::currentDateTime();
+    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentBackgroundWeatherComponent);
+    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentForecast);
 }
 
-WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, Kweather::Backend backend, AbstractWeatherForecast forecast)
-    : backend_(backend)
-    , locationName_(std::move(locationName))
-    , timeZone_(std::move(timeZone))
-    , latitude_(latitude)
-    , longitude_(longitude)
-    , locationId_(std::move(locationId))
-    , forecast_(forecast)
-    , weatherBackendProvider_(weatherBackendProvider)
+WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, const KWeatherCore::WeatherForecast &forecast)
+    : m_locationName(std::move(locationName))
+    , m_timeZone(std::move(timeZone))
+    , m_latitude(latitude)
+    , m_longitude(longitude)
+    , m_locationId(std::move(locationId))
 {
-    this->weatherDayListModel_ = new WeatherDayListModel(this);
-    this->weatherHourListModel_ = new WeatherHourListModel(this);
-    this->lastUpdated_ = forecast.timeCreated();
+    this->m_weatherDayListModel = new WeatherDayListModel(this);
+    this->m_weatherHourListModel = new WeatherHourListModel(this);
+    this->m_lastUpdated = forecast.createdTime();
 
     // prevent segfaults from js garbage collection
-    QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership);
-    QQmlEngine::setObjectOwnership(this->weatherHourListModel_, QQmlEngine::CppOwnership);
+    QQmlEngine::setObjectOwnership(this->m_weatherDayListModel, QQmlEngine::CppOwnership);
+    QQmlEngine::setObjectOwnership(this->m_weatherHourListModel, QQmlEngine::CppOwnership);
 
-    determineCurrentForecast();
-
-    connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
+    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentBackgroundWeatherComponent);
+    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentForecast);
 }
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
-    AbstractWeatherAPI *api; // don't fetch sunrise information, since it will be loaded from cache
-    Kweather::Backend backendEnum;
-    if (obj["backend"].toInt() == 0) {
-        api = new NMIWeatherAPI2(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
-        backendEnum = Kweather::Backend::NMI;
-    } else {
-        api = new OWMWeatherAPI(obj["locationId"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
-        backendEnum = Kweather::Backend::OWM;
-    }
-    auto weatherLocation = new WeatherLocation(api, obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble(), backendEnum, AbstractWeatherForecast());
+    auto weatherLocation = new WeatherLocation(obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble(), KWeatherCore::WeatherForecast());
     return weatherLocation;
 }
 
@@ -81,43 +61,20 @@ QJsonObject WeatherLocation::toJson()
     obj["locationName"] = locationName();
     obj["latitude"] = latitude();
     obj["longitude"] = longitude();
-    obj["timezone"] = timeZone_;
-    obj["backend"] = static_cast<int>(backend_);
+    obj["timezone"] = m_timeZone;
     return obj;
-}
-
-void WeatherLocation::updateData(AbstractWeatherForecast &fc)
-{
-    forecast_ = fc;
-    determineCurrentForecast();
-    lastUpdated_ = fc.timeCreated();
-
-    emit weatherRefresh(forecast_);
-    emit stopLoadingIndicator();
-    writeToCache(forecast_);
-
-    emit propertyChanged();
 }
 
 void WeatherLocation::determineCurrentForecast()
 {
-    delete currentWeather_;
+    m_currentWeather->deleteLater();
 
-    if (forecast().hourlyForecasts().count() == 0) {
-        currentWeather_ = new WeatherHour();
+    if (m_weatherHourListModel->rowCount({}) == 0) {
+        m_currentWeather = new WeatherHour();
     } else {
-        long long minSecs = -1;
-        QDateTime current = QDateTime::currentDateTime();
-
-        // get closest forecast to current time
-        for (auto forecast : forecast_.hourlyForecasts()) {
-            if (minSecs == -1 || minSecs > llabs(forecast.date().secsTo(current))) {
-                currentWeather_ = new WeatherHour(forecast);
-                minSecs = llabs(forecast.date().secsTo(current));
-            }
-        }
+        m_currentWeather = m_weatherHourListModel->currentForecast();
     }
-    QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    QQmlEngine::setObjectOwnership(m_currentWeather, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
 
     determineCurrentBackgroundWeatherComponent();
     updateSeries();
@@ -130,50 +87,50 @@ void WeatherLocation::determineCurrentBackgroundWeatherComponent()
 
     bool isDayStyle = false; // make sure that if the background is definitively day, the colours match that
 
-    if (currentWeather_->weatherIcon() == QStringLiteral("weather-clear")) {
+    if (m_currentWeather->weatherIcon() == QStringLiteral("weather-clear")) {
         m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
         isDayStyle = true;
-    
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-clear-night")) {
+
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-clear-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/ClearNight.qml");
-        
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-clouds")) {
+
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-clouds")) {
         m_backgroundComponent = QStringLiteral("backgrounds/CloudyDay.qml");
         isDayStyle = true;
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-clouds-night") || currentWeather_->weatherIcon() == QStringLiteral("weather-overcast")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-clouds-night") || m_currentWeather->weatherIcon() == QStringLiteral("weather-overcast")) {
         m_backgroundComponent = QStringLiteral("backgrounds/CloudyNight.qml");
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-few-clouds")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-few-clouds")) {
         m_backgroundComponent = QStringLiteral("backgrounds/PartlyCloudyDay.qml");
         isDayStyle = true;
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-few-clouds-night")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-few-clouds-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/PartlyCloudyNight.qml");
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-fog") || currentWeather_->weatherIcon() == QStringLiteral("weather-mist")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-fog") || m_currentWeather->weatherIcon() == QStringLiteral("weather-mist")) {
         m_backgroundComponent = QStringLiteral("backgrounds/Misty.qml");
         isDayStyle = true;
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-freezing-rain") || currentWeather_->weatherIcon() == QStringLiteral("weather-snow-hail") || currentWeather_->weatherIcon() == QStringLiteral("weather-showers") ||
-               currentWeather_->weatherIcon() == QStringLiteral("weather-showers-day") || currentWeather_->weatherIcon() == QStringLiteral("weather-showers-scattered") ||
-               currentWeather_->weatherIcon() == QStringLiteral("weather-showers-scattered-day") || currentWeather_->weatherIcon() == QStringLiteral("weather-storm") ||
-               currentWeather_->weatherIcon() == QStringLiteral("weather-storm-day")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-freezing-rain") || m_currentWeather->weatherIcon() == QStringLiteral("weather-snow-hail") || m_currentWeather->weatherIcon() == QStringLiteral("weather-showers") ||
+               m_currentWeather->weatherIcon() == QStringLiteral("weather-showers-day") || m_currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered") ||
+               m_currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-day") || m_currentWeather->weatherIcon() == QStringLiteral("weather-storm") ||
+               m_currentWeather->weatherIcon() == QStringLiteral("weather-storm-day")) {
         m_backgroundComponent = QStringLiteral("backgrounds/RainyDay.qml");
         isDayStyle = true;
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-showers-night") || currentWeather_->weatherIcon() == QStringLiteral("weather-showers-scattered-night") ||
-               currentWeather_->weatherIcon() == QStringLiteral("weather-storm-night")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-showers-night") || m_currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-night") ||
+               m_currentWeather->weatherIcon() == QStringLiteral("weather-storm-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/RainyNight.qml");
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-hail") || currentWeather_->weatherIcon() == QStringLiteral("weather-snow-scattered") || currentWeather_->weatherIcon() == QStringLiteral("weather-snow")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-hail") || m_currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered") || m_currentWeather->weatherIcon() == QStringLiteral("weather-snow")) {
         m_backgroundComponent = QStringLiteral("backgrounds/SnowyDay.qml");
         isDayStyle = true;
 
-    } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-snow-scattered-night")) {
+    } else if (m_currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/SnowyNight.qml");
     }
-    
+
     if (isDayStyle) {
         m_cardBackgroundColor = QStringLiteral("#fefefe");
         m_cardTextColor = QStringLiteral("black");
@@ -191,23 +148,18 @@ void WeatherLocation::determineCurrentBackgroundWeatherComponent()
     }
 }
 
-void WeatherLocation::initData(AbstractWeatherForecast fc)
+void WeatherLocation::initData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> fc)
 {
-    forecast_ = fc;
-    weatherBackendProvider_->setCurrentData(forecast_);
-    weatherBackendProvider_->setCurrentSunriseData(fc.sunrise());
-    weatherBackendProvider_->fetchSunriseData(); // TODO detect if we need to actually fetch sunrise data
-    determineCurrentForecast();
-    emit weatherRefresh(forecast_);
-    emit propertyChanged();
+    Q_EMIT weatherRefresh(fc);
+    Q_EMIT propertyChanged();
 }
 
 void WeatherLocation::update()
 {
-    weatherBackendProvider_->update();
+    m_weatherSource.requestData(latitude(), longitude(), timeZone(), weatherDayListModel()->sunrise());
 }
 
-void WeatherLocation::writeToCache(AbstractWeatherForecast &fc)
+void WeatherLocation::writeToCache(const KWeatherCore::WeatherForecast &fc)
 {
     QFile file;
     QString url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
@@ -221,36 +173,11 @@ void WeatherLocation::writeToCache(AbstractWeatherForecast &fc)
     file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
     file.close();
 }
-QJsonDocument WeatherLocation::convertToJson(AbstractWeatherForecast &fc)
+QJsonDocument WeatherLocation::convertToJson(const KWeatherCore::WeatherForecast &fc)
 {
     QJsonDocument doc;
-    doc.setObject(fc.toJson());
+    // doc.setObject(fc);
     return doc;
-}
-
-void WeatherLocation::changeBackend(Kweather::Backend backend)
-{
-    if (backend != backend_) {
-        auto old = weatherBackendProvider_;
-        backend_ = backend;
-        AbstractWeatherAPI *tmp = nullptr;
-        switch (backend_) {
-        case Kweather::Backend::OWM:
-            tmp = new OWMWeatherAPI(this->locationId(), this->timeZone(), this->latitude_, this->longitude());
-            break;
-        case Kweather::Backend::NMI:
-            tmp = new NMIWeatherAPI2(this->locationId(), this->timeZone(), this->latitude_, this->longitude());
-            break;
-        default:
-            return;
-        }
-        weatherBackendProvider_ = tmp;
-        connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
-        weatherBackendProvider_->setCurrentSunriseData(old->currentSunriseData());
-        weatherBackendProvider_->fetchSunriseData();
-        this->update();
-        old->deleteLater();
-    }
 }
 
 void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
@@ -263,14 +190,14 @@ void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
 
 void WeatherLocation::updateSeries()
 {
-    if (m_series && forecast_.dailyForecasts().size() > 0) {
+    if (m_series && weatherDayListModel()->days().size() > 0) {
         m_vector.clear();
         int i = 0;
         double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
-        for (auto d : forecast_.dailyForecasts()) {
-            m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), d.maxTemp()));
-            minTemp = std::min<double>(d.minTemp(), minTemp);
-            maxTemp = std::max<double>(d.maxTemp(), maxTemp);
+        for (auto d : weatherDayListModel()->days()) {
+            m_vector.append(QPointF(d->date().startOfDay().toSecsSinceEpoch(), d->maxTempNum()));
+            minTemp = std::min<double>(d->minTempNum(), minTemp);
+            maxTemp = std::max<double>(d->maxTempNum(), maxTemp);
             ++i;
         }
 
@@ -280,7 +207,7 @@ void WeatherLocation::updateSeries()
 
         m_series->replace(m_vector);
         if (m_axisX) {
-            m_axisX->setRange(forecast_.dailyForecasts().front().date().startOfDay(), forecast_.dailyForecasts().back().date().startOfDay());
+            m_axisX->setRange(weatherDayListModel()->days().front()->date().startOfDay(), weatherDayListModel()->days().back()->date().startOfDay());
         }
     }
 }
@@ -298,9 +225,4 @@ void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)
 // TODO: actually update the label
 void WeatherLocation::updateAxes()
 {
-}
-
-WeatherLocation::~WeatherLocation()
-{
-    delete weatherBackendProvider_;
 }

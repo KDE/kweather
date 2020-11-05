@@ -6,6 +6,7 @@
  */
 
 #pragma once
+#include "weatherday.h"
 #include <KWeatherCore/WeatherForecast>
 #include <QAbstractListModel>
 #include <QObject>
@@ -27,8 +28,14 @@ public:
     Q_INVOKABLE void updateUi();
 
 public Q_SLOTS:
-    void refreshDaysFromForecasts(const KWeatherCore::WeatherForecast &forecast);
+    void refreshDaysFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
+
+protected:
+    friend class WeatherLocation;
+    const QVector<KWeatherCore::Sunrise> &sunrise() const;
+    const QVector<WeatherDay *> &days() const;
 
 private:
-    QList<WeatherDay *> daysList;
+    QVector<WeatherDay *> daysVec;
+    QVector<KWeatherCore::Sunrise> sunriseVec;
 };

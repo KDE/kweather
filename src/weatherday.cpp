@@ -62,6 +62,14 @@ QString WeatherDay::minTemp() const
 {
     return Kweather::tempConverter(m_minTemp);
 }
+qreal WeatherDay::maxTempNum() const
+{
+    return m_maxTemp;
+}
+qreal WeatherDay::minTempNum() const
+{
+    return m_minTemp;
+}
 float WeatherDay::precipitation() const
 {
     return m_precipitation;

@@ -6,10 +6,10 @@
  */
 
 #include "weatherdaymodel.h"
-#include "weatherday.h"
 #include "weatherlocation.h"
-
+#include <QQmlEngine>
 WeatherDayListModel::WeatherDayListModel(WeatherLocation *location)
+    : QAbstractListModel(location)
 {
     connect(location, &WeatherLocation::weatherRefresh, this, &WeatherDayListModel::refreshDaysFromForecasts);
 }
@@ -17,16 +17,16 @@ WeatherDayListModel::WeatherDayListModel(WeatherLocation *location)
 int WeatherDayListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return daysList.size();
+    return daysVec.size();
 }
 
 QVariant WeatherDayListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= daysList.count() || index.row() < 0) {
+    if (!index.isValid() || index.row() >= daysVec.count() || index.row() < 0) {
         return {};
     }
     if (role == Roles::DayItemRole) {
-        return QVariant::fromValue(daysList.at(index.row()));
+        return QVariant::fromValue(daysVec.at(index.row()));
     }
     return {};
 }
@@ -38,26 +38,28 @@ QHash<int, QByteArray> WeatherDayListModel::roleNames() const
 
 WeatherDay *WeatherDayListModel::get(int index)
 {
-    if (index < 0 || index >= daysList.count())
+    if (index < 0 || index >= daysVec.count())
         return {};
-    return daysList.at(index);
+    return daysVec.at(index);
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts(const KWeatherCore::WeatherForecast &forecasts)
+void WeatherDayListModel::refreshDaysFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
 {
+    sunriseVec.clear();
     Q_EMIT layoutAboutToBeChanged();
-    Q_EMIT beginRemoveRows(QModelIndex(), 0, daysList.count() - 1);
-    auto oldList = daysList;
-    daysList.clear();
+    Q_EMIT beginRemoveRows(QModelIndex(), 0, daysVec.count() - 1);
+    auto oldList = daysVec;
+    daysVec.clear();
     Q_EMIT endRemoveRows();
 
-    Q_EMIT beginInsertRows(QModelIndex(), 0, forecasts.dailyWeatherForecast().count() - 1);
+    Q_EMIT beginInsertRows(QModelIndex(), 0, forecasts->dailyWeatherForecast().count() - 1);
 
     // add weatherdays with forecast day lists
-    for (auto forecast : forecasts.dailyWeatherForecast()) {
+    for (auto forecast : forecasts->dailyWeatherForecast()) {
+        sunriseVec.append(forecast.sunrise());
         WeatherDay *weatherDay = new WeatherDay(forecast);
         QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-        daysList.append(weatherDay);
+        daysVec.append(weatherDay);
     }
 
     Q_EMIT endInsertRows();
@@ -68,8 +70,16 @@ void WeatherDayListModel::refreshDaysFromForecasts(const KWeatherCore::WeatherFo
 
 void WeatherDayListModel::updateUi()
 {
-    for (auto h : daysList) {
+    for (auto h : daysVec) {
         Q_EMIT h->propertyChanged();
     }
-    Q_EMIT dataChanged(createIndex(0, 0), createIndex(daysList.count() - 1, 0));
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(daysVec.count() - 1, 0));
+}
+const QVector<KWeatherCore::Sunrise> &WeatherDayListModel::sunrise() const
+{
+    return sunriseVec;
+}
+const QVector<WeatherDay *> &WeatherDayListModel::days() const
+{
+    return daysVec;
 }

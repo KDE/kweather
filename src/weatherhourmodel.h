@@ -6,6 +6,7 @@
  */
 #pragma once
 
+#include "weatherhour.h"
 #include <KWeatherCore/WeatherForecast>
 #include <QAbstractListModel>
 #include <QObject>
@@ -28,7 +29,11 @@ public:
     Q_INVOKABLE void updateHourView(int index);
     Q_INVOKABLE void updateUi();
 public slots:
-    void refreshHoursFromForecasts(const KWeatherCore::WeatherForecast &forecast);
+    void refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
+
+protected:
+    friend class WeatherLocation;
+    WeatherHour *currentForecast() const;
 
 private:
     QVector<WeatherHour *> hoursVec;

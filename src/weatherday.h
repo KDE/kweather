@@ -34,6 +34,8 @@ public:
     const QDate &date() const;
     QString maxTemp() const;
     QString minTemp() const;
+    qreal maxTempNum() const;
+    qreal minTempNum() const;
     float precipitation() const;
     float uvIndex() const;
     float humidity() const;
