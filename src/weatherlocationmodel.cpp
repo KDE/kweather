@@ -6,23 +6,20 @@
  */
 
 #include "weatherlocationmodel.h"
-#include "geoiplookup.h"
-#include "geotimezone.h"
-#include "locationquerymodel.h"
-#include "owmweatherapi.h"
-#include "weatherdaymodel.h"
 #include "weatherlocation.h"
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
 
 #include <QJsonArray>
+#include <QQmlEngine>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
-const QString WEATHER_LOCATIONS_CFG_KEY = QStringLiteral("locationsList");
+const QString WEATHER_LOCATIONS_CFG_KEY = QStringLiteral("locationsVec");
 
 /* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
+    : QAbstractListModel(parent)
 {
     load();
 }
@@ -35,14 +32,14 @@ void WeatherLocationListModel::load()
     QJsonDocument doc = QJsonDocument::fromJson(group.readEntry(WEATHER_LOCATIONS_CFG_KEY, "{}").toUtf8());
     for (QJsonValueRef r : doc.array()) {
         QJsonObject obj = r.toObject();
-        locationsList.append(WeatherLocation::fromJson(obj));
+        locationsVec.append(WeatherLocation::fromJson(obj));
     }
 }
 
 void WeatherLocationListModel::save()
 {
     QJsonArray arr;
-    for (auto lc : locationsList) {
+    for (auto lc : locationsVec) {
         arr.push_back(lc->toJson());
     }
     QJsonObject obj;
@@ -56,16 +53,16 @@ void WeatherLocationListModel::save()
 int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return locationsList.size();
+    return locationsVec.size();
 }
 
 QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= locationsList.count() || index.row() < 0) {
+    if (!index.isValid() || index.row() >= locationsVec.size() || index.row() < 0) {
         return {};
     }
     if (role == Roles::LocationRole) {
-        return QVariant::fromValue(locationsList.at(index.row()));
+        return QVariant::fromValue(locationsVec.at(index.row()));
     }
     return {};
 }
@@ -77,9 +74,9 @@ QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
 
 void WeatherLocationListModel::updateUi()
 {
-    emit dataChanged(createIndex(0, 0), createIndex(locationsList.count() - 1, 0));
-    for (auto l : locationsList) {
-        emit l->propertyChanged();
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(locationsVec.size() - 1, 0));
+    for (auto l : locationsVec) {
+        Q_EMIT l->propertyChanged();
         l->weatherDayListModel()->updateUi();
         l->weatherHourListModel()->updateUi();
     }
@@ -87,42 +84,42 @@ void WeatherLocationListModel::updateUi()
 
 void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocation)
 {
-    if ((index < 0) || (index > locationsList.count()))
+    if ((index < 0) || (index > locationsVec.size()))
         return;
 
     QQmlEngine::setObjectOwnership(weatherLocation, QQmlEngine::CppOwnership);
-    emit beginInsertRows(QModelIndex(), index, index);
-    locationsList.insert(index, weatherLocation);
-    emit endInsertRows();
+    Q_EMIT beginInsertRows(QModelIndex(), index, index);
+    locationsVec.insert(index, weatherLocation);
+    Q_EMIT endInsertRows();
 
     save();
 }
 
 void WeatherLocationListModel::remove(int index)
 {
-    if ((index < 0) || (index >= locationsList.count()))
+    if ((index < 0) || (index >= locationsVec.size()))
         return;
 
-    emit beginRemoveRows(QModelIndex(), index, index);
-    auto location = locationsList.at(index);
-    locationsList.removeAt(index);
+    Q_EMIT beginRemoveRows(QModelIndex(), index, index);
+    auto location = locationsVec.at(index);
+    locationsVec.removeAt(index);
     delete location;
-    emit endRemoveRows();
+    Q_EMIT endRemoveRows();
 
     save();
 }
 
 WeatherLocation *WeatherLocationListModel::get(int index)
 {
-    if ((index < 0) || (index >= locationsList.count()))
+    if ((index < 0) || (index >= locationsVec.size()))
         return {};
 
-    return locationsList.at(index);
+    return locationsVec.at(index);
 }
 
 void WeatherLocationListModel::move(int oldIndex, int newIndex)
 {
-    if (oldIndex < 0 || oldIndex >= locationsList.size() || newIndex < 0 || newIndex >= locationsList.size())
+    if (oldIndex < 0 || oldIndex >= locationsVec.size() || newIndex < 0 || newIndex >= locationsVec.size())
         return;
 
     // to my surprise, we have to do this
@@ -130,86 +127,45 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
         std::swap(newIndex, oldIndex);
 
     Q_EMIT beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
-    locationsList.move(oldIndex, newIndex);
+    locationsVec.move(oldIndex, newIndex);
     Q_EMIT endMoveRows();
 }
-
-void WeatherLocationListModel::addLocation(LocationQueryResult *ret)
+int WeatherLocationListModel::count() const
+{
+    return locationsVec.size();
+}
+void WeatherLocationListModel::addLocation(KWeatherCore::LocationQueryResult *ret)
 {
     qDebug() << "add location";
     auto locId = ret->geonameId(), locName = ret->toponymName();
     auto lat = ret->latitude(), lon = ret->longitude();
 
-    // obtain timezone
-    auto *tz = new GeoTimeZone(ret->latitude(), ret->longitude());
+    // add location
+    auto *location = new WeatherLocation(locId, locName, QString(), lat, lon, KWeatherCore::WeatherForecast());
+    location->update();
 
-    // unsuccessful timezone fetch
-    connect(tz, &GeoTimeZone::networkError, this, [this] { emit networkErrorCreating(); });
-
-    // successful timezone fetch
-    connect(tz, &GeoTimeZone::finished, this, [this, locId, locName, lat, lon, tz] {
-        qDebug() << "obtained timezone data";
-
-        Kweather::Backend backendEnum;
-        AbstractWeatherAPI *api;
-
-        // create backend provider
-        QSettings qsettings;
-        QString backend = qsettings.value("Global/defaultBackend", Kweather::API_NMI).toString();
-        if (backend == Kweather::API_NMI) {
-            api = new NMIWeatherAPI2(locId, tz->getTimeZone(), lat, lon);
-            backendEnum = Kweather::Backend::NMI;
-        } else if (backend == Kweather::API_OWM) {
-            api = new OWMWeatherAPI(locId, tz->getTimeZone(), lat, lon);
-            backendEnum = Kweather::Backend::OWM;
-        } else {
-            api = new NMIWeatherAPI2(locId, tz->getTimeZone(), lat, lon);
-            backendEnum = Kweather::Backend::NMI;
-        }
-        api->fetchSunriseData();
-
-        // add location
-        auto *location = new WeatherLocation(api, locId, locName, tz->getTimeZone(), lat, lon, backendEnum);
-        location->update();
-
-        insert(this->locationsList.count(), location);
-    });
+    insert(this->locationsVec.size(), location);
 }
 
 // invoked by frontend
 void WeatherLocationListModel::requestCurrentLocation()
 {
-    geoPtr = new GeoIPLookup();
-    // failure
-    connect(geoPtr, &GeoIPLookup::networkError, this, [this]() { emit networkErrorCreatingDefault(); });
-    // success
-    connect(geoPtr, &GeoIPLookup::finished, this, &WeatherLocationListModel::addCurrentLocation);
+    auto geoPtr = new KWeatherCore::LocationQuery(this);
+    geoPtr->locate();
+    //    // failure
+    //    connect(geoPtr, &KWeatherCore::LocationQuery::, this, [this]() { Q_EMIT networkErrorCreatingDefault(); });
+    //    // success
+    connect(geoPtr, &KWeatherCore::LocationQuery::located, this, &WeatherLocationListModel::addCurrentLocation);
 }
 
-void WeatherLocationListModel::addCurrentLocation()
+void WeatherLocationListModel::addCurrentLocation(KWeatherCore::LocationQueryResult ret)
 {
     // default location, use timestamp as id
     long id = QDateTime::currentSecsSinceEpoch();
 
-    auto api = new NMIWeatherAPI2(QString::number(id), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
-    api->fetchSunriseData();
-    auto location = new WeatherLocation(api, QString::number(id), geoPtr->name(), geoPtr->timeZone(), geoPtr->latitude(), geoPtr->longitude());
+    auto location = new WeatherLocation(QString::number(id), ret.name(), QString(), ret.latitude(), ret.longitude(), KWeatherCore::WeatherForecast());
     location->update();
 
     insert(0, location);
-    emit successfullyCreatedDefault();
-}
-
-void WeatherLocationListModel::changeBackend(int index, QString backend)
-{
-    if (index < 0 || index >= this->locationsList.count())
-        return;
-    if (backend == Kweather::API_OWM) {
-        this->get(index)->changeBackend(Kweather::Backend::OWM);
-    } else if (backend == Kweather::API_NMI) {
-        this->get(index)->changeBackend(Kweather::Backend::NMI);
-    } else {
-        return;
-    }
-    this->save();
+    Q_EMIT successfullyCreatedDefault();
 }

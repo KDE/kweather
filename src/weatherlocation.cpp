@@ -6,8 +6,6 @@
  */
 
 #include "weatherlocation.h"
-#include "weatherdaymodel.h"
-#include "weatherhourmodel.h"
 
 #include <QAbstractSeries>
 #include <QDateTimeAxis>

@@ -7,8 +7,8 @@
 
 #pragma once
 
+#include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
-
 #include <KWeatherCore/WeatherForecastSource>
 #include <QAbstractListModel>
 #include <QJsonDocument>
