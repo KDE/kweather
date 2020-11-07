@@ -64,7 +64,6 @@ public:
     const QDateTime &lastUpdated() const;
     void setLastUpdated(const QDateTime &lastUpdated);
     void initData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> fc);
-    void update();
 
     const QString &backgroundComponent() const;
     const QString &backgroundColor() const;
@@ -77,6 +76,7 @@ public:
     bool darkTheme() const;
     Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
     Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
+    Q_INVOKABLE void update();
 
 Q_SIGNALS:
     void currentForecastChange();

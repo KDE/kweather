@@ -25,7 +25,7 @@ Kirigami.ScrollablePage {
     supportsRefreshing: true
     onRefreshingChanged: {
         if (refreshing) {
-            weatherLocation.updateBackend();
+            weatherLocation.update();
         } else {
             showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }

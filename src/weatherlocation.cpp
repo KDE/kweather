@@ -190,7 +190,7 @@ void WeatherLocation::updateSeries()
         int i = 0;
         double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
         for (auto d : weatherDayListModel()->days()) {
-            m_vector.append(QPointF(d->date().startOfDay().toSecsSinceEpoch(), d->maxTempNum()));
+            m_vector.append(QPointF(d->date().startOfDay().toMSecsSinceEpoch(), d->maxTempNum()));
             minTemp = std::min<double>(d->minTempNum(), minTemp);
             maxTemp = std::max<double>(d->maxTempNum(), maxTemp);
             ++i;
