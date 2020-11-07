@@ -10,6 +10,7 @@
 #include "weatherlocationmodel.h"
 #include <KConfigCore/KConfigGroup>
 #include <QDirIterator>
+#include <QExplicitlySharedDataPointer>
 #include <QFile>
 #include <QStandardPaths>
 #include <QTimeZone>
@@ -23,10 +24,6 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model)
     if (!dir.exists())
         dir.mkpath(".");
     readFromCache();
-    updateTimer = new QTimer(this);
-    updateTimer->setSingleShot(true);
-    connect(updateTimer, &QTimer::timeout, this, &WeatherForecastManager::update);
-    updateTimer->start(0); // update when open
 }
 
 WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
@@ -37,16 +34,15 @@ WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListMode
 void WeatherForecastManager::update()
 {
     qDebug() << "update start";
-    auto locations = model_.getList();
+    auto locations = model_.getVec();
     for (auto wLocation : locations) {
         wLocation->update();
     }
-    updateTimer->start(1000 * 3600 + random.bounded(0, 1800) * 1000); // reset timer
 }
 
 void WeatherForecastManager::readFromCache()
 {
-    QHash<WeatherLocation *, AbstractWeatherForecast> map;
+    QHash<WeatherLocation *, QExplicitlySharedDataPointer<KWeatherCore ::WeatherForecast>> map;
 
     QFile reader;
     QDirIterator iterator(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
@@ -57,11 +53,11 @@ void WeatherForecastManager::readFromCache()
         bool isFound = false;       // indicate should we load this cache
 
         // loop over existing locations and add cached weather forecast data if location found
-        for (auto wl : model_.getList()) {
+        for (auto wl : model_.getVec()) {
             if (fileName.fileName() == wl->locationId()) {
                 isFound = true;
                 reader.open(QIODevice::ReadOnly);
-                AbstractWeatherForecast fc = convertFromJson(reader.readAll());
+                auto fc = KWeatherCore::WeatherForecast::fromJson(QJsonDocument::fromJson(reader.readAll()).object());
 
                 map[wl] = fc;
                 break;
@@ -75,18 +71,9 @@ void WeatherForecastManager::readFromCache()
     }
 
     // add to loaded locations from cache
-    for (auto wl : model_.getList()) {
+    for (auto wl : model_.getVec()) {
         if (map.find(wl) != map.end()) { // is in cache
             wl->initData(map[wl]);
-        } else {
-            // need to fetch sunrise data since it's not loaded from cache
-            wl->weatherBackendProvider()->fetchSunriseData();
         }
     }
-}
-
-AbstractWeatherForecast WeatherForecastManager::convertFromJson(QByteArray data)
-{
-    QJsonObject doc = QJsonDocument::fromJson(data).object();
-    return AbstractWeatherForecast::fromJson(doc);
 }

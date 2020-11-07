@@ -12,7 +12,7 @@
 #include <unordered_map>
 namespace Kweather
 {
-QString tempConverter(double temp)
+static QString tempConverter(double temp)
 {
     if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
         return QString::number(qRound(temp * 1.8 + 32)) + "°";

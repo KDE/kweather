@@ -40,6 +40,9 @@ Q_SIGNALS:
     void networkErrorCreating();        // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault();  // successful in getting current location
+protected:
+    friend class WeatherForecastManager;
+    QVector<WeatherLocation *> &getVec();
 private Q_SLOTS:
     void addCurrentLocation(KWeatherCore::LocationQueryResult ret);
 

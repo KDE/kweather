@@ -141,7 +141,7 @@ void WeatherLocationListModel::addLocation(KWeatherCore::LocationQueryResult *re
     auto lat = ret->latitude(), lon = ret->longitude();
 
     // add location
-    auto *location = new WeatherLocation(locId, locName, QString(), lat, lon, KWeatherCore::WeatherForecast());
+    auto *location = new WeatherLocation(locId, locName, QString(), lat, lon);
     location->update();
 
     insert(this->locationsVec.size(), location);
@@ -160,12 +160,14 @@ void WeatherLocationListModel::requestCurrentLocation()
 
 void WeatherLocationListModel::addCurrentLocation(KWeatherCore::LocationQueryResult ret)
 {
-    // default location, use timestamp as id
-    long id = QDateTime::currentSecsSinceEpoch();
-
-    auto location = new WeatherLocation(QString::number(id), ret.name(), QString(), ret.latitude(), ret.longitude(), KWeatherCore::WeatherForecast());
+    auto location = new WeatherLocation(ret.geonameId(), ret.name(), QString(), ret.latitude(), ret.longitude());
     location->update();
 
     insert(0, location);
     Q_EMIT successfullyCreatedDefault();
+}
+
+QVector<WeatherLocation *> &WeatherLocationListModel::getVec()
+{
+    return locationsVec;
 }

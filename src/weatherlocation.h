@@ -29,7 +29,6 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
-    Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
@@ -48,7 +47,7 @@ class WeatherLocation : public QObject
 
 public:
     WeatherLocation();
-    explicit WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, const KWeatherCore::WeatherForecast &forecast);
+    explicit WeatherLocation(QString locationId, QString locationName, QString timeZone, double latitude, double longitude, const KWeatherCore::WeatherForecast &forecast = KWeatherCore::WeatherForecast());
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
@@ -56,8 +55,8 @@ public:
     const QString &locationId() const;
     const QString &locationName() const;
     const QString &timeZone() const;
-    float latitude() const;
-    float longitude() const;
+    double latitude() const;
+    double longitude() const;
     WeatherHour *currentWeather() const;
     WeatherDayListModel *weatherDayListModel() const;
     WeatherHourListModel *weatherHourListModel() const;
@@ -90,7 +89,6 @@ private Q_SLOTS:
 
 private:
     void writeToCache(const KWeatherCore::WeatherForecast &fc);
-    QJsonDocument convertToJson(const KWeatherCore::WeatherForecast &fc);
 
     // background related fields
     QString m_backgroundColor;
@@ -114,7 +112,7 @@ private:
     QString m_locationName, m_locationId;
     QString m_timeZone;
     QDateTime m_lastUpdated;
-    float m_latitude, m_longitude;
+    double m_latitude, m_longitude;
 
     KWeatherCore::WeatherForecastSource m_weatherSource;
 

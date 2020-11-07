@@ -23,11 +23,11 @@ WeatherLocation::WeatherLocation()
     this->m_weatherDayListModel = new WeatherDayListModel(this);
     this->m_weatherHourListModel = new WeatherHourListModel(this);
     this->m_lastUpdated = QDateTime::currentDateTime();
-    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentBackgroundWeatherComponent);
     connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentForecast);
+    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentBackgroundWeatherComponent);
 }
 
-WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, const KWeatherCore::WeatherForecast &forecast)
+WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, double latitude, double longitude, const KWeatherCore::WeatherForecast &forecast)
     : m_locationName(std::move(locationName))
     , m_timeZone(std::move(timeZone))
     , m_latitude(latitude)
@@ -41,9 +41,8 @@ WeatherLocation::WeatherLocation(QString locationId, QString locationName, QStri
     // prevent segfaults from js garbage collection
     QQmlEngine::setObjectOwnership(this->m_weatherDayListModel, QQmlEngine::CppOwnership);
     QQmlEngine::setObjectOwnership(this->m_weatherHourListModel, QQmlEngine::CppOwnership);
-
-    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentBackgroundWeatherComponent);
     connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentForecast);
+    connect(this, &WeatherLocation::propertyChanged, this, &WeatherLocation::determineCurrentBackgroundWeatherComponent);
 }
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
@@ -65,7 +64,8 @@ QJsonObject WeatherLocation::toJson()
 
 void WeatherLocation::determineCurrentForecast()
 {
-    m_currentWeather->deleteLater();
+    if (m_currentWeather)
+        m_currentWeather->deleteLater();
 
     if (m_weatherHourListModel->rowCount({}) == 0) {
         m_currentWeather = new WeatherHour();
@@ -76,7 +76,7 @@ void WeatherLocation::determineCurrentForecast()
 
     determineCurrentBackgroundWeatherComponent();
     updateSeries();
-    emit currentForecastChange();
+    Q_EMIT currentForecastChange();
 }
 
 void WeatherLocation::determineCurrentBackgroundWeatherComponent()
@@ -154,7 +154,11 @@ void WeatherLocation::initData(QExplicitlySharedDataPointer<KWeatherCore::Weathe
 
 void WeatherLocation::update()
 {
-    m_weatherSource.requestData(latitude(), longitude(), timeZone(), weatherDayListModel()->sunrise());
+    auto pendingReply = m_weatherSource.requestData(latitude(), longitude(), timeZone(), weatherDayListModel()->sunrise());
+    connect(pendingReply, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingReply] {
+        this->initData(pendingReply->value());
+        pendingReply->deleteLater();
+    });
 }
 
 void WeatherLocation::writeToCache(const KWeatherCore::WeatherForecast &fc)
@@ -168,16 +172,9 @@ void WeatherLocation::writeToCache(const KWeatherCore::WeatherForecast &fc)
     // location with locationID 1234567
     file.setFileName(dir.path() + "/" + this->locationId());
     file.open(QIODevice::WriteOnly);
-    file.write(convertToJson(fc).toJson(QJsonDocument::Compact)); // write json
+    file.write(QJsonDocument(fc.toJson()).toJson(QJsonDocument::Compact)); // write json
     file.close();
 }
-QJsonDocument WeatherLocation::convertToJson(const KWeatherCore::WeatherForecast &fc)
-{
-    QJsonDocument doc;
-    // doc.setObject(fc);
-    return doc;
-}
-
 void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
 {
     if (series) {
@@ -223,4 +220,85 @@ void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)
 // TODO: actually update the label
 void WeatherLocation::updateAxes()
 {
+}
+
+const QString &WeatherLocation::locationId() const
+{
+    return m_locationId;
+}
+const QString &WeatherLocation::locationName() const
+{
+    return m_locationName;
+}
+const QString &WeatherLocation::timeZone() const
+{
+    return m_timeZone;
+}
+double WeatherLocation::latitude() const
+{
+    return m_latitude;
+}
+double WeatherLocation::longitude() const
+{
+    return m_longitude;
+}
+WeatherHour *WeatherLocation::currentWeather() const
+{
+    return m_currentWeather;
+}
+WeatherDayListModel *WeatherLocation::weatherDayListModel() const
+{
+    return m_weatherDayListModel;
+}
+WeatherHourListModel *WeatherLocation::weatherHourListModel() const
+{
+    return m_weatherHourListModel;
+}
+QString WeatherLocation::lastUpdatedFormatted() const
+{
+    return lastUpdated().toString("hh:mm ap");
+}
+const QDateTime &WeatherLocation::lastUpdated() const
+{
+    return m_lastUpdated;
+}
+void WeatherLocation::setLastUpdated(const QDateTime &lastUpdated)
+{
+    m_lastUpdated = lastUpdated;
+}
+const QString &WeatherLocation::backgroundComponent() const
+{
+    return m_backgroundComponent;
+}
+const QString &WeatherLocation::backgroundColor() const
+{
+    return m_backgroundColor;
+}
+const QString &WeatherLocation::textColor() const
+{
+    return m_textColor;
+}
+const QString &WeatherLocation::cardBackgroundColor() const
+{
+    return m_cardBackgroundColor;
+}
+const QString &WeatherLocation::cardTextColor() const
+{
+    return m_cardTextColor;
+}
+const QString &WeatherLocation::iconColor() const
+{
+    return m_iconColor;
+}
+double WeatherLocation::maxTempLimit() const
+{
+    return m_maxTempLimit;
+}
+double WeatherLocation::minTempLimit() const
+{
+    return m_minTempLimit;
+}
+bool WeatherLocation::darkTheme() const
+{
+    return m_isDarkTheme;
 }

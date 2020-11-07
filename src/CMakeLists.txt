@@ -7,9 +7,6 @@
 
 set(kweather_SRCS
     main.cpp
-    geoiplookup.cpp
-    geolocation.cpp
-    abstractweatherforecast.cpp
     weatherforecastmanager.cpp
     weatherlocationmodel.cpp
     weatherlocation.cpp
@@ -17,15 +14,6 @@ set(kweather_SRCS
     weatherhour.cpp
     weatherdaymodel.cpp
     weatherday.cpp
-    owmweatherapi.cpp
-    abstractweatherapi.cpp
-    geotimezone.cpp
-    locationquerymodel.cpp
-    abstractdailyweatherforecast.cpp
-    abstracthourlyweatherforecast.cpp
-    nmiweatherapi2.cpp
-    nmisunriseapi.cpp
-    abstractsunrise.cpp
     resources.qrc
 )
 
@@ -39,6 +27,7 @@ target_link_libraries(kweather
     Qt5::Widgets
     Qt5::Network
     Qt5::Charts
+    Qt5::Positioning
     KF5::I18n
     KF5::ConfigCore
     KF5::ConfigGui

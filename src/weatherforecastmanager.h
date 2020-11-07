@@ -9,9 +9,9 @@
 #define WEATHERFORECASTMANAGER_H
 
 #include "global.h"
+#include <KWeatherCore/WeatherForecast>
 #include <QObject>
-#include <QRandomGenerator>
-#include <vector>
+
 class AbstractWeatherForecast;
 class NMIWeatherAPI2;
 class WeatherLocationListModel;
@@ -30,14 +30,9 @@ private slots:
     void update();
 
 private:
-    QRandomGenerator random;
     WeatherLocationListModel &model_;
-    AbstractWeatherForecast convertFromJson(QByteArray data);
-    QTimer *updateTimer = nullptr;
     void readFromCache();
     WeatherForecastManager(WeatherLocationListModel &model);
-    WeatherForecastManager(const WeatherForecastManager &);
-    WeatherForecastManager &operator=(const WeatherForecastManager &);
 };
 
 #endif // WEATHERFORECASTMANAGER_H
