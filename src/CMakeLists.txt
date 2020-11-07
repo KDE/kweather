@@ -14,6 +14,7 @@ set(kweather_SRCS
     weatherhour.cpp
     weatherdaymodel.cpp
     weatherday.cpp
+    locationquerymodel.cpp
     resources.qrc
 )
 

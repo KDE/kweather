@@ -5,70 +5,13 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KWEATHER_LOCATIONQUERYMODEL_H
-#define KWEATHER_LOCATIONQUERYMODEL_H
+#pragma once
 
+#include <KWeatherCore/LocationQuery>
 #include <QAbstractListModel>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QNetworkSession>
 #include <QObject>
-#include <QString>
 class QTimer;
-// fetched from geonames
-class LocationQueryResult : public QObject
-{
-    Q_OBJECT
-
-public:
-    explicit LocationQueryResult()
-    {
-    }
-    explicit LocationQueryResult(float latitude, float longitude, QString toponymName, QString name, QString countryCode, QString countryName, QString geonameId)
-    {
-        this->latitude_ = latitude;
-        this->longitude_ = longitude;
-        this->toponymName_ = toponymName;
-        this->name_ = name;
-        this->countryCode_ = countryCode;
-        this->countryName_ = countryName;
-        this->geonameId_ = geonameId;
-    }
-
-    inline float latitude() const
-    {
-        return latitude_;
-    }
-    inline float longitude() const
-    {
-        return longitude_;
-    }
-    inline QString toponymName()
-    {
-        return toponymName_;
-    }
-    inline QString name()
-    {
-        return name_;
-    }
-    inline QString countryCode()
-    {
-        return countryCode_;
-    }
-    inline QString countryName()
-    {
-        return countryName_;
-    }
-    inline QString geonameId()
-    {
-        return geonameId_;
-    }
-
-private:
-    float latitude_, longitude_;
-    QString toponymName_, name_, countryCode_, countryName_, geonameId_;
-};
-
+class LocationQueryResult;
 class LocationQueryModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -84,33 +27,23 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
-    Q_INVOKABLE LocationQueryResult *get(int index);
-    Q_INVOKABLE bool loading()
-    {
-        return loading_;
-    }
-    Q_INVOKABLE bool networkError()
-    {
-        return networkError_;
-    }
-    Q_INVOKABLE void textChanged(QString query, int i = 2000);
-    void setQuery();
+    Q_INVOKABLE bool loading() const;
+    Q_INVOKABLE bool networkError() const;
+    Q_INVOKABLE void textChanged(QString query, int timeout = 2000);
     Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();
-    int index_;
-signals:
+    Q_INVOKABLE LocationQueryResult *get(int index);
+    void setQuery();
+Q_SIGNALS:
     void propertyChanged();
-    void appendLocation();
-public slots:
-    void handleQueryResults(QNetworkReply *reply);
+    void appendLocation(KWeatherCore::LocationQueryResult *result);
+private Q_SLOTS:
+    void handleQueryResults(QVector<KWeatherCore::LocationQueryResult> result);
 
 private:
-    bool loading_ = false, networkError_ = false;
-
-    QList<LocationQueryResult *> resultsList;
+    bool m_loading = false, m_networkError = false;
+    QVector<LocationQueryResult *> resultsVec;
+    KWeatherCore::LocationQuery m_querySource;
     QTimer *inputTimer = nullptr;
-    QString text_;
-    QNetworkAccessManager *networkAccessManager;
+    QString m_text;
 };
-
-#endif // KWEATHER_LOCATIONQUERYMODEL_H

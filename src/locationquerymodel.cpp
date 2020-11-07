@@ -6,30 +6,64 @@
  */
 
 #include "locationquerymodel.h"
+#include <QDebug>
 #include <QTimer>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QUrl>
-#include <QUrlQuery>
-#include <QNetworkConfigurationManager>
+class LocationQueryResult : public QObject
+{
+    Q_OBJECT
+
+public:
+    explicit LocationQueryResult(const KWeatherCore::LocationQueryResult &result)
+        : d(result)
+    {
+    }
+
+    double latitude() const
+    {
+        return d.latitude();
+    }
+    double longitude() const
+    {
+        return d.longitude();
+    }
+    QString toponymName()
+    {
+        return d.toponymName();
+    }
+    QString name()
+    {
+        return d.name();
+    }
+    QString countryCode()
+    {
+        return d.countryCode();
+    }
+    QString countryName()
+    {
+        return d.countryName();
+    }
+    QString geonameId()
+    {
+        return d.geonameId();
+    }
+
+private:
+    friend class LocationQueryModel;
+    KWeatherCore::LocationQueryResult d;
+};
+
 LocationQueryModel::LocationQueryModel()
 {
-    networkAccessManager = new QNetworkAccessManager(this);
-
-    networkAccessManager->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
-    networkAccessManager->setStrictTransportSecurityEnabled(true);
-    networkAccessManager->enableStrictTransportSecurityStore(true);
-
     inputTimer = new QTimer(this);
     inputTimer->setSingleShot(true);
     connect(inputTimer, &QTimer::timeout, this, &LocationQueryModel::setQuery);
+    connect(&m_querySource, &KWeatherCore::LocationQuery::queryFinished, this, &LocationQueryModel::handleQueryResults);
 }
 
 int LocationQueryModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return resultsList.count();
+    return resultsVec.size();
 }
 
 QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
@@ -37,7 +71,7 @@ QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    auto query = resultsList[index.row()];
+    auto query = resultsVec[index.row()];
 
     if (role == NameRole) {
         return query->toponymName() + ", " + query->countryName();
@@ -53,100 +87,62 @@ QHash<int, QByteArray> LocationQueryModel::roleNames() const
 
 LocationQueryResult *LocationQueryModel::get(int index)
 {
-    if (index < 0 || index >= resultsList.count())
+    if (index < 0 || index >= resultsVec.count())
         return {};
-    return resultsList.at(index);
+    return resultsVec.at(index);
 }
 
-void LocationQueryModel::textChanged(QString query, int i)
+void LocationQueryModel::textChanged(QString query, int timeout)
 {
-    text_ = query;
+    m_text = query;
 
-    emit layoutAboutToBeChanged();
+    Q_EMIT layoutAboutToBeChanged();
     // clear results list
-    for (auto query : resultsList) // memory leak precaution
-        delete query;
-    resultsList.clear();
+    resultsVec.clear();
 
-    emit layoutChanged();
-    if (query != "") { // do not query nothing
-        loading_ = true;
-        networkError_ = false;
-        emit propertyChanged();
+    Q_EMIT layoutChanged();
+    if (!query.isEmpty()) { // do not query nothing
+        m_loading = true;
+        m_networkError = false;
+        Q_EMIT propertyChanged();
 
-        inputTimer->start(i); // make request once input stopped for 2 secs
+        inputTimer->start(timeout); // make request once input stopped for 2 secs
     }
 }
 
 void LocationQueryModel::setQuery()
 {
-    QUrl url("http://api.geonames.org/searchJSON");
-    QUrlQuery urlQuery;
-
-    urlQuery.addQueryItem("q", text_);
-    urlQuery.addQueryItem("maxRows", "50");
-    urlQuery.addQueryItem("username", "kweatherdev");
-    url.setQuery(urlQuery);
-    qDebug() << url.toString();
-    networkAccessManager->get(QNetworkRequest(url));
-    connect(networkAccessManager, &QNetworkAccessManager::finished, this, &LocationQueryModel::handleQueryResults);
+    m_querySource.query(m_text);
 }
 
 void LocationQueryModel::addLocation(int index)
 {
-    if (resultsList.front()->latitude() == 1000)
-        return; // no result, don't add location
-    index_ = index;
-    emit appendLocation();
+    if (resultsVec.size() == 0 || index < 0 || index >= resultsVec.size())
+        return; // don't add location
+    Q_EMIT appendLocation(&resultsVec.at(index)->d);
 }
 
-void LocationQueryModel::handleQueryResults(QNetworkReply *reply)
+void LocationQueryModel::handleQueryResults(QVector<KWeatherCore::LocationQueryResult> result)
 {
-    reply->deleteLater();
-    loading_ = false;
-    if (reply->error()) {
-        networkError_ = true;
-        qDebug() << "Network error:" << reply->error();
-        emit propertyChanged();
-        return;
-    }
+    qDebug() << "results arrived" << result.size();
+    Q_EMIT layoutAboutToBeChanged();
+    // clear results list
+    resultsVec.clear();
+    for (const auto &ret : result)
+        resultsVec.append(new LocationQueryResult(ret));
 
-    loading_ = false;
-    networkError_ = false;
-    emit propertyChanged();
-
-    QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
-    QJsonObject root = document.object();
-    // if no result
-    if (root[QLatin1String("totalResultsCount")].toInt() == 0) {
-        resultsList.append(new LocationQueryResult(1000, 0, QLatin1String("No"), QLatin1String("Result"), QLatin1String("Found"), QString::fromUtf8("¯\(ツ)_/¯"), "ID"));
-        return;
-    }
-    // if our api calls reached daily limit
-    if (root[QLatin1String("status")].toObject()[QLatin1String("value")].toInt() == 18) {
-        qWarning() << "api calls reached daily limit";
-        networkError_ = true;
-        emit propertyChanged();
-        return;
-    }
-    emit layoutAboutToBeChanged();
-    QJsonArray geonames = root.value("geonames").toArray();
-    // add query results
-    for (QJsonValueRef resRef : geonames) {
-        QJsonObject res = resRef.toObject();
-        auto *result = new LocationQueryResult(res.value("lat").toString().toFloat(),
-                                               res.value("lng").toString().toFloat(),
-                                               res.value("toponymName").toString(),
-                                               res.value("name").toString(),
-                                               res.value("countryCode").toString(),
-                                               res.value("countryName").toString(),
-                                               QString::number(res.value("geonameId").toInt()));
-        resultsList.append(result);
-    }
-
-    emit layoutChanged();
+    Q_EMIT layoutChanged();
 }
 
 void LocationQueryModel::updateUi()
 {
 }
+bool LocationQueryModel::loading() const
+{
+    return m_loading;
+}
+bool LocationQueryModel::networkError() const
+{
+    return m_networkError;
+}
+#include "locationquerymodel.moc"

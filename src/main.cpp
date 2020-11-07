@@ -19,6 +19,7 @@
 #include <KLocalizedString>
 
 #include "kweathersettings.h"
+#include "locationquerymodel.h"
 #include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
@@ -41,11 +42,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // initialize models in context
     auto *weatherLocationListModel = new WeatherLocationListModel();
     WeatherForecastManager::instance(*weatherLocationListModel);
-
+    auto *locationQueryModel = new LocationQueryModel();
+    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, weatherLocationListModel, &WeatherLocationListModel::addLocation);
     KWeatherSettings settings;
 
     engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
     engine.rootContext()->setContextProperty("settingsModel", &settings);
+    engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
 
     // register QML types
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
