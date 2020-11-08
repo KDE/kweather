@@ -35,7 +35,7 @@ Canvas {
             for (var b = 0; b < particles.length; b++) {
                 var p = particles[b];
                 p.y += p.ys;
-                if (p.x > width || p.y > height) {
+                if (p.x < 1 || p.x > width || p.y > height) {
                     p.x = Math.random() * width;
                     p.y = -20;
                 }

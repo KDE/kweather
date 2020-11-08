@@ -12,21 +12,14 @@ import org.kde.kirigami 2.11 as Kirigami
 import "components"
 
 Rectangle {
-    property bool inView: false
+    property bool inView: true
     gradient: Gradient {
         GradientStop { color: "#455a64"; position: 0.0 }
         GradientStop { color: "#263238"; position: 1.0 }
     }
-    
-    Stars {
-        inView: parent.inView
-    }
+
     Snow {
-        z: 2
-        backGroundColor: "transparent"
-    }
-    Cloudy {
-        cloudColor: "#b0bec5"
+        anchors.fill: parent
         inView: parent.inView
     }
 }

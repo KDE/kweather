@@ -17,13 +17,9 @@ Rectangle {
         GradientStop { color: "#3daee2"; position: 0.0 }
         GradientStop { color: "#3daee2"; position: 1.0 }
     }
-    
+
     Snow {
-        z: 2
-        backGroundColor: "transparent"
-    }
-    Cloudy {
-        cloudColor: "white"
+        anchors.fill: parent
         inView: parent.inView
     }
 }
