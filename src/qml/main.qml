@@ -119,7 +119,7 @@ Kirigami.ApplicationWindow
             "shortDescription": i18n("A mobile friendly weather app built with Kirigami."),
             "homepage": "",
             "bugAddress": "",
-            "version": "0.2",
+            "version": "0.3",
             "otherText": "",
             "copyrightStatement": i18n("© 2020 Plasma Development Team"),
             "desktopFileName": "org.kde.kweather",
