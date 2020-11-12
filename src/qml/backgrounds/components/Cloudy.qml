@@ -20,7 +20,7 @@ Item {
     
     Cloud {
         inView: parent.inView
-        opacity: 0.5
+        opacity: 0.2
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 3
         maxCoordChange: unitSize * 6
@@ -30,7 +30,7 @@ Item {
     }
     Cloud {
         inView: parent.inView
-        opacity: 0.5
+        opacity: 0.3
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 2
         maxCoordChange: unitSize * 5
@@ -40,7 +40,7 @@ Item {
     }
     Cloud {
         inView: parent.inView
-        opacity: 0.5
+        opacity: 0.2
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 3
         maxCoordChange: unitSize * 2
@@ -50,7 +50,7 @@ Item {
     }
     Cloud {
         inView: parent.inView
-        opacity: 0.5
+        opacity: 0.2
         color: baseRect.cloudColor
         maxRadiusChange: unitSize * 2
         maxCoordChange: unitSize * 6
