@@ -25,7 +25,7 @@ Kirigami.ScrollablePage {
     background: Loader {
         id: background
         anchors.fill: parent
-        source: "backgrounds/CloudyDay.qml"//weatherLocation.backgroundComponent
+        source: weatherLocation.backgroundComponent
         onSourceChanged: background.item["inView"] = inView
     }
     
