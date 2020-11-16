@@ -217,6 +217,11 @@ Popup
                         }
                     }
                 }
+                Label {
+                    text: i18n("Dynamic mode may cause performance issues on embedded platforms")
+                    font.italic: true
+                    Layout.alignment: Qt.AlignHCenter
+                }
             }
         }
     }
