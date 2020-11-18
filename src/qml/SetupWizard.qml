@@ -218,9 +218,12 @@ Popup
                     }
                 }
                 Label {
+                    Layout.maximumWidth: setupPopup.width - Kirigami.Units.largeSpacing * 2
+                    Layout.alignment: Qt.AlignHCenter
                     text: i18n("Dynamic mode may cause performance issues on embedded platforms")
                     font.italic: true
-                    Layout.alignment: Qt.AlignHCenter
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignHCenter
                 }
             }
         }
