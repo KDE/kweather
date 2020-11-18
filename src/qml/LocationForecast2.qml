@@ -8,8 +8,13 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
+<<<<<<< HEAD
 import QtCharts 2.3
 import org.kde.kirigami 2.12 as Kirigami
+=======
+import org.kde.quickcharts 1.0 as Charts
+import org.kde.kirigami 2.11 as Kirigami
+>>>>>>> parent of 1384bf8 (Revert "try to switch to KQuickCharts")
 import kweather 1.0
 import "backgrounds"
 
@@ -191,40 +196,76 @@ Kirigami.ScrollablePage {
         }
         
         // temperature chart
-        ChartView {
-            id: chartView
-            legend.visible: false
-            antialiasing: true
-            animationOptions: ChartView.NoAnimation
-            theme: weatherLocation.darkTheme ? ChartView.ChartThemeDark : ChartView.ChartThemeLight
+        Rectangle {
             Layout.fillWidth: true
-            height: 200
-
-            SplineSeries {
-                id: splineSeries
-                axisX: DateTimeAxis {
-                    id: axisX
-                    tickCount: dailyListView.count
-                    format: "ddd"
+            height: 100
+            Charts.LineChart {
+                id: tempChart
+                anchors.fill: parent
+                smooth: true
+                colorSource: Charts.SingleValueSource  { value: "red" }
+                nameSource: Charts.SingleValueSource  { value: "MaxTemperature" }
+                yRange {
+                    automatic: false
+                    from: 15
+                    to: 30
                 }
-                axisY: ValueAxis {
-                    id: axisY
-                    visible: false
 
-                    min: weatherLocation.minTempLimit
-                    max: weatherLocation.maxTempLimit
+                valueSources: [
+                    Charts.ArraySource {
+                        id: tempSource
+                        array: weatherLocation.maxTempList
+                    }
+                ]
+            }
+            Charts.AxisLabels {
+                id: yAxisLabels
+                z: 5
+                anchors {
+                    left: parent.left
+                    top: parent.top
+                    bottom: parent.bottom
                 }
-                name: i18n("temperature")
-                pointLabelsVisible: true
-                pointLabelsFormat: "@yPoint°"
-                pointLabelsClipping: false
 
-                Component.onCompleted: {
-                    weatherLocation.initAxes(axisX, axisY);
-                    weatherLocation.initSeries(chartView.series(0));
-                }
+                direction: Charts.AxisLabels.VerticalBottomTop
+                delegate: Label { text: Charts.AxisLabels.label }
+                source: Charts.ChartAxisSource { chart: tempChart; axis: Charts.ChartAxisSource.YAxis; itemCount: 3 }
             }
         }
+//        ChartView {
+//            id: chartView
+//            legend.visible: false
+//            antialiasing: true
+//            animationOptions: ChartView.NoAnimation
+//            theme: weatherLocation.darkTheme ? ChartView.ChartThemeDark : ChartView.ChartThemeLight
+//            Layout.fillWidth: true
+//            height: 200
+
+//            SplineSeries {
+//                id: splineSeries
+//                axisX: DateTimeAxis {
+//                    id: axisX
+//                    tickCount: dailyListView.count
+//                    format: "ddd"
+//                }
+//                axisY: ValueAxis {
+//                    id: axisY
+//                    visible: false
+
+//                    min: weatherLocation.minTempLimit
+//                    max: weatherLocation.maxTempLimit
+//                }
+//                name: i18n("temperature")
+//                pointLabelsVisible: true
+//                pointLabelsFormat: "@yPoint°"
+//                pointLabelsClipping: false
+
+//                Component.onCompleted: {
+//                    weatherLocation.initAxes(axisX, axisY);
+//                    weatherLocation.initSeries(chartView.series(0));
+//                }
+//            }
+//        }
 
         // hourly view header
         RowLayout {

@@ -23,13 +23,6 @@ class WeatherHourListModel;
 class WeatherHour;
 class AbstractWeatherAPI;
 class AbstractWeatherForecast;
-namespace QtCharts
-{
-class QAbstractSeries;
-class QSplineSeries;
-class QDateTimeAxis;
-class QValueAxis;
-}
 class WeatherLocation : public QObject
 {
     Q_OBJECT
@@ -51,6 +44,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(double maxTempLimit READ maxTempLimit NOTIFY currentForecastChange)
     Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY currentForecastChange)
 
+    Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY maxTempListChanged)
 public:
     WeatherLocation();
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
@@ -163,6 +157,7 @@ public:
     {
         return m_cardTextColor;
     };
+
     const QString &iconColor() const
     {
         return m_iconColor;
@@ -176,12 +171,7 @@ public:
         return m_minTempLimit;
     }
 
-    bool darkTheme() const
-    {
-        return m_isDarkTheme;
-    }
-    Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
-    Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
+    const QVariantList &maxTempList();
 public slots:
     void updateData(AbstractWeatherForecast &fc);
 
@@ -191,11 +181,16 @@ signals:
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
 
+    void maxTempListChanged();
+
 private:
     Kweather::Backend backend_ = Kweather::Backend::NMI;
 
     void writeToCache(AbstractWeatherForecast &fc);
     QJsonDocument convertToJson(AbstractWeatherForecast &fc);
+
+    // chart related fields
+    QVariantList m_maxTempList;
 
     // background related fields
     QString m_backgroundColor;
@@ -204,17 +199,6 @@ private:
     QString m_cardTextColor;
     QString m_iconColor;
     QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
-
-    // the QXYSeries from qml, for temperature chart
-    QtCharts::QSplineSeries *m_series = nullptr;
-    QVector<QPointF> m_vector;
-    double m_maxTempLimit;
-    double m_minTempLimit;
-    bool m_isDarkTheme = false;
-
-    // QtChart Axes
-    QtCharts::QDateTimeAxis *m_axisX {nullptr};
-    QtCharts::QValueAxis *m_axisY {nullptr};
 
     QString locationName_, locationId_;
     QString timeZone_;
@@ -229,6 +213,5 @@ private:
 
     AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
 
-    void updateSeries();
-    void updateAxes();
+    void updateChart();
 };

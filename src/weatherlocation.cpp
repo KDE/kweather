@@ -18,15 +18,11 @@
 #include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
 
-#include <QAbstractSeries>
-#include <QDateTimeAxis>
 #include <QDir>
 #include <QFile>
 #include <QJsonArray>
 #include <QQmlEngine>
-#include <QSplineSeries>
 #include <QTimeZone>
-#include <QValueAxis>
 #include <utility>
 
 WeatherLocation::WeatherLocation()
@@ -90,6 +86,7 @@ void WeatherLocation::updateData(AbstractWeatherForecast &fc)
 {
     forecast_ = fc;
     determineCurrentForecast();
+    updateChart();
     lastUpdated_ = fc.timeCreated();
 
     emit weatherRefresh(forecast_);
@@ -120,7 +117,6 @@ void WeatherLocation::determineCurrentForecast()
     QQmlEngine::setObjectOwnership(currentWeather_, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
 
     determineCurrentBackgroundWeatherComponent();
-    updateSeries();
     emit currentForecastChange();
 }
 
@@ -133,10 +129,10 @@ void WeatherLocation::determineCurrentBackgroundWeatherComponent()
     if (currentWeather_->weatherIcon() == QStringLiteral("weather-clear")) {
         m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
         isDayStyle = true;
-    
+
     } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-clear-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/ClearNight.qml");
-        
+
     } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-clouds")) {
         m_backgroundComponent = QStringLiteral("backgrounds/CloudyDay.qml");
         isDayStyle = true;
@@ -173,7 +169,7 @@ void WeatherLocation::determineCurrentBackgroundWeatherComponent()
     } else if (currentWeather_->weatherIcon() == QStringLiteral("weather-snow-scattered-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/SnowyNight.qml");
     }
-    
+
     if (isDayStyle) {
         m_cardBackgroundColor = QStringLiteral("#fefefe");
         m_cardTextColor = QStringLiteral("black");
@@ -253,54 +249,22 @@ void WeatherLocation::changeBackend(Kweather::Backend backend)
     }
 }
 
-void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
+void WeatherLocation::updateChart()
 {
-    if (series) {
-        m_series = static_cast<QtCharts::QSplineSeries *>(series);
-        updateSeries();
+    m_maxTempList.clear();
+    for (auto day : forecast_.dailyForecasts()) {
+        m_maxTempList.append(day.maxTemp());
     }
-}
 
-void WeatherLocation::updateSeries()
-{
-    if (m_series && forecast_.dailyForecasts().size() > 0) {
-        m_vector.clear();
-        int i = 0;
-        double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
-        for (auto d : forecast_.dailyForecasts()) {
-            m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), d.maxTemp()));
-            minTemp = std::min<double>(d.minTemp(), minTemp);
-            maxTemp = std::max<double>(d.maxTemp(), maxTemp);
-            ++i;
-        }
-
-        // make enough room for the curve
-        m_maxTempLimit = maxTemp + 5;
-        m_minTempLimit = minTemp - 5;
-
-        m_series->replace(m_vector);
-        if (m_axisX) {
-            m_axisX->setRange(forecast_.dailyForecasts().front().date().startOfDay(), forecast_.dailyForecasts().back().date().startOfDay());
-        }
-    }
-}
-
-void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)
-{
-    using namespace QtCharts;
-    if (axisX && axisY) {
-        m_axisX = static_cast<QDateTimeAxis *>(axisX);
-        m_axisY = static_cast<QValueAxis *>(axisY);
-        updateAxes();
-    }
-}
-
-// TODO: actually update the label
-void WeatherLocation::updateAxes()
-{
+    Q_EMIT maxTempListChanged();
 }
 
 WeatherLocation::~WeatherLocation()
 {
     delete weatherBackendProvider_;
+}
+
+const QVariantList &WeatherLocation::maxTempList()
+{
+    return m_maxTempList;
 }

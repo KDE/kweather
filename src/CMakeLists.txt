@@ -36,12 +36,12 @@ target_link_libraries(kweather
     Qt5::QuickControls2
     Qt5::Widgets
     Qt5::Network
-    Qt5::Charts
     KF5::I18n
     KF5::ConfigCore
     KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
+    KF5::QuickCharts
 )
 
 if (ANDROID)

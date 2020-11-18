@@ -40,13 +40,14 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
     Gui
     Svg
     QuickControls2
-    Charts)
+)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     Kirigami2
     I18n
     CoreAddons
     Notifications
+    QuickCharts
 )
 
 if (ANDROID)
