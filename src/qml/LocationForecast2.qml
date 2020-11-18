@@ -8,13 +8,9 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
-<<<<<<< HEAD
-import QtCharts 2.3
-import org.kde.kirigami 2.12 as Kirigami
-=======
+// FIXME: version bump
 import org.kde.quickcharts 1.0 as Charts
-import org.kde.kirigami 2.11 as Kirigami
->>>>>>> parent of 1384bf8 (Revert "try to switch to KQuickCharts")
+import org.kde.kirigami 2.13 as Kirigami
 import kweather 1.0
 import "backgrounds"
 
@@ -205,10 +201,14 @@ Kirigami.ScrollablePage {
                 smooth: true
                 colorSource: Charts.SingleValueSource  { value: "red" }
                 nameSource: Charts.SingleValueSource  { value: "MaxTemperature" }
-                yRange {
-                    automatic: false
-                    from: 15
-                    to: 30
+//                yRange {
+//                    automatic: false
+//                    from: 15
+//                    to: 30
+//                }
+                pointDelegate: Label {
+                    text: Charts.LineChart.value
+                    color: weatherLocation.textColor
                 }
 
                 valueSources: [
@@ -217,19 +217,6 @@ Kirigami.ScrollablePage {
                         array: weatherLocation.maxTempList
                     }
                 ]
-            }
-            Charts.AxisLabels {
-                id: yAxisLabels
-                z: 5
-                anchors {
-                    left: parent.left
-                    top: parent.top
-                    bottom: parent.bottom
-                }
-
-                direction: Charts.AxisLabels.VerticalBottomTop
-                delegate: Label { text: Charts.AxisLabels.label }
-                source: Charts.ChartAxisSource { chart: tempChart; axis: Charts.ChartAxisSource.YAxis; itemCount: 3 }
             }
         }
 //        ChartView {

@@ -39,10 +39,6 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
     Q_PROPERTY(QString cardTextColor READ cardTextColor NOTIFY currentForecastChange)
     Q_PROPERTY(QString iconColor READ iconColor NOTIFY currentForecastChange)
-    Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChange)
-
-    Q_PROPERTY(double maxTempLimit READ maxTempLimit NOTIFY currentForecastChange)
-    Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY currentForecastChange)
 
     Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY maxTempListChanged)
 public:
@@ -161,14 +157,6 @@ public:
     const QString &iconColor() const
     {
         return m_iconColor;
-    }
-    const double maxTempLimit() const
-    {
-        return m_maxTempLimit;
-    }
-    const double minTempLimit() const
-    {
-        return m_minTempLimit;
     }
 
     const QVariantList &maxTempList();

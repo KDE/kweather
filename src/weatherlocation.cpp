@@ -176,14 +176,12 @@ void WeatherLocation::determineCurrentBackgroundWeatherComponent()
         m_backgroundColor = QStringLiteral("#3daee2");
         m_textColor = m_cardTextColor;
         m_iconColor = QStringLiteral("eff0f1");
-        m_isDarkTheme = false;
     } else {
         m_cardBackgroundColor = QStringLiteral("#333333");
         m_cardTextColor = QStringLiteral("#eeeeee");
         m_backgroundColor = QStringLiteral("#222222");
         m_textColor = m_cardTextColor;
         m_iconColor = QStringLiteral("white");
-        m_isDarkTheme = true;
     }
 }
 
