@@ -8,7 +8,7 @@
 project(kweather)
 
 cmake_minimum_required(VERSION 2.8.12)
-set(KF5_MIN_VERSION "5.60.0")
+set(KF5_MIN_VERSION "5.77.0") // KQuickCharts
 if (ANDROID)
     set(QT_MIN_VERSION "5.15.0") # the QTimezone doesn't work with Qt version before 5.15 beta 3
 else()
