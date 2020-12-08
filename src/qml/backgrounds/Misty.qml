@@ -13,12 +13,12 @@ import "components"
 Rectangle {
     property bool inView: false
     gradient: Gradient {
-        GradientStop { color: "#007a93"; position: 0.0 }
-        GradientStop { color: "#263238"; position: 1.0 }
+        GradientStop { color: "#c2c5cb"; position: 0.0 }
+        GradientStop { color: "#5b606b"; position: 1.0 }
     }
     Cloudy {
         id: cloudy
-        cloudColor: "#9ee0ed"
+        cloudColor: "#dae0ec"
         inView: parent.inView
     }
 }
