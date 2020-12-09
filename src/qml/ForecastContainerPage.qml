@@ -62,6 +62,7 @@ Kirigami.ScrollablePage {
                         console.log("loaded flat view");
                         locationLoader.setSource("LocationForecast.qml", {"weatherLocation": location});
                     }
+                    locationLoader.item["inView"] = inView;
                 }
                 
                 Connections {
