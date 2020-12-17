@@ -16,7 +16,6 @@
 #include "nmiweatherapi2.h"
 #include "owmweatherapi.h"
 #include "weatherdaymodel.h"
-#include "weatherhourmodel.h"
 
 #include <QAbstractSeries>
 #include <QDateTimeAxis>
@@ -27,6 +26,7 @@
 #include <QSplineSeries>
 #include <QTimeZone>
 #include <QValueAxis>
+#include <QTimer>
 #include <utility>
 
 WeatherLocation::WeatherLocation()
@@ -34,6 +34,9 @@ WeatherLocation::WeatherLocation()
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = QDateTime::currentDateTime();
+    this->m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentTime);
+    this->m_timer->start(1000);
 }
 
 WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QString locationId, QString locationName, QString timeZone, float latitude, float longitude, Kweather::Backend backend, AbstractWeatherForecast forecast)
@@ -49,6 +52,8 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     this->weatherDayListModel_ = new WeatherDayListModel(this);
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = forecast.timeCreated();
+    this->m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentTime);
 
     // prevent segfaults from js garbage collection
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership);
@@ -57,6 +62,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     determineCurrentForecast();
 
     connect(this->weatherBackendProvider(), &AbstractWeatherAPI::updated, this, &WeatherLocation::updateData, Qt::UniqueConnection);
+    this->m_timer->start(1000);
 }
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
@@ -283,6 +289,11 @@ void WeatherLocation::updateSeries()
             m_axisX->setRange(forecast_.dailyForecasts().front().date().startOfDay(), forecast_.dailyForecasts().back().date().startOfDay());
         }
     }
+}
+
+void WeatherLocation::updateCurrentTime()
+{
+    Q_EMIT currentTimeChanged();
 }
 
 void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)

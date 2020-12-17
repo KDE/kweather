@@ -16,6 +16,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QObject>
+#include <QTime>
+#include <QTimer>
 #include <utility>
 
 class WeatherDayListModel;
@@ -36,6 +38,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
     Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
+    Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHour *currentWeather READ currentWeather NOTIFY currentForecastChange)
@@ -121,6 +124,14 @@ public:
     {
         return lastUpdated_;
     }
+    inline QString currentTimeFormatted()
+    {
+        return currentTime().toString("hh:mm ap");
+    }
+    inline QTime currentTime()
+    {
+        return QTime::currentTime();
+    }
     inline void setLastUpdated(QDateTime lastUpdated)
     {
         this->lastUpdated_ = std::move(lastUpdated);
@@ -190,6 +201,7 @@ signals:
     void currentForecastChange();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
+    void currentTimeChanged();
 
 private:
     Kweather::Backend backend_ = Kweather::Backend::NMI;
@@ -219,6 +231,7 @@ private:
     QString locationName_, locationId_;
     QString timeZone_;
     QDateTime lastUpdated_;
+    QTimer *m_timer;
     float latitude_, longitude_;
 
     WeatherDayListModel *weatherDayListModel_ = nullptr;
@@ -231,4 +244,5 @@ private:
 
     void updateSeries();
     void updateAxes();
+    void updateCurrentTime();
 };
