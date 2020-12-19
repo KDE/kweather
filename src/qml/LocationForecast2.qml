@@ -99,7 +99,7 @@ Kirigami.ScrollablePage {
                 color: "white"
             }
             Label {
-                text: weatherLocation.currentDate
+                text: i18n("Local Date: ") + weatherLocation.currentDate
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.0
                 color: "white"
             }
@@ -243,7 +243,7 @@ Kirigami.ScrollablePage {
                 color: "white"
             }
             Label {
-                text: weatherLocation.currentTime
+                text: i18n("Local Time: ") + weatherLocation.currentTime
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.0
                 color: "white"
             }
