@@ -35,7 +35,7 @@ WeatherLocation::WeatherLocation()
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = QDateTime::currentDateTime();
     this->m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentTime);
+    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
     this->m_timer->start(1000);
 }
 
@@ -53,7 +53,7 @@ WeatherLocation::WeatherLocation(AbstractWeatherAPI *weatherBackendProvider, QSt
     this->weatherHourListModel_ = new WeatherHourListModel(this);
     this->lastUpdated_ = forecast.timeCreated();
     this->m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentTime);
+    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
 
     // prevent segfaults from js garbage collection
     QQmlEngine::setObjectOwnership(this->weatherDayListModel_, QQmlEngine::CppOwnership);
@@ -291,9 +291,10 @@ void WeatherLocation::updateSeries()
     }
 }
 
-void WeatherLocation::updateCurrentTime()
+void WeatherLocation::updateCurrentDateTime()
 {
     Q_EMIT currentTimeChanged();
+    Q_EMIT currentDateChanged();
 }
 
 void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)

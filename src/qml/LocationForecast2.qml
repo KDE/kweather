@@ -77,14 +77,6 @@ Kirigami.ScrollablePage {
                 font.family: lightHeadingFont.name
             }
             Label {
-                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.7
-                font.weight: Font.DemiBold
-                color: "white"
-                Layout.alignment: Qt.AlignLeft
-                horizontalAlignment: Text.AlignLeft
-                text: weatherLocation.currentTime
-            }
-            Label {
                 Layout.topMargin: Kirigami.Units.largeSpacing
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
                 color: "white"
@@ -95,7 +87,7 @@ Kirigami.ScrollablePage {
         }
 
         // daily view header
-        RowLayout {
+        ColumnLayout {
             id: dailyHeader
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
@@ -104,6 +96,11 @@ Kirigami.ScrollablePage {
             Label {
                 text: i18n("Daily")
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                color: "white"
+            }
+            Label {
+                text: weatherLocation.currentDate
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.0
                 color: "white"
             }
         }
@@ -235,7 +232,7 @@ Kirigami.ScrollablePage {
         }
 
         // hourly view header
-        RowLayout {
+        ColumnLayout {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             Layout.bottomMargin: Kirigami.Units.largeSpacing
@@ -243,6 +240,11 @@ Kirigami.ScrollablePage {
             Label {
                 text: i18n("Hourly")
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                color: "white"
+            }
+            Label {
+                text: weatherLocation.currentTime
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.0
                 color: "white"
             }
         }
