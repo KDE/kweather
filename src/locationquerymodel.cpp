@@ -87,7 +87,7 @@ QHash<int, QByteArray> LocationQueryModel::roleNames() const
 
 LocationQueryResult *LocationQueryModel::get(int index)
 {
-    if (index < 0 || index >= resultsVec.count())
+    if (index < 0 || index >= static_cast<int>(resultsVec.size()))
         return {};
     return resultsVec.at(index);
 }
@@ -122,14 +122,14 @@ void LocationQueryModel::addLocation(int index)
     Q_EMIT appendLocation(&resultsVec.at(index)->d);
 }
 
-void LocationQueryModel::handleQueryResults(QVector<KWeatherCore::LocationQueryResult> result)
+void LocationQueryModel::handleQueryResults(std::vector<KWeatherCore::LocationQueryResult> result)
 {
     qDebug() << "results arrived" << result.size();
     Q_EMIT layoutAboutToBeChanged();
     // clear results list
     resultsVec.clear();
     for (const auto &ret : result)
-        resultsVec.append(new LocationQueryResult(ret));
+        resultsVec.push_back(new LocationQueryResult(ret));
 
     Q_EMIT layoutChanged();
 }

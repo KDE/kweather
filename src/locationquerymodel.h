@@ -38,11 +38,11 @@ Q_SIGNALS:
     void propertyChanged();
     void appendLocation(KWeatherCore::LocationQueryResult *result);
 private Q_SLOTS:
-    void handleQueryResults(QVector<KWeatherCore::LocationQueryResult> result);
+    void handleQueryResults(std::vector<KWeatherCore::LocationQueryResult> result);
 
 private:
     bool m_loading = false, m_networkError = false;
-    QVector<LocationQueryResult *> resultsVec;
+    std::vector<LocationQueryResult *> resultsVec;
     KWeatherCore::LocationQuery m_querySource;
     QTimer *inputTimer = nullptr;
     QString m_text;

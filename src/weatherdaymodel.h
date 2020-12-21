@@ -32,10 +32,10 @@ public Q_SLOTS:
 
 protected:
     friend class WeatherLocation;
-    const QVector<KWeatherCore::Sunrise> &sunrise() const;
-    const QVector<WeatherDay *> &days() const;
+    const std::vector<KWeatherCore::Sunrise> &sunrise() const;
+    const std::vector<WeatherDay *> &days() const;
 
 private:
-    QVector<WeatherDay *> daysVec;
-    QVector<KWeatherCore::Sunrise> sunriseVec;
+    std::vector<WeatherDay *> daysVec;
+    std::vector<KWeatherCore::Sunrise> sunriseVec;
 };

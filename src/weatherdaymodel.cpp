@@ -22,7 +22,7 @@ int WeatherDayListModel::rowCount(const QModelIndex &parent) const
 
 QVariant WeatherDayListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= daysVec.count() || index.row() < 0) {
+    if (!index.isValid() || index.row() >= static_cast<int>(daysVec.size()) || index.row() < 0) {
         return {};
     }
     if (role == Roles::DayItemRole) {
@@ -38,7 +38,7 @@ QHash<int, QByteArray> WeatherDayListModel::roleNames() const
 
 WeatherDay *WeatherDayListModel::get(int index)
 {
-    if (index < 0 || index >= daysVec.count())
+    if (index < 0 || index >= static_cast<int>(daysVec.size()))
         return {};
     return daysVec.at(index);
 }
@@ -47,19 +47,19 @@ void WeatherDayListModel::refreshDaysFromForecasts(QExplicitlySharedDataPointer<
 {
     sunriseVec.clear();
     Q_EMIT layoutAboutToBeChanged();
-    Q_EMIT beginRemoveRows(QModelIndex(), 0, daysVec.count() - 1);
+    Q_EMIT beginRemoveRows(QModelIndex(), 0, daysVec.size() - 1);
     auto oldList = daysVec;
     daysVec.clear();
     Q_EMIT endRemoveRows();
 
-    Q_EMIT beginInsertRows(QModelIndex(), 0, forecasts->dailyWeatherForecast().count() - 1);
+    Q_EMIT beginInsertRows(QModelIndex(), 0, forecasts->dailyWeatherForecast().size() - 1);
 
     // add weatherdays with forecast day lists
     for (auto forecast : forecasts->dailyWeatherForecast()) {
-        sunriseVec.append(forecast.sunrise());
+        sunriseVec.push_back(forecast.sunrise());
         WeatherDay *weatherDay = new WeatherDay(forecast);
         QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-        daysVec.append(weatherDay);
+        daysVec.push_back(weatherDay);
     }
 
     Q_EMIT endInsertRows();
@@ -73,13 +73,13 @@ void WeatherDayListModel::updateUi()
     for (auto h : daysVec) {
         Q_EMIT h->propertyChanged();
     }
-    Q_EMIT dataChanged(createIndex(0, 0), createIndex(daysVec.count() - 1, 0));
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(daysVec.size() - 1, 0));
 }
-const QVector<KWeatherCore::Sunrise> &WeatherDayListModel::sunrise() const
+const std::vector<KWeatherCore::Sunrise> &WeatherDayListModel::sunrise() const
 {
     return sunriseVec;
 }
-const QVector<WeatherDay *> &WeatherDayListModel::days() const
+const std::vector<WeatherDay *> &WeatherDayListModel::days() const
 {
     return daysVec;
 }
