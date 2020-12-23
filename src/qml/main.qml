@@ -53,7 +53,7 @@ Kirigami.ApplicationWindow
         modal: !isWidescreen
         collapsible: true
         collapsed: isWidescreen
-        width: collapsed ? Kirigami.Units.gridUnit * 2.5 : Kirigami.Units.gridUnit * 12
+        width: collapsed ? implicitWidth : Kirigami.Units.gridUnit * 12
 
         Behavior on width {
             NumberAnimation {
