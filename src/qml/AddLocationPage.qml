@@ -15,50 +15,40 @@ Kirigami.ScrollablePage {
 
     property string searchQuery: ""
 
+    header: RowLayout {
+        anchors.margins: Kirigami.Units.largeSpacing
+        spacing: 0
+        TextField {
+            id: search
+            Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+
+            placeholderText: i18n("Search for a place...")
+            onTextChanged: {
+                searchQuery = text
+                locationQueryModel.textChanged(text)
+            }
+            onEditingFinished: locationQueryModel.textChanged(text, 0) // when return is pressed, query immediately
+        }
+        Button {
+            id: sourceButton
+            icon.name: "settings-configure"
+            width: height
+            height: search.height
+            onClicked: apiSelector.open()
+        }
+        Button {
+            id: searchButton
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+            icon.name: "search"
+            width: height
+            height: search.height
+            onClicked: locationQueryModel.textChanged(searchQuery, 0)
+        }
+    }
+    
     ListView {
         id: addCityList
-        header: Item {
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: Kirigami.Units.largeSpacing * 2
-            anchors.rightMargin: Kirigami.Units.largeSpacing * 2
-            height: search.height * 1.5
-
-            Row {
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: parent.top
-                anchors.topMargin: Kirigami.Units.largeSpacing
-                Layout.fillWidth: true
-
-                TextField {
-                    id: search
-                    anchors.right: sourceButton.left
-                    anchors.left: parent.left
-
-                    placeholderText: i18n("Search for a place...")
-                    onTextChanged: {
-                        searchQuery = text
-                        locationQueryModel.textChanged(text)
-                    }
-                    onEditingFinished: locationQueryModel.textChanged(text, 0) // when return is pressed, query immediately
-                }
-                Button {
-                    id: sourceButton
-                    icon.name: "settings-configure"
-                    width: height
-                    anchors.right: searchButton.left
-                    onClicked: apiSelector.open()
-                }
-                Button {
-                    id: searchButton
-                    icon.name: "search"
-                    width: height
-                    anchors.right: parent.right
-                    onClicked: locationQueryModel.textChanged(searchQuery, 0)
-                }
-            }
-        }
 
         // unable to connect message
         Kirigami.PlaceholderMessage {
