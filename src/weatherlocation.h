@@ -40,7 +40,8 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString cardTextColor READ cardTextColor NOTIFY currentForecastChange)
     Q_PROPERTY(QString iconColor READ iconColor NOTIFY currentForecastChange)
 
-    Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY maxTempListChanged)
+    Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY chartListChanged)
+    Q_PROPERTY(QVariantList xAxisList READ xAxisList NOTIFY chartListChanged)
 public:
     WeatherLocation();
     explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
@@ -160,6 +161,7 @@ public:
     }
 
     const QVariantList &maxTempList();
+    const QVariantList &xAxisList();
 public slots:
     void updateData(AbstractWeatherForecast &fc);
 
@@ -169,7 +171,7 @@ signals:
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
 
-    void maxTempListChanged();
+    void chartListChanged();
 
 private:
     Kweather::Backend backend_ = Kweather::Backend::NMI;
@@ -178,7 +180,7 @@ private:
     QJsonDocument convertToJson(AbstractWeatherForecast &fc);
 
     // chart related fields
-    QVariantList m_maxTempList;
+    QVariantList m_maxTempList, m_xAxisList;
 
     // background related fields
     QString m_backgroundColor;

@@ -194,20 +194,18 @@ Kirigami.ScrollablePage {
         // temperature chart
         Rectangle {
             Layout.fillWidth: true
-            height: 100
+            color: weatherLocation.backgroundColor
+            height: 120
             Charts.LineChart {
                 id: tempChart
-                anchors.fill: parent
+                height: 100
+                width: parent.width
                 smooth: true
                 colorSource: Charts.SingleValueSource  { value: "red" }
                 nameSource: Charts.SingleValueSource  { value: "MaxTemperature" }
-//                yRange {
-//                    automatic: false
-//                    from: 15
-//                    to: 30
-//                }
+
                 pointDelegate: Label {
-                    text: Charts.LineChart.value
+                    text: String(Charts.LineChart.value.toFixed(1))
                     color: weatherLocation.textColor
                 }
 
@@ -218,41 +216,18 @@ Kirigami.ScrollablePage {
                     }
                 ]
             }
+            Charts.AxisLabels {
+                width: tempChart.width
+                anchors.bottom: parent.bottom
+                delegate: Label {
+                    color: weatherLocation.textColor
+                    text: Charts.AxisLabels.label
+                }
+                source: Charts.ArraySource {
+                    array: weatherLocation.xAxisList
+                }
+            }
         }
-//        ChartView {
-//            id: chartView
-//            legend.visible: false
-//            antialiasing: true
-//            animationOptions: ChartView.NoAnimation
-//            theme: weatherLocation.darkTheme ? ChartView.ChartThemeDark : ChartView.ChartThemeLight
-//            Layout.fillWidth: true
-//            height: 200
-
-//            SplineSeries {
-//                id: splineSeries
-//                axisX: DateTimeAxis {
-//                    id: axisX
-//                    tickCount: dailyListView.count
-//                    format: "ddd"
-//                }
-//                axisY: ValueAxis {
-//                    id: axisY
-//                    visible: false
-
-//                    min: weatherLocation.minTempLimit
-//                    max: weatherLocation.maxTempLimit
-//                }
-//                name: i18n("temperature")
-//                pointLabelsVisible: true
-//                pointLabelsFormat: "@yPoint°"
-//                pointLabelsClipping: false
-
-//                Component.onCompleted: {
-//                    weatherLocation.initAxes(axisX, axisY);
-//                    weatherLocation.initSeries(chartView.series(0));
-//                }
-//            }
-//        }
 
         // hourly view header
         RowLayout {

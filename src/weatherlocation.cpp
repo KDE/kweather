@@ -250,11 +250,13 @@ void WeatherLocation::changeBackend(Kweather::Backend backend)
 void WeatherLocation::updateChart()
 {
     m_maxTempList.clear();
-    for (auto day : forecast_.dailyForecasts()) {
+    m_xAxisList.clear();
+    for (const auto &day : forecast_.dailyForecasts()) {
         m_maxTempList.append(day.maxTemp());
+        m_xAxisList.append(QLocale::system().toString(day.date(),QStringLiteral("ddd")));
     }
 
-    Q_EMIT maxTempListChanged();
+    Q_EMIT chartListChanged();
 }
 
 WeatherLocation::~WeatherLocation()
@@ -265,4 +267,8 @@ WeatherLocation::~WeatherLocation()
 const QVariantList &WeatherLocation::maxTempList()
 {
     return m_maxTempList;
+}
+const QVariantList& WeatherLocation::xAxisList()
+{
+    return m_xAxisList;
 }
