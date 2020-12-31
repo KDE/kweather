@@ -8,6 +8,7 @@
 *.qmlc
 build/
 .kdev4/
+.idea/
 kweather.kdev4
 CMakeLists.txt.user
 
