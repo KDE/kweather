@@ -8,8 +8,9 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
-import QtCharts 2.3
-import org.kde.kirigami 2.12 as Kirigami
+// FIXME: version bump
+import org.kde.quickcharts 1.0 as Charts
+import org.kde.kirigami 2.13 as Kirigami
 import kweather 1.0
 import "backgrounds"
 
@@ -196,37 +197,42 @@ Kirigami.ScrollablePage {
         }
         
         // temperature chart
-        ChartView {
-            id: chartView
-            legend.visible: false
-            antialiasing: true
-            animationOptions: ChartView.NoAnimation
-            theme: weatherLocation.darkTheme ? ChartView.ChartThemeDark : ChartView.ChartThemeLight
+        Rectangle {
             Layout.fillWidth: true
-            height: 200
+            radius: Kirigami.Units.smallSpacing
+            color: weatherLocation.backgroundColor
+            height: 140
 
-            SplineSeries {
-                id: splineSeries
-                axisX: DateTimeAxis {
-                    id: axisX
-                    tickCount: dailyListView.count
-                    format: "ddd"
+            Charts.LineChart {
+                id: tempChart
+                height: 100
+                width: parent.width - Kirigami.Units.largeSpacing * 2
+                anchors.centerIn: parent
+                smooth: true
+                colorSource: Charts.SingleValueSource  { value: "red" }
+                nameSource: Charts.SingleValueSource  { value: "MaxTemperature" }
+
+                pointDelegate: Label {
+                    text: String(Charts.LineChart.value.toFixed(1))
+                    color: weatherLocation.textColor
                 }
-                axisY: ValueAxis {
-                    id: axisY
-                    visible: false
 
-                    min: weatherLocation.minTempLimit
-                    max: weatherLocation.maxTempLimit
+                valueSources: [
+                    Charts.ArraySource {
+                        id: tempSource
+                        array: weatherLocation.maxTempList
+                    }
+                ]
+            }
+            Charts.AxisLabels {
+                width: tempChart.width
+                anchors.bottom: parent.bottom
+                delegate: Label {
+                    color: weatherLocation.textColor
+                    text: Charts.AxisLabels.label
                 }
-                name: i18n("temperature")
-                pointLabelsVisible: true
-                pointLabelsFormat: "@yPoint°"
-                pointLabelsClipping: false
-
-                Component.onCompleted: {
-                    weatherLocation.initAxes(axisX, axisY);
-                    weatherLocation.initSeries(chartView.series(0));
+                source: Charts.ArraySource {
+                    array: weatherLocation.xAxisList
                 }
             }
         }
