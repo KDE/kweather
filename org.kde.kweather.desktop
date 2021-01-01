@@ -7,6 +7,7 @@
 
 [Desktop Entry]
 Name=Weather
+Name[az]=Hava
 Name[ca]=Meteorologia
 Name[ca@valencia]=Meteorologia
 Name[cs]=Počasí
@@ -31,6 +32,7 @@ Name[uk]=Погода
 Name[x-test]=xxWeatherxx
 Name[zh_CN]=天气
 Comment=A weather application in Kirigami.
+Comment[az]=Kirigami-də hava tətbiqi.
 Comment[ca]=Una aplicació de meteorologia creada amb el Kirigami.
 Comment[ca@valencia]=Una aplicació de meteorologia creada amb el Kirigami.
 Comment[cs]=Předpověď počasí v Kirigami.

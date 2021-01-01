@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KWeather_1x4
+Name[az]=KWeather_1x4
 Name[ca]=KWeather_1x4
 Name[ca@valencia]=KWeather_1x4
 Name[cs]=KWeather_1x4
@@ -22,6 +23,7 @@ Name[uk]=KWeather_1x4
 Name[x-test]=xxKWeather_1x4xx
 Name[zh_CN]=KWeather_1x4
 Comment=KWeather_1x4 widget
+Comment[az]=KWeather_1x4  əlavəsi
 Comment[ca]=Giny del KWeather_1x4
 Comment[ca@valencia]=Giny del KWeather_1x4
 Comment[cs]=Widget KWeather_1x4
