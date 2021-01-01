@@ -19,9 +19,9 @@ A convergent weather application for Plasma.
 ## Dependencies
 If you are the packaging the application, it's worth looking at the [neon deb package](https://invent.kde.org/neon/mobile/kweather).
 * Kirigami
+* KQuickCharts
 * Qt Quick Controls
 * Qt Quick Shapes
-* Qt Charts
 
 ## Installing
 ```
