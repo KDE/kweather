@@ -22,6 +22,7 @@
   <name xml:lang="ko">날씨</name>
   <name xml:lang="nl">Weer</name>
   <name xml:lang="nn">Vêrmelding</name>
+  <name xml:lang="pa">ਮੌਸਮ</name>
   <name xml:lang="pt">Tempo</name>
   <name xml:lang="pt-BR">Meteorologia</name>
   <name xml:lang="sk">Počasie</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="ko">Kirigami를 사용하는 날씨 프로그램입니다.</summary>
   <summary xml:lang="nl">Een convergente weer-toepassing.</summary>
   <summary xml:lang="nn">Vêrmeldings­program for ulike typar brukarflater.</summary>
+  <summary xml:lang="pa">ਕੇਂਦਰੀ ਮੌਸਮੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ।</summary>
   <summary xml:lang="pt">Uma aplicação meteorológica convergente.</summary>
   <summary xml:lang="pt-BR">Um aplicativo de meteorologia convergente.</summary>
   <summary xml:lang="sl">Osredotočen program za spremljanje vremena.</summary>
@@ -70,6 +72,7 @@
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
   <developer_name xml:lang="nl">KDE-gemeenschap</developer_name>
   <developer_name xml:lang="nn">KDE-fellesskapet</developer_name>
+  <developer_name xml:lang="pa">ਕੇਡੀਈ ਕਮਿਊਨਟੀ</developer_name>
   <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
   <developer_name xml:lang="pt-BR">Comunidade KDE</developer_name>
   <developer_name xml:lang="sk">KDE komunita</developer_name>
@@ -94,6 +97,7 @@
     <p xml:lang="ko">KWeather는 모바일 친화적 날씨 프로그램입니다.</p>
     <p xml:lang="nl">KWeather is een weertoepassing vol met mogelijkheden die vriendelijk is op het mobieltje.</p>
     <p xml:lang="nn">KWeather er eit mobil­vennleg og funksjons­rikt vêrmeldingsprogram.</p>
+    <p xml:lang="pa">ਕੇ-ਮੌਸਮ ਪੂਰੇ-ਫੀਚਰ ਵਾਲੀ ਮੌਸਮੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ, ਜੋ ਕਿ ਮੋਬਾਈਲ ਮੁਤਾਬਕ ਹੈ।</p>
     <p xml:lang="pt">O KWeather é uma aplicação meteorológica completa que é amigável para dispositivos móveis.</p>
     <p xml:lang="pt-BR">O KWeather é um aplicativo de meteorologia completo que é compatível com dispositivos móveis.</p>
     <p xml:lang="sl">KWeather je obsežen program za spremljanje vremena, ki je prilagojen mobilnim napravam.</p>
