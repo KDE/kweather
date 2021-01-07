@@ -14,7 +14,7 @@ import kweather 1.0
 
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 5
-    implicitHeight: Kirigami.Units.gridUnit * 10
+    implicitHeight: hourElement.height
     color: "transparent"
 
     property WeatherHour weather
@@ -23,11 +23,10 @@ Rectangle {
     // actual hour display
     ColumnLayout {
         id: hourElement
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.leftMargin: Kirigami.Units.largeSpacing
-        anchors.topMargin: Kirigami.Units.largeSpacing
         anchors.rightMargin: Kirigami.Units.largeSpacing
-        anchors.bottomMargin: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.smallSpacing
 
         Kirigami.Icon {

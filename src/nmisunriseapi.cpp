@@ -119,7 +119,7 @@ void NMISunriseAPI::popDay()
 };
 void NMISunriseAPI::setData(QList<AbstractSunrise> sunrise)
 {
-    if(!sunrise.isEmpty()) {
+    if (!sunrise.isEmpty()) {
         while (sunrise.front().sunRise().date() < QDate::currentDate()) {
             sunrise.pop_front();
         }
