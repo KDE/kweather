@@ -111,20 +111,21 @@ void NMISunriseAPI::process(QNetworkReply *reply)
 void NMISunriseAPI::popDay()
 {
     QDateTime today = QDateTime::currentDateTime();
-    for (auto day : sunrise_) {
+    int i = 0;
+    for (const auto &day : qAsConst(sunrise_)) {
         if (day.sunRise().daysTo(today) > 0) {
-            sunrise_.pop_front();
+            i++;
+        } else {
+            break;
         }
     }
+    while(i--)
+        sunrise_.pop_front();
 };
 void NMISunriseAPI::setData(QList<AbstractSunrise> sunrise)
 {
-    if (!sunrise.isEmpty()) {
-        while (sunrise.front().sunRise().date() < QDate::currentDate()) {
-            sunrise.pop_front();
-        }
-    }
-    sunrise_ = sunrise;
+    sunrise_ = std::move(sunrise);
+    popDay();
     update();
 }
 bool NMISunriseAPI::isDayTime(QDateTime date)
