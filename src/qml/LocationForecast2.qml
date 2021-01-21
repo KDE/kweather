@@ -231,10 +231,9 @@ Kirigami.ScrollablePage {
                         Layout.topMargin: Kirigami.Units.largeSpacing
                         Layout.preferredHeight: Kirigami.Units.gridUnit * 5
                         Layout.preferredWidth: tempChartCard.width > Kirigami.Units.gridUnit * 28 ? tempChartCard.width : Kirigami.Units.gridUnit * 28
-                        colorSource: Charts.SingleValueSource  { value: "red" }
-                        nameSource: Charts.SingleValueSource  { value: "MaxTemperature" }
-                        lineWidth: 1 // hardcoded to ensure small size
-
+                        nameSource: Charts.SingleValueSource  { value: i18n("MaxTemperature") }
+                        lineWidth: Kirigami.Settings.isMobile ? 0.5 : 1
+                        smooth: true
                         pointDelegate: Label {
                             text: String(Charts.LineChart.value.toFixed(1))
                             color: weatherLocation.textColor
@@ -246,10 +245,17 @@ Kirigami.ScrollablePage {
                                 array: weatherLocation.maxTempList
                             }
                         ]
+
+                        colorSource: Charts.SingleValueSource {
+                            value: Kirigami.ColorUtils.linearInterpolation(weatherLocation.backgroundColor, weatherLocation.textColor, 0.5)
+                        }
+                        fillColorSource: Charts.SingleValueSource {
+                            value: weatherLocation.backgroundColor
+                        }
                     }
                     Charts.AxisLabels {
                         Layout.fillWidth: true
-                        Layout.leftMargin: Kirigami.Units.largeSpacing
+                        Layout.leftMargin: Kirigami.Units.smallSpacing
                         Layout.rightMargin: Kirigami.Units.largeSpacing
                         delegate: Label {
                             color: weatherLocation.textColor
