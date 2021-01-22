@@ -180,7 +180,7 @@ void WeatherLocation::determineCurrentBackgroundWeatherComponent()
         m_cardTextColor = QStringLiteral("black");
         m_backgroundColor = QStringLiteral("#3daee2");
         m_textColor = m_cardTextColor;
-        m_iconColor = QStringLiteral("#eff0f1");
+        m_iconColor = QStringLiteral("#4d4d4d");
     } else {
         m_cardBackgroundColor = QStringLiteral("#333333");
         m_cardTextColor = QStringLiteral("#eeeeee");
