@@ -232,7 +232,7 @@ Kirigami.ScrollablePage {
                         Layout.preferredHeight: Kirigami.Units.gridUnit * 5
                         Layout.preferredWidth: tempChartCard.width > Kirigami.Units.gridUnit * 28 ? tempChartCard.width : Kirigami.Units.gridUnit * 28
                         nameSource: Charts.SingleValueSource  { value: i18n("MaxTemperature") }
-                        lineWidth: Kirigami.Settings.isMobile ? 0.5 : 1
+                        lineWidth: Kirigami.Settings.isMobile ? 0.1 : 1
                         smooth: true
                         pointDelegate: Label {
                             text: String(Charts.LineChart.value.toFixed(1))
