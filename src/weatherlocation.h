@@ -6,30 +6,28 @@
  */
 
 #pragma once
-
-#include "weatherdaymodel.h"
 #include "weatherhourmodel.h"
+
 #include <KWeatherCore/WeatherForecastSource>
 #include <QAbstractListModel>
+#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QObject>
-
+#include <QDateTime>
+#include <QTimeZone>
+#include <QTimer>
+#include <utility>
+using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
 class WeatherDayListModel;
-class WeatherHourListModel;
-class WeatherHour;
-namespace QtCharts
-{
-class QAbstractSeries;
-class QSplineSeries;
-class QDateTimeAxis;
-class QValueAxis;
-}
 class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
+    Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
+    Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
+    Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHour *currentWeather READ currentWeather NOTIFY currentForecastChange)
@@ -40,55 +38,133 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
     Q_PROPERTY(QString cardTextColor READ cardTextColor NOTIFY currentForecastChange)
     Q_PROPERTY(QString iconColor READ iconColor NOTIFY currentForecastChange)
-    Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChange)
 
-    Q_PROPERTY(double maxTempLimit READ maxTempLimit NOTIFY currentForecastChange)
-    Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY currentForecastChange)
-
+    Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY chartListChanged)
+    Q_PROPERTY(QVariantList xAxisList READ xAxisList NOTIFY chartListChanged)
 public:
     WeatherLocation();
-    explicit WeatherLocation(QString locationId, QString locationName, QString timeZone, double latitude, double longitude, const KWeatherCore::WeatherForecast &forecast = KWeatherCore::WeatherForecast());
+    explicit WeatherLocation(QString locationId,
+                             QString locationName,
+                             QString timeZone,
+                             float latitude,
+                             float longitude,
+                             SharedForecastPtr forecast = SharedForecastPtr());
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
 
-    const QString &locationId() const;
-    const QString &locationName() const;
-    const QString &timeZone() const;
-    double latitude() const;
-    double longitude() const;
-    WeatherHour *currentWeather() const;
-    WeatherDayListModel *weatherDayListModel() const;
-    WeatherHourListModel *weatherHourListModel() const;
-    QString lastUpdatedFormatted() const;
-    const QDateTime &lastUpdated() const;
-    void setLastUpdated(const QDateTime &lastUpdated);
-    void initData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> fc);
+    const QString &locationId() const
+    {
+        return m_locationId;
+    }
+    const QString &locationName() const
+    {
+        return m_locationName;
+    }
+    const QString &timeZone() const
+    {
+        return m_timeZone;
+    };
+     float latitude() const
+    {
+        return m_latitude;
+    }
+     float longitude() const
+    {
+        return m_longitude;
+    }
+     WeatherHour currentWeather() const;
+     WeatherDayListModel *weatherDayListModel() const
+    {
+        return m_weatherDayListModel;
+    }
+     WeatherHourListModel *weatherHourListModel() const
+    {
+        return m_weatherHourListModel;
+    }
+    QString lastUpdatedFormatted() const
+    {
+        return lastUpdated().toString("hh:mm ap");
+    }
+    const QDateTime &lastUpdated() const
+    {
+        return m_lastUpdated;
+    }
+    QString currentTimeFormatted() const
+    {
+        return currentTime().toString("hh:mm ap");
+    }
+    QTime currentTime() const
+    {
+        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8())).time();
+    }
+    QString currentDateFormatted() const
+    {
+        return currentDate().toString("dd MMM yyyy");
+    }
+    QDate currentDate() const
+    {
+        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8())).date();
+    }
+    void setLastUpdated(QDateTime lastUpdated)
+    {
+        m_lastUpdated = std::move(lastUpdated);
+        emit propertyChanged();
+    }
+    void initData(SharedForecastPtr fc);
+    void update();
 
-    const QString &backgroundComponent() const;
-    const QString &backgroundColor() const;
-    const QString &textColor() const;
-    const QString &cardBackgroundColor() const;
-    const QString &cardTextColor() const;
-    const QString &iconColor() const;
-    double maxTempLimit() const;
-    double minTempLimit() const;
-    bool darkTheme() const;
-    Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
-    Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
-    Q_INVOKABLE void update();
+    const QString &backgroundComponent() const
+    {
+        return m_backgroundComponent;
+    };
+    const QString &backgroundColor() const
+    {
+        return m_backgroundColor;
+    };
+    const QString &textColor() const
+    {
+        return m_textColor;
+    };
+    const QString &cardBackgroundColor() const
+    {
+        return m_cardBackgroundColor;
+    };
+    const QString &cardTextColor() const
+    {
+        return m_cardTextColor;
+    };
 
-Q_SIGNALS:
+    const QString &iconColor() const
+    {
+        return m_iconColor;
+    }
+
+    const QVariantList &maxTempList();
+    const QVariantList &xAxisList();
+public slots:
+    void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts);
+
+signals:
+    void weatherRefresh(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
-    void weatherRefresh(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
-private Q_SLOTS:
-    void determineCurrentForecast();
-    void determineCurrentBackgroundWeatherComponent();
+    void currentTimeChanged();
+    void currentDateChanged();
 
+    void chartListChanged();
+private slots:
+    void updateCurrentDateTime();
 private:
-    void writeToCache(const KWeatherCore::WeatherForecast &fc);
+    void writeToCache() const;
+    void determineCurrentForecast();
+
+    KWeatherCore::WeatherForecastSource m_source;
+    SharedForecastPtr m_forecast;
+
+    // chart related fields
+    QVariantList m_maxTempList, m_xAxisList;
 
     // background related fields
     QString m_backgroundColor;
@@ -98,29 +174,14 @@ private:
     QString m_iconColor;
     QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
 
-    // the QXYSeries from qml, for temperature chart
-    QtCharts::QSplineSeries *m_series = nullptr;
-    QVector<QPointF> m_vector;
-    double m_maxTempLimit;
-    double m_minTempLimit;
-    bool m_isDarkTheme = false;
-
-    // QtChart Axes
-    QtCharts::QDateTimeAxis *m_axisX = nullptr;
-    QtCharts::QValueAxis *m_axisY = nullptr;
-
     QString m_locationName, m_locationId;
     QString m_timeZone;
     QDateTime m_lastUpdated;
-    double m_latitude, m_longitude;
-
-    KWeatherCore::WeatherForecastSource m_weatherSource;
+    QTimer *m_timer;
+    float m_latitude, m_longitude;
 
     WeatherDayListModel *m_weatherDayListModel = nullptr;
     WeatherHourListModel *m_weatherHourListModel = nullptr;
 
-    WeatherHour *m_currentWeather = nullptr;
-
-    void updateSeries();
-    void updateAxes();
+    void updateChart();
 };
