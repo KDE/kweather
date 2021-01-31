@@ -23,19 +23,13 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
-    Q_INVOKABLE WeatherDay *get(int index);
+    Q_INVOKABLE WeatherDay get(int index);
 
     Q_INVOKABLE void updateUi();
 
 public Q_SLOTS:
     void refreshDaysFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
 
-protected:
-    friend class WeatherLocation;
-    const std::vector<KWeatherCore::Sunrise> &sunrise() const;
-    const std::vector<WeatherDay *> &days() const;
-
 private:
-    std::vector<WeatherDay *> daysVec;
-    std::vector<KWeatherCore::Sunrise> sunriseVec;
+    QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> m_forecasts;
 };
