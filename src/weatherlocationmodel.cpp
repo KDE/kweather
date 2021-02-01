@@ -7,6 +7,7 @@
 
 #include "weatherlocationmodel.h"
 #include "weatherlocation.h"
+#include "weatherdaymodel.h"
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
@@ -30,7 +31,8 @@ void WeatherLocationListModel::load()
     auto config = KSharedConfig::openConfig(QString(), KSharedConfig::FullConfig, QStandardPaths::AppConfigLocation);
     KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
     QJsonDocument doc = QJsonDocument::fromJson(group.readEntry(WEATHER_LOCATIONS_CFG_KEY, "{}").toUtf8());
-    for (QJsonValueRef r : doc.array()) {
+    const auto &array = doc.array();
+    for (const auto &r : array) {
         QJsonObject obj = r.toObject();
         locationsVec.append(WeatherLocation::fromJson(obj));
     }
@@ -39,7 +41,7 @@ void WeatherLocationListModel::load()
 void WeatherLocationListModel::save()
 {
     QJsonArray arr;
-    for (auto lc : locationsVec) {
+    for (const auto &lc : qAsConst(locationsVec)) {
         arr.push_back(lc->toJson());
     }
     QJsonObject obj;
@@ -75,7 +77,7 @@ QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
 void WeatherLocationListModel::updateUi()
 {
     Q_EMIT dataChanged(createIndex(0, 0), createIndex(locationsVec.size() - 1, 0));
-    for (auto l : locationsVec) {
+    for (const auto &l : qAsConst(locationsVec)) {
         Q_EMIT l->propertyChanged();
         l->weatherDayListModel()->updateUi();
         l->weatherHourListModel()->updateUi();
@@ -88,9 +90,9 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
         return;
 
     QQmlEngine::setObjectOwnership(weatherLocation, QQmlEngine::CppOwnership);
-    Q_EMIT beginInsertRows(QModelIndex(), index, index);
+    beginInsertRows(QModelIndex(), index, index);
     locationsVec.insert(index, weatherLocation);
-    Q_EMIT endInsertRows();
+    endInsertRows();
 
     save();
 }
@@ -100,11 +102,11 @@ void WeatherLocationListModel::remove(int index)
     if ((index < 0) || (index >= locationsVec.size()))
         return;
 
-    Q_EMIT beginRemoveRows(QModelIndex(), index, index);
+    beginRemoveRows(QModelIndex(), index, index);
     auto location = locationsVec.at(index);
     locationsVec.removeAt(index);
     delete location;
-    Q_EMIT endRemoveRows();
+    endRemoveRows();
 
     save();
 }
@@ -126,9 +128,9 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     if (newIndex > oldIndex)
         std::swap(newIndex, oldIndex);
 
-    Q_EMIT beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
+    beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
     locationsVec.move(oldIndex, newIndex);
-    Q_EMIT endMoveRows();
+    endMoveRows();
 }
 int WeatherLocationListModel::count() const
 {

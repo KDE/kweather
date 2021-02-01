@@ -24,7 +24,6 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
-    Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
@@ -48,10 +47,11 @@ public:
                              QString timeZone,
                              float latitude,
                              float longitude,
-                             SharedForecastPtr forecast = SharedForecastPtr());
+                             SharedForecastPtr forecast = SharedForecastPtr(new KWeatherCore::WeatherForecast));
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
+    WeatherHour *currentWeather() const;
 
     const QString &locationId() const
     {
@@ -73,7 +73,6 @@ public:
     {
         return m_longitude;
     }
-     WeatherHour currentWeather() const;
      WeatherDayListModel *weatherDayListModel() const
     {
         return m_weatherDayListModel;

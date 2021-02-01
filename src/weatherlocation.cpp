@@ -34,7 +34,7 @@ WeatherLocation::WeatherLocation(QString locationId,
                                  float longitude,
                                  SharedForecastPtr forecast)
     : m_forecast(forecast)
-    ,  m_locationName(std::move(locationName))
+    , m_locationName(std::move(locationName))
     , m_locationId(std::move(locationId))
     , m_timeZone(std::move(timeZone))
     , m_latitude(latitude)
@@ -42,7 +42,6 @@ WeatherLocation::WeatherLocation(QString locationId,
 {
     m_weatherDayListModel = new WeatherDayListModel(this);
     m_weatherHourListModel = new WeatherHourListModel(this);
-    m_lastUpdated = forecast->createdTime();
     this->m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
 
@@ -50,7 +49,11 @@ WeatherLocation::WeatherLocation(QString locationId,
     QQmlEngine::setObjectOwnership(m_weatherDayListModel, QQmlEngine::CppOwnership);
     QQmlEngine::setObjectOwnership(m_weatherHourListModel, QQmlEngine::CppOwnership);
 
-    determineCurrentForecast();
+    if(forecast)
+    {
+        m_lastUpdated = forecast->createdTime();
+        determineCurrentForecast();
+    }
 }
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
@@ -68,6 +71,14 @@ QJsonObject WeatherLocation::toJson()
     obj["longitude"] = longitude();
     obj["timezone"] = m_timeZone;
     return obj;
+}
+
+WeatherHour *WeatherLocation::currentWeather() const
+{
+    if(m_weatherHourListModel)
+        return m_weatherHourListModel->currentForecast();
+    else
+        return nullptr;
 }
 
 void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)

@@ -76,4 +76,6 @@ void WeatherForecastManager::readFromCache()
             wl->initData(map[wl]);
         }
     }
+
+    update();
 }

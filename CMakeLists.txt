@@ -8,7 +8,7 @@
 project(kweather)
 
 cmake_minimum_required(VERSION 2.8.12)
-set(KF5_MIN_VERSION "5.60.0")
+set(KF5_MIN_VERSION "5.77.0") # KQuickCharts
 if (ANDROID)
     set(QT_MIN_VERSION "5.15.0") # the QTimezone doesn't work with Qt version before 5.15 beta 3
 else()
@@ -40,16 +40,15 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
     Gui
     Svg
     QuickControls2
-    Charts
-    Positioning)
+)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     Kirigami2
     I18n
     CoreAddons
     Notifications
+    QuickCharts
 )
-
 find_package(KF5 0.1.0 REQUIRED COMPONENTS KWeatherCore)
 
 if (ANDROID)

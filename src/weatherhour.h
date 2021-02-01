@@ -6,23 +6,80 @@
  */
 
 #pragma once
+#include "global.h"
 #include "kweathersettings.h"
-#include <KWeatherCore/HourlyWeatherForecast>
+#include <KWeatherCore/WeatherForecast>
 #include <QObject>
-class WeatherHour : public KWeatherCore::HourlyWeatherForecast
+using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
+class WeatherHourListModel;
+class WeatherHour : public QObject
 {
-    Q_GADGET
-    Q_PROPERTY(QString windDirection READ windDirection)
-    Q_PROPERTY(QString windSpeed READ windSpeed)
-    Q_PROPERTY(QString temperatureRounded READ temperatureRounded)
-public:
-    WeatherHour();
-    explicit WeatherHour(const KWeatherCore::HourlyWeatherForecast &forecast);
+    Q_OBJECT
+    Q_PROPERTY(QString windDirection READ windDirection NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherDescription READ weatherDescription NOTIFY propertyChanged)
+    Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY propertyChanged)
+    Q_PROPERTY(qreal precipitation READ precipitation NOTIFY propertyChanged)
+    Q_PROPERTY(qreal fog READ fog NOTIFY propertyChanged)
+    Q_PROPERTY(QString windSpeed READ windSpeed NOTIFY propertyChanged)
+    Q_PROPERTY(QString temperature READ temperature NOTIFY propertyChanged)
+    Q_PROPERTY(QString temperatureRounded READ temperatureRounded NOTIFY propertyChanged)
+    Q_PROPERTY(qreal humidity READ humidity NOTIFY propertyChanged)
+    Q_PROPERTY(qreal pressure READ pressure NOTIFY propertyChanged)
+    Q_PROPERTY(QDateTime date READ date NOTIFY propertyChanged)
 
-    const QString &windDirection() const;
+public:
+    WeatherHour(WeatherHourListModel *parent = nullptr);
+    explicit WeatherHour(SharedForecastPtr ptr, int day, int hour, WeatherHourListModel *parent = nullptr);
+
+    QString windDirection() const
+    {
+        return hour().windDirectionStr();
+    }
+    const QString &weatherDescription() const
+    {
+        return hour().weatherDescription();
+    }
+    const QString &weatherIcon() const
+    {
+        return hour().weatherIcon();
+    }
+    qreal precipitation() const
+    {
+        return hour().precipitationAmount();
+    }
+    qreal fog() const
+    {
+        return hour().fog();
+    }
     QString windSpeed() const;
-    QString temperatureRounded() const;
+    QString temperature() const
+    {
+        return QString::number(hour().temperature());
+    }
+    QString temperatureRounded() const
+    {
+       return Kweather::tempConverter(hour().temperature());
+    }
+    qreal humidity() const
+    {
+        return hour().humidity();
+    }
+    qreal pressure() const
+    {
+        return hour().pressure();
+    }
+    const QDateTime &date() const
+    {
+        return hour().date();
+    }
+public Q_SLOTS:
+    void refreshHoursFromForecasts(SharedForecastPtr ptr);
+Q_SIGNALS:
+    void propertyChanged();
 private:
-    QString m_windDirection;
+    const KWeatherCore::HourlyWeatherForecast &hour() const;
+
+    SharedForecastPtr m_forecast;
+    int m_day = 0;
+    int m_hour = 0;
 };
-Q_DECLARE_METATYPE(WeatherHour)

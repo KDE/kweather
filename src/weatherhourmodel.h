@@ -28,15 +28,16 @@ public:
 
     Q_INVOKABLE void updateHourView(int index);
     Q_INVOKABLE void updateUi();
-public slots:
+public Q_SLOTS:
     void refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
+Q_SIGNALS:
+    void weatherRefresh(SharedForecastPtr ptr);
 
 protected:
     friend class WeatherLocation;
     WeatherHour *currentForecast() const;
 
 private:
-    QVector<WeatherHour *> hoursVec;
-    QVector<int> dayVec;
-    int day = 0;
+    std::vector<std::vector<WeatherHour *>> m_hours;
+    int m_currentDay = 0;
 };

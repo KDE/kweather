@@ -17,16 +17,16 @@ WeatherDayListModel::WeatherDayListModel(WeatherLocation *location)
 int WeatherDayListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return m_forecasts->dailyWeatherForecast().size();
+    return m_weatherDays.size();
 }
 
 QVariant WeatherDayListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= static_cast<int>(m_forecasts->dailyWeatherForecast().size()) || index.row() < 0) {
+    if (!index.isValid() || index.row() >= static_cast<int>(m_weatherDays.size()) || index.row() < 0) {
         return {};
     }
     if (role == Roles::DayItemRole) {
-        return QVariant::fromValue(WeatherDay(m_forecasts->dailyWeatherForecast().at(index.row())));
+        return QVariant::fromValue(m_weatherDays.at(index.row()));
     }
     return {};
 }
@@ -36,18 +36,43 @@ QHash<int, QByteArray> WeatherDayListModel::roleNames() const
     return {{Roles::DayItemRole, "dayItem"}};
 }
 
-WeatherDay WeatherDayListModel::get(int index)
+WeatherDay *WeatherDayListModel::get(int index)
 {
-    if (index < 0 || index >= static_cast<int>(m_forecasts->dailyWeatherForecast().size()))
-        return {};
-    return WeatherDay(m_forecasts->dailyWeatherForecast().at(index));
+    WeatherDay *ret = nullptr;
+    if (!m_forecasts || index < 0 || index >= static_cast<int>(m_forecasts->dailyWeatherForecast().size()))
+        return ret;
+
+    ret = m_weatherDays.at(index);
+    QQmlEngine::setObjectOwnership(ret, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    return ret;
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
+void WeatherDayListModel::refreshDaysFromForecasts(SharedForecastPtr forecasts)
 {
-    Q_EMIT layoutAboutToBeChanged();
-    m_forecasts = std::move(forecasts);
-    Q_EMIT layoutChanged();
+    m_forecasts = forecasts;
+
+    if (forecasts->dailyWeatherForecast().size() > m_weatherDays.size())
+    {
+        beginInsertRows(QModelIndex(), m_weatherDays.size(), forecasts->dailyWeatherForecast().size() - 1);
+        for(auto i = m_weatherDays.size(); i < forecasts->dailyWeatherForecast().size(); i++)
+        {
+            auto weatherDay = new WeatherDay(forecasts, i, this);
+            QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+            m_weatherDays.push_back(weatherDay);
+        }
+        endInsertRows();
+    } else if (forecasts->dailyWeatherForecast().size() < m_weatherDays.size())
+    {
+        beginRemoveRows(QModelIndex(), forecasts->dailyWeatherForecast().size(), m_weatherDays.size() - 1);
+        for(auto i = m_weatherDays.size() - forecasts->dailyWeatherForecast().size(); i > 0; i--)
+        {
+            m_weatherDays.back()->deleteLater();
+            m_weatherDays.pop_back();
+        }
+        endRemoveRows();
+    }
+
+    Q_EMIT weatherRefresh(forecasts);
 }
 
 void WeatherDayListModel::updateUi()

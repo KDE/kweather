@@ -27,13 +27,12 @@ target_link_libraries(kweather
     Qt5::QuickControls2
     Qt5::Widgets
     Qt5::Network
-    Qt5::Charts
-    Qt5::Positioning
     KF5::I18n
     KF5::ConfigCore
     KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
+    KF5::QuickCharts
     KF5::KWeatherCore
 )
 
