@@ -33,7 +33,7 @@ public:
     Q_INVOKABLE WeatherLocation *get(int index);
     Q_INVOKABLE void requestCurrentLocation();
 public Q_SLOTS:
-    void addLocation(KWeatherCore::LocationQueryResult *ret);
+    void addLocation(const KWeatherCore::LocationQueryResult &ret);
 Q_SIGNALS:
     void networkErrorCreating(); // error creating a location
     void networkErrorCreatingDefault(); // error getting current location

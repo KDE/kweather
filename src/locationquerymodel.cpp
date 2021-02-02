@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Han Young <hanyoung@protonmail.com>
+ * Copyright 2020 2021 Han Young <hanyoung@protonmail.com>
  * Copyright 2020 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
@@ -8,50 +8,6 @@
 #include "locationquerymodel.h"
 #include <QDebug>
 #include <QTimer>
-class LocationQueryResult : public QObject
-{
-    Q_OBJECT
-
-public:
-    explicit LocationQueryResult(const KWeatherCore::LocationQueryResult &result)
-        : d(result)
-    {
-    }
-
-    double latitude() const
-    {
-        return d.latitude();
-    }
-    double longitude() const
-    {
-        return d.longitude();
-    }
-    QString toponymName()
-    {
-        return d.toponymName();
-    }
-    QString name()
-    {
-        return d.name();
-    }
-    QString countryCode()
-    {
-        return d.countryCode();
-    }
-    QString countryName()
-    {
-        return d.countryName();
-    }
-    QString geonameId()
-    {
-        return d.geonameId();
-    }
-
-private:
-    friend class LocationQueryModel;
-    KWeatherCore::LocationQueryResult d;
-};
-
 LocationQueryModel::LocationQueryModel()
 {
     inputTimer = new QTimer(this);
@@ -63,7 +19,7 @@ LocationQueryModel::LocationQueryModel()
 int LocationQueryModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return resultsVec.size();
+    return m_results.size();
 }
 
 QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
@@ -71,10 +27,10 @@ QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    auto query = resultsVec[index.row()];
+    auto result = m_results.at(index.row());
 
     if (role == NameRole) {
-        return query->toponymName() + ", " + query->countryName();
+        return result.toponymName() + ", " + result.countryName();
     }
 
     return QVariant();
@@ -85,11 +41,11 @@ QHash<int, QByteArray> LocationQueryModel::roleNames() const
     return {{NameRole, "name"}};
 }
 
-LocationQueryResult *LocationQueryModel::get(int index)
+KWeatherCore::LocationQueryResult LocationQueryModel::get(int index)
 {
-    if (index < 0 || index >= static_cast<int>(resultsVec.size()))
+    if (index < 0 || index >= static_cast<int>(m_results.size()))
         return {};
-    return resultsVec.at(index);
+    return m_results.at(index);
 }
 
 void LocationQueryModel::textChanged(QString query, int timeout)
@@ -98,7 +54,7 @@ void LocationQueryModel::textChanged(QString query, int timeout)
 
     Q_EMIT layoutAboutToBeChanged();
     // clear results list
-    resultsVec.clear();
+    m_results.clear();
 
     Q_EMIT layoutChanged();
     if (!query.isEmpty()) { // do not query nothing
@@ -117,19 +73,17 @@ void LocationQueryModel::setQuery()
 
 void LocationQueryModel::addLocation(int index)
 {
-    if (resultsVec.size() == 0 || index < 0 || index >= resultsVec.size())
+    if (m_results.empty() || index < 0 || index >= static_cast<int>(m_results.size()))
         return; // don't add location
-    Q_EMIT appendLocation(&resultsVec.at(index)->d);
+    Q_EMIT appendLocation(m_results.at(index));
 }
 
-void LocationQueryModel::handleQueryResults(std::vector<KWeatherCore::LocationQueryResult> result)
+void LocationQueryModel::handleQueryResults(const std::vector<KWeatherCore::LocationQueryResult> &results)
 {
-    qDebug() << "results arrived" << result.size();
+    qDebug() << "results arrived" << results.size();
     Q_EMIT layoutAboutToBeChanged();
     // clear results list
-    resultsVec.clear();
-    for (const auto &ret : result)
-        resultsVec.push_back(new LocationQueryResult(ret));
+    m_results.assign(results.begin(), results.end());
 
     Q_EMIT layoutChanged();
 }
@@ -145,4 +99,3 @@ bool LocationQueryModel::networkError() const
 {
     return m_networkError;
 }
-#include "locationquerymodel.moc"

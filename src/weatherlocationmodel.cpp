@@ -137,11 +137,11 @@ int WeatherLocationListModel::count() const
 {
     return m_locations.size();
 }
-void WeatherLocationListModel::addLocation(KWeatherCore::LocationQueryResult *ret)
+void WeatherLocationListModel::addLocation(const KWeatherCore::LocationQueryResult &ret)
 {
     qDebug() << "add location";
-    auto locId = ret->geonameId(), locName = ret->toponymName();
-    auto lat = ret->latitude(), lon = ret->longitude();
+    auto locId = ret.geonameId(), locName = ret.toponymName();
+    auto lat = ret.latitude(), lon = ret.longitude();
 
     // add location
     auto *location = new WeatherLocation(locId, locName, QString(), lat, lon);

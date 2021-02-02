@@ -11,7 +11,6 @@
 #include <QAbstractListModel>
 #include <QObject>
 class QTimer;
-class LocationQueryResult;
 class LocationQueryModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -32,17 +31,17 @@ public:
     Q_INVOKABLE void textChanged(QString query, int timeout = 2000);
     Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();
-    Q_INVOKABLE LocationQueryResult *get(int index);
+    Q_INVOKABLE KWeatherCore::LocationQueryResult get(int index);
     void setQuery();
 Q_SIGNALS:
     void propertyChanged();
-    void appendLocation(KWeatherCore::LocationQueryResult *result);
+    void appendLocation(const KWeatherCore::LocationQueryResult &result);
 private Q_SLOTS:
-    void handleQueryResults(std::vector<KWeatherCore::LocationQueryResult> result);
+    void handleQueryResults(const std::vector<KWeatherCore::LocationQueryResult> &results);
 
 private:
     bool m_loading = false, m_networkError = false;
-    std::vector<LocationQueryResult *> resultsVec;
+    std::vector<KWeatherCore::LocationQueryResult> m_results;
     KWeatherCore::LocationQuery m_querySource;
     QTimer *inputTimer = nullptr;
     QString m_text;
