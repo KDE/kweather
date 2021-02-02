@@ -31,13 +31,6 @@ Kirigami.ScrollablePage {
             onEditingFinished: locationQueryModel.textChanged(text, 0) // when return is pressed, query immediately
         }
         Button {
-            id: sourceButton
-            icon.name: "settings-configure"
-            width: height
-            height: search.height
-            onClicked: apiSelector.open()
-        }
-        Button {
             id: searchButton
             Layout.rightMargin: Kirigami.Units.largeSpacing
             icon.name: "search"
@@ -113,41 +106,6 @@ Kirigami.ScrollablePage {
             onClicked: {
                 locationQueryModel.addLocation(index);
                 switchToPage(locationsPage);
-            }
-        }
-    }
-
-    // api source selector
-    Kirigami.OverlaySheet {
-        id: apiSelector
-        header: Label {
-            text: i18n("Select Weather Source")
-        }
-
-        ListView {
-            Layout.leftMargin: Kirigami.Units.gridUnit
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 25
-            model: ListModel {
-                ListElement {
-                    display: "api.met.no (Norwegian Weather Service)"
-                    name: "nmiweatherapi"
-                }
-                ListElement {
-                    display: "api.openweathermap.org (OpenWeather)"
-                    name: "owmweatherapi"
-                }
-            }
-
-            delegate: RadioDelegate {
-                width: parent.width
-                text: model.display
-                checked: settingsModel.defaultBackend == model.name
-                onCheckedChanged: {
-                    if (checked) {
-                        settingsModel.defaultBackend = model.name;
-                        settingsModel.save();
-                    }
-                }
             }
         }
     }
