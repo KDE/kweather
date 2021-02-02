@@ -53,7 +53,7 @@ Kirigami.ApplicationWindow
         modal: !isWidescreen
         collapsible: true
         collapsed: isWidescreen
-        width: collapsed ? Kirigami.Units.gridUnit * 2.5 : Kirigami.Units.gridUnit * 12
+        width: collapsed ? implicitWidth : Kirigami.Units.gridUnit * 12
 
         Behavior on width {
             NumberAnimation {
@@ -79,6 +79,11 @@ Kirigami.ApplicationWindow
                 onTriggered: switchToPage(settingsPage);
             }
         ]
+    }
+    
+    FontLoader {
+        id: lightHeadingFont
+        source: "/resources/NotoSans-Light.ttf"
     }
 
     DefaultPage {
@@ -114,7 +119,7 @@ Kirigami.ApplicationWindow
             "shortDescription": i18n("A mobile friendly weather app built with Kirigami."),
             "homepage": "",
             "bugAddress": "",
-            "version": "0.2",
+            "version": "0.3",
             "otherText": "",
             "copyrightStatement": i18n("© 2020 Plasma Development Team"),
             "desktopFileName": "org.kde.kweather",

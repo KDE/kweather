@@ -6,21 +6,21 @@
  */
 
 #include "weatherday.h"
-#include "weatherdaymodel.h"
 #include "global.h"
+#include "weatherdaymodel.h"
 WeatherDay::WeatherDay(WeatherDayListModel *parent)
     : QObject(parent)
 {
-    if(parent)
+    if (parent)
         connect(parent, &WeatherDayListModel::weatherRefresh, this, &WeatherDay::refreshDaysFromForecasts);
 }
 
 WeatherDay::WeatherDay(SharedForecastPtr ptr, int day, WeatherDayListModel *parent)
-    :QObject(parent)
-    ,m_day(day)
-    ,m_forecast(ptr)
+    : QObject(parent)
+    , m_day(day)
+    , m_forecast(ptr)
 {
-    if(parent)
+    if (parent)
         connect(parent, &WeatherDayListModel::weatherRefresh, this, &WeatherDay::refreshDaysFromForecasts);
 
     determineSunrise();

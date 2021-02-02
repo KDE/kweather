@@ -6,8 +6,8 @@
  */
 
 #include "weatherlocationmodel.h"
-#include "weatherlocation.h"
 #include "weatherdaymodel.h"
+#include "weatherlocation.h"
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
@@ -16,7 +16,7 @@
 #include <QQmlEngine>
 
 const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
-const QString WEATHER_LOCATIONS_CFG_KEY = QStringLiteral("locationsVec");
+const QString WEATHER_LOCATIONS_CFG_KEY = QStringLiteral("m_locations");
 
 /* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
@@ -34,14 +34,14 @@ void WeatherLocationListModel::load()
     const auto &array = doc.array();
     for (const auto &r : array) {
         QJsonObject obj = r.toObject();
-        locationsVec.append(WeatherLocation::fromJson(obj));
+        m_locations.push_back(WeatherLocation::fromJson(obj));
     }
 }
 
 void WeatherLocationListModel::save()
 {
     QJsonArray arr;
-    for (const auto &lc : qAsConst(locationsVec)) {
+    for (const auto &lc : qAsConst(m_locations)) {
         arr.push_back(lc->toJson());
     }
     QJsonObject obj;
@@ -55,16 +55,16 @@ void WeatherLocationListModel::save()
 int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return locationsVec.size();
+    return m_locations.size();
 }
 
 QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= locationsVec.size() || index.row() < 0) {
+    if (!index.isValid() || index.row() >= static_cast<int>(m_locations.size()) || index.row() < 0) {
         return {};
     }
     if (role == Roles::LocationRole) {
-        return QVariant::fromValue(locationsVec.at(index.row()));
+        return QVariant::fromValue(m_locations.at(index.row()));
     }
     return {};
 }
@@ -76,8 +76,8 @@ QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
 
 void WeatherLocationListModel::updateUi()
 {
-    Q_EMIT dataChanged(createIndex(0, 0), createIndex(locationsVec.size() - 1, 0));
-    for (const auto &l : qAsConst(locationsVec)) {
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(m_locations.size() - 1, 0));
+    for (const auto &l : qAsConst(m_locations)) {
         Q_EMIT l->propertyChanged();
         l->weatherDayListModel()->updateUi();
         l->weatherHourListModel()->updateUi();
@@ -86,12 +86,12 @@ void WeatherLocationListModel::updateUi()
 
 void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocation)
 {
-    if ((index < 0) || (index > locationsVec.size()))
+    if ((index < 0) || (index > static_cast<int>(m_locations.size())))
         return;
 
     QQmlEngine::setObjectOwnership(weatherLocation, QQmlEngine::CppOwnership);
     beginInsertRows(QModelIndex(), index, index);
-    locationsVec.insert(index, weatherLocation);
+    m_locations.insert(m_locations.begin() + index, weatherLocation);
     endInsertRows();
 
     save();
@@ -99,12 +99,12 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
 
 void WeatherLocationListModel::remove(int index)
 {
-    if ((index < 0) || (index >= locationsVec.size()))
+    if ((index < 0) || (index >= static_cast<int>(m_locations.size())))
         return;
 
     beginRemoveRows(QModelIndex(), index, index);
-    auto location = locationsVec.at(index);
-    locationsVec.removeAt(index);
+    auto location = m_locations.at(index);
+    m_locations.erase(m_locations.begin() + index);
     delete location;
     endRemoveRows();
 
@@ -113,15 +113,16 @@ void WeatherLocationListModel::remove(int index)
 
 WeatherLocation *WeatherLocationListModel::get(int index)
 {
-    if ((index < 0) || (index >= locationsVec.size()))
+    if ((index < 0) || (index >= static_cast<int>(m_locations.size())))
         return {};
 
-    return locationsVec.at(index);
+    return m_locations.at(index);
 }
 
 void WeatherLocationListModel::move(int oldIndex, int newIndex)
 {
-    if (oldIndex < 0 || oldIndex >= locationsVec.size() || newIndex < 0 || newIndex >= locationsVec.size())
+    int locationsSize = m_locations.size();
+    if (oldIndex < 0 || oldIndex >= locationsSize || newIndex < 0 || newIndex >= locationsSize)
         return;
 
     // to my surprise, we have to do this
@@ -129,12 +130,12 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
         std::swap(newIndex, oldIndex);
 
     beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
-    locationsVec.move(oldIndex, newIndex);
+    std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
     endMoveRows();
 }
 int WeatherLocationListModel::count() const
 {
-    return locationsVec.size();
+    return m_locations.size();
 }
 void WeatherLocationListModel::addLocation(KWeatherCore::LocationQueryResult *ret)
 {
@@ -146,7 +147,7 @@ void WeatherLocationListModel::addLocation(KWeatherCore::LocationQueryResult *re
     auto *location = new WeatherLocation(locId, locName, QString(), lat, lon);
     location->update();
 
-    insert(this->locationsVec.size(), location);
+    insert(m_locations.size(), location);
 }
 
 // invoked by frontend
@@ -167,9 +168,4 @@ void WeatherLocationListModel::addCurrentLocation(KWeatherCore::LocationQueryRes
 
     insert(0, location);
     Q_EMIT successfullyCreatedDefault();
-}
-
-QVector<WeatherLocation *> &WeatherLocationListModel::getVec()
-{
-    return locationsVec;
 }

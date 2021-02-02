@@ -16,6 +16,7 @@ class WeatherHour;
 class WeatherHourListModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(WeatherHour *currentForecast READ currentForecast NOTIFY currentForecastChanged)
 public:
     explicit WeatherHourListModel(WeatherLocation *location = nullptr);
 
@@ -28,14 +29,12 @@ public:
 
     Q_INVOKABLE void updateHourView(int index);
     Q_INVOKABLE void updateUi();
+    WeatherHour *currentForecast() const;
 public Q_SLOTS:
     void refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
 Q_SIGNALS:
     void weatherRefresh(SharedForecastPtr ptr);
-
-protected:
-    friend class WeatherLocation;
-    WeatherHour *currentForecast() const;
+    void currentForecastChanged();
 
 private:
     std::vector<std::vector<WeatherHour *>> m_hours;

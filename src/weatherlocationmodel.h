@@ -17,8 +17,6 @@ class WeatherLocationListModel : public QAbstractListModel
     Q_OBJECT
 
 public:
-    explicit WeatherLocationListModel(QObject *parent = nullptr);
-
     enum Roles { LocationRole = Qt::UserRole };
 
     int rowCount(const QModelIndex &parent) const override;
@@ -37,15 +35,19 @@ public:
 public Q_SLOTS:
     void addLocation(KWeatherCore::LocationQueryResult *ret);
 Q_SIGNALS:
-    void networkErrorCreating();        // error creating a location
+    void networkErrorCreating(); // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
-    void successfullyCreatedDefault();  // successful in getting current location
+    void successfullyCreatedDefault(); // successful in getting current location
 protected:
     friend class WeatherForecastManager;
-    QVector<WeatherLocation *> &getVec();
+    explicit WeatherLocationListModel(QObject *parent = nullptr);
+    std::vector<WeatherLocation *> &locations()
+    {
+        return m_locations;
+    }
 private Q_SLOTS:
     void addCurrentLocation(KWeatherCore::LocationQueryResult ret);
 
 private:
-    QVector<WeatherLocation *> locationsVec;
+    std::vector<WeatherLocation *> m_locations;
 };

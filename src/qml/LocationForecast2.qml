@@ -8,8 +8,9 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
-import QtCharts 2.3
-import org.kde.kirigami 2.12 as Kirigami
+// FIXME: version bump
+import org.kde.quickcharts 1.0 as Charts
+import org.kde.kirigami 2.13 as Kirigami
 import kweather 1.0
 import "backgrounds"
 
@@ -64,15 +65,17 @@ Kirigami.ScrollablePage {
                 color: "white"
                 Layout.alignment: Qt.AlignLeft
                 horizontalAlignment: Text.AlignLeft
-                text: weatherLocation.currentWeather == null ? "0" : weatherLocation.currentWeather.temperatureRounded
+                text: weatherLocation.hourListModel.currentForecast == null ? "0" : weatherLocation.hourListModel.currentForecast.temperatureRounded
+                font.family: lightHeadingFont.name
             }
             Label {
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                font.weight: Font.Bold
+                font.weight: Font.DemiBold
                 color: "white"
                 Layout.alignment: Qt.AlignLeft
                 horizontalAlignment: Text.AlignLeft
-                text: weatherLocation.currentWeather == null ? "Unknown" : weatherLocation.currentWeather.weatherDescription
+                text: weatherLocation.hourListModel.currentForecast == null ? "Unknown" : weatherLocation.hourListModel.currentForecast.weatherDescription
+                font.family: lightHeadingFont.name
             }
             Label {
                 Layout.topMargin: Kirigami.Units.largeSpacing
@@ -85,8 +88,9 @@ Kirigami.ScrollablePage {
         }
 
         // daily view header
-        RowLayout {
+        ColumnLayout {
             id: dailyHeader
+            spacing: Kirigami.Units.smallSpacing
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             Layout.bottomMargin: Kirigami.Units.largeSpacing
@@ -94,6 +98,11 @@ Kirigami.ScrollablePage {
             Label {
                 text: i18n("Daily")
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                color: "white"
+            }
+            Label {
+                text: i18n("Local Date: ") + weatherLocation.currentDate
+                font: Kirigami.Theme.smallFont
                 color: "white"
             }
         }
@@ -189,43 +198,80 @@ Kirigami.ScrollablePage {
         }
         
         // temperature chart
-        ChartView {
-            id: chartView
-            legend.visible: false
-            antialiasing: true
-            animationOptions: ChartView.NoAnimation
-            theme: weatherLocation.darkTheme ? ChartView.ChartThemeDark : ChartView.ChartThemeLight
+        Control {
+            id: tempChartCard
             Layout.fillWidth: true
-            height: 200
+            implicitHeight: Math.round(Kirigami.Units.gridUnit * 8.5)
+            
+            background: Kirigami.ShadowedRectangle {
+                color: weatherLocation.cardBackgroundColor
+                radius: Kirigami.Units.smallSpacing
+                anchors.fill: parent
 
-            SplineSeries {
-                id: splineSeries
-                axisX: DateTimeAxis {
-                    id: axisX
-                    tickCount: dailyListView.count
-                    format: "ddd"
-                }
-                axisY: ValueAxis {
-                    id: axisY
-                    visible: false
+                shadow.size: Kirigami.Units.largeSpacing
+                shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+            }
 
-                    min: weatherLocation.minTempLimit
-                    max: weatherLocation.maxTempLimit
-                }
-                name: i18n("temperature")
-                pointLabelsVisible: true
-                pointLabelsFormat: "@yPoint°"
-                pointLabelsClipping: false
+            contentItem: Flickable {
+                id: scrollView
+                Layout.fillWidth: true
+                contentHeight: chartChild.height
+                contentWidth: chartChild.width
+                clip: true
+                onContentYChanged: contentY = 0
+                
+                ColumnLayout {
+                    id: chartChild
+                    spacing: Kirigami.Units.largeSpacing * 2
+                    Charts.LineChart {
+                        id: tempChart
+                        Layout.leftMargin: Kirigami.Units.largeSpacing * 2
+                        Layout.rightMargin: Kirigami.Units.largeSpacing * 2
+                        Layout.topMargin: Kirigami.Units.largeSpacing
+                        Layout.preferredHeight: Kirigami.Units.gridUnit * 5
+                        Layout.preferredWidth: tempChartCard.width > Kirigami.Units.gridUnit * 28 ? tempChartCard.width : Kirigami.Units.gridUnit * 28
+                        nameSource: Charts.SingleValueSource  { value: i18n("MaxTemperature") }
+                        lineWidth: Kirigami.Settings.isMobile ? 0.5 : 1
+                        smooth: true
+                        pointDelegate: Label {
+                            text: String(Charts.LineChart.value.toFixed(1))
+                            color: weatherLocation.textColor
+                        }
 
-                Component.onCompleted: {
-                    weatherLocation.initAxes(axisX, axisY);
-                    weatherLocation.initSeries(chartView.series(0));
+                        valueSources: [
+                            Charts.ArraySource {
+                                id: tempSource
+                                array: weatherLocation.maxTempList
+                            }
+                        ]
+
+                        colorSource: Charts.SingleValueSource {
+                            value: Kirigami.ColorUtils.linearInterpolation(weatherLocation.backgroundColor, weatherLocation.textColor, 0.5)
+                        }
+                        fillColorSource: Charts.SingleValueSource {
+                            value: weatherLocation.backgroundColor
+                        }
+                    }
+                    Charts.AxisLabels {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.smallSpacing
+                        Layout.rightMargin: Kirigami.Units.largeSpacing
+                        delegate: Label {
+                            color: weatherLocation.textColor
+                            text: Charts.AxisLabels.label
+                        }
+                        source: Charts.ArraySource {
+                            array: weatherLocation.xAxisList
+                        }
+                    }
                 }
             }
         }
 
         // hourly view header
-        RowLayout {
+        ColumnLayout {
+            spacing: Kirigami.Units.smallSpacing
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             Layout.bottomMargin: Kirigami.Units.largeSpacing
@@ -233,6 +279,11 @@ Kirigami.ScrollablePage {
             Label {
                 text: i18n("Hourly")
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                color: "white"
+            }
+            Label {
+                text: i18n("Local Time: ") + weatherLocation.currentTime
+                font: Kirigami.Theme.smallFont
                 color: "white"
             }
         }
@@ -262,8 +313,7 @@ Kirigami.ScrollablePage {
                 id: weatherHourListView
                 orientation: ListView.Horizontal
 
-                implicitHeight: Kirigami.Units.gridUnit * 10.5
-                implicitWidth: parent.width
+                implicitHeight: contentItem.childrenRect.height
                 spacing: Kirigami.Units.largeSpacing * 3
                 clip: true
 

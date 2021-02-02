@@ -10,11 +10,11 @@
 
 #include <KWeatherCore/WeatherForecastSource>
 #include <QAbstractListModel>
+#include <QDateTime>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QObject>
-#include <QDateTime>
 #include <QTimeZone>
 #include <QTimer>
 #include <utility>
@@ -29,14 +29,13 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
-    Q_PROPERTY(WeatherHour *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
-    Q_PROPERTY(QString backgroundColor READ backgroundColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString textColor READ textColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString cardTextColor READ cardTextColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString iconColor READ iconColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor textColor READ textColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor cardTextColor READ cardTextColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChange)
 
     Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY chartListChanged)
     Q_PROPERTY(QVariantList xAxisList READ xAxisList NOTIFY chartListChanged)
@@ -52,6 +51,8 @@ public:
     QJsonObject toJson();
     void save();
     WeatherHour *currentWeather() const;
+    Q_INVOKABLE void update();
+    void initData(SharedForecastPtr fc);
 
     const QString &locationId() const
     {
@@ -65,19 +66,19 @@ public:
     {
         return m_timeZone;
     };
-     float latitude() const
+    float latitude() const
     {
         return m_latitude;
     }
-     float longitude() const
+    float longitude() const
     {
         return m_longitude;
     }
-     WeatherDayListModel *weatherDayListModel() const
+    WeatherDayListModel *weatherDayListModel() const
     {
         return m_weatherDayListModel;
     }
-     WeatherHourListModel *weatherHourListModel() const
+    WeatherHourListModel *weatherHourListModel() const
     {
         return m_weatherHourListModel;
     }
@@ -110,31 +111,28 @@ public:
         m_lastUpdated = std::move(lastUpdated);
         emit propertyChanged();
     }
-    void initData(SharedForecastPtr fc);
-    void update();
-
     const QString &backgroundComponent() const
     {
         return m_backgroundComponent;
     };
-    const QString &backgroundColor() const
+    const QColor &backgroundColor() const
     {
         return m_backgroundColor;
     };
-    const QString &textColor() const
+    const QColor &textColor() const
     {
         return m_textColor;
     };
-    const QString &cardBackgroundColor() const
+    const QColor &cardBackgroundColor() const
     {
         return m_cardBackgroundColor;
     };
-    const QString &cardTextColor() const
+    const QColor &cardTextColor() const
     {
         return m_cardTextColor;
     };
 
-    const QString &iconColor() const
+    const QColor &iconColor() const
     {
         return m_iconColor;
     }
@@ -155,6 +153,7 @@ signals:
     void chartListChanged();
 private slots:
     void updateCurrentDateTime();
+
 private:
     void writeToCache() const;
     void determineCurrentForecast();
@@ -166,11 +165,11 @@ private:
     QVariantList m_maxTempList, m_xAxisList;
 
     // background related fields
-    QString m_backgroundColor;
-    QString m_textColor;
-    QString m_cardBackgroundColor;
-    QString m_cardTextColor;
-    QString m_iconColor;
+    QColor m_backgroundColor;
+    QColor m_textColor;
+    QColor m_cardBackgroundColor;
+    QColor m_cardTextColor;
+    QColor m_iconColor;
     QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
 
     QString m_locationName, m_locationId;

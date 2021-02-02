@@ -58,7 +58,7 @@ public:
     }
     QString temperatureRounded() const
     {
-       return Kweather::tempConverter(hour().temperature());
+        return Kweather::tempConverter(hour().temperature());
     }
     qreal humidity() const
     {
@@ -76,6 +76,7 @@ public Q_SLOTS:
     void refreshHoursFromForecasts(SharedForecastPtr ptr);
 Q_SIGNALS:
     void propertyChanged();
+
 private:
     const KWeatherCore::HourlyWeatherForecast &hour() const;
 

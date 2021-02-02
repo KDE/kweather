@@ -14,7 +14,7 @@ Rectangle {
     property bool inView: false
     gradient: Gradient {
         GradientStop { color: "#3daee2"; position: 0.0 }
-        GradientStop { color: "#3daee2"; position: 1.0 }
+        GradientStop { color: "#1d92c7"; position: 1.0 }
     }
     
     Cloudy {

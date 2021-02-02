@@ -126,12 +126,18 @@ Kirigami.ScrollablePage {
 
         ItemDelegate {
             Layout.fillWidth: true
-            font.bold: true
-            text: i18n("About")
-            leftPadding: Kirigami.Units.gridUnit
-            rightPadding: Kirigami.Units.gridUnit
             implicitHeight: Kirigami.Units.gridUnit * 3
-            onClicked: pageStack.push(aboutPage)
+            
+            onClicked: appwindow.pageStack.push(aboutPage)
+            
+            Label {
+                anchors.left: parent.left
+                anchors.leftMargin: Kirigami.Units.gridUnit
+                anchors.verticalCenter: parent.verticalCenter
+                font.weight: Font.Bold
+                font.bold: true
+                text: i18n("About")
+            }
         }
 
         Kirigami.Separator {

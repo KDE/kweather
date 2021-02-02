@@ -32,6 +32,7 @@ public Q_SLOTS:
     void refreshDaysFromForecasts(SharedForecastPtr forecast);
 Q_SIGNALS:
     void weatherRefresh(SharedForecastPtr forecast);
+
 private:
     SharedForecastPtr m_forecasts;
     std::vector<WeatherDay *> m_weatherDays;

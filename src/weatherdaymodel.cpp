@@ -51,21 +51,17 @@ void WeatherDayListModel::refreshDaysFromForecasts(SharedForecastPtr forecasts)
 {
     m_forecasts = forecasts;
 
-    if (forecasts->dailyWeatherForecast().size() > m_weatherDays.size())
-    {
+    if (forecasts->dailyWeatherForecast().size() > m_weatherDays.size()) {
         beginInsertRows(QModelIndex(), m_weatherDays.size(), forecasts->dailyWeatherForecast().size() - 1);
-        for(auto i = m_weatherDays.size(); i < forecasts->dailyWeatherForecast().size(); i++)
-        {
+        for (auto i = m_weatherDays.size(); i < forecasts->dailyWeatherForecast().size(); i++) {
             auto weatherDay = new WeatherDay(forecasts, i, this);
             QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
             m_weatherDays.push_back(weatherDay);
         }
         endInsertRows();
-    } else if (forecasts->dailyWeatherForecast().size() < m_weatherDays.size())
-    {
+    } else if (forecasts->dailyWeatherForecast().size() < m_weatherDays.size()) {
         beginRemoveRows(QModelIndex(), forecasts->dailyWeatherForecast().size(), m_weatherDays.size() - 1);
-        for(auto i = m_weatherDays.size() - forecasts->dailyWeatherForecast().size(); i > 0; i--)
-        {
+        for (auto i = m_weatherDays.size() - forecasts->dailyWeatherForecast().size(); i > 0; i--) {
             m_weatherDays.back()->deleteLater();
             m_weatherDays.pop_back();
         }

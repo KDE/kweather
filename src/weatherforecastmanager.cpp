@@ -16,8 +16,8 @@
 #include <QTimeZone>
 #include <QTimer>
 
-WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model)
-    : model_(model)
+WeatherForecastManager::WeatherForecastManager()
+    : m_model(new WeatherLocationListModel(this))
 {
     // create cache location if it does not exist, and load cache
     QDir dir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache");
@@ -26,23 +26,23 @@ WeatherForecastManager::WeatherForecastManager(WeatherLocationListModel &model)
     readFromCache();
 }
 
-WeatherForecastManager &WeatherForecastManager::instance(WeatherLocationListModel &model)
+WeatherForecastManager *WeatherForecastManager::inst()
 {
-    static WeatherForecastManager singleton(model);
-    return singleton;
+    static WeatherForecastManager singleton;
+    return &singleton;
 }
 void WeatherForecastManager::update()
 {
     qDebug() << "update start";
-    auto locations = model_.getVec();
-    for (auto wLocation : locations) {
-        wLocation->update();
+    auto &locations = m_model->locations();
+    for (auto location : locations) {
+        location->update();
     }
 }
 
 void WeatherForecastManager::readFromCache()
 {
-    QHash<WeatherLocation *, QExplicitlySharedDataPointer<KWeatherCore ::WeatherForecast>> map;
+    QHash<WeatherLocation *, QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>> map;
 
     QFile reader;
     QDirIterator iterator(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/cache", QDirIterator::Subdirectories); // list directory entries
@@ -50,16 +50,16 @@ void WeatherForecastManager::readFromCache()
     while (iterator.hasNext()) {
         reader.setFileName(iterator.next());
         QFileInfo fileName(reader); // strip absolute path
-        bool isFound = false;       // indicate should we load this cache
+        bool isFound = false; // indicate should we load this cache
 
         // loop over existing locations and add cached weather forecast data if location found
-        for (auto wl : model_.getVec()) {
-            if (fileName.fileName() == wl->locationId()) {
+        for (auto location : m_model->locations()) {
+            if (fileName.fileName() == location->locationId()) {
                 isFound = true;
                 reader.open(QIODevice::ReadOnly);
                 auto fc = KWeatherCore::WeatherForecast::fromJson(QJsonDocument::fromJson(reader.readAll()).object());
 
-                map[wl] = fc;
+                map[location] = fc;
                 break;
             }
         }
@@ -71,9 +71,9 @@ void WeatherForecastManager::readFromCache()
     }
 
     // add to loaded locations from cache
-    for (auto wl : model_.getVec()) {
-        if (map.find(wl) != map.end()) { // is in cache
-            wl->initData(map[wl]);
+    for (auto location : m_model->locations()) {
+        if (map.find(location) != map.end()) { // is in cache
+            location->initData(map[location]);
         }
     }
 

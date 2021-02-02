@@ -40,13 +40,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 
     // initialize models in context
-    auto *weatherLocationListModel = new WeatherLocationListModel();
-    WeatherForecastManager::instance(*weatherLocationListModel);
     auto *locationQueryModel = new LocationQueryModel();
-    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, weatherLocationListModel, &WeatherLocationListModel::addLocation);
+    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, WeatherForecastManager::inst()->model(), &WeatherLocationListModel::addLocation);
     KWeatherSettings settings;
 
-    engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
+    engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
     engine.rootContext()->setContextProperty("settingsModel", &settings);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
 

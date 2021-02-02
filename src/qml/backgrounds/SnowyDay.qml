@@ -14,16 +14,12 @@ import "components"
 Rectangle {
     property bool inView: false
     gradient: Gradient {
-        GradientStop { color: "#3daee2"; position: 0.0 }
-        GradientStop { color: "#3daee2"; position: 1.0 }
+        GradientStop { color: "#35d9ed"; position: 0.0 }
+        GradientStop { color: "#24a3de"; position: 1.0 }
     }
-    
+
     Snow {
-        z: 2
-        backGroundColor: "transparent"
-    }
-    Cloudy {
-        cloudColor: "white"
+        anchors.fill: parent
         inView: parent.inView
     }
 }

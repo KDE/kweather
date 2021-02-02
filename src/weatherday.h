@@ -81,12 +81,12 @@ public:
     }
 
 public Q_SLOTS:
-       void refreshDaysFromForecasts(SharedForecastPtr ptr);
+    void refreshDaysFromForecasts(SharedForecastPtr ptr);
 
 Q_SIGNALS:
-       void propertyChanged();
-private:
+    void propertyChanged();
 
+private:
     const KWeatherCore::DailyWeatherForecast &day() const
     {
         return m_forecast->dailyWeatherForecast().at(m_day);

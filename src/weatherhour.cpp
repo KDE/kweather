@@ -6,13 +6,13 @@
  */
 
 #include "weatherhour.h"
-#include "weatherhourmodel.h"
 #include "global.h"
+#include "weatherhourmodel.h"
 
 WeatherHour::WeatherHour(WeatherHourListModel *parent)
     : QObject(parent)
 {
-    if(parent)
+    if (parent)
         connect(parent, &WeatherHourListModel::weatherRefresh, this, &WeatherHour::refreshHoursFromForecasts);
 }
 

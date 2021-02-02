@@ -4,67 +4,70 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
-import QtQuick 2.12
-import QtQuick.Controls 2.4
+import QtQuick 2.0
 import QtQuick.Layouts 1.2
-import QtQuick.Shapes 1.12
-import org.kde.kirigami 2.11 as Kirigami
+Canvas {
+    id: mycanvas
 
-Rectangle {
-    property color backGroundColor: "#3daee2"
-    color: backGroundColor
-    anchors.fill: parent
-    id: baseRect
+    property bool inView: true
+    property var particles: []
 
-    Item {
-        anchors.top: parent.top
-        Shape {
-            width: baseRect.width
-            height: 200
-            opacity: 0.9
-            layer.enabled: true
-            layer.samples: 4
-            ShapePath {
-                fillColor: "white"
-                capStyle: ShapePath.FlatCap
+    renderStrategy: Canvas.Threaded
+    onPaint: {
+        var ctx = getContext("2d");
+        ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.clearRect(0, 0, width, height);
 
-                PathAngleArc {
-                    centerX: 400; centerY: 40
-                    radiusX: 50; radiusY: 50
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-                PathAngleArc {
-                    centerX: 200; centerY: 180
-                    radiusX: 25; radiusY: 25
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-                PathAngleArc {
-                    centerX: 380; centerY: 120
-                    radiusX: 15; radiusY: 15
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-                PathAngleArc {
-                    centerX: 300; centerY: 150
-                    radiusX: 25; radiusY: 25
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-                PathAngleArc {
-                    centerX: 180; centerY: 120
-                    radiusX: 35; radiusY: 35
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-                PathAngleArc {
-                    centerX: 80; centerY: 90
-                    radiusX: 15; radiusY: 15
-                    startAngle: 0
-                    sweepAngle: 360
+        function draw() {
+            for (var c = 0; c < particles.length; c++) {
+                var p = particles[c];
+                ctx.beginPath();
+                context.arc(p.x, p.y + p.ys, p.l, 0, 2 * Math.PI, false);
+                context.fillStyle = Qt.rgba(255,255,255,p.a);
+                context.fill();
+            }
+            move();
+        }
+
+        function move() {
+            for (var b = 0; b < particles.length; b++) {
+                var p = particles[b];
+                p.y += p.ys;
+                if (p.x < 1 || p.x > width || p.y > height) {
+                    p.x = Math.random() * width;
+                    p.y = -20;
                 }
             }
+        }
+        draw();
+    }
+    Timer {
+        id: animationTimer
+        interval: 16
+        running: inView
+        repeat: true
+        onTriggered: parent.requestPaint()
+    }
+
+    Component.onCompleted: {
+        var init = [];
+        var maxParts = 80;
+
+        for (var a = 0; a < maxParts; a++) {
+            init.push({
+                          x: Math.random() * width,
+                          y: Math.random() * height,
+                          l: 5 + Math.random() * 10,
+                          ys: Math.random(),
+                          a: 0.4 + Math.random() * 0.6
+                      })
+        }
+
+        particles = [];
+        for (var b = 0; b < maxParts; b++) {
+            particles[b] = init[b];
         }
     }
 }

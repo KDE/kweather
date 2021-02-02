@@ -22,17 +22,20 @@ class WeatherForecastManager : public QObject
     Q_OBJECT
 
 public:
-    static WeatherForecastManager &instance(WeatherLocationListModel &model);
-
+    static WeatherForecastManager *inst();
+    WeatherLocationListModel *model()
+    {
+        return m_model;
+    }
 signals:
     void updated();
 private slots:
     void update();
 
 private:
-    WeatherLocationListModel &model_;
+    WeatherLocationListModel *m_model;
     void readFromCache();
-    WeatherForecastManager(WeatherLocationListModel &model);
+    WeatherForecastManager();
 };
 
 #endif // WEATHERFORECASTMANAGER_H

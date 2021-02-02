@@ -27,12 +27,7 @@ WeatherLocation::WeatherLocation()
     this->m_timer->start(1000);
 }
 
-WeatherLocation::WeatherLocation(QString locationId,
-                                 QString locationName,
-                                 QString timeZone,
-                                 float latitude,
-                                 float longitude,
-                                 SharedForecastPtr forecast)
+WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, SharedForecastPtr forecast)
     : m_forecast(forecast)
     , m_locationName(std::move(locationName))
     , m_locationId(std::move(locationId))
@@ -49,8 +44,7 @@ WeatherLocation::WeatherLocation(QString locationId,
     QQmlEngine::setObjectOwnership(m_weatherDayListModel, QQmlEngine::CppOwnership);
     QQmlEngine::setObjectOwnership(m_weatherHourListModel, QQmlEngine::CppOwnership);
 
-    if(forecast)
-    {
+    if (forecast) {
         m_lastUpdated = forecast->createdTime();
         determineCurrentForecast();
     }
@@ -58,7 +52,8 @@ WeatherLocation::WeatherLocation(QString locationId,
 
 WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
 {
-    auto weatherLocation = new WeatherLocation(obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
+    auto weatherLocation = new WeatherLocation(
+        obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
     return weatherLocation;
 }
 
@@ -71,14 +66,6 @@ QJsonObject WeatherLocation::toJson()
     obj["longitude"] = longitude();
     obj["timezone"] = m_timeZone;
     return obj;
-}
-
-WeatherHour *WeatherLocation::currentWeather() const
-{
-    if(m_weatherHourListModel)
-        return m_weatherHourListModel->currentForecast();
-    else
-        return nullptr;
 }
 
 void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
@@ -130,18 +117,21 @@ void WeatherLocation::determineCurrentForecast()
         m_backgroundComponent = QStringLiteral("backgrounds/Misty.qml");
         isDayStyle = true;
 
-    } else if (currentWeather->weatherIcon() == QStringLiteral("weather-freezing-rain") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-hail") || currentWeather->weatherIcon() == QStringLiteral("weather-showers") ||
-               currentWeather->weatherIcon() == QStringLiteral("weather-showers-day") || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered") ||
-               currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-day") || currentWeather->weatherIcon() == QStringLiteral("weather-storm") ||
-               currentWeather->weatherIcon() == QStringLiteral("weather-storm-day")) {
+    } else if (currentWeather->weatherIcon() == QStringLiteral("weather-freezing-rain") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-hail")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-showers") || currentWeather->weatherIcon() == QStringLiteral("weather-showers-day")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-day")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-storm") || currentWeather->weatherIcon() == QStringLiteral("weather-storm-day")) {
         m_backgroundComponent = QStringLiteral("backgrounds/RainyDay.qml");
         isDayStyle = true;
 
-    } else if (currentWeather->weatherIcon() == QStringLiteral("weather-showers-night") || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-night") ||
-               currentWeather->weatherIcon() == QStringLiteral("weather-storm-night")) {
+    } else if (currentWeather->weatherIcon() == QStringLiteral("weather-showers-night")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-night")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-storm-night")) {
         m_backgroundComponent = QStringLiteral("backgrounds/RainyNight.qml");
 
-    } else if (currentWeather->weatherIcon() == QStringLiteral("weather-hail") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered") || currentWeather->weatherIcon() == QStringLiteral("weather-snow")) {
+    } else if (currentWeather->weatherIcon() == QStringLiteral("weather-hail") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered")
+               || currentWeather->weatherIcon() == QStringLiteral("weather-snow")) {
         m_backgroundComponent = QStringLiteral("backgrounds/SnowyDay.qml");
         isDayStyle = true;
 
@@ -179,13 +169,12 @@ void WeatherLocation::update()
     const auto &dayVec = m_forecast->dailyWeatherForecast();
     sunriseVec.reserve(dayVec.size());
 
-    for(const auto &day : dayVec)
+    for (const auto &day : dayVec)
         sunriseVec.push_back(day.sunrise());
 
-    auto pendingForecast = m_source.requestData(latitude(),longitude(),timeZone(), sunriseVec);
-    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast]{
-        m_forecast = pendingForecast->value();
-        emit this->weatherRefresh(m_forecast);
+    auto pendingForecast = m_source.requestData(latitude(), longitude(), timeZone(), sunriseVec);
+    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
+        this->updateData(pendingForecast->value());
         pendingForecast->deleteLater();
     });
 }
@@ -214,7 +203,7 @@ void WeatherLocation::updateChart()
     m_xAxisList.clear();
     for (const auto &day : m_forecast->dailyWeatherForecast()) {
         m_maxTempList.append(day.maxTemp());
-        m_xAxisList.append(QLocale::system().toString(day.date(),QStringLiteral("ddd")));
+        m_xAxisList.append(QLocale::system().toString(day.date(), QStringLiteral("ddd")));
     }
 
     Q_EMIT chartListChanged();
@@ -224,7 +213,7 @@ const QVariantList &WeatherLocation::maxTempList()
 {
     return m_maxTempList;
 }
-const QVariantList& WeatherLocation::xAxisList()
+const QVariantList &WeatherLocation::xAxisList()
 {
     return m_xAxisList;
 }
