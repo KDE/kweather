@@ -254,8 +254,8 @@ Kirigami.ScrollablePage {
         modal: true
         focus: true
         anchors.centerIn: Overlay.overlay
-        width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
-        height: Kirigami.Units.gridUnit * 10
+        width: Math.min(parent.width * 0.8, Kirigami.Units.gridUnit * 20)
+        height: Kirigami.Units.gridUnit * 12
         title: i18n("OpenWeatherMap API Token")
         standardButtons: Dialog.Close | Dialog.Save
 
@@ -265,23 +265,27 @@ Kirigami.ScrollablePage {
         }
 
         contentItem: ColumnLayout {
-            Layout.fillWidth: true
+            width: apiToken.width - apiToken.leftPadding * 2
             spacing: Kirigami.Units.smallSpacing
             Label {
+                Layout.preferredWidth: parent.width
+                wrapMode: Text.WrapAnywhere
                 color: Kirigami.Theme.disabledTextColor
                 text: i18n("Add your own OpenWeatherMap API token.")
             }
             Label {
+                Layout.preferredWidth: parent.width
+                wrapMode: Text.WrapAnywhere
                 color: Kirigami.Theme.disabledTextColor
                 text: i18n("Token added is stored as PLAIN TEXT in system.")
             }
             Kirigami.Separator {}
             TextField {
                 id: textField
+                Layout.preferredWidth: parent.width
+                wrapMode: Text.WrapAnywhere
                 placeholderText: settingsModel.OWMToken == undefined || settingsModel.OWMToken.length == 0 ? i18n("Add your API token here... ") : settingsModel.OWMToken
                 anchors.top: parent.Top
-//                width: parent.width
-                Layout.fillWidth: true
             }
             Kirigami.Separator {}
         }
