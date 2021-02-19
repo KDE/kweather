@@ -4,61 +4,11 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
-
 #include "weatherhourmodel.h"
 #include "weatherlocation.h"
-/* ~~~ WeatherHour ~~~ */
-
-WeatherHour::WeatherHour()
-{
-    this->weatherDescription_ = "Unknown";
-    this->weatherIcon_ = "weather-none-available";
-    this->date_ = QDateTime::currentDateTime();
-    this->windDirection_ = "N";
-}
-
-WeatherHour::WeatherHour(AbstractHourlyWeatherForecast &forecast)
-{
-    switch (forecast.windDirection()) {
-    case Kweather::WindDirection::N:
-        this->windDirection_ = "N";
-        break;
-    case Kweather::WindDirection::NE:
-        this->windDirection_ = "NE";
-        break;
-    case Kweather::WindDirection::E:
-        this->windDirection_ = "E";
-        break;
-    case Kweather::WindDirection::SE:
-        this->windDirection_ = "SE";
-        break;
-    case Kweather::WindDirection::S:
-        this->windDirection_ = "S";
-        break;
-    case Kweather::WindDirection::SW:
-        this->windDirection_ = "SW";
-        break;
-    case Kweather::WindDirection::W:
-        this->windDirection_ = "W";
-        break;
-    case Kweather::WindDirection::NW:
-        this->windDirection_ = "NW";
-        break;
-    }
-    this->weatherDescription_ = forecast.weatherDescription();
-    this->weatherIcon_ = forecast.weatherIcon();
-    this->precipitation_ = forecast.precipitationAmount();
-    this->fog_ = forecast.fog();
-    this->windSpeed_ = forecast.windSpeed();
-    this->temperature_ = forecast.temperature();
-    this->humidity_ = forecast.humidity();
-    this->pressure_ = forecast.pressure();
-    this->date_ = QDateTime(forecast.date().date(), QTime(forecast.date().time().hour(), 0));
-}
-
-/* ~~~ WeatherHourListModel ~~~ */
-
+#include <QQmlEngine>
 WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
+    : QAbstractListModel(location)
 {
     connect(location, &WeatherLocation::weatherRefresh, this, &WeatherHourListModel::refreshHoursFromForecasts);
 }
@@ -66,20 +16,20 @@ WeatherHourListModel::WeatherHourListModel(WeatherLocation *location)
 int WeatherHourListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    if (day >= dayList.count() || day < 0)
-        return hoursList.count();
-    if (day == dayList.count() - 1)
-        return hoursList.count() - dayList.at(day);
-    return dayList.at(day + 1) - dayList.at(day);
+    if (m_currentDay >= static_cast<int>(m_hours.size()) || m_currentDay < 0)
+        return 0;
+
+    return m_hours.at(m_currentDay).size();
 }
 
 QVariant WeatherHourListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() < 0 || day >= dayList.count() || (index.row() + dayList.at(day)) >= hoursList.count()) {
+    if (!index.isValid() || index.row() < 0 || m_currentDay >= static_cast<int>(m_hours.size())
+        || index.row() >= static_cast<int>(m_hours.at(m_currentDay).size())) {
         return {};
     }
     if (role == Roles::HourItemRole) {
-        return QVariant::fromValue(hoursList.at(index.row() + dayList.at(day)));
+        return QVariant::fromValue(m_hours.at(m_currentDay).at(index.row()));
     }
     return {};
 }
@@ -92,10 +42,10 @@ QHash<int, QByteArray> WeatherHourListModel::roleNames() const
 WeatherHour *WeatherHourListModel::get(int index)
 {
     WeatherHour *ret;
-    if (index < 0 || day >= dayList.count() || (index + dayList.at(day)) >= hoursList.count()) {
-        return {};
+    if (index < 0 || m_currentDay >= static_cast<int>(m_hours.size()) || index >= static_cast<int>(m_hours.at(m_currentDay).size())) {
+        return nullptr;
     } else {
-        ret = hoursList.at(index + dayList.at(day));
+        ret = m_hours.at(m_currentDay).at(index);
     }
     // it's kind of dumb how much seems to be garbage collected by js...
     // this fixes segfaults with scrolling with the hour view
@@ -103,43 +53,83 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(AbstractWeatherForecast &forecast)
+void WeatherHourListModel::refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast)
 {
-    // clear forecasts
-    emit layoutAboutToBeChanged();
-    day = 0;
-    hoursList.clear();
-    dayList.clear();
-    // insert forecasts
-    int currentDay = -1;
-    int index = 0;
-    for (auto hourForecast : forecast.hourlyForecasts()) {
-        if (currentDay != hourForecast.date().date().day()) {
-            currentDay = hourForecast.date().date().day();
-            dayList.append(index);
-        }
-        auto *weatherHour = new WeatherHour(hourForecast);
-        QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-        hoursList.append(weatherHour);
+    Q_EMIT layoutAboutToBeChanged();
 
-        index++;
+    // sync days
+    if (forecast->dailyWeatherForecast().size() > m_hours.size()) {
+        auto i = m_hours.size();
+        for (; i < forecast->dailyWeatherForecast().size(); i++) {
+            m_hours.push_back({});
+            const auto &hours = forecast->dailyWeatherForecast().at(i).hourlyWeatherForecast();
+            m_hours.back().reserve(hours.size());
+
+            for (auto j = 0; j < static_cast<int>(hours.size()); j++) {
+                m_hours.back().push_back(new WeatherHour(forecast, i, j, this));
+            }
+        }
+    } else if (forecast->dailyWeatherForecast().size() < m_hours.size()) {
+        auto i = m_hours.size() - forecast->dailyWeatherForecast().size();
+        for (; i > 0; i--) {
+            auto &hours = m_hours.back();
+            for (auto it = hours.begin(); it != hours.end(); it++)
+                (*it)->deleteLater();
+
+            m_hours.pop_back();
+        }
     }
 
-    std::sort(hoursList.begin(), hoursList.end(), [](WeatherHour *h1, WeatherHour *h2) -> bool { return h1->date() < h2->date(); });
-    emit layoutChanged();
+    // sync hours
+
+    const auto &days = forecast->dailyWeatherForecast();
+    int dayIndex = 0;
+    for (const auto &day : days) {
+        const auto &newHours = day.hourlyWeatherForecast();
+        auto &oldHours = m_hours.at(dayIndex++);
+        if (newHours.size() > oldHours.size()) {
+            auto hourIndex = oldHours.size();
+            for (; hourIndex < newHours.size(); hourIndex++) {
+                auto *weatherHour = new WeatherHour(forecast, dayIndex, hourIndex, this);
+                QQmlEngine::setObjectOwnership(weatherHour, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+                oldHours.push_back(weatherHour);
+            }
+        } else if (newHours.size() < oldHours.size()) {
+            auto j = oldHours.size() - newHours.size();
+            while (j--) {
+                oldHours.back()->deleteLater();
+                oldHours.pop_back();
+            }
+        }
+    }
+
+    m_currentDay = 0;
+
+    Q_EMIT weatherRefresh(forecast);
+    Q_EMIT layoutChanged();
+    Q_EMIT currentForecastChanged();
 }
 
 void WeatherHourListModel::updateHourView(int index)
 {
-    emit layoutAboutToBeChanged();
-    day = index;
-    emit layoutChanged();
+    Q_EMIT layoutAboutToBeChanged();
+    m_currentDay = index;
+    Q_EMIT layoutChanged();
 }
 
 void WeatherHourListModel::updateUi()
 {
-    for (auto h : hoursList) {
-        emit h->propertyChanged();
+    auto &day = m_hours.at(m_currentDay);
+    for (auto h : day) {
+        Q_EMIT h->propertyChanged();
     }
-    emit dataChanged(createIndex(0, 0), createIndex(hoursList.count() - 1, 0));
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(m_hours.at(m_currentDay).size() - 1, 0));
+}
+
+WeatherHour *WeatherHourListModel::currentForecast() const
+{
+    if (m_hours.empty() || m_hours.begin()->empty())
+        return nullptr;
+
+    return m_hours.begin()->front();
 }

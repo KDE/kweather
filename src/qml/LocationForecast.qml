@@ -25,7 +25,7 @@ Kirigami.ScrollablePage {
     supportsRefreshing: true
     onRefreshingChanged: {
         if (refreshing) {
-            weatherLocation.updateBackend();
+            weatherLocation.update();
         } else {
             showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
@@ -59,12 +59,12 @@ Kirigami.ScrollablePage {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
                     font.family: lightHeadingFont.name
-                    text: weatherLocation.currentWeather == null ? "0" : weatherLocation.currentWeather.temperatureRounded
+                    text: weatherLocation.hourListModel.currentForecast == null ? "0" : weatherLocation.hourListModel.currentForecast.temperatureRounded
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
-                    text: weatherLocation.currentWeather == null ? "Unknown" : weatherLocation.currentWeather.weatherDescription
+                    text: weatherLocation.hourListModel.currentForecast == null ? "Unknown" : weatherLocation.hourListModel.currentForecast.weatherDescription
                 }
                 Label {
                     color: Kirigami.Theme.disabledTextColor

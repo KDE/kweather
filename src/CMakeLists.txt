@@ -7,23 +7,14 @@
 
 set(kweather_SRCS
     main.cpp
-    geoiplookup.cpp
-    geolocation.cpp
-    abstractweatherforecast.cpp
     weatherforecastmanager.cpp
     weatherlocationmodel.cpp
     weatherlocation.cpp
     weatherhourmodel.cpp
+    weatherhour.cpp
     weatherdaymodel.cpp
-    owmweatherapi.cpp
-    abstractweatherapi.cpp
-    geotimezone.cpp
+    weatherday.cpp
     locationquerymodel.cpp
-    abstractdailyweatherforecast.cpp
-    abstracthourlyweatherforecast.cpp
-    nmiweatherapi2.cpp
-    nmisunriseapi.cpp
-    abstractsunrise.cpp
     resources.qrc
 )
 
@@ -42,6 +33,7 @@ target_link_libraries(kweather
     KF5::CoreAddons
     KF5::Notifications
     KF5::QuickCharts
+    KF5::KWeatherCore
 )
 
 if (ANDROID)

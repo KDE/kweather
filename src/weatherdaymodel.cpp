@@ -7,46 +7,9 @@
 
 #include "weatherdaymodel.h"
 #include "weatherlocation.h"
-/* ~~~ WeatherDay ~~~ */
-
-WeatherDay::WeatherDay()
-{
-}
-
-WeatherDay::WeatherDay(AbstractDailyWeatherForecast &dailyForecast, AbstractSunrise &sunrise)
-{
-    this->maxTemp_ = dailyForecast.maxTemp();
-    this->minTemp_ = dailyForecast.minTemp();
-    this->weatherIcon_ = dailyForecast.weatherIcon();
-    this->weatherDescription_ = dailyForecast.weatherDescription();
-    this->date_ = dailyForecast.date();
-    this->precipitation_ = dailyForecast.precipitation();
-    this->uvIndex_ = dailyForecast.uvIndex();
-    this->humidity_ = dailyForecast.humidity();
-    this->pressure_ = dailyForecast.pressure();
-
-    this->sunrise_ = sunrise.sunRise().toString("hh:mm ap");
-    this->sunset_ = sunrise.sunSet().toString("hh:mm ap");
-    if (sunrise.moonPhase() <= 5) {
-        this->moonPhase_ = "New Moon";
-    } else if (sunrise.moonPhase() <= 25) {
-        this->moonPhase_ = "Waxing Crescent";
-    } else if (sunrise.moonPhase() <= 45) {
-        this->moonPhase_ = "Waxing Gibbous";
-    } else if (sunrise.moonPhase() <= 55) {
-        this->moonPhase_ = "Full Moon";
-    } else if (sunrise.moonPhase() <= 75) {
-        this->moonPhase_ = "Waning Gibbous";
-    } else if (sunrise.moonPhase() <= 95) {
-        this->moonPhase_ = "Waning Crescent";
-    } else {
-        this->moonPhase_ = "New Moon";
-    }
-}
-
-/* ~~~ WeatherDayListModel ~~~ */
-
+#include <QQmlEngine>
 WeatherDayListModel::WeatherDayListModel(WeatherLocation *location)
+    : QAbstractListModel(location)
 {
     connect(location, &WeatherLocation::weatherRefresh, this, &WeatherDayListModel::refreshDaysFromForecasts);
 }
@@ -54,16 +17,16 @@ WeatherDayListModel::WeatherDayListModel(WeatherLocation *location)
 int WeatherDayListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return daysList.size();
+    return m_weatherDays.size();
 }
 
 QVariant WeatherDayListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= daysList.count() || index.row() < 0) {
+    if (!index.isValid() || index.row() >= static_cast<int>(m_weatherDays.size()) || index.row() < 0) {
         return {};
     }
     if (role == Roles::DayItemRole) {
-        return QVariant::fromValue(daysList.at(index.row()));
+        return QVariant::fromValue(m_weatherDays.at(index.row()));
     }
     return {};
 }
@@ -75,48 +38,40 @@ QHash<int, QByteArray> WeatherDayListModel::roleNames() const
 
 WeatherDay *WeatherDayListModel::get(int index)
 {
-    if (index < 0 || index >= daysList.count())
-        return {};
-    return daysList.at(index);
+    WeatherDay *ret = nullptr;
+    if (!m_forecasts || index < 0 || index >= static_cast<int>(m_forecasts->dailyWeatherForecast().size()))
+        return ret;
+
+    ret = m_weatherDays.at(index);
+    QQmlEngine::setObjectOwnership(ret, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+    return ret;
 }
 
-void WeatherDayListModel::refreshDaysFromForecasts(AbstractWeatherForecast &forecasts)
+void WeatherDayListModel::refreshDaysFromForecasts(SharedForecastPtr forecasts)
 {
-    emit layoutAboutToBeChanged();
-    emit beginRemoveRows(QModelIndex(), 0, daysList.count() - 1);
-    auto oldList = daysList;
-    daysList.clear();
-    emit endRemoveRows();
+    m_forecasts = forecasts;
 
-    emit beginInsertRows(QModelIndex(), 0, forecasts.dailyForecasts().count() - 1);
-
-    // add weatherdays with forecast day lists
-    for (auto forecast : forecasts.dailyForecasts()) {
-        AbstractSunrise daySunrise;
-
-        // find sunrise data, if it exists
-        for (auto sunrise : forecasts.sunrise()) {
-            if (sunrise.sunRise().date().daysTo(forecast.date()) == 0) {
-                daySunrise = sunrise;
-                break;
-            }
+    if (forecasts->dailyWeatherForecast().size() > m_weatherDays.size()) {
+        beginInsertRows(QModelIndex(), m_weatherDays.size(), forecasts->dailyWeatherForecast().size() - 1);
+        for (auto i = m_weatherDays.size(); i < forecasts->dailyWeatherForecast().size(); i++) {
+            auto weatherDay = new WeatherDay(forecasts, i, this);
+            QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
+            m_weatherDays.push_back(weatherDay);
         }
-
-        WeatherDay *weatherDay = new WeatherDay(forecast, daySunrise);
-        QQmlEngine::setObjectOwnership(weatherDay, QQmlEngine::CppOwnership); // prevent segfaults from js garbage collecting
-        daysList.append(weatherDay);
+        endInsertRows();
+    } else if (forecasts->dailyWeatherForecast().size() < m_weatherDays.size()) {
+        beginRemoveRows(QModelIndex(), forecasts->dailyWeatherForecast().size(), m_weatherDays.size() - 1);
+        for (auto i = m_weatherDays.size() - forecasts->dailyWeatherForecast().size(); i > 0; i--) {
+            m_weatherDays.back()->deleteLater();
+            m_weatherDays.pop_back();
+        }
+        endRemoveRows();
     }
 
-    emit endInsertRows();
-    emit layoutChanged();
-    for (auto ptr : oldList)
-        delete ptr;
+    Q_EMIT weatherRefresh(forecasts);
 }
 
 void WeatherDayListModel::updateUi()
 {
-    for (auto h : daysList) {
-        emit h->propertyChanged();
-    }
-    emit dataChanged(createIndex(0, 0), createIndex(daysList.count() - 1, 0));
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(m_forecasts->dailyWeatherForecast().size() - 1, 0));
 }

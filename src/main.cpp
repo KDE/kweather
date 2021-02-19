@@ -18,8 +18,6 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "abstractdailyweatherforecast.h"
-#include "abstracthourlyweatherforecast.h"
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
 #include "weatherdaymodel.h"
@@ -27,7 +25,6 @@
 #include "weatherhourmodel.h"
 #include "weatherlocation.h"
 #include "weatherlocationmodel.h"
-
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
 
@@ -43,17 +40,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 
     // initialize models in context
-    auto *weatherLocationListModel = new WeatherLocationListModel();
     auto *locationQueryModel = new LocationQueryModel();
-    WeatherForecastManager::instance(*weatherLocationListModel);
-
+    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, WeatherForecastManager::inst()->model(), &WeatherLocationListModel::addLocation);
     KWeatherSettings settings;
 
-    engine.rootContext()->setContextProperty("weatherLocationListModel", weatherLocationListModel);
-    engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
+    engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
     engine.rootContext()->setContextProperty("settingsModel", &settings);
-    // the longer the merrier, this add locations
-    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, [weatherLocationListModel, locationQueryModel] { weatherLocationListModel->addLocation(locationQueryModel->get(locationQueryModel->index_)); });
+    engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
 
     // register QML types
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");

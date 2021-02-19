@@ -34,7 +34,7 @@ Kirigami.ScrollablePage {
     supportsRefreshing: true
     onRefreshingChanged: {
         if (refreshing) {
-            weatherLocation.updateBackend();
+            weatherLocation.update();
         } else {
             showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
@@ -65,7 +65,7 @@ Kirigami.ScrollablePage {
                 color: "white"
                 Layout.alignment: Qt.AlignLeft
                 horizontalAlignment: Text.AlignLeft
-                text: weatherLocation.currentWeather == null ? "0" : weatherLocation.currentWeather.temperatureRounded
+                text: weatherLocation.hourListModel.currentForecast == null ? "0" : weatherLocation.hourListModel.currentForecast.temperatureRounded
                 font.family: lightHeadingFont.name
             }
             Label {
@@ -74,7 +74,7 @@ Kirigami.ScrollablePage {
                 color: "white"
                 Layout.alignment: Qt.AlignLeft
                 horizontalAlignment: Text.AlignLeft
-                text: weatherLocation.currentWeather == null ? "Unknown" : weatherLocation.currentWeather.weatherDescription
+                text: weatherLocation.hourListModel.currentForecast == null ? "Unknown" : weatherLocation.hourListModel.currentForecast.weatherDescription
                 font.family: lightHeadingFont.name
             }
             Label {

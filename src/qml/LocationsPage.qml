@@ -64,14 +64,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         weatherLocationListModel.remove(index);
                     }
-                },
-                Kirigami.Action {
-                    iconName: "settings-configure"
-                    text: i18n("Select Backend")
-                    onTriggered: {
-                        currentIndex = index;
-                        selectBackend.open();
-                    }
                 }
             ]
             onClicked: {
@@ -125,43 +117,6 @@ Kirigami.ScrollablePage {
                     }
                 }
             }
-        }
-    }
-
-    // select backend dialog
-    Dialog {
-        property WeatherLocation mLocation: weatherLocationListModel.get(currentIndex)
-        property var mBackend: mLocation.backend
-        id: selectBackend
-        modal: true
-        focus: true
-        x: (parent.width - width) / 2
-        y: parent.height / 2 - height
-        width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
-        height: Kirigami.Units.gridUnit * 20
-        title: i18n("Select Backend")
-        standardButtons: Dialog.Close | Dialog.Save
-
-        onAccepted: weatherLocationListModel.changeBackend(currentIndex,mBackend)
-        onRejected: weatherLocationListModel.updateUi();
-
-        contentItem: ScrollView {
-            ListView {
-                model: [i18nc("Norway Meteorologisk Institutt","Norway Meteorologisk Institutt"), i18nc("OpenWeatherMap","OpenWeatherMap")]
-                delegate: RadioDelegate {
-                    width: parent.width
-                    text: modelData
-                    checked: selectBackend.mBackend === modelData
-                    enabled: !(modelData == "OpenWeatherMap") || (settingsModel.OWMToken.length != 0)
-                    onCheckedChanged: {
-                        if (checked) {
-                            selectBackend.mBackend = modelData
-                        }
-                    }
-                }
-            }
-            Component.onCompleted: background.visible = true
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         }
     }
 }

@@ -6,177 +6,133 @@
  */
 
 #pragma once
-
-#include "abstractweatherforecast.h"
-#include "nmiweatherapi2.h"
 #include "weatherhourmodel.h"
 
+#include <KWeatherCore/WeatherForecastSource>
 #include <QAbstractListModel>
+#include <QDateTime>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QObject>
-#include <QDateTime>
 #include <QTimeZone>
 #include <QTimer>
 #include <utility>
-
+using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
 class WeatherDayListModel;
-class WeatherHourListModel;
-class WeatherHour;
-class AbstractWeatherAPI;
-class AbstractWeatherForecast;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
-    Q_PROPERTY(QString backend READ backend NOTIFY propertyChanged)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
     Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
-    Q_PROPERTY(WeatherHour *currentWeather READ currentWeather NOTIFY currentForecastChange)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
-    Q_PROPERTY(QString backgroundColor READ backgroundColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString textColor READ textColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString cardTextColor READ cardTextColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QString iconColor READ iconColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor textColor READ textColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor cardTextColor READ cardTextColor NOTIFY currentForecastChange)
+    Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChange)
 
     Q_PROPERTY(QVariantList maxTempList READ maxTempList NOTIFY chartListChanged)
     Q_PROPERTY(QVariantList xAxisList READ xAxisList NOTIFY chartListChanged)
 public:
     WeatherLocation();
-    explicit WeatherLocation(AbstractWeatherAPI *weatherBackendProvider,
-                             QString locationId,
+    explicit WeatherLocation(QString locationId,
                              QString locationName,
                              QString timeZone,
                              float latitude,
                              float longitude,
-                             Kweather::Backend backend = Kweather::Backend::NMI,
-                             AbstractWeatherForecast forecast = AbstractWeatherForecast());
-    ~WeatherLocation();
+                             SharedForecastPtr forecast = SharedForecastPtr(new KWeatherCore::WeatherForecast));
     static WeatherLocation *fromJson(const QJsonObject &json);
     QJsonObject toJson();
     void save();
+    WeatherHour *currentWeather() const;
+    Q_INVOKABLE void update();
+    void initData(SharedForecastPtr fc);
 
-    Q_INVOKABLE void updateBackend()
+    const QString &locationId() const
     {
-        if (weatherBackendProvider() != nullptr)
-            weatherBackendProvider()->update();
+        return m_locationId;
     }
-
-    inline QString locationId()
+    const QString &locationName() const
     {
-        return locationId_;
+        return m_locationName;
     }
-    inline QString locationName()
+    const QString &timeZone() const
     {
-        return locationName_;
-    }
-    inline QString &timeZone()
-    {
-        return timeZone_;
+        return m_timeZone;
     };
-    inline float latitude()
+    float latitude() const
     {
-        return latitude_;
+        return m_latitude;
     }
-    inline float longitude()
+    float longitude() const
     {
-        return longitude_;
+        return m_longitude;
     }
-    inline WeatherHour *currentWeather()
+    WeatherDayListModel *weatherDayListModel() const
     {
-        //        return currentWeather_ == nullptr ? new WeatherHour() : currentWeather_;
-        return currentWeather_;
+        return m_weatherDayListModel;
     }
-    inline WeatherDayListModel *weatherDayListModel()
+    WeatherHourListModel *weatherHourListModel() const
     {
-        return weatherDayListModel_;
+        return m_weatherHourListModel;
     }
-    inline WeatherHourListModel *weatherHourListModel()
-    {
-        return weatherHourListModel_;
-    }
-    inline AbstractWeatherForecast forecast()
-    {
-        return forecast_;
-    }
-    inline AbstractWeatherAPI *weatherBackendProvider()
-    {
-        return weatherBackendProvider_;
-    }
-    inline QString lastUpdatedFormatted()
+    QString lastUpdatedFormatted() const
     {
         return lastUpdated().toString("hh:mm ap");
     }
-    inline QDateTime lastUpdated()
+    const QDateTime &lastUpdated() const
     {
-        return lastUpdated_;
+        return m_lastUpdated;
     }
-    inline QString currentTimeFormatted()
+    QString currentTimeFormatted() const
     {
         return currentTime().toString("hh:mm ap");
     }
-    inline QTime currentTime()
+    QTime currentTime() const
     {
-        return QDateTime::currentDateTime().toTimeZone(QTimeZone(timeZone_.toUtf8())).time();
+        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8())).time();
     }
-    inline QString currentDateFormatted()
+    QString currentDateFormatted() const
     {
         return currentDate().toString("dd MMM yyyy");
     }
-    inline QDate currentDate()
+    QDate currentDate() const
     {
-        return QDateTime::currentDateTime().toTimeZone(QTimeZone(timeZone_.toUtf8())).date();
+        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8())).date();
     }
-    inline void setLastUpdated(QDateTime lastUpdated)
+    void setLastUpdated(QDateTime lastUpdated)
     {
-        this->lastUpdated_ = std::move(lastUpdated);
+        m_lastUpdated = std::move(lastUpdated);
         emit propertyChanged();
     }
-    void determineCurrentForecast();
-    void determineCurrentBackgroundWeatherComponent();
-    void initData(AbstractWeatherForecast fc);
-    void update();
-    void changeBackend(Kweather::Backend backend); // change backend on the fly
-    inline QString backend()
-    {
-        switch (backend_) {
-        case Kweather::Backend::NMI:
-            return Kweather::API_NMI;
-        case Kweather::Backend::OWM:
-            return Kweather::API_OWM;
-        default:
-            return {};
-        }
-    };
-
     const QString &backgroundComponent() const
     {
         return m_backgroundComponent;
     };
-    const QString &backgroundColor() const
+    const QColor &backgroundColor() const
     {
         return m_backgroundColor;
     };
-    const QString &textColor() const
+    const QColor &textColor() const
     {
         return m_textColor;
     };
-    const QString &cardBackgroundColor() const
+    const QColor &cardBackgroundColor() const
     {
         return m_cardBackgroundColor;
     };
-    const QString &cardTextColor() const
+    const QColor &cardTextColor() const
     {
         return m_cardTextColor;
     };
 
-    const QString &iconColor() const
+    const QColor &iconColor() const
     {
         return m_iconColor;
     }
@@ -184,10 +140,10 @@ public:
     const QVariantList &maxTempList();
     const QVariantList &xAxisList();
 public slots:
-    void updateData(AbstractWeatherForecast &fc);
+    void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts);
 
 signals:
-    void weatherRefresh(AbstractWeatherForecast &fc); // sent when weather data is refreshed
+    void weatherRefresh(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
@@ -197,36 +153,33 @@ signals:
     void chartListChanged();
 private slots:
     void updateCurrentDateTime();
-private:
-    Kweather::Backend backend_ = Kweather::Backend::NMI;
 
-    void writeToCache(AbstractWeatherForecast &fc);
-    QJsonDocument convertToJson(AbstractWeatherForecast &fc);
+private:
+    void writeToCache() const;
+    void determineCurrentForecast();
+
+    KWeatherCore::WeatherForecastSource m_source;
+    SharedForecastPtr m_forecast;
 
     // chart related fields
     QVariantList m_maxTempList, m_xAxisList;
 
     // background related fields
-    QString m_backgroundColor;
-    QString m_textColor;
-    QString m_cardBackgroundColor;
-    QString m_cardTextColor;
-    QString m_iconColor;
+    QColor m_backgroundColor;
+    QColor m_textColor;
+    QColor m_cardBackgroundColor;
+    QColor m_cardTextColor;
+    QColor m_iconColor;
     QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
 
-    QString locationName_, locationId_;
-    QString timeZone_;
-    QDateTime lastUpdated_;
+    QString m_locationName, m_locationId;
+    QString m_timeZone;
+    QDateTime m_lastUpdated;
     QTimer *m_timer;
-    float latitude_, longitude_;
+    float m_latitude, m_longitude;
 
-    WeatherDayListModel *weatherDayListModel_ = nullptr;
-    WeatherHourListModel *weatherHourListModel_ = nullptr;
-
-    AbstractWeatherForecast forecast_;
-    WeatherHour *currentWeather_ = nullptr;
-
-    AbstractWeatherAPI *weatherBackendProvider_ = nullptr;
+    WeatherDayListModel *m_weatherDayListModel = nullptr;
+    WeatherHourListModel *m_weatherHourListModel = nullptr;
 
     void updateChart();
 };
