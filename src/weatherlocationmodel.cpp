@@ -125,9 +125,8 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     if (oldIndex < 0 || oldIndex >= locationsSize || newIndex < 0 || newIndex >= locationsSize)
         return;
 
-    // to my surprise, we have to do this
-    if (newIndex > oldIndex)
-        std::swap(newIndex, oldIndex);
+    if (oldIndex < newIndex)
+        ++newIndex;
 
     beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
     std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
