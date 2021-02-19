@@ -54,7 +54,7 @@ public:
     QString windSpeed() const;
     QString temperature() const
     {
-        return QString::number(hour().temperature());
+        return QString::number(hour().temperature(), 'f', 1);
     }
     QString temperatureRounded() const
     {
