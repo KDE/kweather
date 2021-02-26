@@ -42,7 +42,7 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
-                source: weatherLocation.currentWeather == null ? "weather-none-available" : weatherLocation.currentWeather.weatherIcon
+                source: weatherLocation.hourListModel.currentForecast == null ? "weather-none-available" : weatherLocation.hourListModel.currentForecast.weatherIcon
                 Layout.preferredHeight: width
                 Layout.preferredWidth: page.width * 0.8 - headerText.width
                 Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
