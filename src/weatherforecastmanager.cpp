@@ -67,7 +67,6 @@ void WeatherForecastManager::readFromCache()
         if (!isFound) { // delete no longer needed cache
             reader.remove();
         }
-        reader.close();
     }
 
     // add to loaded locations from cache

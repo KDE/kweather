@@ -194,7 +194,6 @@ void WeatherLocation::writeToCache() const
     file.setFileName(dir.path() + "/" + this->locationId());
     file.open(QIODevice::WriteOnly);
     file.write(doc.toJson(QJsonDocument::Compact)); // write json
-    file.close();
 }
 
 void WeatherLocation::updateChart()
