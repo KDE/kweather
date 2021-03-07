@@ -162,7 +162,7 @@ void WeatherLocationListModel::requestCurrentLocation()
 
 void WeatherLocationListModel::addCurrentLocation(KWeatherCore::LocationQueryResult ret)
 {
-    auto location = new WeatherLocation(ret.geonameId(), ret.name(), QString(), ret.latitude(), ret.longitude());
+    auto location = new WeatherLocation(ret.geonameId(), ret.toponymName(), QString(), ret.latitude(), ret.longitude());
     location->update();
 
     insert(0, location);
