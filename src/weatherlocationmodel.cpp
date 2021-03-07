@@ -152,10 +152,13 @@ void WeatherLocationListModel::addLocation(const KWeatherCore::LocationQueryResu
 // invoked by frontend
 void WeatherLocationListModel::requestCurrentLocation()
 {
-    auto geoPtr = new KWeatherCore::LocationQuery(this);
+    static KWeatherCore::LocationQuery *geoPtr = nullptr;
+    if (!geoPtr)
+        geoPtr = new KWeatherCore::LocationQuery(this);
+
     geoPtr->locate();
     //    // failure
-    //    connect(geoPtr, &KWeatherCore::LocationQuery::, this, [this]() { Q_EMIT networkErrorCreatingDefault(); });
+    connect(geoPtr, &KWeatherCore::LocationQuery::queryError, this, &WeatherLocationListModel::networkErrorCreatingDefault);
     //    // success
     connect(geoPtr, &KWeatherCore::LocationQuery::located, this, &WeatherLocationListModel::addCurrentLocation);
 }

@@ -92,19 +92,15 @@ public:
     }
     QString currentTimeFormatted() const
     {
-        return currentTime().toString("hh:mm ap");
-    }
-    QTime currentTime() const
-    {
-        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8())).time();
+        return currentDateTime().toString("hh:mm ap");
     }
     QString currentDateFormatted() const
     {
-        return currentDate().toString("dd MMM yyyy");
+        return currentDateTime().toString("dd MMM yyyy");
     }
-    QDate currentDate() const
+    QDateTime currentDateTime() const
     {
-        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8())).date();
+        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8()));
     }
     void setLastUpdated(QDateTime lastUpdated)
     {

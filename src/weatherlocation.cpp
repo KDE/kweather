@@ -24,7 +24,7 @@ WeatherLocation::WeatherLocation()
     m_lastUpdated = QDateTime::currentDateTime();
     this->m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
-    this->m_timer->start(1000);
+    this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 }
 
 WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, SharedForecastPtr forecast)
@@ -39,6 +39,7 @@ WeatherLocation::WeatherLocation(QString locationId, QString locationName, QStri
     m_weatherHourListModel = new WeatherHourListModel(this);
     this->m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
+    this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 
     // prevent segfaults from js garbage collection
     QQmlEngine::setObjectOwnership(m_weatherDayListModel, QQmlEngine::CppOwnership);
@@ -71,6 +72,7 @@ QJsonObject WeatherLocation::toJson()
 void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
 {
     m_forecast = forecasts;
+    m_timeZone = forecasts->timezone();
     determineCurrentForecast();
     updateChart();
     m_lastUpdated = forecasts->createdTime();
@@ -80,6 +82,7 @@ void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::Weat
     writeToCache();
 
     emit propertyChanged();
+    updateCurrentDateTime();
 }
 
 void WeatherLocation::determineCurrentForecast()
@@ -219,6 +222,7 @@ const QVariantList &WeatherLocation::xAxisList()
 
 void WeatherLocation::updateCurrentDateTime()
 {
+    m_timer->setInterval(60000);
     Q_EMIT currentTimeChanged();
     Q_EMIT currentDateChanged();
 }
