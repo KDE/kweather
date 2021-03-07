@@ -11,10 +11,11 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 import kweather 1.0
 
-Popup
-{
+Popup {
     id: setupPopup
     
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
     modal: true
     focus: true
     width: parent.width - Kirigami.Units.largeSpacing * 4
@@ -26,7 +27,7 @@ Popup
     padding: Kirigami.Units.largeSpacing
 
     background: Kirigami.ShadowedRectangle {
-        color: Kirigami.Theme.viewBackgroundColor
+        color: Kirigami.Theme.backgroundColor
         radius: Kirigami.Units.largeSpacing
         anchors.fill: parent
         
@@ -103,7 +104,7 @@ Popup
                     
                     // flat
                     Kirigami.ShadowedRectangle {
-                        color: settingsModel.forecastStyle === "Flat" ? Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3) : Kirigami.Theme.viewBackgroundColor
+                        color: settingsModel.forecastStyle === "Flat" ? Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3) : Kirigami.Theme.backgroundColor
                         radius: Kirigami.Units.smallSpacing
                         width: flatColumn.width + Kirigami.Units.largeSpacing * 2
                         height: flatColumn.height + Kirigami.Units.largeSpacing * 2
@@ -150,7 +151,7 @@ Popup
                     
                     // dynamic
                     Kirigami.ShadowedRectangle {
-                        color: settingsModel.forecastStyle === "Dynamic" ? Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3) : Kirigami.Theme.viewBackgroundColor
+                        color: settingsModel.forecastStyle === "Dynamic" ? Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3) : Kirigami.Theme.backgroundColor
                         radius: Kirigami.Units.smallSpacing
                         width: dynamicColumn.width + Kirigami.Units.largeSpacing * 2
                         height: dynamicColumn.height + Kirigami.Units.largeSpacing * 2
