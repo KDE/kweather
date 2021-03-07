@@ -92,7 +92,7 @@ Kirigami.ScrollablePage {
         // loading results indicator
         BusyIndicator {
             anchors.centerIn: parent
-            running: locationQueryModel.loading
+            running: locationQueryModel.loading && addCityList.count === 0
             Layout.minimumWidth: Kirigami.Units.iconSizes.huge
             Layout.minimumHeight: width
         }
