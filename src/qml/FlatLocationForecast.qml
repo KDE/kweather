@@ -20,6 +20,8 @@ Kirigami.ScrollablePage {
 
     property WeatherLocation weatherLocation
     property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
+    
+    property bool inView: false
 
     // swipe down to refresh
     supportsRefreshing: true

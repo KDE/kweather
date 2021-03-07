@@ -4,7 +4,8 @@
         <file>resources/kweather.svg</file>
         <file>qml/main.qml</file>
         <file>qml/LocationsPage.qml</file>
-        <file>qml/LocationForecast.qml</file>
+        <file>qml/DynamicLocationForecast.qml</file>
+        <file>qml/FlatLocationForecast.qml</file>
         <file>qml/WeatherDayDelegate.qml</file>
         <file>qml/WeatherHourDelegate.qml</file>
         <file>qml/ForecastContainerPage.qml</file>
@@ -13,7 +14,6 @@
         <file>qml/ProgressCircle.qml</file>
         <file>qml/DefaultPage.qml</file>
         <file>qml/SetupWizard.qml</file>
-        <file>qml/LocationForecast2.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>
         <file>qml/backgrounds/CloudyDay.qml</file>
