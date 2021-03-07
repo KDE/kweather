@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-import QtQuick 2.12
+import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
@@ -30,6 +30,9 @@ Kirigami.ScrollablePage {
         id: citiesList
         model: weatherLocationListModel
 
+        reuseItems: true
+        currentIndex: -1 // no default highlight
+
         moveDisplaced: Transition {
             YAnimator {
                 duration: Kirigami.Units.longDuration
@@ -53,6 +56,7 @@ Kirigami.ScrollablePage {
             sourceComponent: delegateComponent
         }
     }
+    
     Component {
         id: delegateComponent
         Kirigami.SwipeListItem {

@@ -15,13 +15,17 @@ Kirigami.ScrollablePage {
 
     id: page
     title: forecastView.count == 0 ? i18n("Forecast") : weatherLocationListModel.get(forecastView.currentIndex).name
-
-    // left right arrows for desktop
+    
+    // desktop actions
     actions.contextualActions: [
         Kirigami.Action {
-                iconName: "arrow-left"
-                onTriggered: forecastView.currentIndex--
-                enabled: forecastView.currentIndex > 0
+            iconName: "view-refresh"
+            onTriggered: weatherLocationListModel.get(forecastView.currentIndex).update()
+        },
+        Kirigami.Action {
+            iconName: "arrow-left"
+            onTriggered: forecastView.currentIndex--
+            enabled: forecastView.currentIndex > 0
         },
         Kirigami.Action {
             iconName: "arrow-right"
