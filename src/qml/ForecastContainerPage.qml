@@ -11,6 +11,7 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.ScrollablePage {
+    property int yTranslate: 0
     property alias pageIndex: forecastView.currentIndex
 
     id: page
@@ -38,6 +39,8 @@ Kirigami.ScrollablePage {
     SwipeView {
         id: forecastView
         anchors.fill: parent
+        transform: Translate { y: yTranslate }
+        opacity: mainItem.opacity
 
         Repeater {
             id: forecastViewRepeater
@@ -78,10 +81,10 @@ Kirigami.ScrollablePage {
             }
         }
     }
-
+    
     // TODO figure out why pageindicator needs to be here in order for swipeview to display
     PageIndicator {
-        anchors.horizontalCenter: page.horizontalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
         visible: forecastView.count > 1
         count: forecastView.count
         currentIndex: forecastView.currentIndex

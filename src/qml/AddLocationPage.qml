@@ -15,6 +15,8 @@ Kirigami.ScrollablePage {
 
     property string searchQuery: ""
 
+    Component.onCompleted: locationQueryModel.clearResults()
+    
     header: RowLayout {
         anchors.margins: Kirigami.Units.largeSpacing
         spacing: 0
@@ -105,7 +107,7 @@ Kirigami.ScrollablePage {
             }
             onClicked: {
                 locationQueryModel.addLocation(index);
-                switchToPage(locationsPage);
+                switchToPage(getPage("Locations"), 0);
             }
         }
     }
