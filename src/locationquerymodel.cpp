@@ -99,3 +99,13 @@ bool LocationQueryModel::networkError() const
 {
     return m_networkError;
 }
+
+void LocationQueryModel::clearResults()
+{
+    Q_EMIT layoutAboutToBeChanged();
+    m_results.clear();
+    Q_EMIT layoutChanged();
+    m_loading = false;
+    m_networkError = false;
+    Q_EMIT propertyChanged();
+}

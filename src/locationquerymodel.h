@@ -32,6 +32,7 @@ public:
     Q_INVOKABLE void addLocation(int index);
     Q_INVOKABLE void updateUi();
     Q_INVOKABLE KWeatherCore::LocationQueryResult get(int index);
+    Q_INVOKABLE void clearResults();
     void setQuery();
 Q_SIGNALS:
     void propertyChanged();
