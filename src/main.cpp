@@ -36,7 +36,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("kweather");
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KAboutData aboutData("kweather", i18n("Weather"), "0.3", i18n("Weather application in Kirigami"), KAboutLicense::GPL, i18n("© 2020 KDE Community"));
+    KAboutData aboutData("kweather", i18n("Weather"), "0.5.0", i18n("A convergent weather application for Plasma"), KAboutLicense::GPL, i18n("© 2020-2021 KDE Community"));
     KAboutData::setApplicationData(aboutData);
 
     // initialize models in context

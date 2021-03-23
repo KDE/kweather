@@ -18,7 +18,7 @@ Kirigami.AboutPage {
         "shortDescription": i18n("A convergent weather application for Plasma."),
         "homepage": "",
         "bugAddress": "",
-        "version": "0.4",
+        "version": "0.5.0",
         "otherText": "",
         "copyrightStatement": i18n("© 2020-2021 Plasma Development Team"),
         "desktopFileName": "org.kde.kweather",
