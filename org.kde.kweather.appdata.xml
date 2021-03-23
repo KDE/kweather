@@ -68,4 +68,22 @@
   <description>
     <p>A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
   </description>
+  <screenshots>
+    <screenshot type="default">
+        <caption>Mobile dynamic view</caption>
+        <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
+    </screenshot>
+    <screenshot>
+        <caption>Desktop dynamic view</caption>
+        <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
+    </screenshot>
+    <screenshot>
+        <caption>Mobile flat view</caption>
+        <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
+    </screenshot>
+    <screenshot>
+        <caption>Mobile dynamic view</caption>
+        <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
+    </screenshot>
+  </screenshots>
 </component>

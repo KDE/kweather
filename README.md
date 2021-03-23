@@ -38,3 +38,10 @@ sudo make install
 * geonames.org - Coordinates -> Timezone
 * geoip.ubuntu.com - IP -> Coordinates
 * openweathermap.org - Weather data (optional, requires API token)
+
+## Gallery
+
+<img src="screenshots/kweather-mobile-dynamic.png" width="200px">
+<img src="screenshots/kweather-mobile-dynamic2.png" width="200px">
+<img src="screenshots/kweather-mobile-flat.png" width="200px">
+<img src="screenshots/kweather-desktop-dynamic.png" width="500px">
