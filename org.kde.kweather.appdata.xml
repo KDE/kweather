@@ -70,20 +70,20 @@
   </description>
   <screenshots>
     <screenshot type="default">
-        <caption>Mobile dynamic view</caption>
-        <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
+      <caption>Mobile dynamic view</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
     </screenshot>
     <screenshot>
-        <caption>Desktop dynamic view</caption>
-        <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
+      <caption>Desktop dynamic view</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
     </screenshot>
     <screenshot>
-        <caption>Mobile flat view</caption>
-        <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
+      <caption>Mobile flat view</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
     </screenshot>
     <screenshot>
-        <caption>Mobile dynamic view</caption>
-        <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
+      <caption>Mobile dynamic view</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
   </screenshots>
 </component>
