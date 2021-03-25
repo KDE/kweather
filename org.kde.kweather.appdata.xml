@@ -21,7 +21,7 @@
   <name xml:lang="id">Weather</name>
   <name xml:lang="it">Meteo</name>
   <name xml:lang="ko">날씨</name>
-  <name xml:lang="nl">Weer</name>
+  <name xml:lang="nl">Het weer</name>
   <name xml:lang="nn">Vêrmelding</name>
   <name xml:lang="pa">ਮੌਸਮ</name>
   <name xml:lang="pl">Pogoda</name>
@@ -35,6 +35,13 @@
   <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
   <summary>A convergent weather application for Plasma.</summary>
+  <summary xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq.</summary>
+  <summary xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma.</summary>
+  <summary xml:lang="es">Aplicación meteorológica convergente para Plasma.</summary>
+  <summary xml:lang="nl">Een convergente weer-toepassing voor Plasma.</summary>
+  <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
+  <summary xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми.</summary>
+  <summary xml:lang="x-test">xxA convergent weather application for Plasma.xx</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2+</project_license>
   <developer_name>KDE Community</developer_name>
@@ -67,22 +74,57 @@
   <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
   <description>
     <p>A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
+    <p xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq. Hava haqqında və digər məlumatları göstərmək üçün hamar və canlı/animasiyalı görünüş.</p>
+    <p xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
+    <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
+    <p xml:lang="nl">Een convergente weer-toepassing voor Plasma. Heeft vlakke en dynamisch/geanimeerde beelden voor het tonen van weersverwachtingen en andere informatie.</p>
+    <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
+    <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
+    <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
   </description>
   <screenshots>
     <screenshot type="default">
       <caption>Mobile dynamic view</caption>
+      <caption xml:lang="az">Mobil dinamik görünüş</caption>
+      <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
+      <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="sv">Mobil dynamisk vy</caption>
+      <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
+      <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
     </screenshot>
     <screenshot>
       <caption>Desktop dynamic view</caption>
+      <caption xml:lang="az">Masaüstü dinamik görünüş</caption>
+      <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
+      <caption xml:lang="es">Vista dinámica de escritorio</caption>
+      <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
+      <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
+      <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
+      <caption xml:lang="x-test">xxDesktop dynamic viewxx</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
     </screenshot>
     <screenshot>
       <caption>Mobile flat view</caption>
+      <caption xml:lang="az">Mobil hamar görünüş</caption>
+      <caption xml:lang="ca">Vista plana al mòbil</caption>
+      <caption xml:lang="es">Vista plana móvil</caption>
+      <caption xml:lang="nl">Vlak beeld op mobiel</caption>
+      <caption xml:lang="sv">Mobil enkel vy</caption>
+      <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
+      <caption xml:lang="x-test">xxMobile flat viewxx</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
     </screenshot>
     <screenshot>
       <caption>Mobile dynamic view</caption>
+      <caption xml:lang="az">Mobil dinamik görünüş</caption>
+      <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
+      <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="sv">Mobil dynamisk vy</caption>
+      <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
+      <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
   </screenshots>
