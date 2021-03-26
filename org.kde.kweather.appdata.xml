@@ -39,6 +39,8 @@
   <summary xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma.</summary>
   <summary xml:lang="es">Aplicación meteorológica convergente para Plasma.</summary>
   <summary xml:lang="nl">Een convergente weer-toepassing voor Plasma.</summary>
+  <summary xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma.</summary>
+  <summary xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo.</summary>
   <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми.</summary>
   <summary xml:lang="x-test">xxA convergent weather application for Plasma.xx</summary>
@@ -78,6 +80,8 @@
     <p xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
     <p xml:lang="nl">Een convergente weer-toepassing voor Plasma. Heeft vlakke en dynamisch/geanimeerde beelden voor het tonen van weersverwachtingen en andere informatie.</p>
+    <p xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma. Tem áreas planas e dinâmicas/animadas para mostrar as previsões e outras informações.</p>
+    <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
@@ -89,6 +93,8 @@
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
@@ -100,6 +106,8 @@
       <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="es">Vista dinámica de escritorio</caption>
       <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
+      <caption xml:lang="pt">Área dinâmica para computadores</caption>
+      <caption xml:lang="sl">Namizni dinamični pogled</caption>
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
       <caption xml:lang="x-test">xxDesktop dynamic viewxx</caption>
@@ -111,6 +119,8 @@
       <caption xml:lang="ca">Vista plana al mòbil</caption>
       <caption xml:lang="es">Vista plana móvil</caption>
       <caption xml:lang="nl">Vlak beeld op mobiel</caption>
+      <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
+      <caption xml:lang="sl">Mobilni pregledni pogled</caption>
       <caption xml:lang="sv">Mobil enkel vy</caption>
       <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile flat viewxx</caption>
@@ -122,6 +132,8 @@
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
