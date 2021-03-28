@@ -39,6 +39,7 @@
   <summary xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma.</summary>
   <summary xml:lang="es">Aplicación meteorológica convergente para Plasma.</summary>
   <summary xml:lang="nl">Een convergente weer-toepassing voor Plasma.</summary>
+  <summary xml:lang="nn">Vêrmeldings­program for Plasma, tilpassa ulike typar brukarflater.</summary>
   <summary xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma.</summary>
   <summary xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo.</summary>
   <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
@@ -93,6 +94,7 @@
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="nn">Dynamisk mobilvising</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
@@ -106,6 +108,7 @@
       <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="es">Vista dinámica de escritorio</caption>
       <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
+      <caption xml:lang="nn">Dynamisk skrivebordsvising</caption>
       <caption xml:lang="pt">Área dinâmica para computadores</caption>
       <caption xml:lang="sl">Namizni dinamični pogled</caption>
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
@@ -119,6 +122,7 @@
       <caption xml:lang="ca">Vista plana al mòbil</caption>
       <caption xml:lang="es">Vista plana móvil</caption>
       <caption xml:lang="nl">Vlak beeld op mobiel</caption>
+      <caption xml:lang="nn">Flat mobilvising</caption>
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
       <caption xml:lang="sl">Mobilni pregledni pogled</caption>
       <caption xml:lang="sv">Mobil enkel vy</caption>
@@ -132,6 +136,7 @@
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="nn">Dynamisk mobilvising</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
