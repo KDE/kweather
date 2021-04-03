@@ -39,6 +39,8 @@
   <summary xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma.</summary>
   <summary xml:lang="ca-valencia">Una aplicació convergent de meteorologia per al Plasma.</summary>
   <summary xml:lang="es">Aplicación meteorológica convergente para Plasma.</summary>
+  <summary xml:lang="fr">Une application météo convergente pour Plasma.</summary>
+  <summary xml:lang="it">Un'applicazione meteo convergente per Plasma.</summary>
   <summary xml:lang="nl">Een convergente weer-toepassing voor Plasma.</summary>
   <summary xml:lang="nn">Vêrmeldings­program for Plasma, tilpassa ulike typar brukarflater.</summary>
   <summary xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma.</summary>
@@ -82,6 +84,8 @@
     <p xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="ca-valencia">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
+    <p xml:lang="fr">Une application météo convergente pour Plasma. Elle possède des affichages à plat mais aussi dynamique / animé pour l'affichage des prévisions et d'autres informations.</p>
+    <p xml:lang="it">Un'applicazione meteo convergente per Plasma. Ha viste statiche e dinamiche/animate per mostrare previsioni e altre informazioni.</p>
     <p xml:lang="nl">Een convergente weer-toepassing voor Plasma. Heeft vlakke en dynamisch/geanimeerde beelden voor het tonen van weersverwachtingen en andere informatie.</p>
     <p xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma. Tem áreas planas e dinâmicas/animadas para mostrar as previsões e outras informações.</p>
     <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
@@ -96,6 +100,8 @@
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica al mòbil</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
+      <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
       <caption xml:lang="nn">Dynamisk mobilvising</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
@@ -111,6 +117,8 @@
       <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="es">Vista dinámica de escritorio</caption>
+      <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
+      <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
       <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
       <caption xml:lang="nn">Dynamisk skrivebordsvising</caption>
       <caption xml:lang="pt">Área dinâmica para computadores</caption>
@@ -126,6 +134,8 @@
       <caption xml:lang="ca">Vista plana al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista plana al mòbil</caption>
       <caption xml:lang="es">Vista plana móvil</caption>
+      <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
+      <caption xml:lang="it">Visualizzazione statica mobile</caption>
       <caption xml:lang="nl">Vlak beeld op mobiel</caption>
       <caption xml:lang="nn">Flat mobilvising</caption>
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
@@ -141,6 +151,8 @@
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica al mòbil</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
+      <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
       <caption xml:lang="nn">Dynamisk mobilvising</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
