@@ -103,6 +103,7 @@
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
   </description>
+  <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
   <screenshots>
     <screenshot type="default">
       <caption>Mobile dynamic view</caption>
