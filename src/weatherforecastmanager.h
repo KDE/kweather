@@ -34,7 +34,6 @@ private slots:
 
 private:
     WeatherLocationListModel *m_model;
-    void readFromCache();
     WeatherForecastManager();
 };
 

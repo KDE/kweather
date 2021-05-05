@@ -52,7 +52,6 @@ public:
     void save();
     WeatherHour *currentWeather() const;
     Q_INVOKABLE void update();
-    void initData(SharedForecastPtr fc);
 
     const QString &locationId() const
     {
@@ -151,7 +150,6 @@ private slots:
     void updateCurrentDateTime();
 
 private:
-    void writeToCache() const;
     void determineCurrentForecast();
 
     KWeatherCore::WeatherForecastSource m_source;

@@ -11,6 +11,7 @@
 #include "weatherdaymodel.h"
 
 #include <QDir>
+#include <QTimer>
 #include <QFile>
 #include <QJsonArray>
 #include <QQmlEngine>
@@ -79,7 +80,6 @@ void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::Weat
 
     emit weatherRefresh(m_forecast);
     emit stopLoadingIndicator();
-    writeToCache();
 
     emit propertyChanged();
     updateCurrentDateTime();
@@ -158,45 +158,17 @@ void WeatherLocation::determineCurrentForecast()
     emit currentForecastChange();
 }
 
-void WeatherLocation::initData(SharedForecastPtr fc)
-{
-    m_forecast = fc;
-    determineCurrentForecast();
-    emit weatherRefresh(m_forecast);
-    emit propertyChanged();
-}
-
 void WeatherLocation::update()
 {
-    std::vector<KWeatherCore::Sunrise> sunriseVec;
-    const auto &dayVec = m_forecast->dailyWeatherForecast();
-    sunriseVec.reserve(dayVec.size());
-
-    for (const auto &day : dayVec)
-        sunriseVec.push_back(day.sunrise());
-
-    auto pendingForecast = m_source.requestData(latitude(), longitude(), timeZone(), sunriseVec);
-    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
-        this->updateData(pendingForecast->value());
+    auto pendingForecast = m_source.requestData(latitude(), longitude());
+    if (pendingForecast->isFinished()) {
+        updateData(pendingForecast->value());
         pendingForecast->deleteLater();
-    });
-}
-
-void WeatherLocation::writeToCache() const
-{
-    QJsonDocument doc;
-    doc.setObject(m_forecast->toJson());
-
-    QFile file;
-    QString url = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QDir dir(url.append(QString("/cache"))); // create cache location
-    if (!dir.exists())
-        dir.mkpath(".");
-    // should be this path: /home/user/.cache/kweather/cache/1234567 for
-    // location with locationID 1234567
-    file.setFileName(dir.path() + "/" + this->locationId());
-    file.open(QIODevice::WriteOnly);
-    file.write(doc.toJson(QJsonDocument::Compact)); // write json
+    } else
+        connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
+            this->updateData(pendingForecast->value());
+            pendingForecast->deleteLater();
+        });
 }
 
 void WeatherLocation::updateChart()
