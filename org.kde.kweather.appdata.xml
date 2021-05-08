@@ -50,6 +50,7 @@
   <summary xml:lang="pa">ਪਲਾਜ਼ਮਾ ਲਈ ਮੌਸਮ ਸੰਬੰਧੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ।</summary>
   <summary xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma.</summary>
   <summary xml:lang="pt-BR">Um aplicativo de meteorologia convergente para o Plasma.</summary>
+  <summary xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды для Plasma.</summary>
   <summary xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo.</summary>
   <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми.</summary>
@@ -99,6 +100,7 @@
     <p xml:lang="nl">Een convergente weer-toepassing voor Plasma. Heeft vlakke en dynamisch/geanimeerde beelden voor het tonen van weersverwachtingen en andere informatie.</p>
     <p xml:lang="pa">ਪਲਾਜ਼ਮਾ ਲਈ ਮੌਸਮ ਸੰਬੰਧੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ। ਇਸ ਵਿੱਚ ਭਵਿੱਖਬਾਣੀਆਂ ਤੇ ਹੋਰ ਜਾਣਕਾਰੀਆਂ ਦਿਖਾਉਣ ਲਈ ਸਰਲ ਅਤੇ ਸਫ਼ਰੀ/ਹਿਲਦੀਆਂ-ਡੁਲਦੀਆਂ ਝਲਕਾਂ ਹਨ।</p>
     <p xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma. Tem áreas planas e dinâmicas/animadas para mostrar as previsões e outras informações.</p>
+    <p xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды для Plasma..</p>
     <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
@@ -121,6 +123,7 @@
       <caption xml:lang="nn">Dynamisk mobilvising</caption>
       <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
@@ -142,6 +145,7 @@
       <caption xml:lang="nn">Dynamisk skrivebordsvising</caption>
       <caption xml:lang="pa">ਡੈਸਕਫਾਪ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pt">Área dinâmica para computadores</caption>
+      <caption xml:lang="ru">Динамический режим для ПК</caption>
       <caption xml:lang="sl">Namizni dinamični pogled</caption>
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
@@ -163,6 +167,7 @@
       <caption xml:lang="nn">Flat mobilvising</caption>
       <caption xml:lang="pa">ਮੋਬਾਈਲ ਸਰਲ ਝਲਕ</caption>
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
+      <caption xml:lang="ru">Плоский режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni pregledni pogled</caption>
       <caption xml:lang="sv">Mobil enkel vy</caption>
       <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
@@ -184,6 +189,7 @@
       <caption xml:lang="nn">Dynamisk mobilvising</caption>
       <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
