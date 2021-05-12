@@ -12,18 +12,35 @@
         "--share=network",
         "--socket=x11",
         "--socket=wayland",
-        "--talk-name=org.freedesktop.Notifications",
-        "--device=dri"
+        "--device=dri",
+        "--system-talk-name=org.freedesktop.GeoClue2"
     ],
     "separate-locales": false,
 
     "modules": [
         {
+            "name": "kweathercore",
+            "config-opts": [ "-DBUILD_TESTING=OFF" ],
+            "buildsystem": "cmake-ninja",
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kweathercore.git", "branch": "master" } ]
+        },
+        {
+            "name": "kirigamiaddons",
+            "config-opts": [ "-DBUILD_TESTING=OFF" ],
+            "buildsystem": "cmake-ninja",
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kirigami-addons.git", "branch": "release/21.05" } ]
+        },
+        {
+            "name": "kquickcharts",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [ "-DBUILD_TESTING=OFF" ],
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/frameworks/kquickcharts.git", "branch": "v5.81.0" } ]
+        },
+        {
             "name": "kweather",
             "buildsystem": "cmake-ninja",
-            "sources": [ 
-                { "type": "git", "url": "https://invent.kde.org/plasma-mobile/kweather.git"} 
-            ]
+            "config-opts": [ "-DBUILD_TESTING=OFF" ],
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/plasma-mobile/kweather.git"} ]
         }
     ]
 }
