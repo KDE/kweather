@@ -73,8 +73,11 @@ Kirigami.ScrollablePage {
                 text: i18n("Add current location")
                 onTriggered: {
                     weatherLocationListModel.requestCurrentLocation()
-                    defaultPage.loading = true
-                    switchToPage(defaultPage)
+                    let page = getPage("Forecast");
+                    switchToPage(page, 0);
+                    if (page.loading !== undefined) {
+                        getPage("Forecast").loading = true;
+                    }
                 }
             }
         }

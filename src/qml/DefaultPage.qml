@@ -23,10 +23,8 @@ Kirigami.ScrollablePage {
             loading = false;
         }
         onSuccessfullyCreatedDefault: {
-            switchToPage(forecastPage);
+            switchToPage(getPage("Forecast"), 0);
             loading = false;
-            // switch to current
-            forecastPage.pageIndex = 0;
         }
     }
 
