@@ -28,13 +28,7 @@
             "name": "kirigamiaddons",
             "config-opts": [ "-DBUILD_TESTING=OFF" ],
             "buildsystem": "cmake-ninja",
-            "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kirigami-addons.git", "branch": "release/21.05" } ]
-        },
-        {
-            "name": "kquickcharts",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [ "-DBUILD_TESTING=OFF" ],
-            "sources": [ { "type": "git", "url": "https://invent.kde.org/frameworks/kquickcharts.git", "branch": "v5.81.0" } ]
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kirigami-addons.git", "branch": "master" } ]
         },
         {
             "name": "kweather",
