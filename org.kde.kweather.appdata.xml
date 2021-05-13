@@ -9,11 +9,6 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <content_rating type="oars-1.1"/>
-  <url type="homepage">https://invent.kde.org/plasma-mobile/kweather</url>
-  <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
-  <releases>
-    <release version="21.05" date="2021-05-10"/>
-  </releases>
   <name>Weather</name>
   <name xml:lang="az">Hava</name>
   <name xml:lang="ca">Meteorologia</name>
@@ -63,8 +58,6 @@
   <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми.</summary>
   <summary xml:lang="x-test">xxA convergent weather application for Plasma.xx</summary>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-2+</project_license>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="az">KDE İcması</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
@@ -94,6 +87,11 @@
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
   <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
   <description>
     <p>A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
     <p xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq. Hava haqqında və digər məlumatları göstərmək üçün hamar və canlı/animasiyalı görünüş.</p>
@@ -114,7 +112,6 @@
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
   </description>
-  <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
   <screenshots>
     <screenshot type="default">
       <caption>Mobile dynamic view</caption>
@@ -205,4 +202,9 @@
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
   </screenshots>
+  <url type="homepage">https://invent.kde.org/plasma-mobile/kweather</url>
+  <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
+  <releases>
+    <release version="21.05" date="2021-05-10"/>
+  </releases>
 </component>
