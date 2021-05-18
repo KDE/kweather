@@ -110,6 +110,7 @@
     <p xml:lang="pa">ਪਲਾਜ਼ਮਾ ਲਈ ਮੌਸਮ ਸੰਬੰਧੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ। ਇਸ ਵਿੱਚ ਭਵਿੱਖਬਾਣੀਆਂ ਤੇ ਹੋਰ ਜਾਣਕਾਰੀਆਂ ਦਿਖਾਉਣ ਲਈ ਸਰਲ ਅਤੇ ਸਫ਼ਰੀ/ਹਿਲਦੀਆਂ-ਡੁਲਦੀਆਂ ਝਲਕਾਂ ਹਨ।</p>
     <p xml:lang="pl">Spójna aplikacja pogodowa dla Plazmy. Ma płaskie i dynamiczne/animowane widoki do pokazywania prognozy pogody i innych danych.</p>
     <p xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma. Tem áreas planas e dinâmicas/animadas para mostrar as previsões e outras informações.</p>
+    <p xml:lang="pt-BR">Um aplicativo de meteorologia convergente feito para o Plasma. Ele inclui visualização simples e dinâmica para exibir a previsão do tempo, além de oturas informações.</p>
     <p xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды для Plasma..</p>
     <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
@@ -134,6 +135,7 @@
       <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pl">Przenośny dynamiczny widok</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="pt-BR">Visualização dinâmica para celular</caption>
       <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
@@ -158,6 +160,7 @@
       <caption xml:lang="pa">ਡੈਸਕਫਾਪ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pl">Biurkowy widok dynamiczny</caption>
       <caption xml:lang="pt">Área dinâmica para computadores</caption>
+      <caption xml:lang="pt-BR">Visualização dinâmica para desktop</caption>
       <caption xml:lang="ru">Динамический режим для ПК</caption>
       <caption xml:lang="sl">Namizni dinamični pogled</caption>
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
@@ -182,6 +185,7 @@
       <caption xml:lang="pa">ਮੋਬਾਈਲ ਸਰਲ ਝਲਕ</caption>
       <caption xml:lang="pl">Przenośny płaski widok</caption>
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
+      <caption xml:lang="pt-BR">Visão simples para celular</caption>
       <caption xml:lang="ru">Плоский режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni pregledni pogled</caption>
       <caption xml:lang="sv">Mobil enkel vy</caption>
@@ -206,6 +210,7 @@
       <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pl">Przenośny dynamiczny widok</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="pt-BR">Visualização dinâmica para celular</caption>
       <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
