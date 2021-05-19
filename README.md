@@ -28,7 +28,7 @@ If you are the packaging the application, it's worth looking at the [neon deb pa
 ```
 mkdir build
 cd build
-cmake ..
+cmake .. # add -DCMAKE_BUILD_TYPE=Release to compile for release
 make
 sudo make install
 ```
