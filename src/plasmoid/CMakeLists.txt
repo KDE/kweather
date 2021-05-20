@@ -17,7 +17,6 @@ kcoreaddons_desktop_to_json(plasma_applet_kweather_1x4 package/metadata.desktop 
 
 target_link_libraries(plasma_applet_kweather_1x4
                       Qt5::Gui
-                      Qt5::Qml
                       KF5::KWeatherCore
                       KF5::Plasma
                       KF5::I18n
