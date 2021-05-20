@@ -108,3 +108,4 @@ int LocationModel::rowCount(const QModelIndex &index) const
     Q_UNUSED(index)
     return m_forecasts.size();
 }
+Q_DECLARE_INTERFACE(LocationModel, "org.kde.LocationModel")

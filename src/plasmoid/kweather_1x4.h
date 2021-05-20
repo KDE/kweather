@@ -26,8 +26,6 @@ public:
     }
 signals:
     void locationModelChanged();
-private slots:
-    void update();
 
 private:
     LocationModel *m_model = nullptr;
