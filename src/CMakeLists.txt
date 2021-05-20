@@ -17,23 +17,25 @@ set(kweather_SRCS
     locationquerymodel.cpp
     resources.qrc
 )
-
-kconfig_add_kcfg_files(kweather_SRCS kweathersettings.kcfgc GENERATE_MOC)
-
+add_library(kweatherLib STATIC)
+kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
+target_link_libraries(kweatherLib
+    Qt5::Core
+    KF5::ConfigCore
+    KF5::ConfigGui
+    )
 add_executable(kweather ${kweather_SRCS})
 target_link_libraries(kweather
-    Qt5::Core
     Qt5::Qml
     Qt5::QuickControls2
     Qt5::Widgets
     Qt5::Network
     KF5::I18n
-    KF5::ConfigCore
-    KF5::ConfigGui
     KF5::CoreAddons
     KF5::Notifications
     KF5::QuickCharts
     KF5::KWeatherCore
+    kweatherLib
 )
 
 if (ANDROID)
@@ -94,7 +96,7 @@ if (ANDROID)
     )
 endif()
 
-#if (UNIX AND (NOT ANDROID))
-#add_subdirectory(plasmoid)
-#endif()
+if (UNIX AND (NOT ANDROID))
+add_subdirectory(plasmoid)
+endif()
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
