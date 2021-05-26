@@ -4,25 +4,19 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 #
+cmake_minimum_required(VERSION 3.16)
 
 project(kweather)
 
-cmake_minimum_required(VERSION 2.8.12)
-set(KF5_MIN_VERSION "5.77.0") # KQuickCharts
-if (ANDROID)
-    set(QT_MIN_VERSION "5.15.0") # the QTimezone doesn't work with Qt version before 5.15 beta 3
-else()
-    set(QT_MIN_VERSION "5.12.0")
-endif()
+set(QT_MIN_VERSION "5.15.0")
+set(KF5_MIN_VERSION "5.82.0")
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FeatureSummary)
 
-# only enable QML debugging on debug builds
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DQT_QML_DEBUG ")
-
-################# set KDE specific information #################
-
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -33,8 +27,6 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
-
-################# Find dependencies #################
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
     Core
@@ -55,13 +47,11 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KF5 0.3.0 REQUIRED COMPONENTS KWeatherCore)
 
 if (ANDROID)
-   find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Svg)
    find_package(OpenSSL REQUIRED)
 else()
    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
 
-################# build and install #################
 add_subdirectory(src)
 
 install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
@@ -75,7 +65,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service
 
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
-# add clang-format target for all our real source files
 include(KDEClangFormat)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
