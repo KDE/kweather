@@ -52,11 +52,11 @@ void LocationQueryModel::textChanged(QString query, int timeout)
 {
     m_text = query;
 
-    Q_EMIT layoutAboutToBeChanged();
+    beginResetModel();
     // clear results list
     m_results.clear();
 
-    Q_EMIT layoutChanged();
+    endResetModel();
     if (!query.isEmpty()) { // do not query nothing
         m_loading = true;
         m_networkError = false;
@@ -68,6 +68,7 @@ void LocationQueryModel::textChanged(QString query, int timeout)
 
 void LocationQueryModel::setQuery()
 {
+    qDebug() << "start query";
     m_querySource.query(m_text);
 }
 
@@ -81,11 +82,11 @@ void LocationQueryModel::addLocation(int index)
 void LocationQueryModel::handleQueryResults(const std::vector<KWeatherCore::LocationQueryResult> &results)
 {
     qDebug() << "results arrived" << results.size();
-    Q_EMIT layoutAboutToBeChanged();
+    beginResetModel();
     // clear results list
     m_results.assign(results.begin(), results.end());
 
-    Q_EMIT layoutChanged();
+    endResetModel();
 }
 
 void LocationQueryModel::updateUi()
@@ -102,9 +103,9 @@ bool LocationQueryModel::networkError() const
 
 void LocationQueryModel::clearResults()
 {
-    Q_EMIT layoutAboutToBeChanged();
+    beginResetModel();
     m_results.clear();
-    Q_EMIT layoutChanged();
+    endResetModel();
     m_loading = false;
     m_networkError = false;
     Q_EMIT propertyChanged();
