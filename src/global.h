@@ -12,6 +12,7 @@
 #include <unordered_map>
 namespace Kweather
 {
+static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
 static QString tempConverter(double temp)
 {
     if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {

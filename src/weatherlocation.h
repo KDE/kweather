@@ -47,9 +47,8 @@ public:
                              float latitude,
                              float longitude,
                              SharedForecastPtr forecast = SharedForecastPtr(new KWeatherCore::WeatherForecast));
-    static WeatherLocation *fromJson(const QJsonObject &json);
-    QJsonObject toJson();
     void save();
+    static WeatherLocation *load(const QString &groupName);
     WeatherHour *currentWeather() const;
     Q_INVOKABLE void update();
 

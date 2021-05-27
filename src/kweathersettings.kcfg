@@ -30,4 +30,6 @@
       <default>nmiweatherapi</default>
     </entry>
   </group>
+  <group name="WeatherLocations">
+  </group>
 </kcfg>

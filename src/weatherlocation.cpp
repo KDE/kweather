@@ -9,7 +9,7 @@
 #include "global.h"
 #include "locationquerymodel.h"
 #include "weatherdaymodel.h"
-
+#include "kweathersettings.h"
 #include <QDir>
 #include <QTimer>
 #include <QFile>
@@ -51,29 +51,35 @@ WeatherLocation::WeatherLocation(QString locationId, QString locationName, QStri
         determineCurrentForecast();
     }
 }
-
-WeatherLocation *WeatherLocation::fromJson(const QJsonObject &obj)
+WeatherLocation *WeatherLocation::load(const QString &groupName)
 {
-    auto weatherLocation = new WeatherLocation(
-        obj["locationId"].toString(), obj["locationName"].toString(), obj["timezone"].toString(), obj["latitude"].toDouble(), obj["longitude"].toDouble());
-    return weatherLocation;
+    auto config = KWeatherSettings().sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(groupName);
+    if (config.isValid()) {
+        return new WeatherLocation(groupName, config.readEntry("locationName"), config.readEntry("timezone"), config.readEntry("latitude").toFloat(),
+                            config.readEntry("longitude").toFloat());
+    } else {
+        return nullptr;
+    }
 }
-
-QJsonObject WeatherLocation::toJson()
+void WeatherLocation::save()
 {
-    QJsonObject obj;
-    obj["locationId"] = locationId();
-    obj["locationName"] = locationName();
-    obj["latitude"] = latitude();
-    obj["longitude"] = longitude();
-    obj["timezone"] = m_timeZone;
-    return obj;
+    auto config = KWeatherSettings(this).sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
+    config.writeEntry("locationName", locationName());
+    config.writeEntry("latitude", latitude());
+    config.writeEntry("longitude", longitude());
+    config.writeEntry("timezone", m_timeZone);
+    config.sync();
 }
-
 void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
 {
     m_forecast = forecasts;
-    m_timeZone = forecasts->timezone();
+
+    // first time the timezone is empty
+    if (m_timeZone.isEmpty()) {
+        m_timeZone = forecasts->timezone();
+        save();
+    }
+
     determineCurrentForecast();
     updateChart();
     m_lastUpdated = forecasts->createdTime();

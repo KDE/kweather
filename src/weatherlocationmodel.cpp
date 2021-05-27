@@ -14,10 +14,6 @@
 
 #include <QJsonArray>
 #include <QQmlEngine>
-
-const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
-const QString WEATHER_LOCATIONS_CFG_KEY = QStringLiteral("m_locations");
-
 /* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -28,28 +24,20 @@ WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 void WeatherLocationListModel::load()
 {
     // load locations from kconfig
-    auto config = KSharedConfig::openConfig(QString(), KSharedConfig::FullConfig, QStandardPaths::AppConfigLocation);
-    KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
-    QJsonDocument doc = QJsonDocument::fromJson(group.readEntry(WEATHER_LOCATIONS_CFG_KEY, "{}").toUtf8());
-    const auto &array = doc.array();
-    for (const auto &r : array) {
-        QJsonObject obj = r.toObject();
-        m_locations.push_back(WeatherLocation::fromJson(obj));
+    auto config = KWeatherSettings(this).sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
+    auto locations = config.groupList();
+    for (const auto &location : locations) {
+        auto location_ptr = WeatherLocation::load(location);
+        if (location_ptr)
+            m_locations.push_back(location_ptr);
     }
 }
 
 void WeatherLocationListModel::save()
 {
-    QJsonArray arr;
-    for (const auto &lc : qAsConst(m_locations)) {
-        arr.push_back(lc->toJson());
+    for (auto location : m_locations) {
+        location->save();
     }
-    QJsonObject obj;
-    obj["list"] = arr;
-
-    auto config = KSharedConfig::openConfig(QString(), KSharedConfig::FullConfig, QStandardPaths::AppConfigLocation);
-    KConfigGroup group = config->group(WEATHER_LOCATIONS_CFG_GROUP);
-    group.writeEntry(WEATHER_LOCATIONS_CFG_KEY, QString(QJsonDocument(arr).toJson(QJsonDocument::Compact)));
 }
 
 int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
