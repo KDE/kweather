@@ -14,6 +14,8 @@ set(KF5_MIN_VERSION "5.82.0")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+option(BUILD_PLASMOID "Build the weather plasmoid" ON)
+
 include(FeatureSummary)
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED)
@@ -48,7 +50,9 @@ find_package(KF5 0.3.0 REQUIRED COMPONENTS KWeatherCore)
 
 if (ANDROID)
    find_package(OpenSSL REQUIRED)
-else()
+endif()
+
+if (NOT ANDROID AND BUILD_PLASMOID)
    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
 

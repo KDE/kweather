@@ -96,7 +96,7 @@ if (ANDROID)
     )
 endif()
 
-if (UNIX AND (NOT ANDROID))
+if (NOT ANDROID AND BUILD_PLASMOID)
     add_subdirectory(plasmoid)
 endif()
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
