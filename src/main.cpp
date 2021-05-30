@@ -36,8 +36,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("kweather");
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KAboutData aboutData("kweather", i18n("Weather"), "0.5.0", i18n("A convergent weather application for Plasma"), KAboutLicense::GPL, i18n("© 2020-2021 KDE Community"));
+    KAboutData aboutData("kweather", i18n("Weather"), "21.05", i18n("A convergent weather application for Plasma"), KAboutLicense::GPL, i18n("© 2020-2021 Plasma Development Team"));
+    aboutData.addAuthor(i18n("Han Young"), QString(), QStringLiteral("hanyoung@protonmail.com"));
+    aboutData.addAuthor(i18n("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"), QStringLiteral("https://espi.dev"));
     KAboutData::setApplicationData(aboutData);
+
+    engine.rootContext()->setContextProperty(QStringLiteral("kweatherAboutData"), QVariant::fromValue(aboutData));
 
     // initialize models in context
     auto *locationQueryModel = new LocationQueryModel();

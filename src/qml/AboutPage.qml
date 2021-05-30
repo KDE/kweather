@@ -11,34 +11,5 @@ import org.kde.kirigami 2.11 as Kirigami
 
 Kirigami.AboutPage {
     id: aboutPage
-    aboutData: {
-        "displayName": i18n("Weather"),
-        "productName": "kirigami/weather",
-        "componentName": "kweather",
-        "shortDescription": i18n("A convergent weather application for Plasma."),
-        "homepage": "",
-        "bugAddress": "",
-        "version": "0.5.0",
-        "otherText": "",
-        "copyrightStatement": i18n("© 2020-2021 Plasma Development Team"),
-        "desktopFileName": "org.kde.kweather",
-        "authors": [
-            {
-                "name": i18n("Han Young"),
-                "emailAddress": "hanyoung@protonmail.com",
-            },
-            {
-                "name": i18n("Devin Lin"),
-                "emailAddress": "espidev@gmail.com",
-                "webAddress": "https://espi.dev"
-            }
-        ],
-        "licenses": [
-            {
-                "name": "GPL v2",
-                "text": "long, boring, license text",
-                "spdx": "GPL-v2.0",
-            }
-        ]
-    }
+    aboutData: kweatherAboutData
 } 
