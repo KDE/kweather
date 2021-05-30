@@ -1,3 +1,7 @@
+<!--
+- Copyright 2020 Tobias Fella <fella@posteo.de>
+- SPDX-License-Identifier: GPL-2.0-or-later
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:width="128dp" android:height="128dp" android:gravity="center">
