@@ -21,14 +21,10 @@ private Q_SLOTS:
     void update();
     void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
 private:
-    struct Location {
-        QString name;
-        double latitude, longitude;
-    };
+    class Location;
 
     QTimer *m_timer = nullptr;
-    std::vector<Location> m_locations;
-    std::vector<QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>> m_forecasts;
+    std::vector<Location *> m_locations;
 };
 
 #endif // LOCATIONMODEL_H
