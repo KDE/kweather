@@ -5,13 +5,19 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#include <QApplication>
 #include <QMetaObject>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlEngine>
+#include <QQuickStyle>
 #include <QUrl>
 #include <QtQml>
+
+#ifdef Q_OS_ANDROID
+#include <QGuiApplication>
+#else
+#include <QApplication>
+#endif
 
 #include <KAboutData>
 #include <KConfigCore/KConfig>
@@ -31,7 +37,16 @@ class AbstractDailyWeatherForecast;
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
+#ifdef Q_OS_ANDROID
+    QGuiApplication app(argc, argv);
+    QQuickStyle::setStyle(QStringLiteral("Material"));
+#else
     QApplication app(argc, argv);
+    if(qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
+        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+    }
+#endif
     QQmlApplicationEngine engine;
 
     KLocalizedString::setApplicationDomain("kweather");
