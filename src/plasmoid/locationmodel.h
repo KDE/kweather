@@ -19,7 +19,6 @@ public:
     virtual QHash<int, QByteArray> roleNames() const override;
 private Q_SLOTS:
     void update();
-    void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
 private:
     class Location;
 

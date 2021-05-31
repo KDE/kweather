@@ -26,7 +26,7 @@ public:
     void update(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast) {
         this->forecast = forecast;
     }
-public Q_SIGNAL:
+Q_SIGNALS:
     void updated();
 
 public Q_SLOT:
@@ -126,3 +126,4 @@ int LocationModel::rowCount(const QModelIndex &index) const
     return m_locations.size();
 }
 Q_DECLARE_INTERFACE(LocationModel, "org.kde.LocationModel")
+#include "locationmodel.moc"
