@@ -88,7 +88,7 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Item {
-                    implicitWidth: delegateLayout.implicitWidth
+                    implicitWidth: listItem.width
                     implicitHeight: delegateLayout.implicitHeight
                     RowLayout {
                         Layout.alignment: Qt.AlignLeft
@@ -107,29 +107,32 @@ Kirigami.ScrollablePage {
                                 weatherLocationListModel.move(oldIndex, newIndex)
                             }
                         }
+                        
                         ColumnLayout {
+                            spacing: Kirigami.Units.smallSpacing
                             Kirigami.Icon {
                                 Layout.alignment: Qt.AlignHCenter
                                 source: location.hourListModel.currentForecast == null ? "weather-none-available" : location.hourListModel.currentForecast.weatherIcon
-                                Layout.maximumHeight: Kirigami.Units.iconSizes.medium
+                                Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
                                 Layout.preferredWidth: height
-                                Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                                Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
                             }
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.4
+                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                                 text: location.hourListModel.currentForecast == null ? "0" : location.hourListModel.currentForecast.temperatureRounded
                             }
                         }
 
                         Kirigami.Heading {
                             Layout.alignment: Qt.AlignLeft
-                            level: 1
-                            text: location.name
-                        }
-
-                        Item {
                             Layout.fillWidth: true
+                            
+                            level: 2
+                            text: location.name
+                            elide: Text.ElideRight
+                            maximumLineCount: 2
+                            wrapMode: Text.Wrap
                         }
                     }
                 }
