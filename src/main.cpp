@@ -31,6 +31,8 @@
 #include "weatherhourmodel.h"
 #include "weatherlocation.h"
 #include "weatherlocationmodel.h"
+#include "version.h"
+
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
 
@@ -51,7 +53,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("kweather");
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KAboutData aboutData("kweather", i18n("Weather"), "21.05", i18n("A convergent weather application for Plasma"), KAboutLicense::GPL, i18n("© 2020-2021 Plasma Development Team"));
+    KAboutData aboutData("kweather", i18n("Weather"), QStringLiteral(KWEATHER_VERSION_STRING), i18n("A convergent weather application for Plasma"), KAboutLicense::GPL, i18n("© 2020-2021 Plasma Development Team"));
     aboutData.addAuthor(i18n("Han Young"), QString(), QStringLiteral("hanyoung@protonmail.com"));
     aboutData.addAuthor(i18n("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"), QStringLiteral("https://espi.dev"));
     KAboutData::setApplicationData(aboutData);

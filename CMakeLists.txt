@@ -8,6 +8,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(kweather)
 
+set(PROJECT_VERSION "21.05")
 set(QT_MIN_VERSION "5.15.0")
 set(KF5_MIN_VERSION "5.82.0")
 
@@ -29,6 +30,11 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+
+ecm_setup_version(${PROJECT_VERSION}
+    VARIABLE_PREFIX KWEATHER
+    VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/version.h
+)
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
     Core
