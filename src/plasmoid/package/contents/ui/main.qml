@@ -13,9 +13,15 @@ Item {
     Plasmoid.fullRepresentation: Item {
         Layout.preferredWidth: 200 //forecastView.width
         Layout.preferredHeight: 150
-        Text {
-            text: "debug"
-        }
+//        ListView {
+//            height: 150
+//            width: 200
+//            model: plasmoid.nativeInterface.locationModel
+//            delegate: Kirigami.BasicListItem {
+//                required property string locationName
+//                label: locationName
+//            }
+//        }
 
         SwipeView {
             id: forecastView
@@ -24,88 +30,55 @@ Item {
                 model: plasmoid.nativeInterface.locationModel
                 Loader {
                     active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
-                    sourceComponent: RowLayout {
-                        Label {
-                            text: locationName
-                        }
-                        Label {
-                            text: temperature
-                        }
-                        Kirigami.Icon {
-                            source: icon
-                        }
-                        Label {
-                            text: description
+                    sourceComponent: Kirigami.Icon {
+                        id: mainComponent
+                        source: icon
+                        ColumnLayout {
+                            RowLayout {
+                                Layout.preferredWidth: parent.width
+                                Label {
+                                    width: parent.width - temperatureLabel.width
+                                    text: locationName
+                                    color: Kirigami.Theme.textColor
+                                    leftPadding: Kirigami.Units.smallSpacing
+                                    font.bold: true
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                                }
+                                Label {
+                                    id: temperatureLabel
+                                    text: temperature + "°"
+                                    color: Kirigami.Theme.disabledTextColor
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
+                            }
+                            Label {
+                                text: description
+                                color: Kirigami.Theme.textColor
+                                leftPadding: Kirigami.Units.smallSpacing
+                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                            }
+                            RowLayout {
+                                visible: precipitation > 0.01
+                                Kirigami.Icon {
+                                    source: "raindrop"
+                                    Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                                    Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                                }
+                                Label {
+                                    text: i18n("%1mm", precipitation.toFixed(1))
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-
-//        RowLayout {
-//            id: weatherHeader
-//            ColumnLayout {
-//                Text {
-//                    text: plasmoid.nativeInterface.cityName
-//                    color: "white"
-//                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
-//                }
-//                Text {
-//                    text: plasmoid.nativeInterface.tempNow
-//                    color: "white"
-//                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-//                }
-//                Text {
-//                    text: plasmoid.nativeInterface.description
-//                    color: "white"
-//                }
-//            }
-
-//            ColumnLayout {
-//                id: weatherList
-//                Flow {
-//                    Repeater {
-//                        model: plasmoid.nativeInterface.date
-//                        Text {
-//                            text: modelData
-//                            color: "white"
-//                            width: Kirigami.Units.gridUnit * 4
-//                            horizontalAlignment: Qt.AlignHCenter
-//                        }
-//                    }
-//                }
-//                Flow {
-//                    Repeater {
-//                        model: plasmoid.nativeInterface.forecast
-//                        Kirigami.Icon {
-//                            source: modelData
-//                            width: Kirigami.Units.gridUnit * 4
-//                            height: Kirigami.Units.gridUnit * 3
-//                        }
-//                    }
-//                }
-//                Flow {
-//                    Repeater {
-//                        model: plasmoid.nativeInterface.maxMinTemp
-//                        Text {
-//                            text: modelData
-//                            color: "white"
-//                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.8
-//                            width: Kirigami.Units.gridUnit * 4
-//                            horizontalAlignment: Qt.AlignHCenter
-//                        }
-//                    }
-//                }
-//            }
-
-//            ToolButton {
-//                Layout.fillHeight: true
-//                Layout.preferredWidth: Kirigami.Units.gridUnit * 1.5
-//                visible: !plasmoid.nativeInterface.isSingleLocation
-//                flat: false
-//                icon.name: "arrow-right"
-//                onClicked: plasmoid.nativeInterface.nextLocation()
-//            }
-//        }
+        PageIndicator {
+            currentIndex: forecastView.currentIndex
+            count: forecastView.count
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+        }
     }
 }

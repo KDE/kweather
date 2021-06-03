@@ -8,7 +8,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QTimer>
-
+#include <QEventLoop>
 #include "kweathersettings.h"
 #include "locationmodel.h"
 const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
@@ -26,18 +26,18 @@ public:
     void update(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast) {
         this->forecast = forecast;
     }
+    KWeatherCore::PendingWeatherForecast *reply = nullptr;
 Q_SIGNALS:
-    void updated();
+    void updated(int index);
 
 public Q_SLOT:
     void updateFromConnection() {
         if (reply) {
             update(reply->value());
             reply->deleteLater();
-            Q_EMIT updated();
+            Q_EMIT updated(index);
         }
     }
-    KWeatherCore::PendingWeatherForecast *reply = nullptr;
 };
 LocationModel::LocationModel()
     : m_timer(new QTimer(this))
@@ -50,8 +50,12 @@ LocationModel::LocationModel()
         if (locationSubGroup.isValid()) {
             auto locationFromConfig = new Location(this);
             locationFromConfig->name = locationSubGroup.readEntry("locationName");
-            locationFromConfig->latitude = locationSubGroup.readEntry("longitude").toDouble();
+            locationFromConfig->latitude = locationSubGroup.readEntry("latitude").toDouble();
+            locationFromConfig->longitude = locationSubGroup.readEntry("longitude").toDouble();
             m_locations.push_back(locationFromConfig);
+            connect(locationFromConfig, &LocationModel::Location::updated, this,
+                    [this](int index){
+                Q_EMIT dataChanged(this->index(index), this->index(index));});
             locationFromConfig->index = i;
             i++;
         }
@@ -70,11 +74,18 @@ void LocationModel::update()
     for (auto location : m_locations) {
         auto reply = source.requestData(location->latitude, location->longitude);
         if (reply->isFinished()) {
+            beginResetModel();
             location->update(reply->value());
+            endResetModel();
             reply->deleteLater();
+            Q_EMIT dataChanged(this->index(location->index), this->index(location->index));
         } else {
+            qDebug() << "unfinished";
             location->reply = reply;
-            connect(reply, &KWeatherCore::PendingWeatherForecast::finished, location, &LocationModel::Location::updateFromConnection);
+            QEventLoop loop;
+            connect(reply, &KWeatherCore::PendingWeatherForecast::finished, &loop, &QEventLoop::quit);
+            loop.exec();
+            location->updateFromConnection();
         }
         index++;
     }
@@ -93,13 +104,12 @@ QVariant LocationModel::data(const QModelIndex &index, int role) const
     auto row = index.row();
 
     KWeatherCore::HourlyWeatherForecast const *currentWeather = nullptr;
-    if (m_locations.at(row)->forecast && m_locations.at(row)->forecast->dailyWeatherForecast().empty()) {
+    if (m_locations.at(row)->forecast && !m_locations.at(row)->forecast->dailyWeatherForecast().empty()) {
         const auto &daily = m_locations.at(row)->forecast->dailyWeatherForecast();
         if (!daily.front().hourlyWeatherForecast().empty()) {
             currentWeather = &daily.front().hourlyWeatherForecast().front();
         }
     }
-
     if (!currentWeather) {
         return {};
     }

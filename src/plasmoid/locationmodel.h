@@ -12,7 +12,7 @@ class LocationModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    enum LocationRole {LocationName, Temperature, Icon, Description, Precipitation};
+    enum LocationRole {LocationName = Qt::UserRole + 1, Temperature, Icon, Description, Precipitation};
     LocationModel();
     virtual QVariant data(const QModelIndex &index, int role) const override;
     virtual int rowCount(const QModelIndex &index) const override;
