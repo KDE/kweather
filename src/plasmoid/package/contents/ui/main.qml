@@ -11,24 +11,16 @@ import org.kde.kirigami 2.11 as Kirigami
 Item {
     Plasmoid.backgroundHints: "ShadowBackground";
     Plasmoid.fullRepresentation: Item {
-        Layout.preferredWidth: 200 //forecastView.width
-        Layout.preferredHeight: 150
-//        ListView {
-//            height: 150
-//            width: 200
-//            model: plasmoid.nativeInterface.locationModel
-//            delegate: Kirigami.BasicListItem {
-//                required property string locationName
-//                label: locationName
-//            }
-//        }
-
+        id: container
+        Layout.preferredWidth: 100
+        Layout.preferredHeight: 100
         SwipeView {
             id: forecastView
             anchors.fill: parent
             Repeater {
                 model: plasmoid.nativeInterface.locationModel
                 Loader {
+                    visible: SwipeView.isCurrentItem
                     active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
                     sourceComponent: Kirigami.Icon {
                         id: mainComponent
