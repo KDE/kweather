@@ -235,7 +235,19 @@
   <url type="homepage">https://invent.kde.org/plasma-mobile/kweather</url>
   <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
   <releases>
-    <release version="21.06" date="2021-06-10"/>
+    <release version="21.06" date="2021-06-10">
+      <description>
+        <p>Changes:</p>
+        <ul>
+          <li>Reworked the locations page to better handle long location names</li>
+          <li>Add maximum width to dynamic forecast to better deal with widescreen</li>
+          <li>Remove plasmoid (it is being reworked!)</li>
+          <li>Fixed default page not being loaded when new locations are added</li>
+          <li>Unify application settings location</li>
+          <li>Enable qml debugging when in debug mode</li>
+        </ul>
+      </description>
+    </release>
     <release version="21.05" date="2021-05-10"/>
   </releases>
 </component>
