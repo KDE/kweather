@@ -5,10 +5,8 @@
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KWeatherCore/WeatherForecastSource>
-#include <QJsonArray>
-#include <QJsonDocument>
 #include <QTimer>
-#include <QEventLoop>
+#include <QLocale>
 #include "kweathersettings.h"
 #include "locationmodel.h"
 const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
@@ -60,7 +58,6 @@ LocationModel::LocationModel()
             i++;
         }
     }
-
     connect(m_timer, &QTimer::timeout, this, &LocationModel::update);
     m_timer->setInterval(1000 * 60 * 60); // one hour
     m_timer->start();
@@ -93,7 +90,7 @@ void LocationModel::update()
 
 QHash<int, QByteArray> LocationModel::roleNames() const
 {
-    static QHash<int, QByteArray> hash = {{LocationName, "locationName"}, {Temperature, "temperature"}, {Icon, "icon"}, {Description, "description"}, {Precipitation, "precipitation"}};
+    static QHash<int, QByteArray> hash = {{LocationName, "locationName"}, {Temperature, "temperature"}, {Icon, "icon"}, {Description, "description"}, {Precipitation, "precipitation"}, {Humidity, "humidity"}, {Date, "date"}};
     return hash;
 }
 QVariant LocationModel::data(const QModelIndex &index, int role) const
@@ -125,6 +122,10 @@ QVariant LocationModel::data(const QModelIndex &index, int role) const
             return currentWeather->weatherDescription();
         case Precipitation:
             return currentWeather->precipitationAmount();
+        case Humidity:
+            return currentWeather->humidity();
+        case Date:
+            return QLocale::system().toString(currentWeather->date().date(), QStringLiteral("ddd, dd"));
         default:
             return QVariant();
     }
