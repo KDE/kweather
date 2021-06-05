@@ -79,10 +79,7 @@ void LocationModel::update()
         } else {
             qDebug() << "unfinished";
             location->reply = reply;
-            QEventLoop loop;
-            connect(reply, &KWeatherCore::PendingWeatherForecast::finished, &loop, &QEventLoop::quit);
-            loop.exec();
-            location->updateFromConnection();
+            connect(reply, &KWeatherCore::PendingWeatherForecast::finished, location, &LocationModel::Location::updateFromConnection);
         }
         index++;
     }
