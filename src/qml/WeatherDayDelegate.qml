@@ -60,7 +60,7 @@ Rectangle {
             }
             Label {
                 anchors.baseline: highTemp.baseline
-                color: settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
+                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
                 text: weather.minTemp
             }

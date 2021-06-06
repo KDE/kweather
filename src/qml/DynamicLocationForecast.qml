@@ -44,7 +44,9 @@ Kirigami.ScrollablePage {
     
     Connections {
         target: weatherLocation
-        onStopLoadingIndicator: {page.refreshing = false}
+        function onStopLoadingIndicator() {
+            page.refreshing = false;
+        }
     }
 
     Item {
