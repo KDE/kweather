@@ -41,7 +41,7 @@ Kirigami.ScrollablePage {
         anchors.fill: parent
         transform: Translate { y: yTranslate }
         opacity: mainItem.opacity
-
+        
         Repeater {
             id: forecastViewRepeater
             model: weatherLocationListModel
@@ -82,13 +82,8 @@ Kirigami.ScrollablePage {
         }
     }
     
-    // TODO figure out why pageindicator needs to be here in order for swipeview to display
-    PageIndicator {
-        anchors.horizontalCenter: parent.horizontalCenter
-        visible: forecastView.count > 1
-        count: forecastView.count
-        currentIndex: forecastView.currentIndex
-    }
+    // HACK: the swipeview being the only element causes some sort of freeze
+    Item {}
 }
 
 

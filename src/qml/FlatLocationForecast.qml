@@ -34,12 +34,14 @@ Kirigami.ScrollablePage {
     }
     Connections {
         target: weatherLocation
-        onStopLoadingIndicator: {page.refreshing = false}
+        function onStopLoadingIndicator() {
+            page.refreshing = false;
+        }
     }
 
     // all elements are in a column
     ColumnLayout {
-        spacing: Kirigami.Units.largeSpacing * 2
+        spacing: 0
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
@@ -76,22 +78,32 @@ Kirigami.ScrollablePage {
                 }
             }
         }
-
-        Kirigami.Separator {}
+        
+        PageIndicator {
+            visible: Kirigami.Settings.isMobile
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            Layout.alignment: Qt.AlignHCenter
+            opacity: forecastView.count > 1 ? 1 : 0
+            count: forecastView.count
+            currentIndex: forecastView.currentIndex
+        }
 
         // daily view
         Label {
             text: i18n("Daily")
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+            Layout.topMargin: Kirigami.Units.largeSpacing
         }
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
         }
         ListView {
             orientation: ListView.Horizontal
             id: dailyListView
 
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
             implicitHeight: Kirigami.Units.gridUnit * 8
             spacing: Kirigami.Units.largeSpacing
             clip: true
@@ -160,16 +172,19 @@ Kirigami.ScrollablePage {
 
         // hourly view
         Label {
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
             text: i18n("Hourly")
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
         }
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
         }
         ListView {
             id: weatherHourListView
             orientation: ListView.Horizontal
 
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
             implicitHeight: Kirigami.Units.gridUnit * 10.5
             implicitWidth: parent.width
             spacing: Kirigami.Units.largeSpacing * 3
@@ -221,11 +236,10 @@ Kirigami.ScrollablePage {
 
         }
 
-        Kirigami.Separator {}
-
         // bottom card (extra info for selected day)
         Kirigami.Card {
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
             contentItem: Item {
                 implicitHeight: column.height
@@ -331,6 +345,7 @@ Kirigami.ScrollablePage {
         // sunrise/sunset card
         Kirigami.Card {
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
             contentItem: Item {
                 implicitHeight: sunsetColumn.height
