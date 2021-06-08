@@ -12,11 +12,12 @@ Item {
     Plasmoid.backgroundHints: "ShadowBackground";
     Plasmoid.fullRepresentation: Rectangle {
         id: container
-        Layout.preferredWidth: 150
-        Layout.preferredHeight: 150
+        Layout.preferredWidth: Kirigami.Units.gridUnit * 12
+        Layout.preferredHeight: Kirigami.Units.gridUnit * 12
         clip: true
         color: Kirigami.Theme.backgroundColor
         radius: 8
+
         SwipeView {
             id: forecastView
             anchors.fill: parent
@@ -25,65 +26,75 @@ Item {
                 Loader {
                     visible: SwipeView.isCurrentItem
                     active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
-                    sourceComponent: ColumnLayout {
-                        RowLayout {
-                            Label {
-                                width: temperatureLabel.width
-                                text: locationName
-                                color: Kirigami.Theme.textColor
-                                leftPadding: Kirigami.Units.smallSpacing
-                                font.bold: true
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                            }
-                            Label {
-                                id: temperatureLabel
-                                text: temperature + "°"
-                                color: Kirigami.Theme.activeTextColor
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
-                            }
-                        }
-                        Row {
-                            spacing: Kirigami.Units.largeSpacing
-                            Label {
-                                text: date
-                                color: Kirigami.Theme.disabledTextColor
-                                leftPadding: Kirigami.Units.smallSpacing
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
-                            }
-                            Kirigami.Icon {
-                                source: icon
+                    sourceComponent: Item {
+                        MouseArea {
+                            anchors.fill: parent
+                            onDoubleClicked: {
+                                window.showMaximized()
                             }
                         }
 
-                        Label {
-                            text: description
-                            color: Kirigami.Theme.textColor
-                            leftPadding: Kirigami.Units.smallSpacing
-                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
-                        }
-                        Row {
-                            Kirigami.Icon {
-                                source: "speedometer"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
+                        ColumnLayout {
+                            anchors.fill: parent
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: locationName
+                                    color: Kirigami.Theme.textColor
+                                    leftPadding: Kirigami.Units.smallSpacing
+                                    font.bold: true
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
+                                Label {
+                                    id: temperatureLabel
+                                    text: temperature + "°"
+                                    color: Kirigami.Theme.activeTextColor
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
                             }
-                            Label {
-                                text: i18n("%1%", humidity)
-                                color: Kirigami.Theme.textColor
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                            Row {
+                                spacing: Kirigami.Units.largeSpacing
+                                Label {
+                                    text: date
+                                    color: Kirigami.Theme.disabledTextColor
+                                    leftPadding: Kirigami.Units.smallSpacing
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
+                                Kirigami.Icon {
+                                    source: icon
+                                }
                             }
-                        }
 
-                        RowLayout {
-                            visible: precipitation > 0.01
-                            Kirigami.Icon {
-                                source: "raindrop"
-                                Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-                                Layout.preferredWidth: Kirigami.Units.iconSizes.medium
-                            }
                             Label {
-                                text: i18n("%1mm", precipitation.toFixed(1))
+                                text: description
+                                color: Kirigami.Theme.textColor
+                                leftPadding: Kirigami.Units.smallSpacing
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                            }
+                            Row {
+                                Kirigami.Icon {
+                                    source: "speedometer"
+                                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                                }
+                                Label {
+                                    text: i18n("%1%", humidity)
+                                    color: Kirigami.Theme.textColor
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
+                            }
+
+                            RowLayout {
+                                visible: precipitation > 0.01
+                                Kirigami.Icon {
+                                    source: "raindrop"
+                                    Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                                    Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                                }
+                                Label {
+                                    text: i18n("%1mm", precipitation.toFixed(1))
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                                }
                             }
                         }
                     }
@@ -97,5 +108,20 @@ Item {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
         }
+    }
+    Kirigami.AbstractApplicationWindow {
+        id: window
+        visible: false
+        height: 100
+        width: 500
+        flags: Qt.FramelessWindowHint
+        modality: Qt.WindowModal
+        color: "transparent"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: window.close()
+        }
+
+        // TODO: content here
     }
 }
