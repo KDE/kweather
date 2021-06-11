@@ -30,6 +30,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onDoubleClicked: {
+                                plasmoid.nativeInterface.setDetailed(SwipeView.currentIndex)
                                 window.showMaximized()
                             }
                         }
@@ -112,8 +113,6 @@ Item {
     Kirigami.AbstractApplicationWindow {
         id: window
         visible: false
-        height: 100
-        width: 500
         flags: Qt.FramelessWindowHint
         modality: Qt.WindowModal
         color: "transparent"
@@ -123,5 +122,60 @@ Item {
         }
 
         // TODO: content here
+        Loader {
+            active: window.visible
+            anchors.fill: parent
+            sourceComponent: Item {
+                anchors.fill: parent
+                RowLayout {
+                    RowLayout {
+                        Layout.alignment: Qt.AlignHCenter
+                        Kirigami.Icon {
+                            source:
+                            Layout.preferredHeight: width
+                            Layout.preferredWidth: page.width * 0.8 - headerText.width
+                            Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
+                            Layout.maximumWidth: Kirigami.Theme.defaultFont.pointSize * 15
+                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 5
+                            Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 5
+                            smooth: true
+                        }
+
+                        // weather header
+                        ColumnLayout {
+                            id: headerText
+                            Label {
+                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
+                                font.weight: Font.Light
+                                font.family: lightHeadingFont.name
+                                text:
+                            }
+                            Label {
+                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                                font.weight: Font.Bold
+                                text:
+                            }
+                            Label {
+                                color: Kirigami.Theme.disabledTextColor
+                                Layout.topMargin: Kirigami.Units.largeSpacing
+                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
+                                text: i18n("Updated at %1", )
+                            }
+                        }
+                    }
+                    ListView {
+                        height: Kirigami.Units.gridUnit * 20
+                        width: Kirigami.Units.gridUnit * 5
+                        model: plasmoid.nativeInterface.hourlyModel
+                        delegate: Kirigami.BasicListItem {
+                            label: time
+                            subtitle: temperature + "°"
+                            icon: weatherIcon
+                            backgroundColor: Kirigami.Theme.backgroundColor
+                        }
+                    }
+                }
+            }
+        }
     }
 }
