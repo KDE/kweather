@@ -17,8 +17,13 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;
     virtual int rowCount(const QModelIndex &index) const override;
     virtual QHash<int, QByteArray> roleNames() const override;
+    const QString &getLocation(int index) const;
 private Q_SLOTS:
     void update();
+
+protected:
+    friend class KWeather_1x4;
+    QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> getData(int index) const;
 private:
     class Location;
 

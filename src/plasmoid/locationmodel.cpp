@@ -133,5 +133,16 @@ int LocationModel::rowCount(const QModelIndex &index) const
     Q_UNUSED(index)
     return m_locations.size();
 }
+QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> LocationModel::getData(int index) const
+{
+    if (index >= 0 && index < (int)m_locations.size())
+        return m_locations.at(index)->forecast;
+    else
+        return {};
+}
+const QString &LocationModel::getLocation(int index) const
+{
+    return m_locations.at(index)->name;
+}
 Q_DECLARE_INTERFACE(LocationModel, "org.kde.LocationModel")
 #include "locationmodel.moc"

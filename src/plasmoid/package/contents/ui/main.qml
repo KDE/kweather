@@ -30,7 +30,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onDoubleClicked: {
-                                plasmoid.nativeInterface.setDetailed(SwipeView.currentIndex)
+                                plasmoid.nativeInterface.setDetailed(forecastView.currentIndex)
                                 window.showMaximized()
                             }
                         }
@@ -126,52 +126,59 @@ Item {
             active: window.visible
             anchors.fill: parent
             sourceComponent: Item {
+                id: detailedItem
                 anchors.fill: parent
-                RowLayout {
+                Rectangle {
+                    width: Kirigami.Units.gridUnit * 20
+                    height: Kirigami.Units.gridUnit * 21
+                    radius: Kirigami.Units.gridUnit
+                    anchors.centerIn: parent
                     RowLayout {
-                        Layout.alignment: Qt.AlignHCenter
-                        Kirigami.Icon {
-                            source:
-                            Layout.preferredHeight: width
-                            Layout.preferredWidth: page.width * 0.8 - headerText.width
-                            Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
-                            Layout.maximumWidth: Kirigami.Theme.defaultFont.pointSize * 15
-                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 5
-                            Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 5
-                            smooth: true
+                        anchors.fill: parent
+                        RowLayout {
+                            Layout.alignment: Qt.AlignHCenter
+                            ColumnLayout {
+                                Label {
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                                    font.weight: Font.Light
+                                    text: plasmoid.nativeInterface.hourlyModel.location
+                                }
+                                Kirigami.Icon {
+                                    source: plasmoid.nativeInterface.hourlyModel.currentIcon
+                                    Layout.preferredHeight: width
+                                    Layout.preferredWidth: detailedItem.width * 0.8 - headerText.width
+                                    Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
+                                    Layout.maximumWidth: Kirigami.Theme.defaultFont.pointSize * 15
+                                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 5
+                                    Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 5
+                                    smooth: true
+                                }
+                            }
+                            // weather header
+                            ColumnLayout {
+                                id: headerText
+                                Label {
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
+                                    font.weight: Font.Light
+                                    text: plasmoid.nativeInterface.hourlyModel.currentTemperature
+                                }
+                                Label {
+                                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                                    font.weight: Font.Bold
+                                    text: plasmoid.nativeInterface.hourlyModel.currentDescription
+                                }
+                            }
                         }
-
-                        // weather header
-                        ColumnLayout {
-                            id: headerText
-                            Label {
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
-                                font.weight: Font.Light
-                                font.family: lightHeadingFont.name
-                                text:
+                        ListView {
+                            Layout.preferredHeight: Kirigami.Units.gridUnit * 16
+                            Layout.preferredWidth: Kirigami.Units.gridUnit * 5
+                            model: plasmoid.nativeInterface.hourlyModel
+                            delegate: Kirigami.BasicListItem {
+                                label: time
+                                subtitle: temperature + "°"
+                                icon: weatherIcon
+                                //backgroundColor: Kirigami.Theme.backgroundColor
                             }
-                            Label {
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                font.weight: Font.Bold
-                                text:
-                            }
-                            Label {
-                                color: Kirigami.Theme.disabledTextColor
-                                Layout.topMargin: Kirigami.Units.largeSpacing
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                                text: i18n("Updated at %1", )
-                            }
-                        }
-                    }
-                    ListView {
-                        height: Kirigami.Units.gridUnit * 20
-                        width: Kirigami.Units.gridUnit * 5
-                        model: plasmoid.nativeInterface.hourlyModel
-                        delegate: Kirigami.BasicListItem {
-                            label: time
-                            subtitle: temperature + "°"
-                            icon: weatherIcon
-                            backgroundColor: Kirigami.Theme.backgroundColor
                         }
                     }
                 }
