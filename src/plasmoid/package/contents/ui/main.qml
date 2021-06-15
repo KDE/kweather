@@ -139,6 +139,7 @@ Item {
                             Layout.alignment: Qt.AlignHCenter
                             ColumnLayout {
                                 Label {
+                                    Layout.alignment: Qt.AlignHCenter
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                                     font.weight: Font.Light
                                     text: plasmoid.nativeInterface.hourlyModel.location
@@ -153,6 +154,11 @@ Item {
                                     Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 5
                                     smooth: true
                                 }
+                                Button {
+                                    Layout.alignment: Qt.AlignHCenter
+                                    text: i18n("Open KWeather")
+                                    onClicked: plasmoid.nativeInterface.hourlyModel.openKWeather()
+                                }
                             }
                             // weather header
                             ColumnLayout {
@@ -160,7 +166,7 @@ Item {
                                 Label {
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                                     font.weight: Font.Light
-                                    text: plasmoid.nativeInterface.hourlyModel.currentTemperature
+                                    text: plasmoid.nativeInterface.hourlyModel.currentTemperature + "°"
                                 }
                                 Label {
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3

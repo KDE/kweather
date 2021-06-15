@@ -4,6 +4,7 @@
 */
 #include "hourlymodel.h"
 #include "locationmodel.h"
+#include <QProcess>
 QVariant HourlyModel::data(const QModelIndex &index, int role) const
 {
     if (!m_location || index.row() < 0 || index.row() >= rowCount(QModelIndex()))
@@ -77,4 +78,9 @@ const QString &HourlyModel::currentDescription() const
 QString HourlyModel::currentTemperature() const
 {
     return QString::number(getNthHour(0).temperature());
+}
+void HourlyModel::openKWeather()
+{
+    auto m_process = new QProcess(this);
+    m_process->start(QStringLiteral("kweather"), QStringList());
 }

@@ -25,6 +25,7 @@ public:
     const QString &currentIcon() const;
     QString currentTemperature() const;
     const QString &currentDescription() const;
+    Q_INVOKABLE void openKWeather();
 Q_SIGNALS:
     void reseted();
 protected:
