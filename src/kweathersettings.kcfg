@@ -27,10 +27,6 @@
       <label>Speed Unit</label>
       <default>kph</default>
     </entry>
-    <entry name="OWMToken" type="String">
-      <label>OpenWeatherMap API token</label>
-      <default></default>
-    </entry>
     <entry name="defaultBackend" type="String">
       <label>Default Backend</label>
       <default>nmiweatherapi</default>

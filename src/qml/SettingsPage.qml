@@ -21,6 +21,8 @@ Kirigami.ScrollablePage {
     leftPadding: 0
     rightPadding: 0
     Kirigami.ColumnView.fillWidth: false
+    Kirigami.Theme.inherit: false
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     ColumnLayout {
         transform: Translate { y: yTranslate }
@@ -49,6 +51,9 @@ Kirigami.ScrollablePage {
         
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+            opacity: 0.8
         }
         
         ItemDelegate {
@@ -74,6 +79,9 @@ Kirigami.ScrollablePage {
 
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+            opacity: 0.8
         }
 
         ItemDelegate {
@@ -99,32 +107,9 @@ Kirigami.ScrollablePage {
 
         Kirigami.Separator {
             Layout.fillWidth: true
-        }
-
-
-        ItemDelegate {
-            Layout.fillWidth: true
-            implicitHeight: Kirigami.Units.gridUnit * 3
-            onClicked: apiToken.open()
-
-            ColumnLayout {
-                spacing: -5
-                anchors.leftMargin: Kirigami.Units.gridUnit
-                anchors.rightMargin: Kirigami.Units.gridUnit
-                anchors.fill: parent
-
-                Label {
-                    text: i18n("API Token")
-                    font.weight: Font.Bold
-                }
-                Label {
-                    text: settingsModel.OWMToken == undefined || settingsModel.OWMToken.length == 0 ? i18n("Not Set") : i18n("Added")
-                }
-            }
-        }
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+            opacity: 0.8
         }
 
         ItemDelegate {
@@ -145,37 +130,36 @@ Kirigami.ScrollablePage {
 
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+            opacity: 0.8
         }
         
         // forecast style sheet
-        Kirigami.OverlaySheet {
+        PopupDialog {
             id: forecastStyle
-            parent: applicationWindow().overlay
+            standardButtons: Dialog.Close
+            title: i18n("Forecast Style")
             
-            header: Kirigami.Heading {
-                text: i18n("Forecast Style")
-            }
-            
-            footer: RowLayout {
-                Button {
-                    text: i18n("Close")
-                    Layout.alignment: Qt.AlignRight
-                    onClicked: forecastStyle.close()
-                }
-            }
-            
-            ListView {
-                Layout.leftMargin: Kirigami.Units.gridUnit
-                Layout.preferredWidth: settingsRoot.width - Kirigami.Units.gridUnit * 8
-                model: [i18n("Flat"), i18n("Dynamic")]
-                delegate: RadioDelegate {
-                    width: parent.width
-                    text: modelData
-                    checked: settingsModel.forecastStyle == modelData
-                    onCheckedChanged: {
-                        if (checked) {
-                            settingsModel.forecastStyle = modelData;
-                            settingsModel.save();
+            ColumnLayout {
+                Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                spacing: 0
+                
+                Repeater {
+                    model: [i18n("Flat"), i18n("Dynamic")]
+                    delegate: RadioDelegate {
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        
+                        text: modelData
+                        checked: settingsModel.forecastStyle == modelData
+                        onCheckedChanged: {
+                            if (checked) {
+                                settingsModel.forecastStyle = modelData;
+                                settingsModel.save();
+                            }
                         }
                     }
                 }
@@ -183,24 +167,26 @@ Kirigami.ScrollablePage {
         }
         
         // temperature unit dialog
-        Dialog {
+        PopupDialog {
             id: temperatureUnits
-            modal: true
-            focus: true
-            anchors.centerIn: Overlay.overlay
-            width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
-            height: Kirigami.Units.gridUnit * 20
-            title: i18n("Temperature Units")
             standardButtons: Dialog.Close
+            title: i18n("Temperature Units")
 
             onAccepted: weatherLocationListModel.updateUi();
             onRejected: weatherLocationListModel.updateUi();
 
-            contentItem: ScrollView {
-                ListView {
+            ColumnLayout {
+                Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                spacing: 0
+                
+                Repeater {
                     model: [i18n("Celsius"), i18n("Fahrenheit")]
                     delegate: RadioDelegate {
-                        width: parent.width
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        
                         text: modelData
                         checked: settingsModel.temperatureUnits == modelData
                         onCheckedChanged: {
@@ -211,30 +197,30 @@ Kirigami.ScrollablePage {
                         }
                     }
                 }
-                Component.onCompleted: background.visible = true
-                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
             }
         }
 
         // speed unit dialog
-        Dialog {
+        PopupDialog {
             id: speedUnits
-            modal: true
-            focus: true
-            anchors.centerIn: Overlay.overlay
-            width: Math.min(parent.width - Kirigami.Units.gridUnit * 4, Kirigami.Units.gridUnit * 20)
-            height: Kirigami.Units.gridUnit * 20
             title: i18n("Speed Units")
             standardButtons: Dialog.Close
 
             onAccepted: weatherLocationListModel.updateUi();
             onRejected: weatherLocationListModel.updateUi();
 
-            contentItem: ScrollView {
-                ListView {
+            ColumnLayout {
+                Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                spacing: 0
+                
+                Repeater {
                     model: [i18nc("kilometers per hour", "kph"), i18nc("miles per hour", "mph")]
                     delegate: RadioDelegate {
-                        width: parent.width
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        
                         text: modelData
                         checked: settingsModel.speedUnits == modelData
                         onCheckedChanged: {
@@ -245,53 +231,7 @@ Kirigami.ScrollablePage {
                         }
                     }
                 }
-                Component.onCompleted: background.visible = true
-                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
             }
         }
-
-        // API Token dialog
-        Dialog {
-            id: apiToken
-            modal: true
-            focus: true
-            anchors.centerIn: Overlay.overlay
-            width: Math.min(parent.width * 0.8, Kirigami.Units.gridUnit * 20)
-            height: Kirigami.Units.gridUnit * 12
-            title: i18n("OpenWeatherMap API Token")
-            standardButtons: Dialog.Close | Dialog.Save
-
-            onAccepted: {
-                settingsModel.OWMToken = textField.text
-                settingsModel.save()
-            }
-
-            contentItem: ColumnLayout {
-                width: apiToken.width - apiToken.leftPadding * 2
-                spacing: Kirigami.Units.smallSpacing
-                Label {
-                    Layout.preferredWidth: parent.width
-                    wrapMode: Text.WrapAnywhere
-                    color: Kirigami.Theme.disabledTextColor
-                    text: i18n("Add your own OpenWeatherMap API token.")
-                }
-                Label {
-                    Layout.preferredWidth: parent.width
-                    wrapMode: Text.WrapAnywhere
-                    color: Kirigami.Theme.disabledTextColor
-                    text: i18n("Token added is stored as PLAIN TEXT in system.")
-                }
-                Kirigami.Separator {}
-                TextField {
-                    id: textField
-                    Layout.preferredWidth: parent.width
-                    wrapMode: Text.WrapAnywhere
-                    placeholderText: settingsModel.OWMToken == undefined || settingsModel.OWMToken.length == 0 ? i18n("Add your API token here... ") : settingsModel.OWMToken
-                    anchors.top: parent.Top
-                }
-                Kirigami.Separator {}
-            }
-            Component.onCompleted: background.visible = true
-        }
-    }    
+    }
 }
