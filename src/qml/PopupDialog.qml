@@ -1,3 +1,9 @@
+/*
+    SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
+
+    SPDX-License-Identifier: LGPL-2.0-or-later
+*/
+
 import QtQuick 2.15
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.15 as Controls
