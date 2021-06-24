@@ -133,6 +133,10 @@ public:
 
     const QVariantList &maxTempList();
     const QVariantList &xAxisList();
+
+    // for restore order of locations
+    void saveOrder(int index);
+    int index();
 public slots:
     void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts);
 

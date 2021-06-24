@@ -70,6 +70,23 @@ void WeatherLocation::save()
     config.writeEntry("timezone", m_timeZone);
     config.sync();
 }
+
+void WeatherLocation::saveOrder(int index)
+{
+    auto config = KWeatherSettings(this).sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
+    config.writeEntry("index", index);
+    config.sync();
+}
+int WeatherLocation::index()
+{
+    auto config = KWeatherSettings(this).sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
+    auto res = config.readEntry("index");
+    if (res.isEmpty()) {
+        return -1;
+    } else {
+        return res.toInt();
+    }
+}
 void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
 {
     m_forecast = forecasts;

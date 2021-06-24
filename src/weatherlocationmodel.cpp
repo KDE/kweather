@@ -31,6 +31,26 @@ void WeatherLocationListModel::load()
         if (location_ptr)
             m_locations.push_back(location_ptr);
     }
+
+    auto i {0};
+    for (auto loc : m_locations) {
+        auto index = loc->index();
+        while (index != i) {
+            if (index != -1) {
+                if (index >= (int)m_locations.size()) {
+                    qDebug() << "invalid index, please delete config(~/.config/kweather/kweather.conf)";
+                    abort();
+                } else {
+                    std::swap(m_locations[i], m_locations[index]);
+                    index = m_locations[i]->index();
+                }
+            } else {
+                loc->saveOrder(i);
+                index = i;
+            }
+        }
+        i++;
+    }
 }
 
 void WeatherLocationListModel::save()
@@ -119,6 +139,12 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
     std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
     endMoveRows();
+
+    auto i {0};
+    for (auto loc : m_locations) {
+        loc->saveOrder(i);
+        i++;
+    }
 }
 int WeatherLocationListModel::count() const
 {
