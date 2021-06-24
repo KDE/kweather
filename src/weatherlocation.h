@@ -137,6 +137,7 @@ public:
     // for restore order of locations
     void saveOrder(int index);
     int index();
+    void deleteConfig();
 public slots:
     void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts);
 

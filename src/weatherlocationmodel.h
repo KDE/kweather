@@ -24,7 +24,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     void load();
-    void save();
+    void saveOrder();
     Q_INVOKABLE void updateUi();
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);

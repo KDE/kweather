@@ -87,6 +87,12 @@ int WeatherLocation::index()
         return res.toInt();
     }
 }
+void WeatherLocation::deleteConfig()
+{
+    auto config = KWeatherSettings(this).sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
+    config.deleteGroup(locationId());
+    config.sync();
+}
 void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
 {
     m_forecast = forecasts;
