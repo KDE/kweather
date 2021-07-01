@@ -7,35 +7,43 @@
 #define KWEATHER_1X4_H
 #include <KWeatherCore/WeatherForecast>
 #include <Plasma/Applet>
-#include <QAbstractListModel>
-#include <vector>
-namespace KWeatherCore
-{
-class PendingWeatherForecast;
-}
-class QTimer;
-class LocationModel;
-class HourlyModel;
 class KWeather_1x4 : public Plasma::Applet
 {
     Q_OBJECT
-    Q_PROPERTY(LocationModel *locationModel READ locationModel NOTIFY locationModelChanged)
-    Q_PROPERTY(HourlyModel *hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
+    Q_PROPERTY(bool needLocation READ needLocation NOTIFY needLocationChanged)
+    Q_PROPERTY(QString location READ location NOTIFY locationChanged)
+    Q_PROPERTY(qreal temp READ temp NOTIFY updated)
+    Q_PROPERTY(QString desc READ desc NOTIFY updated)
+    Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY updated)
+    Q_PROPERTY(qreal humidity READ humidity NOTIFY updated)
+    Q_PROPERTY(qreal precipitation READ precipitation NOTIFY updated)
 public:
     KWeather_1x4(QObject *parent, const QVariantList &args);
-    LocationModel *locationModel() {
-        return m_locationModel;
+    QString location() const;
+    QString desc() const;
+    qreal temp() const;
+    QString weatherIcon() const;
+    qreal humidity() const;
+    qreal precipitation() const;
+    bool needLocation() const {
+        return m_needLocation;
     }
-    HourlyModel *hourlyModel() {
-        return m_hourlyModel;
-    }
-    Q_INVOKABLE void setDetailed(int index);
+
+    Q_INVOKABLE QStringList locationsInSystem();
+    Q_INVOKABLE void setLocation(const QString &location);
 signals:
-    void locationModelChanged();
-    void hourlyModelChanged();
+    void locationChanged();
+    void updated();
+    void needLocationChanged();
 private:
-    LocationModel *m_locationModel = nullptr;
-    HourlyModel *m_hourlyModel = nullptr;
+    void update();
+    bool hasForecast() const;
+    const KWeatherCore::HourlyWeatherForecast &getFirst() const;
+
+    bool m_needLocation = true;
+    QString m_location;
+    double m_latitude, m_longitude;
+    QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> m_forecast;
 };
 
 #endif
