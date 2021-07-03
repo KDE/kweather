@@ -38,11 +38,10 @@ QHash<int, QByteArray> HourlyModel::roleNames() const
     return {{Time, "time"}, {Icon, "weatherIcon"}, {Description, "description"},
         {Temperature, "temperature"}, {Precipitation, "precipitation"}};
 }
-void HourlyModel::loadForecast(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast, int index)
+void HourlyModel::loadForecast(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast)
 {
     beginResetModel();
     m_location = forecast;
-    m_index = index;
     endResetModel();
     Q_EMIT reseted();
 }
@@ -63,10 +62,6 @@ const KWeatherCore::HourlyWeatherForecast &HourlyModel::getNthHour(int index) co
     return m_location->dailyWeatherForecast().at(dayIndex).hourlyWeatherForecast().at(hourIndex);
 }
 
-const QString &HourlyModel::location() const
-{
-    return m_locationModel->getLocation(m_index);
-}
 const QString &HourlyModel::currentIcon() const
 {
     return getNthHour(0).weatherIcon();
