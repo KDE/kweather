@@ -1,3 +1,7 @@
+/*
+    SPDX-FileCopyrightText: 2021 HanY <hanyoung@protonmail.com>
+    SPDX-License-Identifier: LGPL-2.1-or-later
+*/
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.4
