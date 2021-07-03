@@ -7,6 +7,7 @@
 #define KWEATHER_1X4_H
 #include <KWeatherCore/WeatherForecast>
 #include <Plasma/Applet>
+class HourlyModel;
 class KWeather_1x4 : public Plasma::Applet
 {
     Q_OBJECT
@@ -17,6 +18,7 @@ class KWeather_1x4 : public Plasma::Applet
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY updated)
     Q_PROPERTY(qreal humidity READ humidity NOTIFY updated)
     Q_PROPERTY(qreal precipitation READ precipitation NOTIFY updated)
+    Q_PROPERTY(HourlyModel* hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
 public:
     KWeather_1x4(QObject *parent, const QVariantList &args);
     QString location() const;
@@ -28,6 +30,9 @@ public:
     bool needLocation() const {
         return m_needLocation;
     }
+    HourlyModel *hourlyModel() const {
+        return m_hourlyModel;
+    }
 
     Q_INVOKABLE QStringList locationsInSystem();
     Q_INVOKABLE void setLocation(const QString &location);
@@ -35,6 +40,7 @@ signals:
     void locationChanged();
     void updated();
     void needLocationChanged();
+    void hourlyModelChanged();
 private:
     void update();
     bool hasForecast() const;
@@ -44,6 +50,8 @@ private:
     QString m_location;
     double m_latitude, m_longitude;
     QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> m_forecast;
+
+    HourlyModel *m_hourlyModel;
 };
 
 #endif

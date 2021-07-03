@@ -4,6 +4,7 @@ import QtQuick.Controls 2.4
 import org.kde.plasma.plasmoid 2.0
 import org.kde.kirigami 2.11 as Kirigami
 Rectangle {
+    signal selected()
     id: container
     Layout.preferredWidth: Kirigami.Units.gridUnit * 12
     Layout.preferredHeight: Kirigami.Units.gridUnit * 12
@@ -16,7 +17,10 @@ Rectangle {
         model: plasmoid.nativeInterface.locationsInSystem()
         delegate: Kirigami.BasicListItem {
             text: modelData
-            onClicked: plasmoid.nativeInterface.setLocation(modelData)
+            onClicked: {
+                selected()
+                plasmoid.nativeInterface.setLocation(modelData)
+            }
         }
         Label {
             anchors.bottom: parent.bottom

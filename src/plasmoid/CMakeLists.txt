@@ -9,7 +9,6 @@ add_definitions(-DTRANSLATION_DOMAIN=\"plasma_applet_org.kde.plasma.kweather_1x4
 
 set(kweather_1x4_SRCS
     kweather_1x4.cpp
-    locationmodel.cpp
     hourlymodel.cpp
 )
 add_library(plasma_applet_kweather_1x4 MODULE ${kweather_1x4_SRCS})

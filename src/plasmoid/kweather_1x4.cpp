@@ -2,14 +2,17 @@
     SPDX-FileCopyrightText: 2020 HanY <hanyoung@protonmail.com>
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
-
+#include <QQmlApplicationEngine>
 #include "kweather_1x4.h"
 #include "kweathersettings.h"
+#include "hourlymodel.h"
 #include <KWeatherCore/WeatherForecastSource>
 #include <KSharedConfig>
 KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
     : Plasma::Applet(parent, args)
+    , m_hourlyModel(new HourlyModel())
 {
+    qmlRegisterAnonymousType<HourlyModel>("HourlyModel", 1);
     auto config = KSharedConfig::openConfig(QStringLiteral("kweather/plasmoid"));
     auto group = config->group("general");
     QString locationID = group.readEntry("locationID");
@@ -30,11 +33,13 @@ void KWeather_1x4::update()
     if (pendingForecast->isFinished()) {
         m_forecast = pendingForecast->value();
         pendingForecast->deleteLater();
+        m_hourlyModel->loadForecast(m_forecast);
         Q_EMIT updated();
     } else {
         connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
             m_forecast = pendingForecast->value();
             pendingForecast->deleteLater();
+            m_hourlyModel->loadForecast(m_forecast);
             Q_EMIT updated();
         });
     }
@@ -65,6 +70,7 @@ void KWeather_1x4::setLocation(const QString &location)
             update();
             m_needLocation = false;
             Q_EMIT needLocationChanged();
+            Q_EMIT locationChanged();
 
             group.sync();
             break;
