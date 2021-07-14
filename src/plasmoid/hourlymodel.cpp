@@ -3,7 +3,6 @@
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 #include "hourlymodel.h"
-#include "locationmodel.h"
 #include <QProcess>
 QVariant HourlyModel::data(const QModelIndex &index, int role) const
 {
