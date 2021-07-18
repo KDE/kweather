@@ -241,6 +241,17 @@
   <url type="homepage">https://invent.kde.org/plasma-mobile/kweather</url>
   <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
   <releases>
+    <release version="21.07" date="2021-07-20">
+      <description>
+        <p>Changes:</p>
+        <ul>
+          <li>Rewrote the weather plasmoid</li>
+          <li>Use inline page indicator for flat mode forecasts</li>
+          <li>Fix location ordering not persisting</li>
+        </ul>
+      </description>
+      <url>https://www.plasma-mobile.org/2021/07/20/plasma-mobile-gear-21-07/</url>
+    </release>
     <release version="21.06" date="2021-06-10">
       <description>
         <p>Changes:</p>
