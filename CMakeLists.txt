@@ -49,13 +49,14 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Kirigami2
     I18n
     CoreAddons
-    Notifications
     QuickCharts
 )
 find_package(KF5 0.3.0 REQUIRED COMPONENTS KWeatherCore)
 
 if (ANDROID)
    find_package(OpenSSL REQUIRED)
+else ()
+    find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 endif()
 
 if (NOT ANDROID AND BUILD_PLASMOID)

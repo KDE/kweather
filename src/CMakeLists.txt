@@ -28,11 +28,9 @@ add_executable(kweather ${kweather_SRCS})
 target_link_libraries(kweather
     Qt5::Qml
     Qt5::QuickControls2
-    Qt5::Widgets
     Qt5::Network
     KF5::I18n
     KF5::CoreAddons
-    KF5::Notifications
     KF5::QuickCharts
     KF5::KWeatherCore
     kweatherLib
@@ -94,6 +92,8 @@ if (ANDROID)
         weather-storm-day
         weather-storm-night
     )
+else()
+    target_link_libraries(kweather Qt5::Widgets)
 endif()
 
 if (UNIX AND (NOT ANDROID))
