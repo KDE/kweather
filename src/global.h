@@ -13,14 +13,20 @@
 namespace Kweather
 {
 static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
-static QString tempConverter(double temp)
+
+static double convertTemp(double temp)
 {
     if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
-        return QString::number(qRound(temp * 1.8 + 32)) + "°";
+        return temp * 1.8 + 32;
     } else {
-        return QString::number(qRound(temp)) + "°";
+        return temp;
     }
 };
+
+static QString tempConverter(double temp) {
+    return QString::number(qRound(convertTemp(temp))) +  "°";
+}
+
 enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
 enum class Backend { NMI, OWM };
 struct ResolvedWeatherDesc {

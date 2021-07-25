@@ -205,7 +205,8 @@ void WeatherLocation::updateChart()
     m_maxTempList.clear();
     m_xAxisList.clear();
     for (const auto &day : m_forecast->dailyWeatherForecast()) {
-        m_maxTempList.append(day.maxTemp());
+        const auto tempToUse = Kweather::convertTemp(day.maxTemp());
+        m_maxTempList.append(tempToUse);
         m_xAxisList.append(QLocale::system().toString(day.date(), QStringLiteral("ddd")));
     }
 
