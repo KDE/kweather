@@ -64,3 +64,4 @@ Icon=kweather
 Type=Application
 Terminal=false
 Categories=Qt;KDE;Utility;
+X-KDE-FormFactor=Workstation;Mobile;
