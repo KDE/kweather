@@ -58,6 +58,7 @@ Comment[sl]=Konvergentna aplikacija za vreme za Plasmo.
 Comment[sv]=Ett konvergent väderprogram för Plasma.
 Comment[uk]=Зручна програма для показу прогнозів погоди для Плазми.
 Comment[x-test]=xxA convergent weather application for Plasma.xx
+Comment[zh_CN]=一个为 Plasma 打造的聚合天气应用。
 Exec=kweather
 Icon=kweather
 Type=Application
