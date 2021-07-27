@@ -62,6 +62,7 @@
   <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
   <summary xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми.</summary>
   <summary xml:lang="x-test">xxA convergent weather application for Plasma.xx</summary>
+  <summary xml:lang="zh-CN">一个为 Plasma 打造的聚合天气应用。</summary>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="az">KDE İcması</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
@@ -120,6 +121,7 @@
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
+    <p xml:lang="zh-CN">一个为 Plasma 打造的聚合天气应用，可通过扁平化视图和动态 (动画) 视图来展示天气预报及其它信息。</p>
   </description>
   <screenshots>
     <screenshot type="default">
@@ -147,6 +149,7 @@
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
+      <caption xml:lang="zh-CN">移动端动态视图</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
     </screenshot>
     <screenshot>
@@ -174,6 +177,7 @@
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
       <caption xml:lang="x-test">xxDesktop dynamic viewxx</caption>
+      <caption xml:lang="zh-CN">桌面端动态视图</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
     </screenshot>
     <screenshot>
@@ -201,6 +205,7 @@
       <caption xml:lang="sv">Mobil enkel vy</caption>
       <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile flat viewxx</caption>
+      <caption xml:lang="zh-CN">移动端扁平化视图</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
     </screenshot>
     <screenshot>
@@ -228,6 +233,7 @@
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
+      <caption xml:lang="zh-CN">移动端动态视图</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
   </screenshots>
