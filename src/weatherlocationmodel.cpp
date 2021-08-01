@@ -152,7 +152,7 @@ int WeatherLocationListModel::count() const
 void WeatherLocationListModel::addLocation(const KWeatherCore::LocationQueryResult &ret)
 {
     qDebug() << "add location";
-    auto locId = ret.geonameId(), locName = ret.toponymName();
+    const auto &locId = ret.geonameId(), &locName = ret.toponymName();
     auto lat = ret.latitude(), lon = ret.longitude();
 
     // add location
@@ -176,7 +176,7 @@ void WeatherLocationListModel::requestCurrentLocation()
     connect(geoPtr, &KWeatherCore::LocationQuery::located, this, &WeatherLocationListModel::addCurrentLocation);
 }
 
-void WeatherLocationListModel::addCurrentLocation(KWeatherCore::LocationQueryResult ret)
+void WeatherLocationListModel::addCurrentLocation(const KWeatherCore::LocationQueryResult &ret)
 {
     auto location = new WeatherLocation(ret.geonameId(), ret.toponymName(), QString(), ret.latitude(), ret.longitude());
     location->update();

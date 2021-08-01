@@ -40,7 +40,7 @@ QHash<int, QByteArray> HourlyModel::roleNames() const
 void HourlyModel::loadForecast(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast)
 {
     beginResetModel();
-    m_location = forecast;
+    m_location = std::move(forecast);
     endResetModel();
     Q_EMIT reseted();
 }

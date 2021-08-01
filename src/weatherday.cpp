@@ -18,7 +18,7 @@ WeatherDay::WeatherDay(WeatherDayListModel *parent)
 WeatherDay::WeatherDay(SharedForecastPtr ptr, int day, WeatherDayListModel *parent)
     : QObject(parent)
     , m_day(day)
-    , m_forecast(ptr)
+    , m_forecast(std::move(ptr))
 {
     if (parent)
         connect(parent, &WeatherDayListModel::weatherRefresh, this, &WeatherDay::refreshDaysFromForecasts);
@@ -47,7 +47,7 @@ void WeatherDay::determineSunrise()
 }
 void WeatherDay::refreshDaysFromForecasts(SharedForecastPtr ptr)
 {
-    m_forecast = ptr;
+    m_forecast = std::move(ptr);
     determineSunrise();
     Q_EMIT propertyChanged();
 }

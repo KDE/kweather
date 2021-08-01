@@ -46,7 +46,7 @@ protected:
         return m_locations;
     }
 private Q_SLOTS:
-    void addCurrentLocation(KWeatherCore::LocationQueryResult ret);
+    void addCurrentLocation(const KWeatherCore::LocationQueryResult &ret);
 
 private:
     std::vector<WeatherLocation *> m_locations;

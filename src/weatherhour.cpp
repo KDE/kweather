@@ -18,14 +18,14 @@ WeatherHour::WeatherHour(WeatherHourListModel *parent)
 
 WeatherHour::WeatherHour(SharedForecastPtr ptr, int day, int hour, WeatherHourListModel *parent)
     : QObject(parent)
-    , m_forecast(ptr)
+    , m_forecast(std::move(ptr))
     , m_day(day)
     , m_hour(hour)
 {
 }
 void WeatherHour::refreshHoursFromForecasts(SharedForecastPtr ptr)
 {
-    m_forecast = ptr;
+    m_forecast = std::move(ptr);
     Q_EMIT propertyChanged();
 }
 QString WeatherHour::windSpeed() const

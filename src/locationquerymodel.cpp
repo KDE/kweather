@@ -58,14 +58,14 @@ KWeatherCore::LocationQueryResult LocationQueryModel::get(int index)
 
 void LocationQueryModel::textChanged(QString query, int timeout)
 {
-    m_text = query;
+    m_text = std::move(query);
 
     beginResetModel();
     // clear results list
     m_results.clear();
 
     endResetModel();
-    if (!query.isEmpty()) { // do not query nothing
+    if (!m_text.isEmpty()) { // do not query nothing
         m_loading = true;
         m_networkError = false;
         Q_EMIT propertyChanged();
