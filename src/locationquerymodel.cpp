@@ -22,6 +22,14 @@ int LocationQueryModel::rowCount(const QModelIndex &parent) const
     return m_results.size();
 }
 
+static QString buildResultName(const KWeatherCore::LocationQueryResult &result) {
+    const auto &countryCode = result.countryCode();
+    if(result.subdivision() && countryCode == "US") {
+        return result.toponymName() + ", " + *result.subdivision() + " | " + result.countryName();
+    }
+    return result.toponymName() + " | " + result.countryName();
+}
+
 QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
@@ -30,7 +38,7 @@ QVariant LocationQueryModel::data(const QModelIndex &index, int role) const
     auto result = m_results.at(index.row());
 
     if (role == NameRole) {
-        return result.toponymName() + ", " + result.countryName();
+        return buildResultName(result);
     }
 
     return QVariant();
