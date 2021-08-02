@@ -18,7 +18,7 @@ class KWeather_1x4 : public Plasma::Applet
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY updated)
     Q_PROPERTY(qreal humidity READ humidity NOTIFY updated)
     Q_PROPERTY(qreal precipitation READ precipitation NOTIFY updated)
-    Q_PROPERTY(HourlyModel* hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
+    Q_PROPERTY(HourlyModel *hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
 public:
     KWeather_1x4(QObject *parent, const QVariantList &args);
     QString location() const;
@@ -27,10 +27,12 @@ public:
     QString weatherIcon() const;
     qreal humidity() const;
     qreal precipitation() const;
-    bool needLocation() const {
+    bool needLocation() const
+    {
         return m_needLocation;
     }
-    HourlyModel *hourlyModel() const {
+    HourlyModel *hourlyModel() const
+    {
         return m_hourlyModel;
     }
 
@@ -41,6 +43,7 @@ signals:
     void updated();
     void needLocationChanged();
     void hourlyModelChanged();
+
 private:
     void update();
     bool hasForecast() const;

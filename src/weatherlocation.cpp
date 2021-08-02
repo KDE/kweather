@@ -7,20 +7,20 @@
 
 #include "weatherlocation.h"
 #include "global.h"
+#include "kweathersettings.h"
 #include "locationquerymodel.h"
 #include "weatherdaymodel.h"
-#include "kweathersettings.h"
+#include <QAbstractSeries>
+#include <QDateTimeAxis>
 #include <QDir>
-#include <QTimer>
 #include <QFile>
 #include <QJsonArray>
 #include <QQmlEngine>
-#include <QTimeZone>
-#include <utility>
-#include <QAbstractSeries>
-#include <QDateTimeAxis>
 #include <QSplineSeries>
+#include <QTimeZone>
+#include <QTimer>
 #include <QValueAxis>
+#include <utility>
 
 WeatherLocation::WeatherLocation()
 {
@@ -32,7 +32,12 @@ WeatherLocation::WeatherLocation()
     this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 }
 
-WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, KWeatherCore::WeatherForecast forecast)
+WeatherLocation::WeatherLocation(QString locationId,
+                                 QString locationName,
+                                 QString timeZone,
+                                 float latitude,
+                                 float longitude,
+                                 KWeatherCore::WeatherForecast forecast)
     : m_forecast(forecast)
     , m_locationName(std::move(locationName))
     , m_locationId(std::move(locationId))
@@ -58,8 +63,11 @@ WeatherLocation *WeatherLocation::load(const QString &groupName)
 {
     auto config = KWeatherSettings().sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(groupName);
     if (config.isValid()) {
-        return new WeatherLocation(groupName, config.readEntry("locationName"), config.readEntry("timezone"), config.readEntry("latitude").toFloat(),
-                            config.readEntry("longitude").toFloat());
+        return new WeatherLocation(groupName,
+                                   config.readEntry("locationName"),
+                                   config.readEntry("timezone"),
+                                   config.readEntry("latitude").toFloat(),
+                                   config.readEntry("longitude").toFloat());
     } else {
         return nullptr;
     }
@@ -220,7 +228,7 @@ void WeatherLocation::updateSeries()
         double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
         for (const auto &d : m_forecast.dailyWeatherForecast()) {
             const auto dayMinTemp = Kweather::convertTemp(d.minTemp()), dayMaxTemp = Kweather::convertTemp(d.maxTemp());
-            
+
             m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), dayMaxTemp));
             minTemp = std::min<double>(dayMinTemp, minTemp);
             maxTemp = std::max<double>(dayMaxTemp, maxTemp);
@@ -246,7 +254,8 @@ void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)
     }
 }
 void WeatherLocation::updateAxes()
-{}
+{
+}
 void WeatherLocation::updateCurrentDateTime()
 {
     m_timer->setInterval(60000);

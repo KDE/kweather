@@ -31,8 +31,7 @@ int HourlyModel::rowCount(const QModelIndex &index) const
 }
 QHash<int, QByteArray> HourlyModel::roleNames() const
 {
-    return {{Time, "time"}, {Icon, "weatherIcon"}, {Description, "description"},
-        {Temperature, "temperature"}, {Precipitation, "precipitation"}};
+    return {{Time, "time"}, {Icon, "weatherIcon"}, {Description, "description"}, {Temperature, "temperature"}, {Precipitation, "precipitation"}};
 }
 void HourlyModel::loadForecast(KWeatherCore::WeatherForecast forecast)
 {
@@ -43,8 +42,8 @@ void HourlyModel::loadForecast(KWeatherCore::WeatherForecast forecast)
 }
 const KWeatherCore::HourlyWeatherForecast &HourlyModel::getNthHour(int index) const
 {
-    auto dayIndex {0};
-    auto hourIndex {0};
+    auto dayIndex{0};
+    auto hourIndex{0};
     for (const auto &day : m_location.dailyWeatherForecast()) {
         if ((int)day.hourlyWeatherForecast().size() - 1 < index) {
             index -= day.hourlyWeatherForecast().size();

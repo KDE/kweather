@@ -32,7 +32,7 @@ void WeatherLocationListModel::load()
             m_locations.push_back(location_ptr);
     }
 
-    auto i {0};
+    auto i{0};
     for (auto loc : m_locations) {
         auto index = loc->index();
         while (index != i) {
@@ -55,7 +55,7 @@ void WeatherLocationListModel::load()
 
 void WeatherLocationListModel::saveOrder()
 {
-    auto i {0};
+    auto i{0};
     for (auto loc : m_locations) {
         loc->saveOrder(i);
         i++;

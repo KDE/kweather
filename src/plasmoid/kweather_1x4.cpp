@@ -2,12 +2,12 @@
     SPDX-FileCopyrightText: 2020 HanY <hanyoung@protonmail.com>
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
-#include <QQmlApplicationEngine>
 #include "kweather_1x4.h"
-#include "kweathersettings.h"
 #include "hourlymodel.h"
-#include <KWeatherCore/WeatherForecastSource>
+#include "kweathersettings.h"
 #include <KSharedConfig>
+#include <KWeatherCore/WeatherForecastSource>
+#include <QQmlApplicationEngine>
 KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
     : Plasma::Applet(parent, args)
     , m_hourlyModel(new HourlyModel())
@@ -17,13 +17,13 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
     auto group = config->group("general");
     QString locationID = group.readEntry("locationID");
     if (!locationID.isEmpty()) {
-       auto m_config = KWeatherSettings(this).sharedConfig()->group("WeatherLocations");
-       auto m_group = m_config.group(locationID);
-       m_location = m_group.readEntry("locationName");
-       m_latitude = m_group.readEntry("latitude").toDouble();
-       m_longitude = m_group.readEntry("longitude").toDouble();
-       m_needLocation = false;
-       update();
+        auto m_config = KWeatherSettings(this).sharedConfig()->group("WeatherLocations");
+        auto m_group = m_config.group(locationID);
+        m_location = m_group.readEntry("locationName");
+        m_latitude = m_group.readEntry("latitude").toDouble();
+        m_longitude = m_group.readEntry("longitude").toDouble();
+        m_needLocation = false;
+        update();
     }
 }
 

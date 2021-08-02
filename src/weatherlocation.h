@@ -48,8 +48,6 @@ class WeatherLocation : public QObject
     Q_PROPERTY(double maxTempLimit READ maxTempLimit NOTIFY currentForecastChange)
     Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY currentForecastChange)
 
-
-
 public:
     WeatherLocation();
     explicit WeatherLocation(QString locationId,
@@ -157,7 +155,6 @@ public:
     Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
     Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
 
-
     // for restore order of locations
     void saveOrder(int index);
     int index();
@@ -188,12 +185,10 @@ private:
     // chart related fields
     QtCharts::QSplineSeries *m_series = nullptr;
     QVector<QPointF> m_vector;
-    double m_maxTempLimit {100};
-    double m_minTempLimit {0};
-    QtCharts::QDateTimeAxis *m_axisX {nullptr};
-    QtCharts::QValueAxis *m_axisY {nullptr};
-
-
+    double m_maxTempLimit{100};
+    double m_minTempLimit{0};
+    QtCharts::QDateTimeAxis *m_axisX{nullptr};
+    QtCharts::QValueAxis *m_axisY{nullptr};
 
     // background related fields
     QColor m_backgroundColor;

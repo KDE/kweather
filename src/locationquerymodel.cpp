@@ -22,9 +22,10 @@ int LocationQueryModel::rowCount(const QModelIndex &parent) const
     return m_results.size();
 }
 
-static QString buildResultName(const KWeatherCore::LocationQueryResult &result) {
+static QString buildResultName(const KWeatherCore::LocationQueryResult &result)
+{
     const auto &countryCode = result.countryCode();
-    if(result.subdivision() && countryCode == "US") {
+    if (result.subdivision() && countryCode == "US") {
         return result.toponymName() + ", " + *result.subdivision() + " | " + result.countryName();
     }
     return result.toponymName() + " | " + result.countryName();
