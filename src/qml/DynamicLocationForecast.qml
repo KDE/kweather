@@ -8,8 +8,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
-// FIXME: version bump
-import org.kde.quickcharts 1.0 as Charts
+import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
 import kweather 1.0
 import "backgrounds"
@@ -21,10 +20,12 @@ Kirigami.ScrollablePage {
     property WeatherLocation weatherLocation
     property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
     
+    property int maximumContentWidth: Kirigami.Units.gridUnit * 35
+    
     onInViewChanged: background.item["inView"] = inView
     
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
-
+    
     background: Loader {
         id: background
         anchors.fill: parent
@@ -54,7 +55,7 @@ Kirigami.ScrollablePage {
         ColumnLayout {
             id: mainLayout
             anchors.horizontalCenter: parent.horizontalCenter
-            width: Math.min(page.width - Kirigami.Units.largeSpacing * 4, Kirigami.Units.gridUnit * 35)
+            width: Math.min(page.width - Kirigami.Units.largeSpacing * 4, maximumContentWidth)
             
             // separator from top
             Item {
@@ -208,9 +209,11 @@ Kirigami.ScrollablePage {
             // temperature chart
             Control {
                 id: tempChartCard
-                Layout.fillWidth: true
-                implicitHeight: Math.round(Kirigami.Units.gridUnit * 8.5)
                 
+                Layout.fillWidth: true
+                leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0;
+                implicitHeight: Math.round(Kirigami.Units.gridUnit * 8.5)
+
                 background: Kirigami.ShadowedRectangle {
                     color: weatherLocation.cardBackgroundColor
                     radius: Kirigami.Units.smallSpacing
@@ -221,61 +224,82 @@ Kirigami.ScrollablePage {
                     shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                 }
 
-                contentItem: Flickable {
+                contentItem: ScrollView {
                     id: scrollView
-                    Layout.fillWidth: true
-                    contentHeight: chartChild.height
-                    contentWidth: chartChild.width
-                    clip: true
-                    onContentYChanged: contentY = 0
-                    
-                    ColumnLayout {
-                        id: chartChild
-                        spacing: Kirigami.Units.largeSpacing * 2
-                        Charts.LineChart {
-                            id: tempChart
-                            Layout.leftMargin: Kirigami.Units.largeSpacing * 2
-                            Layout.rightMargin: Kirigami.Units.largeSpacing * 2
-                            Layout.topMargin: Kirigami.Units.largeSpacing
-                            Layout.preferredHeight: Kirigami.Units.gridUnit * 5
-                            Layout.preferredWidth: tempChartCard.width > Kirigami.Units.gridUnit * 28 ? tempChartCard.width : Kirigami.Units.gridUnit * 28
-                            nameSource: Charts.SingleValueSource  { value: i18n("MaxTemperature") }
-                            lineWidth: Kirigami.Settings.isMobile ? 0.5 : 1
-                            smooth: true
-                            pointDelegate: Label {
-                                text: String(Charts.LineChart.value.toFixed(1))
-                                color: weatherLocation.textColor
-                            }
+                    contentHeight: -1
+                    contentWidth: page.maximumContentWidth
 
-                            valueSources: [
-                                Charts.ArraySource {
-                                    id: tempSource
-                                    array: weatherLocation.maxTempList
+                    Item {
+                        width: page.maximumContentWidth
+                        height: Math.round(Kirigami.Units.gridUnit * 8.5)
+                        
+                        ChartView {
+                            id: chartView
+                            anchors.fill: parent
+                            margins.left: Kirigami.Units.largeSpacing; margins.right: Kirigami.Units.largeSpacing
+                            margins.top: 0; margins.bottom: Kirigami.Units.smallSpacing
+                            legend.visible: false
+                            antialiasing: true
+                            
+                            animationOptions: ChartView.NoAnimation
+                            backgroundColor: weatherLocation.cardBackgroundColor
+                            plotAreaColor: weatherLocation.cardBackgroundColor
+                            
+                            height: tempChartCard.height
+                            width: Math.max(Kirigami.Units.gridUnit * 25, tempChartCard.width)
+
+                            SplineSeries {
+                                id: splineSeries
+                                axisX: DateTimeAxis {
+                                    id: axisX
+                                    tickCount: dailyListView.count
+                                    format: "ddd"
+                                    labelsColor: weatherLocation.cardTextColor
+                                    lineVisible: false
+                                    gridLineColor: Qt.rgba(weatherLocation.cardTextColor.r, weatherLocation.cardTextColor.g, weatherLocation.cardTextColor.b, 0.05)
                                 }
-                            ]
+                                axisY: ValueAxis {
+                                    id: axisY
+                                    visible: false
 
-                            colorSource: Charts.SingleValueSource {
-                                value: Kirigami.ColorUtils.linearInterpolation(weatherLocation.backgroundColor, weatherLocation.textColor, 0.5)
+                                    min: weatherLocation.minTempLimit
+                                    max: weatherLocation.maxTempLimit
+                                    labelsColor: weatherLocation.cardTextColor
+                                }
+                                name: i18n("temperature")
+                                pointLabelsVisible: true
+                                pointLabelsFormat: "@yPoint°"
+                                pointLabelsClipping: false
+                                pointLabelsColor: weatherLocation.cardTextColor
+                                pointLabelsFont.pointSize: Kirigami.Theme.defaultFont.pointSize
                             }
-                            fillColorSource: Charts.SingleValueSource {
-                                value: weatherLocation.backgroundColor
+
+                            Component.onCompleted: {
+                                weatherLocation.initAxes(axisX, axisY);
+                                weatherLocation.initSeries(chartView.series(0));
                             }
                         }
-                        Charts.AxisLabels {
-                            Layout.fillWidth: true
-                            Layout.leftMargin: Kirigami.Units.smallSpacing
-                            Layout.rightMargin: Kirigami.Units.largeSpacing
-                            delegate: Label {
-                                color: weatherLocation.textColor
-                                text: Charts.AxisLabels.label
+                        
+                        // allow continuous mouse scrolling
+                        MouseArea {
+                            anchors.fill: parent
+                            property int scrollDist: Kirigami.Units.gridUnit * 2
+                            onWheel: {
+                                //check if mouse is scrolling up or down
+                                if (wheel.angleDelta.y < 0){
+                                    page.flickable.contentY += scrollDist
+                                } else {
+                                    page.flickable.contentY -= scrollDist
+                                }
                             }
-                            source: Charts.ArraySource {
-                                array: weatherLocation.xAxisList
-                            }
+                            onPressed: mouse.accepted = false // forward mouse event
+                            onReleased: mouse.accepted = false // forward mouse event
                         }
                     }
                 }
             }
+
+
 
             // hourly view header
             ColumnLayout {
