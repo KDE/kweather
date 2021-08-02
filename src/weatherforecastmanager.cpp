@@ -10,7 +10,6 @@
 #include "weatherlocationmodel.h"
 #include <KConfigCore/KConfigGroup>
 #include <QDirIterator>
-#include <QExplicitlySharedDataPointer>
 #include <QFile>
 #include <QStandardPaths>
 #include <QTimeZone>

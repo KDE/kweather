@@ -49,7 +49,7 @@ private:
     bool m_needLocation = true;
     QString m_location;
     double m_latitude, m_longitude;
-    QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> m_forecast;
+    KWeatherCore::WeatherForecast m_forecast;
 
     HourlyModel *m_hourlyModel;
 };

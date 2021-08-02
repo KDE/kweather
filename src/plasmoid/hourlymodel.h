@@ -23,12 +23,12 @@ public:
     const QString &currentDescription() const;
     Q_INVOKABLE void openKWeather();
 public Q_SLOTS:
-    void loadForecast(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>);
+    void loadForecast(KWeatherCore::WeatherForecast);
 Q_SIGNALS:
     void reseted();
 private:
     const KWeatherCore::HourlyWeatherForecast &getNthHour(int index) const;
-    QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> m_location;
+    KWeatherCore::WeatherForecast m_location;
 };
 
 #endif // HOURLYNMODEL_H

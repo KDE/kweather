@@ -10,7 +10,6 @@
 #include <KWeatherCore/WeatherForecast>
 #include <QAbstractListModel>
 #include <QObject>
-using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
 class WeatherLocation;
 class WeatherDay;
 class WeatherDayListModel : public QAbstractListModel
@@ -29,11 +28,11 @@ public:
     Q_INVOKABLE void updateUi();
 
 public Q_SLOTS:
-    void refreshDaysFromForecasts(SharedForecastPtr forecast);
+    void refreshDaysFromForecasts(KWeatherCore::WeatherForecast forecast);
 Q_SIGNALS:
-    void weatherRefresh(SharedForecastPtr forecast);
+    void weatherRefresh(KWeatherCore::WeatherForecast forecast);
 
 private:
-    SharedForecastPtr m_forecasts;
+    KWeatherCore::WeatherForecast m_forecasts;
     std::vector<WeatherDay *> m_weatherDays;
 };

@@ -16,14 +16,14 @@ WeatherHour::WeatherHour(WeatherHourListModel *parent)
         connect(parent, &WeatherHourListModel::weatherRefresh, this, &WeatherHour::refreshHoursFromForecasts);
 }
 
-WeatherHour::WeatherHour(SharedForecastPtr ptr, int day, int hour, WeatherHourListModel *parent)
+WeatherHour::WeatherHour(KWeatherCore::WeatherForecast ptr, int day, int hour, WeatherHourListModel *parent)
     : QObject(parent)
     , m_forecast(std::move(ptr))
     , m_day(day)
     , m_hour(hour)
 {
 }
-void WeatherHour::refreshHoursFromForecasts(SharedForecastPtr ptr)
+void WeatherHour::refreshHoursFromForecasts(KWeatherCore::WeatherForecast ptr)
 {
     m_forecast = std::move(ptr);
     Q_EMIT propertyChanged();
@@ -37,5 +37,5 @@ QString WeatherHour::windSpeed() const
 }
 const KWeatherCore::HourlyWeatherForecast &WeatherHour::hour() const
 {
-    return m_forecast->dailyWeatherForecast().at(m_day).hourlyWeatherForecast().at(m_hour);
+    return m_forecast.dailyWeatherForecast().at(m_day).hourlyWeatherForecast().at(m_hour);
 }

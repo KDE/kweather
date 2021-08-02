@@ -32,7 +32,7 @@ WeatherLocation::WeatherLocation()
     this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 }
 
-WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, SharedForecastPtr forecast)
+WeatherLocation::WeatherLocation(QString locationId, QString locationName, QString timeZone, float latitude, float longitude, KWeatherCore::WeatherForecast forecast)
     : m_forecast(forecast)
     , m_locationName(std::move(locationName))
     , m_locationId(std::move(locationId))
@@ -50,11 +50,9 @@ WeatherLocation::WeatherLocation(QString locationId, QString locationName, QStri
     QQmlEngine::setObjectOwnership(m_weatherDayListModel, QQmlEngine::CppOwnership);
     QQmlEngine::setObjectOwnership(m_weatherHourListModel, QQmlEngine::CppOwnership);
 
-    if (forecast) {
-        m_lastUpdated = forecast->createdTime();
-        determineCurrentForecast();
-        updateSeries();
-    }
+    m_lastUpdated = forecast.createdTime();
+    determineCurrentForecast();
+    updateSeries();
 }
 WeatherLocation *WeatherLocation::load(const QString &groupName)
 {
@@ -98,19 +96,19 @@ void WeatherLocation::deleteConfig()
     config.deleteGroup(locationId());
     config.sync();
 }
-void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts)
+void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
 {
     m_forecast = forecasts;
 
     // first time the timezone is empty
     if (m_timeZone.isEmpty()) {
-        m_timeZone = forecasts->timezone();
+        m_timeZone = forecasts.timezone();
         save();
     }
 
     determineCurrentForecast();
     updateSeries();
-    m_lastUpdated = forecasts->createdTime();
+    m_lastUpdated = forecasts.createdTime();
 
     emit weatherRefresh(m_forecast);
     emit stopLoadingIndicator();
@@ -121,10 +119,10 @@ void WeatherLocation::updateData(QExplicitlySharedDataPointer<KWeatherCore::Weat
 
 void WeatherLocation::determineCurrentForecast()
 {
-    if (m_forecast->dailyWeatherForecast().empty())
+    if (m_forecast.dailyWeatherForecast().empty())
         return;
 
-    auto currentWeather = m_forecast->dailyWeatherForecast().begin()->hourlyWeatherForecast().begin();
+    auto currentWeather = m_forecast.dailyWeatherForecast().begin()->hourlyWeatherForecast().begin();
     m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
 
     bool isDayStyle = false; // make sure that if the background is definitively day, the colours match that
@@ -216,11 +214,11 @@ void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
 }
 void WeatherLocation::updateSeries()
 {
-    if (m_series && !m_forecast->dailyWeatherForecast().empty()) {
+    if (m_series && !m_forecast.dailyWeatherForecast().empty()) {
         m_vector.clear();
 
         double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
-        for (const auto &d : m_forecast->dailyWeatherForecast()) {
+        for (const auto &d : m_forecast.dailyWeatherForecast()) {
             const auto dayMinTemp = Kweather::convertTemp(d.minTemp()), dayMaxTemp = Kweather::convertTemp(d.maxTemp());
             
             m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), dayMaxTemp));
@@ -234,7 +232,7 @@ void WeatherLocation::updateSeries()
 
         m_series->replace(m_vector);
         if (m_axisX) {
-            m_axisX->setRange(m_forecast->dailyWeatherForecast().front().date().startOfDay(), m_forecast->dailyWeatherForecast().back().date().startOfDay());
+            m_axisX->setRange(m_forecast.dailyWeatherForecast().front().date().startOfDay(), m_forecast.dailyWeatherForecast().back().date().startOfDay());
         }
     }
 }

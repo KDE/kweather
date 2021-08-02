@@ -6,7 +6,7 @@
 #include <QProcess>
 QVariant HourlyModel::data(const QModelIndex &index, int role) const
 {
-    if (!m_location || index.row() < 0 || index.row() >= rowCount(QModelIndex()))
+    if (index.row() < 0 || index.row() >= rowCount(QModelIndex()))
         return {};
 
     switch (role) {
@@ -27,17 +27,14 @@ QVariant HourlyModel::data(const QModelIndex &index, int role) const
 int HourlyModel::rowCount(const QModelIndex &index) const
 {
     Q_UNUSED(index)
-    if (!m_location)
-        return 0;
-    else
-        return 24;
+    return 24;
 }
 QHash<int, QByteArray> HourlyModel::roleNames() const
 {
     return {{Time, "time"}, {Icon, "weatherIcon"}, {Description, "description"},
         {Temperature, "temperature"}, {Precipitation, "precipitation"}};
 }
-void HourlyModel::loadForecast(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast)
+void HourlyModel::loadForecast(KWeatherCore::WeatherForecast forecast)
 {
     beginResetModel();
     m_location = std::move(forecast);
@@ -48,7 +45,7 @@ const KWeatherCore::HourlyWeatherForecast &HourlyModel::getNthHour(int index) co
 {
     auto dayIndex {0};
     auto hourIndex {0};
-    for (const auto &day : m_location->dailyWeatherForecast()) {
+    for (const auto &day : m_location.dailyWeatherForecast()) {
         if ((int)day.hourlyWeatherForecast().size() - 1 < index) {
             index -= day.hourlyWeatherForecast().size();
             dayIndex++;
@@ -58,7 +55,7 @@ const KWeatherCore::HourlyWeatherForecast &HourlyModel::getNthHour(int index) co
         }
     }
 
-    return m_location->dailyWeatherForecast().at(dayIndex).hourlyWeatherForecast().at(hourIndex);
+    return m_location.dailyWeatherForecast().at(dayIndex).hourlyWeatherForecast().at(hourIndex);
 }
 
 const QString &HourlyModel::currentIcon() const

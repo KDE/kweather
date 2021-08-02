@@ -79,11 +79,11 @@ void KWeather_1x4::setLocation(const QString &location)
 }
 bool KWeather_1x4::hasForecast() const
 {
-    return m_forecast && !m_forecast->dailyWeatherForecast().empty() && !m_forecast->dailyWeatherForecast().front().hourlyWeatherForecast().empty();
+    return !m_forecast.dailyWeatherForecast().empty() && !m_forecast.dailyWeatherForecast().front().hourlyWeatherForecast().empty();
 }
 const KWeatherCore::HourlyWeatherForecast &KWeather_1x4::getFirst() const
 {
-    return m_forecast->dailyWeatherForecast().front().hourlyWeatherForecast().front();
+    return m_forecast.dailyWeatherForecast().front().hourlyWeatherForecast().front();
 }
 QString KWeather_1x4::location() const
 {

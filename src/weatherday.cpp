@@ -15,7 +15,7 @@ WeatherDay::WeatherDay(WeatherDayListModel *parent)
         connect(parent, &WeatherDayListModel::weatherRefresh, this, &WeatherDay::refreshDaysFromForecasts);
 }
 
-WeatherDay::WeatherDay(SharedForecastPtr ptr, int day, WeatherDayListModel *parent)
+WeatherDay::WeatherDay(KWeatherCore::WeatherForecast ptr, int day, WeatherDayListModel *parent)
     : QObject(parent)
     , m_day(day)
     , m_forecast(std::move(ptr))
@@ -45,7 +45,7 @@ void WeatherDay::determineSunrise()
         m_moonPhase = "New Moon";
     }
 }
-void WeatherDay::refreshDaysFromForecasts(SharedForecastPtr ptr)
+void WeatherDay::refreshDaysFromForecasts(KWeatherCore::WeatherForecast ptr)
 {
     m_forecast = std::move(ptr);
     determineSunrise();

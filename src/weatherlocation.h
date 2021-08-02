@@ -19,8 +19,6 @@
 #include <QTimer>
 #include <utility>
 
-
-using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
 class WeatherDayListModel;
 namespace QtCharts
 {
@@ -59,7 +57,7 @@ public:
                              QString timeZone,
                              float latitude,
                              float longitude,
-                             SharedForecastPtr forecast = SharedForecastPtr(new KWeatherCore::WeatherForecast));
+                             KWeatherCore::WeatherForecast forecast = {});
     void save();
     static WeatherLocation *load(const QString &groupName);
     WeatherHour *currentWeather() const;
@@ -165,10 +163,10 @@ public:
     int index();
     void deleteConfig();
 public slots:
-    void updateData(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts);
+    void updateData(KWeatherCore::WeatherForecast forecasts);
 
 signals:
-    void weatherRefresh(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecasts); // sent when weather data is refreshed
+    void weatherRefresh(KWeatherCore::WeatherForecast forecasts); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
@@ -185,7 +183,7 @@ private:
     void updateAxes();
 
     KWeatherCore::WeatherForecastSource m_source;
-    SharedForecastPtr m_forecast;
+    KWeatherCore::WeatherForecast m_forecast;
 
     // chart related fields
     QtCharts::QSplineSeries *m_series = nullptr;

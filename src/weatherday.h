@@ -9,7 +9,6 @@
 #include "global.h"
 #include <KWeatherCore/WeatherForecast>
 #include <QObject>
-using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
 class WeatherDayListModel;
 class WeatherDay : public QObject
 {
@@ -30,7 +29,7 @@ class WeatherDay : public QObject
 
 public:
     WeatherDay(WeatherDayListModel *parent = nullptr);
-    explicit WeatherDay(SharedForecastPtr ptr, int day, WeatherDayListModel *parent = nullptr);
+    explicit WeatherDay(KWeatherCore::WeatherForecast ptr, int day, WeatherDayListModel *parent = nullptr);
     const QString &weatherDescription() const
     {
         return day().weatherDescription();
@@ -81,7 +80,7 @@ public:
     }
 
 public Q_SLOTS:
-    void refreshDaysFromForecasts(SharedForecastPtr ptr);
+    void refreshDaysFromForecasts(KWeatherCore::WeatherForecast ptr);
 
 Q_SIGNALS:
     void propertyChanged();
@@ -89,7 +88,7 @@ Q_SIGNALS:
 private:
     const KWeatherCore::DailyWeatherForecast &day() const
     {
-        return m_forecast->dailyWeatherForecast().at(m_day);
+        return m_forecast.dailyWeatherForecast().at(m_day);
     }
 
     void determineSunrise();
@@ -98,5 +97,5 @@ private:
     QString m_sunset;
     QString m_moonPhase;
     int m_day = 0;
-    SharedForecastPtr m_forecast;
+    KWeatherCore::WeatherForecast m_forecast;
 };

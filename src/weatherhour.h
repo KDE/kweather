@@ -10,7 +10,7 @@
 #include "kweathersettings.h"
 #include <KWeatherCore/WeatherForecast>
 #include <QObject>
-using SharedForecastPtr = QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast>;
+
 class WeatherHourListModel;
 class WeatherHour : public QObject
 {
@@ -29,7 +29,7 @@ class WeatherHour : public QObject
 
 public:
     WeatherHour(WeatherHourListModel *parent = nullptr);
-    explicit WeatherHour(SharedForecastPtr ptr, int day, int hour, WeatherHourListModel *parent = nullptr);
+    explicit WeatherHour(KWeatherCore::WeatherForecast ptr, int day, int hour, WeatherHourListModel *parent = nullptr);
 
     QString windDirection() const
     {
@@ -73,14 +73,14 @@ public:
         return hour().date();
     }
 public Q_SLOTS:
-    void refreshHoursFromForecasts(SharedForecastPtr ptr);
+    void refreshHoursFromForecasts(KWeatherCore::WeatherForecast ptr);
 Q_SIGNALS:
     void propertyChanged();
 
 private:
     const KWeatherCore::HourlyWeatherForecast &hour() const;
 
-    SharedForecastPtr m_forecast;
+    KWeatherCore::WeatherForecast m_forecast;
     int m_day = 0;
     int m_hour = 0;
 };

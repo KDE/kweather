@@ -31,9 +31,9 @@ public:
     Q_INVOKABLE void updateUi();
     WeatherHour *currentForecast() const;
 public Q_SLOTS:
-    void refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast);
+    void refreshHoursFromForecasts(KWeatherCore::WeatherForecast forecast);
 Q_SIGNALS:
-    void weatherRefresh(SharedForecastPtr ptr);
+    void weatherRefresh(KWeatherCore::WeatherForecast ptr);
     void currentForecastChanged();
 
 private:

@@ -53,24 +53,24 @@ WeatherHour *WeatherHourListModel::get(int index)
     return ret;
 }
 
-void WeatherHourListModel::refreshHoursFromForecasts(QExplicitlySharedDataPointer<KWeatherCore::WeatherForecast> forecast)
+void WeatherHourListModel::refreshHoursFromForecasts(KWeatherCore::WeatherForecast forecast)
 {
     Q_EMIT layoutAboutToBeChanged();
 
     // sync days
-    if (forecast->dailyWeatherForecast().size() > m_hours.size()) {
+    if (forecast.dailyWeatherForecast().size() > m_hours.size()) {
         auto i = m_hours.size();
-        for (; i < forecast->dailyWeatherForecast().size(); i++) {
+        for (; i < forecast.dailyWeatherForecast().size(); i++) {
             m_hours.push_back({});
-            const auto &hours = forecast->dailyWeatherForecast().at(i).hourlyWeatherForecast();
+            const auto &hours = forecast.dailyWeatherForecast().at(i).hourlyWeatherForecast();
             m_hours.back().reserve(hours.size());
 
             for (auto j = 0; j < static_cast<int>(hours.size()); j++) {
                 m_hours.back().push_back(new WeatherHour(forecast, i, j, this));
             }
         }
-    } else if (forecast->dailyWeatherForecast().size() < m_hours.size()) {
-        auto i = m_hours.size() - forecast->dailyWeatherForecast().size();
+    } else if (forecast.dailyWeatherForecast().size() < m_hours.size()) {
+        auto i = m_hours.size() - forecast.dailyWeatherForecast().size();
         for (; i > 0; i--) {
             auto &hours = m_hours.back();
             for (auto it = hours.begin(); it != hours.end(); it++)
@@ -82,7 +82,7 @@ void WeatherHourListModel::refreshHoursFromForecasts(QExplicitlySharedDataPointe
 
     // sync hours
 
-    const auto &days = forecast->dailyWeatherForecast();
+    const auto &days = forecast.dailyWeatherForecast();
     int dayIndex = 0;
     for (const auto &day : days) {
         const auto &newHours = day.hourlyWeatherForecast();
