@@ -6,7 +6,6 @@
  */
 
 #include "weatherlocationmodel.h"
-#include "weatherdaymodel.h"
 #include "weatherlocation.h"
 
 #include <KConfigCore/KConfigGroup>
@@ -89,7 +88,6 @@ void WeatherLocationListModel::updateUi()
     Q_EMIT dataChanged(createIndex(0, 0), createIndex(m_locations.size() - 1, 0));
     for (const auto &l : qAsConst(m_locations)) {
         Q_EMIT l->propertyChanged();
-        l->weatherDayListModel()->updateUi();
         l->weatherHourListModel()->updateUi();
     }
 }

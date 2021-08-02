@@ -27,7 +27,6 @@
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
 #include "version.h"
-#include "weatherdaymodel.h"
 #include "weatherforecastmanager.h"
 #include "weatherhourmodel.h"
 #include "weatherlocation.h"
@@ -76,10 +75,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     // register QML types
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
-    qmlRegisterType<WeatherDay>("kweather", 1, 0, "WeatherDay");
     qmlRegisterType<WeatherHour>("kweather", 1, 0, "WeatherHour");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
-    qmlRegisterType<WeatherDayListModel>("kweather", 1, 0, "WeatherDayListModel");
+
+    qRegisterMetaType<KWeatherCore::Sunrise>();
 
     // load setup wizard if first launch
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));

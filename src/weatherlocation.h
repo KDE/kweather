@@ -19,7 +19,6 @@
 #include <QTimer>
 #include <utility>
 
-class WeatherDayListModel;
 namespace QtCharts
 {
 class QAbstractSeries;
@@ -35,7 +34,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
-    Q_PROPERTY(WeatherDayListModel *dayListModel READ weatherDayListModel NOTIFY propertyChanged)
+    Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
     Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
@@ -80,10 +79,6 @@ public:
     float longitude() const
     {
         return m_longitude;
-    }
-    WeatherDayListModel *weatherDayListModel() const
-    {
-        return m_weatherDayListModel;
     }
     WeatherHourListModel *weatherHourListModel() const
     {
@@ -152,6 +147,10 @@ public:
     {
         return m_isDarkTheme;
     }
+    QVariantList dayForecasts() const
+    {
+        return m_dayForecasts;
+    }
     Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
     Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
 
@@ -169,6 +168,7 @@ signals:
     void stopLoadingIndicator();
     void currentTimeChanged();
     void currentDateChanged();
+    void dayForecastsChanged();
 
     void chartListChanged();
 private slots:
@@ -205,6 +205,7 @@ private:
     QTimer *m_timer;
     float m_latitude, m_longitude;
 
-    WeatherDayListModel *m_weatherDayListModel = nullptr;
+    QVariantList m_dayForecasts;
+
     WeatherHourListModel *m_weatherHourListModel = nullptr;
 };

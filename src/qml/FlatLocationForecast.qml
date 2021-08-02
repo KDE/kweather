@@ -19,8 +19,8 @@ Kirigami.ScrollablePage {
     background: null // transparent, since there is a page behind
 
     property WeatherLocation weatherLocation
-    property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
-    
+    property var currentDay: dailyListView.currentItem.weather
+
     property bool inView: false
 
     // swipe down to refresh
@@ -125,9 +125,9 @@ Kirigami.ScrollablePage {
 
             currentIndex: 0
 
-            model: weatherLocation.dayListModel
+            model: weatherLocation.dayForecasts
             delegate: WeatherDayDelegate {
-                weather: dayItem
+                weather: modelData
                 textColor: Kirigami.Theme.textColor
             }
 
@@ -369,7 +369,7 @@ Kirigami.ScrollablePage {
                                 text: i18n("Sunrise")
                             }
                             Label {
-                                text: currentDay == null ? "" : currentDay.sunrise
+                                text: Qt.formatTime(currentDay.sunrise.sunRise, Locale.ShortFormat)
                             }
                         }
                     }
@@ -393,7 +393,7 @@ Kirigami.ScrollablePage {
                                 text: i18n("Sunset")
                             }
                             Label {
-                                text: currentDay == null ? "" : currentDay.sunset
+                                text: Qt.formatTime(currentDay.sunrise.sunSet, Locale.ShortFormat)
                             }
                         }
                     }
@@ -417,7 +417,7 @@ Kirigami.ScrollablePage {
                                 text: i18n("Moon Phase")
                             }
                             Label {
-                                text: currentDay == null ? "" : currentDay.moonPhase
+                                text: currentDay.sunrise.moonPhaseString
                             }
                         }
                     }

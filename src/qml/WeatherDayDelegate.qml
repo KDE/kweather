@@ -17,7 +17,7 @@ Rectangle {
     implicitHeight: Kirigami.Units.gridUnit * 8
     color: "transparent"
 
-    property WeatherDay weather
+    property var weather
     property color textColor
 
     MouseArea {

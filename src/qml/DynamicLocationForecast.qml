@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
     
     property bool inView: false
     property WeatherLocation weatherLocation
-    property WeatherDay currentDay: weatherLocation.dayListModel.get(dailyListView.currentIndex)
+    property var currentDay: dailyListView.currentItem.weather
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
     
@@ -164,9 +164,9 @@ Kirigami.ScrollablePage {
 
                     currentIndex: 0
 
-                    model: weatherLocation.dayListModel
+                    model: weatherLocation.dayForecasts
                     delegate: WeatherDayDelegate {
-                        weather: dayItem
+                        weather: modelData
                         textColor: weatherLocation.cardTextColor
                     }
                     
@@ -543,7 +543,7 @@ Kirigami.ScrollablePage {
                                     color: weatherLocation.cardTextColor
                                 }
                                 Label {
-                                    text: currentDay == null ? "" : currentDay.sunrise
+                                    text: Qt.formatTime(currentDay.sunrise.sunRise, Locale.ShortFormat)
                                     color: weatherLocation.cardTextColor
                                 }
                             }
@@ -566,7 +566,7 @@ Kirigami.ScrollablePage {
                                     color: weatherLocation.cardTextColor
                                 }
                                 Label {
-                                    text: currentDay == null ? "" : currentDay.sunset
+                                    text: Qt.formatTime(currentDay.sunrise.sunSet, Locale.ShortFormat)
                                     color: weatherLocation.cardTextColor
                                 }
                             }
@@ -588,7 +588,7 @@ Kirigami.ScrollablePage {
                                     color: weatherLocation.cardTextColor
                                 }
                                 Label {
-                                    text: currentDay == null ? "" : currentDay.moonPhase
+                                    text: currentDay.sunrise.moonPhaseString
                                     color: weatherLocation.cardTextColor
                                 }
                             }
