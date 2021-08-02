@@ -21,6 +21,7 @@
         <file>qml/AboutPage.qml</file>
         <file>qml/PopupDialog.qml</file>
         <file>qml/TemperatureChartCard.qml</file>
+        <file>qml/SunriseCard.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>
         <file>qml/backgrounds/CloudyDay.qml</file>

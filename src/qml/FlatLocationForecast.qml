@@ -342,87 +342,9 @@ Kirigami.ScrollablePage {
             }
         }
 
-        // sunrise/sunset card
-        Kirigami.Card {
+        SunriseCard {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
-
-            contentItem: Item {
-                implicitHeight: sunsetColumn.height
-
-                Column {
-                    id: sunsetColumn
-                    spacing: Kirigami.Units.largeSpacing
-
-                    // Sunrise
-                    RowLayout {
-                        spacing: Kirigami.Units.largeSpacing
-                        Kirigami.Icon {
-                            source: "go-up"
-                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight * 1.5
-                        }
-                        Column {
-                            spacing: Kirigami.Units.smallSpacing
-                            Label {
-                                font.weight: Font.Bold
-                                text: i18n("Sunrise")
-                            }
-                            Label {
-                                text: Qt.formatTime(currentDay.sunrise.sunRise, Locale.ShortFormat)
-                            }
-                        }
-                    }
-
-                    Kirigami.Separator {
-                        Layout.fillWidth: true
-                    }
-
-                    // Sunset
-                    RowLayout {
-                        spacing: Kirigami.Units.largeSpacing
-                        Kirigami.Icon {
-                            source: "go-down"
-                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight * 1.5
-                        }
-                        Column {
-                            spacing: Kirigami.Units.smallSpacing
-                            Label {
-                                font.weight: Font.Bold
-                                text: i18n("Sunset")
-                            }
-                            Label {
-                                text: Qt.formatTime(currentDay.sunrise.sunSet, Locale.ShortFormat)
-                            }
-                        }
-                    }
-
-                    Kirigami.Separator {
-                        Layout.fillWidth: true
-                    }
-
-                    // Moon phase
-                    RowLayout {
-                        spacing: Kirigami.Units.largeSpacing
-                        Kirigami.Icon {
-                            source: "weather-clear-night"
-                            Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                            Layout.minimumWidth: Layout.minimumHeight * 1.5
-                        }
-                        Column {
-                            spacing: Kirigami.Units.smallSpacing
-                            Label {
-                                font.weight: Font.Bold
-                                text: i18n("Moon Phase")
-                            }
-                            Label {
-                                text: currentDay.sunrise.moonPhaseString
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

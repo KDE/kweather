@@ -416,10 +416,11 @@ Kirigami.ScrollablePage {
                 }
             }
 
-            // sunrise/sunset card
-            Kirigami.Card {
+            SunriseCard {
                 Layout.fillWidth: true
-                
+
+                textColor: weatherLocation.cardTextColor
+
                 background: Kirigami.ShadowedRectangle {
                     color: weatherLocation.cardBackgroundColor
                     radius: Kirigami.Units.smallSpacing
@@ -428,82 +429,6 @@ Kirigami.ScrollablePage {
                     shadow.size: Kirigami.Units.largeSpacing
                     shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
                     shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
-                }
-                contentItem: Item {
-                    implicitHeight: sunsetColumn.height
-
-                    Column {
-                        id: sunsetColumn
-                        spacing: Kirigami.Units.largeSpacing * 2
-
-                        // Sunrise
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "go-up"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                                color: weatherLocation.iconColor
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("Sunrise")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: Qt.formatTime(currentDay.sunrise.sunRise, Locale.ShortFormat)
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-
-                        // Sunset
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "go-down"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                                color: weatherLocation.iconColor
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("Sunset")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: Qt.formatTime(currentDay.sunrise.sunSet, Locale.ShortFormat)
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-
-                        // Moon phase
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "weather-clear-night"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("Moon Phase")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: currentDay.sunrise.moonPhaseString
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
