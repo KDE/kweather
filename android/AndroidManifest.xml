@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!--
-- Copyright 2020 Nicolas Fella <nicolas.fella@gmx.de>
+- SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
 - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"

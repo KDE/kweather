@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
