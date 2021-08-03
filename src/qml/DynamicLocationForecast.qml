@@ -10,7 +10,6 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
-import kweather 1.0
 import "backgrounds"
 
 Kirigami.ScrollablePage {
@@ -19,6 +18,7 @@ Kirigami.ScrollablePage {
     property bool inView: false
     property var weatherLocation
     property var currentDay: dailyListView.currentItem.weather
+    property var currentHour: hourlyListView.currentItem.weather
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
     
@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: weatherLocation.hourListModel.currentForecast == null ? "0" : weatherLocation.hourListModel.currentForecast.temperatureRounded
+                    text: page.currentHour.temperatureRounded
                     font.family: lightHeadingFont.name
                 }
                 Label {
@@ -81,7 +81,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: weatherLocation.hourListModel.currentForecast == null ? "Unknown" : weatherLocation.hourListModel.currentForecast.weatherDescription
+                    text: page.currentHour.weatherDescription
                     font.family: lightHeadingFont.name
                 }
                 Label {
@@ -155,6 +155,10 @@ Kirigami.ScrollablePage {
                         weather: modelData
                         textColor: weatherLocation.cardTextColor
                     }
+
+                    onCurrentIndexChanged: {
+                        weatherLocation.selectedDay = currentIndex
+                    }
                 }
             }
             
@@ -199,10 +203,11 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: WeatherStrip {
-                    model: weatherLocation.hourListModel
+                    id: hourlyListView
+                    model: weatherLocation.hourForecasts
 
                     delegate: WeatherHourDelegate {
-                        weather: hourItem
+                        weather: modelData
                         textColor: weatherLocation.cardTextColor
                     }
                 }

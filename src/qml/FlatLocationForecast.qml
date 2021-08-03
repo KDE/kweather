@@ -10,7 +10,6 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
-import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
@@ -20,6 +19,7 @@ Kirigami.ScrollablePage {
 
     property var weatherLocation
     property var currentDay: dailyListView.currentItem.weather
+    property var currentHour: hourlyListView.currentItem.weather
 
     property bool inView: false
 
@@ -46,7 +46,7 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
-                source: weatherLocation.hourListModel.currentForecast == null ? "weather-none-available" : weatherLocation.hourListModel.currentForecast.weatherIcon
+                source: page.currentHour.weatherIcon
                 Layout.preferredHeight: width
                 Layout.preferredWidth: page.width * 0.8 - headerText.width
                 Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
@@ -63,12 +63,12 @@ Kirigami.ScrollablePage {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
                     font.family: lightHeadingFont.name
-                    text: weatherLocation.hourListModel.currentForecast == null ? "0" : weatherLocation.hourListModel.currentForecast.temperatureRounded
+                    text: page.currentHour.temperatureRounded // TODO
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
-                    text: weatherLocation.hourListModel.currentForecast == null ? "Unknown" : weatherLocation.hourListModel.currentForecast.weatherDescription
+                    text: page.currentHour.weatherDescription
                 }
                 Label {
                     color: Kirigami.Theme.disabledTextColor
@@ -100,6 +100,7 @@ Kirigami.ScrollablePage {
         }
 
         WeatherStrip {
+            id: dailyListView
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             implicitHeight: Kirigami.Units.gridUnit * 8
@@ -123,6 +124,10 @@ Kirigami.ScrollablePage {
                 weather: modelData
                 textColor: Kirigami.Theme.textColor
             }
+
+            onCurrentIndexChanged: {
+                weatherLocation.selectedDay = currentIndex
+            }
         }
 
         // hourly view
@@ -137,14 +142,15 @@ Kirigami.ScrollablePage {
         }
 
         WeatherStrip {
+            id: hourlyListView
             implicitHeight: Kirigami.Units.gridUnit * 10.5
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
-            model: weatherLocation.hourListModel
+            model: weatherLocation.hourForecasts
 
             delegate: WeatherHourDelegate {
-                weather: hourItem
+                weather: modelData
                 textColor: weatherLocation.cardTextColor
             }
         }

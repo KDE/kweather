@@ -10,7 +10,6 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
-import kweather 1.0
 
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 6
@@ -25,7 +24,6 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             dailyListView.currentIndex = index
-            weatherLocation.hourListModel.updateHourView(index) // change hour view
         }
     }
 

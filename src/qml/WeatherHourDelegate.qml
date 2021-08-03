@@ -10,14 +10,13 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
-import kweather 1.0
 
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 5
     implicitHeight: hourElement.height
     color: "transparent"
 
-    property WeatherHour weather
+    property var weather
     property color textColor
 
     // actual hour display
@@ -55,7 +54,7 @@ Rectangle {
             }
             Label {
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
-                text: i18n("%1mm", weather.precipitation.toFixed(1))
+                text: i18n("%1mm", weather.precipitationAmount.toFixed(1))
             }
         }
 

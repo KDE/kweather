@@ -10,8 +10,6 @@ set(kweather_SRCS
     weatherforecastmanager.cpp
     weatherlocationmodel.cpp
     weatherlocation.cpp
-    weatherhourmodel.cpp
-    weatherhour.cpp
     locationquerymodel.cpp
     resources.qrc
 )

@@ -6,10 +6,9 @@
  */
 
 #pragma once
-#include "weatherhourmodel.h"
-
 #include <KWeatherCore/WeatherForecastSource>
 #include <QAbstractListModel>
+#include <QColor>
 #include <QDateTime>
 #include <QDebug>
 #include <QJsonDocument>
@@ -35,7 +34,8 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
     Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
-    Q_PROPERTY(WeatherHourListModel *hourListModel READ weatherHourListModel NOTIFY propertyChanged)
+    Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
+    Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
     Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChange)
@@ -56,7 +56,6 @@ public:
                              KWeatherCore::WeatherForecast forecast = {});
     void save();
     static WeatherLocation *load(const QString &groupName);
-    WeatherHour *currentWeather() const;
     Q_INVOKABLE void update();
 
     const QString &locationId() const
@@ -78,10 +77,6 @@ public:
     float longitude() const
     {
         return m_longitude;
-    }
-    WeatherHourListModel *weatherHourListModel() const
-    {
-        return m_weatherHourListModel;
     }
     QString lastUpdatedFormatted() const
     {
@@ -150,6 +145,21 @@ public:
     {
         return m_dayForecasts;
     }
+    QVariantList hourForecasts() const
+    {
+        return m_hourForecasts;
+    }
+    int selectedDay() const
+    {
+        return m_selectedDay;
+    }
+    void setSelectedDay(int selectedDay)
+    {
+        if (selectedDay != m_selectedDay) {
+            m_selectedDay = selectedDay;
+            Q_EMIT selectedDayChanged();
+        }
+    }
     Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
     Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
 
@@ -168,6 +178,8 @@ signals:
     void currentTimeChanged();
     void currentDateChanged();
     void dayForecastsChanged();
+    void hourForecastsChanged();
+    void selectedDayChanged();
 
     void chartListChanged();
 private slots:
@@ -205,6 +217,6 @@ private:
     float m_latitude, m_longitude;
 
     QVariantList m_dayForecasts;
-
-    WeatherHourListModel *m_weatherHourListModel = nullptr;
+    QVariantList m_hourForecasts;
+    int m_selectedDay;
 };

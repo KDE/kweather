@@ -35,16 +35,24 @@ WeatherLocation::WeatherLocation(QString locationId,
     , m_latitude(latitude)
     , m_longitude(longitude)
 {
-    m_weatherHourListModel = new WeatherHourListModel(this);
     this->m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
     this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 
-    // prevent segfaults from js garbage collection
-    QQmlEngine::setObjectOwnership(m_weatherHourListModel, QQmlEngine::CppOwnership);
-
     m_lastUpdated = forecast.createdTime();
     determineCurrentForecast();
+
+    connect(this, &WeatherLocation::selectedDayChanged, this, [this] {
+        m_hourForecasts.clear();
+        if (!m_forecast.dailyWeatherForecast().empty()) {
+            const auto hourForecasts = m_forecast.dailyWeatherForecast()[m_selectedDay].hourlyWeatherForecast();
+            for (const KWeatherCore::HourlyWeatherForecast &hour : hourForecasts) {
+                m_hourForecasts << QVariant::fromValue(hour);
+            }
+        }
+        Q_EMIT hourForecastsChanged();
+    });
+
     updateSeries();
 }
 WeatherLocation *WeatherLocation::load(const QString &groupName)
@@ -105,6 +113,15 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     determineCurrentForecast();
     updateSeries();
     m_lastUpdated = forecasts.createdTime();
+
+    m_hourForecasts.clear();
+    if (!m_forecast.dailyWeatherForecast().empty()) {
+        const auto hourForecasts = m_forecast.dailyWeatherForecast()[m_selectedDay].hourlyWeatherForecast();
+        for (const KWeatherCore::HourlyWeatherForecast &hour : hourForecasts) {
+            m_hourForecasts << QVariant::fromValue(hour);
+        }
+    }
+    Q_EMIT hourForecastsChanged();
 
     emit weatherRefresh(m_forecast);
     emit stopLoadingIndicator();
@@ -214,6 +231,7 @@ void WeatherLocation::updateSeries()
 {
     m_vector.clear();
     m_dayForecasts.clear();
+    m_hourForecasts.clear();
 
     for (const KWeatherCore::DailyWeatherForecast &day : m_forecast.dailyWeatherForecast()) {
         m_dayForecasts << QVariant::fromValue(day);

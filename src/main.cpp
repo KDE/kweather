@@ -28,7 +28,6 @@
 #include "locationquerymodel.h"
 #include "version.h"
 #include "weatherforecastmanager.h"
-#include "weatherhourmodel.h"
 #include "weatherlocation.h"
 #include "weatherlocationmodel.h"
 
@@ -72,10 +71,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
     engine.rootContext()->setContextProperty("settingsModel", &settings);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
-
-    // register QML types
-    qmlRegisterType<WeatherHour>("kweather", 1, 0, "WeatherHour");
-    qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
 
     qRegisterMetaType<KWeatherCore::Sunrise>();
 
