@@ -131,24 +131,10 @@ Kirigami.ScrollablePage {
                     shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
                     shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                 }
-                
-                // detect mouse hover
-                HoverHandler {
-                    id: dayMouseArea
-                    acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-                }
 
-                contentItem: ListView {
-                    orientation: ListView.Horizontal
+                contentItem: WeatherStrip {
                     id: dailyListView
 
-                    Layout.fillWidth: true
-                    implicitHeight: Kirigami.Units.gridUnit * 8
-                    spacing: Kirigami.Units.largeSpacing
-                    clip: true
-
-                    snapMode: ListView.SnapToItem
-                    
                     highlightMoveDuration: 400
                     highlightMoveVelocity: -1
                     highlight: Rectangle {
@@ -162,46 +148,12 @@ Kirigami.ScrollablePage {
                         focus: true
                     }
 
-                    currentIndex: 0
+                    spacing: Kirigami.Units.largeSpacing
 
                     model: weatherLocation.dayForecasts
                     delegate: WeatherDayDelegate {
                         weather: modelData
                         textColor: weatherLocation.cardTextColor
-                    }
-                    
-                    // left right mouse controls
-                    Button {
-                        icon.name: "arrow-left"
-                        anchors.left: parent.left
-                        anchors.verticalCenter: parent.verticalCenter
-                        visible: (dayMouseArea.hovered || leftMouseArea.hovered) && dailyListView.currentIndex != 0
-                        onClicked: {
-                            if (dailyListView.currentIndex > 0) {
-                                dailyListView.currentIndex--;
-                                weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
-                            }
-                        }
-                        HoverHandler {
-                            id: leftMouseArea
-                            acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-                        }
-                    }
-                    Button {
-                        icon.name: "arrow-right"
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        visible: (dayMouseArea.hovered || rightMouseArea.hovered) && dailyListView.currentIndex != dailyListView.count - 1
-                        onClicked: {
-                            if (dailyListView.currentIndex < dailyListView.count-1) {
-                                dailyListView.currentIndex++;
-                                weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
-                            }
-                        }
-                        HoverHandler {
-                            id: rightMouseArea
-                            acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-                        }
                     }
                 }
             }
@@ -246,58 +198,12 @@ Kirigami.ScrollablePage {
                     shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                 }
 
-                // detect mouse hover
-                HoverHandler {
-                    id: hourMouseArea
-                    acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-                }
-                
-                contentItem: ListView {
-                    id: weatherHourListView
-                    orientation: ListView.Horizontal
-
-                    implicitHeight: contentItem.childrenRect.height
-                    spacing: Kirigami.Units.largeSpacing * 3
-                    clip: true
-
-                    snapMode: ListView.SnapToItem
-
+                contentItem: WeatherStrip {
                     model: weatherLocation.hourListModel
+
                     delegate: WeatherHourDelegate {
                         weather: hourItem
                         textColor: weatherLocation.cardTextColor
-                    }
-                    
-                    // left right mouse controls
-                    Button {
-                        id: control
-                        icon.name: "arrow-left"
-                        anchors.left: parent.left
-                        anchors.verticalCenter: parent.verticalCenter
-                        visible: hourMouseArea.hovered && weatherHourListView.contentX != 0
-                        SmoothedAnimation {
-                            target: weatherHourListView
-                            property: "contentX"
-                            running: control.pressed
-                            to: 0
-                            velocity: 500
-                            maximumEasingTime: 0
-                        }
-                    }
-                    Button {
-                        id: control2
-                        icon.name: "arrow-right"
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        visible: hourMouseArea.hovered && weatherHourListView.contentX != weatherHourListView.contentWidth - weatherHourListView.width
-                        SmoothedAnimation {
-                            target: weatherHourListView
-                            property: "contentX"
-                            running: control2.pressed
-                            to: weatherHourListView.contentWidth - weatherHourListView.width
-                            velocity: 500
-                            maximumEasingTime: 0
-                        }
                     }
                 }
             }

@@ -98,17 +98,12 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
         }
-        ListView {
-            orientation: ListView.Horizontal
-            id: dailyListView
 
+        WeatherStrip {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             implicitHeight: Kirigami.Units.gridUnit * 8
             spacing: Kirigami.Units.largeSpacing
-            clip: true
-
-            snapMode: ListView.SnapToItem
 
             highlightMoveDuration: 400
             highlightMoveVelocity: -1
@@ -123,50 +118,10 @@ Kirigami.ScrollablePage {
                 focus: true
             }
 
-            currentIndex: 0
-
             model: weatherLocation.dayForecasts
             delegate: WeatherDayDelegate {
                 weather: modelData
                 textColor: Kirigami.Theme.textColor
-            }
-
-            // left right mouse controls
-            HoverHandler {
-                id: dayMouseArea
-                acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-            }
-            Button {
-                icon.name: "arrow-left"
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                visible: (dayMouseArea.hovered || leftMouseArea.hovered) && dailyListView.currentIndex != 0
-                onClicked: {
-                    if (dailyListView.currentIndex > 0) {
-                        dailyListView.currentIndex--;
-                        weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
-                    }
-                }
-                HoverHandler {
-                    id: leftMouseArea
-                    acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-                }
-            }
-            Button {
-                icon.name: "arrow-right"
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                visible: (dayMouseArea.hovered || rightMouseArea.hovered) && dailyListView.currentIndex != dailyListView.count - 1
-                onClicked: {
-                    if (dailyListView.currentIndex < dailyListView.count-1) {
-                        dailyListView.currentIndex++;
-                        weatherLocation.hourListModel.updateHourView(dailyListView.currentIndex);
-                    }
-                }
-                HoverHandler {
-                    id: rightMouseArea
-                    acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-                }
             }
         }
 
@@ -180,60 +135,18 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
         }
-        ListView {
-            id: weatherHourListView
-            orientation: ListView.Horizontal
 
-            Layout.topMargin: Kirigami.Units.largeSpacing * 2
+        WeatherStrip {
             implicitHeight: Kirigami.Units.gridUnit * 10.5
-            implicitWidth: parent.width
-            spacing: Kirigami.Units.largeSpacing * 3
-            clip: true
-
-            snapMode: ListView.SnapToItem
+            Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
             model: weatherLocation.hourListModel
+
             delegate: WeatherHourDelegate {
                 weather: hourItem
-                textColor: Kirigami.Theme.textColor
+                textColor: weatherLocation.cardTextColor
             }
-
-            // left right mouse controls
-            HoverHandler {
-                id: hourMouseArea
-                acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
-            }
-            Button {
-                id: control
-                icon.name: "arrow-left"
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                visible: hourMouseArea.hovered && weatherHourListView.contentX != 0
-                SmoothedAnimation {
-                    target: weatherHourListView
-                    property: "contentX"
-                    running: control.pressed
-                    to: 0
-                    velocity: 500
-                    maximumEasingTime: 0
-                }
-            }
-            Button {
-                id: control2
-                icon.name: "arrow-right"
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                visible: hourMouseArea.hovered && weatherHourListView.contentX != weatherHourListView.contentWidth - weatherHourListView.width
-                SmoothedAnimation {
-                    target: weatherHourListView
-                    property: "contentX"
-                    running: control2.pressed
-                    to: weatherHourListView.contentWidth - weatherHourListView.width
-                    velocity: 500
-                    maximumEasingTime: 0
-                }
-            }
-
         }
 
         InfoCard {

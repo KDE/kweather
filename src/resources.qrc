@@ -23,6 +23,7 @@
         <file>qml/TemperatureChartCard.qml</file>
         <file>qml/SunriseCard.qml</file>
         <file>qml/InfoCard.qml</file>
+        <file>qml/WeatherStrip.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>
         <file>qml/backgrounds/CloudyDay.qml</file>
