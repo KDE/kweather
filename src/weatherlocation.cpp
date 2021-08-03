@@ -245,7 +245,7 @@ void WeatherLocation::updateSeries()
         m_minTempLimit = minTemp - 5;
 
         m_series->replace(m_vector);
-        if (m_axisX) {
+        if (m_axisX && !m_forecast.dailyWeatherForecast().empty()) {
             m_axisX->setRange(m_forecast.dailyWeatherForecast().front().date().startOfDay(), m_forecast.dailyWeatherForecast().back().date().startOfDay());
         }
     }
