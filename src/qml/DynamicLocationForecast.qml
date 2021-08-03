@@ -303,8 +303,10 @@ Kirigami.ScrollablePage {
             }
             
             // bottom card (extra info for selected day)
-            Kirigami.Card {
+            InfoCard {
                 Layout.fillWidth: true
+
+                textColor: weatherLocation.cardTextColor
 
                 background: Kirigami.ShadowedRectangle {
                     color: weatherLocation.cardBackgroundColor
@@ -314,105 +316,6 @@ Kirigami.ScrollablePage {
                     shadow.size: Kirigami.Units.largeSpacing
                     shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
                     shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
-                }
-                contentItem: Item {
-                    implicitHeight: column.height
-                    Column {
-                        id: column
-                        spacing: Kirigami.Units.largeSpacing * 2
-
-                        // precipitation
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "raindrop"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                                color: weatherLocation.iconColor
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("Precipitation")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: currentDay == null ? "" : currentDay.precipitation.toFixed(1) + "mm"
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-
-                        // Humidity
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "compass"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                                color: weatherLocation.iconColor
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("Humidity")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: currentDay == null ? "" : i18n("%1%", currentDay.humidity.toFixed(1))
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-
-                        // Atmospheric pressure
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "speedometer"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                                color: weatherLocation.iconColor
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("Pressure")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: currentDay == null ? "" : i18n("%1hPa", currentDay.pressure.toFixed(1))
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-
-                        // UV Index
-                        RowLayout {
-                            spacing: Kirigami.Units.largeSpacing
-                            Kirigami.Icon {
-                                source: "compass"
-                                Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                                Layout.minimumWidth: Layout.minimumHeight * 1.5
-                                color: weatherLocation.iconColor
-                            }
-                            Column {
-                                spacing: Kirigami.Units.smallSpacing
-                                Label {
-                                    font.weight: Font.Bold
-                                    text: i18n("UV index")
-                                    color: weatherLocation.cardTextColor
-                                }
-                                Label {
-                                    text: currentDay == null ? "" : currentDay.uvIndex.toFixed(1)
-                                    color: weatherLocation.cardTextColor
-                                }
-                            }
-                        }
-                    }
                 }
             }
 

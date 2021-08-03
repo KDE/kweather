@@ -1,0 +1,121 @@
+/*
+ * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
+ * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+import QtQuick 2.12
+import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.2
+import QtCharts 2.3
+import org.kde.kirigami 2.13 as Kirigami
+import kweather 1.0
+import "backgrounds"
+
+Kirigami.Card {
+
+    id: root
+
+    property var textColor: Kirigami.Theme.textColor
+
+    contentItem: Item {
+        implicitHeight: column.height
+        Column {
+            id: column
+            spacing: Kirigami.Units.largeSpacing * 2
+
+            // precipitation
+            RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+                Kirigami.Icon {
+                    source: "raindrop"
+                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    color: weatherLocation.iconColor
+                }
+                Column {
+                    spacing: Kirigami.Units.smallSpacing
+                    Label {
+                        font.weight: Font.Bold
+                        text: i18n("Precipitation")
+                        color: root.textColor
+                    }
+                    Label {
+                        text: currentDay == null ? "" : currentDay.precipitation.toFixed(1) + "mm"
+                        color: root.textColor
+                    }
+                }
+            }
+
+            // Humidity
+            RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+                Kirigami.Icon {
+                    source: "compass"
+                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    color: weatherLocation.iconColor
+                }
+                Column {
+                    spacing: Kirigami.Units.smallSpacing
+                    Label {
+                        font.weight: Font.Bold
+                        text: i18n("Humidity")
+                        color: root.textColor
+                    }
+                    Label {
+                        text: currentDay == null ? "" : i18n("%1%", currentDay.humidity.toFixed(1))
+                        color: root.textColor
+                    }
+                }
+            }
+
+            // Atmospheric pressure
+            RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+                Kirigami.Icon {
+                    source: "speedometer"
+                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    color: weatherLocation.iconColor
+                }
+                Column {
+                    spacing: Kirigami.Units.smallSpacing
+                    Label {
+                        font.weight: Font.Bold
+                        text: i18n("Pressure")
+                        color: root.textColor
+                    }
+                    Label {
+                        text: currentDay == null ? "" : i18n("%1hPa", currentDay.pressure.toFixed(1))
+                        color: root.textColor
+                    }
+                }
+            }
+
+            // UV Index
+            RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+                Kirigami.Icon {
+                    source: "compass"
+                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
+                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    color: weatherLocation.iconColor
+                }
+                Column {
+                    spacing: Kirigami.Units.smallSpacing
+                    Label {
+                        font.weight: Font.Bold
+                        text: i18n("UV index")
+                        color: root.textColor
+                    }
+                    Label {
+                        text: currentDay == null ? "" : currentDay.uvIndex.toFixed(1)
+                        color: root.textColor
+                    }
+                }
+            }
+        }
+    }
+}
