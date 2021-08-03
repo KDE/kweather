@@ -215,34 +215,38 @@ void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
     if (series) {
         m_series = static_cast<QtCharts::QSplineSeries *>(series);
         updateSeries();
+    } else {
+        m_series = nullptr;
     }
 }
 void WeatherLocation::updateSeries()
 {
     m_vector.clear();
+    m_dayForecasts.clear();
 
-    const auto &dayForecasts = m_forecast.dailyWeatherForecast();
-    for (const KWeatherCore::DailyWeatherForecast &day : dayForecasts) {
+    for (const KWeatherCore::DailyWeatherForecast &day : m_forecast.dailyWeatherForecast()) {
         m_dayForecasts << QVariant::fromValue(day);
+    }
 
-        if (m_series) {
-            double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
-            for (const auto &d : m_forecast.dailyWeatherForecast()) {
-                const auto dayMinTemp = Kweather::convertTemp(d.minTemp()), dayMaxTemp = Kweather::convertTemp(d.maxTemp());
+    if (m_series) {
+        m_series->clear();
 
-                m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), dayMaxTemp));
-                minTemp = std::min<double>(dayMinTemp, minTemp);
-                maxTemp = std::max<double>(dayMaxTemp, maxTemp);
-            }
+        double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
+        for (const auto &d : m_forecast.dailyWeatherForecast()) {
+            const auto dayMinTemp = Kweather::convertTemp(d.minTemp()), dayMaxTemp = Kweather::convertTemp(d.maxTemp());
 
-            // make enough room for the curve
-            m_maxTempLimit = maxTemp + 5;
-            m_minTempLimit = minTemp - 5;
+            m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), dayMaxTemp));
+            minTemp = std::min<double>(dayMinTemp, minTemp);
+            maxTemp = std::max<double>(dayMaxTemp, maxTemp);
+        }
 
-            m_series->replace(m_vector);
-            if (m_axisX) {
-                m_axisX->setRange(m_forecast.dailyWeatherForecast().front().date().startOfDay(), m_forecast.dailyWeatherForecast().back().date().startOfDay());
-            }
+        // make enough room for the curve
+        m_maxTempLimit = maxTemp + 5;
+        m_minTempLimit = minTemp - 5;
+
+        m_series->replace(m_vector);
+        if (m_axisX) {
+            m_axisX->setRange(m_forecast.dailyWeatherForecast().front().date().startOfDay(), m_forecast.dailyWeatherForecast().back().date().startOfDay());
         }
     }
 

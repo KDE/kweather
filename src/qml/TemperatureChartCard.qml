@@ -88,6 +88,10 @@ Control {
                     tempChartCard.location.initAxes(axisX, axisY);
                     tempChartCard.location.initSeries(chartView.series(0));
                 }
+                Component.onDestruction: {
+                    // ensure that the series is a nullptr
+                    tempChartCard.location.initSeries(0);
+                }
             }
 
             // allow continuous mouse scrolling
