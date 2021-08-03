@@ -11,6 +11,7 @@ set(kweather_SRCS
     weatherlocationmodel.cpp
     weatherlocation.cpp
     locationquerymodel.cpp
+    temperaturechartdata.cpp
     resources.qrc
 )
 add_library(kweatherLib STATIC)

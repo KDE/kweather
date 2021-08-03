@@ -26,6 +26,7 @@
 
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
+#include "temperaturechartdata.h"
 #include "version.h"
 #include "weatherforecastmanager.h"
 #include "weatherlocation.h"
@@ -71,6 +72,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
     engine.rootContext()->setContextProperty("settingsModel", &settings);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
+
+    qmlRegisterType<TemperatureChartData>("kweather", 1, 0, "TemperatureChartData");
 
     qRegisterMetaType<KWeatherCore::Sunrise>();
 

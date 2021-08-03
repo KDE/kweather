@@ -10,6 +10,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
+import kweather 1.0
 import "backgrounds"
 
 Control {
@@ -42,6 +43,11 @@ Control {
             width: page.maximumContentWidth
             height: Math.round(Kirigami.Units.gridUnit * 8.5)
 
+            TemperatureChartData {
+                id: chartData
+                weatherData: location.dayForecasts
+            }
+
             ChartView {
                 id: chartView
                 anchors.fill: parent
@@ -71,8 +77,8 @@ Control {
                         id: axisY
                         visible: false
 
-                        min: tempChartCard.location.minTempLimit
-                        max: tempChartCard.location.maxTempLimit
+                        min: chartData.minTempLimit
+                        max: chartData.maxTempLimit
                         labelsColor: tempChartCard.textColor
                     }
                     name: i18n("temperature")
@@ -84,12 +90,12 @@ Control {
                 }
 
                 Component.onCompleted: {
-                    tempChartCard.location.initAxes(axisX, axisY);
-                    tempChartCard.location.initSeries(chartView.series(0));
+                    chartData.initAxes(axisX, axisY);
+                    chartData.initSeries(chartView.series(0));
                 }
                 Component.onDestruction: {
                     // ensure that the series is a nullptr
-                    tempChartCard.location.initSeries(0);
+                    chartData.initSeries(0);
                 }
             }
 

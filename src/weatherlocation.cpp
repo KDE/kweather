@@ -52,8 +52,6 @@ WeatherLocation::WeatherLocation(QString locationId,
         }
         Q_EMIT hourForecastsChanged();
     });
-
-    updateSeries();
 }
 WeatherLocation *WeatherLocation::load(const QString &groupName)
 {
@@ -111,7 +109,6 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     }
 
     determineCurrentForecast();
-    updateSeries();
     m_lastUpdated = forecasts.createdTime();
 
     m_hourForecasts.clear();
@@ -122,6 +119,12 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
         }
     }
     Q_EMIT hourForecastsChanged();
+
+    m_dayForecasts.clear();
+    for (const KWeatherCore::DailyWeatherForecast &day : m_forecast.dailyWeatherForecast()) {
+        m_dayForecasts << QVariant::fromValue(day);
+    }
+    Q_EMIT dayForecastsChanged();
 
     emit weatherRefresh(m_forecast);
     emit stopLoadingIndicator();
@@ -218,61 +221,6 @@ void WeatherLocation::update()
         });
 }
 
-void WeatherLocation::initSeries(QtCharts::QAbstractSeries *series)
-{
-    if (series) {
-        m_series = static_cast<QtCharts::QSplineSeries *>(series);
-        updateSeries();
-    } else {
-        m_series = nullptr;
-    }
-}
-void WeatherLocation::updateSeries()
-{
-    m_vector.clear();
-    m_dayForecasts.clear();
-    m_hourForecasts.clear();
-
-    for (const KWeatherCore::DailyWeatherForecast &day : m_forecast.dailyWeatherForecast()) {
-        m_dayForecasts << QVariant::fromValue(day);
-    }
-
-    if (m_series) {
-        m_series->clear();
-
-        double minTemp = std::numeric_limits<double>::max(), maxTemp = std::numeric_limits<double>::min();
-        for (const auto &d : m_forecast.dailyWeatherForecast()) {
-            const auto dayMinTemp = Kweather::convertTemp(d.minTemp()), dayMaxTemp = Kweather::convertTemp(d.maxTemp());
-
-            m_vector.append(QPointF(d.date().startOfDay().toMSecsSinceEpoch(), dayMaxTemp));
-            minTemp = std::min<double>(dayMinTemp, minTemp);
-            maxTemp = std::max<double>(dayMaxTemp, maxTemp);
-        }
-
-        // make enough room for the curve
-        m_maxTempLimit = maxTemp + 5;
-        m_minTempLimit = minTemp - 5;
-
-        m_series->replace(m_vector);
-        if (m_axisX && !m_forecast.dailyWeatherForecast().empty()) {
-            m_axisX->setRange(m_forecast.dailyWeatherForecast().front().date().startOfDay(), m_forecast.dailyWeatherForecast().back().date().startOfDay());
-        }
-    }
-
-    Q_EMIT dayForecastsChanged();
-}
-void WeatherLocation::initAxes(QObject *axisX, QObject *axisY)
-{
-    using namespace QtCharts;
-    if (axisX && axisY) {
-        m_axisX = static_cast<QDateTimeAxis *>(axisX);
-        m_axisY = static_cast<QValueAxis *>(axisY);
-        updateAxes();
-    }
-}
-void WeatherLocation::updateAxes()
-{
-}
 void WeatherLocation::updateCurrentDateTime()
 {
     m_timer->setInterval(60000);

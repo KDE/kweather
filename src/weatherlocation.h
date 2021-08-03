@@ -44,8 +44,6 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QColor cardTextColor READ cardTextColor NOTIFY currentForecastChange)
     Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChange)
     Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChange)
-    Q_PROPERTY(double maxTempLimit READ maxTempLimit NOTIFY currentForecastChange)
-    Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY currentForecastChange)
 
 public:
     explicit WeatherLocation(QString locationId,
@@ -128,15 +126,6 @@ public:
     {
         return m_iconColor;
     }
-
-    double maxTempLimit() const
-    {
-        return m_maxTempLimit;
-    }
-    double minTempLimit() const
-    {
-        return m_minTempLimit;
-    }
     bool darkTheme() const
     {
         return m_isDarkTheme;
@@ -160,8 +149,6 @@ public:
             Q_EMIT selectedDayChanged();
         }
     }
-    Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
-    Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
 
     // for restore order of locations
     void saveOrder(int index);
@@ -187,19 +174,9 @@ private slots:
 
 private:
     void determineCurrentForecast();
-    void updateSeries();
-    void updateAxes();
 
     KWeatherCore::WeatherForecastSource m_source;
     KWeatherCore::WeatherForecast m_forecast;
-
-    // chart related fields
-    QtCharts::QSplineSeries *m_series = nullptr;
-    QVector<QPointF> m_vector;
-    double m_maxTempLimit{100};
-    double m_minTempLimit{0};
-    QtCharts::QDateTimeAxis *m_axisX{nullptr};
-    QtCharts::QValueAxis *m_axisY{nullptr};
 
     // background related fields
     QColor m_backgroundColor;
@@ -218,5 +195,5 @@ private:
 
     QVariantList m_dayForecasts;
     QVariantList m_hourForecasts;
-    int m_selectedDay;
+    int m_selectedDay = 0;
 };
