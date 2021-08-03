@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
 
     background: null // transparent, since there is a page behind
 
-    property WeatherLocation weatherLocation
+    property var weatherLocation
     property var currentDay: dailyListView.currentItem.weather
 
     property bool inView: false

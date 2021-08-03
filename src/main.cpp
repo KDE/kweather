@@ -74,7 +74,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
 
     // register QML types
-    qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
     qmlRegisterType<WeatherHour>("kweather", 1, 0, "WeatherHour");
     qmlRegisterType<WeatherHourListModel>("kweather", 1, 0, "WeatherHourListModel");
 

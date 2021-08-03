@@ -48,7 +48,6 @@ class WeatherLocation : public QObject
     Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY currentForecastChange)
 
 public:
-    WeatherLocation();
     explicit WeatherLocation(QString locationId,
                              QString locationName,
                              QString timeZone,

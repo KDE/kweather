@@ -22,15 +22,6 @@
 #include <QValueAxis>
 #include <utility>
 
-WeatherLocation::WeatherLocation()
-{
-    m_weatherHourListModel = new WeatherHourListModel(this);
-    m_lastUpdated = QDateTime::currentDateTime();
-    this->m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &WeatherLocation::updateCurrentDateTime);
-    this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
-}
-
 WeatherLocation::WeatherLocation(QString locationId,
                                  QString locationName,
                                  QString timeZone,
