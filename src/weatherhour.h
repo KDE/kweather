@@ -54,11 +54,11 @@ public:
     QString windSpeed() const;
     QString temperature() const
     {
-        return Kweather::tempConverter(hour().temperature());
+        return QString::number(Kweather::convertTemp(hour().temperature()), 'f', 1) + "°";
     }
     QString temperatureRounded() const
     {
-        return Kweather::tempConverter(hour().temperature());
+        return QString::number(qRound(Kweather::convertTemp(hour().temperature()))) + "°";
     }
     qreal humidity() const
     {
