@@ -111,7 +111,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Kirigami.Icon {
                                 Layout.alignment: Qt.AlignHCenter
-                                source: location.hourListModel.currentForecast == null ? "weather-none-available" : location.hourListModel.currentForecast.weatherIcon
+                                source: location.todayForecast.weatherIcon
                                 Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
                                 Layout.preferredWidth: height
                                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
@@ -119,7 +119,7 @@ Kirigami.ScrollablePage {
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: location.hourListModel.currentForecast == null ? "0" : location.hourListModel.currentForecast.temperatureRounded
+                                text: location.todayForecast.maxTemp
                             }
                         }
 

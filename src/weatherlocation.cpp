@@ -227,3 +227,11 @@ void WeatherLocation::updateCurrentDateTime()
     Q_EMIT currentTimeChanged();
     Q_EMIT currentDateChanged();
 }
+
+KWeatherCore::DailyWeatherForecast WeatherLocation::todayForecast() const
+{
+    if (!m_dayForecasts.isEmpty()) {
+        return m_dayForecasts.first().value<KWeatherCore::DailyWeatherForecast>();
+    }
+    return {};
+}

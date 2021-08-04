@@ -36,6 +36,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
     Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
     Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
+    Q_PROPERTY(KWeatherCore::DailyWeatherForecast todayForecast READ todayForecast NOTIFY dayForecastsChanged)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
     Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChange)
@@ -149,6 +150,7 @@ public:
             Q_EMIT selectedDayChanged();
         }
     }
+    KWeatherCore::DailyWeatherForecast todayForecast() const;
 
     // for restore order of locations
     void saveOrder(int index);
