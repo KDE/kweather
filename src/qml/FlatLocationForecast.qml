@@ -10,6 +10,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
+import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
@@ -63,7 +64,7 @@ Kirigami.ScrollablePage {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
                     font.family: lightHeadingFont.name
-                    text: page.currentHour.temperatureRounded // TODO
+                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature)
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
@@ -151,7 +152,7 @@ Kirigami.ScrollablePage {
 
             delegate: WeatherHourDelegate {
                 weather: modelData
-                textColor: weatherLocation.cardTextColor
+                textColor: Kirigami.Theme.textColor
             }
         }
 

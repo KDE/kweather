@@ -10,6 +10,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
+import kweather 1.0
 
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 5
@@ -34,7 +35,7 @@ Rectangle {
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
-            text: weather.temperature
+            text: Formatter.formatTemperature(weather.temperature)
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
             color: textColor
         }
@@ -45,7 +46,6 @@ Rectangle {
 
         // precipitation
         RowLayout {
-            visible: weather != null
             Kirigami.Icon {
                 source: "raindrop"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
@@ -68,7 +68,7 @@ Rectangle {
             }
             Label {
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
-                text: weather.windSpeed
+                text: Formatter.formatWindSpeed(weather.windSpeed)
             }
         }
 

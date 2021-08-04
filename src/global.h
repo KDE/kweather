@@ -23,11 +23,6 @@ static double convertTemp(double temp)
     }
 };
 
-static QString tempConverter(double temp)
-{
-    return QString::number(qRound(convertTemp(temp))) + "°";
-}
-
 enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
 enum class Backend { NMI, OWM };
 struct ResolvedWeatherDesc {

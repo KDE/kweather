@@ -11,6 +11,7 @@ import QtQuick.Layouts 1.2
 import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
 import "backgrounds"
+import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
@@ -72,7 +73,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: page.currentHour.temperatureRounded
+                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature)
                     font.family: lightHeadingFont.name
                 }
                 Label {

@@ -24,6 +24,7 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#include "formatter.h"
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
 #include "temperaturechartdata.h"
@@ -72,6 +73,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
     engine.rootContext()->setContextProperty("settingsModel", &settings);
     engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
+
+    Formatter formatter;
+    qmlRegisterSingletonInstance<Formatter>("kweather", 1, 0, "Formatter", &formatter);
 
     qmlRegisterType<TemperatureChartData>("kweather", 1, 0, "TemperatureChartData");
 

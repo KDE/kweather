@@ -10,6 +10,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
+import kweather 1.0
 
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 6
@@ -53,14 +54,14 @@ Rectangle {
             Label {
                 id: highTemp
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                text: Math.round(weather.maxTemp) + "°"
+                text: Formatter.formatTemperatureRounded(weather.maxTemp)
                 color: textColor
             }
             Label {
                 anchors.baseline: highTemp.baseline
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                text: Math.round(weather.minTemp) + "°"
+                text: Formatter.formatTemperatureRounded(weather.minTemp)
             }
         }
         Label {
