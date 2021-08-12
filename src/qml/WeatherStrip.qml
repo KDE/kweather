@@ -30,34 +30,24 @@ ListView {
 
     // left right mouse controls
     Button {
-        id: control
         icon.name: "arrow-left"
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        visible: hourMouseArea.hovered && root.contentX != 0
-        SmoothedAnimation {
-            target: root
-            property: "contentX"
-            running: control.pressed
-            to: 0
-            velocity: 500
-            maximumEasingTime: 0
+        visible: hourMouseArea.hovered && root.currentIndex > 0
+
+        onClicked: {
+            root.decrementCurrentIndex()
         }
     }
 
     Button {
-        id: control2
         icon.name: "arrow-right"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        visible: hourMouseArea.hovered && root.contentX != root.contentWidth - root.width
-        SmoothedAnimation {
-            target: root
-            property: "contentX"
-            running: control2.pressed
-            to: root.contentWidth - root.width
-            velocity: 500
-            maximumEasingTime: 0
+        visible: hourMouseArea.hovered && root.currentIndex < root.count - 1
+
+        onClicked: {
+            root.incrementCurrentIndex()
         }
     }
 }
