@@ -10,7 +10,6 @@
 #include "global.h"
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
-#include "kweathersettings.h"
 
 #include <QDateTimeAxis>
 #include <QDir>
