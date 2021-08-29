@@ -25,13 +25,4 @@ static double convertTemp(double temp, const QString &unit)
 
 enum class WindDirection { N, NW, W, SW, S, SE, E, NE };
 enum class Backend { NMI, OWM };
-struct ResolvedWeatherDesc {
-    QString icon = QStringLiteral("weather-none-available"), desc = QStringLiteral("Unknown");
-    ResolvedWeatherDesc() = default;
-    ResolvedWeatherDesc(QString icon, QString desc)
-    {
-        this->icon = icon;
-        this->desc = desc;
-    }
-};
 }
