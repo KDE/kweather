@@ -55,7 +55,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Notifications
     QuickCharts
 )
-find_package(KF5 0.3.0 REQUIRED COMPONENTS KWeatherCore)
+find_package(KF5KWeatherCore 0.5.0 REQUIRED)
 
 if (ANDROID)
    find_package(OpenSSL REQUIRED)
