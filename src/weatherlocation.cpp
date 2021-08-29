@@ -40,6 +40,9 @@ WeatherLocation::WeatherLocation(QString locationId,
     this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 
     m_lastUpdated = forecast.createdTime();
+
+    update();
+
     determineCurrentForecast();
 
     connect(this, &WeatherLocation::selectedDayChanged, this, [this] {

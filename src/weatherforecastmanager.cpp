@@ -18,19 +18,10 @@
 WeatherForecastManager::WeatherForecastManager()
     : m_model(new WeatherLocationListModel(this))
 {
-    update();
 }
 
 WeatherForecastManager *WeatherForecastManager::inst()
 {
     static WeatherForecastManager singleton;
     return &singleton;
-}
-void WeatherForecastManager::update()
-{
-    qDebug() << "update start";
-    auto &locations = m_model->locations();
-    for (auto location : locations) {
-        location->update();
-    }
 }

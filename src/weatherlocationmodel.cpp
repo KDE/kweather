@@ -156,7 +156,6 @@ void WeatherLocationListModel::addLocation(const KWeatherCore::LocationQueryResu
 
     // add location
     auto *location = new WeatherLocation(locId, locName, QString(), lat, lon);
-    location->update();
 
     insert(m_locations.size(), location);
 }
@@ -178,7 +177,6 @@ void WeatherLocationListModel::requestCurrentLocation()
 void WeatherLocationListModel::addCurrentLocation(const KWeatherCore::LocationQueryResult &ret)
 {
     auto location = new WeatherLocation(ret.geonameId(), ret.toponymName(), QString(), ret.latitude(), ret.longitude());
-    location->update();
 
     insert(0, location);
     Q_EMIT successfullyCreatedDefault();

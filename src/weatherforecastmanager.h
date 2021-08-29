@@ -27,10 +27,6 @@ public:
     {
         return m_model;
     }
-signals:
-    void updated();
-private slots:
-    void update();
 
 private:
     WeatherLocationListModel *m_model;
