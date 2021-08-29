@@ -7,20 +7,19 @@
  */
 
 #include "weatherlocation.h"
-#include "global.h"
-#include "kweathersettings.h"
-#include "locationquerymodel.h"
 
-#include <QDateTimeAxis>
 #include <QDir>
 #include <QFile>
 #include <QJsonArray>
 #include <QQmlEngine>
-#include <QSplineSeries>
 #include <QTimeZone>
 #include <QTimer>
-#include <QValueAxis>
+
 #include <utility>
+
+#include "global.h"
+#include "kweathersettings.h"
+#include "locationquerymodel.h"
 
 WeatherLocation::WeatherLocation(QString locationId,
                                  QString locationName,

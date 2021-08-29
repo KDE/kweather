@@ -3,7 +3,9 @@
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 #include "hourlymodel.h"
+
 #include <QProcess>
+
 QVariant HourlyModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() >= rowCount(QModelIndex()))

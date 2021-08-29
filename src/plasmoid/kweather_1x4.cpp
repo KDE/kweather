@@ -3,11 +3,16 @@
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 #include "kweather_1x4.h"
+
+#include <QQmlApplicationEngine>
+
+#include <KSharedConfig>
+
+#include <KWeatherCore/WeatherForecastSource>
+
 #include "hourlymodel.h"
 #include "kweathersettings.h"
-#include <KSharedConfig>
-#include <KWeatherCore/WeatherForecastSource>
-#include <QQmlApplicationEngine>
+
 KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
     : Plasma::Applet(parent, args)
     , m_hourlyModel(new HourlyModel())

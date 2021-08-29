@@ -7,7 +7,7 @@
  */
 
 #pragma once
-#include <KWeatherCore/WeatherForecastSource>
+
 #include <QAbstractListModel>
 #include <QColor>
 #include <QDateTime>
@@ -17,6 +17,9 @@
 #include <QObject>
 #include <QTimeZone>
 #include <QTimer>
+
+#include <KWeatherCore/WeatherForecastSource>
+
 #include <utility>
 
 namespace QtCharts

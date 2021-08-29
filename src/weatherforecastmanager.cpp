@@ -6,14 +6,17 @@
  */
 
 #include "weatherforecastmanager.h"
-#include "weatherlocation.h"
-#include "weatherlocationmodel.h"
-#include <KConfigCore/KConfigGroup>
+
 #include <QDirIterator>
 #include <QFile>
 #include <QStandardPaths>
 #include <QTimeZone>
 #include <QTimer>
+
+#include <KConfigCore/KConfigGroup>
+
+#include "weatherlocation.h"
+#include "weatherlocationmodel.h"
 
 WeatherForecastManager::WeatherForecastManager()
     : m_model(new WeatherLocationListModel(this))

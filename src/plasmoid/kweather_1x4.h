@@ -5,8 +5,11 @@
 
 #ifndef KWEATHER_1X4_H
 #define KWEATHER_1X4_H
-#include <KWeatherCore/WeatherForecast>
+
 #include <Plasma/Applet>
+
+#include <KWeatherCore/WeatherForecast>
+
 class HourlyModel;
 class KWeather_1x4 : public Plasma::Applet
 {

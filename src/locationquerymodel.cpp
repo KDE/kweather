@@ -6,6 +6,7 @@
  */
 
 #include "locationquerymodel.h"
+
 #include <QDebug>
 #include <QTimer>
 

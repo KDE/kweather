@@ -7,9 +7,11 @@
 
 #pragma once
 
-#include <KWeatherCore/LocationQuery>
 #include <QAbstractListModel>
 #include <QObject>
+
+#include <KWeatherCore/LocationQuery>
+
 class QTimer;
 class LocationQueryModel : public QAbstractListModel
 {

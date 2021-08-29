@@ -5,8 +5,10 @@
 #ifndef HOURLYMODEL_H
 #define HOURLYMODEL_H
 
-#include <KWeatherCore/WeatherForecast>
 #include <QAbstractListModel>
+
+#include <KWeatherCore/WeatherForecast>
+
 class HourlyModel : public QAbstractListModel
 {
     Q_OBJECT

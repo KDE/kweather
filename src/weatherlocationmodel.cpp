@@ -6,15 +6,17 @@
  */
 
 #include "weatherlocationmodel.h"
-#include "global.h"
-#include "kweathersettings.h"
-#include "weatherlocation.h"
+
+#include <QJsonArray>
+#include <QQmlEngine>
 
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
 
-#include <QJsonArray>
-#include <QQmlEngine>
+#include "global.h"
+#include "kweathersettings.h"
+#include "weatherlocation.h"
+
 /* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
     : QAbstractListModel(parent)

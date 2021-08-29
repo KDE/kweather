@@ -5,11 +5,16 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 #pragma once
-#include "kweathersettings.h"
+
+#include <QString>
+
 #include <KLocalizedContext>
 #include <KLocalizedString>
-#include <QString>
+
 #include <unordered_map>
+
+#include "kweathersettings.h"
+
 namespace Kweather
 {
 static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
