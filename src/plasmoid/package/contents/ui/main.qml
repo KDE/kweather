@@ -14,4 +14,21 @@ Item {
         active: true
         source: plasmoid.nativeInterface.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
     }
+    Plasmoid.compactRepresentation: ColumnLayout{
+        Kirigami.Icon {
+            paintedHeight: 20
+            paintedWidth: 20
+            source: plasmoid.nativeInterface.weatherIcon
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    plasmoid.expanded = !plasmoid.expanded;
+                }
+            }
+        }
+        Label {
+            text: plasmoid.nativeInterface.temp + "°"
+            color: Kirigami.Theme.activeTextColor
+        }
+    }
 }
