@@ -80,7 +80,7 @@ public:
     }
     QString lastUpdatedFormatted() const
     {
-        return lastUpdated().toString("hh:mm ap");
+        return lastUpdated().toString(QStringLiteral("hh:mm ap"));
     }
     const QDateTime &lastUpdated() const
     {
@@ -88,11 +88,11 @@ public:
     }
     QString currentTimeFormatted() const
     {
-        return currentDateTime().toString("hh:mm ap");
+        return currentDateTime().toString(QStringLiteral("hh:mm ap"));
     }
     QString currentDateFormatted() const
     {
-        return currentDateTime().toString("dd MMM yyyy");
+        return currentDateTime().toString(QStringLiteral("dd MMM yyyy"));
     }
     QDateTime currentDateTime() const
     {
@@ -101,7 +101,7 @@ public:
     void setLastUpdated(QDateTime lastUpdated)
     {
         m_lastUpdated = std::move(lastUpdated);
-        emit propertyChanged();
+        Q_EMIT propertyChanged();
     }
     const QString &backgroundComponent() const
     {
@@ -157,10 +157,10 @@ public:
     void saveOrder(int index);
     int index();
     void deleteConfig();
-public slots:
+public Q_SLOTS:
     void updateData(KWeatherCore::WeatherForecast forecasts);
 
-signals:
+Q_SIGNALS:
     void weatherRefresh(KWeatherCore::WeatherForecast forecasts); // sent when weather data is refreshed
     void currentForecastChange();
     void propertyChanged(); // avoid warning
@@ -172,7 +172,7 @@ signals:
     void selectedDayChanged();
 
     void chartListChanged();
-private slots:
+private Q_SLOTS:
     void updateCurrentDateTime();
 
 private:

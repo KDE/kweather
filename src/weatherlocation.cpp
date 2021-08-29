@@ -129,10 +129,10 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     }
     Q_EMIT dayForecastsChanged();
 
-    emit weatherRefresh(m_forecast);
-    emit stopLoadingIndicator();
+    Q_EMIT weatherRefresh(m_forecast);
+    Q_EMIT stopLoadingIndicator();
 
-    emit propertyChanged();
+    Q_EMIT propertyChanged();
     updateCurrentDateTime();
 }
 
@@ -208,7 +208,7 @@ void WeatherLocation::determineCurrentForecast()
         m_iconColor = QStringLiteral("white");
         m_isDarkTheme = true;
     }
-    emit currentForecastChange();
+    Q_EMIT currentForecastChange();
 }
 
 void WeatherLocation::update()

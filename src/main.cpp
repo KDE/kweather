@@ -53,7 +53,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     KLocalizedString::setApplicationDomain("kweather");
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    KAboutData aboutData("kweather",
+    KAboutData aboutData(QStringLiteral("kweather"),
                          i18n("Weather"),
                          QStringLiteral(KWEATHER_VERSION_STRING),
                          i18n("A convergent weather application for Plasma"),
@@ -65,8 +65,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty(QStringLiteral("kweatherAboutData"), QVariant::fromValue(aboutData));
 
-    engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
-    engine.rootContext()->setContextProperty("settingsModel", KWeatherSettings::self());
+    engine.rootContext()->setContextProperty(QStringLiteral("weatherLocationListModel"), WeatherForecastManager::inst()->model());
+    engine.rootContext()->setContextProperty(QStringLiteral("settingsModel"), KWeatherSettings::self());
 
     Formatter formatter;
     qmlRegisterSingletonInstance<Formatter>("kweather", 1, 0, "Formatter", &formatter);

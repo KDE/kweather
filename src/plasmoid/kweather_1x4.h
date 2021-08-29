@@ -38,7 +38,7 @@ public:
 
     Q_INVOKABLE QStringList locationsInSystem();
     Q_INVOKABLE void setLocation(const QString &location);
-signals:
+Q_SIGNALS:
     void locationChanged();
     void updated();
     void needLocationChanged();
