@@ -16,7 +16,7 @@ static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocati
 
 static double convertTemp(double temp)
 {
-    if (KWeatherSettings().temperatureUnits() == "Fahrenheit") {
+    if (KWeatherSettings::self()->temperatureUnits() == "Fahrenheit") {
         return temp * 1.8 + 32;
     } else {
         return temp;

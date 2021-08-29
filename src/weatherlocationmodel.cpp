@@ -25,7 +25,7 @@ WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 void WeatherLocationListModel::load()
 {
     // load locations from kconfig
-    auto config = KWeatherSettings(this).sharedConfig()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
+    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
     auto locations = config.groupList();
     for (const auto &location : locations) {
         auto location_ptr = WeatherLocation::load(location);

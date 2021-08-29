@@ -17,7 +17,7 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
     auto group = config->group("general");
     QString locationID = group.readEntry("locationID");
     if (!locationID.isEmpty()) {
-        auto m_config = KWeatherSettings(this).sharedConfig()->group("WeatherLocations");
+        auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
         auto m_group = m_config.group(locationID);
         m_location = m_group.readEntry("locationName");
         m_latitude = m_group.readEntry("latitude").toDouble();
@@ -47,7 +47,7 @@ void KWeather_1x4::update()
 
 QStringList KWeather_1x4::locationsInSystem()
 {
-    auto m_config = KWeatherSettings(this).sharedConfig()->group("WeatherLocations");
+    auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
     QStringList list;
 
     for (const auto &loc : m_config.groupList()) {
@@ -57,7 +57,7 @@ QStringList KWeather_1x4::locationsInSystem()
 }
 void KWeather_1x4::setLocation(const QString &location)
 {
-    auto m_config = KWeatherSettings(this).sharedConfig()->group("WeatherLocations");
+    auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
     for (const auto &loc : m_config.groupList()) {
         auto m_group = m_config.group(loc);
         if (location == m_group.readEntry("locationName")) {

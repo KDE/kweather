@@ -25,7 +25,7 @@ QString Formatter::formatTemperatureRounded(qreal temperature) const
 
 QString Formatter::formatWindSpeed(qreal speed) const
 {
-    if (KWeatherSettings().speedUnits() == QLatin1String("kph")) {
+    if (KWeatherSettings::self()->speedUnits() == QLatin1String("kph")) {
         return i18n("%1 km/h", QString::number(speed, 'g', 1));
     } else {
         return i18n("%1 mph", QString::number(speed * 0.62, 'g', 1));
