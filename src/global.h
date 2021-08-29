@@ -34,8 +34,4 @@ struct ResolvedWeatherDesc {
         this->desc = desc;
     }
 };
-
-static const QString API_NMI = "Norway Meteorologisk Institutt";
-static const QString API_OWM = "OpenWeatherMap";
-
 }
