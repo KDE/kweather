@@ -102,9 +102,6 @@ void LocationQueryModel::handleQueryResults(const std::vector<KWeatherCore::Loca
     endResetModel();
 }
 
-void LocationQueryModel::updateUi()
-{
-}
 bool LocationQueryModel::loading() const
 {
     return m_loading;

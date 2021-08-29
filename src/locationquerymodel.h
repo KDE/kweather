@@ -30,7 +30,6 @@ public:
     Q_INVOKABLE bool networkError() const;
     Q_INVOKABLE void textChanged(QString query, int timeout = 2000);
     Q_INVOKABLE void addLocation(int index);
-    Q_INVOKABLE void updateUi();
     Q_INVOKABLE KWeatherCore::LocationQueryResult get(int index);
     Q_INVOKABLE void clearResults();
     void setQuery();
