@@ -65,19 +65,16 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty(QStringLiteral("kweatherAboutData"), QVariant::fromValue(aboutData));
 
-    // initialize models in context
-    auto *locationQueryModel = new LocationQueryModel();
-    QObject::connect(locationQueryModel, &LocationQueryModel::appendLocation, WeatherForecastManager::inst()->model(), &WeatherLocationListModel::addLocation);
     KWeatherSettings settings;
 
     engine.rootContext()->setContextProperty("weatherLocationListModel", WeatherForecastManager::inst()->model());
     engine.rootContext()->setContextProperty("settingsModel", &settings);
-    engine.rootContext()->setContextProperty("locationQueryModel", locationQueryModel);
 
     Formatter formatter;
     qmlRegisterSingletonInstance<Formatter>("kweather", 1, 0, "Formatter", &formatter);
 
     qmlRegisterType<TemperatureChartData>("kweather", 1, 0, "TemperatureChartData");
+    qmlRegisterType<LocationQueryModel>("kweather", 1, 0, "LocationQueryModel");
 
     qRegisterMetaType<KWeatherCore::Sunrise>();
 

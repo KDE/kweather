@@ -10,13 +10,17 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
+import kweather 1.0
+
 Kirigami.ScrollablePage {
+    id: root
+
     title: i18n("Add location")
 
     property string searchQuery: ""
 
-    Component.onCompleted: locationQueryModel.clearResults()
-    
+    property var model: LocationQueryModel {}
+
     header: RowLayout {
         anchors.margins: Kirigami.Units.largeSpacing
         spacing: 0
@@ -28,9 +32,9 @@ Kirigami.ScrollablePage {
             placeholderText: i18n("Search for a place...")
             onTextChanged: {
                 searchQuery = text
-                locationQueryModel.textChanged(text)
+                root.model.textChanged(text)
             }
-            onEditingFinished: locationQueryModel.textChanged(text, 0) // when return is pressed, query immediately
+            onEditingFinished: root.model.textChanged(text, 0) // when return is pressed, query immediately
         }
         Button {
             id: searchButton
@@ -38,7 +42,7 @@ Kirigami.ScrollablePage {
             icon.name: "search"
             width: height
             height: search.height
-            onClicked: locationQueryModel.textChanged(searchQuery, 0)
+            onClicked: root.model.textChanged(searchQuery, 0)
         }
     }
     
@@ -54,7 +58,7 @@ Kirigami.ScrollablePage {
 
             icon.name: "network-disconnect"
             text: i18n("Unable to connect")
-            visible: locationQueryModel.networkError
+            visible: root.model.networkError
         }
 
         // default message (has not searched yet)
@@ -66,7 +70,7 @@ Kirigami.ScrollablePage {
 
             icon.name: "search"
             text: i18n("Search for a location")
-            visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery == ""
+            visible: !root.model.networkError && !root.model.loading && addCityList.count == 0 && searchQuery == ""
 
             helpfulAction: Kirigami.Action {
                 iconName: "list-add"
@@ -91,25 +95,25 @@ Kirigami.ScrollablePage {
 
             icon.name: "search"
             text: i18n("No results")
-            visible: !locationQueryModel.networkError && !locationQueryModel.loading && addCityList.count == 0 && searchQuery != ""
+            visible: !root.model.networkError && !root.model.loading && addCityList.count == 0 && searchQuery != ""
         }
 
         // loading results indicator
         BusyIndicator {
             anchors.centerIn: parent
-            running: locationQueryModel.loading && addCityList.count === 0
+            running: root.model.loading && addCityList.count === 0
             Layout.minimumWidth: Kirigami.Units.iconSizes.huge
             Layout.minimumHeight: width
         }
 
         anchors.fill: parent
-        model: locationQueryModel
+        model: root.model
         delegate: Kirigami.SwipeListItem {
             Label {
                 text: model.name
             }
             onClicked: {
-                locationQueryModel.addLocation(index);
+                root.model.addLocation(index);
                 switchToPage(getPage("Locations"), 0);
             }
         }

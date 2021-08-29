@@ -8,6 +8,10 @@
 #include "locationquerymodel.h"
 #include <QDebug>
 #include <QTimer>
+
+#include "weatherforecastmanager.h"
+#include "weatherlocationmodel.h"
+
 LocationQueryModel::LocationQueryModel()
 {
     inputTimer = new QTimer(this);
@@ -85,7 +89,7 @@ void LocationQueryModel::addLocation(int index)
 {
     if (m_results.empty() || index < 0 || index >= static_cast<int>(m_results.size()))
         return; // don't add location
-    Q_EMIT appendLocation(m_results.at(index));
+    WeatherForecastManager::inst()->model()->addLocation(m_results.at(index));
 }
 
 void LocationQueryModel::handleQueryResults(const std::vector<KWeatherCore::LocationQueryResult> &results)
