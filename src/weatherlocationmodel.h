@@ -26,7 +26,6 @@ public:
 
     void load();
     void saveOrder();
-    Q_INVOKABLE void updateUi();
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void move(int oldIndex, int newIndex);

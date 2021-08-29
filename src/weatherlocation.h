@@ -33,8 +33,8 @@ class QValueAxis;
 class WeatherLocation : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString name READ locationName NOTIFY propertyChanged)
-    Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY propertyChanged)
+    Q_PROPERTY(QString name READ locationName CONSTANT)
+    Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY lastUpdatedChanged)
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
     Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
@@ -101,11 +101,6 @@ public:
     {
         return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8()));
     }
-    void setLastUpdated(QDateTime lastUpdated)
-    {
-        m_lastUpdated = std::move(lastUpdated);
-        Q_EMIT propertyChanged();
-    }
     const QString &backgroundComponent() const
     {
         return m_backgroundComponent;
@@ -166,13 +161,13 @@ public Q_SLOTS:
 Q_SIGNALS:
     void weatherRefresh(KWeatherCore::WeatherForecast forecasts); // sent when weather data is refreshed
     void currentForecastChange();
-    void propertyChanged(); // avoid warning
     void stopLoadingIndicator();
     void currentTimeChanged();
     void currentDateChanged();
     void dayForecastsChanged();
     void hourForecastsChanged();
     void selectedDayChanged();
+    void lastUpdatedChanged();
 
     void chartListChanged();
 private Q_SLOTS:

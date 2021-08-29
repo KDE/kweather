@@ -172,9 +172,6 @@ Kirigami.ScrollablePage {
             standardButtons: Dialog.Close
             title: i18n("Temperature Units")
 
-            onAccepted: weatherLocationListModel.updateUi();
-            onRejected: weatherLocationListModel.updateUi();
-
             ColumnLayout {
                 Kirigami.Theme.inherit: false
                 Kirigami.Theme.colorSet: Kirigami.Theme.View
@@ -205,9 +202,6 @@ Kirigami.ScrollablePage {
             id: speedUnits
             title: i18n("Speed Units")
             standardButtons: Dialog.Close
-
-            onAccepted: weatherLocationListModel.updateUi();
-            onRejected: weatherLocationListModel.updateUi();
 
             ColumnLayout {
                 Kirigami.Theme.inherit: false

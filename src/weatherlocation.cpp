@@ -39,6 +39,7 @@ WeatherLocation::WeatherLocation(QString locationId,
     this->m_timer->start(60 - QDateTime::currentDateTime().currentMSecsSinceEpoch() % 60);
 
     m_lastUpdated = forecast.createdTime();
+    Q_EMIT lastUpdatedChanged();
 
     update();
 
@@ -112,6 +113,7 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
 
     determineCurrentForecast();
     m_lastUpdated = forecasts.createdTime();
+    Q_EMIT lastUpdatedChanged();
 
     m_hourForecasts.clear();
     if (!m_forecast.dailyWeatherForecast().empty()) {
@@ -131,7 +133,6 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     Q_EMIT weatherRefresh(m_forecast);
     Q_EMIT stopLoadingIndicator();
 
-    Q_EMIT propertyChanged();
     updateCurrentDateTime();
 }
 
