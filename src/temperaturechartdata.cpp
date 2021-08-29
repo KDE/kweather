@@ -45,8 +45,8 @@ void TemperatureChartData::updateData()
     for (const QVariant &dayVariant : qAsConst(m_weatherData)) {
         const auto day = dayVariant.value<KWeatherCore::DailyWeatherForecast>();
 
-        const double dayMinTemp = Kweather::convertTemp(day.minTemp());
-        const double dayMaxTemp = Kweather::convertTemp(day.maxTemp());
+        const double dayMinTemp = Kweather::convertTemp(day.minTemp(), KWeatherSettings::self()->temperatureUnits());
+        const double dayMaxTemp = Kweather::convertTemp(day.maxTemp(), KWeatherSettings::self()->temperatureUnits());
 
         result.append(QPointF(day.date().startOfDay().toMSecsSinceEpoch(), dayMaxTemp));
         minTemp = std::min<double>(dayMinTemp, minTemp);

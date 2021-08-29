@@ -11,21 +11,20 @@
 #include <KLocalizedString>
 
 #include "global.h"
-#include "kweathersettings.h"
 
-QString Formatter::formatTemperature(qreal temperature) const
+QString Formatter::formatTemperature(qreal temperature, const QString &unit) const
 {
-    return i18nc("A temperature", "%1°", Kweather::convertTemp(temperature));
+    return i18nc("A temperature", "%1°", Kweather::convertTemp(temperature, unit));
 }
 
-QString Formatter::formatTemperatureRounded(qreal temperature) const
+QString Formatter::formatTemperatureRounded(qreal temperature, const QString &unit) const
 {
-    return i18nc("A temperature", "%1°", qRound(Kweather::convertTemp(temperature)));
+    return i18nc("A temperature", "%1°", qRound(Kweather::convertTemp(temperature, unit)));
 }
 
-QString Formatter::formatWindSpeed(qreal speed) const
+QString Formatter::formatWindSpeed(qreal speed, const QString &unit) const
 {
-    if (KWeatherSettings::self()->speedUnits() == QLatin1String("kph")) {
+    if (unit == QLatin1String("kph")) {
         return i18n("%1 km/h", QString::number(speed, 'g', 1));
     } else {
         return i18n("%1 mph", QString::number(speed * 0.62, 'g', 1));

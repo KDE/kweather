@@ -65,7 +65,7 @@ Kirigami.ScrollablePage {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
                     font.family: lightHeadingFont.name
-                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature)
+                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature, settingsModel.temperatureUnits)
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3

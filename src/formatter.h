@@ -14,8 +14,8 @@ class Formatter : public QObject
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE QString formatTemperature(qreal temperature) const;
-    Q_INVOKABLE QString formatTemperatureRounded(qreal temperature) const;
+    Q_INVOKABLE QString formatTemperature(qreal temperature, const QString &unit) const;
+    Q_INVOKABLE QString formatTemperatureRounded(qreal temperature, const QString &unit) const;
 
-    Q_INVOKABLE QString formatWindSpeed(qreal speed) const;
+    Q_INVOKABLE QString formatWindSpeed(qreal speed, const QString &unit) const;
 };

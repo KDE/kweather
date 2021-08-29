@@ -54,14 +54,14 @@ Rectangle {
             Label {
                 id: highTemp
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                text: Formatter.formatTemperatureRounded(weather.maxTemp)
+                text: Formatter.formatTemperatureRounded(weather.maxTemp, settingsModel.temperatureUnits)
                 color: textColor
             }
             Label {
                 anchors.baseline: highTemp.baseline
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                text: Formatter.formatTemperatureRounded(weather.minTemp)
+                text: Formatter.formatTemperatureRounded(weather.minTemp, settingsModel.temperatureUnits)
             }
         }
         Label {

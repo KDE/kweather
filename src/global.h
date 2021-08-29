@@ -14,9 +14,9 @@ namespace Kweather
 {
 static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
 
-static double convertTemp(double temp)
+static double convertTemp(double temp, const QString &unit)
 {
-    if (KWeatherSettings::self()->temperatureUnits() == "Fahrenheit") {
+    if (unit == QLatin1String("Fahrenheit")) {
         return temp * 1.8 + 32;
     } else {
         return temp;

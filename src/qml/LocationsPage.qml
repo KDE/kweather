@@ -11,6 +11,8 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
+import kweather 1.0
+
 Kirigami.ScrollablePage {
     title: i18n("Locations")
     
@@ -120,7 +122,7 @@ Kirigami.ScrollablePage {
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: location.todayForecast.maxTemp
+                                text: Formatter.formatTemperatureRounded(location.todayForecast.maxTemp, settingsModel.temperatureUnits)
                             }
                         }
 

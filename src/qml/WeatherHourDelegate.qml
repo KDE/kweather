@@ -35,7 +35,7 @@ Rectangle {
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
-            text: Formatter.formatTemperature(weather.temperature)
+            text: Formatter.formatTemperature(weather.temperature, settingsModel.temperatureUnits)
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
             color: textColor
         }
@@ -68,7 +68,7 @@ Rectangle {
             }
             Label {
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
-                text: Formatter.formatWindSpeed(weather.windSpeed)
+                text: Formatter.formatWindSpeed(weather.windSpeed, settingsModel.speedUnits)
             }
         }
 

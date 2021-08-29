@@ -74,7 +74,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature)
+                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature, settingsModel.temperatureUnits)
                     font.family: lightHeadingFont.name
                 }
                 Label {
