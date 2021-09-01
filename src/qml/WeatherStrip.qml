@@ -24,7 +24,7 @@ ListView {
 
     // detect mouse hover
     HoverHandler {
-        id: hourMouseArea
+        id: hoverMouseArea
         acceptedDevices: PointerDevice.Mouse | PointerDevice.Stylus
     }
 
@@ -33,7 +33,7 @@ ListView {
         icon.name: "arrow-left"
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        visible: hourMouseArea.hovered && root.currentIndex > 0
+        visible: hoverMouseArea.hovered && root.currentIndex > 0
 
         onClicked: {
             root.decrementCurrentIndex()
@@ -44,7 +44,7 @@ ListView {
         icon.name: "arrow-right"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        visible: hourMouseArea.hovered && root.currentIndex < root.count - 1
+        visible: hoverMouseArea.hovered && root.currentIndex < root.count - 1
 
         onClicked: {
             root.incrementCurrentIndex()
