@@ -42,7 +42,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: currentDay == null ? "" : currentDay.precipitation.toFixed(1) + "mm"
+                        text: selectedDay == null ? "" : selectedDay.precipitation.toFixed(1) + "mm"
                         color: root.textColor
                     }
                 }
@@ -65,7 +65,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: currentDay == null ? "" : i18n("%1%", currentDay.humidity.toFixed(1))
+                        text: selectedDay == null ? "" : i18n("%1%", selectedDay.humidity.toFixed(1))
                         color: root.textColor
                     }
                 }
@@ -88,7 +88,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: currentDay == null ? "" : i18n("%1hPa", currentDay.pressure.toFixed(1))
+                        text: selectedDay == null ? "" : i18n("%1hPa", selectedDay.pressure.toFixed(1))
                         color: root.textColor
                     }
                 }
@@ -111,7 +111,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: currentDay == null ? "" : currentDay.uvIndex.toFixed(1)
+                        text: selectedDay == null ? "" : selectedDay.uvIndex.toFixed(1)
                         color: root.textColor
                     }
                 }

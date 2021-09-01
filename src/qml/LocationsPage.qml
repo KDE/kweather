@@ -79,11 +79,10 @@ Kirigami.ScrollablePage {
                     Kirigami.Action {
                         iconName: "delete"
                         text: i18n("Remove")
-                        onTriggered: {
-                            weatherLocationListModel.remove(index);
-                        }
+                        onTriggered: weatherLocationListModel.remove(index);
                     }
                 ]
+                
                 onClicked: {
                     appwindow.switchToPage(appwindow.getPage("Forecast"), 0);
                     appwindow.getPage("Forecast").pageIndex = index;
@@ -122,7 +121,7 @@ Kirigami.ScrollablePage {
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: Formatter.formatTemperatureRounded(location.todayForecast.maxTemp, settingsModel.temperatureUnits)
+                                text: Formatter.formatTemperatureRounded(location.currentHour.temperature, settingsModel.temperatureUnits)
                             }
                         }
 

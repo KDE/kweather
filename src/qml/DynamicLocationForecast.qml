@@ -19,8 +19,8 @@ Kirigami.ScrollablePage {
     
     property bool inView: false
     property var weatherLocation
-    property var currentDay: dailyListView.currentItem.weather
-    property var currentHour: hourlyListView.currentItem.weather
+    property var selectedDay: dailyListView.currentItem.weather
+    property var currentHour: weatherLocation.currentHour
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
     

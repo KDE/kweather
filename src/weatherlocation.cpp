@@ -238,3 +238,12 @@ KWeatherCore::DailyWeatherForecast WeatherLocation::todayForecast() const
     }
     return {};
 }
+
+KWeatherCore::HourlyWeatherForecast WeatherLocation::currentHour() const
+{
+    auto currentForecast = todayForecast();
+    if (currentForecast.hourlyWeatherForecast().size() > 0) {
+        return currentForecast.hourlyWeatherForecast()[0];
+    }
+    return {};
+}

@@ -43,7 +43,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: Qt.formatTime(currentDay.sunrise.sunRise, "hh:mm ap")
+                        text: Qt.formatTime(selectedDay.sunrise.sunRise, "hh:mm ap")
                         color: root.textColor
                     }
                 }
@@ -66,7 +66,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: Qt.formatTime(currentDay.sunrise.sunSet, "hh:mm ap")
+                        text: Qt.formatTime(selectedDay.sunrise.sunSet, "hh:mm ap")
                         color: root.textColor
                     }
                 }
@@ -88,7 +88,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: currentDay.sunrise.moonPhaseString
+                        text: selectedDay.sunrise.moonPhaseString
                         color: root.textColor
                     }
                 }

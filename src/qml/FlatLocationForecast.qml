@@ -20,8 +20,8 @@ Kirigami.ScrollablePage {
     background: null // transparent, since there is a page behind
 
     property var weatherLocation
-    property var currentDay: dailyListView.currentItem.weather
-    property var currentHour: hourlyListView.currentItem.weather
+    property var selectedDay: dailyListView.currentItem.weather
+    property var currentHour: weatherLocation.currentHour
 
     property bool inView: false
 
