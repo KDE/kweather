@@ -103,6 +103,7 @@ Kirigami.ScrollablePage {
 
         WeatherStrip {
             id: dailyListView
+            selectable: true
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             implicitHeight: Kirigami.Units.gridUnit * 8
@@ -145,6 +146,7 @@ Kirigami.ScrollablePage {
 
         WeatherStrip {
             id: hourlyListView
+            selectable: false
             implicitHeight: Kirigami.Units.gridUnit * 10.5
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2

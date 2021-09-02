@@ -21,6 +21,8 @@ ListView {
     clip: true
 
     snapMode: ListView.SnapToItem
+    
+    property bool selectable: false
 
     // detect mouse hover
     HoverHandler {
@@ -33,10 +35,15 @@ ListView {
         icon.name: "arrow-left"
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        visible: hoverMouseArea.hovered && root.currentIndex > 0
+        visible: hoverMouseArea.hovered && (root.currentIndex > 0 || !root.atXBeginning)
 
         onClicked: {
-            root.decrementCurrentIndex()
+            if (selectable) {
+                root.decrementCurrentIndex();
+            } else {
+                animateMove.to -= root.contentItem.children[0].width + root.spacing;
+                animateMove.start();
+            }
         }
     }
 
@@ -44,10 +51,23 @@ ListView {
         icon.name: "arrow-right"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        visible: hoverMouseArea.hovered && root.currentIndex < root.count - 1
+        visible: hoverMouseArea.hovered && (root.currentIndex < root.count - 1 || !root.atXEnd)
 
         onClicked: {
-            root.incrementCurrentIndex()
+            if (selectable) {
+                root.incrementCurrentIndex();
+            } else {
+                animateMove.to += root.contentItem.children[0].width + root.spacing;
+                animateMove.start();
+            }
         }
+    }
+    
+    NumberAnimation on contentX {
+        id: animateMove
+        to: root.contentX
+        duration: Kirigami.Units.longDuration
+        easing.type: Easing.InOutQuad
+        onFinished: root.returnToBounds()
     }
 }

@@ -136,6 +136,7 @@ Kirigami.ScrollablePage {
 
                 contentItem: WeatherStrip {
                     id: dailyListView
+                    selectable: true
 
                     highlightMoveDuration: 400
                     highlightMoveVelocity: -1
@@ -206,6 +207,7 @@ Kirigami.ScrollablePage {
 
                 contentItem: WeatherStrip {
                     id: hourlyListView
+                    selectable: false
                     model: weatherLocation.hourForecasts
 
                     delegate: WeatherHourDelegate {

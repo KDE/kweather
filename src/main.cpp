@@ -75,6 +75,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<LocationQueryModel>("kweather", 1, 0, "LocationQueryModel");
 
     qRegisterMetaType<KWeatherCore::Sunrise>();
+    qRegisterMetaType<KWeatherCore::HourlyWeatherForecast>();
 
     // load setup wizard if first launch
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
