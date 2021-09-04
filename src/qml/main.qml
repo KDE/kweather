@@ -19,6 +19,8 @@ Kirigami.ApplicationWindow
     height: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 45 : Kirigami.Units.gridUnit * 35
 
     Component.onCompleted: {
+        pageStack.globalToolBar.canContainHandles = true; // move handles to toolbar
+
         switchToPage(getPage("Forecast"), 1); // initial page
 
         if (settingsModel.firstStartup) {
