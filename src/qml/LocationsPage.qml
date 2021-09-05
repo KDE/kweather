@@ -32,7 +32,7 @@ Kirigami.ScrollablePage {
 
     ListView {
         id: citiesList
-        model: weatherLocationListModel
+        model: weatherLocationListModel.locations
         transform: Translate { y: yTranslate }
 
         reuseItems: true
@@ -85,7 +85,7 @@ Kirigami.ScrollablePage {
                 
                 onClicked: {
                     appwindow.switchToPage(appwindow.getPage("Forecast"), 0);
-                    appwindow.getPage("Forecast").pageIndex = index;
+                    appwindow.getPage("Forecast").switchPageIndex(index);
                 }
 
                 contentItem: Item {
@@ -105,7 +105,11 @@ Kirigami.ScrollablePage {
                             listItem: listItem
                             listView: citiesList
                             onMoveRequested: {
-                                weatherLocationListModel.move(oldIndex, newIndex)
+                                weatherLocationListModel.move(oldIndex, newIndex);
+                                citiesList.currentIndex = -1;
+                            }
+                            onDropped: {
+                                citiesList.currentIndex = -1;
                             }
                         }
                         
@@ -113,7 +117,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Kirigami.Icon {
                                 Layout.alignment: Qt.AlignHCenter
-                                source: location.todayForecast.weatherIcon
+                                source: modelData.currentHour.weatherIcon
                                 Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
                                 Layout.preferredWidth: height
                                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
@@ -121,7 +125,7 @@ Kirigami.ScrollablePage {
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: Formatter.formatTemperatureRounded(location.currentHour.temperature, settingsModel.temperatureUnits)
+                                text: Formatter.formatTemperatureRounded(modelData.currentHour.temperature, settingsModel.temperatureUnits)
                             }
                         }
 
@@ -130,7 +134,7 @@ Kirigami.ScrollablePage {
                             Layout.fillWidth: true
                             
                             level: 2
-                            text: location.name
+                            text: modelData.name
                             elide: Text.ElideRight
                             maximumLineCount: 2
                             wrapMode: Text.Wrap

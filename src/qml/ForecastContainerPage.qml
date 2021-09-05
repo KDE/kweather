@@ -11,73 +11,48 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.ScrollablePage {
-    property int yTranslate: 0
-    property alias pageIndex: forecastView.currentIndex
-
     id: page
-    title: forecastView.count == 0 ? i18n("Forecast") : weatherLocationListModel.get(forecastView.currentIndex).name
+    title: weatherLocationListModel.locations.count == 0 ? i18n("Forecast") : weatherLocationListModel.locations[loader.item.currentIndex].name
+    
+    property int yTranslate: 0
+
+    function switchPageIndex(pageIndex) {
+        loader.item.currentIndex = pageIndex;
+    }
     
     // desktop actions
     actions.contextualActions: [
         Kirigami.Action {
             iconName: "view-refresh"
-            onTriggered: weatherLocationListModel.get(forecastView.currentIndex).update()
+            onTriggered: weatherLocationListModel.locations[loader.item.currentIndex].update()
         },
         Kirigami.Action {
             iconName: "arrow-left"
-            onTriggered: forecastView.currentIndex--
-            enabled: forecastView.currentIndex > 0
+            onTriggered: loader.item.moveLeft()
+            enabled: loader.item.canGoLeft
         },
         Kirigami.Action {
             iconName: "arrow-right"
-            onTriggered: forecastView.currentIndex++
-            enabled: forecastView.currentIndex < forecastView.count-1
+            onTriggered: loader.item.moveRight()
+            enabled: loader.item.canGoRight
         }
     ]
-
-    // individual locations
-    SwipeView {
-        id: forecastView
+    
+    Item {
+        id: container
         anchors.fill: parent
-        transform: Translate { y: yTranslate }
-        opacity: mainItem.opacity
-        
-        Repeater {
-            id: forecastViewRepeater
-            model: weatherLocationListModel
+        Loader {
+            id: loader
+            transform: Translate { y: yTranslate }
             anchors.fill: parent
-
-            Loader {
-                id: locationLoader
-                property bool inView: SwipeView.isCurrentItem
-                onInViewChanged: {
-                    locationLoader.item["inView"] = inView;
-                }
-
-                Component.onCompleted: init()
-
-                function init(){
-                    updateForecastStyle();
-                    locationLoader.item["inView"] = locationLoader.inView;
-                }
-
-                function updateForecastStyle() {
-                    if (settingsModel.forecastStyle === "Dynamic") {
-                        console.log("loaded dynamic view");
-                        locationLoader.setSource("DynamicLocationForecast.qml", {"weatherLocation": location});
-                    } else { // "Flat"
-                        console.log("loaded flat view");
-                        locationLoader.setSource("FlatLocationForecast.qml", {"weatherLocation": location});
-                    }
-                    locationLoader.item["inView"] = inView;
-                }
-                
-                Connections {
-                    target: settingsModel
-                    function onForecastStyleChanged() {
-                        updateForecastStyle();
-                    }
-                }
+            sourceComponent: settingsModel.forecastStyle === "Dynamic" ? dynamicForecastView : flatForecastView
+            Component {
+                id: flatForecastView
+                FlatForecastPage {}
+            }
+            Component {
+                id: dynamicForecastView
+                DynamicForecastPage {}
             }
         }
     }

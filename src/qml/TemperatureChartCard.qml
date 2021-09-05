@@ -25,6 +25,8 @@ Control {
     leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0;
     implicitHeight: Math.round(Kirigami.Units.gridUnit * 8.5)
 
+    clip: true
+    
     background: Kirigami.ShadowedRectangle {
         color: tempChartCard.backgroundColor
         radius: Kirigami.Units.smallSpacing

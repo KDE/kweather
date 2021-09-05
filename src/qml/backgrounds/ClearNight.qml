@@ -11,16 +11,8 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 import "components"
 
-Rectangle {
-    property bool inView: false
-    anchors.fill: parent
-    color: "#455a64"
-    gradient: Gradient {
-        GradientStop { position: 0.0; color: "#455a64" }
-        GradientStop { position: 1.0; color: "#263238" }
-    }
-    
-    Stars {
-        inView: parent.inView
-    }
+DynamicBackground {
+    gradientColorTop: "#455a64"
+    gradientColorBottom: "#263238"
+    stars: true
 }

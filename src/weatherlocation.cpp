@@ -56,6 +56,11 @@ WeatherLocation::WeatherLocation(QString locationId,
         Q_EMIT hourForecastsChanged();
     });
 }
+
+WeatherLocation::WeatherLocation()
+{
+}
+
 WeatherLocation *WeatherLocation::load(const QString &groupName)
 {
     auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(groupName);
@@ -116,7 +121,7 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     Q_EMIT lastUpdatedChanged();
 
     m_hourForecasts.clear();
-    if (!m_forecast.dailyWeatherForecast().empty()) {
+    if (!m_forecast.dailyWeatherForecast().empty() && m_forecast.dailyWeatherForecast().size() > m_selectedDay) {
         const auto hourForecasts = m_forecast.dailyWeatherForecast()[m_selectedDay].hourlyWeatherForecast();
         for (const KWeatherCore::HourlyWeatherForecast &hour : hourForecasts) {
             m_hourForecasts << QVariant::fromValue(hour);

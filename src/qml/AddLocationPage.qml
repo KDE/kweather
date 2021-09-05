@@ -23,7 +23,7 @@ Kirigami.ScrollablePage {
 
     header: RowLayout {
         anchors.margins: Kirigami.Units.largeSpacing
-        spacing: 0
+        spacing: Kirigami.Units.smallSpacing
         TextField {
             id: search
             Layout.fillWidth: true
@@ -38,6 +38,8 @@ Kirigami.ScrollablePage {
         }
         Button {
             id: searchButton
+            implicitHeight: search.implicitHeight
+            implicitWidth: height
             Layout.rightMargin: Kirigami.Units.largeSpacing
             icon.name: "search"
             width: height

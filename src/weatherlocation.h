@@ -15,6 +15,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QObject>
+#include <QString>
 #include <QTimeZone>
 #include <QTimer>
 
@@ -41,7 +42,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
     Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
     Q_PROPERTY(KWeatherCore::DailyWeatherForecast todayForecast READ todayForecast NOTIFY dayForecastsChanged)
-    Q_PROPERTY(KWeatherCore::HourlyWeatherForecast currentHour READ currentHour NOTIFY currentHourChanged)
+    Q_PROPERTY(KWeatherCore::HourlyWeatherForecast currentHour READ currentHour NOTIFY hourForecastsChanged)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
     Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChange)
@@ -55,9 +56,11 @@ public:
     explicit WeatherLocation(QString locationId,
                              QString locationName,
                              QString timeZone,
-                             float latitude,
-                             float longitude,
+                             float latitude = 0,
+                             float longitude = 0,
                              KWeatherCore::WeatherForecast forecast = {});
+    explicit WeatherLocation(); // when creating empty locations, don't persist
+
     void save();
     static WeatherLocation *load(const QString &groupName);
     Q_INVOKABLE void update();
@@ -170,7 +173,6 @@ Q_SIGNALS:
     void hourForecastsChanged();
     void selectedDayChanged();
     void lastUpdatedChanged();
-    void currentHourChanged();
 
     void chartListChanged();
 private Q_SLOTS:

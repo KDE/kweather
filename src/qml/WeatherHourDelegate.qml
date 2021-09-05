@@ -50,7 +50,8 @@ Rectangle {
                 source: "raindrop"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
                 Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : ""
+                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
+                isMask: true
             }
             Label {
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
@@ -64,7 +65,8 @@ Rectangle {
                 source: "arrow-right"
                 Layout.preferredHeight: Kirigami.Units.iconSizes.small
                 Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : ""
+                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
+                isMask: true
             }
             Label {
                 color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor

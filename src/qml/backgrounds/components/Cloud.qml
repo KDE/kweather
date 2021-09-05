@@ -12,7 +12,6 @@ import org.kde.kirigami 2.11 as Kirigami
 
 Shape {
     id: rootShape
-    property bool inView: false
     property double maxRadiusChange
     property double maxCoordChange
     property double minRadius
@@ -27,34 +26,31 @@ Shape {
     
     NumberAnimation on radius {
         duration: 4000
-        running: inView
+        running: true
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minRadius + Math.random() * maxRadiusChange;
-            if(inView)
-                restart();
+            restart();
         }
     }
     
     NumberAnimation on centerX {
         duration: 2600
-        running: inView
+        running: true
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minX + Math.random() * maxCoordChange;
-            if(inView)
-                restart();
+            restart();
         }
     }
     
     NumberAnimation on centerY {
         duration: 3400
-        running: inView
+        running: true
         easing.type: Easing.InOutQuad
         onFinished: {
             to = minY + Math.random() * maxCoordChange;
-            if(inView)
-                restart();
+            restart();
         }
     }
     

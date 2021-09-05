@@ -15,7 +15,9 @@ Kirigami.ScrollablePage {
     title: i18n("Forecast")
 
     property bool loading: false
-
+    
+    property int yTranslate: 0
+    
     Connections {
         target: weatherLocationListModel
         onNetworkErrorCreatingDefault: {
@@ -29,6 +31,8 @@ Kirigami.ScrollablePage {
     }
 
     ListView { // empty list view to centre placeholdermessage
+        id: listView
+        transform: Translate { y: yTranslate }
         BusyIndicator {
             anchors.centerIn: parent
             running: loading

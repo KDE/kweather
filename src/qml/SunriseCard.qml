@@ -33,7 +33,8 @@ Kirigami.Card {
                     source: "go-up"
                     Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                     Layout.minimumWidth: Layout.minimumHeight * 1.5
-                    color: weatherLocation.iconColor
+                    isMask: true
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -56,7 +57,8 @@ Kirigami.Card {
                     source: "go-down"
                     Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                     Layout.minimumWidth: Layout.minimumHeight * 1.5
-                    color: weatherLocation.iconColor
+                    isMask: true
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing

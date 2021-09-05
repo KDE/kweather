@@ -13,13 +13,12 @@ import org.kde.kirigami 2.11 as Kirigami
 Item {
     id: rootItem
     anchors.fill: parent
-    property double starRadius: Math.max(1, Math.min(width, height) / 800)
-    property bool inView: false
+    property double starRadius: 1
     
     property double opacityModifier: 0
     
     NumberAnimation on opacityModifier {
-        running: inView
+        running: true
         to: 10000
         duration: Math.max(10000)
         onFinished: {

@@ -13,41 +13,45 @@
 #include <KWeatherCore/LocationQuery>
 
 class WeatherLocation;
-class WeatherLocationListModel : public QAbstractListModel
+class WeatherLocationListModel : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ count NOTIFY locationsChanged)
+    Q_PROPERTY(QList<WeatherLocation *> locations READ locations NOTIFY locationsChanged)
+
+    Q_PROPERTY(bool isLowPower READ isLowPower CONSTANT)
 
 public:
     enum Roles { LocationRole = Qt::UserRole };
 
-    int rowCount(const QModelIndex &parent) const override;
-    QVariant data(const QModelIndex &index, int role) const override;
-    QHash<int, QByteArray> roleNames() const override;
+    static WeatherLocationListModel *inst();
 
     void load();
     void saveOrder();
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void move(int oldIndex, int newIndex);
-    Q_INVOKABLE int count() const;
-    Q_INVOKABLE WeatherLocation *get(int index);
+    int count() const;
     Q_INVOKABLE void requestCurrentLocation();
+    QList<WeatherLocation *> &locations();
+
+    bool isLowPower();
+
 public Q_SLOTS:
     void addLocation(const KWeatherCore::LocationQueryResult &ret);
+
 Q_SIGNALS:
+    void locationsChanged();
     void networkErrorCreating(); // error creating a location
     void networkErrorCreatingDefault(); // error getting current location
     void successfullyCreatedDefault(); // successful in getting current location
+
 protected:
-    friend class WeatherForecastManager;
     explicit WeatherLocationListModel(QObject *parent = nullptr);
-    std::vector<WeatherLocation *> &locations()
-    {
-        return m_locations;
-    }
+
 private Q_SLOTS:
     void addCurrentLocation(const KWeatherCore::LocationQueryResult &ret);
 
 private:
-    std::vector<WeatherLocation *> m_locations;
+    QList<WeatherLocation *> m_locations;
 };

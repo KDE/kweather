@@ -26,6 +26,10 @@ Kirigami.ApplicationWindow
         if (settingsModel.firstStartup) {
             setupWizardLoader.source = "qrc:/qml/SetupWizard.qml";
             setupWizardLoader.item.open();
+            
+            if (weatherLocationListModel.isLowPower) {
+                settingsModel.forecastStyle = "Flat";
+            }
         }
     }
     
@@ -73,7 +77,7 @@ Kirigami.ApplicationWindow
     
     function getPage(name) {
         switch (name) {
-            case "Forecast": return pagePool.loadPage(weatherLocationListModel.count() === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
+            case "Forecast": return pagePool.loadPage(weatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
             case "Locations": return pagePool.loadPage("qrc:/qml/LocationsPage.qml");
             case "AddLocation": return pagePool.loadPage("qrc:/qml/AddLocationPage.qml");
             case "Settings": return pagePool.loadPage("qrc:/qml/SettingsPage.qml");

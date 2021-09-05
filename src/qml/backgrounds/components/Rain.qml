@@ -9,7 +9,6 @@ import QtQuick.Layouts 1.2
 Canvas {
     id: mycanvas
 
-    property bool inView: true
     property var particles: []
 
     renderStrategy: Canvas.Threaded
@@ -46,7 +45,7 @@ Canvas {
     Timer {
         id: animationTimer
         interval: 16
-        running: inView
+        running: true
         repeat: true
         onTriggered: parent.requestPaint()
     }

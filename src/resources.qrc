@@ -24,6 +24,9 @@
         <file>qml/SunriseCard.qml</file>
         <file>qml/InfoCard.qml</file>
         <file>qml/WeatherStrip.qml</file>
+        <file>qml/DynamicForecastPage.qml</file>
+        <file>qml/FlatForecastPage.qml</file>
+        <file>qml/backgrounds/DynamicBackground.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>
         <file>qml/backgrounds/CloudyDay.qml</file>
@@ -37,6 +40,7 @@
         <file>qml/backgrounds/SnowyNight.qml</file>
         <file>qml/KWeatherStyle.qml</file>
         <file>qml/qmldir</file>
+        <file>qml/backgrounds/components/Sun.qml</file>
         <file>qml/backgrounds/components/Stars.qml</file>
         <file>qml/backgrounds/components/Snow.qml</file>
         <file>qml/backgrounds/components/Rain.qml</file>

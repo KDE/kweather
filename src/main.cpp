@@ -29,7 +29,6 @@
 #include "locationquerymodel.h"
 #include "temperaturechartdata.h"
 #include "version.h"
-#include "weatherforecastmanager.h"
 #include "weatherlocation.h"
 #include "weatherlocationmodel.h"
 
@@ -65,17 +64,23 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty(QStringLiteral("kweatherAboutData"), QVariant::fromValue(aboutData));
 
-    engine.rootContext()->setContextProperty(QStringLiteral("weatherLocationListModel"), WeatherForecastManager::inst()->model());
+    engine.rootContext()->setContextProperty(QStringLiteral("weatherLocationListModel"), WeatherLocationListModel::inst());
     engine.rootContext()->setContextProperty(QStringLiteral("settingsModel"), KWeatherSettings::self());
+
+    WeatherLocation *emptyWeatherLocation = new WeatherLocation();
+    engine.rootContext()->setContextProperty(QStringLiteral("emptyWeatherLocation"), emptyWeatherLocation);
 
     Formatter formatter;
     qmlRegisterSingletonInstance<Formatter>("kweather", 1, 0, "Formatter", &formatter);
 
     qmlRegisterType<TemperatureChartData>("kweather", 1, 0, "TemperatureChartData");
     qmlRegisterType<LocationQueryModel>("kweather", 1, 0, "LocationQueryModel");
+    qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
 
     qRegisterMetaType<KWeatherCore::Sunrise>();
     qRegisterMetaType<KWeatherCore::HourlyWeatherForecast>();
+    qRegisterMetaType<KWeatherCore::DailyWeatherForecast>();
+    qRegisterMetaType<QList<WeatherLocation *>>();
 
     // load setup wizard if first launch
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));

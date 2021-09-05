@@ -19,9 +19,15 @@
 
 /* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QObject{parent}
 {
     load();
+}
+
+WeatherLocationListModel *WeatherLocationListModel::inst()
+{
+    static WeatherLocationListModel singleton;
+    return &singleton;
 }
 
 void WeatherLocationListModel::load()
@@ -54,6 +60,8 @@ void WeatherLocationListModel::load()
         }
         i++;
     }
+
+    Q_EMIT locationsChanged();
 }
 
 void WeatherLocationListModel::saveOrder()
@@ -65,37 +73,15 @@ void WeatherLocationListModel::saveOrder()
     }
 }
 
-int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-    return m_locations.size();
-}
-
-QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid() || index.row() >= static_cast<int>(m_locations.size()) || index.row() < 0) {
-        return {};
-    }
-    if (role == Roles::LocationRole) {
-        return QVariant::fromValue(m_locations.at(index.row()));
-    }
-    return {};
-}
-
-QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
-{
-    return {{Roles::LocationRole, "location"}};
-}
-
 void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocation)
 {
     if ((index < 0) || (index > static_cast<int>(m_locations.size())))
         return;
 
     QQmlEngine::setObjectOwnership(weatherLocation, QQmlEngine::CppOwnership);
-    beginInsertRows(QModelIndex(), index, index);
     m_locations.insert(m_locations.begin() + index, weatherLocation);
-    endInsertRows();
+
+    Q_EMIT locationsChanged();
 
     saveOrder();
     weatherLocation->save();
@@ -106,21 +92,14 @@ void WeatherLocationListModel::remove(int index)
     if ((index < 0) || (index >= static_cast<int>(m_locations.size())))
         return;
 
-    beginRemoveRows(QModelIndex(), index, index);
     auto location = m_locations.at(index);
     m_locations.erase(m_locations.begin() + index);
     location->deleteConfig();
     location->deleteLater();
-    endRemoveRows();
+
+    Q_EMIT locationsChanged();
+
     saveOrder();
-}
-
-WeatherLocation *WeatherLocationListModel::get(int index)
-{
-    if ((index < 0) || (index >= static_cast<int>(m_locations.size())))
-        return {};
-
-    return m_locations.at(index);
 }
 
 void WeatherLocationListModel::move(int oldIndex, int newIndex)
@@ -132,9 +111,8 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     if (oldIndex < newIndex)
         ++newIndex;
 
-    beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
     std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
-    endMoveRows();
+    Q_EMIT locationsChanged();
 
     saveOrder();
 }
@@ -164,9 +142,9 @@ void WeatherLocationListModel::requestCurrentLocation()
         geoPtr = new KWeatherCore::LocationQuery(this);
 
     geoPtr->locate();
-    //    // failure
+    // failure
     connect(geoPtr, &KWeatherCore::LocationQuery::queryError, this, &WeatherLocationListModel::networkErrorCreatingDefault);
-    //    // success
+    // success
     connect(geoPtr, &KWeatherCore::LocationQuery::located, this, &WeatherLocationListModel::addCurrentLocation);
 }
 
@@ -176,4 +154,14 @@ void WeatherLocationListModel::addCurrentLocation(const KWeatherCore::LocationQu
 
     insert(0, location);
     Q_EMIT successfullyCreatedDefault();
+}
+
+QList<WeatherLocation *> &WeatherLocationListModel::locations()
+{
+    return m_locations;
+}
+
+bool WeatherLocationListModel::isLowPower()
+{
+    return qEnvironmentVariableIsSet("KIRIGAMI_LOWPOWER_HARDWARE");
 }

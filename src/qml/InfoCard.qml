@@ -32,7 +32,8 @@ Kirigami.Card {
                     source: "raindrop"
                     Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                     Layout.minimumWidth: Layout.minimumHeight * 1.5
-                    color: weatherLocation.iconColor
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
+                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -55,7 +56,8 @@ Kirigami.Card {
                     source: "compass"
                     Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                     Layout.minimumWidth: Layout.minimumHeight * 1.5
-                    color: weatherLocation.iconColor
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
+                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -78,7 +80,8 @@ Kirigami.Card {
                     source: "speedometer"
                     Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                     Layout.minimumWidth: Layout.minimumHeight * 1.5
-                    color: weatherLocation.iconColor
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
+                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -101,7 +104,8 @@ Kirigami.Card {
                     source: "compass"
                     Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                     Layout.minimumWidth: Layout.minimumHeight * 1.5
-                    color: weatherLocation.iconColor
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
+                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing

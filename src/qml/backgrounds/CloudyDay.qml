@@ -10,15 +10,10 @@ import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 import "components"
-Rectangle {
-    property bool inView: false
-    gradient: Gradient {
-        GradientStop { color: "#35d9ed"; position: 0.0 }
-        GradientStop { color: "#24a3de"; position: 1.0 }
-    }
-    
-    Cloudy {
-        cloudColor: "white"
-        inView: parent.inView
-    }
+
+DynamicBackground {
+    gradientColorTop: "#35d9ed"
+    gradientColorBottom: "#24a3de"
+    clouds: true
+    cloudsColor: "white"
 }

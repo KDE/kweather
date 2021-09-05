@@ -21,7 +21,6 @@ Kirigami.ScrollablePage {
 
     property var weatherLocation
     property var selectedDay: dailyListView.currentItem.weather
-    property var currentHour: weatherLocation.currentHour
 
     property bool inView: false
 
@@ -48,7 +47,7 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
-                source: page.currentHour.weatherIcon
+                source: weatherLocation.currentHour.weatherIcon
                 Layout.preferredHeight: width
                 Layout.preferredWidth: page.width * 0.8 - headerText.width
                 Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
@@ -65,12 +64,12 @@ Kirigami.ScrollablePage {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                     font.weight: Font.Light
                     font.family: lightHeadingFont.name
-                    text: Formatter.formatTemperatureRounded(page.currentHour.temperature, settingsModel.temperatureUnits)
+                    text: Formatter.formatTemperatureRounded(weatherLocation.currentHour.temperature, settingsModel.temperatureUnits)
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
-                    text: page.currentHour.weatherDescription
+                    text: weatherLocation.currentHour.weatherDescription
                 }
                 Label {
                     color: Kirigami.Theme.disabledTextColor

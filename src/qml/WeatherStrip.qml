@@ -15,7 +15,6 @@ import "backgrounds"
 ListView {
     id: root
     orientation: ListView.Horizontal
-
     implicitHeight: contentItem.childrenRect.height
     spacing: Kirigami.Units.largeSpacing * 3
     clip: true
