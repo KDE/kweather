@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
     title: i18n("Locations")
     
     property int yTranslate: 0
-    property int currentIndex: 0;
+    property int currentIndex: 0
 
     mainAction: Kirigami.Action {
         iconName: "list-add"

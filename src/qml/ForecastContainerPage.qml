@@ -10,12 +10,13 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
-Kirigami.ScrollablePage {
+Kirigami.Page {
     id: page
     title: weatherLocationListModel.locations.count == 0 ? i18n("Forecast") : weatherLocationListModel.locations[loader.item.currentIndex].name
+    padding: 0
     
     property int yTranslate: 0
-
+    
     function switchPageIndex(pageIndex) {
         loader.item.currentIndex = pageIndex;
     }
@@ -38,27 +39,20 @@ Kirigami.ScrollablePage {
         }
     ]
     
-    Item {
-        id: container
+    Loader {
+        id: loader
+        transform: Translate { y: yTranslate }
         anchors.fill: parent
-        Loader {
-            id: loader
-            transform: Translate { y: yTranslate }
-            anchors.fill: parent
-            sourceComponent: settingsModel.forecastStyle === "Dynamic" ? dynamicForecastView : flatForecastView
-            Component {
-                id: flatForecastView
-                FlatForecastPage {}
-            }
-            Component {
-                id: dynamicForecastView
-                DynamicForecastPage {}
-            }
+        sourceComponent: settingsModel.forecastStyle === "Dynamic" ? dynamicForecastView : flatForecastView
+        Component {
+            id: flatForecastView
+            FlatForecastPage {}
+        }
+        Component {
+            id: dynamicForecastView
+            DynamicForecastPage {}
         }
     }
-    
-    // HACK: the swipeview being the only element causes some sort of freeze
-    Item {}
 }
 
 

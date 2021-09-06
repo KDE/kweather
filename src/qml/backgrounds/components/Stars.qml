@@ -34,11 +34,9 @@ Item {
     Repeater {
         model: 30
         
-        Shape {
+        Item {
             id: shape
             anchors.fill: rootItem
-            layer.enabled: true
-            layer.samples: 4
             
             property double starModifier: {
                 let num = 5000 * Math.random()
@@ -58,22 +56,13 @@ Item {
                 }
             }
             
-            vendorExtensionsEnabled: true
-            asynchronous: true
-            
-            ShapePath {
-                id: shapePath
-                capStyle: ShapePath.FlatCap
-                strokeColor: "transparent"
-                fillColor: "#fff9c4"
-
-                PathAngleArc {
-                    id: angleArc
-                    centerX: Math.random() * rootItem.width; centerY: Math.random() * rootItem.height
-                    radiusX: starRadius; radiusY: radiusX
-                    startAngle: 0
-                    sweepAngle: 360
-                }
+            Rectangle {
+                color: "#fff9c4"
+                height: starRadius * 2
+                width: height
+                radius: width / 2
+                x: Math.random() * rootItem.width
+                y: Math.random() * rootItem.height
             }
         }
     }

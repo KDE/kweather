@@ -19,8 +19,6 @@ class WeatherLocationListModel : public QObject
     Q_PROPERTY(int count READ count NOTIFY locationsChanged)
     Q_PROPERTY(QList<WeatherLocation *> locations READ locations NOTIFY locationsChanged)
 
-    Q_PROPERTY(bool isLowPower READ isLowPower CONSTANT)
-
 public:
     enum Roles { LocationRole = Qt::UserRole };
 
@@ -34,8 +32,6 @@ public:
     int count() const;
     Q_INVOKABLE void requestCurrentLocation();
     QList<WeatherLocation *> &locations();
-
-    bool isLowPower();
 
 public Q_SLOTS:
     void addLocation(const KWeatherCore::LocationQueryResult &ret);

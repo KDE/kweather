@@ -15,19 +15,19 @@ import kweather 1.0
 Rectangle {
     implicitWidth: Kirigami.Units.gridUnit * 6
     implicitHeight: Kirigami.Units.gridUnit * 8
-    color: "transparent"
 
     property var weather
     property color textColor
-
+    property alias mouseArea: mouse 
+    
+    color: "transparent"
+    
     MouseArea {
-        z: 1
+        id: mouse
         anchors.fill: parent
-        onClicked: {
-            dailyListView.currentIndex = index
-        }
+        onClicked: dailyListView.currentIndex = index
     }
-
+    
     // actual day display
     ColumnLayout {
         id: dayElement
@@ -36,20 +36,22 @@ Rectangle {
         anchors.topMargin: Kirigami.Units.largeSpacing
         anchors.rightMargin: Kirigami.Units.largeSpacing
         anchors.bottomMargin: Kirigami.Units.largeSpacing
-        spacing: Kirigami.Units.smallSpacing
+        spacing: 0
 
         Label {
+            Layout.topMargin: Kirigami.Units.smallSpacing
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
             text: weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
             color: textColor
         }
-
         Kirigami.Icon {
+            Layout.topMargin: Kirigami.Units.smallSpacing
             source: weather.weatherIcon
-            Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-            Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+            implicitHeight: Kirigami.Units.iconSizes.medium
+            implicitWidth: Kirigami.Units.iconSizes.medium
         }
         Row {
+            Layout.topMargin: Kirigami.Units.smallSpacing
             spacing: Kirigami.Theme.defaultFont.pointSize * 0.6
             Label {
                 id: highTemp
@@ -65,6 +67,7 @@ Rectangle {
             }
         }
         Label {
+            Layout.topMargin: Kirigami.Units.smallSpacing
             text: weather.weatherDescription
             color: textColor
         }

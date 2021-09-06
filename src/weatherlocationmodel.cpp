@@ -160,8 +160,3 @@ QList<WeatherLocation *> &WeatherLocationListModel::locations()
 {
     return m_locations;
 }
-
-bool WeatherLocationListModel::isLowPower()
-{
-    return qEnvironmentVariableIsSet("KIRIGAMI_LOWPOWER_HARDWARE");
-}

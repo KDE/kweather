@@ -10,8 +10,10 @@ import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 
-Shape {
+Item {
     id: rootShape
+    anchors.fill: parent
+    
     property double maxRadiusChange
     property double maxCoordChange
     property double minRadius
@@ -20,9 +22,7 @@ Shape {
     property double radius: minRadius
     property double centerX: minX
     property double centerY: minY
-    property alias color: shapePath.fillColor
-    
-    //vendorExtensionsEnabled: true
+    property color color
     
     NumberAnimation on radius {
         duration: 4000
@@ -54,21 +54,12 @@ Shape {
         }
     }
     
-    width: baseRect.width
-    height: baseRect.height
-    layer.enabled: true
-    layer.samples: 4
-    ShapePath {
-        id: shapePath
-        capStyle: ShapePath.FlatCap
-        strokeColor: "transparent"
-
-        PathAngleArc {
-            id: angleArc
-            centerX: rootShape.centerX; centerY: rootShape.centerY
-            radiusX: rootShape.radius; radiusY: radiusX
-            startAngle: 0
-            sweepAngle: 360
-        }
+    Rectangle {
+        radius: width / 2
+        color: rootShape.color
+        width: rootShape.radius * 2
+        height: width
+        x: centerX - width / 2 
+        y: centerY - width / 2
     }
 }

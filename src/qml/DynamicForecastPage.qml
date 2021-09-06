@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-import QtQuick 2.12
+import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtCharts 2.3
@@ -115,32 +115,27 @@ Kirigami.ScrollablePage {
             // weather elements
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item.sun
-                Component.onCompleted: console.log("sun: " + backgroundLoader.item.sun)
+                active: backgroundLoader.item && backgroundLoader.item.sun
                 sourceComponent: Sun {}
             }
             Loader {
                 anchors.fill: parent
-                Component.onCompleted: console.log("stars: " + backgroundLoader.item.stars)
-                active: backgroundLoader.item.stars && !weatherLocationListModel.isLowPower
+                active: backgroundLoader.item && backgroundLoader.item.stars
                 sourceComponent: Stars {}
             }
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item.clouds
-                Component.onCompleted: console.log("clouds: " + backgroundLoader.item.clouds)
+                active: backgroundLoader.item && backgroundLoader.item.clouds
                 sourceComponent: Cloudy { cloudColor: backgroundLoader.item.cloudsColor }
             }
             Loader {
                 anchors.fill: parent
-                Component.onCompleted: console.log("rain: " + backgroundLoader.item.rain)
-                active: backgroundLoader.item.rain
+                active: backgroundLoader.item && backgroundLoader.item.rain
                 sourceComponent: Rain {}
             }
             Loader {
                 anchors.fill: parent
-                Component.onCompleted: console.log("snow: " + backgroundLoader.item.snow)
-                active: backgroundLoader.item.snow
+                active: backgroundLoader.item && backgroundLoader.item.snow
                 sourceComponent: Snow {}
             }
             
@@ -198,13 +193,17 @@ Kirigami.ScrollablePage {
         opacity: 1 - (Math.abs(x) / (page.width / 4))
         implicitHeight: mainLayout.implicitHeight
         
-        // left/right dragging
+        // left/right dragging for switching pages
         DragHandler {
             id: dragHandler
             target: rootMask
             yAxis.enabled: false; xAxis.enabled: true
             xAxis.minimum: page.canGoRight ? -page.width : -pageChangeThreshold / 2 // extra feedback
             xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
+            
+            // HACK: when a delegate, or the listview is being interacted with, disable the DragHandler so that it doesn't switch pages
+            enabled: dailyCard.pressedCount == 0
+            
             onActiveChanged: {
                 if (!active) {
                     // if drag passed threshold, change page
@@ -217,8 +216,6 @@ Kirigami.ScrollablePage {
                     }
                 }
             }
-            
-            //grabPermissions: PointerHandler.ApprovesTakeOverByAnything | PointerHandler.CanTakeOverFromHandlersOfDifferentType | PointerHandler.ApprovesTakeOverByHandlersOfDifferentType
         }
         // reset to position
         NumberAnimation on x {
@@ -232,10 +229,15 @@ Kirigami.ScrollablePage {
             anchors.horizontalCenter: parent.horizontalCenter
             width: Math.min(page.width - Kirigami.Units.largeSpacing * 4, maximumContentWidth)
             
+            // separator from top
+            // used instead of topMargin, since it can be shrunk when needed (small window height)
+            Item {
+                Layout.preferredHeight: page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3
+            }
+            
             // weather header
             ColumnLayout {
                 id: headerText
-                Layout.topMargin: page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3
                 Layout.fillWidth: true
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
@@ -293,6 +295,8 @@ Kirigami.ScrollablePage {
                 Layout.fillWidth: true
                 padding: Kirigami.Units.largeSpacing
                 
+                property int pressedCount: 0
+                
                 background: Kirigami.ShadowedRectangle {
                     color: weatherLocation.cardBackgroundColor
                     radius: Kirigami.Units.smallSpacing
@@ -322,10 +326,20 @@ Kirigami.ScrollablePage {
 
                     spacing: Kirigami.Units.largeSpacing
 
+                    onDraggingChanged: dailyCard.pressedCount += dragging? 1 : -1;
+                    
                     model: weatherLocation.dayForecasts
                     delegate: WeatherDayDelegate {
+                        id: delegate
                         weather: modelData
                         textColor: weatherLocation.cardTextColor
+                        
+                        Connections {
+                            target: delegate.mouseArea
+                            function onPressedChanged() {
+                                dailyCard.pressedCount += delegate.mouseArea.pressed ? 1 : -1;
+                            }
+                        }
                     }
 
                     onCurrentIndexChanged: {

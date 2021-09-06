@@ -26,10 +26,6 @@ Kirigami.ApplicationWindow
         if (settingsModel.firstStartup) {
             setupWizardLoader.source = "qrc:/qml/SetupWizard.qml";
             setupWizardLoader.item.open();
-            
-            if (weatherLocationListModel.isLowPower) {
-                settingsModel.forecastStyle = "Flat";
-            }
         }
     }
     
