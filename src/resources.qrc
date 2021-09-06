@@ -8,7 +8,6 @@
         <file>resources/kweather.svg</file>
         <file>qml/main.qml</file>
         <file>qml/LocationsPage.qml</file>
-        <file>qml/DynamicLocationForecast.qml</file>
         <file>qml/FlatLocationForecast.qml</file>
         <file>qml/WeatherDayDelegate.qml</file>
         <file>qml/WeatherHourDelegate.qml</file>

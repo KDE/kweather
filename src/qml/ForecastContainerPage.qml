@@ -12,8 +12,9 @@ import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.Page {
     id: page
+    topPadding: 0; bottomPadding: 0; rightPadding: 0; leftPadding: 0
+
     title: weatherLocationListModel.locations.count == 0 ? i18n("Forecast") : weatherLocationListModel.locations[loader.item.currentIndex].name
-    padding: 0
     
     property int yTranslate: 0
     
@@ -43,14 +44,17 @@ Kirigami.Page {
         id: loader
         transform: Translate { y: yTranslate }
         anchors.fill: parent
-        sourceComponent: settingsModel.forecastStyle === "Dynamic" ? dynamicForecastView : flatForecastView
-        Component {
-            id: flatForecastView
-            FlatForecastPage {}
+        
+        Component.onCompleted: loadStyle()
+        function loadStyle() {
+            setSource(settingsModel.forecastStyle === "Dynamic" ? "DynamicForecastPage.qml" : "FlatForecastPage.qml");
         }
-        Component {
-            id: dynamicForecastView
-            DynamicForecastPage {}
+        
+        Connections {
+            target: settingsModel
+            function onForecastStyleChanged() {
+                loader.loadStyle();
+            }
         }
     }
 }
