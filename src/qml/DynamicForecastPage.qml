@@ -170,20 +170,10 @@ Kirigami.ScrollablePage {
         }
     }
     
-    // swipe down to refresh
-    supportsRefreshing: true
-    onRefreshingChanged: {
-        if (refreshing) {
-            weatherLocation.update();
-        } else {
-            showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
-        }
-    }
-    
     Connections {
         target: weatherLocation
         function onStopLoadingIndicator() {
-            page.refreshing = false;
+            showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
     }
     
