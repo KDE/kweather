@@ -125,7 +125,7 @@
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
-    <p xml:lang="zh-CN">一个为 Plasma 打造的聚合天气应用，可通过扁平化视图和动态 (动画) 视图来展示天气预报及其它信息。</p>
+    <p xml:lang="zh-CN">一个为 Plasma 打造的天气预报聚合应用，可通过扁平化视图和动态 (动画) 视图来展示天气预报以及其他信息。</p>
   </description>
   <screenshots>
     <screenshot type="default">
