@@ -41,26 +41,36 @@ void WeatherLocationListModel::load()
             m_locations.push_back(location_ptr);
     }
 
-    auto i{0};
-    for (auto loc : m_locations) {
-        auto index = loc->index();
-        while (index != i) {
-            if (index != -1) {
-                if (index >= (int)m_locations.size()) {
-                    qDebug() << "invalid index, please delete config(~/.config/kweather/kweatherrc)";
-                    abort();
-                } else {
-                    std::swap(m_locations[i], m_locations[index]);
-                    index = m_locations[i]->index();
-                }
-            } else {
-                loc->saveOrder(i);
-                index = i;
-            }
-        }
-        i++;
+    // sort locations by index, correcting any issues with the stored index
+
+    QList<WeatherLocation *> sorted, unsorted;
+    for (int i = 0; i < (int)m_locations.size(); ++i) {
+        sorted.push_back(nullptr);
     }
 
+    // loop through the initial locations and fill in the indicies in sorted
+    for (auto loc : m_locations) {
+        auto index = loc->index();
+
+        if (index < 0 || index >= (int)sorted.size() || sorted[index] != nullptr) {
+            unsorted.push_back(loc);
+        } else {
+            sorted[index] = loc;
+        }
+    }
+    // add unsorted locations in positions unfilled
+    for (auto loc : unsorted) {
+        for (int i = 0; i < (int)sorted.size(); ++i) {
+            if (!sorted[i]) {
+                sorted[i] = loc;
+                break;
+            }
+        }
+    }
+    // move into original array
+    for (int i = 0; i < (int)m_locations.size(); ++i) {
+        m_locations[i] = sorted[i];
+    }
     Q_EMIT locationsChanged();
 }
 
