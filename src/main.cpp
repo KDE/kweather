@@ -28,6 +28,7 @@
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
 #include "temperaturechartdata.h"
+#include "about.h"
 #include "version.h"
 #include "weatherlocation.h"
 #include "weatherlocationmodel.h"
@@ -62,7 +63,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     aboutData.addAuthor(i18n("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"), QStringLiteral("https://espi.dev"));
     KAboutData::setApplicationData(aboutData);
 
-    engine.rootContext()->setContextProperty(QStringLiteral("kweatherAboutData"), QVariant::fromValue(aboutData));
+    qmlRegisterSingletonType<AboutType>("kweather", 1, 0, "AboutType", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+        Q_UNUSED(engine)
+        Q_UNUSED(scriptEngine)
+
+        return new AboutType();
+    });
 
     engine.rootContext()->setContextProperty(QStringLiteral("weatherLocationListModel"), WeatherLocationListModel::inst());
     engine.rootContext()->setContextProperty(QStringLiteral("settingsModel"), KWeatherSettings::self());
