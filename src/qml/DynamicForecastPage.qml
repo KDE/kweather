@@ -253,82 +253,100 @@ Kirigami.ScrollablePage {
                 }
             }
             
-            Button {
+            property real buttonLength: Kirigami.Units.gridUnit * 2.5
+            property real iconLength: Kirigami.Units.gridUnit * 1.2
+            
+            ToolButton {
                 Layout.alignment: Qt.AlignTop
+                Layout.minimumWidth: header.buttonLength
+                Layout.minimumHeight: header.buttonLength
+                
                 Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                 Kirigami.Theme.inherit: false
                 
-                visible: Kirigami.Settings.isMobile
                 icon.name: "globe"
-                icon.height: Kirigami.Units.iconSizes.smallMedium
-                icon.width: icon.height
+                icon.height: header.iconLength
+                icon.width: header.iconLength
                 icon.color: "white"
+                
+                visible: Kirigami.Settings.isMobile
                 text: i18n("Locations")
                 display: appwindow.width > Kirigami.Units.gridUnit * 30 ? AbstractButton.TextBesideIcon : ToolButton.IconOnly
                 onClicked: addPageLayer(getPage("Locations"), 0)
-                flat: true
             }
-            Button {
+            ToolButton {
                 Layout.alignment: Qt.AlignTop
+                Layout.minimumWidth: header.buttonLength
+                Layout.minimumHeight: header.buttonLength
+                
                 Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                 Kirigami.Theme.inherit: false
                 
-                visible: Kirigami.Settings.isMobile
                 icon.name: "settings-configure"
-                icon.height: Kirigami.Units.iconSizes.smallMedium
-                icon.width: icon.height
+                icon.height: header.iconLength
+                icon.width: header.iconLength
                 icon.color: "white"
+                
+                visible: Kirigami.Settings.isMobile
                 text: i18n("Settings")
                 display: appwindow.width > Kirigami.Units.gridUnit * 30 ? AbstractButton.TextBesideIcon : ToolButton.IconOnly
                 onClicked: addPageLayer(getPage("Settings"), 0)
-                flat: true
             }
-            Button {
+            ToolButton {
                 Layout.alignment: Qt.AlignTop
+                Layout.minimumWidth: header.buttonLength
+                Layout.minimumHeight: header.buttonLength
+                
                 Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                 Kirigami.Theme.inherit: false
                 
-                visible: !Kirigami.Settings.isMobile
                 icon.name: "view-refresh"
-                icon.height: Kirigami.Units.iconSizes.smallMedium
-                icon.width: icon.height
+                icon.height: header.iconLength
+                icon.width: header.iconLength
                 icon.color: "white"
+                
+                visible: !Kirigami.Settings.isMobile
                 text: i18n("Refresh")
                 display: ToolButton.IconOnly
                 onClicked: weatherLocationListModel.locations[loader.item.currentIndex].update()
-                flat: true
             }
-            Button {
+            ToolButton {
                 Layout.alignment: Qt.AlignTop
+                Layout.minimumWidth: header.buttonLength
+                Layout.minimumHeight: header.buttonLength
+                
                 Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                 Kirigami.Theme.inherit: false
                 
-                visible: !Kirigami.Settings.isMobile
                 icon.name: "arrow-left"
-                icon.height: Kirigami.Units.iconSizes.smallMedium
-                icon.width: icon.height
+                icon.height: header.iconLength
+                icon.width: header.iconLength
                 icon.color: "white"
+                
+                visible: !Kirigami.Settings.isMobile
                 text: i18n("Left")
                 display: ToolButton.IconOnly
                 onClicked: page.moveLeft()
                 enabled: page.canGoLeft
-                flat: true
             }
-            Button {
+            ToolButton {
                 Layout.alignment: Qt.AlignTop
+                Layout.minimumWidth: header.buttonLength
+                Layout.minimumHeight: header.buttonLength
+                
                 Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                 Kirigami.Theme.inherit: false
                 
-                visible: !Kirigami.Settings.isMobile
                 icon.name: "arrow-right"
-                icon.height: Kirigami.Units.iconSizes.smallMedium
-                icon.width: icon.height
+                icon.height: header.iconLength
+                icon.width: header.iconLength
                 icon.color: "white"
+                
+                visible: !Kirigami.Settings.isMobile
                 text: i18n("Right")
                 display: ToolButton.IconOnly
                 onClicked: page.moveRight()
                 enabled: page.canGoRight
-                flat: true
             }
         }
         
