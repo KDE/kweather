@@ -29,6 +29,19 @@ Kirigami.ScrollablePage {
             loading = false;
         }
     }
+    
+    actions.contextualActions: [
+        Kirigami.Action {
+            visible: Kirigami.Settings.isMobile
+            iconName: "globe"
+            onTriggered: addPageLayer(getPage("Locations"), 0)
+        },
+        Kirigami.Action {
+            visible: Kirigami.Settings.isMobile
+            iconName: "settings-configure"
+            onTriggered: addPageLayer(getPage("Settings"), 0)
+        }
+    ]
 
     ListView { // empty list view to centre placeholdermessage
         id: listView

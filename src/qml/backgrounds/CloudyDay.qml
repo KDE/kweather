@@ -12,8 +12,8 @@ import org.kde.kirigami 2.11 as Kirigami
 import "components"
 
 DynamicBackground {
-    gradientColorTop: "#35d9ed"
+    gradientColorTop: "#00bcd4"
     gradientColorBottom: "#24a3de"
     clouds: true
-    cloudsColor: "white"
+    cloudsColor: "#e0f7fa"
 }

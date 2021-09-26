@@ -1,6 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
- * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -14,7 +14,17 @@ Kirigami.Page {
     id: page
     topPadding: 0; bottomPadding: 0; rightPadding: 0; leftPadding: 0
 
-    title: weatherLocationListModel.locations.count == 0 ? i18n("Forecast") : weatherLocationListModel.locations[loader.item.currentIndex].name
+    title: {
+        if (weatherLocationListModel.locations.count == 0) {
+            return i18n("Forecast");
+        } else if (settingsModel.forecastStyle === "Dynamic") {
+            return ""; // provided by DynamicForecastPage
+        } else {
+            return weatherLocationListModel.locations[loader.item.currentIndex].name;
+        }
+    }
+    
+    globalToolBarStyle: (settingsModel.forecastStyle === "Dynamic" && pageStack.layers.depth <= 1) ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
     
     property int yTranslate: 0
     
@@ -22,19 +32,40 @@ Kirigami.Page {
         loader.item.currentIndex = pageIndex;
     }
     
-    // desktop actions
+    // actions (only shown in flat view since the toolbar is hidden in dynamic view)
     actions.contextualActions: [
         Kirigami.Action {
+            visible: Kirigami.Settings.isMobile
+            iconName: "globe"
+            text: i18n("Locations")
+            onTriggered: addPageLayer(getPage("Locations"), 0)
+        },
+        Kirigami.Action {
+            visible: Kirigami.Settings.isMobile
+            iconName: "settings-configure"
+            displayHint: Kirigami.Action.IconOnly
+            onTriggered: addPageLayer(getPage("Settings"), 0)
+        },
+        Kirigami.Action {
+            visible: !Kirigami.Settings.isMobile
             iconName: "view-refresh"
+            text: i18n("Refresh")
+            displayHint: Kirigami.Action.IconOnly
             onTriggered: weatherLocationListModel.locations[loader.item.currentIndex].update()
         },
         Kirigami.Action {
+            visible: !Kirigami.Settings.isMobile
             iconName: "arrow-left"
+            text: i18n("Left")
+            displayHint: Kirigami.Action.IconOnly
             onTriggered: loader.item.moveLeft()
             enabled: loader.item.canGoLeft
         },
         Kirigami.Action {
+            visible: !Kirigami.Settings.isMobile
             iconName: "arrow-right"
+            text: i18n("Right")
+            displayHint: Kirigami.Action.IconOnly
             onTriggered: loader.item.moveRight()
             enabled: loader.item.canGoRight
         }

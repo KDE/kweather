@@ -1,6 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
- * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Devin Lin <espidev@gmail.com>
  * SPDX-FileCopyrightText: 2021 Nicolas Fella <nicolas.fella@gmx.de>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
@@ -115,27 +115,37 @@ Kirigami.ScrollablePage {
             // weather elements
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item && backgroundLoader.item.sun
+                opacity: backgroundLoader.item && backgroundLoader.item.sun ? 1 : 0
+                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                active: opacity !== 0
                 sourceComponent: Sun {}
             }
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item && backgroundLoader.item.stars
+                opacity: backgroundLoader.item && backgroundLoader.item.stars ? 1 : 0
+                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                active: opacity !== 0
                 sourceComponent: Stars {}
             }
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item && backgroundLoader.item.clouds
+                opacity: backgroundLoader.item && backgroundLoader.item.clouds ? 1 : 0
+                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                active: opacity !== 0
                 sourceComponent: Cloudy { cloudColor: backgroundLoader.item.cloudsColor }
             }
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item && backgroundLoader.item.rain
+                opacity: backgroundLoader.item && backgroundLoader.item.rain ? 1 : 0
+                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                active: opacity !== 0
                 sourceComponent: Rain {}
             }
             Loader {
                 anchors.fill: parent
-                active: backgroundLoader.item && backgroundLoader.item.snow
+                opacity: backgroundLoader.item && backgroundLoader.item.snow ? 1 : 0
+                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                active: opacity !== 0
                 sourceComponent: Snow {}
             }
             
@@ -214,6 +224,115 @@ Kirigami.ScrollablePage {
             duration: Kirigami.Units.longDuration
         }
         
+        // header
+        RowLayout {
+            id: header
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.margins: Kirigami.Units.smallSpacing 
+            
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.largeSpacing
+                Label {
+                    Layout.fillWidth: true
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                    font.weight: Font.Bold
+                    text: weatherLocation.name
+                    color: "white"
+                    wrapMode: Text.Wrap
+                }
+                Label {
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
+                    color: "white"
+                    opacity: 0.9
+                    Layout.alignment: Qt.AlignLeft
+                    horizontalAlignment: Text.AlignLeft
+                    text: i18n("Updated at %1", weatherLocation.lastUpdated)
+                }
+            }
+            
+            Button {
+                Layout.alignment: Qt.AlignTop
+                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                Kirigami.Theme.inherit: false
+                
+                visible: Kirigami.Settings.isMobile
+                icon.name: "globe"
+                icon.height: Kirigami.Units.iconSizes.smallMedium
+                icon.width: icon.height
+                icon.color: "white"
+                text: i18n("Locations")
+                display: appwindow.width > Kirigami.Units.gridUnit * 30 ? AbstractButton.TextBesideIcon : ToolButton.IconOnly
+                onClicked: addPageLayer(getPage("Locations"), 0)
+                flat: true
+            }
+            Button {
+                Layout.alignment: Qt.AlignTop
+                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                Kirigami.Theme.inherit: false
+                
+                visible: Kirigami.Settings.isMobile
+                icon.name: "settings-configure"
+                icon.height: Kirigami.Units.iconSizes.smallMedium
+                icon.width: icon.height
+                icon.color: "white"
+                text: i18n("Settings")
+                display: appwindow.width > Kirigami.Units.gridUnit * 30 ? AbstractButton.TextBesideIcon : ToolButton.IconOnly
+                onClicked: addPageLayer(getPage("Settings"), 0)
+                flat: true
+            }
+            Button {
+                Layout.alignment: Qt.AlignTop
+                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                Kirigami.Theme.inherit: false
+                
+                visible: !Kirigami.Settings.isMobile
+                icon.name: "view-refresh"
+                icon.height: Kirigami.Units.iconSizes.smallMedium
+                icon.width: icon.height
+                icon.color: "white"
+                text: i18n("Refresh")
+                display: ToolButton.IconOnly
+                onClicked: weatherLocationListModel.locations[loader.item.currentIndex].update()
+                flat: true
+            }
+            Button {
+                Layout.alignment: Qt.AlignTop
+                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                Kirigami.Theme.inherit: false
+                
+                visible: !Kirigami.Settings.isMobile
+                icon.name: "arrow-left"
+                icon.height: Kirigami.Units.iconSizes.smallMedium
+                icon.width: icon.height
+                icon.color: "white"
+                text: i18n("Left")
+                display: ToolButton.IconOnly
+                onClicked: page.moveLeft()
+                enabled: page.canGoLeft
+                flat: true
+            }
+            Button {
+                Layout.alignment: Qt.AlignTop
+                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                Kirigami.Theme.inherit: false
+                
+                visible: !Kirigami.Settings.isMobile
+                icon.name: "arrow-right"
+                icon.height: Kirigami.Units.iconSizes.smallMedium
+                icon.width: icon.height
+                icon.color: "white"
+                text: i18n("Right")
+                display: ToolButton.IconOnly
+                onClicked: page.moveRight()
+                enabled: page.canGoRight
+                flat: true
+            }
+        }
+        
+        // content
         ColumnLayout {
             id: mainLayout
             anchors.horizontalCenter: parent.horizontalCenter
@@ -222,7 +341,8 @@ Kirigami.ScrollablePage {
             // separator from top
             // used instead of topMargin, since it can be shrunk when needed (small window height)
             Item {
-                Layout.preferredHeight: page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3
+                Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2, // header height
+                                                 page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
             }
             
             // weather header
@@ -246,15 +366,6 @@ Kirigami.ScrollablePage {
                     horizontalAlignment: Text.AlignLeft
                     text: weatherLocation.currentHour.weatherDescription
                     font.family: lightHeadingFont.name
-                }
-                Label {
-                    Layout.topMargin: Kirigami.Units.largeSpacing
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                    color: "white"
-                    opacity: 0.7
-                    Layout.alignment: Qt.AlignLeft
-                    horizontalAlignment: Text.AlignLeft
-                    text: i18n("Updated at %1", weatherLocation.lastUpdated)
                 }
             }
 

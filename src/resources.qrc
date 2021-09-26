@@ -1,6 +1,6 @@
 <!--
 - Copyright 2020 Han Young <hanyoung@protonmail.com>
-- Copyright 2020 Devin Lin <espidev@gmail.com>
+- Copyright 2020-2021 Devin Lin <espidev@gmail.com>
 - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 <RCC>
@@ -25,6 +25,7 @@
         <file>qml/WeatherStrip.qml</file>
         <file>qml/DynamicForecastPage.qml</file>
         <file>qml/FlatForecastPage.qml</file>
+        <file>qml/Sidebar.qml</file>
         <file>qml/backgrounds/DynamicBackground.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>

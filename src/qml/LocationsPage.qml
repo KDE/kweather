@@ -19,11 +19,14 @@ Kirigami.ScrollablePage {
     property int yTranslate: 0
     property int currentIndex: 0
 
-    mainAction: Kirigami.Action {
-        iconName: "list-add"
-        text: i18n("Add Location")
-        onTriggered: appwindow.pageStack.push(Qt.resolvedUrl("AddLocationPage.qml"))
-    }
+    globalToolBarStyle: Kirigami.ApplicationHeaderStyle.ToolBar
+    actions.contextualActions: [
+        Kirigami.Action {
+            iconName: "list-add"
+            text: i18n("Add Location")
+            onTriggered: appwindow.pageStack.layers.push(Qt.resolvedUrl("AddLocationPage.qml"))
+        }
+    ]
 
     Connections {
         target: weatherLocationListModel
@@ -63,6 +66,12 @@ Kirigami.ScrollablePage {
             icon.name: "globe"
             text: i18n("Add a location")
             visible: citiesList.count == 0
+            
+            helpfulAction: Kirigami.Action {
+                iconName: "list-add"
+                text: i18n("Add Location")
+                onTriggered: appwindow.pageStack.layers.push(Qt.resolvedUrl("AddLocationPage.qml"))
+            }
         }
 
         delegate: Kirigami.DelegateRecycler {

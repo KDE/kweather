@@ -1,6 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
- * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -20,7 +20,8 @@ Kirigami.ApplicationWindow
 
     Component.onCompleted: {
         pageStack.globalToolBar.canContainHandles = true; // move handles to toolbar
-
+        pageStack.globalToolBar.style = Kirigami.ApplicationHeaderStyle.ToolBar; // ensure toolbar style for mobile
+        
         switchToPage(getPage("Forecast"), 1); // initial page
 
         if (settingsModel.firstStartup) {
@@ -54,8 +55,8 @@ Kirigami.ApplicationWindow
     }
     
     function switchToPage(page, depth) {
-        while (pageStack.depth > depth) pageStack.pop();
         while (pageStack.layers.depth > 1) pageStack.layers.pop();
+        while (pageStack.depth > depth) pageStack.pop();
         
         // page switch animation
         yAnim.target = page;
@@ -71,6 +72,24 @@ Kirigami.ApplicationWindow
         pageStack.push(page);
     }
     
+    function addPageLayer(page, depth) {
+        if (pageStack.layers.currentItem === page) return;
+        while (depth !== undefined && pageStack.layers.depth > depth + 1) pageStack.layers.pop();
+        
+        // page switch animation
+        yAnim.target = page;
+        yAnim.properties = "yTranslate";
+        anim.target = page;
+        anim.properties = "contentItem.opacity";
+        if (page.header) {
+            anim.properties += ",header.opacity";
+        }
+        yAnim.restart();
+        anim.restart();
+        
+        pageStack.layers.push(page);
+    }
+    
     function getPage(name) {
         switch (name) {
             case "Forecast": return pagePool.loadPage(weatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
@@ -80,44 +99,14 @@ Kirigami.ApplicationWindow
             case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
         }
     }
-
-    globalDrawer: Kirigami.GlobalDrawer {
-        title: i18n("Weather")
-        titleIcon: "qrc:/resources/kweather.svg"
-        
-        property bool isWidescreen: appwindow.width > appwindow.height
-        
-        bannerVisible: true
-        modal: !isWidescreen
-        collapsible: true
-        collapsed: isWidescreen
-        width: collapsed ? implicitWidth : Kirigami.Units.gridUnit * 12
-
-        Behavior on width {
-            NumberAnimation {
-                duration: Kirigami.Units.longDuration
-                easing.type: Easing.InOutQuad
-            }
-        }
-        
-        actions: [
-            Kirigami.Action {
-                text: i18n("Forecast")
-                iconName: "weather-clear"
-                onTriggered: switchToPage(getPage("Forecast"), 0);
-            },
-            Kirigami.Action {
-                text: i18n("Locations")
-                iconName: "globe"
-                onTriggered: switchToPage(getPage("Locations"), 0);
-            },
-            Kirigami.Action {
-                text: i18n("Settings")
-                iconName: "settings-configure"
-                onTriggered: switchToPage(getPage("Settings"), 0);
-            }
-        ]
+    
+    Loader {
+        id: sidebarLoader
+        source: "qrc:/qml/Sidebar.qml"
+        active: !Kirigami.Settings.isMobile
     }
+    globalDrawer: sidebarLoader.item
+        
     FontLoader {
         id: lightHeadingFont
         source: "/resources/NotoSans-Light.ttf"

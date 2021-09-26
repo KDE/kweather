@@ -1,6 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
- * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -116,7 +116,7 @@ Kirigami.ScrollablePage {
             }
             onClicked: {
                 root.model.addLocation(index);
-                switchToPage(getPage("Locations"), 0);
+                pageStack.layers.pop();
             }
         }
     }

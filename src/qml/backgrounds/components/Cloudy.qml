@@ -12,6 +12,7 @@ import org.kde.kirigami 2.11 as Kirigami
 
 Item {
     id: baseRect
+    opacity: 0.65
     anchors.fill: parent
     property color cloudColor: "white"
     property double unitSize: width / 100 // 100 is full width of screen
