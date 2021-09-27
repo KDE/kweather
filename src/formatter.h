@@ -18,4 +18,6 @@ public:
     Q_INVOKABLE QString formatTemperatureRounded(qreal temperature, const QString &unit) const;
 
     Q_INVOKABLE QString formatWindSpeed(qreal speed, const QString &unit) const;
+
+    Q_INVOKABLE QString formatPressure(qreal pressure, const QString &unit) const;
 };

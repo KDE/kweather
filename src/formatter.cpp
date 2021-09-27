@@ -25,8 +25,19 @@ QString Formatter::formatTemperatureRounded(qreal temperature, const QString &un
 QString Formatter::formatWindSpeed(qreal speed, const QString &unit) const
 {
     if (unit == QLatin1String("kph")) {
-        return i18n("%1 km/h", QString::number(speed, 'g', 1));
+        return i18n("%1 km/h", QString::number(speed, 'f', 1));
+    } else if (unit == QLatin1String("mph")) {
+        return i18n("%1 mph", QString::number(speed * 0.62, 'f', 1));
     } else {
-        return i18n("%1 mph", QString::number(speed * 0.62, 'g', 1));
+        return i18n("%1 m/s", QString::number(speed * 1000 / 3600, 'f', 1));
+    }
+}
+
+QString Formatter::formatPressure(qreal pressure, const QString &unit) const
+{
+    if (unit == QLatin1String("hPa")) {
+        return i18n("%1 hPa", QString::number(pressure, 'f', 1));
+    } else {
+        return i18n("%1 hPa", QString::number(pressure * 0.7500638, 'f', 1));
     }
 }

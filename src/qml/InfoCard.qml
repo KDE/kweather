@@ -12,6 +12,7 @@ import QtQuick.Layouts 1.2
 import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
 import "backgrounds"
+import kweather 1.0
 
 Kirigami.Card {
 
@@ -91,7 +92,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: selectedDay == null ? "" : i18n("%1hPa", selectedDay.pressure.toFixed(1))
+                        text: selectedDay == null ? "" : Formatter.formatPressure(selectedDay.pressure, settingsModel.pressureUnits)
                         color: root.textColor
                     }
                 }

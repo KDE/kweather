@@ -32,13 +32,13 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             implicitHeight: Kirigami.Units.gridUnit * 3
             onClicked: forecastStyle.open()
-            
+
             ColumnLayout {
                 spacing: -5
                 anchors.leftMargin: Kirigami.Units.gridUnit
                 anchors.rightMargin: Kirigami.Units.gridUnit
                 anchors.fill: parent
-                
+
                 Label {
                     text: i18n("Forecast Style")
                     font.weight: Font.Bold
@@ -48,7 +48,7 @@ Kirigami.ScrollablePage {
                 }
             }
         }
-        
+
         Kirigami.Separator {
             Layout.fillWidth: true
             Layout.leftMargin: Kirigami.Units.largeSpacing
@@ -101,6 +101,34 @@ Kirigami.ScrollablePage {
                 }
                 Label {
                     text: settingsModel.speedUnits
+                }
+            }
+        }
+
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+            opacity: 0.8
+        }
+
+        ItemDelegate {
+            Layout.fillWidth: true
+            implicitHeight: Kirigami.Units.gridUnit * 3
+            onClicked: pressureUnits.open()
+
+            ColumnLayout {
+                spacing: -5
+                anchors.leftMargin: Kirigami.Units.gridUnit
+                anchors.rightMargin: Kirigami.Units.gridUnit
+                anchors.fill: parent
+
+                Label {
+                    text: i18n("Pressure Units")
+                    font.weight: Font.Bold
+                }
+                Label {
+                    text: settingsModel.pressureUnits
                 }
             }
         }
@@ -209,7 +237,7 @@ Kirigami.ScrollablePage {
                 spacing: 0
                 
                 Repeater {
-                    model: [i18nc("kilometers per hour", "kph"), i18nc("miles per hour", "mph")]
+                    model: [i18nc("kilometers per hour", "kph"), i18nc("miles per hour", "mph"), i18nc("meters per second", "m/s")]
                     delegate: RadioDelegate {
                         topPadding: Kirigami.Units.smallSpacing * 2
                         bottomPadding: Kirigami.Units.smallSpacing * 2
@@ -220,6 +248,37 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (checked) {
                                 settingsModel.speedUnits = modelData;
+                                settingsModel.save()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // pressure unit dialog
+        PopupDialog {
+            id: pressureUnits
+            title: i18n("Pressure Units")
+            standardButtons: Dialog.Close
+
+            ColumnLayout {
+                Kirigami.Theme.inherit: false
+                Kirigami.Theme.colorSet: Kirigami.Theme.View
+                spacing: 0
+
+                Repeater {
+                    model: [i18nc("Hectopascal Pressure", "hPa"), i18nc("Millimetre of mercury", "mmHg")]
+                    delegate: RadioDelegate {
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+
+                        text: modelData
+                        checked: settingsModel.pressureUnits == modelData
+                        onCheckedChanged: {
+                            if (checked) {
+                                settingsModel.pressureUnits = modelData;
                                 settingsModel.save()
                             }
                         }

@@ -27,6 +27,10 @@
       <label>Speed Unit</label>
       <default>kph</default>
     </entry>
+    <entry name="pressureUnits" type="String">
+      <label>Pressure Unit</label>
+      <default>hPa</default>
+    </entry>
     <entry name="defaultBackend" type="String">
       <label>Default Backend</label>
       <default>nmiweatherapi</default>
