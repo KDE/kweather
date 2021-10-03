@@ -126,7 +126,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Kirigami.Icon {
                                 Layout.alignment: Qt.AlignHCenter
-                                source: modelData.currentHour.weatherIcon
+                                source: modelData.hourForecasts[0] ? modelData.hourForecasts[0].weatherIcon : "weather-none-available"
                                 Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
                                 Layout.preferredWidth: height
                                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
@@ -134,7 +134,7 @@ Kirigami.ScrollablePage {
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: Formatter.formatTemperatureRounded(modelData.currentHour.temperature, settingsModel.temperatureUnits)
+                                text: Formatter.formatTemperatureRounded(modelData.hourForecasts[0].temperature, settingsModel.temperatureUnits)
                             }
                         }
 

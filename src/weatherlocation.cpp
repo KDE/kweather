@@ -213,7 +213,7 @@ void WeatherLocation::determineCurrentForecast()
         m_iconColor = QStringLiteral("white");
         m_isDarkTheme = true;
     }
-    Q_EMIT currentForecastChange();
+    Q_EMIT currentForecastChanged();
 }
 
 void WeatherLocation::update()
@@ -234,21 +234,4 @@ void WeatherLocation::updateCurrentDateTime()
     m_timer->setInterval(60000);
     Q_EMIT currentTimeChanged();
     Q_EMIT currentDateChanged();
-}
-
-KWeatherCore::DailyWeatherForecast WeatherLocation::todayForecast() const
-{
-    if (!m_dayForecasts.isEmpty()) {
-        return m_dayForecasts.first().value<KWeatherCore::DailyWeatherForecast>();
-    }
-    return {};
-}
-
-KWeatherCore::HourlyWeatherForecast WeatherLocation::currentHour() const
-{
-    auto currentForecast = todayForecast();
-    if (currentForecast.hourlyWeatherForecast().size() > 0) {
-        return currentForecast.hourlyWeatherForecast()[0];
-    }
-    return {};
 }

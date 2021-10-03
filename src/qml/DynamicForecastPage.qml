@@ -20,7 +20,7 @@ Kirigami.ScrollablePage {
     
     property int currentIndex: 0
     property var weatherLocation: weatherLocationListModel.locations[loader.item.currentIndex]
-    property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.todayForecast
+    property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.dayForecasts[0]
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
     
@@ -373,7 +373,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: Formatter.formatTemperatureRounded(weatherLocation.currentHour.temperature, settingsModel.temperatureUnits)
+                    text: Formatter.formatTemperatureRounded(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits)
                     font.family: lightHeadingFont.name
                 }
                 Label {
@@ -382,7 +382,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: weatherLocation.currentHour.weatherDescription
+                    text: weatherLocation.hourForecasts[0].weatherDescription
                     font.family: lightHeadingFont.name
                 }
             }

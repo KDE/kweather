@@ -41,16 +41,14 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
     Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
     Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
-    Q_PROPERTY(KWeatherCore::DailyWeatherForecast todayForecast READ todayForecast NOTIFY dayForecastsChanged)
-    Q_PROPERTY(KWeatherCore::HourlyWeatherForecast currentHour READ currentHour NOTIFY hourForecastsChanged)
 
-    Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChange)
-    Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QColor textColor READ textColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QColor cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QColor cardTextColor READ cardTextColor NOTIFY currentForecastChange)
-    Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChange)
-    Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChange)
+    Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor backgroundColor READ backgroundColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor textColor READ textColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor cardTextColor READ cardTextColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChanged)
 
 public:
     explicit WeatherLocation(QString locationId,
@@ -153,8 +151,6 @@ public:
             Q_EMIT selectedDayChanged();
         }
     }
-    KWeatherCore::DailyWeatherForecast todayForecast() const;
-    KWeatherCore::HourlyWeatherForecast currentHour() const;
 
     // for restore order of locations
     void saveOrder(int index);
@@ -165,7 +161,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void weatherRefresh(KWeatherCore::WeatherForecast forecasts); // sent when weather data is refreshed
-    void currentForecastChange();
+    void currentForecastChanged();
     void stopLoadingIndicator();
     void currentTimeChanged();
     void currentDateChanged();
