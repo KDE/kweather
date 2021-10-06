@@ -43,6 +43,7 @@ Kirigami.Page {
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
             iconName: "settings-configure"
+            text: i18n("Settings")
             displayHint: Kirigami.Action.IconOnly
             onTriggered: addPageLayer(getPage("Settings"), 0)
         },
