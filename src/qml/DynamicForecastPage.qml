@@ -323,7 +323,7 @@ Kirigami.ScrollablePage {
                 icon.width: header.iconLength
                 icon.color: "white"
                 
-                visible: !Kirigami.Settings.isMobile
+                visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
                 text: i18n("Left")
                 display: ToolButton.IconOnly
                 onClicked: page.moveLeft()
@@ -342,7 +342,7 @@ Kirigami.ScrollablePage {
                 icon.width: header.iconLength
                 icon.color: "white"
                 
-                visible: !Kirigami.Settings.isMobile
+                visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
                 text: i18n("Right")
                 display: ToolButton.IconOnly
                 onClicked: page.moveRight()

@@ -55,7 +55,7 @@ Kirigami.Page {
             onTriggered: weatherLocationListModel.locations[loader.item.currentIndex].update()
         },
         Kirigami.Action {
-            visible: !Kirigami.Settings.isMobile
+            visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
             iconName: "arrow-left"
             text: i18n("Left")
             displayHint: Kirigami.Action.IconOnly
@@ -63,7 +63,7 @@ Kirigami.Page {
             enabled: loader.item.canGoLeft
         },
         Kirigami.Action {
-            visible: !Kirigami.Settings.isMobile
+            visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
             iconName: "arrow-right"
             text: i18n("Right")
             displayHint: Kirigami.Action.IconOnly
