@@ -118,9 +118,6 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     if (oldIndex < 0 || oldIndex >= locationsSize || newIndex < 0 || newIndex >= locationsSize)
         return;
 
-    if (oldIndex < newIndex)
-        ++newIndex;
-
     std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
     Q_EMIT locationsChanged();
 
