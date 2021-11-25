@@ -108,7 +108,7 @@ Kirigami.ScrollablePage {
             implicitHeight: Kirigami.Units.gridUnit * 8
             spacing: Kirigami.Units.largeSpacing
 
-            highlightMoveDuration: 400
+            highlightMoveDuration: 250
             highlightMoveVelocity: -1
             highlight: Rectangle {
                 color: Kirigami.Theme.focusColor

@@ -430,7 +430,7 @@ Kirigami.ScrollablePage {
                     id: dailyListView
                     selectable: true
 
-                    highlightMoveDuration: 400
+                    highlightMoveDuration: 250
                     highlightMoveVelocity: -1
                     highlight: Rectangle {
                         color: Kirigami.Theme.focusColor
