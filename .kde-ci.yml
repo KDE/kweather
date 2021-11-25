@@ -10,9 +10,9 @@ Dependencies:
     'frameworks/ki18n': '@stable'
     'frameworks/kirigami': '@stable'
     'frameworks/kquickcharts': '@stable'
-    'frameworks/notifications': '@stable'
+    'frameworks/knotifications': '@stable'
     'libraries/kweathercore': '@latest'
 
-- 'on': ['Linux']
+- 'on': ['Linux', 'FreeBSD']
   'require':
     'frameworks/plasma-framework': '@stable'
