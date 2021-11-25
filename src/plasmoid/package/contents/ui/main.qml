@@ -16,8 +16,8 @@ Item {
     }
     Plasmoid.compactRepresentation: ColumnLayout{
         Kirigami.Icon {
-            paintedHeight: 20
-            paintedWidth: 20
+            height: 20
+            width: 20
             source: plasmoid.nativeInterface.weatherIcon
             MouseArea {
                 anchors.fill: parent
