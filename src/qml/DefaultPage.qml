@@ -62,10 +62,10 @@ Kirigami.ScrollablePage {
 
             helpfulAction: Kirigami.Action {
                 iconName: "list-add"
-                text: i18n("Add current location")
+                text: i18n("Add Location")
                 onTriggered: {
-                    weatherLocationListModel.requestCurrentLocation()
-                    loading = true
+                    addPageLayer(getPage("Locations"), 0);
+                    appwindow.pageStack.layers.push(Qt.resolvedUrl("AddLocationPage.qml"));
                 }
             }
         }

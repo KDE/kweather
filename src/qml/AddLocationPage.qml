@@ -116,7 +116,8 @@ Kirigami.ScrollablePage {
             }
             onClicked: {
                 root.model.addLocation(index);
-                pageStack.layers.pop();
+                appwindow.getPage("Forecast").switchPageIndex(weatherLocationListModel.count - 1);
+                switchToPage(appwindow.getPage("Forecast"), 0);
             }
         }
     }
