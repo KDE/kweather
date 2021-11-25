@@ -21,6 +21,10 @@ Kirigami.ScrollablePage {
 
     property var model: LocationQueryModel {}
 
+    Component.onCompleted: {
+        search.forceActiveFocus();
+    }
+
     header: RowLayout {
         anchors.margins: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.smallSpacing
@@ -31,10 +35,20 @@ Kirigami.ScrollablePage {
 
             placeholderText: i18n("Search for a place...")
             onTextChanged: {
-                searchQuery = text
-                root.model.textChanged(text)
+                searchQuery = text;
+                root.model.textChanged(text);
+                addCityList.currentIndex = 0;
             }
-            onEditingFinished: root.model.textChanged(text, 0) // when return is pressed, query immediately
+            onEditingFinished: {
+                if (searchQuery === text) {
+                    // no change
+                    return;
+                }
+                searchQuery = text;
+                root.model.textChanged(text, 0); // when return is pressed, query immediately
+                addCityList.currentIndex = 0;
+            }
+            KeyNavigation.down: addCityList
         }
         Button {
             id: searchButton
@@ -114,10 +128,19 @@ Kirigami.ScrollablePage {
             Label {
                 text: model.name
             }
-            onClicked: {
+            function apply() {
                 root.model.addLocation(index);
                 appwindow.getPage("Forecast").switchPageIndex(weatherLocationListModel.count - 1);
                 switchToPage(appwindow.getPage("Forecast"), 0);
+            }
+            onClicked: apply()
+            Keys.onPressed: {
+                if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                    apply();
+                    event.accepted = true;
+                } else {
+                    event.accepted = false;
+                }
             }
         }
     }
