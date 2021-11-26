@@ -38,8 +38,6 @@
         <file>qml/backgrounds/RainyNight.qml</file>
         <file>qml/backgrounds/SnowyDay.qml</file>
         <file>qml/backgrounds/SnowyNight.qml</file>
-        <file>qml/KWeatherStyle.qml</file>
-        <file>qml/qmldir</file>
         <file>qml/backgrounds/components/Sun.qml</file>
         <file>qml/backgrounds/components/Stars.qml</file>
         <file>qml/backgrounds/components/Snow.qml</file>

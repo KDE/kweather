@@ -47,6 +47,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QColor textColor READ textColor NOTIFY currentForecastChanged)
     Q_PROPERTY(QColor cardBackgroundColor READ cardBackgroundColor NOTIFY currentForecastChanged)
     Q_PROPERTY(QColor cardTextColor READ cardTextColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor cardSecondaryTextColor READ cardSecondaryTextColor NOTIFY currentForecastChanged)
     Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChanged)
     Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChanged)
 
@@ -123,6 +124,10 @@ public:
     {
         return m_cardTextColor;
     };
+    const QColor &cardSecondaryTextColor() const
+    {
+        return m_cardSecondaryTextColor;
+    }
 
     const QColor &iconColor() const
     {
@@ -185,6 +190,7 @@ private:
     QColor m_textColor;
     QColor m_cardBackgroundColor;
     QColor m_cardTextColor;
+    QColor m_cardSecondaryTextColor;
     QColor m_iconColor;
     QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
     bool m_isDarkTheme = false;

@@ -125,6 +125,7 @@ Kirigami.ScrollablePage {
             delegate: WeatherDayDelegate {
                 weather: modelData
                 textColor: Kirigami.Theme.textColor
+                secondaryTextColor: Kirigami.Theme.disabledTextColor
             }
 
             onCurrentIndexChanged: {
@@ -155,6 +156,7 @@ Kirigami.ScrollablePage {
             delegate: WeatherHourDelegate {
                 weather: modelData
                 textColor: Kirigami.Theme.textColor
+                secondaryTextColor: Kirigami.Theme.disabledTextColor
             }
         }
 

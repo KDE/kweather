@@ -18,6 +18,7 @@ Rectangle {
 
     property var weather
     property color textColor
+    property color secondaryTextColor
     property alias mouseArea: mouse 
     
     color: "transparent"
@@ -61,7 +62,7 @@ Rectangle {
             }
             Label {
                 anchors.baseline: highTemp.baseline
-                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
+                color: secondaryTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
                 text: Formatter.formatTemperatureRounded(weather.minTemp, settingsModel.temperatureUnits)
             }

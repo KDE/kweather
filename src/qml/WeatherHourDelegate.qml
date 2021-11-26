@@ -19,6 +19,7 @@ Rectangle {
 
     property var weather
     property color textColor
+    property color secondaryTextColor
 
     // actual hour display
     ColumnLayout {
@@ -54,7 +55,7 @@ Rectangle {
                 isMask: true
             }
             Label {
-                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
+                color: secondaryTextColor
                 text: i18n("%1mm", weather.precipitationAmount.toFixed(1))
             }
         }
@@ -69,7 +70,7 @@ Rectangle {
                 isMask: true
             }
             Label {
-                color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? KWeatherStyle.disabledTextColor : Kirigami.Theme.disabledTextColor
+                color: secondaryTextColor
                 text: Formatter.formatWindSpeed(weather.windSpeed, settingsModel.speedUnits)
             }
         }

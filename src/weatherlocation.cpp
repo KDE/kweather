@@ -201,6 +201,7 @@ void WeatherLocation::determineCurrentForecast()
     if (isDayStyle) {
         m_cardBackgroundColor = QStringLiteral("#fefefe");
         m_cardTextColor = QStringLiteral("black");
+        m_cardSecondaryTextColor = QStringLiteral("#404040");
         m_backgroundColor = QStringLiteral("#3daee2");
         m_textColor = m_cardTextColor;
         m_iconColor = QStringLiteral("#4d4d4d");
@@ -208,6 +209,7 @@ void WeatherLocation::determineCurrentForecast()
     } else {
         m_cardBackgroundColor = QStringLiteral("#333333");
         m_cardTextColor = QStringLiteral("#eeeeee");
+        m_cardSecondaryTextColor = QStringLiteral("#C2C2C2");
         m_backgroundColor = QStringLiteral("#222222");
         m_textColor = m_cardTextColor;
         m_iconColor = QStringLiteral("white");

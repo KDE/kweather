@@ -452,6 +452,7 @@ Kirigami.ScrollablePage {
                         id: delegate
                         weather: modelData
                         textColor: weatherLocation.cardTextColor
+                        secondaryTextColor: weatherLocation.cardSecondaryTextColor
                         
                         Connections {
                             target: delegate.mouseArea
@@ -515,6 +516,7 @@ Kirigami.ScrollablePage {
                     delegate: WeatherHourDelegate {
                         weather: modelData
                         textColor: weatherLocation.cardTextColor
+                        secondaryTextColor: weatherLocation.cardSecondaryTextColor
                     }
                 }
             }
