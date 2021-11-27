@@ -202,7 +202,7 @@ Kirigami.ScrollablePage {
             xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
             
             // HACK: when a delegate, or the listview is being interacted with, disable the DragHandler so that it doesn't switch pages
-            enabled: dailyCard.pressedCount == 0
+            enabled: dailyCard.pressedCount == 0 && hourlyCard.pressedCount == 0
             
             onActiveChanged: {
                 if (!active) {
@@ -497,6 +497,8 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: hourlyCard
                 Layout.fillWidth: true
+
+                property int pressedCount: 0
                 
                 background: Kirigami.ShadowedRectangle {
                     color: weatherLocation.cardBackgroundColor
@@ -512,11 +514,20 @@ Kirigami.ScrollablePage {
                     id: hourlyListView
                     selectable: false
                     model: weatherLocation.hourForecasts
+                    onDraggingChanged: hourlyCard.pressedCount += dragging? 1 : -1;
 
                     delegate: WeatherHourDelegate {
+                        id: delegate
                         weather: modelData
                         textColor: weatherLocation.cardTextColor
                         secondaryTextColor: weatherLocation.cardSecondaryTextColor
+
+                        Connections {
+                            target: delegate.mouseArea
+                            function onPressedChanged() {
+                                hourlyCard.pressedCount += delegate.mouseArea.pressed ? 1 : -1;
+                            }
+                        }
                     }
                 }
             }

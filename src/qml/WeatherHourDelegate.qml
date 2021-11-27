@@ -20,6 +20,12 @@ Rectangle {
     property var weather
     property color textColor
     property color secondaryTextColor
+    property alias mouseArea: mouse
+
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+    }
 
     // actual hour display
     ColumnLayout {
