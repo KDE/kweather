@@ -21,7 +21,7 @@
     </entry>
     <entry name="temperatureUnits" type="String">
       <label>Temperature Unit</label>
-      <default>Celsius</default>
+      <default>Use System Default</default>
     </entry>
     <entry name="speedUnits" type="String">
       <label>Speed Unit</label>

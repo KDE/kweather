@@ -6,6 +6,7 @@
  */
 #pragma once
 
+#include <QLocale>
 #include <QString>
 
 #include <KLocalizedContext>
@@ -21,10 +22,14 @@ static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocati
 
 static double convertTemp(double temp, const QString &unit)
 {
-    if (unit == QLatin1String("Fahrenheit")) {
-        return temp * 1.8 + 32;
-    } else {
+    bool metric = !(unit == QLatin1String("Fahrenheit"));
+    if (unit == QLatin1String("Use System Default")) {
+        metric = (QLocale().measurementSystem() == QLocale::MetricSystem);
+    }
+    if (metric) {
         return temp;
+    } else {
+        return temp * 1.8 + 32;
     }
 };
 

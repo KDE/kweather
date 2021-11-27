@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                     font.weight: Font.Bold
                 }
                 Label {
-                    text: settingsModel.temperatureUnits
+                    text: i18n(settingsModel.temperatureUnits)
                 }
             }
         }
@@ -206,17 +206,17 @@ Kirigami.ScrollablePage {
                 spacing: 0
                 
                 Repeater {
-                    model: [i18n("Celsius"), i18n("Fahrenheit")]
+                    model: [["Use System Default", i18n("Use System Default")], ["Celsius", i18n("Celsius")], ["Fahrenheit", i18n("Fahrenheit")]]
                     delegate: RadioDelegate {
                         topPadding: Kirigami.Units.smallSpacing * 2
                         bottomPadding: Kirigami.Units.smallSpacing * 2
                         implicitWidth: Kirigami.Units.gridUnit * 16
                         
-                        text: modelData
-                        checked: settingsModel.temperatureUnits == modelData
+                        text: modelData[1]
+                        checked: settingsModel.temperatureUnits == modelData[0]
                         onCheckedChanged: {
                             if (checked) {
-                                settingsModel.temperatureUnits = modelData;
+                                settingsModel.temperatureUnits = modelData[0];
                                 settingsModel.save()
                             }
                         }
