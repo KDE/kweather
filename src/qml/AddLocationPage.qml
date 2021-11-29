@@ -24,7 +24,7 @@ Kirigami.ScrollablePage {
     Component.onCompleted: {
         search.forceActiveFocus();
     }
-
+    
     header: RowLayout {
         anchors.margins: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.smallSpacing

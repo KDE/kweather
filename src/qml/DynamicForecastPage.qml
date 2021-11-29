@@ -85,14 +85,14 @@ Kirigami.ScrollablePage {
         // background colours
         gradient: Gradient {
             GradientStop { 
-                color: backgroundLoader.item.gradientColorTop
+                color: backgroundLoader.item ? backgroundLoader.item.gradientColorTop : "white"
                 position: 0.0
                 Behavior on color {
                     ColorAnimation { duration: Kirigami.Units.longDuration }
                 }
             }
             GradientStop { 
-                color: backgroundLoader.item.gradientColorBottom
+                color: backgroundLoader.item ? backgroundLoader.item.gradientColorBottom : "white"
                 position: 1.0 
                 Behavior on color {
                     ColorAnimation { duration: Kirigami.Units.longDuration }
@@ -152,7 +152,11 @@ Kirigami.ScrollablePage {
             Loader {
                 id: backgroundLoader
                 anchors.fill: parent
-                Component.onCompleted: source = weatherLocation.backgroundComponent
+                Component.onCompleted: {
+                    if (weatherLocation) {
+                        source = weatherLocation.backgroundComponent;
+                    }
+                }
                 
                 NumberAnimation {
                     id: backgroundLoaderOpacity

@@ -19,8 +19,10 @@ Kirigami.Page {
             return i18n("Forecast");
         } else if (settingsModel.forecastStyle === "Dynamic") {
             return ""; // provided by DynamicForecastPage
-        } else {
+        } else if (weatherLocationListModel.locations[loader.item.currentIndex]) {
             return weatherLocationListModel.locations[loader.item.currentIndex].name;
+        } else {
+            return "";
         }
     }
     

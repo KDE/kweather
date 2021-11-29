@@ -20,11 +20,11 @@ Kirigami.ScrollablePage {
     
     Connections {
         target: weatherLocationListModel
-        onNetworkErrorCreatingDefault: {
+        function onNetworkErrorCreatingDefault() {
             showPassiveNotification(i18n("Network error when obtaining current location"));
             loading = false;
         }
-        onSuccessfullyCreatedDefault: {
+        function onSuccessfullyCreatedDefault() {
             switchToPage(getPage("Forecast"), 0);
             loading = false;
         }

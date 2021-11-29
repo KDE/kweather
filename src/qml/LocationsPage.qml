@@ -30,7 +30,9 @@ Kirigami.ScrollablePage {
 
     Connections {
         target: weatherLocationListModel
-        onNetworkErrorCreating: showPassiveNotification(i18n("Unable to fetch timezone information"))
+        function onNetworkErrorCreating() {
+            showPassiveNotification(i18n("Unable to fetch timezone information"));
+        }
     }
 
     ListView {
@@ -88,7 +90,14 @@ Kirigami.ScrollablePage {
                     Kirigami.Action {
                         iconName: "delete"
                         text: i18n("Remove")
-                        onTriggered: weatherLocationListModel.remove(index);
+                        onTriggered: {
+                            weatherLocationListModel.remove(index);
+                            
+                            // switch to default page if there are no locations left
+                            if (weatherLocationListModel.count === 0) {
+                                switchToPage(getPage("Forecast"), 0);
+                            }
+                        }
                     }
                 ]
                 
@@ -126,7 +135,7 @@ Kirigami.ScrollablePage {
                             spacing: Kirigami.Units.smallSpacing
                             Kirigami.Icon {
                                 Layout.alignment: Qt.AlignHCenter
-                                source: modelData.hourForecasts[0] ? modelData.hourForecasts[0].weatherIcon : "weather-none-available"
+                                source: (modelData && modelData.hourForecasts[0]) ? modelData.hourForecasts[0].weatherIcon : "weather-none-available"
                                 Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
                                 Layout.preferredWidth: height
                                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
@@ -134,7 +143,7 @@ Kirigami.ScrollablePage {
                             Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: Formatter.formatTemperatureRounded(modelData.hourForecasts[0].temperature, settingsModel.temperatureUnits)
+                                text: modelData ? Formatter.formatTemperatureRounded(modelData.hourForecasts[0].temperature, settingsModel.temperatureUnits) : ""
                             }
                         }
 
@@ -143,7 +152,7 @@ Kirigami.ScrollablePage {
                             Layout.fillWidth: true
                             
                             level: 2
-                            text: modelData.name
+                            text: modelData ? modelData.name : ""
                             elide: Text.ElideRight
                             maximumLineCount: 2
                             wrapMode: Text.Wrap
