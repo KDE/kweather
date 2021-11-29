@@ -31,7 +31,6 @@ target_link_libraries(kweather
     KF5::I18n
     KF5::CoreAddons
     KF5::Notifications
-    KF5::QuickCharts
     KF5::KWeatherCore
     kweatherLib
 )

@@ -53,7 +53,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     CoreAddons
     Notifications
-    QuickCharts
 )
 find_package(KF5KWeatherCore 0.5.0 REQUIRED)
 
