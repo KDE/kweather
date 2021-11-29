@@ -9,8 +9,23 @@
 #include "formatter.h"
 
 #include <KLocalizedString>
+#include <QString>
 
 #include "global.h"
+
+double Formatter::convertTemp(qreal temperature, const QString &unit) const
+{
+    return Kweather::convertTemp(temperature, unit);
+}
+
+QString Formatter::formatTemperatureUnitDegrees(const QString &unit) const
+{
+    if (unit == QLatin1String("Celsius") || (unit == QLatin1String("Use System Default") && QLocale().measurementSystem() == QLocale::MetricSystem)) {
+        return QStringLiteral("℃");
+    } else {
+        return QStringLiteral("℉");
+    }
+}
 
 QString Formatter::formatTemperature(qreal temperature, const QString &unit) const
 {

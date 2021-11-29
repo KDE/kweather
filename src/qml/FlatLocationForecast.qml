@@ -60,11 +60,22 @@ Kirigami.ScrollablePage {
             // weather header
             ColumnLayout {
                 id: headerText
-                Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
-                    font.weight: Font.Light
-                    font.family: lightHeadingFont.name
-                    text: Formatter.formatTemperatureRounded(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits)
+                RowLayout {
+                    spacing: 0
+                    Label {
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
+                        font.weight: Font.Light
+                        font.family: lightHeadingFont.name
+                        text: Math.round(Formatter.convertTemp(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits))
+                    }
+                    Label {
+                        Layout.alignment: Qt.AlignTop
+                        Layout.topMargin: Kirigami.Units.largeSpacing
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                        font.weight: Font.Light
+                        font.family: lightHeadingFont.name
+                        text: Formatter.formatTemperatureUnitDegrees(settingsModel.temperatureUnits)
+                    }
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3

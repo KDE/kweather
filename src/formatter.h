@@ -14,6 +14,8 @@ class Formatter : public QObject
 {
     Q_OBJECT
 public:
+    Q_INVOKABLE double convertTemp(qreal temperature, const QString &unit) const;
+    Q_INVOKABLE QString formatTemperatureUnitDegrees(const QString &unit) const;
     Q_INVOKABLE QString formatTemperature(qreal temperature, const QString &unit) const;
     Q_INVOKABLE QString formatTemperatureRounded(qreal temperature, const QString &unit) const;
 

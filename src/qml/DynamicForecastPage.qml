@@ -367,14 +367,24 @@ Kirigami.ScrollablePage {
             ColumnLayout {
                 id: headerText
                 Layout.fillWidth: true
-                Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
-                    font.weight: Font.Light
-                    color: "white"
-                    Layout.alignment: Qt.AlignLeft
-                    horizontalAlignment: Text.AlignLeft
-                    text: Formatter.formatTemperatureRounded(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits)
-                    font.family: lightHeadingFont.name
+                RowLayout {
+                    spacing: 0
+                    Label {
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
+                        font.weight: Font.Light
+                        color: "white"
+                        text: Math.round(Formatter.convertTemp(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits))
+                        font.family: lightHeadingFont.name
+                    }
+                    Label {
+                        Layout.alignment: Qt.AlignTop
+                        Layout.topMargin: Kirigami.Units.largeSpacing
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                        font.weight: Font.Light
+                        color: "white"
+                        font.family: lightHeadingFont.name
+                        text: Formatter.formatTemperatureUnitDegrees(settingsModel.temperatureUnits)
+                    }
                 }
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
