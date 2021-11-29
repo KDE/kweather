@@ -84,7 +84,7 @@ Rectangle {
         Label {
             font.weight: Font.Bold
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-            text: weather.date.toLocaleString(Qt.locale(), "h ap").replace(".", "").replace(".", "")
+            text: Formatter.formatHourlyCardDelegateTime(weather.date, weatherLocation.timeZone)
             color: textColor
         }
     }

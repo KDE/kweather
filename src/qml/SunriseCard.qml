@@ -10,8 +10,12 @@ import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtCharts 2.3
+
 import org.kde.kirigami 2.13 as Kirigami
+
 import "backgrounds"
+
+import kweather 1.0
 
 Kirigami.Card {
 
@@ -44,7 +48,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: Qt.formatTime(selectedDay.sunrise.sunRise, "hh:mm ap")
+                        text: Formatter.formatSunriseTime(selectedDay.sunrise.sunRise, weatherLocation.timeZone)
                         color: root.textColor
                     }
                 }
@@ -68,7 +72,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: Qt.formatTime(selectedDay.sunrise.sunSet, "hh:mm ap")
+                        text: Formatter.formatSunriseTime(selectedDay.sunrise.sunSet, weatherLocation.timeZone)
                         color: root.textColor
                     }
                 }

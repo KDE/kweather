@@ -10,6 +10,7 @@
 
 #include <KLocalizedString>
 #include <QString>
+#include <QTimeZone>
 
 #include "global.h"
 
@@ -55,4 +56,14 @@ QString Formatter::formatPressure(qreal pressure, const QString &unit) const
     } else {
         return i18n("%1 hPa", QString::number(pressure * 0.7500638, 'f', 1));
     }
+}
+
+QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) const
+{
+    return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("hh:mm ap"));
+}
+
+QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const
+{
+    return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("h ap")).replace(QStringLiteral("."), QStringLiteral(""));
 }

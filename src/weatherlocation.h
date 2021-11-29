@@ -38,6 +38,7 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY lastUpdatedChanged)
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
+    Q_PROPERTY(QString timeZone READ timeZone NOTIFY timeZoneChanged)
     Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
     Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
     Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
@@ -170,6 +171,7 @@ Q_SIGNALS:
     void stopLoadingIndicator();
     void currentTimeChanged();
     void currentDateChanged();
+    void timeZoneChanged();
     void dayForecastsChanged();
     void hourForecastsChanged();
     void selectedDayChanged();

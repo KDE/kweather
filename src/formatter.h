@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <QDateTime>
 #include <QObject>
 
 class Formatter : public QObject
@@ -22,4 +23,7 @@ public:
     Q_INVOKABLE QString formatWindSpeed(qreal speed, const QString &unit) const;
 
     Q_INVOKABLE QString formatPressure(qreal pressure, const QString &unit) const;
+
+    Q_INVOKABLE QString formatSunriseTime(QDateTime date, const QString &timeZone) const;
+    Q_INVOKABLE QString formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const;
 };

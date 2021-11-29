@@ -113,6 +113,7 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     // first time the timezone is empty
     if (m_timeZone.isEmpty()) {
         m_timeZone = forecasts.timezone();
+        Q_EMIT timeZoneChanged();
         save();
     }
 
