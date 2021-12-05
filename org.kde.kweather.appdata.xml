@@ -261,7 +261,10 @@
         <p>Changes:</p>
         <ul>
           <li>Performance improvements in Dynamic view</li>
-          <li>Reworked navigation throughout application</li>
+          <li>Dynamic view action bar rewritten to be inline to content</li>
+          <li>Allow setting non-current location in default forecasts page</li>
+          <li>Added ability to fetch temperature units from system locale</li>
+          <li>Fixed timezone format not being correctly read for local location time</li>
         </ul>
       </description>
     </release>
