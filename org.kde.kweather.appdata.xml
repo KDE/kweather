@@ -39,32 +39,7 @@
   <name xml:lang="uk">Погода</name>
   <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
-  <summary>A convergent weather application for Plasma.</summary>
-  <summary xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq.</summary>
-  <summary xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma.</summary>
-  <summary xml:lang="ca-valencia">Una aplicació convergent de meteorologia per al Plasma.</summary>
-  <summary xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma.</summary>
-  <summary xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma.</summary>
-  <summary xml:lang="en-GB">A convergent weather application for Plasma.</summary>
-  <summary xml:lang="es">Aplicación meteorológica convergente para Plasma.</summary>
-  <summary xml:lang="fi">Mukautuva sääsovellus Plasmaan.</summary>
-  <summary xml:lang="fr">Une application météo convergente pour Plasma.</summary>
-  <summary xml:lang="id">Sebuah aplikasi cuaca yang konvergen untuk Plasma.</summary>
-  <summary xml:lang="it">Un'applicazione meteo convergente per Plasma.</summary>
-  <summary xml:lang="ko">Plasma용 올인원 날씨 프로그램입니다.</summary>
-  <summary xml:lang="lt">Konverguojanti orų programa, skirta Plasma.</summary>
-  <summary xml:lang="nl">Een convergente weer-toepassing voor Plasma.</summary>
-  <summary xml:lang="nn">Vêrmeldings­program for Plasma, tilpassa ulike typar brukarflater.</summary>
-  <summary xml:lang="pa">ਪਲਾਜ਼ਮਾ ਲਈ ਮੌਸਮ ਸੰਬੰਧੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ।</summary>
-  <summary xml:lang="pl">Spójna aplikacja pogodowa dla Plazmy.</summary>
-  <summary xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma.</summary>
-  <summary xml:lang="pt-BR">Um aplicativo de meteorologia convergente para o Plasma.</summary>
-  <summary xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды для Plasma.</summary>
-  <summary xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo.</summary>
-  <summary xml:lang="sv">Ett konvergent väderprogram för Plasma.</summary>
-  <summary xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми.</summary>
-  <summary xml:lang="x-test">xxA convergent weather application for Plasma.xx</summary>
-  <summary xml:lang="zh-CN">一个为 Plasma 打造的聚合天气应用。</summary>
+  <summary>View real-time weather forecasts and other information</summary>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="az">KDE İcması</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
@@ -100,6 +75,9 @@
     <control>keyboard</control>
     <control>touch</control>
   </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <description>
     <p>A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
     <p xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq. Hava haqqında və digər məlumatları göstərmək üçün hamar və canlı/animasiyalı görünüş.</p>
