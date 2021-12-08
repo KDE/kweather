@@ -9,7 +9,6 @@ Dependencies:
     'frameworks/kconfig': '@stable'
     'frameworks/ki18n': '@stable'
     'frameworks/kirigami': '@stable'
-    'frameworks/kquickcharts': '@stable'
     'frameworks/knotifications': '@stable'
     'libraries/kweathercore': '@latest'
 
