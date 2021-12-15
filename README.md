@@ -1,6 +1,6 @@
 <!--
 - Copyright 2020 Han Young <hanyoung@protonmail.com>
-- Copyright 2020 Devin Lin <espidev@gmail.com>
+- Copyright 2020-2021 Devin Lin <devin@kde.org>
 - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 
@@ -11,8 +11,8 @@
 A convergent weather application for Plasma.
 
 ## Features
-* Daily and hourly weather data from various weather backends
-* Plasmoids that can be used on desktop and mobile
+* Daily and hourly weather data that can be viewed in flat and dynamic views
+* Plasmoid that can be used on desktop and mobile
 
 ## Links
 * Project page: https://invent.kde.org/plasma-mobile/kweather
@@ -20,10 +20,8 @@ A convergent weather application for Plasma.
 * Development channel: https://matrix.to/#/#plasmamobile:matrix.org
 
 ## Dependencies
-If you are the packaging the application, it's worth looking at the [neon deb package](https://invent.kde.org/neon/mobile/kweather).
 * KWeatherCore (https://invent.kde.org/libraries/kweathercore)
 * Kirigami
-* KQuickCharts
 * Qt Quick Controls
 * Qt Quick Shapes
 
@@ -40,7 +38,6 @@ sudo make install
 * api.met.no - Weather data, sunrise/sunset data
 * geonames.org - Coordinates -> Timezone
 * geoip.ubuntu.com - IP -> Coordinates
-* openweathermap.org - Weather data (optional, requires API token)
 
 ## Gallery
 
