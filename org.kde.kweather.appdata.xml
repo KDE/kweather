@@ -40,8 +40,10 @@
   <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
   <summary>View real-time weather forecasts and other information</summary>
+  <summary xml:lang="az">Real vaxt hava məlumatlarını və digər məlumatları göstərmək</summary>
   <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real i altra informació</summary>
   <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real i altra informació</summary>
+  <summary xml:lang="en-GB">View real-time weather forecasts and other information</summary>
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real y otra información</summary>
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
   <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale e altre informazioni</summary>
@@ -49,6 +51,7 @@
   <summary xml:lang="nl">Realtime weersverwachtingen en andere informatie bekijken</summary>
   <summary xml:lang="pl">Oglądaj prognozę pogody w czasie rzeczywistym i inne dane</summary>
   <summary xml:lang="pt-BR">Visualize previsões do tempo em tempo real e outras informações</summary>
+  <summary xml:lang="sl">Poglej sprotne vremenske napovedi in ostale informacije</summary>
   <summary xml:lang="sv">Visa väderprognos och annan information i realtid</summary>
   <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди та інших даних</summary>
   <summary xml:lang="x-test">xxView real-time weather forecasts and other informationxx</summary>
