@@ -186,6 +186,7 @@ Kirigami.ScrollablePage {
     
     Connections {
         target: weatherLocation
+        ignoreUnknownSignals: true // weatherLocation may be null
         function onStopLoadingIndicator() {
             showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
@@ -377,7 +378,7 @@ Kirigami.ScrollablePage {
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
                         font.weight: Font.Light
                         color: "white"
-                        text: Math.round(Formatter.convertTemp(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits))
+                        text: Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits))
                         font.family: lightHeadingFont.name
                     }
                     Label {
@@ -396,7 +397,7 @@ Kirigami.ScrollablePage {
                     color: "white"
                     Layout.alignment: Qt.AlignLeft
                     horizontalAlignment: Text.AlignLeft
-                    text: weatherLocation.hourForecasts[0].weatherDescription
+                    text: weatherLocation.currentHourForecast.weatherDescription
                     font.family: lightHeadingFont.name
                 }
             }

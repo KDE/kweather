@@ -58,7 +58,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                          QStringLiteral(KWEATHER_VERSION_STRING),
                          i18n("A convergent weather application for Plasma"),
                          KAboutLicense::GPL,
-                         i18n("© 2020-2021 Plasma Development Team"));
+                         i18n("© 2020-2022 Plasma Development Team"));
     aboutData.addAuthor(i18n("Han Young"), QString(), QStringLiteral("hanyoung@protonmail.com"));
     aboutData.addAuthor(i18n("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"), QStringLiteral("https://espi.dev"));
     KAboutData::setApplicationData(aboutData);

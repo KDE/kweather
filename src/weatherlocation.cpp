@@ -74,6 +74,7 @@ WeatherLocation *WeatherLocation::load(const QString &groupName)
         return nullptr;
     }
 }
+
 void WeatherLocation::save()
 {
     auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
@@ -90,6 +91,7 @@ void WeatherLocation::saveOrder(int index)
     config.writeEntry("index", index);
     config.sync();
 }
+
 int WeatherLocation::index()
 {
     auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
@@ -100,12 +102,135 @@ int WeatherLocation::index()
         return res.toInt();
     }
 }
+
 void WeatherLocation::deleteConfig()
 {
     auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
     config.deleteGroup(locationId());
     config.sync();
 }
+
+const QString &WeatherLocation::locationId() const
+{
+    return m_locationId;
+}
+
+const QString &WeatherLocation::locationName() const
+{
+    return m_locationName;
+}
+
+const QString &WeatherLocation::timeZone() const
+{
+    return m_timeZone;
+}
+
+float WeatherLocation::latitude() const
+{
+    return m_latitude;
+}
+
+float WeatherLocation::longitude() const
+{
+    return m_longitude;
+}
+
+QString WeatherLocation::lastUpdatedFormatted() const
+{
+    return lastUpdated().toString(QStringLiteral("hh:mm ap"));
+}
+
+const QDateTime &WeatherLocation::lastUpdated() const
+{
+    return m_lastUpdated;
+}
+
+QString WeatherLocation::currentTimeFormatted() const
+{
+    return currentDateTime().toString(QStringLiteral("hh:mm ap"));
+}
+
+QString WeatherLocation::currentDateFormatted() const
+{
+    return currentDateTime().toString(QStringLiteral("dd MMM yyyy"));
+}
+
+QDateTime WeatherLocation::currentDateTime() const
+{
+    return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8()));
+}
+
+const QString &WeatherLocation::backgroundComponent() const
+{
+    return m_backgroundComponent;
+}
+
+const QColor &WeatherLocation::backgroundColor() const
+{
+    return m_backgroundColor;
+}
+
+const QColor &WeatherLocation::textColor() const
+{
+    return m_textColor;
+}
+
+const QColor &WeatherLocation::cardBackgroundColor() const
+{
+    return m_cardBackgroundColor;
+}
+
+const QColor &WeatherLocation::cardTextColor() const
+{
+    return m_cardTextColor;
+}
+
+const QColor &WeatherLocation::cardSecondaryTextColor() const
+{
+    return m_cardSecondaryTextColor;
+}
+
+const QColor &WeatherLocation::iconColor() const
+{
+    return m_iconColor;
+}
+
+bool WeatherLocation::darkTheme() const
+{
+    return m_isDarkTheme;
+}
+
+QVariantList WeatherLocation::dayForecasts() const
+{
+    return m_dayForecasts;
+}
+
+QVariantList WeatherLocation::hourForecasts() const
+{
+    return m_hourForecasts;
+}
+
+int WeatherLocation::selectedDay() const
+{
+    return m_selectedDay;
+}
+
+void WeatherLocation::setSelectedDay(int selectedDay)
+{
+    if (selectedDay != m_selectedDay) {
+        m_selectedDay = selectedDay;
+        Q_EMIT selectedDayChanged();
+    }
+}
+
+QVariant WeatherLocation::currentHourForecast()
+{
+    if (!m_forecast.dailyWeatherForecast().empty() && !m_forecast.dailyWeatherForecast()[0].hourlyWeatherForecast().empty()) {
+        return QVariant::fromValue(m_forecast.dailyWeatherForecast().begin()->hourlyWeatherForecast()[0]);
+    }
+    return {};
+}
+
 void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
 {
     m_forecast = forecasts;

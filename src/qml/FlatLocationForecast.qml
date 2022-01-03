@@ -47,7 +47,7 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
-                source: weatherLocation.hourForecasts[0] ? weatherLocation.hourForecasts[0].weatherIcon : "weather-none-available"
+                source: weatherLocation.currentHourForecast ? weatherLocation.currentHourForecast.weatherIcon : "weather-none-available"
                 Layout.preferredHeight: width
                 Layout.preferredWidth: page.width * 0.8 - headerText.width
                 Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
@@ -66,7 +66,7 @@ Kirigami.ScrollablePage {
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                         font.weight: Font.Light
                         font.family: lightHeadingFont.name
-                        text: Math.round(Formatter.convertTemp(weatherLocation.hourForecasts[0].temperature, settingsModel.temperatureUnits))
+                        text: Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits))
                     }
                     Label {
                         Layout.alignment: Qt.AlignTop
@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
-                    text: weatherLocation.hourForecasts[0].weatherDescription
+                    text: weatherLocation.currentHourForecast.weatherDescription
                 }
                 Label {
                     color: Kirigami.Theme.disabledTextColor

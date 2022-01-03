@@ -39,6 +39,8 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)
     Q_PROPERTY(QString timeZone READ timeZone NOTIFY timeZoneChanged)
+    Q_PROPERTY(QVariant currentHourForecast READ currentHourForecast NOTIFY currentForecastChanged)
+
     Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
     Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
     Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
@@ -61,107 +63,39 @@ public:
                              KWeatherCore::WeatherForecast forecast = {});
     explicit WeatherLocation(); // when creating empty locations, don't persist
 
-    void save();
     static WeatherLocation *load(const QString &groupName);
+
+    void save();
     Q_INVOKABLE void update();
-
-    const QString &locationId() const
-    {
-        return m_locationId;
-    }
-    const QString &locationName() const
-    {
-        return m_locationName;
-    }
-    const QString &timeZone() const
-    {
-        return m_timeZone;
-    };
-    float latitude() const
-    {
-        return m_latitude;
-    }
-    float longitude() const
-    {
-        return m_longitude;
-    }
-    QString lastUpdatedFormatted() const
-    {
-        return lastUpdated().toString(QStringLiteral("hh:mm ap"));
-    }
-    const QDateTime &lastUpdated() const
-    {
-        return m_lastUpdated;
-    }
-    QString currentTimeFormatted() const
-    {
-        return currentDateTime().toString(QStringLiteral("hh:mm ap"));
-    }
-    QString currentDateFormatted() const
-    {
-        return currentDateTime().toString(QStringLiteral("dd MMM yyyy"));
-    }
-    QDateTime currentDateTime() const
-    {
-        return QDateTime::currentDateTime().toTimeZone(QTimeZone(m_timeZone.toUtf8()));
-    }
-    const QString &backgroundComponent() const
-    {
-        return m_backgroundComponent;
-    };
-    const QColor &backgroundColor() const
-    {
-        return m_backgroundColor;
-    };
-    const QColor &textColor() const
-    {
-        return m_textColor;
-    };
-    const QColor &cardBackgroundColor() const
-    {
-        return m_cardBackgroundColor;
-    };
-    const QColor &cardTextColor() const
-    {
-        return m_cardTextColor;
-    };
-    const QColor &cardSecondaryTextColor() const
-    {
-        return m_cardSecondaryTextColor;
-    }
-
-    const QColor &iconColor() const
-    {
-        return m_iconColor;
-    }
-    bool darkTheme() const
-    {
-        return m_isDarkTheme;
-    }
-    QVariantList dayForecasts() const
-    {
-        return m_dayForecasts;
-    }
-    QVariantList hourForecasts() const
-    {
-        return m_hourForecasts;
-    }
-    int selectedDay() const
-    {
-        return m_selectedDay;
-    }
-    void setSelectedDay(int selectedDay)
-    {
-        if (selectedDay != m_selectedDay) {
-            m_selectedDay = selectedDay;
-            Q_EMIT selectedDayChanged();
-        }
-    }
-
-    // for restore order of locations
-    void saveOrder(int index);
+    void saveOrder(int index); // for restoring order of locations
     int index();
     void deleteConfig();
+
+    const QString &locationId() const;
+    const QString &locationName() const;
+    const QString &timeZone() const;
+    float latitude() const;
+    float longitude() const;
+    QString lastUpdatedFormatted() const;
+    const QDateTime &lastUpdated() const;
+    QString currentTimeFormatted() const;
+    QString currentDateFormatted() const;
+    QDateTime currentDateTime() const;
+    const QString &backgroundComponent() const;
+    const QColor &backgroundColor() const;
+    const QColor &textColor() const;
+    const QColor &cardBackgroundColor() const;
+    const QColor &cardTextColor() const;
+    const QColor &cardSecondaryTextColor() const;
+
+    const QColor &iconColor() const;
+    bool darkTheme() const;
+    QVariantList dayForecasts() const;
+    QVariantList hourForecasts() const;
+    int selectedDay() const;
+    void setSelectedDay(int selectedDay);
+    QVariant currentHourForecast();
+
 public Q_SLOTS:
     void updateData(KWeatherCore::WeatherForecast forecasts);
 
@@ -178,6 +112,7 @@ Q_SIGNALS:
     void lastUpdatedChanged();
 
     void chartListChanged();
+
 private Q_SLOTS:
     void updateCurrentDateTime();
 
