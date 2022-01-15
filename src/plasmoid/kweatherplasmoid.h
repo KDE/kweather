@@ -1,29 +1,29 @@
 /*
-    SPDX-FileCopyrightText: 2020 HanY <hanyoung@protonmail.com>
-    SPDX-License-Identifier: LGPL-2.1-or-later
-*/
+ * SPDX-FileCopyrightText: 2020 HanY <hanyoung@protonmail.com>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <devin@kde.org>
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ */
 
-#ifndef KWEATHER_1X4_H
-#define KWEATHER_1X4_H
+#pragma once
 
 #include <Plasma/Applet>
 
 #include <KWeatherCore/WeatherForecast>
 
-class HourlyModel;
-class KWeather_1x4 : public Plasma::Applet
+class KWeatherPlasmoid : public Plasma::Applet
 {
     Q_OBJECT
     Q_PROPERTY(bool needLocation READ needLocation NOTIFY needLocationChanged)
-    Q_PROPERTY(QString location READ location NOTIFY locationChanged)
-    Q_PROPERTY(qreal temp READ temp NOTIFY updated)
-    Q_PROPERTY(QString desc READ desc NOTIFY updated)
+
+    Q_PROPERTY(QString locationName READ location NOTIFY locationChanged)
+    Q_PROPERTY(QString currentTemperature READ currentTemperature NOTIFY updated)
+    Q_PROPERTY(QString currentDescription READ currentDescription NOTIFY updated)
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY updated)
-    Q_PROPERTY(qreal humidity READ humidity NOTIFY updated)
-    Q_PROPERTY(qreal precipitation READ precipitation NOTIFY updated)
     Q_PROPERTY(HourlyModel *hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
+
 public:
-    KWeather_1x4(QObject *parent, const QVariantList &args);
+    KWeatherPlasmoid(QObject *parent, const QVariantList &args);
+
     QString location() const;
     QString desc() const;
     qreal temp() const;
@@ -41,6 +41,7 @@ public:
 
     Q_INVOKABLE QStringList locationsInSystem();
     Q_INVOKABLE void setLocation(const QString &location);
+
 Q_SIGNALS:
     void locationChanged();
     void updated();
@@ -59,5 +60,3 @@ private:
 
     HourlyModel *m_hourlyModel;
 };
-
-#endif

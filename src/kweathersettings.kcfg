@@ -31,10 +31,6 @@
       <label>Pressure Unit</label>
       <default>hPa</default>
     </entry>
-    <entry name="defaultBackend" type="String">
-      <label>Default Backend</label>
-      <default>nmiweatherapi</default>
-    </entry>
   </group>
   <group name="WeatherLocations">
   </group>

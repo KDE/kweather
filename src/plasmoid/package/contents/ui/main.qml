@@ -9,11 +9,14 @@ import QtQuick.Controls 2.4
 import org.kde.plasma.plasmoid 2.0
 import org.kde.kirigami 2.11 as Kirigami
 Item {
-    Plasmoid.backgroundHints: "ShadowBackground";
+    Plasmoid.backgroundHints: "NoBackground";
+    Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
+    
     Plasmoid.fullRepresentation: Loader {
         active: true
         source: plasmoid.nativeInterface.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
     }
+    
     Plasmoid.compactRepresentation: ColumnLayout{
         Kirigami.Icon {
             height: 20

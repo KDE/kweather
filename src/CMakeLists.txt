@@ -15,13 +15,17 @@ set(kweather_SRCS
     formatter.cpp
     resources.qrc
 )
+
 add_library(kweatherLib STATIC)
+
 kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
+
 target_link_libraries(kweatherLib
     Qt5::Core
     KF5::ConfigCore
     KF5::ConfigGui
     )
+    
 add_executable(kweather ${kweather_SRCS})
 target_link_libraries(kweather
     Qt5::Qml
@@ -98,5 +102,6 @@ endif()
 if (UNIX AND (NOT ANDROID))
 add_subdirectory(plasmoid)
 endif()
+
 target_include_directories(kweather PRIVATE ${CMAKE_BINARY_DIR})
 install(TARGETS kweather ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})

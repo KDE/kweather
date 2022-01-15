@@ -1,8 +1,10 @@
 /*
-    SPDX-FileCopyrightText: 2020 HanY <hanyoung@protonmail.com>
-    SPDX-License-Identifier: LGPL-2.1-or-later
-*/
-#include "kweather_1x4.h"
+ * SPDX-FileCopyrightText: 2020 HanY <hanyoung@protonmail.com>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <devin@kde.org>
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ */
+
+#include "kweatherplasmoid.h"
 
 #include <QQmlApplicationEngine>
 
