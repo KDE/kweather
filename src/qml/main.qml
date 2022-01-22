@@ -15,6 +15,8 @@ Kirigami.ApplicationWindow
     id: appwindow
     title: i18n("Weather")
     
+    minimumWidth: Kirigami.Settings.isMobile ? 0 : 360
+    minimumHeight: Kirigami.Settings.isMobile ? 0 : 360
     width: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 27 : Kirigami.Units.gridUnit * 40
     height: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 45 : Kirigami.Units.gridUnit * 35
 
@@ -99,14 +101,7 @@ Kirigami.ApplicationWindow
             case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
         }
     }
-    
-    Loader {
-        id: sidebarLoader
-        source: "qrc:/qml/Sidebar.qml"
-        active: !Kirigami.Settings.isMobile
-    }
-    globalDrawer: sidebarLoader.item
-        
+
     FontLoader {
         id: lightHeadingFont
         source: "/resources/NotoSans-Light.ttf"

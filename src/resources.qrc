@@ -25,7 +25,6 @@
         <file>qml/WeatherStrip.qml</file>
         <file>qml/DynamicForecastPage.qml</file>
         <file>qml/FlatForecastPage.qml</file>
-        <file>qml/Sidebar.qml</file>
         <file>qml/backgrounds/DynamicBackground.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>

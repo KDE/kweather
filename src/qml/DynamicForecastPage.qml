@@ -274,10 +274,12 @@ Kirigami.ScrollablePage {
                 icon.width: header.iconLength
                 icon.color: "white"
                 
-                visible: Kirigami.Settings.isMobile
                 text: i18n("Locations")
-                display: appwindow.width > Kirigami.Units.gridUnit * 30 ? AbstractButton.TextBesideIcon : ToolButton.IconOnly
+                display: ToolButton.IconOnly
                 onClicked: addPageLayer(getPage("Locations"), 0)
+
+                ToolTip.visible: down
+                ToolTip.text: i18n("Locations")
             }
             ToolButton {
                 Layout.alignment: Qt.AlignTop
@@ -292,10 +294,12 @@ Kirigami.ScrollablePage {
                 icon.width: header.iconLength
                 icon.color: "white"
                 
-                visible: Kirigami.Settings.isMobile
                 text: i18n("Settings")
-                display: appwindow.width > Kirigami.Units.gridUnit * 30 ? AbstractButton.TextBesideIcon : ToolButton.IconOnly
+                display: ToolButton.IconOnly
                 onClicked: addPageLayer(getPage("Settings"), 0)
+
+                ToolTip.visible: down
+                ToolTip.text: i18n("Settings")
             }
             ToolButton {
                 Layout.alignment: Qt.AlignTop
@@ -314,6 +318,9 @@ Kirigami.ScrollablePage {
                 text: i18n("Refresh")
                 display: ToolButton.IconOnly
                 onClicked: weatherLocationListModel.locations[loader.item.currentIndex].update()
+
+                ToolTip.visible: down
+                ToolTip.text: i18n("Refresh")
             }
             ToolButton {
                 Layout.alignment: Qt.AlignTop

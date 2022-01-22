@@ -37,13 +37,11 @@ Kirigami.Page {
     // actions (only shown in flat view since the toolbar is hidden in dynamic view)
     actions.contextualActions: [
         Kirigami.Action {
-            visible: Kirigami.Settings.isMobile
             iconName: "globe"
             text: i18n("Locations")
             onTriggered: addPageLayer(getPage("Locations"), 0)
         },
         Kirigami.Action {
-            visible: Kirigami.Settings.isMobile
             iconName: "settings-configure"
             text: i18n("Settings")
             displayHint: Kirigami.Action.IconOnly
