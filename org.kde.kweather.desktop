@@ -38,6 +38,7 @@ Name[x-test]=xxWeatherxx
 Name[zh_CN]=天气
 Comment=View real-time weather forecasts and other information
 Comment[ca]=Visualitza previsions meteorològiques en temps real i altra informació
+Comment[ca@valencia]=Visualitza previsions meteorològiques en temps real i altra informació
 Comment[es]=Visualice previsiones meteorológicas y otra información en tiempo real
 Comment[fr]=Afficher les prévisions météorologiques en temps réel et d'autres informations.
 Comment[nl]=Realtime weersverwachtingen en andere informatie bekijken
