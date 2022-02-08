@@ -249,6 +249,14 @@
   <url type="homepage">https://invent.kde.org/plasma-mobile/kweather</url>
   <url type="bugtracker">https://invent.kde.org/plasma-mobile/kweather/-/issues</url>
   <releases>
+    <release version="22.02" date="2021-02-09">
+      <url>https://www.plasma-mobile.org/2022/02/09/plasma-mobile-gear-22-02/</url>
+      <description>
+        <ul>
+          <li>User interface improvements and bugfixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="21.12" date="2021-12-07">
       <url>https://www.plasma-mobile.org/2021/12/07/plasma-mobile-gear-21-12/</url>
       <description>
