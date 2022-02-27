@@ -54,6 +54,7 @@ Comment[sl]=Ogledujte si sprotne vremenske napovedi in ostale informacije
 Comment[sv]=Visa väderprognos och annan information i realtid
 Comment[uk]=Перегляд інтерактивних прогнозів погоди та інших даних
 Comment[x-test]=xxView real-time weather forecasts and other informationxx
+Comment[zh_CN]=查看实时天气预报和其他信息
 Exec=kweather
 Icon=kweather
 Type=Application
