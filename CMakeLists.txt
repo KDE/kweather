@@ -10,7 +10,7 @@ project(kweather)
 
 set(PROJECT_VERSION "22.02")
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.85.0")
+set(KF5_MIN_VERSION "5.90.0")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,12 +26,17 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMPoQmTools)
+include(ECMCheckOutboundLicense)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
-include(ECMCheckOutboundLicense)
 include(KDEGitCommitHooks)
+include(KDEClangFormat)
+
+# clang-format
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX KWEATHER
@@ -55,9 +60,10 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Notifications
 )
 find_package(KF5KWeatherCore 0.5.0 REQUIRED)
+find_package(Qt5QuickCompiler)
 
 if (ANDROID)
-   find_package(OpenSSL REQUIRED)
+    find_package(OpenSSL REQUIRED)
 else ()
     find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 endif()
@@ -72,16 +78,13 @@ install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kweather.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES kweather.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
 
+# DBus
 configure_file(org.kde.kweather.service.in
                ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service
         DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 
-
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
-include(KDEClangFormat)
-file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
-kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 file(GLOB_RECURSE ALL_SOURCE_FILES *.cpp *.h *.qml)
 ecm_check_outbound_license(LICENSES GPL-2.0-only GPL-3.0-only FILES ${ALL_SOURCE_FILES})

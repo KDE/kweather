@@ -13,8 +13,8 @@ set(kweather_SRCS
     locationquerymodel.cpp
     temperaturechartdata.cpp
     formatter.cpp
-    resources.qrc
 )
+
 add_library(kweatherLib STATIC)
 kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
 target_link_libraries(kweatherLib
@@ -22,7 +22,9 @@ target_link_libraries(kweatherLib
     KF5::ConfigCore
     KF5::ConfigGui
     )
-add_executable(kweather ${kweather_SRCS})
+    
+qtquick_compiler_add_resources(RESOURCES resources.qrc)
+add_executable(kweather ${kweather_SRCS} ${RESOURCES})
 target_link_libraries(kweather
     Qt5::Qml
     Qt5::QuickControls2

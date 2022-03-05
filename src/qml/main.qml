@@ -104,6 +104,6 @@ Kirigami.ApplicationWindow
 
     FontLoader {
         id: lightHeadingFont
-        source: "/resources/NotoSans-Light.ttf"
+        source: "qrc:/resources/NotoSans-Light.ttf"
     }
 }

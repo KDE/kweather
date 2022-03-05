@@ -273,33 +273,33 @@ void WeatherLocation::determineCurrentForecast()
         return;
 
     auto currentWeather = m_forecast.dailyWeatherForecast().begin()->hourlyWeatherForecast().begin();
-    m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
+    m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/ClearDay.qml");
 
     bool isDayStyle = false; // make sure that if the background is definitively day, the colours match that
 
     if (currentWeather->weatherIcon() == QStringLiteral("weather-clear")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/ClearDay.qml");
         isDayStyle = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-clear-night")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/ClearNight.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/ClearNight.qml");
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-clouds")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/CloudyDay.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/CloudyDay.qml");
         isDayStyle = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-clouds-night") || currentWeather->weatherIcon() == QStringLiteral("weather-overcast")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/CloudyNight.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/CloudyNight.qml");
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-few-clouds")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/PartlyCloudyDay.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/PartlyCloudyDay.qml");
         isDayStyle = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-few-clouds-night")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/PartlyCloudyNight.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/PartlyCloudyNight.qml");
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-fog") || currentWeather->weatherIcon() == QStringLiteral("weather-mist")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/Misty.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/Misty.qml");
         isDayStyle = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-freezing-rain") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-hail")
@@ -307,21 +307,21 @@ void WeatherLocation::determineCurrentForecast()
                || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered")
                || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-day")
                || currentWeather->weatherIcon() == QStringLiteral("weather-storm") || currentWeather->weatherIcon() == QStringLiteral("weather-storm-day")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/RainyDay.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/RainyDay.qml");
         isDayStyle = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-showers-night")
                || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-night")
                || currentWeather->weatherIcon() == QStringLiteral("weather-storm-night")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/RainyNight.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/RainyNight.qml");
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-hail") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered")
                || currentWeather->weatherIcon() == QStringLiteral("weather-snow")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/SnowyDay.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/SnowyDay.qml");
         isDayStyle = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered-night")) {
-        m_backgroundComponent = QStringLiteral("backgrounds/SnowyNight.qml");
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/SnowyNight.qml");
     }
 
     if (isDayStyle) {
