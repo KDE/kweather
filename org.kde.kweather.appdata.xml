@@ -36,6 +36,7 @@
   <name xml:lang="sk">Počasie</name>
   <name xml:lang="sl">Weather</name>
   <name xml:lang="sv">Väder</name>
+  <name xml:lang="tr">Hava Durumu</name>
   <name xml:lang="uk">Погода</name>
   <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="pt-BR">Visualize previsões do tempo em tempo real e outras informações</summary>
   <summary xml:lang="sl">Poglej sprotne vremenske napovedi in ostale informacije</summary>
   <summary xml:lang="sv">Visa väderprognos och annan information i realtid</summary>
+  <summary xml:lang="tr">Gerçek zamanlı hava durumu tahminlerini ve diğer bilgileri görüntüleyin</summary>
   <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди та інших даних</summary>
   <summary xml:lang="x-test">xxView real-time weather forecasts and other informationxx</summary>
   <summary xml:lang="zh-CN">查看实时天气预报和其他信息</summary>
@@ -85,6 +87,7 @@
   <developer_name xml:lang="sk">KDE komunita</developer_name>
   <developer_name xml:lang="sl">Skupnost KDE</developer_name>
   <developer_name xml:lang="sv">KDE-gemenskapen</developer_name>
+  <developer_name xml:lang="tr">KDE Topluluğu</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
   <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
@@ -119,6 +122,7 @@
     <p xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды для Plasma..</p>
     <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
+    <p xml:lang="tr">Plasma için yakınsak bir hava durumu uygulaması. Tahminleri ve diğer bilgileri göstermek için düz ve devingen/canlandırılmış görünümlere sahiptir.</p>
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
     <p xml:lang="zh-CN">一款针对 Plasma 设计的桌面/移动平台通用天气预报应用。它可通过扁平视图、动态/动画视图来展示天气预报以及其他信息。</p>
@@ -148,6 +152,7 @@
       <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
+      <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <caption xml:lang="zh-CN">移动端动态视图</caption>
@@ -177,6 +182,7 @@
       <caption xml:lang="ru">Динамический режим для ПК</caption>
       <caption xml:lang="sl">Namizni dinamični pogled</caption>
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
+      <caption xml:lang="tr">Masaüstü devingen görünüm</caption>
       <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
       <caption xml:lang="x-test">xxDesktop dynamic viewxx</caption>
       <caption xml:lang="zh-CN">桌面端动态视图</caption>
@@ -206,6 +212,7 @@
       <caption xml:lang="ru">Плоский режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni pregledni pogled</caption>
       <caption xml:lang="sv">Mobil enkel vy</caption>
+      <caption xml:lang="tr">Taşınabilir düz görünüm</caption>
       <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile flat viewxx</caption>
       <caption xml:lang="zh-CN">移动端扁平视图</caption>
@@ -235,6 +242,7 @@
       <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
+      <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <caption xml:lang="zh-CN">移动端动态视图</caption>
