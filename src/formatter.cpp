@@ -54,7 +54,7 @@ QString Formatter::formatPressure(qreal pressure, const QString &unit) const
     if (unit == QLatin1String("hPa")) {
         return i18n("%1 hPa", QString::number(pressure, 'f', 1));
     } else {
-        return i18n("%1 hPa", QString::number(pressure * 0.7500638, 'f', 1));
+        return i18n("%1 mmHg", QString::number(pressure * 0.7500638, 'f', 1));
     }
 }
 
