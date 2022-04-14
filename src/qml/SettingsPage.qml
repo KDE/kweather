@@ -164,127 +164,36 @@ Kirigami.ScrollablePage {
         }
         
         // forecast style sheet
-        PopupDialog {
+        SettingsDialog {
             id: forecastStyle
-            standardButtons: Dialog.Close
             title: i18n("Forecast Style")
-            
-            ColumnLayout {
-                Kirigami.Theme.inherit: false
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                spacing: 0
-                
-                Repeater {
-                    model: [i18n("Flat"), i18n("Dynamic")]
-                    delegate: RadioDelegate {
-                        topPadding: Kirigami.Units.smallSpacing * 2
-                        bottomPadding: Kirigami.Units.smallSpacing * 2
-                        implicitWidth: Kirigami.Units.gridUnit * 16
-                        
-                        text: modelData
-                        checked: settingsModel.forecastStyle == modelData
-                        onCheckedChanged: {
-                            if (checked) {
-                                settingsModel.forecastStyle = modelData;
-                                settingsModel.save();
-                            }
-                        }
-                    }
-                }
-            }
+            options: [["Flat", i18n("Flat")], ["Dynamic", i18n("Dynamic")]]
+            settingName: "forecastStyle"
         }
         
         // temperature unit dialog
-        PopupDialog {
+        SettingsDialog {
             id: temperatureUnits
-            standardButtons: Dialog.Close
             title: i18n("Temperature Units")
-
-            ColumnLayout {
-                Kirigami.Theme.inherit: false
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                spacing: 0
-                
-                Repeater {
-                    model: [["Use System Default", i18n("Use System Default")], ["Celsius", i18n("Celsius")], ["Fahrenheit", i18n("Fahrenheit")]]
-                    delegate: RadioDelegate {
-                        topPadding: Kirigami.Units.smallSpacing * 2
-                        bottomPadding: Kirigami.Units.smallSpacing * 2
-                        implicitWidth: Kirigami.Units.gridUnit * 16
-                        
-                        text: modelData[1]
-                        checked: settingsModel.temperatureUnits == modelData[0]
-                        onCheckedChanged: {
-                            if (checked) {
-                                settingsModel.temperatureUnits = modelData[0];
-                                settingsModel.save()
-                            }
-                        }
-                    }
-                }
-            }
+            options: [["Use System Default", i18n("Use System Default")], ["Celsius", i18n("Celsius")], ["Fahrenheit", i18n("Fahrenheit")]]
+            settingName: "temperatureUnits"
         }
 
         // speed unit dialog
-        PopupDialog {
+        SettingsDialog {
             id: speedUnits
             title: i18n("Speed Units")
-            standardButtons: Dialog.Close
-
-            ColumnLayout {
-                Kirigami.Theme.inherit: false
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                spacing: 0
-                
-                Repeater {
-                    model: [i18nc("kilometers per hour", "kph"), i18nc("miles per hour", "mph"), i18nc("meters per second", "m/s")]
-                    delegate: RadioDelegate {
-                        topPadding: Kirigami.Units.smallSpacing * 2
-                        bottomPadding: Kirigami.Units.smallSpacing * 2
-                        implicitWidth: Kirigami.Units.gridUnit * 16
-                        
-                        text: modelData
-                        checked: settingsModel.speedUnits == modelData
-                        onCheckedChanged: {
-                            if (checked) {
-                                settingsModel.speedUnits = modelData;
-                                settingsModel.save()
-                            }
-                        }
-                    }
-                }
-            }
+            options: [["kph", i18nc("kilometers per hour", "kph")], ["mph", i18nc("miles per hour", "mph")], ["m/s", i18nc("meters per second", "m/s")]]
+            settingName: "speedUnits"
         }
 
         // pressure unit dialog
-        PopupDialog {
+        SettingsDialog {
             id: pressureUnits
             title: i18n("Pressure Units")
-            standardButtons: Dialog.Close
+            options: [["hPa", i18nc("Hectopascal Pressure", "hPa")], ["mmHg", i18nc("Millimetre of mercury", "mmHg")]]
+            settingName: "pressureUnits"
 
-            ColumnLayout {
-                Kirigami.Theme.inherit: false
-                Kirigami.Theme.colorSet: Kirigami.Theme.View
-                spacing: 0
-
-                Repeater {
-                    model: [i18nc("Hectopascal Pressure", "hPa"), i18nc("Millimetre of mercury", "mmHg")]
-                    delegate: RadioDelegate {
-                        topPadding: Kirigami.Units.smallSpacing * 2
-                        bottomPadding: Kirigami.Units.smallSpacing * 2
-                        implicitWidth: Kirigami.Units.gridUnit * 16
-
-                        text: modelData
-                        checked: settingsModel.pressureUnits == modelData
-                        onCheckedChanged: {
-                            if (checked) {
-                                settingsModel.pressureUnits = modelData;
-                                settingsModel.save()
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
