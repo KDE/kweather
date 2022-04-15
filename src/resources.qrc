@@ -18,7 +18,6 @@
         <file>qml/DefaultPage.qml</file>
         <file>qml/SetupWizard.qml</file>
         <file>qml/AboutPage.qml</file>
-        <file>qml/PopupDialog.qml</file>
         <file>qml/TemperatureChartCard.qml</file>
         <file>qml/SunriseCard.qml</file>
         <file>qml/InfoCard.qml</file>
