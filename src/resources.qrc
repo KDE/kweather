@@ -14,7 +14,6 @@
         <file>qml/ForecastContainerPage.qml</file>
         <file>qml/SettingsPage.qml</file>
         <file>qml/AddLocationPage.qml</file>
-        <file>qml/ProgressCircle.qml</file>
         <file>qml/DefaultPage.qml</file>
         <file>qml/SetupWizard.qml</file>
         <file>qml/AboutPage.qml</file>
