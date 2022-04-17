@@ -1,0 +1,521 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the kweather package.
+#
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kweather\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-04-16 00:48+0000\n"
+"PO-Revision-Date: 2022-01-05 08:33+0100\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 21.04.3\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Matjaž Jeran"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "matjaz.jeran@amis.net"
+
+#: formatter.cpp:33 formatter.cpp:38
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr "%1°"
+
+#: formatter.cpp:44
+#, kde-format
+msgid "%1 km/h"
+msgstr "%1 km/h"
+
+#: formatter.cpp:46
+#, kde-format
+msgid "%1 mph"
+msgstr "%1 mph"
+
+#: formatter.cpp:48
+#, kde-format
+msgid "%1 m/s"
+msgstr "%1 m/s"
+
+#: formatter.cpp:55
+#, kde-format
+msgid "%1 hPa"
+msgstr "%1 hPa"
+
+#: formatter.cpp:57
+#, fuzzy, kde-format
+#| msgctxt "Millimetre of mercury"
+#| msgid "mmHg"
+msgid "%1 mmHg"
+msgstr "mmHg"
+
+#: main.cpp:63 qml/main.qml:16
+#, kde-format
+msgid "Weather"
+msgstr "Weather"
+
+#: main.cpp:65
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr "Konvergentna vremenska aplikacija za Plasmo"
+
+#: main.cpp:67
+#, kde-format
+msgid "© 2020-2022 Plasma Development Team"
+msgstr "© 2020-2022 razvojna ekipa Plasma"
+
+#: main.cpp:68
+#, kde-format
+msgid "Han Young"
+msgstr "Han Young"
+
+#: main.cpp:69
+#, kde-format
+msgid "Devin Lin"
+msgstr "Devin Lin"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr "Na sistemu ni najti lokacije, prosim dodajte jo v kweather"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "please select the location"
+msgstr "prosimo izberite lokacijo"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:71
+#: qml/WeatherHourDelegate.qml:65
+#, kde-format
+msgid "%1mm"
+msgstr "%1mm"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:123
+#: plasmoid/package/contents/ui/WeatherContainer.qml:162
+#, kde-format
+msgid "Select Location"
+msgstr "Izbere lokacijo"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:128
+#, kde-format
+msgid "Open KWeather"
+msgstr "Odpri KWeather"
+
+#: qml/AddLocationPage.qml:18
+#, kde-format
+msgid "Add location"
+msgstr "Dodaj lokacijo"
+
+#: qml/AddLocationPage.qml:36
+#, kde-format
+msgid "Search for a place..."
+msgstr "Išči lokacijo..."
+
+#: qml/AddLocationPage.qml:76
+#, kde-format
+msgid "Unable to connect"
+msgstr "Ni se možno povezati"
+
+#: qml/AddLocationPage.qml:88
+#, kde-format
+msgid "Search for a location"
+msgstr "Iščem lokacijo"
+
+#: qml/AddLocationPage.qml:93
+#, kde-format
+msgid "Add current location"
+msgstr "Dodaj trenutno lokacijo"
+
+#: qml/AddLocationPage.qml:113
+#, kde-format
+msgid "No results"
+msgstr "Ni rezultatov"
+
+#: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
+#, kde-format
+msgid "Forecast"
+msgstr "Napoved"
+
+#: qml/DefaultPage.qml:24
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "Napaka v omrežju pri pridobivanju trenutne lokacije"
+
+#: qml/DefaultPage.qml:61
+#, kde-format
+msgid "No locations configured"
+msgstr "Nobena lokacija ni nastavljena"
+
+#: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
+#, kde-format
+msgid "Add Location"
+msgstr "Doda lokacijo"
+
+#: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "Vreme osveženo za %1"
+
+#: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
+#, kde-format
+msgid "Updated at %1"
+msgstr "Posodobljeno ob %1"
+
+#: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
+#: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
+#, kde-format
+msgid "Locations"
+msgstr "Lokacije"
+
+#: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
+#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
+#, kde-format
+msgid "Settings"
+msgstr "Nastavitve"
+
+#: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
+#: qml/ForecastContainerPage.qml:53
+#, kde-format
+msgid "Refresh"
+msgstr "Osveži"
+
+#: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
+#, kde-format
+msgid "Left"
+msgstr "Levo"
+
+#: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
+#, kde-format
+msgid "Right"
+msgstr "Desno"
+
+#: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
+#, kde-format
+msgid "Daily"
+msgstr "Dnevno"
+
+#: qml/DynamicForecastPage.qml:426
+#, kde-format
+msgid "Local Date: "
+msgstr "Lokalni datum: "
+
+#: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
+#, kde-format
+msgid "Hourly"
+msgstr "Vsako uro"
+
+#: qml/DynamicForecastPage.qml:511
+#, kde-format
+msgid "Local Time: "
+msgstr "Lokalni čas: "
+
+#: qml/InfoCard.qml:43
+#, kde-format
+msgid "Precipitation"
+msgstr "Padavine"
+
+#: qml/InfoCard.qml:67
+#, kde-format
+msgid "Humidity"
+msgstr "Vlaga"
+
+#: qml/InfoCard.qml:91
+#, kde-format
+msgid "Pressure"
+msgstr "Tlak"
+
+#: qml/InfoCard.qml:115
+#, kde-format
+msgid "UV index"
+msgstr "UV indeks"
+
+#: qml/LocationsPage.qml:34
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "Ni mogoče pridobiti informacije o časovnem pasu"
+
+#: qml/LocationsPage.qml:69
+#, kde-format
+msgid "Add a location"
+msgstr "Dodaj lokacijo"
+
+#: qml/LocationsPage.qml:92
+#, kde-format
+msgid "Remove"
+msgstr "Odstrani"
+
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
+#, kde-format
+msgid "Forecast Style"
+msgstr "Slog napovedi"
+
+#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
+#, kde-format
+msgid "Temperature Units"
+msgstr "Enote temperature"
+
+#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
+#, kde-format
+msgid "Speed Units"
+msgstr "Enote hitrosti"
+
+#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
+#, kde-format
+msgid "Pressure Units"
+msgstr "Enote tlaka"
+
+#: qml/SettingsPage.qml:155
+#, kde-format
+msgid "About"
+msgstr "O programu"
+
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
+#, kde-format
+msgid "Flat"
+msgstr "Ploščato"
+
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
+#, kde-format
+msgid "Dynamic"
+msgstr "Dinamično"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Use System Default"
+msgstr "Uporabi sistemske privzete vrednosti"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Celsius"
+msgstr "Celzij"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "km/h"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "mph"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr "m/s"
+
+#: qml/SettingsPage.qml:194
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "hPa"
+
+#: qml/SettingsPage.qml:194
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr "mmHg"
+
+#: qml/SetupWizard.qml:57
+#, kde-format
+msgid "Welcome to KWeather"
+msgstr "Dobrodošli v KWeather"
+
+#: qml/SetupWizard.qml:71
+#, kde-format
+msgid "Continue"
+msgstr "Nadaljuj"
+
+#: qml/SetupWizard.qml:91
+#, kde-format
+msgid "Select forecast theme"
+msgstr "Izberi temo napovedi"
+
+#: qml/SetupWizard.qml:97
+#, kde-format
+msgid "You can change the theme later in the settings."
+msgstr "Temo lahko spremenite kasneje v nastavitvah."
+
+#: qml/SetupWizard.qml:204
+#, kde-format
+msgid "Back"
+msgstr "Nazaj"
+
+#: qml/SetupWizard.qml:210
+#, kde-format
+msgid "Finish"
+msgstr "Končaj"
+
+#: qml/SetupWizard.qml:224
+#, kde-format
+msgid "Dynamic mode may cause performance issues on embedded platforms"
+msgstr ""
+"Dinamični način lahko povzroči težave z zmogljivostjo na vdelanih platformah"
+
+#: qml/SunriseCard.qml:47
+#, kde-format
+msgid "Sunrise"
+msgstr "Sončni vzhod"
+
+#: qml/SunriseCard.qml:71
+#, kde-format
+msgid "Sunset"
+msgstr "Sončni zahod"
+
+#: qml/SunriseCard.qml:93
+#, kde-format
+msgid "Moon Phase"
+msgstr "Lunina mena"
+
+#: qml/TemperatureChartCard.qml:87
+#, kde-format
+msgid "temperature"
+msgstr "temperatura"
+
+#~ msgid "API Token"
+#~ msgstr "Žeton API"
+
+#~ msgid "Not Set"
+#~ msgstr "Ni nastavljeno"
+
+#~ msgid "Added"
+#~ msgstr "Dodano"
+
+#~ msgid "Close"
+#~ msgstr "Zapri"
+
+#~ msgid "OpenWeatherMap API Token"
+#~ msgstr "Žeton API OpenWeatherMap"
+
+#~ msgid "Add your own OpenWeatherMap API token."
+#~ msgstr "Dodajte vaš osebni žeton za API OpenWeatherMap."
+
+#~ msgid "Token added is stored as PLAIN TEXT in system."
+#~ msgstr "Dodani žeton je shranjen kot ODPRTO BESEDILO v sistemu."
+
+#~ msgid "Add your API token here... "
+#~ msgstr "Tu dodajte žeton API-ja... "
+
+#~ msgid "© 2020-2021 KDE Community"
+#~ msgstr "© 2020-2021 skupnost KDE"
+
+#~ msgid "A convergent weather application for Plasma."
+#~ msgstr "Skupna vremenska aplikacija za Plasmo."
+
+#~ msgid "Weather application in Kirigami"
+#~ msgstr "Vremenska aplikacija v Kirigami"
+
+#~ msgid "A mobile friendly weather app built with Kirigami."
+#~ msgstr "Mobilna prijazna vremenska aplikacija, zgrajena s Kirigami."
+
+#~ msgid "Storm"
+#~ msgstr "Nevihta"
+
+#~ msgid "Heavy Snow"
+#~ msgstr "Močno sneženje"
+
+#~ msgid "Rain"
+#~ msgstr "Dež"
+
+#~ msgid "Fog"
+#~ msgstr "Megla"
+
+#~ msgid "Heavy Sleet"
+#~ msgstr "Močna sodra"
+
+#~ msgid "Cloudy"
+#~ msgstr "Oblačno"
+
+#~ msgid "Light Snow"
+#~ msgstr "Rahel sneg"
+
+#~ msgid "Light Sleet"
+#~ msgstr "Rahla sodra"
+
+#~ msgid "Sleet"
+#~ msgstr "Sodra"
+
+#~ msgid "Heavy Rain"
+#~ msgstr "Močan dež"
+
+#~ msgid "Snow"
+#~ msgstr "Sneg"
+
+#~ msgid "Light Rain"
+#~ msgstr "Rahel dež"
+
+#~ msgid "Light Clouds"
+#~ msgstr "Nežni oblaki"
+
+#~ msgid "Partly Sunny"
+#~ msgstr "Deloma sončno"
+
+#~ msgid "Partly Cloudy"
+#~ msgstr "Deloma oblačno"
+
+#~ msgid "Clear"
+#~ msgstr "Jasno"
+
+#~ msgid "Mostly Sunny"
+#~ msgstr "Večinoma sončno"
+
+#~ msgid "Rain Showers"
+#~ msgstr "Dežne plohe"
+
+#~ msgid "Thunderstorm"
+#~ msgstr "Nevihta z grmenjem"
+
+#~ msgid "Mist"
+#~ msgstr "Meglica"
+
+#~ msgid "Select Weather Source"
+#~ msgstr "Izberi vir vremenskih podatkov"
+
+#~ msgid "Select Backend"
+#~ msgstr "Izberi aplikacijo v ozadju"
+
+#~ msgctxt "Norway Meteorologisk Institutt"
+#~ msgid "Norway Meteorologisk Institutt"
+#~ msgstr "Norveški meteorološki institut"
+
+#~ msgid "Flat (Performance)"
+#~ msgstr "Plosko (zmogljivo)"
+
+#~ msgid "Dynamic (Animated)"
+#~ msgstr "Dinamično (animirano)"
+
+#~ msgid "Run in background mode"
+#~ msgstr "Poganjaj v ozadju"
+
+#, fuzzy
+#~| msgid "Add current location"
+#~ msgid "Add Current Location"
+#~ msgstr "Dodaj trenutno lokacijo"
+
+#~ msgid "Add city"
+#~ msgstr "Dodaj mesto"

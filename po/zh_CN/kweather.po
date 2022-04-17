@@ -1,0 +1,396 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-04-16 00:48+0000\n"
+"PO-Revision-Date: 2022-04-14 15:35\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/kweather/kweather.pot\n"
+"X-Crowdin-File-ID: 24360\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE 中国, csslayer, Tyson Tan"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-china@kde.org, csslayer@kde.org, tysontan@tysontan.com"
+
+#: formatter.cpp:33 formatter.cpp:38
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr "%1°"
+
+#: formatter.cpp:44
+#, kde-format
+msgid "%1 km/h"
+msgstr "%1 千米/小时"
+
+#: formatter.cpp:46
+#, kde-format
+msgid "%1 mph"
+msgstr "%1 英里/小时"
+
+#: formatter.cpp:48
+#, kde-format
+msgid "%1 m/s"
+msgstr "%1 米/秒"
+
+#: formatter.cpp:55
+#, kde-format
+msgid "%1 hPa"
+msgstr "%1 百帕"
+
+#: formatter.cpp:57
+#, fuzzy, kde-format
+#| msgctxt "Millimetre of mercury"
+#| msgid "mmHg"
+msgid "%1 mmHg"
+msgstr "毫米汞柱"
+
+#: main.cpp:63 qml/main.qml:16
+#, kde-format
+msgid "Weather"
+msgstr "天气"
+
+#: main.cpp:65
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr "一款针对 Plasma 设计的桌面与移动平台通用天气应用程序"
+
+#: main.cpp:67
+#, kde-format
+msgid "© 2020-2022 Plasma Development Team"
+msgstr "© 2020-2022 Plasma Development Team"
+
+#: main.cpp:68
+#, kde-format
+msgid "Han Young"
+msgstr "Han Young"
+
+#: main.cpp:69
+#, kde-format
+msgid "Devin Lin"
+msgstr "Devin Lin"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr "无法从系统中获取位置，请手动在 kweather 中添加位置"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "please select the location"
+msgstr "请选择位置"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:71
+#: qml/WeatherHourDelegate.qml:65
+#, kde-format
+msgid "%1mm"
+msgstr "%1 毫米"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:123
+#: plasmoid/package/contents/ui/WeatherContainer.qml:162
+#, kde-format
+msgid "Select Location"
+msgstr "选择位置"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:128
+#, kde-format
+msgid "Open KWeather"
+msgstr "打开 KWeather"
+
+#: qml/AddLocationPage.qml:18
+#, kde-format
+msgid "Add location"
+msgstr "添加位置"
+
+#: qml/AddLocationPage.qml:36
+#, kde-format
+msgid "Search for a place..."
+msgstr "搜索地点..."
+
+#: qml/AddLocationPage.qml:76
+#, kde-format
+msgid "Unable to connect"
+msgstr "无法连接"
+
+#: qml/AddLocationPage.qml:88
+#, kde-format
+msgid "Search for a location"
+msgstr "搜索位置"
+
+#: qml/AddLocationPage.qml:93
+#, kde-format
+msgid "Add current location"
+msgstr "添加当前位置"
+
+#: qml/AddLocationPage.qml:113
+#, kde-format
+msgid "No results"
+msgstr "无结果"
+
+#: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
+#, kde-format
+msgid "Forecast"
+msgstr "预报"
+
+#: qml/DefaultPage.qml:24
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "获取当前位置时发生网络错误"
+
+#: qml/DefaultPage.qml:61
+#, kde-format
+msgid "No locations configured"
+msgstr "未配置位置"
+
+#: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
+#, kde-format
+msgid "Add Location"
+msgstr "添加位置"
+
+#: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "已刷新 %1 的天气"
+
+#: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
+#, kde-format
+msgid "Updated at %1"
+msgstr "更新于 %1"
+
+#: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
+#: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
+#, kde-format
+msgid "Locations"
+msgstr "位置"
+
+#: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
+#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
+#, kde-format
+msgid "Settings"
+msgstr "设置"
+
+#: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
+#: qml/ForecastContainerPage.qml:53
+#, kde-format
+msgid "Refresh"
+msgstr "刷新"
+
+#: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
+#, kde-format
+msgid "Left"
+msgstr "左"
+
+#: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
+#, kde-format
+msgid "Right"
+msgstr "右"
+
+#: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
+#, kde-format
+msgid "Daily"
+msgstr "每日"
+
+#: qml/DynamicForecastPage.qml:426
+#, kde-format
+msgid "Local Date: "
+msgstr "当地日期："
+
+#: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
+#, kde-format
+msgid "Hourly"
+msgstr "每小时"
+
+#: qml/DynamicForecastPage.qml:511
+#, kde-format
+msgid "Local Time: "
+msgstr "当地时间："
+
+#: qml/InfoCard.qml:43
+#, kde-format
+msgid "Precipitation"
+msgstr "降水"
+
+#: qml/InfoCard.qml:67
+#, kde-format
+msgid "Humidity"
+msgstr "湿度"
+
+#: qml/InfoCard.qml:91
+#, kde-format
+msgid "Pressure"
+msgstr "气压"
+
+#: qml/InfoCard.qml:115
+#, kde-format
+msgid "UV index"
+msgstr "紫外线指数"
+
+#: qml/LocationsPage.qml:34
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "无法获取时区信息"
+
+#: qml/LocationsPage.qml:69
+#, kde-format
+msgid "Add a location"
+msgstr "添加位置"
+
+#: qml/LocationsPage.qml:92
+#, kde-format
+msgid "Remove"
+msgstr "移除"
+
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
+#, kde-format
+msgid "Forecast Style"
+msgstr "天气预报显示风格"
+
+#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
+#, kde-format
+msgid "Temperature Units"
+msgstr "温度单位"
+
+#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
+#, kde-format
+msgid "Speed Units"
+msgstr "速度单位"
+
+#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
+#, kde-format
+msgid "Pressure Units"
+msgstr "压力单位"
+
+#: qml/SettingsPage.qml:155
+#, kde-format
+msgid "About"
+msgstr "关于"
+
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
+#, kde-format
+msgid "Flat"
+msgstr "扁平"
+
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
+#, kde-format
+msgid "Dynamic"
+msgstr "动态"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Use System Default"
+msgstr "使用系统默认"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Celsius"
+msgstr "摄氏度"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Fahrenheit"
+msgstr "华氏度"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "千米/小时"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "英里/小时"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr "米/秒"
+
+#: qml/SettingsPage.qml:194
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "百帕"
+
+#: qml/SettingsPage.qml:194
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr "毫米汞柱"
+
+#: qml/SetupWizard.qml:57
+#, kde-format
+msgid "Welcome to KWeather"
+msgstr "欢迎使用 KWeather"
+
+#: qml/SetupWizard.qml:71
+#, kde-format
+msgid "Continue"
+msgstr "继续"
+
+#: qml/SetupWizard.qml:91
+#, kde-format
+msgid "Select forecast theme"
+msgstr "选择天气预报主题"
+
+#: qml/SetupWizard.qml:97
+#, kde-format
+msgid "You can change the theme later in the settings."
+msgstr "您以后可以在设置中切换主题。"
+
+#: qml/SetupWizard.qml:204
+#, kde-format
+msgid "Back"
+msgstr "返回"
+
+#: qml/SetupWizard.qml:210
+#, kde-format
+msgid "Finish"
+msgstr "完成"
+
+#: qml/SetupWizard.qml:224
+#, kde-format
+msgid "Dynamic mode may cause performance issues on embedded platforms"
+msgstr "在嵌入式平台上使用动态模式可导致性能问题"
+
+#: qml/SunriseCard.qml:47
+#, kde-format
+msgid "Sunrise"
+msgstr "日出"
+
+#: qml/SunriseCard.qml:71
+#, kde-format
+msgid "Sunset"
+msgstr "日落"
+
+#: qml/SunriseCard.qml:93
+#, kde-format
+msgid "Moon Phase"
+msgstr "月相"
+
+#: qml/TemperatureChartCard.qml:87
+#, kde-format
+msgid "temperature"
+msgstr "温度"

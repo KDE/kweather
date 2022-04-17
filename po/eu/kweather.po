@@ -1,0 +1,512 @@
+# Translation for kweather.po to Euskara/Basque (eu).
+# Copyright (C) 2020, This file is copyright:
+# This file is distributed under the same license as the kweather package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@euskalnet.net>.
+#
+# Translators:
+# @Krr4m4rr0 <birazabal@gmail.com>, 2020.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: kweather\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-04-16 00:48+0000\n"
+"PO-Revision-Date: 2021-01-24 20:15+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.12.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Beñat Irazabal"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "birazabal@gmail.com"
+
+#: formatter.cpp:33 formatter.cpp:38
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr ""
+
+#: formatter.cpp:44
+#, kde-format
+msgid "%1 km/h"
+msgstr ""
+
+#: formatter.cpp:46
+#, kde-format
+msgid "%1 mph"
+msgstr ""
+
+#: formatter.cpp:48
+#, kde-format
+msgid "%1 m/s"
+msgstr ""
+
+#: formatter.cpp:55
+#, kde-format
+msgid "%1 hPa"
+msgstr ""
+
+#: formatter.cpp:57
+#, kde-format
+msgid "%1 mmHg"
+msgstr ""
+
+#: main.cpp:63 qml/main.qml:16
+#, kde-format
+msgid "Weather"
+msgstr "Eguraldia"
+
+#: main.cpp:65
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr ""
+
+#: main.cpp:67
+#, fuzzy, kde-format
+#| msgid "© 2020 Plasma Development Team"
+msgid "© 2020-2022 Plasma Development Team"
+msgstr "© 2020 Plasma garatzeko taldea"
+
+#: main.cpp:68
+#, kde-format
+msgid "Han Young"
+msgstr "Han Young"
+
+#: main.cpp:69
+#, kde-format
+msgid "Devin Lin"
+msgstr "Devin Lin"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr ""
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "please select the location"
+msgstr ""
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
+#, kde-format
+msgid "%1%"
+msgstr "%%1"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:71
+#: qml/WeatherHourDelegate.qml:65
+#, kde-format
+msgid "%1mm"
+msgstr "%1 mm"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:123
+#: plasmoid/package/contents/ui/WeatherContainer.qml:162
+#, fuzzy, kde-format
+#| msgid "Add Location"
+msgid "Select Location"
+msgstr "Gehitu kokalekua"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:128
+#, fuzzy, kde-format
+#| msgctxt "OpenWeatherMap"
+#| msgid "OpenWeatherMap"
+msgid "Open KWeather"
+msgstr "OpenWeatherMap"
+
+#: qml/AddLocationPage.qml:18
+#, kde-format
+msgid "Add location"
+msgstr "Gehitu kokalekua"
+
+#: qml/AddLocationPage.qml:36
+#, kde-format
+msgid "Search for a place..."
+msgstr "Bilatu leku bat..."
+
+#: qml/AddLocationPage.qml:76
+#, kde-format
+msgid "Unable to connect"
+msgstr "Ezin da konektatu"
+
+#: qml/AddLocationPage.qml:88
+#, kde-format
+msgid "Search for a location"
+msgstr "Bilatu kokaleku bat"
+
+#: qml/AddLocationPage.qml:93
+#, kde-format
+msgid "Add current location"
+msgstr "Gehitu uneko kokalekua"
+
+#: qml/AddLocationPage.qml:113
+#, kde-format
+msgid "No results"
+msgstr "Emaitzarik gabe"
+
+#: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
+#, kde-format
+msgid "Forecast"
+msgstr "Iragarpena"
+
+#: qml/DefaultPage.qml:24
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "Sareko errorea uneko kokalekua eskuratzean"
+
+#: qml/DefaultPage.qml:61
+#, kde-format
+msgid "No locations configured"
+msgstr "Ez kokalekurik konfiguratu"
+
+#: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
+#, kde-format
+msgid "Add Location"
+msgstr "Gehitu kokalekua"
+
+#: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "Eguraldi freskatzea %1"
+
+#: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
+#, kde-format
+msgid "Updated at %1"
+msgstr "%1 eguneratua"
+
+#: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
+#: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
+#, kde-format
+msgid "Locations"
+msgstr "Kokalekuak"
+
+#: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
+#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
+#, kde-format
+msgid "Settings"
+msgstr "Ezarpenak"
+
+#: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
+#: qml/ForecastContainerPage.qml:53
+#, kde-format
+msgid "Refresh"
+msgstr ""
+
+#: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
+#, kde-format
+msgid "Left"
+msgstr ""
+
+#: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
+#, kde-format
+msgid "Right"
+msgstr ""
+
+#: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
+#, kde-format
+msgid "Daily"
+msgstr "Egunero"
+
+#: qml/DynamicForecastPage.qml:426
+#, kde-format
+msgid "Local Date: "
+msgstr ""
+
+#: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
+#, kde-format
+msgid "Hourly"
+msgstr "Orduro"
+
+#: qml/DynamicForecastPage.qml:511
+#, kde-format
+msgid "Local Time: "
+msgstr ""
+
+#: qml/InfoCard.qml:43
+#, kde-format
+msgid "Precipitation"
+msgstr "Prezipitazioa"
+
+#: qml/InfoCard.qml:67
+#, kde-format
+msgid "Humidity"
+msgstr "Hezetasuna"
+
+#: qml/InfoCard.qml:91
+#, kde-format
+msgid "Pressure"
+msgstr "Presioa"
+
+#: qml/InfoCard.qml:115
+#, kde-format
+msgid "UV index"
+msgstr "UV indizea"
+
+#: qml/LocationsPage.qml:34
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "Ezin izan da ordu-eremuaren informazioa ekarri"
+
+#: qml/LocationsPage.qml:69
+#, kde-format
+msgid "Add a location"
+msgstr "Gehitu kokalekua"
+
+#: qml/LocationsPage.qml:92
+#, kde-format
+msgid "Remove"
+msgstr "Kendu"
+
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
+#, fuzzy, kde-format
+#| msgid "Forecast"
+msgid "Forecast Style"
+msgstr "Iragarpena"
+
+#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
+#, kde-format
+msgid "Temperature Units"
+msgstr "Tenperatura unitateak"
+
+#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
+#, kde-format
+msgid "Speed Units"
+msgstr "Abiadura unitateak"
+
+#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Pressure"
+msgid "Pressure Units"
+msgstr "Presioa"
+
+#: qml/SettingsPage.qml:155
+#, kde-format
+msgid "About"
+msgstr "Honi buruz"
+
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
+#, kde-format
+msgid "Flat"
+msgstr ""
+
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
+#, kde-format
+msgid "Dynamic"
+msgstr ""
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Use System Default"
+msgstr ""
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Celsius"
+msgstr "Celsius"
+
+#: qml/SettingsPage.qml:178
+#, kde-format
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "km/h"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "mph"
+
+#: qml/SettingsPage.qml:186
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr ""
+
+#: qml/SettingsPage.qml:194
+#, fuzzy, kde-format
+#| msgid "%1hPa"
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "%1 hPa"
+
+#: qml/SettingsPage.qml:194
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr ""
+
+#: qml/SetupWizard.qml:57
+#, fuzzy, kde-format
+#| msgid "Select Weather Source"
+msgid "Welcome to KWeather"
+msgstr "Aukeratu eguraldi iturria"
+
+#: qml/SetupWizard.qml:71
+#, kde-format
+msgid "Continue"
+msgstr ""
+
+#: qml/SetupWizard.qml:91
+#, fuzzy, kde-format
+#| msgid "Select Weather Source"
+msgid "Select forecast theme"
+msgstr "Aukeratu eguraldi iturria"
+
+#: qml/SetupWizard.qml:97
+#, kde-format
+msgid "You can change the theme later in the settings."
+msgstr ""
+
+#: qml/SetupWizard.qml:204
+#, kde-format
+msgid "Back"
+msgstr ""
+
+#: qml/SetupWizard.qml:210
+#, kde-format
+msgid "Finish"
+msgstr ""
+
+#: qml/SetupWizard.qml:224
+#, kde-format
+msgid "Dynamic mode may cause performance issues on embedded platforms"
+msgstr ""
+
+#: qml/SunriseCard.qml:47
+#, kde-format
+msgid "Sunrise"
+msgstr "Egunsentia"
+
+#: qml/SunriseCard.qml:71
+#, kde-format
+msgid "Sunset"
+msgstr "Iluntzea"
+
+#: qml/SunriseCard.qml:93
+#, kde-format
+msgid "Moon Phase"
+msgstr "Ilargiaren fasea"
+
+#: qml/TemperatureChartCard.qml:87
+#, fuzzy, kde-format
+#| msgid "Temperature Units"
+msgid "temperature"
+msgstr "Tenperatura unitateak"
+
+#~ msgid "API Token"
+#~ msgstr "APIaren tokena"
+
+#~ msgid "Not Set"
+#~ msgstr "Ezarri gabe"
+
+#~ msgid "Added"
+#~ msgstr "Gehituta"
+
+#~ msgid "OpenWeatherMap API Token"
+#~ msgstr "OpenWeatherMap API Tokena"
+
+#~ msgid "Add your own OpenWeatherMap API token."
+#~ msgstr "Gehitu zure OpenWeatherMap API tokena."
+
+#~ msgid "Token added is stored as PLAIN TEXT in system."
+#~ msgstr "Gehitutako tokena TESTU ARRUNT gisa gordetzen da sisteman."
+
+#~ msgid "Add your API token here... "
+#~ msgstr "Gehitu zure API tokena hemen..."
+
+#, fuzzy
+#~| msgid "© 2020 KDE Community"
+#~ msgid "© 2020-2021 KDE Community"
+#~ msgstr "© 2020 KDEren komunitatea"
+
+#~ msgid "Weather application in Kirigami"
+#~ msgstr "Kirigamin egidako eguraldi aplikazioa"
+
+#~ msgid "A mobile friendly weather app built with Kirigami."
+#~ msgstr ""
+#~ "Mugikorrekiko lagunkoia den eguraldi aplikazio bat, Kirigami erabiliz "
+#~ "eraikia."
+
+#~ msgid "Storm"
+#~ msgstr "Ekaitza"
+
+#~ msgid "Heavy Snow"
+#~ msgstr "Elurte jasa"
+
+#~ msgid "Rain"
+#~ msgstr "Euria"
+
+#~ msgid "Fog"
+#~ msgstr "lainoa"
+
+#~ msgid "Heavy Sleet"
+#~ msgstr "elurbusti erauntsia"
+
+#~ msgid "Cloudy"
+#~ msgstr "Hodeitsu"
+
+#~ msgid "Light Snow"
+#~ msgstr "Elur arina"
+
+#~ msgid "Light Sleet"
+#~ msgstr "elur-busti arina"
+
+#~ msgid "Sleet"
+#~ msgstr "elur-bustia"
+
+#~ msgid "Heavy Rain"
+#~ msgstr "Euri zaparrada"
+
+#~ msgid "Snow"
+#~ msgstr "Elurra"
+
+#~ msgid "Light Rain"
+#~ msgstr "Zirimiria"
+
+#~ msgid "Light Clouds"
+#~ msgstr "Hodei arinak"
+
+#~ msgid "Partly Sunny"
+#~ msgstr "Erdi eguzkitsu"
+
+#~ msgid "Partly Cloudy"
+#~ msgstr "Erdi hodeitsu"
+
+#~ msgid "Clear"
+#~ msgstr "Garbi"
+
+#~ msgid "Mostly Sunny"
+#~ msgstr "Batez ere eguzkitsu"
+
+#~ msgid "Rain Showers"
+#~ msgstr "Euri-jasak"
+
+#~ msgid "Thunderstorm"
+#~ msgstr "trumoi-ekaitza"
+
+#~ msgid "Mist"
+#~ msgstr "behe-lainoa"
+
+#~ msgid "Select Weather Source"
+#~ msgstr "Aukeratu eguraldi iturria"
+
+#~ msgid "Select Backend"
+#~ msgstr "Aukeratu bizkarraldekoa"
+
+#~ msgctxt "Norway Meteorologisk Institutt"
+#~ msgid "Norway Meteorologisk Institutt"
+#~ msgstr "Norvegiako Meteorologia institutua"
