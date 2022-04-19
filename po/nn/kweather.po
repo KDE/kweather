@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-03-03 00:46+0000\n"
+"POT-Creation-Date: 2022-04-16 00:48+0000\n"
 "PO-Revision-Date: 2021-03-27 11:29+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -50,9 +50,14 @@ msgstr ""
 msgid "%1 m/s"
 msgstr ""
 
-#: formatter.cpp:55 formatter.cpp:57
+#: formatter.cpp:55
 #, kde-format
 msgid "%1 hPa"
+msgstr ""
+
+#: formatter.cpp:57
+#, kde-format
+msgid "%1 mmHg"
 msgstr ""
 
 #: main.cpp:63 qml/main.qml:16
@@ -257,22 +262,22 @@ msgstr "Legg til stad"
 msgid "Remove"
 msgstr "Fjern"
 
-#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:170
+#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
 #, kde-format
 msgid "Forecast Style"
 msgstr "Vêrmeldings­stil"
 
-#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:201
+#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
 #, kde-format
 msgid "Temperature Units"
 msgstr "Temperatur­eining"
 
-#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:231
+#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
 #, kde-format
 msgid "Speed Units"
 msgstr "Farts­eining"
 
-#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:262
+#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
 #, kde-format
 msgid "Pressure Units"
 msgstr ""
@@ -282,56 +287,56 @@ msgstr ""
 msgid "About"
 msgstr "Om"
 
-#: qml/SettingsPage.qml:178 qml/SetupWizard.qml:133
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
 #, kde-format
 msgid "Flat"
 msgstr "Flat"
 
-#: qml/SettingsPage.qml:178 qml/SetupWizard.qml:180
+#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
 #, kde-format
 msgid "Dynamic"
 msgstr "Dynamisk"
 
-#: qml/SettingsPage.qml:209
+#: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Use System Default"
 msgstr ""
 
-#: qml/SettingsPage.qml:209
+#: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Celsius"
 msgstr "Celsius"
 
-#: qml/SettingsPage.qml:209
+#: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: qml/SettingsPage.qml:240
+#: qml/SettingsPage.qml:186
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "k/t"
 
-#: qml/SettingsPage.qml:240
+#: qml/SettingsPage.qml:186
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mile/t"
 
-#: qml/SettingsPage.qml:240
+#: qml/SettingsPage.qml:186
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr ""
 
-#: qml/SettingsPage.qml:271
+#: qml/SettingsPage.qml:194
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr ""
 
-#: qml/SettingsPage.qml:271
+#: qml/SettingsPage.qml:194
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
