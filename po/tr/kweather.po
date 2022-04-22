@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-04-16 00:48+0000\n"
-"PO-Revision-Date: 2022-03-20 12:18+0300\n"
+"PO-Revision-Date: 2022-04-21 11:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -55,11 +55,9 @@ msgid "%1 hPa"
 msgstr "%1 hBa"
 
 #: formatter.cpp:57
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgid "%1 mmHg"
-msgstr "mmHg"
+msgstr "%1 mmHg"
 
 #: main.cpp:63 qml/main.qml:16
 #, kde-format
@@ -215,7 +213,7 @@ msgstr "Günlük"
 #: qml/DynamicForecastPage.qml:426
 #, kde-format
 msgid "Local Date: "
-msgstr "Yerel Tarih:"
+msgstr "Yerel Tarih: "
 
 #: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
 #, kde-format
