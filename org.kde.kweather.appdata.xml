@@ -43,7 +43,7 @@
   <summary>View real-time weather forecasts and other information</summary>
   <summary xml:lang="az">Real vaxt hava məlumatlarını və digər məlumatları göstərmək</summary>
   <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real i altra informació</summary>
-  <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real i altra informació</summary>
+  <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real i atra informació</summary>
   <summary xml:lang="en-GB">View real-time weather forecasts and other information</summary>
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real y otra información</summary>
   <summary xml:lang="fi">Näytä tosiaikaiset sääennusteet ja muuta tietoa</summary>
@@ -104,7 +104,7 @@
     <p>A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
     <p xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq. Hava haqqında və digər məlumatları göstərmək üçün hamar və canlı/animasiyalı görünüş.</p>
     <p xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
-    <p xml:lang="ca-valencia">Una aplicació convergent de meteorologia per a Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
+    <p xml:lang="ca-valencia">Una aplicació convergent de meteorologia per a Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i atra informació.</p>
     <p xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma. Mit flachen und dynamisch animierten Ansichten der Wettervorhersage und weiteren Informationen.</p>
     <p xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma. Περιέχει επίπεδες και δυναμικές/κινούμενης εικόνας προβολές για την παρουσίαση προγνώσεων και για άλλες πληροφορίες.</p>
     <p xml:lang="en-GB">A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
