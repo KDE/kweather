@@ -54,11 +54,9 @@ msgid "%1 hPa"
 msgstr "%1 hPa"
 
 #: formatter.cpp:57
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgid "%1 mmHg"
-msgstr "mmHg"
+msgstr ""
 
 #: main.cpp:63 qml/main.qml:16
 #, kde-format
