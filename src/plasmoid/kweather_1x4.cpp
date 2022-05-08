@@ -35,19 +35,12 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
 void KWeather_1x4::update()
 {
     auto pendingForecast = KWeatherCore::WeatherForecastSource().requestData(m_latitude, m_longitude);
-    if (pendingForecast->isFinished()) {
+    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
         m_forecast = pendingForecast->value();
         pendingForecast->deleteLater();
         m_hourlyModel->loadForecast(m_forecast);
         Q_EMIT updated();
-    } else {
-        connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
-            m_forecast = pendingForecast->value();
-            pendingForecast->deleteLater();
-            m_hourlyModel->loadForecast(m_forecast);
-            Q_EMIT updated();
-        });
-    }
+    });
 }
 
 QStringList KWeather_1x4::locationsInSystem()

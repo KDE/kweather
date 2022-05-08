@@ -347,14 +347,10 @@ void WeatherLocation::determineCurrentForecast()
 void WeatherLocation::update()
 {
     auto pendingForecast = m_source.requestData(latitude(), longitude());
-    if (pendingForecast->isFinished()) {
-        updateData(pendingForecast->value());
+    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
+        this->updateData(pendingForecast->value());
         pendingForecast->deleteLater();
-    } else
-        connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
-            this->updateData(pendingForecast->value());
-            pendingForecast->deleteLater();
-        });
+    });
 }
 
 void WeatherLocation::updateCurrentDateTime()
