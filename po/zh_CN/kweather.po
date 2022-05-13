@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-04-16 00:48+0000\n"
+"POT-Creation-Date: 2022-05-13 00:48+0000\n"
 "PO-Revision-Date: 2022-05-08 08:16\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -73,12 +73,12 @@ msgstr "一款针对 Plasma 设计的桌面与移动平台通用天气应用程�
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© 2020-2022 Plasma Development Team"
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"

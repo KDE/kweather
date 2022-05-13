@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-04-16 00:48+0000\n"
+"POT-Creation-Date: 2022-05-13 00:48+0000\n"
 "PO-Revision-Date: 2022-04-16 00:34+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -73,12 +73,12 @@ msgstr "Plasma용 올인원 날씨 프로그램"
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© 2020-2022 Plasma Development Team"
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
