@@ -355,7 +355,7 @@ msgstr "Continua"
 #: qml/SetupWizard.qml:91
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Selecció del tema de la predicció"
+msgstr "Seleccioneu el tema de la predicció"
 
 #: qml/SetupWizard.qml:97
 #, kde-format
