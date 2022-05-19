@@ -90,7 +90,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<LocationQueryModel>("kweather", 1, 0, "LocationQueryModel");
     qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
 
-    qRegisterMetaType<KWeatherCore::Sunrise>();
     qRegisterMetaType<KWeatherCore::HourlyWeatherForecast>();
     qRegisterMetaType<KWeatherCore::DailyWeatherForecast>();
     qRegisterMetaType<QList<WeatherLocation *>>();

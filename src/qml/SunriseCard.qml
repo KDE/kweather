@@ -12,6 +12,7 @@ import QtQuick.Layouts 1.2
 import QtCharts 2.3
 
 import org.kde.kirigami 2.13 as Kirigami
+import org.kde.kholidays 1.0
 
 import "backgrounds"
 
@@ -48,7 +49,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: Formatter.formatSunriseTime(selectedDay.sunrise.sunRise, weatherLocation.timeZone)
+                        text: Formatter.formatSunriseTime(SunRiseSet.utcSunrise(selectedDay.date, weatherLocation.latitude, weatherLocation.longitude), weatherLocation.timeZone)
                         color: root.textColor
                     }
                 }
@@ -72,7 +73,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: Formatter.formatSunriseTime(selectedDay.sunrise.sunSet, weatherLocation.timeZone)
+                        text: Formatter.formatSunriseTime(SunRiseSet.utcSunset(selectedDay.date, weatherLocation.latitude, weatherLocation.longitude), weatherLocation.timeZone)
                         color: root.textColor
                     }
                 }
@@ -94,7 +95,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: selectedDay.sunrise.moonPhaseString
+                        text: Lunar.phaseNameAtDate(selectedDay.date)
                         color: root.textColor
                     }
                 }

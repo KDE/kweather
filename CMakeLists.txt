@@ -28,6 +28,7 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMPoQmTools)
 include(ECMCheckOutboundLicense)
+include(ECMFindQmlModule)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
@@ -71,6 +72,8 @@ endif()
 if (NOT ANDROID AND BUILD_PLASMOID)
    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
+
+ecm_find_qmlmodule(org.kde.kholidays 1.0)
 
 add_subdirectory(src)
 

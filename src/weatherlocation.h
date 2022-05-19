@@ -35,6 +35,8 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ locationName CONSTANT)
+    Q_PROPERTY(float latitude READ latitude CONSTANT)
+    Q_PROPERTY(float longitude READ longitude CONSTANT)
     Q_PROPERTY(QString lastUpdated READ lastUpdatedFormatted NOTIFY lastUpdatedChanged)
     Q_PROPERTY(QString currentTime READ currentTimeFormatted NOTIFY currentTimeChanged)
     Q_PROPERTY(QString currentDate READ currentDateFormatted NOTIFY currentDateChanged)

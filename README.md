@@ -35,7 +35,7 @@ sudo make install
 ```
 
 ## Online APIs used
-* api.met.no - Weather data, sunrise/sunset data
+* api.met.no - Weather data
 * geonames.org - Coordinates -> Timezone
 * geoip.ubuntu.com - IP -> Coordinates
 
