@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-05-13 00:48+0000\n"
+"POT-Creation-Date: 2022-05-20 00:46+0000\n"
 "PO-Revision-Date: 2021-04-25 09:41-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -379,17 +379,17 @@ msgstr "ਮੁਕੰਮਲ"
 msgid "Dynamic mode may cause performance issues on embedded platforms"
 msgstr "ਡਾਇਨੈਮਿਕ ਢੰਗ ਇੰਬੈਡ ਪਲੇਟਫਾਰਮ ਉੱਤੇ ਕਾਰਗੁਜ਼ਾਰੀ ਮਸਲੇ ਖੜ੍ਹੇ ਕਰ ਸਕਦਾ ਹੈ।"
 
-#: qml/SunriseCard.qml:47
+#: qml/SunriseCard.qml:48
 #, kde-format
 msgid "Sunrise"
 msgstr "ਪਹੁ-ਫੁਟਾਲਾ"
 
-#: qml/SunriseCard.qml:71
+#: qml/SunriseCard.qml:72
 #, kde-format
 msgid "Sunset"
 msgstr "ਸੂਰਜ ਛੁਪਾ"
 
-#: qml/SunriseCard.qml:93
+#: qml/SunriseCard.qml:94
 #, kde-format
 msgid "Moon Phase"
 msgstr "ਚੰਦ ਕਲਾਵਾਂ"

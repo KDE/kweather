@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-05-13 00:48+0000\n"
+"POT-Creation-Date: 2022-05-20 00:46+0000\n"
 "PO-Revision-Date: 2020-06-13 20:50+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -376,17 +376,17 @@ msgstr ""
 msgid "Dynamic mode may cause performance issues on embedded platforms"
 msgstr ""
 
-#: qml/SunriseCard.qml:47
+#: qml/SunriseCard.qml:48
 #, kde-format
 msgid "Sunrise"
 msgstr "Východ slnka"
 
-#: qml/SunriseCard.qml:71
+#: qml/SunriseCard.qml:72
 #, kde-format
 msgid "Sunset"
 msgstr "Západ Slnka"
 
-#: qml/SunriseCard.qml:93
+#: qml/SunriseCard.qml:94
 #, kde-format
 msgid "Moon Phase"
 msgstr ""
