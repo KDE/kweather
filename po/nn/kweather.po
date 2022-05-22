@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-04-16 00:48+0000\n"
+"POT-Creation-Date: 2022-05-20 00:46+0000\n"
 "PO-Revision-Date: 2021-03-27 11:29+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -75,12 +75,12 @@ msgstr "Vêrmeldings­program for Plasma, tilpassa ulike typar brukarflater"
 msgid "© 2020-2022 Plasma Development Team"
 msgstr ""
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
@@ -377,17 +377,17 @@ msgstr "Fullfør"
 msgid "Dynamic mode may cause performance issues on embedded platforms"
 msgstr "Dynamisk modus kan føre til ytingsproblem på innebygde plattformer"
 
-#: qml/SunriseCard.qml:47
+#: qml/SunriseCard.qml:48
 #, kde-format
 msgid "Sunrise"
 msgstr "Soloppgang"
 
-#: qml/SunriseCard.qml:71
+#: qml/SunriseCard.qml:72
 #, kde-format
 msgid "Sunset"
 msgstr "Solnedgang"
 
-#: qml/SunriseCard.qml:93
+#: qml/SunriseCard.qml:94
 #, kde-format
 msgid "Moon Phase"
 msgstr "Månefase"
