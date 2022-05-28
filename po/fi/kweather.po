@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-05-20 00:46+0000\n"
-"PO-Revision-Date: 2022-01-28 11:56+0200\n"
+"PO-Revision-Date: 2022-04-19 18:36+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -54,11 +54,9 @@ msgid "%1 hPa"
 msgstr "%1 hPa"
 
 #: formatter.cpp:57
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgid "%1 mmHg"
-msgstr "mmHg"
+msgstr "%1 mmHg"
 
 #: main.cpp:63 qml/main.qml:16
 #, kde-format
