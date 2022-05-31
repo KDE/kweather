@@ -172,12 +172,12 @@ msgstr "Afig l'emplaçament"
 #: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
-msgstr "S'ha actualitzat el temps per a %1"
+msgstr "S'ha actualisat el temps per a %1"
 
 #: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
-msgstr "S'ha actualitzat a les %1"
+msgstr "S'ha actualisat a les %1"
 
 #: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
 #: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
@@ -370,7 +370,7 @@ msgstr "Enrere"
 #: qml/SetupWizard.qml:210
 #, kde-format
 msgid "Finish"
-msgstr "Finalitza"
+msgstr "Finalisa"
 
 #: qml/SetupWizard.qml:224
 #, kde-format
