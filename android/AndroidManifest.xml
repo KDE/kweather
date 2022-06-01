@@ -5,8 +5,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="org.kde.kweather"
-          android:versionName="0.1"
-          android:versionCode="1"
+          android:versionName="${versionName}"
+          android:versionCode="${versionCode}"
           android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET" />
