@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# A S Alam <aalam.yellow@gmail.com>, 2021.
+# A S Alam <aalam.yellow@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-05-20 00:46+0000\n"
-"PO-Revision-Date: 2021-04-25 09:41-0700\n"
+"PO-Revision-Date: 2022-06-11 09:15-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 21.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,32 +31,32 @@ msgstr "alam.yellow@gmail.com"
 #, kde-format
 msgctxt "A temperature"
 msgid "%1°"
-msgstr ""
+msgstr "%1°"
 
 #: formatter.cpp:44
 #, kde-format
 msgid "%1 km/h"
-msgstr ""
+msgstr "%1 ਕਿਮੀ/ਘੰਟਾ"
 
 #: formatter.cpp:46
 #, kde-format
 msgid "%1 mph"
-msgstr ""
+msgstr "%1 ਮੀ.ਪ੍ਰਤੀ.ਘੰ"
 
 #: formatter.cpp:48
 #, kde-format
 msgid "%1 m/s"
-msgstr ""
+msgstr "%1 ਮੀ/ਸ"
 
 #: formatter.cpp:55
 #, kde-format
 msgid "%1 hPa"
-msgstr ""
+msgstr "%1hPa"
 
 #: formatter.cpp:57
 #, kde-format
 msgid "%1 mmHg"
-msgstr ""
+msgstr "%1 mmHg"
 
 #: main.cpp:63 qml/main.qml:16
 #, kde-format
@@ -69,10 +69,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "ਪਲਾਜ਼ਮਾ ਲਈ ਮੌਸਮ ਸੰਬੰਧੀ ਐਪਲੀਕੇਸ਼ਨ"
 
 #: main.cpp:67
-#, fuzzy, kde-format
-#| msgid "© 2020-2021 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2022 Plasma Development Team"
-msgstr "© 2020-2021 ਪਲਾਜ਼ਮਾ ਡਿਵੈਲਪਮੈਂਟ ਟੀਮ"
+msgstr "© 2020-2022 ਪਲਾਜ਼ਮਾ ਡਿਵੈਲਪਮੈਂਟ ਟੀਮ"
 
 #: main.cpp:69
 #, kde-format
@@ -87,12 +86,12 @@ msgstr "ਡੇਵਿਨ ਲਿਨ"
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "No location found on system, please add some in kweather"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਉੱਤੇ ਕੋਈ ਟਿਕਾਣਾ ਨਹੀਂ ਲੱਭਿਆ, ਕੁਝ ਕੇ-ਮੌਸਮ ਵਿੱਚ ਜੋੜੋ"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "please select the location"
-msgstr ""
+msgstr "ਟਿਕਾਣਾ ਚੁਣੋ ਜੀ"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
 #, kde-format
@@ -107,17 +106,14 @@ msgstr "%1ਮਿ.ਮੀ."
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:123
 #: plasmoid/package/contents/ui/WeatherContainer.qml:162
-#, fuzzy, kde-format
-#| msgid "Add Location"
+#, kde-format
 msgid "Select Location"
-msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
+msgstr "ਟਿਕਾਣਾ ਚੁਣੋ"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:128
-#, fuzzy, kde-format
-#| msgctxt "OpenWeatherMap"
-#| msgid "OpenWeatherMap"
+#, kde-format
 msgid "Open KWeather"
-msgstr "ਓਪਨ-ਵੈਦਰ-ਮੈਪ"
+msgstr "ਕੇ-ਮੌਸਮ ਖੋਲ੍ਹੋ"
 
 #: qml/AddLocationPage.qml:18
 #, kde-format
@@ -195,17 +191,17 @@ msgstr "ਸੈਟਿੰਗਾਂ"
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
 #: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "ਖੱਬੇ"
 
 #: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "ਸੱਜੇ"
 
 #: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
 #, kde-format
@@ -278,10 +274,9 @@ msgid "Speed Units"
 msgstr "ਗਤੀ ਦੀਆਂ ਇਕਾਈਆਂ"
 
 #: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
-#, fuzzy, kde-format
-#| msgid "Pressure"
+#, kde-format
 msgid "Pressure Units"
-msgstr "ਦਬਾਓ"
+msgstr "ਦਬਾਓ ਯੂਨਿਟ"
 
 #: qml/SettingsPage.qml:155
 #, kde-format
@@ -301,7 +296,7 @@ msgstr "ਡਾਇਨੈਮਿਕ"
 #: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Use System Default"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਮੂਲ ਵਰਤੋਂ"
 
 #: qml/SettingsPage.qml:178
 #, kde-format
@@ -329,20 +324,19 @@ msgstr "ਮੀ.ਪ੍ਰਤੀ.ਘੰ"
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr ""
+msgstr "ਮੀ/ਸ"
 
 #: qml/SettingsPage.qml:194
-#, fuzzy, kde-format
-#| msgid "%1hPa"
+#, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
-msgstr "%1hPa"
+msgstr "hPa"
 
 #: qml/SettingsPage.qml:194
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
-msgstr ""
+msgstr "mmHg"
 
 #: qml/SetupWizard.qml:57
 #, kde-format
@@ -395,10 +389,9 @@ msgid "Moon Phase"
 msgstr "ਚੰਦ ਕਲਾਵਾਂ"
 
 #: qml/TemperatureChartCard.qml:87
-#, fuzzy, kde-format
-#| msgid "MaxTemperature"
+#, kde-format
 msgid "temperature"
-msgstr "ਵੱਧੋ-ਵੱਧ ਤਾਪਮਾਨ"
+msgstr "ਤਾਪਮਾਨ"
 
 #~ msgid "API Token"
 #~ msgstr "API ਟੋਕਨ"
