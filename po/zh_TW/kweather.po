@@ -1,483 +1,394 @@
-# Copyright (C) YEAR This file is copyright:
+# Chinese translations for kweather package
+# kweather 套件的正體中文翻譯.
+# Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# Burkhard Lück <lueck@hube-lueck.de>, 2020, 2021.
-# Frederik Schwarzer <schwarzer@kde.org>, 2021, 2022.
+# Automatically generated, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-05-20 00:46+0000\n"
-"PO-Revision-Date: 2022-06-09 23:51+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
-"Language-Team: German <kde-i18n-de@kde.org>\n"
-"Language: de\n"
+"PO-Revision-Date: 2022-05-20 00:46+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Deutsches KDE-Übersetzerteam"
+msgstr ""
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-i18n-de@kde.org"
+msgstr ""
 
 #: formatter.cpp:33 formatter.cpp:38
 #, kde-format
 msgctxt "A temperature"
 msgid "%1°"
-msgstr "%1°"
+msgstr ""
 
 #: formatter.cpp:44
 #, kde-format
 msgid "%1 km/h"
-msgstr "%1 km/h"
+msgstr ""
 
 #: formatter.cpp:46
 #, kde-format
 msgid "%1 mph"
-msgstr "%1 mph"
+msgstr ""
 
 #: formatter.cpp:48
 #, kde-format
 msgid "%1 m/s"
-msgstr "%1 m/s"
+msgstr ""
 
 #: formatter.cpp:55
 #, kde-format
 msgid "%1 hPa"
-msgstr "%1 hPa"
+msgstr ""
 
 #: formatter.cpp:57
 #, kde-format
 msgid "%1 mmHg"
-msgstr "%1 mmHg"
+msgstr ""
 
 #: main.cpp:63 qml/main.qml:16
 #, kde-format
 msgid "Weather"
-msgstr "Wetter"
+msgstr ""
 
 #: main.cpp:65
 #, kde-format
 msgid "A convergent weather application for Plasma"
-msgstr "Eine konvergente Wetter-Anwendung für Plasma"
+msgstr ""
 
 #: main.cpp:67
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
-msgstr "Copyright © 2020-2022 Plasma-Entwicklerteam"
+msgstr ""
 
 #: main.cpp:69
 #, kde-format
 msgid "Han Young"
-msgstr "Han Young"
+msgstr ""
 
 #: main.cpp:70
 #, kde-format
 msgid "Devin Lin"
-msgstr "Devin Lin"
+msgstr ""
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "No location found on system, please add some in kweather"
 msgstr ""
-"Es können keine Standortdaten aus Ihrem System ausgelesen werden. Bitte "
-"fügen Sie sie in KWeather hinzu."
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "please select the location"
-msgstr "Bitte wählen Sie einen Ort"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
 #, kde-format
 msgid "%1%"
-msgstr "%1 %"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:71
 #: qml/WeatherHourDelegate.qml:65
 #, kde-format
 msgid "%1mm"
-msgstr "%1 mm"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:123
 #: plasmoid/package/contents/ui/WeatherContainer.qml:162
 #, kde-format
 msgid "Select Location"
-msgstr "Ort hinzufügen"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:128
 #, kde-format
 msgid "Open KWeather"
-msgstr "KWeather öffnen"
+msgstr ""
 
 #: qml/AddLocationPage.qml:18
 #, kde-format
 msgid "Add location"
-msgstr "Standort hinzufügen"
+msgstr ""
 
 #: qml/AddLocationPage.qml:36
 #, kde-format
 msgid "Search for a place..."
-msgstr "Suche nach einem Ort ..."
+msgstr ""
 
 #: qml/AddLocationPage.qml:76
 #, kde-format
 msgid "Unable to connect"
-msgstr "Verbindung nicht möglich"
+msgstr ""
 
 #: qml/AddLocationPage.qml:88
 #, kde-format
 msgid "Search for a location"
-msgstr "Suche nach dem Ort"
+msgstr ""
 
 #: qml/AddLocationPage.qml:93
 #, kde-format
 msgid "Add current location"
-msgstr "Aktuellen Ort hinzufügen"
+msgstr ""
 
 #: qml/AddLocationPage.qml:113
 #, kde-format
 msgid "No results"
-msgstr "Keine Ergebnisse"
+msgstr ""
 
 #: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
 #, kde-format
 msgid "Forecast"
-msgstr "Vorhersage"
+msgstr ""
 
 #: qml/DefaultPage.qml:24
 #, kde-format
 msgid "Network error when obtaining current location"
-msgstr "Netzwerkfehler beim Abrufen des aktuellen Standorts"
+msgstr ""
 
 #: qml/DefaultPage.qml:61
 #, kde-format
 msgid "No locations configured"
-msgstr "Keine Orte eingerichtet"
+msgstr ""
 
 #: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
 #, kde-format
 msgid "Add Location"
-msgstr "Standort hinzufügen"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
-msgstr "Wetter aktualisiert für %1"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
-msgstr "Aktualisiert am %1"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
 #: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
 #, kde-format
 msgid "Locations"
-msgstr "Orte"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
 #: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
 #, kde-format
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
-msgstr "Aktualisieren"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
 #, kde-format
 msgid "Left"
-msgstr "Links"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
 #, kde-format
 msgid "Right"
-msgstr "Rechts"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
 #, kde-format
 msgid "Daily"
-msgstr "Täglich"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:426
 #, kde-format
 msgid "Local Date: "
-msgstr "Lokales Datum:"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
 #, kde-format
 msgid "Hourly"
-msgstr "Stündlich"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:511
 #, kde-format
 msgid "Local Time: "
-msgstr "Ortszeit: "
+msgstr ""
 
 #: qml/InfoCard.qml:43
 #, kde-format
 msgid "Precipitation"
-msgstr "Niederschlag"
+msgstr ""
 
 #: qml/InfoCard.qml:67
 #, kde-format
 msgid "Humidity"
-msgstr "Luftfeuchtigkeit"
+msgstr ""
 
 #: qml/InfoCard.qml:91
 #, kde-format
 msgid "Pressure"
-msgstr "Luftdruck"
+msgstr ""
 
 #: qml/InfoCard.qml:115
 #, kde-format
 msgid "UV index"
-msgstr "UV-Index"
+msgstr ""
 
 #: qml/LocationsPage.qml:34
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr "Informationen über die Zeitzone können nicht geholt werden"
+msgstr ""
 
 #: qml/LocationsPage.qml:69
 #, kde-format
 msgid "Add a location"
-msgstr "Einen Ort hinzufügen"
+msgstr ""
 
 #: qml/LocationsPage.qml:92
 #, kde-format
 msgid "Remove"
-msgstr "Entfernen"
+msgstr ""
 
 #: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
 #, kde-format
 msgid "Forecast Style"
-msgstr "Vorhersagestil"
+msgstr ""
 
 #: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
 #, kde-format
 msgid "Temperature Units"
-msgstr "Temperatureinheiten"
+msgstr ""
 
 #: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
 #, kde-format
 msgid "Speed Units"
-msgstr "Geschwindigkeitseineiten"
+msgstr ""
 
 #: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
 #, kde-format
 msgid "Pressure Units"
-msgstr "Luftdruck-Einheiten"
+msgstr ""
 
 #: qml/SettingsPage.qml:155
 #, kde-format
 msgid "About"
-msgstr "Über"
+msgstr ""
 
 #: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
 #, kde-format
 msgid "Flat"
-msgstr "Flach"
+msgstr ""
 
 #: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
 #, kde-format
 msgid "Dynamic"
-msgstr "Dynamisch"
+msgstr ""
 
 #: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Use System Default"
-msgstr "Voreinstellungen des Systems verwenden"
+msgstr ""
 
 #: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Celsius"
-msgstr "Celsius"
+msgstr ""
 
 #: qml/SettingsPage.qml:178
 #, kde-format
 msgid "Fahrenheit"
-msgstr "Fahrenheit"
+msgstr ""
 
 #: qml/SettingsPage.qml:186
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
-msgstr "km/h"
+msgstr ""
 
 #: qml/SettingsPage.qml:186
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
-msgstr "mph"
+msgstr ""
 
 #: qml/SettingsPage.qml:186
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr "m/s"
+msgstr ""
 
 #: qml/SettingsPage.qml:194
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
-msgstr "hPa"
+msgstr ""
 
 #: qml/SettingsPage.qml:194
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
-msgstr "mmHg"
+msgstr ""
 
 #: qml/SetupWizard.qml:57
 #, kde-format
 msgid "Welcome to KWeather"
-msgstr "Willkommen bei KWeather"
+msgstr ""
 
 #: qml/SetupWizard.qml:71
 #, kde-format
 msgid "Continue"
-msgstr "Fortsetzen"
+msgstr ""
 
 #: qml/SetupWizard.qml:91
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Vorhersage-Design auswählen"
+msgstr ""
 
 #: qml/SetupWizard.qml:97
 #, kde-format
 msgid "You can change the theme later in the settings."
-msgstr "Hier können Sie das Design später in den Einstellungen ändern."
+msgstr ""
 
 #: qml/SetupWizard.qml:204
 #, kde-format
 msgid "Back"
-msgstr "Zurück"
+msgstr ""
 
 #: qml/SetupWizard.qml:210
 #, kde-format
 msgid "Finish"
-msgstr "Fertigstellen"
+msgstr ""
 
 #: qml/SetupWizard.qml:224
 #, kde-format
 msgid "Dynamic mode may cause performance issues on embedded platforms"
 msgstr ""
-"Der dynamische Modus kann auf eingebetteten Plattformen Leistungsprobleme "
-"verursachen"
 
 #: qml/SunriseCard.qml:48
 #, kde-format
 msgid "Sunrise"
-msgstr "Sonnenaufgang"
+msgstr ""
 
 #: qml/SunriseCard.qml:72
 #, kde-format
 msgid "Sunset"
-msgstr "Sonnenuntergang"
+msgstr ""
 
 #: qml/SunriseCard.qml:94
 #, kde-format
 msgid "Moon Phase"
-msgstr "Mondphase"
+msgstr ""
 
 #: qml/TemperatureChartCard.qml:87
 #, kde-format
 msgid "temperature"
-msgstr "Temperatur"
-
-#~ msgid "API Token"
-#~ msgstr "API-Token"
-
-#~ msgid "Not Set"
-#~ msgstr "Nicht festgelegt"
-
-#~ msgid "Added"
-#~ msgstr "Hinzugefügt"
-
-#~ msgid "Close"
-#~ msgstr "Schließen"
-
-#~ msgid "OpenWeatherMap API Token"
-#~ msgstr "OpenWeatherMap-API-Token"
-
-#~ msgid "Add your own OpenWeatherMap API token."
-#~ msgstr "Fügen Sie ihr eigenes OpenWeatherMap-API-Token hinzu."
-
-#~ msgid "Token added is stored as PLAIN TEXT in system."
-#~ msgstr "Das hinzugefügte Token wird als Klartext im System gespeichert."
-
-#~ msgid "Add your API token here... "
-#~ msgstr "Fügen Sie ihr API-Token ein ... "
-
-#~ msgid "© 2020-2021 KDE Community"
-#~ msgstr "© 2020-2021 KDE-Gemeinschaft"
-
-#~ msgid "A convergent weather application for Plasma."
-#~ msgstr "Eine konvergente Wetter-Anwendung für Plasma."
-
-#~ msgid "Storm"
-#~ msgstr "Sturm"
-
-#~ msgid "Heavy Snow"
-#~ msgstr "Starker Schneefall"
-
-#~ msgid "Rain"
-#~ msgstr "Regen"
-
-#~ msgid "Fog"
-#~ msgstr "Nebel"
-
-#~ msgid "Cloudy"
-#~ msgstr "Bewölkt"
-
-#~ msgid "Light Snow"
-#~ msgstr "Leichter Schneefall"
-
-#~ msgid "Sleet"
-#~ msgstr "Graupel"
-
-#~ msgid "Heavy Rain"
-#~ msgstr "Starker Regen"
-
-#~ msgid "Snow"
-#~ msgstr "Schnee"
-
-#~ msgid "Light Rain"
-#~ msgstr "Leichter Regen"
-
-#~ msgid "Partly Sunny"
-#~ msgstr "Teilweise sonnig"
-
-#~ msgid "Partly Cloudy"
-#~ msgstr "Teilweise bewölkt"
-
-#~ msgid "Clear"
-#~ msgstr "Klar"
-
-#~ msgid "Mostly Sunny"
-#~ msgstr "Überwiegend sonnig"
-
-#~ msgid "Rain Showers"
-#~ msgstr "Regenschauer"
-
-#~ msgid "Thunderstorm"
-#~ msgstr "Gewitter"
-
-#~ msgid "Mist"
-#~ msgstr "Dunst"
-
-#~ msgid "Select Backend"
-#~ msgstr "Modul wählen"
+msgstr ""
