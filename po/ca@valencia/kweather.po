@@ -157,7 +157,7 @@ msgstr "Predicció"
 #: qml/DefaultPage.qml:24
 #, kde-format
 msgid "Network error when obtaining current location"
-msgstr "S'ha produït un error de la ret en obtindre l'emplaçament actual"
+msgstr "S'ha produït un error de la xarxa en obtindre l'emplaçament actual"
 
 #: qml/DefaultPage.qml:61
 #, kde-format
