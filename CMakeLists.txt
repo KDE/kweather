@@ -60,7 +60,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Notifications
 )
-find_package(KF5KWeatherCore 0.5.0 REQUIRED)
+find_package(KF5KWeatherCore 0.6.0 REQUIRED)
 find_package(Qt5QuickCompiler)
 
 if (ANDROID)

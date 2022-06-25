@@ -7,6 +7,8 @@
 
 #include "locationquerymodel.h"
 
+#include <KWeatherCore/LocationQueryReply>
+
 #include <QDebug>
 #include <QTimer>
 
@@ -17,7 +19,6 @@ LocationQueryModel::LocationQueryModel()
     inputTimer = new QTimer(this);
     inputTimer->setSingleShot(true);
     connect(inputTimer, &QTimer::timeout, this, &LocationQueryModel::setQuery);
-    connect(&m_querySource, &KWeatherCore::LocationQuery::queryFinished, this, &LocationQueryModel::handleQueryResults);
 }
 
 int LocationQueryModel::rowCount(const QModelIndex &parent) const
@@ -82,7 +83,13 @@ void LocationQueryModel::textChanged(QString query, int timeout)
 void LocationQueryModel::setQuery()
 {
     qDebug() << "start query";
-    m_querySource.query(m_text);
+    auto reply = m_querySource.query(m_text);
+    connect(reply, &KWeatherCore::LocationQueryReply::finished, this, [this, reply]() {
+        reply->error();
+        if (reply->error() == KWeatherCore::LocationQueryReply::NoError || reply->error() == KWeatherCore::LocationQueryReply::NotFound) {
+            handleQueryResults(reply->result());
+        }
+    });
 }
 
 void LocationQueryModel::addLocation(int index)

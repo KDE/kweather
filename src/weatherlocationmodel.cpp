@@ -13,6 +13,8 @@
 #include <KConfigCore/KConfigGroup>
 #include <KConfigCore/KSharedConfig>
 
+#include <KWeatherCore/LocationQueryReply>
+
 #include "global.h"
 #include "kweathersettings.h"
 #include "weatherlocation.h"
@@ -148,11 +150,15 @@ void WeatherLocationListModel::requestCurrentLocation()
     if (!geoPtr)
         geoPtr = new KWeatherCore::LocationQuery(this);
 
-    geoPtr->locate();
-    // failure
-    connect(geoPtr, &KWeatherCore::LocationQuery::queryError, this, &WeatherLocationListModel::networkErrorCreatingDefault);
-    // success
-    connect(geoPtr, &KWeatherCore::LocationQuery::located, this, &WeatherLocationListModel::addCurrentLocation);
+    auto reply = geoPtr->locate();
+    connect(reply, &KWeatherCore::LocationQueryReply::finished, this, [reply, this]() {
+        reply->deleteLater();
+        if (reply->error() != KWeatherCore::LocationQueryReply::NoError) {
+            Q_EMIT networkErrorCreatingDefault();
+        } else {
+            addCurrentLocation(reply->result().at(0));
+        }
+    });
 }
 
 void WeatherLocationListModel::addCurrentLocation(const KWeatherCore::LocationQueryResult &ret)
