@@ -60,6 +60,9 @@ QString Formatter::formatPressure(qreal pressure, const QString &unit) const
 
 QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) const
 {
+    if (!date.isValid()) {
+        return i18nc("sunrise time not available", "-");
+    }
     return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("hh:mm ap"));
 }
 
