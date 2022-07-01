@@ -3,3 +3,13 @@ include:
   - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml
   - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/android.yml
   - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/freebsd.yml
+
+  
+appstream:
+  image:
+    name: archlinux:latest
+    entrypoint: [""]
+  stage: build
+  script:
+    - pacman -Sy appstream --noconfirm
+    - appstreamcli validate org.kde.kweather.appdata.xml
