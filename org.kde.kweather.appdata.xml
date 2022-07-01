@@ -93,6 +93,7 @@
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
   <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
+  <launchable type="desktop-id">org.kde.kweather.desktop</launchable>
   <recommends>
     <control>pointing</control>
     <control>keyboard</control>
