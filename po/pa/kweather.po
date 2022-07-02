@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-05-20 00:46+0000\n"
+"POT-Creation-Date: 2022-07-02 00:51+0000\n"
 "PO-Revision-Date: 2022-06-11 09:15-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -57,6 +57,12 @@ msgstr "%1hPa"
 #, kde-format
 msgid "%1 mmHg"
 msgstr "%1 mmHg"
+
+#: formatter.cpp:64
+#, kde-format
+msgctxt "sunrise time not available"
+msgid "-"
+msgstr ""
 
 #: main.cpp:63 qml/main.qml:16
 #, kde-format
