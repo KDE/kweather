@@ -9,191 +9,147 @@ import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.11 as Kirigami
+import org.kde.kirigamiaddons.labs.mobileform 0.1 as MobileForm
 
 Kirigami.ScrollablePage {
-    id: settingsRoot
+    id: root
     title: i18n("Settings")
     
     property int yTranslate: 0
 
-    topPadding: 0
-    bottomPadding: 0
+    topPadding: Kirigami.Units.largeSpacing
+    bottomPadding: Kirigami.Units.largeSpacing
     leftPadding: 0
     rightPadding: 0
+    
     Kirigami.ColumnView.fillWidth: false
     Kirigami.Theme.inherit: false
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
     ColumnLayout {
         transform: Translate { y: yTranslate }
         spacing: 0
-
-        ItemDelegate {
+        width: root.width
+        
+        MobileForm.FormCard {
             Layout.fillWidth: true
-            implicitHeight: Kirigami.Units.gridUnit * 3
-            onClicked: forecastStyle.open()
-
-            ColumnLayout {
-                spacing: -5
-                anchors.leftMargin: Kirigami.Units.gridUnit
-                anchors.rightMargin: Kirigami.Units.gridUnit
-                anchors.fill: parent
-
-                Label {
+            
+            contentItem: ColumnLayout {
+                spacing: 0
+                
+                MobileForm.FormCardHeader {
+                    title: i18n("General")
+                }
+                
+                MobileForm.FormComboBoxDelegate {
+                    id: forecastStyleDropdown
                     text: i18n("Forecast Style")
-                    font.weight: Font.Bold
+                    currentValue: settingsModel.forecastStyle
+                    model: [["Flat", i18n("Flat")], ["Dynamic", i18n("Dynamic")]]
+                    
+                    dialogDelegate: RadioDelegate {
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        
+                        text: modelData[1]
+                        checked: settingsModel.forecastStyle == modelData[0]
+                        onCheckedChanged: {
+                            if (checked) {
+                                settingsModel.forecastStyle = modelData[0];
+                            }
+                        }
+                    }
                 }
-                Label {
-                    text: settingsModel.forecastStyle
+                
+                MobileForm.FormDelegateSeparator { above: forecastStyleDropdown; below: aboutButton }
+                
+                MobileForm.FormButtonDelegate {
+                    id: aboutButton
+                    text: i18n("About")
+                    onClicked: applicationWindow().pageStack.layers.push(getPage("About"))
                 }
             }
         }
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.largeSpacing
-            opacity: 0.8
-        }
         
-        ItemDelegate {
+        MobileForm.FormCard {
             Layout.fillWidth: true
-            implicitHeight: Kirigami.Units.gridUnit * 3
-            onClicked: temperatureUnits.open()
-
-            ColumnLayout {
-                spacing: -5
-                anchors.leftMargin: Kirigami.Units.gridUnit
-                anchors.rightMargin: Kirigami.Units.gridUnit
-                anchors.fill: parent
-
-                Label {
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            
+            contentItem: ColumnLayout {
+                spacing: 0
+                
+                MobileForm.FormCardHeader {
+                    title: i18n("Units")
+                }
+                
+                MobileForm.FormComboBoxDelegate {
+                    id: temperatureUnitsDropdown
                     text: i18n("Temperature Units")
-                    font.weight: Font.Bold
+                    currentValue: settingsModel.temperatureUnits
+                    model: [["Use System Default", i18n("Use System Default")], ["Celsius", i18n("Celsius")], ["Fahrenheit", i18n("Fahrenheit")]]
+                    
+                    dialogDelegate: RadioDelegate {
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        
+                        text: modelData[1]
+                        checked: settingsModel.temperatureUnits == modelData[0]
+                        onCheckedChanged: {
+                            if (checked) {
+                                settingsModel.temperatureUnits = modelData[0];
+                            }
+                        }
+                    }
                 }
-                Label {
-                    text: i18n(settingsModel.temperatureUnits)
-                }
-            }
-        }
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.largeSpacing
-            opacity: 0.8
-        }
-
-        ItemDelegate {
-            Layout.fillWidth: true
-            implicitHeight: Kirigami.Units.gridUnit * 3
-            onClicked: speedUnits.open()
-
-            ColumnLayout {
-                spacing: -5
-                anchors.leftMargin: Kirigami.Units.gridUnit
-                anchors.rightMargin: Kirigami.Units.gridUnit
-                anchors.fill: parent
-
-                Label {
+                
+                MobileForm.FormDelegateSeparator { above: temperatureUnitsDropdown; below: speedUnitsDropdown }
+                
+                MobileForm.FormComboBoxDelegate {
+                    id: speedUnitsDropdown
                     text: i18n("Speed Units")
-                    font.weight: Font.Bold
+                    currentValue: settingsModel.speedUnits
+                    model: [["kph", i18nc("kilometers per hour", "kph")], ["mph", i18nc("miles per hour", "mph")], ["m/s", i18nc("meters per second", "m/s")]]
+                    
+                    dialogDelegate: RadioDelegate {
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        
+                        text: modelData[1]
+                        checked: settingsModel.speedUnits == modelData[0]
+                        onCheckedChanged: {
+                            if (checked) {
+                                settingsModel.speedUnits = modelData[0];
+                            }
+                        }
+                    }
                 }
-                Label {
-                    text: settingsModel.speedUnits
-                }
-            }
-        }
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.largeSpacing
-            opacity: 0.8
-        }
-
-        ItemDelegate {
-            Layout.fillWidth: true
-            implicitHeight: Kirigami.Units.gridUnit * 3
-            onClicked: pressureUnits.open()
-
-            ColumnLayout {
-                spacing: -5
-                anchors.leftMargin: Kirigami.Units.gridUnit
-                anchors.rightMargin: Kirigami.Units.gridUnit
-                anchors.fill: parent
-
-                Label {
+                
+                MobileForm.FormDelegateSeparator { above: speedUnitsDropdown; below: pressureUnitsDropdown }
+                
+                MobileForm.FormComboBoxDelegate {
+                    id: pressureUnitsDropdown
                     text: i18n("Pressure Units")
-                    font.weight: Font.Bold
-                }
-                Label {
-                    text: settingsModel.pressureUnits
+                    currentValue: settingsModel.pressureUnits
+                    model: [["hPa", i18nc("Hectopascal Pressure", "hPa")], ["mmHg", i18nc("Millimetre of mercury", "mmHg")]]
+                    
+                    dialogDelegate: RadioDelegate {
+                        implicitWidth: Kirigami.Units.gridUnit * 16
+                        topPadding: Kirigami.Units.smallSpacing * 2
+                        bottomPadding: Kirigami.Units.smallSpacing * 2
+                        
+                        text: modelData[1]
+                        checked: settingsModel.pressureUnits == modelData[0]
+                        onCheckedChanged: {
+                            if (checked) {
+                                settingsModel.pressureUnits = modelData[0];
+                            }
+                        }
+                    }
                 }
             }
-        }
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.largeSpacing
-            opacity: 0.8
-        }
-
-        ItemDelegate {
-            Layout.fillWidth: true
-            implicitHeight: Kirigami.Units.gridUnit * 3
-            
-            onClicked: appwindow.pageStack.layers.push(getPage("About"))
-            
-            Label {
-                anchors.left: parent.left
-                anchors.leftMargin: Kirigami.Units.gridUnit
-                anchors.verticalCenter: parent.verticalCenter
-                font.weight: Font.Bold
-                font.bold: true
-                text: i18n("About")
-            }
-        }
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.largeSpacing
-            opacity: 0.8
-        }
-        
-        // forecast style sheet
-        SettingsDialog {
-            id: forecastStyle
-            title: i18n("Forecast Style")
-            options: [["Flat", i18n("Flat")], ["Dynamic", i18n("Dynamic")]]
-            settingName: "forecastStyle"
-        }
-        
-        // temperature unit dialog
-        SettingsDialog {
-            id: temperatureUnits
-            title: i18n("Temperature Units")
-            options: [["Use System Default", i18n("Use System Default")], ["Celsius", i18n("Celsius")], ["Fahrenheit", i18n("Fahrenheit")]]
-            settingName: "temperatureUnits"
-        }
-
-        // speed unit dialog
-        SettingsDialog {
-            id: speedUnits
-            title: i18n("Speed Units")
-            options: [["kph", i18nc("kilometers per hour", "kph")], ["mph", i18nc("miles per hour", "mph")], ["m/s", i18nc("meters per second", "m/s")]]
-            settingName: "speedUnits"
-        }
-
-        // pressure unit dialog
-        SettingsDialog {
-            id: pressureUnits
-            title: i18n("Pressure Units")
-            options: [["hPa", i18nc("Hectopascal Pressure", "hPa")], ["mmHg", i18nc("Millimetre of mercury", "mmHg")]]
-            settingName: "pressureUnits"
-
         }
     }
 }

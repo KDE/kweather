@@ -22,6 +22,7 @@ A convergent weather application for Plasma.
 ## Dependencies
 * KWeatherCore (https://invent.kde.org/libraries/kweathercore)
 * Kirigami
+* Kirigami Addons
 * Qt Quick Controls
 * Qt Quick Shapes
 
