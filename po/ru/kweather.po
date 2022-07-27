@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-02 00:51+0000\n"
+"POT-Creation-Date: 2022-07-27 00:49+0000\n"
 "PO-Revision-Date: 2021-08-20 21:40+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -65,7 +65,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: main.cpp:63 qml/main.qml:16
+#: main.cpp:63 qml/main.qml:15
 #, kde-format
 msgid "Weather"
 msgstr "Погода"
@@ -191,7 +191,7 @@ msgid "Locations"
 msgstr "Местоположения"
 
 #: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
-#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
+#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Параметры"
@@ -267,83 +267,94 @@ msgstr "Добавить местоположение"
 msgid "Remove"
 msgstr "Удалить"
 
-#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
+#: qml/SettingsPage.qml:41
+#, kde-format
+msgid "General"
+msgstr ""
+
+#: qml/SettingsPage.qml:46
 #, kde-format
 msgid "Forecast Style"
 msgstr "Оформление прогноза погоды"
 
-#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
-#, kde-format
-msgid "Temperature Units"
-msgstr "Единица измерения температуры"
-
-#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
-#, kde-format
-msgid "Speed Units"
-msgstr "Единица измерения скорости"
-
-#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
-#, fuzzy, kde-format
-#| msgid "Pressure"
-msgid "Pressure Units"
-msgstr "Давление"
-
-#: qml/SettingsPage.qml:155
-#, kde-format
-msgid "About"
-msgstr "О программе"
-
-#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
+#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:133
 #, kde-format
 msgid "Flat"
 msgstr "Плоское"
 
-#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
+#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:180
 #, kde-format
 msgid "Dynamic"
 msgstr "Динамическое"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:69
+#, kde-format
+msgid "About"
+msgstr "О программе"
+
+#: qml/SettingsPage.qml:83
+#, fuzzy, kde-format
+#| msgid "Speed Units"
+msgid "Units"
+msgstr "Единица измерения скорости"
+
+#: qml/SettingsPage.qml:88
+#, kde-format
+msgid "Temperature Units"
+msgstr "Единица измерения температуры"
+
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Use System Default"
 msgstr ""
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Celsius"
 msgstr "Градусы Цельсия"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Градусы Фаренгейта"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:111
+#, kde-format
+msgid "Speed Units"
+msgstr "Единица измерения скорости"
+
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "км/ч"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "мили/ч"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr ""
 
-#: qml/SettingsPage.qml:194
+#: qml/SettingsPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Pressure"
+msgid "Pressure Units"
+msgstr "Давление"
+
+#: qml/SettingsPage.qml:136
 #, fuzzy, kde-format
 #| msgid "%1hPa"
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "%1гПа"
 
-#: qml/SettingsPage.qml:194
+#: qml/SettingsPage.qml:136
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"

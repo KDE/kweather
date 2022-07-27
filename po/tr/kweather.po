@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-02 00:51+0000\n"
+"POT-Creation-Date: 2022-07-27 00:49+0000\n"
 "PO-Revision-Date: 2022-07-02 13:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -65,7 +65,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: main.cpp:63 qml/main.qml:16
+#: main.cpp:63 qml/main.qml:15
 #, kde-format
 msgid "Weather"
 msgstr "Hava Durumu"
@@ -190,7 +190,7 @@ msgid "Locations"
 msgstr "Konumlar"
 
 #: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
-#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
+#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Ayarlar"
@@ -266,81 +266,92 @@ msgstr "Bir yer ekleyin"
 msgid "Remove"
 msgstr "Kaldır"
 
-#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
+#: qml/SettingsPage.qml:41
+#, kde-format
+msgid "General"
+msgstr ""
+
+#: qml/SettingsPage.qml:46
 #, kde-format
 msgid "Forecast Style"
 msgstr "Tahmin Biçemi"
 
-#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
-#, kde-format
-msgid "Temperature Units"
-msgstr "Sıcaklık Birimleri"
-
-#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
-#, kde-format
-msgid "Speed Units"
-msgstr "Hız Birimleri"
-
-#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
-#, kde-format
-msgid "Pressure Units"
-msgstr "Basınç Birimleri"
-
-#: qml/SettingsPage.qml:155
-#, kde-format
-msgid "About"
-msgstr "Hakkında"
-
-#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
+#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:133
 #, kde-format
 msgid "Flat"
 msgstr "Düz"
 
-#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
+#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:180
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinamik"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:69
+#, kde-format
+msgid "About"
+msgstr "Hakkında"
+
+#: qml/SettingsPage.qml:83
+#, fuzzy, kde-format
+#| msgid "Speed Units"
+msgid "Units"
+msgstr "Hız Birimleri"
+
+#: qml/SettingsPage.qml:88
+#, kde-format
+msgid "Temperature Units"
+msgstr "Sıcaklık Birimleri"
+
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Use System Default"
 msgstr "Sistem Öntanımlısını Kullan"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Celsius"
 msgstr "Santigrat"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenhayt"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:111
+#, kde-format
+msgid "Speed Units"
+msgstr "Hız Birimleri"
+
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "km/sa"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mil/sa"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/sn"
 
-#: qml/SettingsPage.qml:194
+#: qml/SettingsPage.qml:134
+#, kde-format
+msgid "Pressure Units"
+msgstr "Basınç Birimleri"
+
+#: qml/SettingsPage.qml:136
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hBa"
 
-#: qml/SettingsPage.qml:194
+#: qml/SettingsPage.qml:136
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
