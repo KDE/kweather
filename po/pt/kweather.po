@@ -271,7 +271,7 @@ msgstr "Remover"
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -294,10 +294,9 @@ msgid "About"
 msgstr "Acerca"
 
 #: qml/SettingsPage.qml:83
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Unidades de Velocidade"
+msgstr "Unidades"
 
 #: qml/SettingsPage.qml:88
 #, kde-format

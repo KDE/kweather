@@ -1,12 +1,12 @@
 # Translation of kweather to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021.
+# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-02 00:51+0000\n"
-"PO-Revision-Date: 2021-03-27 11:29+0100\n"
+"POT-Creation-Date: 2022-07-27 00:49+0000\n"
+"PO-Revision-Date: 2022-07-27 20:59+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 22.04.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -33,32 +33,32 @@ msgstr "karl@huftis.org"
 #, kde-format
 msgctxt "A temperature"
 msgid "%1°"
-msgstr ""
+msgstr "%1 °"
 
 #: formatter.cpp:44
 #, kde-format
 msgid "%1 km/h"
-msgstr ""
+msgstr "%1 km/t"
 
 #: formatter.cpp:46
 #, kde-format
 msgid "%1 mph"
-msgstr ""
+msgstr "%1 mile/t"
 
 #: formatter.cpp:48
 #, kde-format
 msgid "%1 m/s"
-msgstr ""
+msgstr "%1 m/s"
 
 #: formatter.cpp:55
 #, kde-format
 msgid "%1 hPa"
-msgstr ""
+msgstr "%1 hPa"
 
 #: formatter.cpp:57
 #, kde-format
 msgid "%1 mmHg"
-msgstr ""
+msgstr "%1 mmHg"
 
 #: formatter.cpp:64
 #, kde-format
@@ -66,7 +66,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: main.cpp:63 qml/main.qml:16
+#: main.cpp:63 qml/main.qml:15
 #, kde-format
 msgid "Weather"
 msgstr "Vêrmelding"
@@ -79,7 +79,7 @@ msgstr "Vêrmeldings­program for Plasma, tilpassa ulike typar brukarflater"
 #: main.cpp:67
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
-msgstr ""
+msgstr "© 2010–2022 Utviklingslaget for Plasma"
 
 #: main.cpp:69
 #, kde-format
@@ -94,12 +94,12 @@ msgstr "Devin Lin"
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "No location found on system, please add some in kweather"
-msgstr ""
+msgstr "Fann ikkje noko plassering på systemet. Vel plassering i KWeather."
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "please select the location"
-msgstr ""
+msgstr "vel plasseringa"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
 #, kde-format
@@ -116,12 +116,12 @@ msgstr "%1 mm"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:162
 #, kde-format
 msgid "Select Location"
-msgstr ""
+msgstr "Vel plassering"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:128
 #, kde-format
 msgid "Open KWeather"
-msgstr ""
+msgstr "Opna KWeather"
 
 #: qml/AddLocationPage.qml:18
 #, kde-format
@@ -192,7 +192,7 @@ msgid "Locations"
 msgstr "Stadar"
 
 #: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
-#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:15
+#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Innstillingar"
@@ -201,17 +201,17 @@ msgstr "Innstillingar"
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "Oppdater"
 
 #: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Venstre"
 
 #: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Høgre"
 
 #: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
 #, kde-format
@@ -268,85 +268,95 @@ msgstr "Legg til stad"
 msgid "Remove"
 msgstr "Fjern"
 
-#: qml/SettingsPage.qml:43 qml/SettingsPage.qml:169
+#: qml/SettingsPage.qml:41
+#, kde-format
+msgid "General"
+msgstr ""
+
+#: qml/SettingsPage.qml:46
 #, kde-format
 msgid "Forecast Style"
 msgstr "Vêrmeldings­stil"
 
-#: qml/SettingsPage.qml:71 qml/SettingsPage.qml:177
-#, kde-format
-msgid "Temperature Units"
-msgstr "Temperatur­eining"
-
-#: qml/SettingsPage.qml:99 qml/SettingsPage.qml:185
-#, kde-format
-msgid "Speed Units"
-msgstr "Farts­eining"
-
-#: qml/SettingsPage.qml:127 qml/SettingsPage.qml:193
-#, kde-format
-msgid "Pressure Units"
-msgstr ""
-
-#: qml/SettingsPage.qml:155
-#, kde-format
-msgid "About"
-msgstr "Om"
-
-#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:133
+#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:133
 #, kde-format
 msgid "Flat"
 msgstr "Flat"
 
-#: qml/SettingsPage.qml:170 qml/SetupWizard.qml:180
+#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:180
 #, kde-format
 msgid "Dynamic"
 msgstr "Dynamisk"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:69
 #, kde-format
-msgid "Use System Default"
+msgid "About"
+msgstr "Om"
+
+#: qml/SettingsPage.qml:83
+#, kde-format
+msgid "Units"
 msgstr ""
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:88
+#, kde-format
+msgid "Temperature Units"
+msgstr "Temperatur­eining"
+
+#: qml/SettingsPage.qml:90
+#, kde-format
+msgid "Use System Default"
+msgstr "Bruk systemstandard"
+
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Celsius"
 msgstr "Celsius"
 
-#: qml/SettingsPage.qml:178
+#: qml/SettingsPage.qml:90
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:111
+#, kde-format
+msgid "Speed Units"
+msgstr "Farts­eining"
+
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "k/t"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mile/t"
 
-#: qml/SettingsPage.qml:186
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr ""
+msgstr "m/s"
 
-#: qml/SettingsPage.qml:194
+#: qml/SettingsPage.qml:134
+#, kde-format
+msgid "Pressure Units"
+msgstr "Trykkeiningar"
+
+#: qml/SettingsPage.qml:136
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
-msgstr ""
+msgstr "hPa"
 
-#: qml/SettingsPage.qml:194
+#: qml/SettingsPage.qml:136
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
-msgstr ""
+msgstr "mmHg"
 
 #: qml/SetupWizard.qml:57
 #, kde-format
