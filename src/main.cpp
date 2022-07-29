@@ -65,7 +65,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                          i18n("A convergent weather application for Plasma"),
                          KAboutLicense::GPL,
                          i18n("© 2020-2022 Plasma Development Team"));
-    aboutData.setBugAddress("https://invent.kde.org/plasma-mobile/kweather/-/issues?sort=created_date&state=opened");
+    aboutData.setBugAddress("https://bugs.kde.org/describecomponents.cgi?product=kweather");
     aboutData.addAuthor(i18n("Han Young"), QString(), QStringLiteral("hanyoung@protonmail.com"));
     aboutData.addAuthor(i18n("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"), QStringLiteral("https://espi.dev"));
     KAboutData::setApplicationData(aboutData);

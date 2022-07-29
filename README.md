@@ -16,7 +16,7 @@ A convergent weather application for Plasma.
 
 ## Links
 * Project page: https://invent.kde.org/plasma-mobile/kweather
-* Issues: https://invent.kde.org/plasma-mobile/kweather/-/issues
+* Issues: https://bugs.kde.org/describecomponents.cgi?product=kweather
 * Development channel: https://matrix.to/#/#plasmamobile:matrix.org
 
 ## Dependencies
