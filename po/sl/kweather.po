@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-07-27 00:49+0000\n"
-"PO-Revision-Date: 2022-07-04 07:12+0200\n"
+"PO-Revision-Date: 2022-07-28 07:03+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -268,7 +268,7 @@ msgstr "Odstrani"
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Splošno"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -291,10 +291,9 @@ msgid "About"
 msgstr "O programu"
 
 #: qml/SettingsPage.qml:83
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Enote hitrosti"
+msgstr "Enote"
 
 #: qml/SettingsPage.qml:88
 #, kde-format
