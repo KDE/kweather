@@ -381,7 +381,7 @@ msgstr "Més tard podreu canviar el tema a la configuració."
 #: qml/SetupWizard.qml:204
 #, kde-format
 msgid "Back"
-msgstr "Enrere"
+msgstr "Arrere"
 
 #: qml/SetupWizard.qml:210
 #, kde-format
