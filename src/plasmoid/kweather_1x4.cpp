@@ -13,8 +13,8 @@
 #include "hourlymodel.h"
 #include "kweathersettings.h"
 
-KWeather_1x4::KWeather_1x4(QObject *parent, const QVariantList &args)
-    : Plasma::Applet(parent, args)
+KWeather_1x4::KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVariantList &args)
+    : Plasma::Applet(parent, md, args)
     , m_hourlyModel(new HourlyModel())
 {
     qmlRegisterAnonymousType<HourlyModel>("HourlyModel", 1);
@@ -123,6 +123,6 @@ qreal KWeather_1x4::precipitation() const
         return 0;
 }
 
-K_EXPORT_PLASMA_APPLET_WITH_JSON(kweather_1x4, KWeather_1x4, "metadata.json")
+K_PLUGIN_CLASS_WITH_JSON(KWeather_1x4, "metadata.json")
 
 #include "kweather_1x4.moc"

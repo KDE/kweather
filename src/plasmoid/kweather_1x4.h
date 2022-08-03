@@ -23,7 +23,7 @@ class KWeather_1x4 : public Plasma::Applet
     Q_PROPERTY(qreal precipitation READ precipitation NOTIFY updated)
     Q_PROPERTY(HourlyModel *hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
 public:
-    KWeather_1x4(QObject *parent, const QVariantList &args);
+    KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVariantList &args);
     QString location() const;
     QString desc() const;
     qreal temp() const;
