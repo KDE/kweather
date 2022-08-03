@@ -10,6 +10,10 @@
 
 #include <KWeatherCore/DailyWeatherForecast>
 
+#include <QtGlobal>
+
+// In Qt5 QtCharts is namespaced, in Qt6 not
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 namespace QtCharts
 {
 class QAbstractSeries;
@@ -17,6 +21,14 @@ class QSplineSeries;
 class QDateTimeAxis;
 class QValueAxis;
 }
+
+using namespace QtCharts;
+#else
+class QAbstractSeries;
+class QSplineSeries;
+class QDateTimeAxis;
+class QValueAxis;
+#endif
 
 class TemperatureChartData : public QObject
 {
@@ -32,7 +44,7 @@ public:
     double maxTempLimit() const;
     double minTempLimit() const;
 
-    Q_INVOKABLE void initSeries(QtCharts::QAbstractSeries *series);
+    Q_INVOKABLE void initSeries(QAbstractSeries *series);
     Q_INVOKABLE void initAxes(QObject *axisX, QObject *axisY);
 
 Q_SIGNALS:
@@ -47,7 +59,7 @@ private:
     double m_maxTempLimit = 100;
     double m_minTempLimit = 0;
 
-    QtCharts::QSplineSeries *m_series = nullptr;
-    QtCharts::QDateTimeAxis *m_axisX = nullptr;
-    QtCharts::QValueAxis *m_axisY = nullptr;
+    QSplineSeries *m_series = nullptr;
+    QDateTimeAxis *m_axisX = nullptr;
+    QValueAxis *m_axisY = nullptr;
 };

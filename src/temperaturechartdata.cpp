@@ -10,8 +10,8 @@
 
 #include <QDateTimeAxis>
 #include <QPointF>
+#include <QSplineSeries>
 #include <QValueAxis>
-#include <QtCharts/QSplineSeries>
 
 #include "global.h"
 
@@ -68,16 +68,16 @@ void TemperatureChartData::updateData()
     }
 }
 
-void TemperatureChartData::initSeries(QtCharts::QAbstractSeries *series)
+void TemperatureChartData::initSeries(QAbstractSeries *series)
 {
-    m_series = static_cast<QtCharts::QSplineSeries *>(series);
+    m_series = static_cast<QSplineSeries *>(series);
     updateData();
 }
 
 void TemperatureChartData::initAxes(QObject *axisX, QObject *axisY)
 {
-    m_axisX = static_cast<QtCharts::QDateTimeAxis *>(axisX);
-    m_axisY = static_cast<QtCharts::QValueAxis *>(axisY);
+    m_axisX = static_cast<QDateTimeAxis *>(axisX);
+    m_axisY = static_cast<QValueAxis *>(axisY);
 }
 
 double TemperatureChartData::maxTempLimit() const
