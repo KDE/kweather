@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-07-27 00:49+0000\n"
-"PO-Revision-Date: 2022-04-19 19:32+0200\n"
+"PO-Revision-Date: 2022-08-03 10:13+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -62,7 +62,7 @@ msgstr "%1 mm kvicksilver"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: main.cpp:63 qml/main.qml:15
 #, kde-format
@@ -267,7 +267,7 @@ msgstr "Ta bort"
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -290,10 +290,9 @@ msgid "About"
 msgstr "Om"
 
 #: qml/SettingsPage.qml:83
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Hastighetsenheter"
+msgstr "Enheter"
 
 #: qml/SettingsPage.qml:88
 #, kde-format
