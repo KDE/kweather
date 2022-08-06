@@ -16,6 +16,7 @@ set(kweather_SRCS
 )
 
 add_library(kweatherLib STATIC)
+set_target_properties(kweatherLib PROPERTIES POSITION_INDEPENDENT_CODE ON)
 kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
 target_link_libraries(kweatherLib
     Qt::Core
