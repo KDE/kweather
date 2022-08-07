@@ -57,6 +57,7 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (checked) {
                                 settingsModel.forecastStyle = modelData[0];
+                                settingsModel.save();
                             }
                         }
                     }
@@ -99,6 +100,7 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (checked) {
                                 settingsModel.temperatureUnits = modelData[0];
+                                settingsModel.save();
                             }
                         }
                     }
@@ -122,6 +124,7 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (checked) {
                                 settingsModel.speedUnits = modelData[0];
+                                settingsModel.save();
                             }
                         }
                     }
@@ -145,6 +148,7 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (checked) {
                                 settingsModel.pressureUnits = modelData[0];
+                                settingsModel.save();
                             }
                         }
                     }
