@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-27 00:49+0000\n"
-"PO-Revision-Date: 2022-07-30 15:55\n"
+"POT-Creation-Date: 2022-08-08 00:48+0000\n"
+"PO-Revision-Date: 2022-08-07 13:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -284,71 +284,71 @@ msgstr "扁平"
 msgid "Dynamic"
 msgstr "动态"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:70
 #, kde-format
 msgid "About"
 msgstr "关于"
 
-#: qml/SettingsPage.qml:83
+#: qml/SettingsPage.qml:84
 #, kde-format
 msgid "Units"
 msgstr ""
 
-#: qml/SettingsPage.qml:88
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Temperature Units"
 msgstr "温度单位"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Use System Default"
 msgstr "使用系统默认"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Fahrenheit"
 msgstr "华氏度"
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgid "Speed Units"
 msgstr "速度单位"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "千米/小时"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "英里/小时"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "米/秒"
 
-#: qml/SettingsPage.qml:134
+#: qml/SettingsPage.qml:137
 #, kde-format
 msgid "Pressure Units"
 msgstr "压力单位"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "百帕"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"

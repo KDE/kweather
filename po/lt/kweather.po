@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-27 00:49+0000\n"
+"POT-Creation-Date: 2022-08-08 00:48+0000\n"
 "PO-Revision-Date: 2021-12-12 15:42+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -289,72 +289,72 @@ msgstr "Plokščias"
 msgid "Dynamic"
 msgstr "Dinaminis"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:70
 #, kde-format
 msgid "About"
 msgstr "Apie"
 
-#: qml/SettingsPage.qml:83
+#: qml/SettingsPage.qml:84
 #, fuzzy, kde-format
 #| msgid "Speed Units"
 msgid "Units"
 msgstr "Greičio vienetai"
 
-#: qml/SettingsPage.qml:88
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Temperature Units"
 msgstr "Temperatūros vienetai"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Use System Default"
 msgstr "Naudoti sistemos numatytuosius"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Celsius"
 msgstr "Celsijus"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Farenheitas"
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgid "Speed Units"
 msgstr "Greičio vienetai"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "km/val."
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/sek."
 
-#: qml/SettingsPage.qml:134
+#: qml/SettingsPage.qml:137
 #, kde-format
 msgid "Pressure Units"
 msgstr "Slėgio matavimo vienetai"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-07-27 00:49+0000\n"
-"PO-Revision-Date: 2022-07-27 20:59+0200\n"
+"PO-Revision-Date: 2022-08-07 12:09+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -64,7 +64,7 @@ msgstr "%1 mmHg"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "–"
 
 #: main.cpp:63 qml/main.qml:15
 #, kde-format
@@ -271,7 +271,7 @@ msgstr "Fjern"
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -296,7 +296,7 @@ msgstr "Om"
 #: qml/SettingsPage.qml:83
 #, kde-format
 msgid "Units"
-msgstr ""
+msgstr "Einingar"
 
 #: qml/SettingsPage.qml:88
 #, kde-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-27 00:49+0000\n"
+"POT-Creation-Date: 2022-08-08 00:48+0000\n"
 "PO-Revision-Date: 2022-07-27 17:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -289,71 +289,71 @@ msgstr "Нейтральний"
 msgid "Dynamic"
 msgstr "Динамічний"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:70
 #, kde-format
 msgid "About"
 msgstr "Про програму"
 
-#: qml/SettingsPage.qml:83
+#: qml/SettingsPage.qml:84
 #, kde-format
 msgid "Units"
 msgstr "Одиниці виміру"
 
-#: qml/SettingsPage.qml:88
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Temperature Units"
 msgstr "Одиниці температури"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Use System Default"
 msgstr "Типовий системний"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Celsius"
 msgstr "градуси Цельсія"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Fahrenheit"
 msgstr "градуси Фаренгейта"
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgid "Speed Units"
 msgstr "Одиниці швидкості"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "км/год"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "милі/год"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "м/с"
 
-#: qml/SettingsPage.qml:134
+#: qml/SettingsPage.qml:137
 #, kde-format
 msgid "Pressure Units"
 msgstr "Одиниці тиску"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "гПа"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"

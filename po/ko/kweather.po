@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-27 00:49+0000\n"
+"POT-Creation-Date: 2022-08-08 00:48+0000\n"
 "PO-Revision-Date: 2022-07-13 12:27+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -284,72 +284,72 @@ msgstr "평면"
 msgid "Dynamic"
 msgstr "동적"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:70
 #, kde-format
 msgid "About"
 msgstr "정보"
 
-#: qml/SettingsPage.qml:83
+#: qml/SettingsPage.qml:84
 #, fuzzy, kde-format
 #| msgid "Speed Units"
 msgid "Units"
 msgstr "속도 단위"
 
-#: qml/SettingsPage.qml:88
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Temperature Units"
 msgstr "온도 단위"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Use System Default"
 msgstr "시스템 기본값 사용"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Celsius"
 msgstr "섭씨"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Fahrenheit"
 msgstr "화씨"
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgid "Speed Units"
 msgstr "속도 단위"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "kph"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/s"
 
-#: qml/SettingsPage.qml:134
+#: qml/SettingsPage.qml:137
 #, kde-format
 msgid "Pressure Units"
 msgstr "기압 단위"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
