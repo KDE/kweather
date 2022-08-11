@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-08 00:48+0000\n"
-"PO-Revision-Date: 2022-07-11 18:39+0300\n"
+"PO-Revision-Date: 2022-08-08 12:28+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -269,7 +269,7 @@ msgstr "Poista"
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Perusasetukset"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -292,10 +292,9 @@ msgid "About"
 msgstr "Tietoa"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Nopeusyksiköt"
+msgstr "Yksiköt"
 
 #: qml/SettingsPage.qml:89
 #, kde-format
