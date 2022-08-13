@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-27 00:49+0000\n"
+"POT-Creation-Date: 2022-08-08 00:48+0000\n"
 "PO-Revision-Date: 2022-08-07 12:09+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -288,71 +288,71 @@ msgstr "Flat"
 msgid "Dynamic"
 msgstr "Dynamisk"
 
-#: qml/SettingsPage.qml:69
+#: qml/SettingsPage.qml:70
 #, kde-format
 msgid "About"
 msgstr "Om"
 
-#: qml/SettingsPage.qml:83
+#: qml/SettingsPage.qml:84
 #, kde-format
 msgid "Units"
 msgstr "Einingar"
 
-#: qml/SettingsPage.qml:88
+#: qml/SettingsPage.qml:89
 #, kde-format
 msgid "Temperature Units"
 msgstr "Temperatur­eining"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Use System Default"
 msgstr "Bruk systemstandard"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Celsius"
 msgstr "Celsius"
 
-#: qml/SettingsPage.qml:90
+#: qml/SettingsPage.qml:91
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: qml/SettingsPage.qml:111
+#: qml/SettingsPage.qml:113
 #, kde-format
 msgid "Speed Units"
 msgstr "Farts­eining"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "k/t"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mile/t"
 
-#: qml/SettingsPage.qml:113
+#: qml/SettingsPage.qml:115
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/s"
 
-#: qml/SettingsPage.qml:134
+#: qml/SettingsPage.qml:137
 #, kde-format
 msgid "Pressure Units"
 msgstr "Trykkeiningar"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/SettingsPage.qml:136
+#: qml/SettingsPage.qml:139
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
