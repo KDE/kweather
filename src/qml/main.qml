@@ -35,6 +35,26 @@ Kirigami.ApplicationWindow {
         }
     }
     
+    // pop pages when not in use
+    Connections {
+        target: applicationWindow().pageStack
+        function onCurrentIndexChanged() {
+            // wait for animation to finish before popping pages
+            timer.restart();
+        }
+    }
+    
+    Timer {
+        id: timer
+        interval: 300
+        onTriggered: {
+            let currentIndex = applicationWindow().pageStack.currentIndex;
+            while (applicationWindow().pageStack.depth > (currentIndex + 1) && currentIndex >= 0) {
+                applicationWindow().pageStack.pop();
+            }
+        }
+    }
+    
     Loader {
         id: setupWizardLoader
     }

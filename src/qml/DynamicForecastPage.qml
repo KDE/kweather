@@ -192,398 +192,405 @@ Kirigami.ScrollablePage {
         }
     }
     
-    Rectangle {
-        id: rootMask
-        color: "transparent"
-        opacity: 1 - (Math.abs(x) / (page.width / 4))
+    Item {
         implicitHeight: mainLayout.implicitHeight
         
-        // left/right dragging for switching pages
-        DragHandler {
-            id: dragHandler
-            target: rootMask
-            yAxis.enabled: false; xAxis.enabled: true
-            xAxis.minimum: page.canGoRight ? -page.width : -pageChangeThreshold / 2 // extra feedback
-            xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
+        Rectangle {
+            id: rootMask
+            color: "transparent"
+            opacity: 1 - (Math.abs(x) / (page.width / 4))
+            height: parent.height
+            width: parent.width
             
-            // HACK: when a delegate, or the listview is being interacted with, disable the DragHandler so that it doesn't switch pages
-            enabled: dailyCard.pressedCount == 0 && hourlyCard.pressedCount == 0
-            
-            onActiveChanged: {
-                if (!active) {
-                    // if drag passed threshold, change page
-                    if (rootMask.x >= pageChangeThreshold) {
-                        page.finishMoveLeft();
-                    } else if (rootMask.x <= -pageChangeThreshold) {
-                        page.finishMoveRight();
-                    } else {
-                        xAnim.restart(); // reset position
+            // left/right dragging for switching pages
+            DragHandler {
+                id: dragHandler
+                target: rootMask
+                yAxis.enabled: false; xAxis.enabled: true
+                xAxis.minimum: page.canGoRight ? -page.width : -pageChangeThreshold / 2 // extra feedback
+                xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
+                
+                // HACK: when a delegate, or the listview is being interacted with, disable the DragHandler so that it doesn't switch pages
+                enabled: dailyCard.pressedCount == 0 && hourlyCard.pressedCount == 0
+                
+                onActiveChanged: {
+                    if (!active) {
+                        // if drag passed threshold, change page
+                        if (rootMask.x >= pageChangeThreshold) {
+                            page.finishMoveLeft();
+                        } else if (rootMask.x <= -pageChangeThreshold) {
+                            page.finishMoveRight();
+                        } else {
+                            xAnim.restart(); // reset position
+                        }
                     }
                 }
             }
-        }
-        // reset to position
-        NumberAnimation on x {
-            id: xAnim; to: 0
-            easing.type: Easing.InOutQuad
-            duration: Kirigami.Units.longDuration
-        }
-        
-        // header
-        RowLayout {
-            id: header
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.margins: Kirigami.Units.smallSpacing 
             
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: Kirigami.Units.largeSpacing
-                Label {
+            // reset to position
+            NumberAnimation on x {
+                id: xAnim; to: 0
+                running: false
+                easing.type: Easing.InOutQuad
+                duration: Kirigami.Units.longDuration
+            }
+            
+            // header
+            RowLayout {
+                id: header
+                anchors.left: parent.left
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.margins: Kirigami.Units.smallSpacing 
+                
+                ColumnLayout {
                     Layout.fillWidth: true
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                    font.weight: Font.Bold
-                    text: weatherLocation.name
-                    color: "white"
-                    wrapMode: Text.Wrap
-                }
-                Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                    color: "white"
-                    opacity: 0.9
-                    Layout.alignment: Qt.AlignLeft
-                    horizontalAlignment: Text.AlignLeft
-                    text: i18n("Updated at %1", weatherLocation.lastUpdated)
-                }
-            }
-            
-            property real buttonLength: Kirigami.Units.gridUnit * 2.5
-            property real iconLength: Kirigami.Units.gridUnit * 1.2
-            
-            ToolButton {
-                Layout.alignment: Qt.AlignTop
-                Layout.minimumWidth: header.buttonLength
-                Layout.minimumHeight: header.buttonLength
-                
-                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                Kirigami.Theme.inherit: false
-                
-                icon.name: "globe"
-                icon.height: header.iconLength
-                icon.width: header.iconLength
-                icon.color: "white"
-                
-                text: i18n("Locations")
-                display: ToolButton.IconOnly
-                onClicked: applicationWindow().pushPage(getPage("Locations"), 0)
-
-                ToolTip.visible: down
-                ToolTip.text: i18n("Locations")
-            }
-            ToolButton {
-                Layout.alignment: Qt.AlignTop
-                Layout.minimumWidth: header.buttonLength
-                Layout.minimumHeight: header.buttonLength
-                
-                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                Kirigami.Theme.inherit: false
-                
-                icon.name: "settings-configure"
-                icon.height: header.iconLength
-                icon.width: header.iconLength
-                icon.color: "white"
-                
-                text: i18n("Settings")
-                display: ToolButton.IconOnly
-                onClicked: applicationWindow().pushPage(getPage("Settings"), 0)
-
-                ToolTip.visible: down
-                ToolTip.text: i18n("Settings")
-            }
-            ToolButton {
-                Layout.alignment: Qt.AlignTop
-                Layout.minimumWidth: header.buttonLength
-                Layout.minimumHeight: header.buttonLength
-                
-                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                Kirigami.Theme.inherit: false
-                
-                icon.name: "view-refresh"
-                icon.height: header.iconLength
-                icon.width: header.iconLength
-                icon.color: "white"
-                
-                visible: !Kirigami.Settings.isMobile
-                text: i18n("Refresh")
-                display: ToolButton.IconOnly
-                onClicked: weatherLocationListModel.locations[loader.item.currentIndex].update()
-
-                ToolTip.visible: down
-                ToolTip.text: i18n("Refresh")
-            }
-            ToolButton {
-                Layout.alignment: Qt.AlignTop
-                Layout.minimumWidth: header.buttonLength
-                Layout.minimumHeight: header.buttonLength
-                
-                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                Kirigami.Theme.inherit: false
-                
-                icon.name: "arrow-left"
-                icon.height: header.iconLength
-                icon.width: header.iconLength
-                icon.color: "white"
-                
-                visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
-                text: i18n("Left")
-                display: ToolButton.IconOnly
-                onClicked: page.moveLeft()
-                enabled: page.canGoLeft
-            }
-            ToolButton {
-                Layout.alignment: Qt.AlignTop
-                Layout.minimumWidth: header.buttonLength
-                Layout.minimumHeight: header.buttonLength
-                
-                Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                Kirigami.Theme.inherit: false
-                
-                icon.name: "arrow-right"
-                icon.height: header.iconLength
-                icon.width: header.iconLength
-                icon.color: "white"
-                
-                visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
-                text: i18n("Right")
-                display: ToolButton.IconOnly
-                onClicked: page.moveRight()
-                enabled: page.canGoRight
-            }
-        }
-        
-        // content
-        ColumnLayout {
-            id: mainLayout
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: Math.min(page.width - Kirigami.Units.largeSpacing * 4, maximumContentWidth)
-            
-            // separator from top
-            // used instead of topMargin, since it can be shrunk when needed (small window height)
-            Item {
-                Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2, // header height
-                                                 page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
-            }
-            
-            // weather header
-            ColumnLayout {
-                id: headerText
-                Layout.fillWidth: true
-                RowLayout {
-                    spacing: 0
-                    Label {
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
-                        font.weight: Font.Light
-                        color: "white"
-                        text: Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits))
-                        font.family: lightHeadingFont.name
-                    }
-                    Label {
-                        Layout.alignment: Qt.AlignTop
-                        Layout.topMargin: Kirigami.Units.largeSpacing
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                        font.weight: Font.Light
-                        color: "white"
-                        font.family: lightHeadingFont.name
-                        text: Formatter.formatTemperatureUnitDegrees(settingsModel.temperatureUnits)
-                    }
-                }
-                Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                    font.weight: Font.DemiBold
-                    color: "white"
-                    Layout.alignment: Qt.AlignLeft
-                    horizontalAlignment: Text.AlignLeft
-                    text: weatherLocation.currentHourForecast.weatherDescription
-                    font.family: lightHeadingFont.name
-                }
-            }
-
-            // daily view header
-            ColumnLayout {
-                id: dailyHeader
-                spacing: Kirigami.Units.smallSpacing
-                Layout.fillWidth: true
-                Layout.topMargin: Kirigami.Units.largeSpacing * 2
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
-                
-                Label {
-                    text: i18n("Daily")
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                    color: "white"
-                }
-                Label {
-                    text: i18n("Local Date: ") + weatherLocation.currentDate
-                    font: Kirigami.Theme.smallFont
-                    color: "white"
-                    opacity: 0.7
-                }
-            }
-            
-            // daily view
-            Control {
-                id: dailyCard
-                Layout.fillWidth: true
-                padding: Kirigami.Units.largeSpacing
-                
-                property int pressedCount: 0
-                
-                background: Kirigami.ShadowedRectangle {
-                    color: weatherLocation.cardBackgroundColor
-                    radius: Kirigami.Units.smallSpacing
-                    anchors.fill: parent
-
-                    shadow.size: Kirigami.Units.largeSpacing
-                    shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                    shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
-                }
-
-                contentItem: WeatherStrip {
-                    id: dailyListView
-                    selectable: true
-
-                    highlightMoveDuration: 250
-                    highlightMoveVelocity: -1
-                    highlight: Rectangle {
-                        color: Kirigami.Theme.focusColor
-                        border {
-                            color: Kirigami.Theme.focusColor
-                            width: 1
-                        }
-                        radius: 4
-                        opacity: 0.3
-                        focus: true
-                    }
-
                     spacing: Kirigami.Units.largeSpacing
-
-                    onDraggingChanged: dailyCard.pressedCount += dragging? 1 : -1;
+                    Label {
+                        Layout.fillWidth: true
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                        font.weight: Font.Bold
+                        text: weatherLocation.name
+                        color: "white"
+                        wrapMode: Text.Wrap
+                    }
+                    Label {
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
+                        color: "white"
+                        opacity: 0.9
+                        Layout.alignment: Qt.AlignLeft
+                        horizontalAlignment: Text.AlignLeft
+                        text: i18n("Updated at %1", weatherLocation.lastUpdated)
+                    }
+                }
+                
+                property real buttonLength: Kirigami.Units.gridUnit * 2.5
+                property real iconLength: Kirigami.Units.gridUnit * 1.2
+                
+                ToolButton {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.minimumWidth: header.buttonLength
+                    Layout.minimumHeight: header.buttonLength
                     
-                    model: weatherLocation.dayForecasts
-                    delegate: WeatherDayDelegate {
-                        id: delegate
-                        weather: modelData
-                        textColor: weatherLocation.cardTextColor
-                        secondaryTextColor: weatherLocation.cardSecondaryTextColor
-                        
-                        Connections {
-                            target: delegate.mouseArea
-                            function onPressedChanged() {
-                                dailyCard.pressedCount += delegate.mouseArea.pressed ? 1 : -1;
-                            }
-                        }
-                    }
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                    Kirigami.Theme.inherit: false
+                    
+                    icon.name: "globe"
+                    icon.height: header.iconLength
+                    icon.width: header.iconLength
+                    icon.color: "white"
+                    
+                    text: i18n("Locations")
+                    display: ToolButton.IconOnly
+                    onClicked: applicationWindow().pushPage(getPage("Locations"), 0)
 
-                    onCurrentIndexChanged: {
-                        weatherLocation.selectedDay = currentIndex
-                    }
+                    ToolTip.visible: down
+                    ToolTip.text: i18n("Locations")
+                }
+                ToolButton {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.minimumWidth: header.buttonLength
+                    Layout.minimumHeight: header.buttonLength
+                    
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                    Kirigami.Theme.inherit: false
+                    
+                    icon.name: "settings-configure"
+                    icon.height: header.iconLength
+                    icon.width: header.iconLength
+                    icon.color: "white"
+                    
+                    text: i18n("Settings")
+                    display: ToolButton.IconOnly
+                    onClicked: applicationWindow().pushPage(getPage("Settings"), 0)
+
+                    ToolTip.visible: down
+                    ToolTip.text: i18n("Settings")
+                }
+                ToolButton {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.minimumWidth: header.buttonLength
+                    Layout.minimumHeight: header.buttonLength
+                    
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                    Kirigami.Theme.inherit: false
+                    
+                    icon.name: "view-refresh"
+                    icon.height: header.iconLength
+                    icon.width: header.iconLength
+                    icon.color: "white"
+                    
+                    visible: !Kirigami.Settings.isMobile
+                    text: i18n("Refresh")
+                    display: ToolButton.IconOnly
+                    onClicked: weatherLocationListModel.locations[loader.item.currentIndex].update()
+
+                    ToolTip.visible: down
+                    ToolTip.text: i18n("Refresh")
+                }
+                ToolButton {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.minimumWidth: header.buttonLength
+                    Layout.minimumHeight: header.buttonLength
+                    
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                    Kirigami.Theme.inherit: false
+                    
+                    icon.name: "arrow-left"
+                    icon.height: header.iconLength
+                    icon.width: header.iconLength
+                    icon.color: "white"
+                    
+                    visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
+                    text: i18n("Left")
+                    display: ToolButton.IconOnly
+                    onClicked: page.moveLeft()
+                    enabled: page.canGoLeft
+                }
+                ToolButton {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.minimumWidth: header.buttonLength
+                    Layout.minimumHeight: header.buttonLength
+                    
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
+                    Kirigami.Theme.inherit: false
+                    
+                    icon.name: "arrow-right"
+                    icon.height: header.iconLength
+                    icon.width: header.iconLength
+                    icon.color: "white"
+                    
+                    visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
+                    text: i18n("Right")
+                    display: ToolButton.IconOnly
+                    onClicked: page.moveRight()
+                    enabled: page.canGoRight
                 }
             }
             
-            // temperature chart
-            TemperatureChartCard {
-                location: weatherLocation
-            }
-
-            // hourly view header
+            // content
             ColumnLayout {
-                spacing: Kirigami.Units.smallSpacing
-                Layout.fillWidth: true
-                Layout.topMargin: Kirigami.Units.largeSpacing * 2
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
+                id: mainLayout
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: Math.min(page.width - Kirigami.Units.largeSpacing * 4, maximumContentWidth)
                 
-                Label {
-                    text: i18n("Hourly")
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                    color: "white"
+                // separator from top
+                // used instead of topMargin, since it can be shrunk when needed (small window height)
+                Item {
+                    Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2, // header height
+                                                    page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
                 }
-                Label {
-                    text: i18n("Local Time: ") + weatherLocation.currentTime
-                    font: Kirigami.Theme.smallFont
-                    color: "white"
-                    opacity: 0.7
-                }
-            }
-
-            // hourly view
-            Kirigami.Card {
-                id: hourlyCard
-                Layout.fillWidth: true
-
-                property int pressedCount: 0
                 
-                background: Kirigami.ShadowedRectangle {
-                    color: weatherLocation.cardBackgroundColor
-                    radius: Kirigami.Units.smallSpacing
-                    anchors.fill: parent
-
-                    shadow.size: Kirigami.Units.largeSpacing
-                    shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                    shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                // weather header
+                ColumnLayout {
+                    id: headerText
+                    Layout.fillWidth: true
+                    RowLayout {
+                        spacing: 0
+                        Label {
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
+                            font.weight: Font.Light
+                            color: "white"
+                            text: Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits))
+                            font.family: lightHeadingFont.name
+                        }
+                        Label {
+                            Layout.alignment: Qt.AlignTop
+                            Layout.topMargin: Kirigami.Units.largeSpacing
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                            font.weight: Font.Light
+                            color: "white"
+                            font.family: lightHeadingFont.name
+                            text: Formatter.formatTemperatureUnitDegrees(settingsModel.temperatureUnits)
+                        }
+                    }
+                    Label {
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                        font.weight: Font.DemiBold
+                        color: "white"
+                        Layout.alignment: Qt.AlignLeft
+                        horizontalAlignment: Text.AlignLeft
+                        text: weatherLocation.currentHourForecast.weatherDescription
+                        font.family: lightHeadingFont.name
+                    }
                 }
 
-                contentItem: WeatherStrip {
-                    id: hourlyListView
-                    selectable: false
-                    model: weatherLocation.hourForecasts
-                    onDraggingChanged: hourlyCard.pressedCount += dragging? 1 : -1;
+                // daily view header
+                ColumnLayout {
+                    id: dailyHeader
+                    spacing: Kirigami.Units.smallSpacing
+                    Layout.fillWidth: true
+                    Layout.topMargin: Kirigami.Units.largeSpacing * 2
+                    Layout.bottomMargin: Kirigami.Units.largeSpacing
+                    
+                    Label {
+                        text: i18n("Daily")
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                        color: "white"
+                    }
+                    Label {
+                        text: i18n("Local Date: ") + weatherLocation.currentDate
+                        font: Kirigami.Theme.smallFont
+                        color: "white"
+                        opacity: 0.7
+                    }
+                }
+                
+                // daily view
+                Control {
+                    id: dailyCard
+                    Layout.fillWidth: true
+                    padding: Kirigami.Units.largeSpacing
+                    
+                    property int pressedCount: 0
+                    
+                    background: Kirigami.ShadowedRectangle {
+                        color: weatherLocation.cardBackgroundColor
+                        radius: Kirigami.Units.smallSpacing
+                        anchors.fill: parent
 
-                    delegate: WeatherHourDelegate {
-                        id: delegate
-                        weather: modelData
-                        textColor: weatherLocation.cardTextColor
-                        secondaryTextColor: weatherLocation.cardSecondaryTextColor
+                        shadow.size: Kirigami.Units.largeSpacing
+                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                    }
 
-                        Connections {
-                            target: delegate.mouseArea
-                            function onPressedChanged() {
-                                hourlyCard.pressedCount += delegate.mouseArea.pressed ? 1 : -1;
+                    contentItem: WeatherStrip {
+                        id: dailyListView
+                        selectable: true
+
+                        highlightMoveDuration: 250
+                        highlightMoveVelocity: -1
+                        highlight: Rectangle {
+                            color: Kirigami.Theme.focusColor
+                            border {
+                                color: Kirigami.Theme.focusColor
+                                width: 1
+                            }
+                            radius: 4
+                            opacity: 0.3
+                            focus: true
+                        }
+
+                        spacing: Kirigami.Units.largeSpacing
+
+                        onDraggingChanged: dailyCard.pressedCount += dragging? 1 : -1;
+                        
+                        model: weatherLocation.dayForecasts
+                        delegate: WeatherDayDelegate {
+                            id: delegate
+                            weather: modelData
+                            textColor: weatherLocation.cardTextColor
+                            secondaryTextColor: weatherLocation.cardSecondaryTextColor
+                            
+                            Connections {
+                                target: delegate.mouseArea
+                                function onPressedChanged() {
+                                    dailyCard.pressedCount += delegate.mouseArea.pressed ? 1 : -1;
+                                }
+                            }
+                        }
+
+                        onCurrentIndexChanged: {
+                            weatherLocation.selectedDay = currentIndex
+                        }
+                    }
+                }
+                
+                // temperature chart
+                TemperatureChartCard {
+                    location: weatherLocation
+                }
+
+                // hourly view header
+                ColumnLayout {
+                    spacing: Kirigami.Units.smallSpacing
+                    Layout.fillWidth: true
+                    Layout.topMargin: Kirigami.Units.largeSpacing * 2
+                    Layout.bottomMargin: Kirigami.Units.largeSpacing
+                    
+                    Label {
+                        text: i18n("Hourly")
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                        color: "white"
+                    }
+                    Label {
+                        text: i18n("Local Time: ") + weatherLocation.currentTime
+                        font: Kirigami.Theme.smallFont
+                        color: "white"
+                        opacity: 0.7
+                    }
+                }
+
+                // hourly view
+                Kirigami.Card {
+                    id: hourlyCard
+                    Layout.fillWidth: true
+
+                    property int pressedCount: 0
+                    
+                    background: Kirigami.ShadowedRectangle {
+                        color: weatherLocation.cardBackgroundColor
+                        radius: Kirigami.Units.smallSpacing
+                        anchors.fill: parent
+
+                        shadow.size: Kirigami.Units.largeSpacing
+                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                    }
+
+                    contentItem: WeatherStrip {
+                        id: hourlyListView
+                        selectable: false
+                        model: weatherLocation.hourForecasts
+                        onDraggingChanged: hourlyCard.pressedCount += dragging? 1 : -1;
+
+                        delegate: WeatherHourDelegate {
+                            id: delegate
+                            weather: modelData
+                            textColor: weatherLocation.cardTextColor
+                            secondaryTextColor: weatherLocation.cardSecondaryTextColor
+
+                            Connections {
+                                target: delegate.mouseArea
+                                function onPressedChanged() {
+                                    hourlyCard.pressedCount += delegate.mouseArea.pressed ? 1 : -1;
+                                }
                             }
                         }
                     }
                 }
-            }
-            
-            // bottom card (extra info for selected day)
-            InfoCard {
-                Layout.fillWidth: true
+                
+                // bottom card (extra info for selected day)
+                InfoCard {
+                    Layout.fillWidth: true
 
-                textColor: weatherLocation.cardTextColor
+                    textColor: weatherLocation.cardTextColor
 
-                background: Kirigami.ShadowedRectangle {
-                    color: weatherLocation.cardBackgroundColor
-                    radius: Kirigami.Units.smallSpacing
-                    anchors.fill: parent
+                    background: Kirigami.ShadowedRectangle {
+                        color: weatherLocation.cardBackgroundColor
+                        radius: Kirigami.Units.smallSpacing
+                        anchors.fill: parent
 
-                    shadow.size: Kirigami.Units.largeSpacing
-                    shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                    shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                        shadow.size: Kirigami.Units.largeSpacing
+                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                    }
                 }
-            }
 
-            SunriseCard {
-                Layout.fillWidth: true
+                SunriseCard {
+                    Layout.fillWidth: true
 
-                textColor: weatherLocation.cardTextColor
+                    textColor: weatherLocation.cardTextColor
 
-                background: Kirigami.ShadowedRectangle {
-                    color: weatherLocation.cardBackgroundColor
-                    radius: Kirigami.Units.smallSpacing
-                    anchors.fill: parent
+                    background: Kirigami.ShadowedRectangle {
+                        color: weatherLocation.cardBackgroundColor
+                        radius: Kirigami.Units.smallSpacing
+                        anchors.fill: parent
 
-                    shadow.size: Kirigami.Units.largeSpacing
-                    shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                    shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                        shadow.size: Kirigami.Units.largeSpacing
+                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
+                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                    }
                 }
             }
         }
