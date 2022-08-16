@@ -100,6 +100,15 @@ Kirigami.ScrollablePage {
             }
         }
         
+        // separator between the top window decoration bar and the components
+        Rectangle {
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: 1
+            color: Qt.rgba(0, 0, 0, 0.2)
+        }
+        
         // background components (ex. cloud, sun, etc.)
         Item {
             anchors.fill: parent
