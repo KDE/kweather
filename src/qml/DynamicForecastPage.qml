@@ -291,7 +291,7 @@ Kirigami.ScrollablePage {
                     
                     text: i18n("Locations")
                     display: ToolButton.IconOnly
-                    onClicked: applicationWindow().pushPage(getPage("Locations"), 0)
+                    onClicked: applicationWindow().openLocationsList()
 
                     ToolTip.visible: down
                     ToolTip.text: i18n("Locations")
@@ -336,44 +336,6 @@ Kirigami.ScrollablePage {
 
                     ToolTip.visible: down
                     ToolTip.text: i18n("Refresh")
-                }
-                ToolButton {
-                    Layout.alignment: Qt.AlignTop
-                    Layout.minimumWidth: header.buttonLength
-                    Layout.minimumHeight: header.buttonLength
-                    
-                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                    Kirigami.Theme.inherit: false
-                    
-                    icon.name: "arrow-left"
-                    icon.height: header.iconLength
-                    icon.width: header.iconLength
-                    icon.color: "white"
-                    
-                    visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
-                    text: i18n("Left")
-                    display: ToolButton.IconOnly
-                    onClicked: page.moveLeft()
-                    enabled: page.canGoLeft
-                }
-                ToolButton {
-                    Layout.alignment: Qt.AlignTop
-                    Layout.minimumWidth: header.buttonLength
-                    Layout.minimumHeight: header.buttonLength
-                    
-                    Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
-                    Kirigami.Theme.inherit: false
-                    
-                    icon.name: "arrow-right"
-                    icon.height: header.iconLength
-                    icon.width: header.iconLength
-                    icon.color: "white"
-                    
-                    visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
-                    text: i18n("Right")
-                    display: ToolButton.IconOnly
-                    onClicked: page.moveRight()
-                    enabled: page.canGoRight
                 }
             }
             

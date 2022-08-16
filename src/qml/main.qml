@@ -10,6 +10,8 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.11 as Kirigami
 
+import "locationslist"
+
 Kirigami.ApplicationWindow {
     id: appwindow
     title: i18n("Weather")
@@ -24,6 +26,8 @@ Kirigami.ApplicationWindow {
     pageStack.globalToolBar.showNavigationButtons: Kirigami.ApplicationHeaderStyle.ShowBackButton;
 
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
+    
+    readonly property bool isWideScreen: width > 540
     
     Component.onCompleted: {
         // initial page
@@ -107,13 +111,42 @@ Kirigami.ApplicationWindow {
     function getPage(name) {
         switch (name) {
             case "Forecast": return pagePool.loadPage(weatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
-            case "Locations": return pagePool.loadPage("qrc:/qml/LocationsPage.qml");
-            case "AddLocation": return pagePool.loadPage("qrc:/qml/AddLocationPage.qml");
+            case "Locations": return pagePool.loadPage("qrc:/qml/locationslist/LocationsListPage.qml");
             case "Settings": return pagePool.loadPage("qrc:/qml/SettingsPage.qml");
             case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
         }
     }
+    
+    function openLocationsList() {
+        if (isWideScreen) {
+            locationsListDialogLoader.active = true;
+            locationsListDialogLoader.item.open();
+        } else {
+            applicationWindow().pushPage(getPage("Locations"), 0);
+        }
+    }
+    
+    function openAddLocation() {
+        if (isWideScreen) {
+            addLocationDialogLoader.active = true;
+            addLocationDialogLoader.item.open();
+        } else {
+            applicationWindow().pageStack.push(Qt.resolvedUrl("qrc:/qml/locationslist/AddLocationPage.qml"))
+        }
+    }
+    
+    Loader {
+        id: addLocationDialogLoader
+        active: false
+        sourceComponent: AddLocationDialog {}
+    }
 
+    Loader {
+        id: locationsListDialogLoader
+        active: false
+        sourceComponent: LocationsListDialog {}
+    }
+    
     FontLoader {
         id: lightHeadingFont
         source: "qrc:/resources/NotoSans-Light.ttf"

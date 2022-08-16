@@ -39,7 +39,7 @@ Kirigami.Page {
         Kirigami.Action {
             iconName: "globe"
             text: i18n("Locations")
-            onTriggered: applicationWindow().pushPage(getPage("Locations"), 0)
+            onTriggered: applicationWindow().openLocationsList()
         },
         Kirigami.Action {
             iconName: "settings-configure"
@@ -53,22 +53,6 @@ Kirigami.Page {
             text: i18n("Refresh")
             displayHint: Kirigami.Action.IconOnly
             onTriggered: weatherLocationListModel.locations[loader.item.currentIndex].update()
-        },
-        Kirigami.Action {
-            visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
-            iconName: "arrow-left"
-            text: i18n("Left")
-            displayHint: Kirigami.Action.IconOnly
-            onTriggered: loader.item.moveLeft()
-            enabled: loader.item.canGoLeft
-        },
-        Kirigami.Action {
-            visible: !Kirigami.Settings.isMobile && weatherLocationListModel.count > 1
-            iconName: "arrow-right"
-            text: i18n("Right")
-            displayHint: Kirigami.Action.IconOnly
-            onTriggered: loader.item.moveRight()
-            enabled: loader.item.canGoRight
         }
     ]
     

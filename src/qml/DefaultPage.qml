@@ -34,7 +34,7 @@ Kirigami.ScrollablePage {
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
             iconName: "globe"
-            onTriggered: applicationWindow().pushPage(getPage("Locations"), 0)
+            onTriggered: applicationWindow().openLocationsList();
         },
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
@@ -63,10 +63,7 @@ Kirigami.ScrollablePage {
             helpfulAction: Kirigami.Action {
                 iconName: "list-add"
                 text: i18n("Add Location")
-                onTriggered: {
-                    applicationWindow().pushPage(getPage("Locations"), 0);
-                    applicationWindow().pageStack.push(Qt.resolvedUrl("AddLocationPage.qml"));
-                }
+                onTriggered: applicationWindow().openAddLocation();
             }
         }
     }

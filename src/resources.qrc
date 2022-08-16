@@ -7,13 +7,11 @@
     <qresource prefix="/">
         <file>resources/kweather.svg</file>
         <file>qml/main.qml</file>
-        <file>qml/LocationsPage.qml</file>
         <file>qml/FlatLocationForecast.qml</file>
         <file>qml/WeatherDayDelegate.qml</file>
         <file>qml/WeatherHourDelegate.qml</file>
         <file>qml/ForecastContainerPage.qml</file>
         <file>qml/SettingsPage.qml</file>
-        <file>qml/AddLocationPage.qml</file>
         <file>qml/DefaultPage.qml</file>
         <file>qml/SetupWizard.qml</file>
         <file>qml/AboutPage.qml</file>
@@ -23,6 +21,13 @@
         <file>qml/WeatherStrip.qml</file>
         <file>qml/DynamicForecastPage.qml</file>
         <file>qml/FlatForecastPage.qml</file>
+        <file>qml/locationslist/LocationsListView.qml</file>
+        <file>qml/locationslist/LocationsListPage.qml</file>
+        <file>qml/locationslist/LocationsListDialog.qml</file>
+        <file>qml/locationslist/AddLocationDialog.qml</file>
+        <file>qml/locationslist/AddLocationListView.qml</file>
+        <file>qml/locationslist/AddLocationPage.qml</file>
+        <file>qml/components/ListDelegate.qml</file>
         <file>qml/backgrounds/DynamicBackground.qml</file>
         <file>qml/backgrounds/ClearDay.qml</file>
         <file>qml/backgrounds/ClearNight.qml</file>
