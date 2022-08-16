@@ -276,7 +276,7 @@ Kirigami.ScrollablePage {
                 
                 text: i18n("Locations")
                 display: ToolButton.IconOnly
-                onClicked: addPageLayer(getPage("Locations"), 0)
+                onClicked: applicationWindow().pushPage(getPage("Locations"), 0)
 
                 ToolTip.visible: down
                 ToolTip.text: i18n("Locations")
@@ -296,7 +296,7 @@ Kirigami.ScrollablePage {
                 
                 text: i18n("Settings")
                 display: ToolButton.IconOnly
-                onClicked: addPageLayer(getPage("Settings"), 0)
+                onClicked: applicationWindow().pushPage(getPage("Settings"), 0)
 
                 ToolTip.visible: down
                 ToolTip.text: i18n("Settings")

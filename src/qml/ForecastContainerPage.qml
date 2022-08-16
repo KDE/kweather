@@ -39,13 +39,13 @@ Kirigami.Page {
         Kirigami.Action {
             iconName: "globe"
             text: i18n("Locations")
-            onTriggered: addPageLayer(getPage("Locations"), 0)
+            onTriggered: applicationWindow().pushPage(getPage("Locations"), 0)
         },
         Kirigami.Action {
             iconName: "settings-configure"
             text: i18n("Settings")
             displayHint: Kirigami.Action.IconOnly
-            onTriggered: addPageLayer(getPage("Settings"), 0)
+            onTriggered: applicationWindow().pushPage(getPage("Settings"), 0)
         },
         Kirigami.Action {
             visible: !Kirigami.Settings.isMobile

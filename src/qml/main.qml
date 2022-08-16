@@ -18,12 +18,16 @@ Kirigami.ApplicationWindow {
     minimumHeight: Kirigami.Settings.isMobile ? 0 : 360
     width: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 27 : Kirigami.Units.gridUnit * 40
     height: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 45 : Kirigami.Units.gridUnit * 35
+    
+    pageStack.globalToolBar.canContainHandles: true; // move handles to toolbar
+    pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.ToolBar; // ensure toolbar style for mobile
+    pageStack.globalToolBar.showNavigationButtons: Kirigami.ApplicationHeaderStyle.ShowBackButton;
 
+    pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
+    
     Component.onCompleted: {
-        pageStack.globalToolBar.canContainHandles = true; // move handles to toolbar
-        pageStack.globalToolBar.style = Kirigami.ApplicationHeaderStyle.ToolBar; // ensure toolbar style for mobile
-        
-        switchToPage(getPage("Forecast"), 1); // initial page
+        // initial page
+        switchToPage(getPage("Forecast"), 1);
 
         if (settingsModel.firstStartup) {
             setupWizardLoader.source = "qrc:/qml/SetupWizard.qml";
@@ -58,26 +62,17 @@ Kirigami.ApplicationWindow {
     function switchToPage(page, depth) {
         while (pageStack.layers.depth > 1) pageStack.layers.pop();
         while (pageStack.depth > depth) pageStack.pop();
-        
-        // page switch animation
-        yAnim.target = page;
-        yAnim.properties = "yTranslate";
-        anim.target = page;
-        anim.properties = "contentItem.opacity";
-        if (page.header) {
-            anim.properties += ",header.opacity";
-        }
-        yAnim.restart();
-        anim.restart();
-        
+        runPageAnimations(page);
         pageStack.push(page);
     }
     
-    function addPageLayer(page, depth) {
-        if (pageStack.layers.currentItem === page) return;
-        while (depth !== undefined && pageStack.layers.depth > depth + 1) pageStack.layers.pop();
-        
-        // page switch animation
+    function pushPage(page, depth) {
+        while (depth !== undefined && pageStack.depth > depth + 1) pageStack.pop();
+        runPageAnimations(page);
+        pageStack.push(page);
+    }
+    
+    function runPageAnimations(page) {
         yAnim.target = page;
         yAnim.properties = "yTranslate";
         anim.target = page;
@@ -87,8 +82,6 @@ Kirigami.ApplicationWindow {
         }
         yAnim.restart();
         anim.restart();
-        
-        pageStack.layers.push(page);
     }
     
     function getPage(name) {

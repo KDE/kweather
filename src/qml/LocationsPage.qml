@@ -24,7 +24,7 @@ Kirigami.ScrollablePage {
         Kirigami.Action {
             iconName: "list-add"
             text: i18n("Add Location")
-            onTriggered: appwindow.pageStack.layers.push(Qt.resolvedUrl("AddLocationPage.qml"))
+            onTriggered: applicationWindow().pageStack.push(Qt.resolvedUrl("AddLocationPage.qml"))
         }
     ]
 
@@ -72,92 +72,73 @@ Kirigami.ScrollablePage {
             helpfulAction: Kirigami.Action {
                 iconName: "list-add"
                 text: i18n("Add Location")
-                onTriggered: appwindow.pageStack.layers.push(Qt.resolvedUrl("AddLocationPage.qml"))
+                onTriggered: applicationWindow().pageStack.push(Qt.resolvedUrl("AddLocationPage.qml"))
             }
         }
 
-        delegate: Kirigami.DelegateRecycler {
-            width: citiesList.width
-            sourceComponent: delegateComponent
-        }
-        
-        Component {
-            id: delegateComponent
-            
-            Kirigami.SwipeListItem {
-                id: listItem
-                actions: [
-                    Kirigami.Action {
-                        iconName: "delete"
-                        text: i18n("Remove")
-                        onTriggered: {
-                            weatherLocationListModel.remove(index);
-                            
-                            // switch to default page if there are no locations left
-                            if (weatherLocationListModel.count === 0) {
-                                switchToPage(getPage("Forecast"), 0);
-                            }
+        delegate: Kirigami.SwipeListItem {
+            id: listItem
+            actions: [
+                Kirigami.Action {
+                    iconName: "delete"
+                    text: i18n("Remove")
+                    onTriggered: {
+                        weatherLocationListModel.remove(index);
+                        
+                        // switch to default page if there are no locations left
+                        if (weatherLocationListModel.count === 0) {
+                            applicationWindow().switchToPage(getPage("Forecast"), 0);
                         }
                     }
-                ]
+                }
+            ]
+            
+            onClicked: {
+                applicationWindow().switchToPage(applicationWindow().getPage("Forecast"), 0);
+                applicationWindow().getPage("Forecast").switchPageIndex(index);
+            }
+
+            contentItem: RowLayout {
+                id: delegateLayout
+                spacing: Kirigami.Units.largeSpacing * 2
+
+                Kirigami.ListItemDragHandle {
+                    listItem: listItem
+                    listView: citiesList
+                    onMoveRequested: {
+                        weatherLocationListModel.move(oldIndex, newIndex);
+                        citiesList.currentIndex = -1;
+                    }
+                    onDropped: {
+                        citiesList.currentIndex = -1;
+                    }
+                }
                 
-                onClicked: {
-                    appwindow.switchToPage(appwindow.getPage("Forecast"), 0);
-                    appwindow.getPage("Forecast").switchPageIndex(index);
+                ColumnLayout {
+                    spacing: Kirigami.Units.smallSpacing
+                    Kirigami.Icon {
+                        Layout.alignment: Qt.AlignHCenter
+                        source: (modelData && modelData.hourForecasts[0]) ? modelData.hourForecasts[0].weatherIcon : "weather-none-available"
+                        Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
+                        Layout.preferredWidth: height
+                        Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
+                    }
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+                        text: modelData ? Formatter.formatTemperatureRounded(modelData.hourForecasts[0].temperature, settingsModel.temperatureUnits) : ""
+                    }
                 }
 
-                contentItem: Item {
-                    implicitWidth: listItem.width
-                    implicitHeight: delegateLayout.implicitHeight
-                    RowLayout {
-                        Layout.alignment: Qt.AlignLeft
-                        id: delegateLayout
-                        anchors {
-                            left: parent.left
-                            top: parent.top
-                            right: parent.right
-                        }
-                        spacing: Kirigami.Units.largeSpacing * 2
-
-                        Kirigami.ListItemDragHandle {
-                            listItem: listItem
-                            listView: citiesList
-                            onMoveRequested: {
-                                weatherLocationListModel.move(oldIndex, newIndex);
-                                citiesList.currentIndex = -1;
-                            }
-                            onDropped: {
-                                citiesList.currentIndex = -1;
-                            }
-                        }
-                        
-                        ColumnLayout {
-                            spacing: Kirigami.Units.smallSpacing
-                            Kirigami.Icon {
-                                Layout.alignment: Qt.AlignHCenter
-                                source: (modelData && modelData.hourForecasts[0]) ? modelData.hourForecasts[0].weatherIcon : "weather-none-available"
-                                Layout.maximumHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
-                                Layout.preferredWidth: height
-                                Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels * 2
-                            }
-                            Label {
-                                Layout.alignment: Qt.AlignHCenter
-                                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                                text: modelData ? Formatter.formatTemperatureRounded(modelData.hourForecasts[0].temperature, settingsModel.temperatureUnits) : ""
-                            }
-                        }
-
-                        Kirigami.Heading {
-                            Layout.alignment: Qt.AlignLeft
-                            Layout.fillWidth: true
-                            
-                            level: 2
-                            text: modelData ? modelData.name : ""
-                            elide: Text.ElideRight
-                            maximumLineCount: 2
-                            wrapMode: Text.Wrap
-                        }
-                    }
+                Kirigami.Heading {
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.fillWidth: true
+                    
+                    level: 2
+                    text: modelData ? modelData.name : ""
+                    elide: Text.ElideRight
+                    maximumLineCount: 2
+                    wrapMode: Text.Wrap
                 }
             }
         }
