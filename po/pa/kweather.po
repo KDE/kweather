@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-08 00:48+0000\n"
+"POT-Creation-Date: 2022-08-17 00:47+0000\n"
 "PO-Revision-Date: 2022-06-11 09:15-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -64,7 +64,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: main.cpp:63 qml/main.qml:15
+#: main.cpp:63 qml/main.qml:17
 #, kde-format
 msgid "Weather"
 msgstr "ਮੌਸਮ"
@@ -121,36 +121,6 @@ msgstr "ਟਿਕਾਣਾ ਚੁਣੋ"
 msgid "Open KWeather"
 msgstr "ਕੇ-ਮੌਸਮ ਖੋਲ੍ਹੋ"
 
-#: qml/AddLocationPage.qml:18
-#, kde-format
-msgid "Add location"
-msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
-
-#: qml/AddLocationPage.qml:36
-#, kde-format
-msgid "Search for a place..."
-msgstr "...ਟਿਕਾਣਾ ਲੱਭੋ"
-
-#: qml/AddLocationPage.qml:76
-#, kde-format
-msgid "Unable to connect"
-msgstr "ਕਨੈਕਟ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਹੈ"
-
-#: qml/AddLocationPage.qml:88
-#, kde-format
-msgid "Search for a location"
-msgstr "ਟਿਕਾਣਾ ਲੱਭੋ"
-
-#: qml/AddLocationPage.qml:93
-#, kde-format
-msgid "Add current location"
-msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਜੋੜੋ"
-
-#: qml/AddLocationPage.qml:113
-#, kde-format
-msgid "No results"
-msgstr "ਨਤੀਜੇ ਨਹੀਂ ਹਨ"
-
 #: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
 #, kde-format
 msgid "Forecast"
@@ -166,65 +136,60 @@ msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਪ੍ਰਾਪਤ ਕਰਨ ਦ�
 msgid "No locations configured"
 msgstr "ਕੋਈ ਟਿਕਾਣਾ ਸੰਰਚਿਤ ਨਹੀਂ ਹੈ"
 
-#: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
+#: qml/DefaultPage.qml:65 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListView.qml:63
 #, kde-format
 msgid "Add Location"
 msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:200 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "%1 ਲਈ ਮੌਸਮ ਨੂੰ ਤਾਜ਼ਾ ਕੀਤਾ ਗਿਆ ਹੈ"
 
-#: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:272 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1 ਲਈ ਅੱਪਡੇਟ ਕੀਤਾ"
 
-#: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
-#: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
+#: qml/DynamicForecastPage.qml:292 qml/DynamicForecastPage.qml:297
+#: qml/ForecastContainerPage.qml:41
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "ਟਿਕਾਣੇ"
 
-#: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
+#: qml/DynamicForecastPage.qml:312 qml/DynamicForecastPage.qml:317
 #: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "ਸੈਟਿੰਗਾਂ"
 
-#: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
+#: qml/DynamicForecastPage.qml:333 qml/DynamicForecastPage.qml:338
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
-#: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
-#, kde-format
-msgid "Left"
-msgstr "ਖੱਬੇ"
-
-#: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
-#, kde-format
-msgid "Right"
-msgstr "ਸੱਜੇ"
-
-#: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:398 qml/FlatLocationForecast.qml:105
 #, kde-format
 msgid "Daily"
 msgstr "ਰੋਜ਼"
 
-#: qml/DynamicForecastPage.qml:426
+#: qml/DynamicForecastPage.qml:403
 #, kde-format
 msgid "Local Date: "
 msgstr "ਲੋਕਲ ਤਾਰੀਖ:"
 
-#: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:483 qml/FlatLocationForecast.qml:150
 #, kde-format
 msgid "Hourly"
 msgstr "ਘੰਟੇਵਾਰ"
 
-#: qml/DynamicForecastPage.qml:511
+#: qml/DynamicForecastPage.qml:488
 #, kde-format
 msgid "Local Time: "
 msgstr "ਲੋਕਲ ਵੇਲਾ:"
@@ -249,20 +214,51 @@ msgstr "ਦਬਾਓ"
 msgid "UV index"
 msgstr "ਪਰਾ-ਵੈਂਗਣੀ ਇੰਡੈਕਸ"
 
-#: qml/LocationsPage.qml:34
+#: qml/locationslist/AddLocationListView.qml:44
+#, fuzzy, kde-format
+#| msgid "Search for a location"
+msgid "Search for a location…"
+msgstr "ਟਿਕਾਣਾ ਲੱਭੋ"
+
+#: qml/locationslist/AddLocationListView.qml:82
+#, kde-format
+msgid "Unable to connect"
+msgstr "ਕਨੈਕਟ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਹੈ"
+
+#: qml/locationslist/AddLocationListView.qml:94
+#, kde-format
+msgid "Search for a location"
+msgstr "ਟਿਕਾਣਾ ਲੱਭੋ"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Add current location"
+msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਜੋੜੋ"
+
+#: qml/locationslist/AddLocationListView.qml:122
+#, kde-format
+msgid "No results"
+msgstr "ਨਤੀਜੇ ਨਹੀਂ ਹਨ"
+
+#: qml/locationslist/AddLocationPage.qml:17
+#, kde-format
+msgid "Add location"
+msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
+
+#: qml/locationslist/LocationsListView.qml:47
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "ਸਮਾਂ-ਖੇਤਰ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
-#: qml/LocationsPage.qml:69
+#: qml/locationslist/LocationsListView.qml:58
 #, kde-format
 msgid "Add a location"
 msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/LocationsPage.qml:92
+#: qml/locationslist/LocationsListView.qml:140
 #, kde-format
-msgid "Remove"
-msgstr "ਹਟਾਓ"
+msgid "Delete"
+msgstr ""
 
 #: qml/SettingsPage.qml:41
 #, kde-format
@@ -409,6 +405,18 @@ msgstr "ਚੰਦ ਕਲਾਵਾਂ"
 #, kde-format
 msgid "temperature"
 msgstr "ਤਾਪਮਾਨ"
+
+#~ msgid "Search for a place..."
+#~ msgstr "...ਟਿਕਾਣਾ ਲੱਭੋ"
+
+#~ msgid "Left"
+#~ msgstr "ਖੱਬੇ"
+
+#~ msgid "Right"
+#~ msgstr "ਸੱਜੇ"
+
+#~ msgid "Remove"
+#~ msgstr "ਹਟਾਓ"
 
 #~ msgid "API Token"
 #~ msgstr "API ਟੋਕਨ"

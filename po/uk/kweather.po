@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-08 00:48+0000\n"
+"POT-Creation-Date: 2022-08-17 00:47+0000\n"
 "PO-Revision-Date: 2022-07-27 17:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -67,7 +67,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: main.cpp:63 qml/main.qml:15
+#: main.cpp:63 qml/main.qml:17
 #, kde-format
 msgid "Weather"
 msgstr "Погода"
@@ -126,36 +126,6 @@ msgstr "Вибір місця перебування"
 msgid "Open KWeather"
 msgstr "Відкрити KWeather"
 
-#: qml/AddLocationPage.qml:18
-#, kde-format
-msgid "Add location"
-msgstr "Додати місце"
-
-#: qml/AddLocationPage.qml:36
-#, kde-format
-msgid "Search for a place..."
-msgstr "Шукати місце…"
-
-#: qml/AddLocationPage.qml:76
-#, kde-format
-msgid "Unable to connect"
-msgstr "Не вдалося з'єднатись"
-
-#: qml/AddLocationPage.qml:88
-#, kde-format
-msgid "Search for a location"
-msgstr "Пошук місцевості"
-
-#: qml/AddLocationPage.qml:93
-#, kde-format
-msgid "Add current location"
-msgstr "Додати поточне місце"
-
-#: qml/AddLocationPage.qml:113
-#, kde-format
-msgid "No results"
-msgstr "Немає результатів"
-
 #: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
 #, kde-format
 msgid "Forecast"
@@ -171,65 +141,60 @@ msgstr "Помилка мережі під час спроби отриманн�
 msgid "No locations configured"
 msgstr "Місць не налаштовано"
 
-#: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
+#: qml/DefaultPage.qml:65 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListView.qml:63
 #, kde-format
 msgid "Add Location"
 msgstr "Додати місце"
 
-#: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:200 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Прогноз погоди для %1 оновлено"
 
-#: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:272 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
 msgstr "Оновлено о %1"
 
-#: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
-#: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
+#: qml/DynamicForecastPage.qml:292 qml/DynamicForecastPage.qml:297
+#: qml/ForecastContainerPage.qml:41
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "Місця"
 
-#: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
+#: qml/DynamicForecastPage.qml:312 qml/DynamicForecastPage.qml:317
 #: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Параметри"
 
-#: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
+#: qml/DynamicForecastPage.qml:333 qml/DynamicForecastPage.qml:338
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
 msgstr "Освіжити"
 
-#: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
-#, kde-format
-msgid "Left"
-msgstr "Ліворуч"
-
-#: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
-#, kde-format
-msgid "Right"
-msgstr "Праворуч"
-
-#: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:398 qml/FlatLocationForecast.qml:105
 #, kde-format
 msgid "Daily"
 msgstr "Щодня"
 
-#: qml/DynamicForecastPage.qml:426
+#: qml/DynamicForecastPage.qml:403
 #, kde-format
 msgid "Local Date: "
 msgstr "Місцева дата: "
 
-#: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:483 qml/FlatLocationForecast.qml:150
 #, kde-format
 msgid "Hourly"
 msgstr "Щогодини"
 
-#: qml/DynamicForecastPage.qml:511
+#: qml/DynamicForecastPage.qml:488
 #, kde-format
 msgid "Local Time: "
 msgstr "Місцевий час: "
@@ -254,20 +219,51 @@ msgstr "Тиск"
 msgid "UV index"
 msgstr "УФ-індекс"
 
-#: qml/LocationsPage.qml:34
+#: qml/locationslist/AddLocationListView.qml:44
+#, fuzzy, kde-format
+#| msgid "Search for a location"
+msgid "Search for a location…"
+msgstr "Пошук місцевості"
+
+#: qml/locationslist/AddLocationListView.qml:82
+#, kde-format
+msgid "Unable to connect"
+msgstr "Не вдалося з'єднатись"
+
+#: qml/locationslist/AddLocationListView.qml:94
+#, kde-format
+msgid "Search for a location"
+msgstr "Пошук місцевості"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Add current location"
+msgstr "Додати поточне місце"
+
+#: qml/locationslist/AddLocationListView.qml:122
+#, kde-format
+msgid "No results"
+msgstr "Немає результатів"
+
+#: qml/locationslist/AddLocationPage.qml:17
+#, kde-format
+msgid "Add location"
+msgstr "Додати місце"
+
+#: qml/locationslist/LocationsListView.qml:47
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "Не вдалося отримати дані щодо часового поясу"
 
-#: qml/LocationsPage.qml:69
+#: qml/locationslist/LocationsListView.qml:58
 #, kde-format
 msgid "Add a location"
 msgstr "Додати місце"
 
-#: qml/LocationsPage.qml:92
+#: qml/locationslist/LocationsListView.qml:140
 #, kde-format
-msgid "Remove"
-msgstr "Вилучити"
+msgid "Delete"
+msgstr ""
 
 #: qml/SettingsPage.qml:41
 #, kde-format
@@ -415,6 +411,18 @@ msgstr "Фаза місяця"
 #, kde-format
 msgid "temperature"
 msgstr "температура"
+
+#~ msgid "Search for a place..."
+#~ msgstr "Шукати місце…"
+
+#~ msgid "Left"
+#~ msgstr "Ліворуч"
+
+#~ msgid "Right"
+#~ msgstr "Праворуч"
+
+#~ msgid "Remove"
+#~ msgstr "Вилучити"
 
 #~ msgid "API Token"
 #~ msgstr "Ключ програмного інтерфейсу"

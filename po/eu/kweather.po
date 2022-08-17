@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-08 00:48+0000\n"
+"POT-Creation-Date: 2022-08-17 00:47+0000\n"
 "PO-Revision-Date: 2021-01-24 20:15+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -68,7 +68,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: main.cpp:63 qml/main.qml:15
+#: main.cpp:63 qml/main.qml:17
 #, kde-format
 msgid "Weather"
 msgstr "Eguraldia"
@@ -129,36 +129,6 @@ msgstr "Gehitu kokalekua"
 msgid "Open KWeather"
 msgstr "OpenWeatherMap"
 
-#: qml/AddLocationPage.qml:18
-#, kde-format
-msgid "Add location"
-msgstr "Gehitu kokalekua"
-
-#: qml/AddLocationPage.qml:36
-#, kde-format
-msgid "Search for a place..."
-msgstr "Bilatu leku bat..."
-
-#: qml/AddLocationPage.qml:76
-#, kde-format
-msgid "Unable to connect"
-msgstr "Ezin da konektatu"
-
-#: qml/AddLocationPage.qml:88
-#, kde-format
-msgid "Search for a location"
-msgstr "Bilatu kokaleku bat"
-
-#: qml/AddLocationPage.qml:93
-#, kde-format
-msgid "Add current location"
-msgstr "Gehitu uneko kokalekua"
-
-#: qml/AddLocationPage.qml:113
-#, kde-format
-msgid "No results"
-msgstr "Emaitzarik gabe"
-
 #: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
 #, kde-format
 msgid "Forecast"
@@ -174,65 +144,60 @@ msgstr "Sareko errorea uneko kokalekua eskuratzean"
 msgid "No locations configured"
 msgstr "Ez kokalekurik konfiguratu"
 
-#: qml/DefaultPage.qml:65 qml/LocationsPage.qml:26 qml/LocationsPage.qml:74
+#: qml/DefaultPage.qml:65 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListView.qml:63
 #, kde-format
 msgid "Add Location"
 msgstr "Gehitu kokalekua"
 
-#: qml/DynamicForecastPage.qml:191 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:200 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Eguraldi freskatzea %1"
 
-#: qml/DynamicForecastPage.qml:257 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:272 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1 eguneratua"
 
-#: qml/DynamicForecastPage.qml:277 qml/DynamicForecastPage.qml:282
-#: qml/ForecastContainerPage.qml:41 qml/LocationsPage.qml:17
+#: qml/DynamicForecastPage.qml:292 qml/DynamicForecastPage.qml:297
+#: qml/ForecastContainerPage.qml:41
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "Kokalekuak"
 
-#: qml/DynamicForecastPage.qml:297 qml/DynamicForecastPage.qml:302
+#: qml/DynamicForecastPage.qml:312 qml/DynamicForecastPage.qml:317
 #: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Ezarpenak"
 
-#: qml/DynamicForecastPage.qml:318 qml/DynamicForecastPage.qml:323
+#: qml/DynamicForecastPage.qml:333 qml/DynamicForecastPage.qml:338
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:339 qml/ForecastContainerPage.qml:60
-#, kde-format
-msgid "Left"
-msgstr ""
-
-#: qml/DynamicForecastPage.qml:358 qml/ForecastContainerPage.qml:68
-#, kde-format
-msgid "Right"
-msgstr ""
-
-#: qml/DynamicForecastPage.qml:421 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:398 qml/FlatLocationForecast.qml:105
 #, kde-format
 msgid "Daily"
 msgstr "Egunero"
 
-#: qml/DynamicForecastPage.qml:426
+#: qml/DynamicForecastPage.qml:403
 #, kde-format
 msgid "Local Date: "
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:506 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:483 qml/FlatLocationForecast.qml:150
 #, kde-format
 msgid "Hourly"
 msgstr "Orduro"
 
-#: qml/DynamicForecastPage.qml:511
+#: qml/DynamicForecastPage.qml:488
 #, kde-format
 msgid "Local Time: "
 msgstr ""
@@ -257,20 +222,51 @@ msgstr "Presioa"
 msgid "UV index"
 msgstr "UV indizea"
 
-#: qml/LocationsPage.qml:34
+#: qml/locationslist/AddLocationListView.qml:44
+#, fuzzy, kde-format
+#| msgid "Search for a location"
+msgid "Search for a location…"
+msgstr "Bilatu kokaleku bat"
+
+#: qml/locationslist/AddLocationListView.qml:82
+#, kde-format
+msgid "Unable to connect"
+msgstr "Ezin da konektatu"
+
+#: qml/locationslist/AddLocationListView.qml:94
+#, kde-format
+msgid "Search for a location"
+msgstr "Bilatu kokaleku bat"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Add current location"
+msgstr "Gehitu uneko kokalekua"
+
+#: qml/locationslist/AddLocationListView.qml:122
+#, kde-format
+msgid "No results"
+msgstr "Emaitzarik gabe"
+
+#: qml/locationslist/AddLocationPage.qml:17
+#, kde-format
+msgid "Add location"
+msgstr "Gehitu kokalekua"
+
+#: qml/locationslist/LocationsListView.qml:47
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "Ezin izan da ordu-eremuaren informazioa ekarri"
 
-#: qml/LocationsPage.qml:69
+#: qml/locationslist/LocationsListView.qml:58
 #, kde-format
 msgid "Add a location"
 msgstr "Gehitu kokalekua"
 
-#: qml/LocationsPage.qml:92
+#: qml/locationslist/LocationsListView.qml:140
 #, kde-format
-msgid "Remove"
-msgstr "Kendu"
+msgid "Delete"
+msgstr ""
 
 #: qml/SettingsPage.qml:41
 #, kde-format
@@ -423,6 +419,12 @@ msgstr "Ilargiaren fasea"
 #| msgid "Temperature Units"
 msgid "temperature"
 msgstr "Tenperatura unitateak"
+
+#~ msgid "Search for a place..."
+#~ msgstr "Bilatu leku bat..."
+
+#~ msgid "Remove"
+#~ msgstr "Kendu"
 
 #~ msgid "API Token"
 #~ msgstr "APIaren tokena"
