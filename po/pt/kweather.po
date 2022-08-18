@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-17 00:47+0000\n"
-"PO-Revision-Date: 2022-07-04 13:14+0100\n"
+"PO-Revision-Date: 2022-08-17 15:11+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -219,10 +219,9 @@ msgid "UV index"
 msgstr "Índice UV"
 
 #: qml/locationslist/AddLocationListView.qml:44
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "Pesquisar um local..."
+msgstr "Pesquisar um local…"
 
 #: qml/locationslist/AddLocationListView.qml:82
 #, kde-format
@@ -232,7 +231,7 @@ msgstr "Não é possível ligar"
 #: qml/locationslist/AddLocationListView.qml:94
 #, kde-format
 msgid "Search for a location"
-msgstr "Pesquisar um local..."
+msgstr "Pesquisar um local"
 
 #: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
@@ -262,7 +261,7 @@ msgstr "Adicionar um local"
 #: qml/locationslist/LocationsListView.qml:140
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Apagar"
 
 #: qml/SettingsPage.qml:41
 #, kde-format
@@ -411,14 +410,3 @@ msgstr "Fase da Lua"
 msgid "temperature"
 msgstr "temperatura"
 
-#~ msgid "Search for a place..."
-#~ msgstr "Procurar um local..."
-
-#~ msgid "Left"
-#~ msgstr "Esquerda"
-
-#~ msgid "Right"
-#~ msgstr "Direita"
-
-#~ msgid "Remove"
-#~ msgstr "Remover"
