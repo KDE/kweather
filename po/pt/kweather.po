@@ -409,4 +409,3 @@ msgstr "Fase da Lua"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
-
