@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-17 00:47+0000\n"
-"PO-Revision-Date: 2022-07-12 11:58-0300\n"
+"PO-Revision-Date: 2022-08-19 15:13-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -216,10 +216,9 @@ msgid "UV index"
 msgstr "Índice UV"
 
 #: qml/locationslist/AddLocationListView.qml:44
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "Pesquisar local"
+msgstr "Pesquisar local..."
 
 #: qml/locationslist/AddLocationListView.qml:82
 #, kde-format
@@ -259,12 +258,12 @@ msgstr "Adicionar uma localização"
 #: qml/locationslist/LocationsListView.qml:140
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -287,10 +286,9 @@ msgid "About"
 msgstr "Sobre"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Unidades de velocidade"
+msgstr "Unidades"
 
 #: qml/SettingsPage.qml:89
 #, kde-format
