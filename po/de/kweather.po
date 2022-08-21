@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-17 00:47+0000\n"
-"PO-Revision-Date: 2022-06-09 23:51+0200\n"
+"PO-Revision-Date: 2022-08-20 20:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -63,7 +63,7 @@ msgstr "%1 mmHg"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: main.cpp:63 qml/main.qml:17
 #, kde-format
@@ -218,10 +218,9 @@ msgid "UV index"
 msgstr "UV-Index"
 
 #: qml/locationslist/AddLocationListView.qml:44
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "Suche nach dem Ort"
+msgstr "Nach einem Ort suchen ..."
 
 #: qml/locationslist/AddLocationListView.qml:82
 #, kde-format
@@ -261,12 +260,12 @@ msgstr "Einen Ort hinzufügen"
 #: qml/locationslist/LocationsListView.qml:140
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: qml/SettingsPage.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 #: qml/SettingsPage.qml:46
 #, kde-format
@@ -289,10 +288,9 @@ msgid "About"
 msgstr "Über"
 
 #: qml/SettingsPage.qml:84
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Geschwindigkeitseineiten"
+msgstr "Einheiten"
 
 #: qml/SettingsPage.qml:89
 #, kde-format

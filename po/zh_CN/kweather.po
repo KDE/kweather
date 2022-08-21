@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-17 00:47+0000\n"
-"PO-Revision-Date: 2022-08-13 03:53\n"
+"PO-Revision-Date: 2022-08-20 14:18\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -215,10 +215,9 @@ msgid "UV index"
 msgstr "紫外线指数"
 
 #: qml/locationslist/AddLocationListView.qml:44
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "搜索位置"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:82
 #, kde-format
@@ -404,15 +403,3 @@ msgstr "月相"
 #, kde-format
 msgid "temperature"
 msgstr "温度"
-
-#~ msgid "Search for a place..."
-#~ msgstr "搜索地点..."
-
-#~ msgid "Left"
-#~ msgstr "左"
-
-#~ msgid "Right"
-#~ msgstr "右"
-
-#~ msgid "Remove"
-#~ msgstr "移除"

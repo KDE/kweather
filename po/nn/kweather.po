@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-17 00:47+0000\n"
-"PO-Revision-Date: 2022-08-07 12:09+0200\n"
+"PO-Revision-Date: 2022-08-20 11:03+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -217,10 +217,11 @@ msgstr "Trykk"
 msgid "UV index"
 msgstr "UV-indeks"
 
+# Ingen grunn til at «location» og «place» er to forskjellige ting (og dermed krev ulik omsetjing), så vidt eg kan sjå.
 #: qml/locationslist/AddLocationListView.qml:44
 #, kde-format
 msgid "Search for a location…"
-msgstr ""
+msgstr "Søk etter stad …"
 
 #: qml/locationslist/AddLocationListView.qml:82
 #, kde-format
@@ -261,7 +262,7 @@ msgstr "Legg til stad"
 #: qml/locationslist/LocationsListView.qml:140
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Slett"
 
 #: qml/SettingsPage.qml:41
 #, kde-format
