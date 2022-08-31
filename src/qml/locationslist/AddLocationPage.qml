@@ -15,7 +15,11 @@ import kweather 1.0
 Kirigami.ScrollablePage {
     id: root
     title: i18n("Add location")
+    
+    Component.onCompleted: addLocationListView.focusRequested()
 
-    AddLocationListView {}
+    AddLocationListView {
+        id: addLocationListView
+    }
 }
 

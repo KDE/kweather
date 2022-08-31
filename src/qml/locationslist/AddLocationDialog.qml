@@ -16,7 +16,10 @@ Kirigami.Dialog {
     preferredWidth: Kirigami.Units.gridUnit * 20
     padding: 0
     
+    onOpened: addLocationListView.focusRequested()
+    
     AddLocationListView {
+        id: addLocationListView
         onCloseRequested: root.close();
     }
 }

@@ -22,6 +22,7 @@ ListView {
     model: LocationQueryModel {}
     
     signal closeRequested()
+    signal focusRequested()
     
     header: Control {
         width: root.width
@@ -33,12 +34,15 @@ ListView {
         contentItem: RowLayout {
             spacing: Kirigami.Units.smallSpacing
             
-            TextField {
+            Kirigami.SearchField {
                 id: search
                 Layout.fillWidth: true
                 
-                Component.onCompleted: {
-                    search.forceActiveFocus();
+                Connections {
+                    target: root
+                    function onFocusRequested() {
+                        search.forceActiveFocus();
+                    }
                 }
 
                 placeholderText: i18n("Search for a location…")
