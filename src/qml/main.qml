@@ -114,6 +114,7 @@ Kirigami.ApplicationWindow {
             case "Locations": return pagePool.loadPage("qrc:/qml/locationslist/LocationsListPage.qml");
             case "Settings": return pagePool.loadPage("qrc:/qml/SettingsPage.qml");
             case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
+            case "Default": return pagePool.loadPage("qrc:/qml/DefaultPage.qml");
         }
     }
     
@@ -132,6 +133,17 @@ Kirigami.ApplicationWindow {
             addLocationDialogLoader.item.open();
         } else {
             applicationWindow().pageStack.push(Qt.resolvedUrl("qrc:/qml/locationslist/AddLocationPage.qml"))
+        }
+    }
+    
+    Connections {
+        target: weatherLocationListModel
+        
+        function onLocationsChanged() {
+            // wwitch to default page if the count is zero
+            if (weatherLocationListModel.count === 0) {
+                applicationWindow().switchToPage(applicationWindow().getPage("Default"), 0);
+            }
         }
     }
     

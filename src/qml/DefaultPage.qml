@@ -6,12 +6,12 @@
  */
 
 import QtQuick 2.12
-import QtQuick.Controls 2.4
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.12 as Kirigami
 
 // page shown if there are no weather locations configured
-Kirigami.ScrollablePage {
+Kirigami.Page {
     title: i18n("Forecast")
 
     property bool loading: false
@@ -33,18 +33,13 @@ Kirigami.ScrollablePage {
     actions.contextualActions: [
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
-            iconName: "globe"
-            onTriggered: applicationWindow().openLocationsList();
-        },
-        Kirigami.Action {
-            visible: Kirigami.Settings.isMobile
             iconName: "settings-configure"
             onTriggered: applicationWindow().pushPage(getPage("Settings"), 0)
         }
     ]
 
-    ListView { // empty list view to centre placeholdermessage
-        id: listView
+    Item { // empty list view to centre placeholdermessage
+        anchors.fill: parent
         transform: Translate { y: yTranslate }
         BusyIndicator {
             anchors.centerIn: parent
@@ -52,18 +47,32 @@ Kirigami.ScrollablePage {
             Layout.minimumWidth: Kirigami.Units.iconSizes.huge
             Layout.minimumHeight: width
         }
-        Kirigami.PlaceholderMessage {
+        
+        
+        ColumnLayout {
             visible: !loading
             anchors.centerIn: parent
-            anchors.margins: Kirigami.Units.largeSpacing
-
-            icon.name: "globe"
-            text: i18n("No locations configured")
-
-            helpfulAction: Kirigami.Action {
-                iconName: "list-add"
+            spacing: Kirigami.Units.gridUnit
+            
+            Kirigami.Icon {
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                source: "qrc:/resources/kweather.svg"
+                implicitWidth: Kirigami.Units.iconSizes.enormous * 1.5
+                implicitHeight: Kirigami.Units.iconSizes.enormous * 1.5
+            }
+            
+            Kirigami.Heading {
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                text: i18n("Weather")
+                type: Kirigami.Heading.Type.Primary
+                horizontalAlignment: Qt.AlignHCenter
+            }
+            
+            Button {
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                icon.name: "list-add"
                 text: i18n("Add Location")
-                onTriggered: applicationWindow().openAddLocation();
+                onClicked: applicationWindow().openAddLocation();
             }
         }
     }

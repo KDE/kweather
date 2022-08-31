@@ -51,20 +51,19 @@ Popup {
                 anchors.right: parent.right
                 spacing: Kirigami.Units.largeSpacing * 3
                 
-                Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
-                    font.weight: Font.Light
-                    text: i18n("Welcome to KWeather")
-                    font.family: lightHeadingFont.name
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    wrapMode: Label.WordWrap
-                }
-                
                 Kirigami.Icon {
                     source: "qrc:/resources/kweather.svg"
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     implicitHeight: Kirigami.Units.gridUnit * 8
                     implicitWidth: implicitHeight
+                }
+                
+                Label {
+                    font.pointSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 1.5)
+                    font.weight: Font.Normal
+                    text: i18n("Welcome to Weather")
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    wrapMode: Label.WordWrap
                 }
                 
                 ToolButton {
@@ -83,13 +82,11 @@ Popup {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.right: parent.right
-                spacing: Kirigami.Units.largeSpacing * 3
+                spacing: Kirigami.Units.largeSpacing * 2
                 
                 Label {
-                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.6
-                    font.weight: Font.Light
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
                     text: i18n("Select forecast theme")
-                    font.family: lightHeadingFont.name
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 }
                 
@@ -217,14 +214,6 @@ Popup {
                             settingsModel.save();
                         }
                     }
-                }
-                Label {
-                    Layout.maximumWidth: setupPopup.width - Kirigami.Units.largeSpacing * 2
-                    Layout.alignment: Qt.AlignHCenter
-                    text: i18n("Dynamic mode may cause performance issues on embedded platforms")
-                    font.italic: true
-                    wrapMode: Text.Wrap
-                    horizontalAlignment: Text.AlignHCenter
                 }
             }
         }

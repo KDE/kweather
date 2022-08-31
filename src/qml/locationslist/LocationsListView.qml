@@ -76,13 +76,10 @@ ListView {
         bottomPadding: Kirigami.Units.largeSpacing
         
         function deleteItem() {
-            // switch to default page if there are no locations left
+            // if there are no locations left
             if (weatherLocationListModel.count === 1) {
-                applicationWindow().pageStack.pop();
-                applicationWindow().pageStack.push("qrc:/qml/DefaultPage.qml");
                 root.closeRequested();
             }
-            
             weatherLocationListModel.remove(index);
         }
         
