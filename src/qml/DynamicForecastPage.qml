@@ -19,7 +19,7 @@ Kirigami.ScrollablePage {
     id: page
     
     property int currentIndex: 0
-    property var weatherLocation: weatherLocationListModel.locations[loader.item.currentIndex]
+    property var weatherLocation: weatherLocationListModel.locations[page.currentIndex]
     property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.dayForecasts[0]
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
@@ -60,6 +60,16 @@ Kirigami.ScrollablePage {
             // animate as if new cards are coming in from the screen side
             rootMask.x = pageChangeThreshold;
             xAnim.restart();
+        }
+    }
+    
+    Connections {
+        target: weatherLocationListModel
+        
+        function onLocationsChanged() {
+            if (page.currentIndex >= weatherLocationListModel.count) {
+                page.currentIndex = weatherLocationListModel.count - 1;
+            }
         }
     }
     
@@ -332,7 +342,7 @@ Kirigami.ScrollablePage {
                     visible: !Kirigami.Settings.isMobile
                     text: i18n("Refresh")
                     display: ToolButton.IconOnly
-                    onClicked: weatherLocationListModel.locations[loader.item.currentIndex].update()
+                    onClicked: weatherLocationListModel.locations[page.currentIndex].update()
 
                     ToolTip.visible: down
                     ToolTip.text: i18n("Refresh")
