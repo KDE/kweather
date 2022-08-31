@@ -22,7 +22,8 @@ Kirigami.ScrollablePage {
     leftPadding: 0
     rightPadding: 0
     
-    transform: Translate { y: yTranslate }
-    
-    SettingsComponent { width: root.width }
+    SettingsComponent { 
+        transform: Translate { y: yTranslate }
+        width: root.width 
+    }
 }
