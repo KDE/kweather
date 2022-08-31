@@ -11,6 +11,7 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.11 as Kirigami
 
 import "locationslist"
+import "settings"
 
 Kirigami.ApplicationWindow {
     id: appwindow
@@ -112,9 +113,18 @@ Kirigami.ApplicationWindow {
         switch (name) {
             case "Forecast": return pagePool.loadPage(weatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
             case "Locations": return pagePool.loadPage("qrc:/qml/locationslist/LocationsListPage.qml");
-            case "Settings": return pagePool.loadPage("qrc:/qml/SettingsPage.qml");
+            case "Settings": return pagePool.loadPage("qrc:/qml/settings/SettingsPage.qml");
             case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
             case "Default": return pagePool.loadPage("qrc:/qml/DefaultPage.qml");
+        }
+    }
+    
+    function openSettings() {
+        if (isWideScreen) {
+            settingsDialogLoader.active = true;
+            settingsDialogLoader.item.open();
+        } else {
+            applicationWindow().pushPage(getPage("Settings"), 0);
         }
     }
     
@@ -145,6 +155,12 @@ Kirigami.ApplicationWindow {
                 applicationWindow().switchToPage(applicationWindow().getPage("Default"), 0);
             }
         }
+    }
+    
+    Loader {
+        id: settingsDialogLoader
+        active: false
+        sourceComponent: SettingsDialog {}
     }
     
     Loader {

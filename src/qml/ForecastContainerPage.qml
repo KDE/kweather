@@ -45,7 +45,7 @@ Kirigami.Page {
             iconName: "settings-configure"
             text: i18n("Settings")
             displayHint: Kirigami.Action.IconOnly
-            onTriggered: applicationWindow().pushPage(getPage("Settings"), 0)
+            onTriggered: applicationWindow().openSettings()
         },
         Kirigami.Action {
             visible: !Kirigami.Settings.isMobile

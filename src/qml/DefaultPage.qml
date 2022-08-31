@@ -34,7 +34,7 @@ Kirigami.Page {
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
             iconName: "settings-configure"
-            onTriggered: applicationWindow().pushPage(getPage("Settings"), 0)
+            onTriggered: applicationWindow().openSettings()
         }
     ]
 

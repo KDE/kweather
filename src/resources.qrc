@@ -11,7 +11,6 @@
         <file>qml/WeatherDayDelegate.qml</file>
         <file>qml/WeatherHourDelegate.qml</file>
         <file>qml/ForecastContainerPage.qml</file>
-        <file>qml/SettingsPage.qml</file>
         <file>qml/DefaultPage.qml</file>
         <file>qml/SetupWizard.qml</file>
         <file>qml/AboutPage.qml</file>
@@ -21,6 +20,9 @@
         <file>qml/WeatherStrip.qml</file>
         <file>qml/DynamicForecastPage.qml</file>
         <file>qml/FlatForecastPage.qml</file>
+        <file>qml/settings/SettingsPage.qml</file>
+        <file>qml/settings/SettingsComponent.qml</file>
+        <file>qml/settings/SettingsDialog.qml</file>
         <file>qml/locationslist/LocationsListView.qml</file>
         <file>qml/locationslist/LocationsListPage.qml</file>
         <file>qml/locationslist/LocationsListDialog.qml</file>

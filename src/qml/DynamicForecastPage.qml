@@ -321,7 +321,7 @@ Kirigami.ScrollablePage {
                     
                     text: i18n("Settings")
                     display: ToolButton.IconOnly
-                    onClicked: applicationWindow().pushPage(getPage("Settings"), 0)
+                    onClicked: applicationWindow().openSettings()
 
                     ToolTip.visible: down
                     ToolTip.text: i18n("Settings")
