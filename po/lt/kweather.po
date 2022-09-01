@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-17 00:47+0000\n"
+"POT-Creation-Date: 2022-09-01 00:47+0000\n"
 "PO-Revision-Date: 2021-12-12 15:42+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -68,7 +68,7 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: main.cpp:63 qml/main.qml:17
+#: main.cpp:63 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
 msgid "Weather"
 msgstr "Orai"
@@ -136,12 +136,7 @@ msgstr "Orų prognozė"
 msgid "Network error when obtaining current location"
 msgstr "Gaunant dabartinę vietą, įvyko klaida"
 
-#: qml/DefaultPage.qml:61
-#, kde-format
-msgid "No locations configured"
-msgstr "Nesukonfigūruotos jokios vietos"
-
-#: qml/DefaultPage.qml:65 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:74 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:26
 #: qml/locationslist/LocationsListView.qml:63
@@ -149,17 +144,17 @@ msgstr "Nesukonfigūruotos jokios vietos"
 msgid "Add Location"
 msgstr "Pridėti vietą"
 
-#: qml/DynamicForecastPage.qml:200 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:210 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Atnaujinti orai: %1"
 
-#: qml/DynamicForecastPage.qml:272 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:282 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
 msgstr "Atnaujinta ties %1"
 
-#: qml/DynamicForecastPage.qml:292 qml/DynamicForecastPage.qml:297
+#: qml/DynamicForecastPage.qml:302 qml/DynamicForecastPage.qml:307
 #: qml/ForecastContainerPage.qml:41
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
@@ -167,34 +162,35 @@ msgstr "Atnaujinta ties %1"
 msgid "Locations"
 msgstr "Vietos"
 
-#: qml/DynamicForecastPage.qml:312 qml/DynamicForecastPage.qml:317
-#: qml/ForecastContainerPage.qml:46 qml/SettingsPage.qml:16
+#: qml/DynamicForecastPage.qml:322 qml/DynamicForecastPage.qml:327
+#: qml/ForecastContainerPage.qml:46 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Nuostatos"
 
-#: qml/DynamicForecastPage.qml:333 qml/DynamicForecastPage.qml:338
+#: qml/DynamicForecastPage.qml:343 qml/DynamicForecastPage.qml:348
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
 msgstr "Įkelti iš naujo"
 
-#: qml/DynamicForecastPage.qml:398 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:408 qml/FlatLocationForecast.qml:105
 #, kde-format
 msgid "Daily"
 msgstr "Kasdien"
 
-#: qml/DynamicForecastPage.qml:403
+#: qml/DynamicForecastPage.qml:413
 #, kde-format
 msgid "Local Date: "
 msgstr "Vietinė data: "
 
-#: qml/DynamicForecastPage.qml:483 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:493 qml/FlatLocationForecast.qml:150
 #, kde-format
 msgid "Hourly"
 msgstr "Kas valandą"
 
-#: qml/DynamicForecastPage.qml:488
+#: qml/DynamicForecastPage.qml:498
 #, kde-format
 msgid "Local Time: "
 msgstr "Vietinis laikas: "
@@ -219,28 +215,28 @@ msgstr "Slėgis"
 msgid "UV index"
 msgstr "UV indeksas"
 
-#: qml/locationslist/AddLocationListView.qml:44
+#: qml/locationslist/AddLocationListView.qml:48
 #, fuzzy, kde-format
 #| msgid "Search for a location"
 msgid "Search for a location…"
 msgstr "Ieškoti vietos"
 
-#: qml/locationslist/AddLocationListView.qml:82
+#: qml/locationslist/AddLocationListView.qml:86
 #, kde-format
 msgid "Unable to connect"
 msgstr "Nepavyko prisijungti"
 
-#: qml/locationslist/AddLocationListView.qml:94
+#: qml/locationslist/AddLocationListView.qml:98
 #, kde-format
 msgid "Search for a location"
 msgstr "Ieškoti vietos"
 
-#: qml/locationslist/AddLocationListView.qml:99
+#: qml/locationslist/AddLocationListView.qml:103
 #, kde-format
 msgid "Add current location"
 msgstr "Pridėti dabartinę vietą"
 
-#: qml/locationslist/AddLocationListView.qml:122
+#: qml/locationslist/AddLocationListView.qml:126
 #, kde-format
 msgid "No results"
 msgstr "Nėra rezultatų"
@@ -260,136 +256,132 @@ msgstr "Nepavyko gauti laiko juostos informacijos"
 msgid "Add a location"
 msgstr "Pridėti vietą"
 
-#: qml/locationslist/LocationsListView.qml:140
+#: qml/locationslist/LocationsListView.qml:137
 #, kde-format
 msgid "Delete"
 msgstr ""
 
-#: qml/SettingsPage.qml:41
+#: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "General"
 msgstr ""
 
-#: qml/SettingsPage.qml:46
+#: qml/settings/SettingsComponent.qml:46
 #, kde-format
 msgid "Forecast Style"
 msgstr "Orų prognozės stilius"
 
-#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:133
+#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:130
 #, kde-format
 msgid "Flat"
 msgstr "Plokščias"
 
-#: qml/SettingsPage.qml:48 qml/SetupWizard.qml:180
+#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:177
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinaminis"
 
-#: qml/SettingsPage.qml:70
+#: qml/settings/SettingsComponent.qml:86
 #, kde-format
 msgid "About"
 msgstr "Apie"
 
-#: qml/SettingsPage.qml:84
+#: qml/settings/SettingsComponent.qml:106
 #, fuzzy, kde-format
 #| msgid "Speed Units"
 msgid "Units"
 msgstr "Greičio vienetai"
 
-#: qml/SettingsPage.qml:89
+#: qml/settings/SettingsComponent.qml:111
 #, kde-format
 msgid "Temperature Units"
 msgstr "Temperatūros vienetai"
 
-#: qml/SettingsPage.qml:91
+#: qml/settings/SettingsComponent.qml:113
 #, kde-format
 msgid "Use System Default"
 msgstr "Naudoti sistemos numatytuosius"
 
-#: qml/SettingsPage.qml:91
+#: qml/settings/SettingsComponent.qml:113
 #, kde-format
 msgid "Celsius"
 msgstr "Celsijus"
 
-#: qml/SettingsPage.qml:91
+#: qml/settings/SettingsComponent.qml:113
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Farenheitas"
 
-#: qml/SettingsPage.qml:113
+#: qml/settings/SettingsComponent.qml:151
 #, kde-format
 msgid "Speed Units"
 msgstr "Greičio vienetai"
 
-#: qml/SettingsPage.qml:115
+#: qml/settings/SettingsComponent.qml:153
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "km/val."
 
-#: qml/SettingsPage.qml:115
+#: qml/settings/SettingsComponent.qml:153
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/SettingsPage.qml:115
+#: qml/settings/SettingsComponent.qml:153
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/sek."
 
-#: qml/SettingsPage.qml:137
+#: qml/settings/SettingsComponent.qml:191
 #, kde-format
 msgid "Pressure Units"
 msgstr "Slėgio matavimo vienetai"
 
-#: qml/SettingsPage.qml:139
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/SettingsPage.qml:139
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/SetupWizard.qml:57
-#, kde-format
-msgid "Welcome to KWeather"
+#: qml/SetupWizard.qml:64
+#, fuzzy, kde-format
+#| msgid "Welcome to KWeather"
+msgid "Welcome to Weather"
 msgstr "Sveiki atvykę į KWeather"
 
-#: qml/SetupWizard.qml:71
+#: qml/SetupWizard.qml:70
 #, kde-format
 msgid "Continue"
 msgstr "Tęsti"
 
-#: qml/SetupWizard.qml:91
+#: qml/SetupWizard.qml:89
 #, kde-format
 msgid "Select forecast theme"
 msgstr "Pasirinkite orų prognozės apipavidalinimą"
 
-#: qml/SetupWizard.qml:97
+#: qml/SetupWizard.qml:94
 #, kde-format
 msgid "You can change the theme later in the settings."
 msgstr "Vėliau apipavidalinimą galėsite keisti nuostatose."
 
-#: qml/SetupWizard.qml:204
+#: qml/SetupWizard.qml:201
 #, kde-format
 msgid "Back"
 msgstr "Atgal"
 
-#: qml/SetupWizard.qml:210
+#: qml/SetupWizard.qml:207
 #, kde-format
 msgid "Finish"
 msgstr "Užbaigti"
-
-#: qml/SetupWizard.qml:224
-#, kde-format
-msgid "Dynamic mode may cause performance issues on embedded platforms"
-msgstr "Dinaminė veiksena įtaisytose platformose gali sukelti našumo problemų"
 
 #: qml/SunriseCard.qml:48
 #, kde-format
@@ -410,6 +402,13 @@ msgstr "Mėnulio fazė"
 #, kde-format
 msgid "temperature"
 msgstr "temperatūra"
+
+#~ msgid "No locations configured"
+#~ msgstr "Nesukonfigūruotos jokios vietos"
+
+#~ msgid "Dynamic mode may cause performance issues on embedded platforms"
+#~ msgstr ""
+#~ "Dinaminė veiksena įtaisytose platformose gali sukelti našumo problemų"
 
 #~ msgid "Search for a place..."
 #~ msgstr "Ieškoti vietos..."
