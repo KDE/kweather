@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-01 00:47+0000\n"
-"PO-Revision-Date: 2022-05-12 14:48+0200\n"
+"PO-Revision-Date: 2022-07-14 14:26+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -62,7 +62,7 @@ msgstr "%1 mmHg"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: main.cpp:63 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
@@ -253,12 +253,12 @@ msgstr "Přidejte umístění"
 #: qml/locationslist/LocationsListView.qml:137
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: qml/settings/SettingsComponent.qml:46
 #, kde-format
@@ -281,10 +281,9 @@ msgid "About"
 msgstr "O aplikaci"
 
 #: qml/settings/SettingsComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Jednotky rychlosti"
+msgstr "Jednotky"
 
 #: qml/settings/SettingsComponent.qml:111
 #, kde-format
@@ -347,10 +346,9 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #: qml/SetupWizard.qml:64
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "Vítejte v programu Kweather"
+msgstr ""
 
 #: qml/SetupWizard.qml:70
 #, kde-format
@@ -396,12 +394,3 @@ msgstr "Měsíční fáze"
 #, kde-format
 msgid "temperature"
 msgstr "teplota"
-
-#~ msgid "Left"
-#~ msgstr "Vlevo"
-
-#~ msgid "Right"
-#~ msgstr "Vpravo"
-
-#~ msgid "Remove"
-#~ msgstr "Odstranit"
