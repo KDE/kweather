@@ -276,31 +276,57 @@ void WeatherLocation::determineCurrentForecast()
     m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/ClearDay.qml");
 
     bool isDayStyle = false; // make sure that if the background is definitively day, the colours match that
-
+    m_sun = false;
+    m_rain = false;
+    m_cloud = false;
+    m_snow = false;
+    m_star = false;
     if (currentWeather->weatherIcon() == QStringLiteral("weather-clear")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/ClearDay.qml");
         isDayStyle = true;
-
+        m_topColor = {255, 193, 7}; //"#ffc107"
+        m_bottomColor = {255, 193, 7};
+        m_sun = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-clear-night")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/ClearNight.qml");
-
+        m_topColor = {69, 90, 100}; // "#455a64"
+        m_bottomColor = {38, 50, 56}; // "#263238"
+        m_star = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-clouds")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/CloudyDay.qml");
         isDayStyle = true;
-
+        m_topColor = {0, 188, 212}; // #00bcd4
+        m_bottomColor = {36, 163, 222}; // #24a3de
+        m_cloudColor = {224, 247, 250}; // #e0f7fa
+        m_cloud = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-clouds-night") || currentWeather->weatherIcon() == QStringLiteral("weather-overcast")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/CloudyNight.qml");
-
+        m_topColor = {69, 90, 100}; // #455a64
+        m_bottomColor = {38, 50, 56}; // #263238
+        m_cloudColor = {176, 190, 197}; // #b0bec5
+        m_star = true;
+        m_cloud = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-few-clouds")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/PartlyCloudyDay.qml");
         isDayStyle = true;
-
+        m_topColor = {0, 188, 212}; // #00bcd4
+        m_bottomColor = {36, 163, 222}; // #24a3de
+        m_cloudColor = {224, 247, 250}; // #e0f7fa
+        m_cloud = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-few-clouds-night")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/PartlyCloudyNight.qml");
-
+        m_topColor = {69, 90, 100}; // "#455a64"
+        m_bottomColor = {38, 50, 56}; // "#263238"
+        m_cloudColor = {176, 190, 197}; // #b0bec5
+        m_star = true;
+        m_cloud = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-fog") || currentWeather->weatherIcon() == QStringLiteral("weather-mist")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/Misty.qml");
         isDayStyle = true;
+        m_topColor = {194, 197, 203}; // #c2c5cb
+        m_bottomColor = {91, 96, 107}; // #5b606b
+        m_cloudColor = {218, 224, 236}; // #dae0ec
+        m_cloud = true;
 
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-freezing-rain") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-hail")
                || currentWeather->weatherIcon() == QStringLiteral("weather-showers") || currentWeather->weatherIcon() == QStringLiteral("weather-showers-day")
@@ -309,19 +335,33 @@ void WeatherLocation::determineCurrentForecast()
                || currentWeather->weatherIcon() == QStringLiteral("weather-storm") || currentWeather->weatherIcon() == QStringLiteral("weather-storm-day")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/RainyDay.qml");
         isDayStyle = true;
-
+        m_topColor = {54, 156, 203}; // #369ccb
+        m_bottomColor = {26, 131, 179}; // #1A83B3
+        m_cloudColor = {255, 255, 255}; // white
+        m_cloud = true;
+        m_rain = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-showers-night")
                || currentWeather->weatherIcon() == QStringLiteral("weather-showers-scattered-night")
                || currentWeather->weatherIcon() == QStringLiteral("weather-storm-night")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/RainyNight.qml");
-
+        m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/CloudyNight.qml");
+        m_topColor = {69, 90, 100}; // #455a64
+        m_bottomColor = {38, 50, 56}; // #263238
+        m_cloudColor = {176, 190, 197}; // #b0bec5
+        m_cloud = true;
+        m_rain = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-hail") || currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered")
                || currentWeather->weatherIcon() == QStringLiteral("weather-snow")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/SnowyDay.qml");
         isDayStyle = true;
-
+        m_topColor = {53, 217, 237}; // #35d9ed
+        m_bottomColor = {36, 163, 222}; // #24a3de
+        m_snow = true;
     } else if (currentWeather->weatherIcon() == QStringLiteral("weather-snow-scattered-night")) {
         m_backgroundComponent = QStringLiteral("qrc:/qml/backgrounds/SnowyNight.qml");
+        m_topColor = {69, 90, 100}; // #455a64
+        m_bottomColor = {38, 50, 56}; // #263238
+        m_snow = true;
     }
 
     if (isDayStyle) {
@@ -341,6 +381,7 @@ void WeatherLocation::determineCurrentForecast()
         m_iconColor = QStringLiteral("white");
         m_isDarkTheme = true;
     }
+
     Q_EMIT currentForecastChanged();
 }
 
@@ -358,4 +399,37 @@ void WeatherLocation::updateCurrentDateTime()
     m_timer->setInterval(60000);
     Q_EMIT currentTimeChanged();
     Q_EMIT currentDateChanged();
+}
+
+const QColor &WeatherLocation::topColor() const
+{
+    return m_topColor;
+}
+const QColor &WeatherLocation::bottomColor() const
+{
+    return m_bottomColor;
+}
+const QColor &WeatherLocation::cloudColor() const
+{
+    return m_cloudColor;
+}
+bool WeatherLocation::rain() const
+{
+    return m_rain;
+}
+bool WeatherLocation::cloud() const
+{
+    return m_cloud;
+}
+bool WeatherLocation::star() const
+{
+    return m_star;
+}
+bool WeatherLocation::sun() const
+{
+    return m_sun;
+}
+bool WeatherLocation::snow() const
+{
+    return m_snow;
 }

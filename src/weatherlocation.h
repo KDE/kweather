@@ -56,6 +56,15 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QColor iconColor READ iconColor NOTIFY currentForecastChanged)
     Q_PROPERTY(bool darkTheme READ darkTheme NOTIFY currentForecastChanged)
 
+    Q_PROPERTY(bool cloud READ cloud NOTIFY currentForecastChanged)
+    Q_PROPERTY(bool sun READ sun NOTIFY currentForecastChanged)
+    Q_PROPERTY(bool rain READ rain NOTIFY currentForecastChanged)
+    Q_PROPERTY(bool star READ star NOTIFY currentForecastChanged)
+    Q_PROPERTY(bool snow READ snow NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor topColor READ topColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor bottomColor READ bottomColor NOTIFY currentForecastChanged)
+    Q_PROPERTY(QColor cloudColor READ cloudColor NOTIFY currentForecastChanged)
+
 public:
     explicit WeatherLocation(QString locationId,
                              QString locationName,
@@ -89,6 +98,14 @@ public:
     const QColor &cardBackgroundColor() const;
     const QColor &cardTextColor() const;
     const QColor &cardSecondaryTextColor() const;
+    const QColor &topColor() const;
+    const QColor &bottomColor() const;
+    const QColor &cloudColor() const;
+    bool rain() const;
+    bool cloud() const;
+    bool star() const;
+    bool sun() const;
+    bool snow() const;
 
     const QColor &iconColor() const;
     bool darkTheme() const;
@@ -133,6 +150,14 @@ private:
     QColor m_iconColor;
     QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
     bool m_isDarkTheme = false;
+    bool m_rain = false;
+    bool m_snow = false;
+    bool m_sun = false;
+    bool m_star = false;
+    bool m_cloud = false;
+    QColor m_cloudColor;
+    QColor m_topColor;
+    QColor m_bottomColor;
 
     QString m_locationName, m_locationId;
     QString m_timeZone;

@@ -55,7 +55,7 @@ Kirigami.Page {
             onTriggered: weatherLocationListModel.locations[loader.item.currentIndex].update()
         }
     ]
-    
+
     Loader {
         id: loader
         transform: Translate { y: yTranslate }

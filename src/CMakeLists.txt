@@ -15,6 +15,13 @@ set(kweather_SRCS
     formatter.cpp
 )
 
+if (NOT ANDROID)
+    set(kweather_SRCS
+        ${kweather_SRCS}
+        weatherbackground.cpp
+    )
+endif()
+
 add_library(kweatherLib STATIC)
 set_target_properties(kweatherLib PROPERTIES POSITION_INDEPENDENT_CODE ON)
 kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
@@ -31,6 +38,7 @@ endif()
 
 add_executable(kweather ${kweather_SRCS} ${RESOURCES})
 target_link_libraries(kweather
+    PUBLIC
     Qt::Qml
     Qt::QuickControls2
     Qt::Network
@@ -41,11 +49,17 @@ target_link_libraries(kweather
     KF5::KWeatherCore
     kweatherLib
 )
-
+if(${QT_MAJOR_VERSION} EQUAL "6")
+    target_link_libraries(kweather PRIVATE "Qt${QT_MAJOR_VERSION}::OpenGL")
+endif()
 if (ANDROID)
     target_link_libraries(kweather
+        PUBLIC
         OpenSSL::SSL
         Qt::Svg
+        Qt${QT_MAJOR_VERSION}::GuiPrivate
+        Qt${QT_MAJOR_VERSION}::Qml
+        Qt${QT_MAJOR_VERSION}::Quick
     )
 
     kirigami_package_breeze_icons(ICONS
@@ -99,7 +113,7 @@ if (ANDROID)
         weather-storm-night
     )
 else()
-    target_link_libraries(kweather Qt::Widgets)
+    target_link_libraries(kweather PUBLIC Qt::Widgets)
 endif()
 
 if (UNIX AND (NOT ANDROID))

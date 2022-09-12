@@ -88,121 +88,141 @@ Kirigami.ScrollablePage {
     }
     
     // background
-    background: Rectangle {
-        anchors.fill: parent
-        color: "#24a3de"
-        
-        // background colours
-        gradient: Gradient {
-            GradientStop { 
-                color: backgroundLoader.item ? backgroundLoader.item.gradientColorTop : "white"
-                position: 0.0
-                Behavior on color {
-                    ColorAnimation { duration: Kirigami.Units.longDuration }
-                }
-            }
-            GradientStop { 
-                color: backgroundLoader.item ? backgroundLoader.item.gradientColorBottom : "white"
-                position: 1.0 
-                Behavior on color {
-                    ColorAnimation { duration: Kirigami.Units.longDuration }
-                }
-            }
-        }
-        
-        // separator between the top window decoration bar and the components
-        Rectangle {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: 1
-            color: Qt.rgba(0, 0, 0, 0.2)
-        }
-        
-        // background components (ex. cloud, sun, etc.)
-        Item {
+    background: KWEATHER_IS_ANDROID ? backgroundQml.item : backgroundGL.item
+    Loader {
+        id: backgroundGL
+        active: !KWEATHER_IS_ANDROID
+        sourceComponent: WeatherBackground {
             anchors.fill: parent
-            opacity: { // opacity lightens when you scroll down the page
-                let scrollAmount = page.flickable.contentY - (Kirigami.Units.gridUnit * 3);
-                if (scrollAmount < 0) {
-                    scrollAmount = 0;
-                }
-                
-                return 1 - 0.5 * (scrollAmount / (Kirigami.Units.gridUnit * 5));
-            }
-            
-            // weather elements
-            Loader {
-                anchors.fill: parent
-                opacity: backgroundLoader.item && backgroundLoader.item.sun ? 1 : 0
-                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
-                active: opacity !== 0
-                sourceComponent: Sun {}
-            }
-            Loader {
-                anchors.fill: parent
-                opacity: backgroundLoader.item && backgroundLoader.item.stars ? 1 : 0
-                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
-                active: opacity !== 0
-                sourceComponent: Stars {}
-            }
-            Loader {
-                anchors.fill: parent
-                opacity: backgroundLoader.item && backgroundLoader.item.clouds ? 1 : 0
-                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
-                active: opacity !== 0
-                sourceComponent: Cloudy { cloudColor: backgroundLoader.item.cloudsColor }
-            }
-            Loader {
-                anchors.fill: parent
-                opacity: backgroundLoader.item && backgroundLoader.item.rain ? 1 : 0
-                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
-                active: opacity !== 0
-                sourceComponent: Rain {}
-            }
-            Loader {
-                anchors.fill: parent
-                opacity: backgroundLoader.item && backgroundLoader.item.snow ? 1 : 0
-                Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
-                active: opacity !== 0
-                sourceComponent: Snow {}
-            }
-            
-            Loader {
-                id: backgroundLoader
-                anchors.fill: parent
-                Component.onCompleted: {
-                    if (weatherLocation) {
-                        source = weatherLocation.backgroundComponent;
-                    }
-                }
-                
-                NumberAnimation {
-                    id: backgroundLoaderOpacity
-                    target: backgroundLoader.item
-                    property: "opacity"
-                    duration: Kirigami.Units.longDuration
-                    to: 1
-                    running: true
-                    onFinished: {
-                        backgroundLoader.source = weatherLocation.backgroundComponent;
-                        to = 1;
-                        restart();
-                    }
-                }
-            }
+            rain: weatherLocation.rain
+            cloud: weatherLocation.cloud
+            sun: weatherLocation.sun
+            star: weatherLocation.star
+            snow: weatherLocation.snow
+            colorTop: weatherLocation.topColor
+            colorBottom: weatherLocation.bottomColor
+            cloudColor: weatherLocation.cloudColor
         }
-        
-        // fade away background when locations changed
-        Connections {
-            target: page
-            function onCurrentIndexChanged() {
-                backgroundLoaderOpacity.to = 0;
-                backgroundLoaderOpacity.restart();
+    }
+
+    Loader {
+        id: backgroundQml
+        active: KWEATHER_IS_ANDROID
+        sourceComponent: Rectangle {
+            anchors.fill: parent
+            color: "#24a3de"
+
+            // background colours
+            gradient: Gradient {
+                GradientStop {
+                    color: backgroundLoader.item ? backgroundLoader.item.gradientColorTop : "white"
+                    position: 0.0
+                    Behavior on color {
+                        ColorAnimation { duration: Kirigami.Units.longDuration }
+                    }
+                }
+                GradientStop {
+                    color: backgroundLoader.item ? backgroundLoader.item.gradientColorBottom : "white"
+                    position: 1.0
+                    Behavior on color {
+                        ColorAnimation { duration: Kirigami.Units.longDuration }
+                    }
+                }
+            }
+
+            // separator between the top window decoration bar and the components
+            Rectangle {
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: 1
+                color: Qt.rgba(0, 0, 0, 0.2)
+            }
+
+            // background components (ex. cloud, sun, etc.)
+            Item {
+                anchors.fill: parent
+                opacity: { // opacity lightens when you scroll down the page
+                    let scrollAmount = page.flickable.contentY - (Kirigami.Units.gridUnit * 3);
+                    if (scrollAmount < 0) {
+                        scrollAmount = 0;
+                    }
+
+                    return 1 - 0.5 * (scrollAmount / (Kirigami.Units.gridUnit * 5));
+                }
+
+                // weather elements
+                Loader {
+                    anchors.fill: parent
+                    opacity: backgroundLoader.item && backgroundLoader.item.sun ? 1 : 0
+                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    active: opacity !== 0
+                    sourceComponent: Sun {}
+                }
+                Loader {
+                    anchors.fill: parent
+                    opacity: backgroundLoader.item && backgroundLoader.item.stars ? 1 : 0
+                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    active: opacity !== 0
+                    sourceComponent: Stars {}
+                }
+                Loader {
+                    anchors.fill: parent
+                    opacity: backgroundLoader.item && backgroundLoader.item.clouds ? 1 : 0
+                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    active: opacity !== 0
+                    sourceComponent: Cloudy { cloudColor: backgroundLoader.item.cloudsColor }
+                }
+                Loader {
+                    anchors.fill: parent
+                    opacity: backgroundLoader.item && backgroundLoader.item.rain ? 1 : 0
+                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    active: opacity !== 0
+                    sourceComponent: Rain {}
+                }
+                Loader {
+                    anchors.fill: parent
+                    opacity: backgroundLoader.item && backgroundLoader.item.snow ? 1 : 0
+                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    active: opacity !== 0
+                    sourceComponent: Snow {}
+                }
+
+                Loader {
+                    id: backgroundLoader
+                    anchors.fill: parent
+                    Component.onCompleted: {
+                        if (weatherLocation) {
+                            source = weatherLocation.backgroundComponent;
+                        }
+                    }
+
+                    NumberAnimation {
+                        id: backgroundLoaderOpacity
+                        target: backgroundLoader.item
+                        property: "opacity"
+                        duration: Kirigami.Units.longDuration
+                        to: 1
+                        running: true
+                        onFinished: {
+                            backgroundLoader.source = weatherLocation.backgroundComponent;
+                            to = 1;
+                            restart();
+                        }
+                    }
+                }
+            }
+
+            // fade away background when locations changed
+            Connections {
+                target: page
+                function onCurrentIndexChanged() {
+                    backgroundLoaderOpacity.to = 0;
+                    backgroundLoaderOpacity.restart();
+                }
             }
         }
     }
-    
     Connections {
         target: weatherLocation
         ignoreUnknownSignals: true // weatherLocation may be null

@@ -62,6 +62,9 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 )
 find_package(KF5KWeatherCore 0.6.0 REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}QuickCompiler)
+if (${QT_MAJOR_VERSION} EQUAL "6")
+    find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS OpenGL)
+endif()
 
 if (ANDROID)
     find_package(OpenSSL REQUIRED)
