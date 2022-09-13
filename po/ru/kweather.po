@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-01 00:47+0000\n"
+"POT-Creation-Date: 2022-09-13 00:47+0000\n"
 "PO-Revision-Date: 2021-08-20 21:40+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -65,28 +65,28 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: main.cpp:63 qml/DefaultPage.qml:66 qml/main.qml:18
+#: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
 msgid "Weather"
 msgstr "Погода"
 
-#: main.cpp:65
+#: main.cpp:68
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr "Адаптивное приложение для просмотра прогноза погоды для Plasma"
 
-#: main.cpp:67
+#: main.cpp:70
 #, fuzzy, kde-format
 #| msgid "© 2020-2021 Plasma Development Team"
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© Команда разработчиков Plasma, 2020 – 2021"
 
-#: main.cpp:69
+#: main.cpp:72
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:70
+#: main.cpp:73
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
@@ -142,17 +142,17 @@ msgstr "Не удалось получить текущее местополож
 msgid "Add Location"
 msgstr "Добавить местоположение"
 
-#: qml/DynamicForecastPage.qml:210 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:230 qml/FlatLocationForecast.qml:33
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Прогноз для %1 обновлён"
 
-#: qml/DynamicForecastPage.qml:282 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:302 qml/FlatLocationForecast.qml:89
 #, kde-format
 msgid "Updated at %1"
 msgstr "Обновлено в %1"
 
-#: qml/DynamicForecastPage.qml:302 qml/DynamicForecastPage.qml:307
+#: qml/DynamicForecastPage.qml:322 qml/DynamicForecastPage.qml:327
 #: qml/ForecastContainerPage.qml:41
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
@@ -160,35 +160,35 @@ msgstr "Обновлено в %1"
 msgid "Locations"
 msgstr "Местоположения"
 
-#: qml/DynamicForecastPage.qml:322 qml/DynamicForecastPage.qml:327
+#: qml/DynamicForecastPage.qml:342 qml/DynamicForecastPage.qml:347
 #: qml/ForecastContainerPage.qml:46 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Параметры"
 
-#: qml/DynamicForecastPage.qml:343 qml/DynamicForecastPage.qml:348
+#: qml/DynamicForecastPage.qml:363 qml/DynamicForecastPage.qml:368
 #: qml/ForecastContainerPage.qml:53
 #, kde-format
 msgid "Refresh"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:408 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:428 qml/FlatLocationForecast.qml:105
 #, kde-format
 msgid "Daily"
 msgstr "По дням"
 
-#: qml/DynamicForecastPage.qml:413
+#: qml/DynamicForecastPage.qml:433
 #, kde-format
 msgid "Local Date: "
 msgstr "Местная дата: "
 
-#: qml/DynamicForecastPage.qml:493 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:513 qml/FlatLocationForecast.qml:150
 #, kde-format
 msgid "Hourly"
 msgstr "По часам"
 
-#: qml/DynamicForecastPage.qml:498
+#: qml/DynamicForecastPage.qml:518
 #, kde-format
 msgid "Local Time: "
 msgstr "Местное время: "
