@@ -44,7 +44,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: selectedDay == null ? "" : selectedDay.precipitation.toFixed(1) + "mm"
+                        text: selectedDay == null ? "" : Formatter.formatPrecipitation(selectedDay.precipitation, settingsModel.precipitationUnits)
                         color: root.textColor
                     }
                 }

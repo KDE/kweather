@@ -62,7 +62,7 @@ Rectangle {
             }
             Label {
                 color: secondaryTextColor
-                text: i18n("%1mm", weather.precipitationAmount.toFixed(1))
+                text: Formatter.formatPrecipitation(weather.precipitationAmount, settingsModel.precipitationUnits)
             }
         }
 

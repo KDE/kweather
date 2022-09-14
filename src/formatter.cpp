@@ -65,7 +65,14 @@ QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) co
     }
     return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("hh:mm ap"));
 }
-
+QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit) const
+{
+    if (unit == QStringLiteral("in")) {
+        return i18nc("in as inches", "%1 in", QString::number(precipitation * 0.03937008, 'f', 2));
+    } else {
+        return i18nc("mm as millimeters", "%1 mm", QString::number(precipitation, 'f', 1));
+    }
+}
 QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const
 {
     return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("h ap")).replace(QStringLiteral("."), QStringLiteral(""));

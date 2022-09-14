@@ -25,5 +25,6 @@ public:
     Q_INVOKABLE QString formatPressure(qreal pressure, const QString &unit) const;
 
     Q_INVOKABLE QString formatSunriseTime(QDateTime date, const QString &timeZone) const;
+    Q_INVOKABLE QString formatPrecipitation(qreal precipitation, const QString &unit) const;
     Q_INVOKABLE QString formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const;
 };

@@ -223,6 +223,45 @@ ColumnLayout {
                     }
                 }
             }
+
+            // Precipitation
+            MobileForm.FormComboBoxDelegate {
+                id: precipitationUnitsDropdown
+                text: i18n("Precipitation Units")
+                currentValue: settingsModel.precipitationUnits
+                model: [["mm", i18nc("Millimeters", "mm")], ["in", i18nc("Inches", "in")]]
+
+                onClicked: {
+                    if (root.dialog) {
+                        dialogTimer.dialog = precipitationUnitsDropdown.dialog;
+                        dialogTimer.restart();
+                    }
+                }
+
+                Connections {
+                    target: precipitationUnitsDropdown.dialog
+                    function onClosed() {
+                        if (root.dialog) {
+                            root.dialog.open();
+                        }
+                    }
+                }
+
+                dialogDelegate: RadioDelegate {
+                    implicitWidth: Kirigami.Units.gridUnit * 16
+                    topPadding: Kirigami.Units.smallSpacing * 2
+                    bottomPadding: Kirigami.Units.smallSpacing * 2
+
+                    text: modelData[1]
+                    checked: settingsModel.precipitationUnits == modelData[0]
+                    onCheckedChanged: {
+                        if (checked) {
+                            settingsModel.precipitationUnits = modelData[0];
+                            settingsModel.save();
+                        }
+                    }
+                }
+            }
         }
     }
 }
