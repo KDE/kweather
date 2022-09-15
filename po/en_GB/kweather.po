@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-13 00:47+0000\n"
+"POT-Creation-Date: 2022-09-15 00:47+0000\n"
 "PO-Revision-Date: 2022-09-10 10:48+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -64,6 +64,19 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
+#: formatter.cpp:71
+#, kde-format
+msgctxt "in as inches"
+msgid "%1 in"
+msgstr ""
+
+#: formatter.cpp:73
+#, fuzzy, kde-format
+#| msgid "%1 mmHg"
+msgctxt "mm as millimeters"
+msgid "%1 mm"
+msgstr "%1 mmHg"
+
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
 msgid "Weather"
@@ -105,7 +118,6 @@ msgid "%1%"
 msgstr "%1%"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:71
-#: qml/WeatherHourDelegate.qml:65
 #, kde-format
 msgid "%1mm"
 msgstr "%1mm"
@@ -345,6 +357,26 @@ msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
+#: qml/settings/SettingsComponent.qml:230
+#, fuzzy, kde-format
+#| msgid "Precipitation"
+msgid "Precipitation Units"
+msgstr "Precipitation"
+
+#: qml/settings/SettingsComponent.qml:232
+#, fuzzy, kde-format
+#| msgid "%1mm"
+msgctxt "Millimeters"
+msgid "mm"
+msgstr "%1mm"
+
+#: qml/settings/SettingsComponent.qml:232
+#, fuzzy, kde-format
+#| msgid "Rain"
+msgctxt "Inches"
+msgid "in"
+msgstr "Rain"
+
 #: qml/SetupWizard.qml:64
 #, kde-format
 msgid "Welcome to Weather"
@@ -454,9 +486,6 @@ msgstr "temperature"
 
 #~ msgid "Heavy Snow"
 #~ msgstr "Heavy Snow"
-
-#~ msgid "Rain"
-#~ msgstr "Rain"
 
 #~ msgid "Fog"
 #~ msgstr "Fog"

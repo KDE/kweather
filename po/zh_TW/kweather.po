@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-13 00:47+0000\n"
+"POT-Creation-Date: 2022-09-15 00:47+0000\n"
 "PO-Revision-Date: 2022-05-20 00:46+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -65,6 +65,18 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
+#: formatter.cpp:71
+#, kde-format
+msgctxt "in as inches"
+msgid "%1 in"
+msgstr ""
+
+#: formatter.cpp:73
+#, kde-format
+msgctxt "mm as millimeters"
+msgid "%1 mm"
+msgstr ""
+
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
 msgid "Weather"
@@ -106,7 +118,6 @@ msgid "%1%"
 msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:71
-#: qml/WeatherHourDelegate.qml:65
 #, kde-format
 msgid "%1mm"
 msgstr ""
@@ -344,6 +355,23 @@ msgstr ""
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:230
+#, kde-format
+msgid "Precipitation Units"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:232
+#, kde-format
+msgctxt "Millimeters"
+msgid "mm"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:232
+#, kde-format
+msgctxt "Inches"
+msgid "in"
 msgstr ""
 
 #: qml/SetupWizard.qml:64
