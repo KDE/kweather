@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-15 00:47+0000\n"
-"PO-Revision-Date: 2022-09-01 11:54+0300\n"
+"PO-Revision-Date: 2022-09-15 09:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -69,14 +69,13 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 inç"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 mmHg"
+msgstr "%1 mm"
 
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
@@ -360,23 +359,21 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:230
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Yağış"
+msgstr "Yağış Birimleri"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1mm"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:232
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr ""
+msgstr "inç"
 
 #: qml/SetupWizard.qml:64
 #, kde-format

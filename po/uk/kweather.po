@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-15 00:47+0000\n"
-"PO-Revision-Date: 2022-09-01 08:36+0300\n"
+"PO-Revision-Date: 2022-09-15 08:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -71,14 +71,13 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 дюймів"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 мм рт.ст."
+msgstr "%1 мм"
 
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
@@ -363,24 +362,21 @@ msgid "mmHg"
 msgstr "мм рт.ст."
 
 #: qml/settings/SettingsComponent.qml:230
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Опади"
+msgstr "Одиниця виміру опадів"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1мм"
+msgstr "мм"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "Rain"
+#, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "Дощ"
+msgstr "дюйм"
 
 #: qml/SetupWizard.qml:64
 #, kde-format
