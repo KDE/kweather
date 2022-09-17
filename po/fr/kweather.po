@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-15 00:47+0000\n"
-"PO-Revision-Date: 2022-09-02 06:21+0200\n"
+"PO-Revision-Date: 2022-09-16 15:17+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.08.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -68,14 +68,13 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 pouces"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 mmHg"
+msgstr "%1 mm"
 
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
@@ -360,24 +359,21 @@ msgid "mmHg"
 msgstr "mm Hg"
 
 #: qml/settings/SettingsComponent.qml:230
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Précipitation"
+msgstr "Unités de précipitations"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1 mm"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "Rain"
+#, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "Pluie"
+msgstr "Pouce"
 
 #: qml/SetupWizard.qml:64
 #, kde-format
