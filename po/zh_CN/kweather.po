@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-15 00:47+0000\n"
-"PO-Revision-Date: 2022-08-20 14:18\n"
+"PO-Revision-Date: 2022-09-20 01:57\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -71,11 +71,10 @@ msgid "%1 in"
 msgstr ""
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mph"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 英里/小时"
+msgstr ""
 
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
@@ -358,17 +357,15 @@ msgid "mmHg"
 msgstr "毫米汞柱"
 
 #: qml/settings/SettingsComponent.qml:230
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "降水"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1 毫米"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:232
 #, kde-format
@@ -377,10 +374,9 @@ msgid "in"
 msgstr ""
 
 #: qml/SetupWizard.qml:64
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "欢迎使用 KWeather"
+msgstr ""
 
 #: qml/SetupWizard.qml:70
 #, kde-format
@@ -426,9 +422,3 @@ msgstr "月相"
 #, kde-format
 msgid "temperature"
 msgstr "温度"
-
-#~ msgid "No locations configured"
-#~ msgstr "未配置位置"
-
-#~ msgid "Dynamic mode may cause performance issues on embedded platforms"
-#~ msgstr "在嵌入式平台上使用动态模式可导致性能问题"
