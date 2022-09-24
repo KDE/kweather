@@ -223,6 +223,8 @@ ColumnLayout {
                     }
                 }
             }
+            
+            MobileForm.FormDelegateSeparator { above: pressureUnitsDropdown; below: precipitationUnitsDropdown }
 
             // Precipitation
             MobileForm.FormComboBoxDelegate {
