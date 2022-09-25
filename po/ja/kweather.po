@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-15 00:47+0000\n"
+"POT-Creation-Date: 2022-09-25 00:47+0000\n"
 "PO-Revision-Date: 2020-06-13 17:20-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -353,18 +353,18 @@ msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:230
+#: qml/settings/SettingsComponent.qml:232
 #, kde-format
 msgid "Precipitation Units"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/SettingsComponent.qml:234
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/SettingsComponent.qml:234
 #, kde-format
 msgctxt "Inches"
 msgid "in"

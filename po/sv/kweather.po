@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-15 00:47+0000\n"
-"PO-Revision-Date: 2022-08-03 10:13+0200\n"
+"POT-Creation-Date: 2022-09-25 00:47+0000\n"
+"PO-Revision-Date: 2022-09-24 16:11+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -68,14 +68,13 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 tum"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 mm kvicksilver"
+msgstr "%1 mm"
 
 #: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
@@ -223,10 +222,9 @@ msgid "UV index"
 msgstr "UV-index"
 
 #: qml/locationslist/AddLocationListView.qml:48
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "Sök efter en plats"
+msgstr "Sök efter en plats…"
 
 #: qml/locationslist/AddLocationListView.qml:86
 #, kde-format
@@ -266,7 +264,7 @@ msgstr "Lägg till en plats"
 #: qml/locationslist/LocationsListView.qml:137
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
@@ -358,31 +356,27 @@ msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mm kvicksilver"
 
-#: qml/settings/SettingsComponent.qml:230
-#, fuzzy, kde-format
-#| msgid "Precipitation"
-msgid "Precipitation Units"
-msgstr "Nederbörd"
-
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
+msgid "Precipitation Units"
+msgstr "Nederbördsenheter"
+
+#: qml/settings/SettingsComponent.qml:234
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1 mm"
+msgstr "mm"
 
-#: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "Rain"
+#: qml/settings/SettingsComponent.qml:234
+#, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "Regn"
+msgstr "tum"
 
 #: qml/SetupWizard.qml:64
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "Välkommen till KWeather"
+msgstr "Välkommen till Väder"
 
 #: qml/SetupWizard.qml:70
 #, kde-format
