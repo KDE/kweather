@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(kweather)
 
-set(PROJECT_VERSION "22.06")
+set(PROJECT_VERSION "22.09")
 set(QT_MIN_VERSION "5.15.2")
 set(KF5_MIN_VERSION "5.90.0")
 
