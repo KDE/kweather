@@ -49,6 +49,7 @@
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real y otra información</summary>
   <summary xml:lang="fi">Näytä tosiaikaiset sääennusteet ja muuta tietoa</summary>
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
+  <summary xml:lang="id">Lihat ramalan cuaca dan informasi lainnya dalam waktu nyata</summary>
   <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale e altre informazioni</summary>
   <summary xml:lang="ko">실시간 일기 예보와 기타 정보 표시</summary>
   <summary xml:lang="lt">Rodyti tikralaikes orų prognozes ir kitą informaciją</summary>
@@ -114,7 +115,7 @@
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
     <p xml:lang="fi">Mukautuva sääsovellus Plasmaan. Litteä ja dynaaminen/animoitu näkymä sääennusteiden ja muun tiedon esittämiseen.</p>
     <p xml:lang="fr">Une application météo convergente pour Plasma. Elle possède des affichages à plat mais aussi dynamique / animé pour l'affichage des prévisions et d'autres informations.</p>
-    <p xml:lang="id">Sebuah aplikasi cuaca yang konvergen untuk Plasma. Yang memiliki tampilan flat dan beranimasi/dinamis untuk menampilkan prakiraan cuaca dan informasi lainnya.</p>
+    <p xml:lang="id">Sebuah aplikasi cuaca yang konvergen untuk Plasma. Memilki tampilan datar dan beranimasi/dinamis untuk menampilkan ramalan cuaca dan informasi lainnya.</p>
     <p xml:lang="it">Un'applicazione meteo convergente per Plasma. Ha viste statiche e dinamiche/animate per mostrare previsioni e altre informazioni.</p>
     <p xml:lang="ko">Plasma용 올인원 날씨 프로그램입니다. 평면, 동적, 애니메이션 보기로 일기 예보와 기타 정보를 볼 수 있습니다.</p>
     <p xml:lang="lt">Konverguojanti orų programa, skirta Plasma. Turi plokščią ir dinaminį/animuotą rodinį, skirtą atvaizduoti orų prognozes bei kitą informaciją.</p>
@@ -204,7 +205,7 @@
       <caption xml:lang="es">Vista plana móvil</caption>
       <caption xml:lang="fi">Litteä mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
-      <caption xml:lang="id">Tampilan flat ponsel</caption>
+      <caption xml:lang="id">Tampilan datar ponsel</caption>
       <caption xml:lang="it">Visualizzazione statica mobile</caption>
       <caption xml:lang="ko">데스크톱 평면 보기</caption>
       <caption xml:lang="lt">Mobilusis plokščias rodinys</caption>
