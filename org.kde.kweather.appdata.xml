@@ -24,6 +24,7 @@
   <name xml:lang="fr">Météo</name>
   <name xml:lang="id">Weather</name>
   <name xml:lang="it">Meteo</name>
+  <name xml:lang="ka">ამინდი</name>
   <name xml:lang="ko">날씨</name>
   <name xml:lang="lt">Orai</name>
   <name xml:lang="nl">Het weer</name>
@@ -51,6 +52,7 @@
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
   <summary xml:lang="id">Lihat ramalan cuaca dan informasi lainnya dalam waktu nyata</summary>
   <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale e altre informazioni</summary>
+  <summary xml:lang="ka">ამინდის პროგნოზებისა და სხვა ინფორმაციის რეალურ დროში ნახვა</summary>
   <summary xml:lang="ko">실시간 일기 예보와 기타 정보 표시</summary>
   <summary xml:lang="lt">Rodyti tikralaikes orų prognozes ir kitą informaciją</summary>
   <summary xml:lang="nl">Realtime weersverwachtingen en andere informatie bekijken</summary>
@@ -79,6 +81,7 @@
   <developer_name xml:lang="fr">Communauté KDE</developer_name>
   <developer_name xml:lang="id">Komunitas KDE</developer_name>
   <developer_name xml:lang="it">Comunità KDE</developer_name>
+  <developer_name xml:lang="ka">KDE-ის საზოგადოება</developer_name>
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
   <developer_name xml:lang="lt">KDE bendruomenė</developer_name>
   <developer_name xml:lang="nl">KDE-gemeenschap</developer_name>
@@ -147,6 +150,7 @@
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
       <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
+      <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
       <caption xml:lang="ko">모바일 동적 보기</caption>
       <caption xml:lang="lt">Mobilusis dinaminis rodinys</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
@@ -177,6 +181,7 @@
       <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
       <caption xml:lang="id">Tampilan dinamis desktop</caption>
       <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
+      <caption xml:lang="ka">სამუშაო მაგიდის დინამიკური ხედი</caption>
       <caption xml:lang="ko">데스크톱 동적 보기</caption>
       <caption xml:lang="lt">Darbalaukio dinaminis rodinys</caption>
       <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
@@ -207,6 +212,7 @@
       <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
       <caption xml:lang="id">Tampilan datar ponsel</caption>
       <caption xml:lang="it">Visualizzazione statica mobile</caption>
+      <caption xml:lang="ka">ბრტყელი მობილური ხედი</caption>
       <caption xml:lang="ko">데스크톱 평면 보기</caption>
       <caption xml:lang="lt">Mobilusis plokščias rodinys</caption>
       <caption xml:lang="nl">Vlak beeld op mobiel</caption>
@@ -237,6 +243,7 @@
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
       <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
+      <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
       <caption xml:lang="ko">모바일 동적 보기</caption>
       <caption xml:lang="lt">Mobilusis dinaminis rodinys</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
