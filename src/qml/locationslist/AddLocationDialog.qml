@@ -20,6 +20,7 @@ Kirigami.Dialog {
     
     AddLocationListView {
         id: addLocationListView
+        clip: true
         onCloseRequested: root.close();
     }
 }
