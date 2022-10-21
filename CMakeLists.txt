@@ -30,6 +30,7 @@ include(ECMPoQmTools)
 include(ECMCheckOutboundLicense)
 include(ECMFindQmlModule)
 include(KDEInstallDirs)
+include(ECMInstallIcons)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEGitCommitHooks)
@@ -88,7 +89,7 @@ endif()
 
 install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kweather.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES kweather.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
+ecm_install_icons(ICONS kweather.svg DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor )
 
 # DBus
 configure_file(org.kde.kweather.service.in
