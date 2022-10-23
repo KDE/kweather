@@ -5,7 +5,6 @@
     "runtime-version": "5.15-21.08",
     "sdk": "org.kde.Sdk",
     "command": "kweather",
-    "rename-icon": "kweather",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": [

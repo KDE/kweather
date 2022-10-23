@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
+#include <QIcon>
 #include <QMetaObject>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -106,6 +107,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     // load setup wizard if first launch
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
+
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.kweather")));
 
     if (engine.rootObjects().isEmpty()) {
         return -1;

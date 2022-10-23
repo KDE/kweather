@@ -4,7 +4,7 @@
 - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 
-# KWeather <img src="kweather.svg" width="40"/>
+# KWeather <img src="org.kde.kweather.svg" width="40"/>
 
 <a href='https://flathub.org/apps/details/org.kde.kweather'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
