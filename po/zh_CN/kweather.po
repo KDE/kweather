@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-25 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:50+0000\n"
 "PO-Revision-Date: 2022-10-22 05:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -76,27 +76,27 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr ""
 
-#: main.cpp:66 qml/DefaultPage.qml:66 qml/main.qml:18
+#: main.cpp:67 qml/DefaultPage.qml:66 qml/main.qml:18
 #, kde-format
 msgid "Weather"
 msgstr "天气"
 
-#: main.cpp:68
+#: main.cpp:69
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr "一款针对 Plasma 设计的桌面与移动平台通用天气应用程序"
 
-#: main.cpp:70
+#: main.cpp:71
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© 2020-2022 Plasma Development Team"
 
-#: main.cpp:72
+#: main.cpp:73
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:73
+#: main.cpp:74
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
