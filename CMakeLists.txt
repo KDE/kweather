@@ -76,6 +76,7 @@ if (NOT ANDROID AND BUILD_PLASMOID)
    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
 
+ecm_find_qmlmodule(org.kde.kirigamiaddons.labs.mobileform 0.1)
 ecm_find_qmlmodule(org.kde.kholidays 1.0)
 
 add_subdirectory(src)
