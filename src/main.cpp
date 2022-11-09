@@ -26,7 +26,6 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "about.h"
 #include "formatter.h"
 #include "kweathersettings.h"
 #include "locationquerymodel.h"
@@ -80,11 +79,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-    qmlRegisterSingletonType<AboutType>("kweather", 1, 0, "AboutType", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
-        Q_UNUSED(engine)
-        Q_UNUSED(scriptEngine)
-
-        return new AboutType();
+    qmlRegisterSingletonType("kweather", 1, 0, "AboutData", [](QQmlEngine *engine, QJSEngine *) -> QJSValue {
+        return engine->toScriptValue(KAboutData::applicationData());
     });
 
     engine.rootContext()->setContextProperty(QStringLiteral("weatherLocationListModel"), WeatherLocationListModel::inst());
