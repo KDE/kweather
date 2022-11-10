@@ -24,8 +24,8 @@ WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
 
 WeatherLocationListModel *WeatherLocationListModel::inst()
 {
-    static WeatherLocationListModel singleton;
-    return &singleton;
+    static WeatherLocationListModel *singleton = new WeatherLocationListModel;
+    return singleton;
 }
 
 void WeatherLocationListModel::load()
