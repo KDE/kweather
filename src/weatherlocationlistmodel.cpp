@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#include "weatherlocationmodel.h"
+#include "weatherlocationlistmodel.h"
 
 #include <QJsonArray>
 #include <QQmlEngine>

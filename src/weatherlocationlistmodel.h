@@ -1,6 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
- * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2022 Devin Lin <espidev@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -12,7 +12,8 @@
 
 #include <KWeatherCore/LocationQuery>
 
-class WeatherLocation;
+#include "weatherlocation.h"
+
 class WeatherLocationListModel : public QObject
 {
     Q_OBJECT
@@ -26,11 +27,13 @@ public:
 
     void load();
     void saveOrder();
+    int count() const;
+
     Q_INVOKABLE void insert(int index, WeatherLocation *weatherLocation);
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void move(int oldIndex, int newIndex);
-    int count() const;
     Q_INVOKABLE void requestCurrentLocation();
+
     QList<WeatherLocation *> &locations();
 
 public Q_SLOTS:

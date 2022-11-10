@@ -6,13 +6,12 @@
  */
 
 #include "locationquerymodel.h"
+#include "weatherlocationlistmodel.h"
 
 #include <KWeatherCore/LocationQueryReply>
 
 #include <QDebug>
 #include <QTimer>
-
-#include "weatherlocationmodel.h"
 
 LocationQueryModel::LocationQueryModel()
 {

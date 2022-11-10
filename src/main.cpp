@@ -35,7 +35,7 @@
 #include "weatherbackground.h"
 #endif
 #include "weatherlocation.h"
-#include "weatherlocationmodel.h"
+#include "weatherlocationlistmodel.h"
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
@@ -110,6 +110,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // load setup wizard if first launch
     engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
 
+    // required for X11
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.kweather")));
 
     if (engine.rootObjects().isEmpty()) {

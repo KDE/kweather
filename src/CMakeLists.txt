@@ -7,7 +7,7 @@
 
 set(kweather_SRCS
     main.cpp
-    weatherlocationmodel.cpp
+    weatherlocationlistmodel.cpp
     weatherlocation.cpp
     locationquerymodel.cpp
     temperaturechartdata.cpp
