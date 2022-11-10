@@ -11,7 +11,6 @@ Control {
     id: root
     
     property bool showSeparator: false
-    property int visualIndex
     
     signal clicked()
     signal rightClicked()
@@ -48,9 +47,6 @@ Control {
         id: mouseArea
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton | Qt.RightButton
-        
-        // HACK: used for dragging logic by other components
-        property int visualIndex: root.visualIndex
         
         onPressAndHold: root.pressAndHold()
         onReleased: root.released()

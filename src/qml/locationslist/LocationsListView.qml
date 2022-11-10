@@ -82,10 +82,10 @@ ListView {
             height: listItem.height
             
             property int visualIndex: DelegateModel.itemsIndex
-            property bool held: false
-            
+            property bool held: false // whether it is being dragged
             z: held ? 1 : 0
             
+            // logic for receiving drag events
             DropArea {
                 anchors.fill: parent
                 
@@ -125,24 +125,16 @@ ListView {
                 
                 // drag logic
                 Drag.active: dragParent.held
-                Drag.source: dragHandle.pressed ? dragHandle : mouseArea
+                Drag.source: dragHandle
                 Drag.hotSpot.x: width / 2
                 Drag.hotSpot.y: height / 2
-                
-                mouseArea.drag.target: dragParent.held ? listItem : undefined
-                mouseArea.drag.axis: Drag.YAxis
-                mouseArea.preventStealing: true
-                visualIndex: dragParent.visualIndex
-                
-                onPressAndHold: dragParent.held = true;
-                onReleased: dragParent.held = false
                 
                 // remove anchors when dragging
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 states: [
                     State {
-                        when: dragHandle.drag.active || listItem.mouseArea.drag.active
+                        when: dragHandle.drag.active
                         ParentChange {
                             target: listItem
                             parent: root
