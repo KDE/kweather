@@ -28,6 +28,9 @@ Kirigami.ScrollablePage {
     
     verticalScrollBarPolicy: ScrollBar.AlwaysOff
     
+    // HACK: disable this scrollable when needed because it steals events from dialogs
+    flickable.interactive: !applicationWindow().isDialogOpen
+    
     // x-drag threshold to change page
     property real pageChangeThreshold: page.width / 4
     

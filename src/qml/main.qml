@@ -33,6 +33,8 @@ Kirigami.ApplicationWindow {
     
     readonly property bool isWideScreen: width > 540
     
+    readonly property bool isDialogOpen: settingsDialogLoader.isOpen || addLocationDialogLoader.isOpen || locationsListDialogLoader.isOpen
+    
     Component.onCompleted: {
         // initial page
         switchToPage(getPage("Forecast"), 1);
@@ -162,18 +164,21 @@ Kirigami.ApplicationWindow {
     
     Loader {
         id: settingsDialogLoader
+        property bool isOpen: item && item.visible
         active: false
         sourceComponent: SettingsDialog {}
     }
     
     Loader {
         id: addLocationDialogLoader
+        property bool isOpen: item && item.visible
         active: false
         sourceComponent: AddLocationDialog {}
     }
 
     Loader {
         id: locationsListDialogLoader
+        property bool isOpen: item && item.visible
         active: false
         sourceComponent: LocationsListDialog {}
     }
