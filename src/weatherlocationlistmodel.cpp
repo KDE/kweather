@@ -159,11 +159,21 @@ void WeatherLocationListModel::move(int oldIndex, int newIndex)
     if (oldIndex < 0 || oldIndex >= locationsSize || newIndex < 0 || newIndex >= locationsSize) {
         return;
     }
+    if (newIndex > oldIndex) {
+        ++newIndex;
+    }
 
     beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
-    std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
-    Q_EMIT locationsChanged();
+    if (newIndex > oldIndex) {
+        auto *location = m_locations.at(oldIndex);
+        m_locations.insert(newIndex, location);
+        m_locations.takeAt(oldIndex);
+    } else {
+        auto *location = m_locations.takeAt(oldIndex);
+        m_locations.insert(newIndex, location);
+    }
     endMoveRows();
+    Q_EMIT locationsChanged();
 
     saveOrder();
 }

@@ -28,7 +28,6 @@ Kirigami.Dialog {
     ]
     
     LocationsListView {
-        addPadding: false
         onCloseRequested: root.close();
     }
 }

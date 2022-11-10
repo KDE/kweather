@@ -28,9 +28,7 @@ Kirigami.ScrollablePage {
         }
     ]
     
-
     LocationsListView {
         transform: Translate { y: yTranslate }
-        addPadding: true
     }
 }

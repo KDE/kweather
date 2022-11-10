@@ -9,10 +9,16 @@ import org.kde.kirigami 2.12 as Kirigami
 
 Control {
     id: root
+    
     property bool showSeparator: false
+    property int visualIndex
     
     signal clicked()
     signal rightClicked()
+    signal released()
+    signal pressAndHold()
+    
+    property alias mouseArea: mouseArea
     
     leftPadding: Kirigami.Units.largeSpacing
     topPadding: Kirigami.Units.largeSpacing
@@ -21,7 +27,7 @@ Control {
     
     hoverEnabled: true
     background: Rectangle {
-        color: Qt.rgba(Kirigami.Theme.textColor.r, Kirigami.Theme.textColor.g, Kirigami.Theme.textColor.b, mouseArea.pressed ? 0.2 : hoverHandler.hovered ? 0.1 : 0)
+        color: Qt.rgba(Kirigami.Theme.textColor.r, Kirigami.Theme.textColor.g, Kirigami.Theme.textColor.b, mouseArea.pressed ? 0.2 : (!Kirigami.Settings.tabletMode && hoverHandler.hovered) ? 0.1 : 0)
         
         HoverHandler {
             id: hoverHandler
@@ -43,6 +49,11 @@ Control {
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         
+        // HACK: used for dragging logic by other components
+        property int visualIndex: root.visualIndex
+        
+        onPressAndHold: root.pressAndHold()
+        onReleased: root.released()
         onClicked: {
             if (mouse.button === Qt.RightButton) {
                 root.rightClicked();
