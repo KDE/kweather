@@ -9,17 +9,19 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
-import QtCharts 2.3
+
 import org.kde.kirigami 2.13 as Kirigami
+
 import "backgrounds"
 import "backgrounds/components"
+
 import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
     
     property int currentIndex: 0
-    property var weatherLocation: weatherLocationListModel.locations[page.currentIndex]
+    property var weatherLocation: WeatherLocationListModel.locations[page.currentIndex]
     property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.dayForecasts[0]
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
@@ -31,7 +33,7 @@ Kirigami.ScrollablePage {
     
     // page functions
     property bool canGoLeft: currentIndex > 0
-    property bool canGoRight: currentIndex < weatherLocationListModel.count - 1
+    property bool canGoRight: currentIndex < WeatherLocationListModel.count - 1
     function moveLeft() {
         if (page.canGoLeft) {
             xOutAnim.goLeft = true;
@@ -64,11 +66,11 @@ Kirigami.ScrollablePage {
     }
     
     Connections {
-        target: weatherLocationListModel
+        target: WeatherLocationListModel
         
         function onLocationsChanged() {
-            if (page.currentIndex >= weatherLocationListModel.count) {
-                page.currentIndex = weatherLocationListModel.count - 1;
+            if (page.currentIndex >= WeatherLocationListModel.count) {
+                page.currentIndex = WeatherLocationListModel.count - 1;
             }
         }
     }
@@ -363,7 +365,7 @@ Kirigami.ScrollablePage {
                     visible: !Kirigami.Settings.isMobile
                     text: i18n("Refresh")
                     display: ToolButton.IconOnly
-                    onClicked: weatherLocationListModel.locations[page.currentIndex].update()
+                    onClicked: WeatherLocationListModel.locations[page.currentIndex].update()
 
                     ToolTip.visible: down
                     ToolTip.text: i18n("Refresh")

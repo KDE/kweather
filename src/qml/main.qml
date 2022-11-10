@@ -8,10 +8,13 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
+
 import org.kde.kirigami 2.11 as Kirigami
 
 import "locationslist"
 import "settings"
+
+import kweather 1.0
 
 Kirigami.ApplicationWindow {
     id: appwindow
@@ -111,7 +114,7 @@ Kirigami.ApplicationWindow {
     
     function getPage(name) {
         switch (name) {
-            case "Forecast": return pagePool.loadPage(weatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
+            case "Forecast": return pagePool.loadPage(WeatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
             case "Locations": return pagePool.loadPage("qrc:/qml/locationslist/LocationsListPage.qml");
             case "Settings": return pagePool.loadPage("qrc:/qml/settings/SettingsPage.qml");
             case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
@@ -147,11 +150,11 @@ Kirigami.ApplicationWindow {
     }
     
     Connections {
-        target: weatherLocationListModel
+        target: WeatherLocationListModel
         
         function onLocationsChanged() {
             // wwitch to default page if the count is zero
-            if (weatherLocationListModel.count === 0) {
+            if (WeatherLocationListModel.count === 0) {
                 applicationWindow().switchToPage(applicationWindow().getPage("Default"), 0);
             }
         }

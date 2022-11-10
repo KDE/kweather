@@ -17,7 +17,7 @@ import "../components"
 
 ListView {
     id: root
-    model: weatherLocationListModel.locations
+    model: WeatherLocationListModel.locations
     
     property bool addPadding: false
     signal closeRequested()
@@ -42,7 +42,7 @@ ListView {
     }
     
     Connections {
-        target: weatherLocationListModel
+        target: WeatherLocationListModel
         function onNetworkErrorCreating() {
             showPassiveNotification(i18n("Unable to fetch timezone information"));
         }
@@ -77,10 +77,10 @@ ListView {
         
         function deleteItem() {
             // if there are no locations left
-            if (weatherLocationListModel.count === 1) {
+            if (WeatherLocationListModel.count === 1) {
                 root.closeRequested();
             }
-            weatherLocationListModel.remove(index);
+            WeatherLocationListModel.remove(index);
         }
         
         onClicked: {
@@ -96,7 +96,7 @@ ListView {
                 listItem: listItem
                 listView: root
                 onMoveRequested: {
-                    weatherLocationListModel.move(oldIndex, newIndex);
+                    WeatherLocationListModel.move(oldIndex, newIndex);
                     root.currentIndex = -1;
                 }
                 onDropped: {

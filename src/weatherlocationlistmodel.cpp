@@ -1,9 +1,6 @@
-/*
- * SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
- * SPDX-FileCopyrightText: 2020 Devin Lin <espidev@gmail.com>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
+// SPDX-FileCopyrightText: 2020 Han Young <hanyoung@protonmail.com>
+// SPDX-FileCopyrightText: 2020-2022 Devin Lin <espidev@gmail.com>
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "weatherlocationlistmodel.h"
 
@@ -19,9 +16,8 @@
 #include "kweathersettings.h"
 #include "weatherlocation.h"
 
-/* ~~~ WeatherLocationListModel ~~~ */
 WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
-    : QObject{parent}
+    : QAbstractListModel{parent}
 {
     load();
 }
@@ -34,6 +30,8 @@ WeatherLocationListModel *WeatherLocationListModel::inst()
 
 void WeatherLocationListModel::load()
 {
+    beginResetModel();
+
     // load locations from kconfig
     auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
     auto locations = config.groupList();
@@ -73,7 +71,9 @@ void WeatherLocationListModel::load()
     for (int i = 0; i < (int)m_locations.size(); ++i) {
         m_locations[i] = sorted[i];
     }
+
     Q_EMIT locationsChanged();
+    endResetModel();
 }
 
 void WeatherLocationListModel::saveOrder()
@@ -85,15 +85,50 @@ void WeatherLocationListModel::saveOrder()
     }
 }
 
+int WeatherLocationListModel::count() const
+{
+    return m_locations.size();
+}
+
+int WeatherLocationListModel::rowCount(const QModelIndex &parent) const
+{
+    if (parent.isValid()) {
+        return 0;
+    }
+    return m_locations.size();
+}
+
+QVariant WeatherLocationListModel::data(const QModelIndex &index, int role) const
+{
+    if (!checkIndex(index)) {
+        return QVariant();
+    }
+    if (role != LocationRole) {
+        return QVariant();
+    }
+
+    auto *location = m_locations[index.row()];
+    return location ? QVariant::fromValue(location) : QVariant();
+}
+
+QHash<int, QByteArray> WeatherLocationListModel::roleNames() const
+{
+    return {{LocationRole, "location"}};
+}
+
 void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocation)
 {
-    if ((index < 0) || (index > static_cast<int>(m_locations.size())))
+    if ((index < 0) || (index > static_cast<int>(m_locations.size()))) {
         return;
+    }
+
+    beginInsertRows(QModelIndex(), index, index);
 
     QQmlEngine::setObjectOwnership(weatherLocation, QQmlEngine::CppOwnership);
     m_locations.insert(m_locations.begin() + index, weatherLocation);
 
     Q_EMIT locationsChanged();
+    endInsertRows();
 
     saveOrder();
     weatherLocation->save();
@@ -101,8 +136,11 @@ void WeatherLocationListModel::insert(int index, WeatherLocation *weatherLocatio
 
 void WeatherLocationListModel::remove(int index)
 {
-    if ((index < 0) || (index >= static_cast<int>(m_locations.size())))
+    if ((index < 0) || (index >= static_cast<int>(m_locations.size()))) {
         return;
+    }
+
+    beginRemoveRows(QModelIndex(), index, index);
 
     auto location = m_locations.at(index);
     m_locations.erase(m_locations.begin() + index);
@@ -110,6 +148,7 @@ void WeatherLocationListModel::remove(int index)
     location->deleteLater();
 
     Q_EMIT locationsChanged();
+    endRemoveRows();
 
     saveOrder();
 }
@@ -117,21 +156,20 @@ void WeatherLocationListModel::remove(int index)
 void WeatherLocationListModel::move(int oldIndex, int newIndex)
 {
     int locationsSize = m_locations.size();
-    if (oldIndex < 0 || oldIndex >= locationsSize || newIndex < 0 || newIndex >= locationsSize)
+    if (oldIndex < 0 || oldIndex >= locationsSize || newIndex < 0 || newIndex >= locationsSize) {
         return;
+    }
 
+    beginMoveRows(QModelIndex(), oldIndex, oldIndex, QModelIndex(), newIndex);
     std::iter_swap(m_locations.begin() + oldIndex, m_locations.begin() + newIndex);
     Q_EMIT locationsChanged();
+    endMoveRows();
 
     saveOrder();
 }
-int WeatherLocationListModel::count() const
-{
-    return m_locations.size();
-}
+
 void WeatherLocationListModel::addLocation(const KWeatherCore::LocationQueryResult &ret)
 {
-    qDebug() << "add location";
     const auto &locId = ret.geonameId();
     const auto &locName = ret.toponymName();
     auto lat = ret.latitude();
@@ -143,12 +181,12 @@ void WeatherLocationListModel::addLocation(const KWeatherCore::LocationQueryResu
     insert(m_locations.size(), location);
 }
 
-// invoked by frontend
 void WeatherLocationListModel::requestCurrentLocation()
 {
     static KWeatherCore::LocationQuery *geoPtr = nullptr;
-    if (!geoPtr)
+    if (!geoPtr) {
         geoPtr = new KWeatherCore::LocationQuery(this);
+    }
 
     auto reply = geoPtr->locate();
     connect(reply, &KWeatherCore::LocationQueryReply::finished, this, [reply, this]() {

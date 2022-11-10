@@ -102,7 +102,7 @@ ListView {
             iconName: "list-add"
             text: i18n("Add current location")
             onTriggered: {
-                weatherLocationListModel.requestCurrentLocation()
+                WeatherLocationListModel.requestCurrentLocation()
                 
                 root.closeRequested();
                 
@@ -146,7 +146,7 @@ ListView {
         
         function apply() {
             root.model.addLocation(index);
-            applicationWindow().getPage("Forecast").switchPageIndex(weatherLocationListModel.count - 1);
+            applicationWindow().getPage("Forecast").switchPageIndex(WeatherLocationListModel.count - 1);
             switchToPage(appwindow.getPage("Forecast"), 0);
             root.closeRequested();
         }

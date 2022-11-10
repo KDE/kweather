@@ -8,7 +8,10 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.2
+
 import org.kde.kirigami 2.12 as Kirigami
+
+import kweather 1.0
 
 // page shown if there are no weather locations configured
 Kirigami.Page {
@@ -19,7 +22,7 @@ Kirigami.Page {
     property int yTranslate: 0
     
     Connections {
-        target: weatherLocationListModel
+        target: WeatherLocationListModel
         function onNetworkErrorCreatingDefault() {
             showPassiveNotification(i18n("Network error when obtaining current location"));
             loading = false;

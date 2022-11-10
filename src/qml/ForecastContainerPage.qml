@@ -8,19 +8,22 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
+
 import org.kde.kirigami 2.12 as Kirigami
+
+import kweather 1.0
 
 Kirigami.Page {
     id: page
     topPadding: 0; bottomPadding: 0; rightPadding: 0; leftPadding: 0
 
     title: {
-        if (weatherLocationListModel.locations.count == 0) {
+        if (WeatherLocationListModel.locations.count == 0) {
             return i18n("Forecast");
         } else if (settingsModel.forecastStyle === "Dynamic") {
             return ""; // provided by DynamicForecastPage
-        } else if (weatherLocationListModel.locations[loader.item.currentIndex]) {
-            return weatherLocationListModel.locations[loader.item.currentIndex].name;
+        } else if (WeatherLocationListModel.locations[loader.item.currentIndex]) {
+            return WeatherLocationListModel.locations[loader.item.currentIndex].name;
         } else {
             return "";
         }
@@ -52,7 +55,7 @@ Kirigami.Page {
             iconName: "view-refresh"
             text: i18n("Refresh")
             displayHint: Kirigami.Action.IconOnly
-            onTriggered: weatherLocationListModel.locations[loader.item.currentIndex].update()
+            onTriggered: WeatherLocationListModel.locations[loader.item.currentIndex].update()
         }
     ]
 

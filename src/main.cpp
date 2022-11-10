@@ -83,7 +83,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         return engine->toScriptValue(KAboutData::applicationData());
     });
 
-    engine.rootContext()->setContextProperty(QStringLiteral("weatherLocationListModel"), WeatherLocationListModel::inst());
+    qmlRegisterSingletonType<WeatherLocationListModel>("kweather", 1, 0, "WeatherLocationListModel", [](QQmlEngine *engine, QJSEngine *) -> QObject * {
+        return WeatherLocationListModel::inst();
+    });
+
     engine.rootContext()->setContextProperty(QStringLiteral("settingsModel"), KWeatherSettings::self());
 
     WeatherLocation *emptyWeatherLocation = new WeatherLocation();
