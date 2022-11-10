@@ -13,7 +13,7 @@ QVariant HourlyModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case Time:
-        return getNthHour(index.row()).date().toString(QStringLiteral("hh ap"));
+        return QLocale().toString(getNthHour(index.row()).date(), QLocale::ShortFormat).toLower();
     case Icon:
         return getNthHour(index.row()).weatherIcon();
     case Description:

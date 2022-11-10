@@ -63,7 +63,7 @@ QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) co
     if (!date.isValid()) {
         return i18nc("sunrise time not available", "-");
     }
-    return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("hh:mm ap"));
+    return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();
 }
 QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit) const
 {
@@ -75,5 +75,5 @@ QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit)
 }
 QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const
 {
-    return date.toTimeZone(QTimeZone(timeZone.toUtf8())).toString(QStringLiteral("h ap")).replace(QStringLiteral("."), QStringLiteral(""));
+    return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();
 }
