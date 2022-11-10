@@ -80,10 +80,11 @@ Kirigami.ScrollablePage {
         property: "x"
         easing.type: Easing.InOutQuad
         duration: Kirigami.Units.longDuration
+        
         property bool goLeft: false
+
         onFinished: {
-            if (goLeft) finishMoveLeft();
-            else finishMoveRight();
+            goLeft ? finishMoveLeft() : finishMoveRight();
         }
     }
     

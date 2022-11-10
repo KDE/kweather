@@ -19,7 +19,6 @@ import "backgrounds"
 import kweather 1.0
 
 Kirigami.Card {
-
     id: root
 
     property var textColor: Kirigami.Theme.textColor

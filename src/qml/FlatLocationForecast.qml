@@ -10,7 +10,9 @@ import QtQuick 2.12
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
+
 import org.kde.kirigami 2.11 as Kirigami
+
 import kweather 1.0
 
 Kirigami.ScrollablePage {
@@ -20,7 +22,7 @@ Kirigami.ScrollablePage {
     background: null // transparent, since there is a page behind
 
     property var weatherLocation
-    property var selectedDay: dailyListView.currentItem.weather
+    property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.dayForecasts[0]
 
     property bool inView: false
 
@@ -29,14 +31,19 @@ Kirigami.ScrollablePage {
     onRefreshingChanged: {
         if (refreshing) {
             weatherLocation.update();
-        } else {
-            showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
     }
+    
     Connections {
         target: weatherLocation
+        ignoreUnknownSignals: true
         function onStopLoadingIndicator() {
             page.refreshing = false;
+            
+            // flat mode loads all locations at once, only show one notification for the current item
+            if (page.ListView.isCurrentItem) {
+                showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
+            }
         }
     }
 
@@ -66,7 +73,7 @@ Kirigami.ScrollablePage {
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                         font.weight: Font.Light
                         font.family: lightHeadingFont.name
-                        text: Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits))
+                        text: weatherLocation.currentHourForecast ? Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits)) : ""
                     }
                     Label {
                         Layout.alignment: Qt.AlignTop
@@ -80,7 +87,7 @@ Kirigami.ScrollablePage {
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
-                    text: weatherLocation.currentHourForecast.weatherDescription
+                    text: weatherLocation.currentHourForecast ? weatherLocation.currentHourForecast.weatherDescription : ""
                 }
                 Label {
                     color: Kirigami.Theme.disabledTextColor
