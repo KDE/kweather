@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:50+0000\n"
+"POT-Creation-Date: 2022-11-11 00:48+0000\n"
 "PO-Revision-Date: 2022-09-30 09:06+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -77,7 +77,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 მმ"
 
-#: main.cpp:67 qml/DefaultPage.qml:66 qml/main.qml:18
+#: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "ამინდი"
@@ -133,71 +133,71 @@ msgstr "მდებარეობის არჩევა"
 msgid "Open KWeather"
 msgstr "KWeather-ის გახსნა"
 
-#: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
+#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "პროგნოზი"
 
-#: qml/DefaultPage.qml:24
+#: qml/DefaultPage.qml:27
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "ქსელის შეცდომა მიმდინარე მდებარეობის დადგენისას"
 
-#: qml/DefaultPage.qml:74 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:26
-#: qml/locationslist/LocationsListView.qml:63
+#: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
 msgstr "მდებარეობის დამატება"
 
-#: qml/DynamicForecastPage.qml:230 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:236 qml/FlatLocationForecast.qml:45
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "ამინდი განახლდა %1-სთვის"
 
-#: qml/DynamicForecastPage.qml:302 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:308 qml/FlatLocationForecast.qml:96
 #, kde-format
 msgid "Updated at %1"
 msgstr "განახლების დრო: %1"
 
-#: qml/DynamicForecastPage.qml:322 qml/DynamicForecastPage.qml:327
-#: qml/ForecastContainerPage.qml:41
+#: qml/DynamicForecastPage.qml:328 qml/DynamicForecastPage.qml:333
+#: qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "მდებარეობები"
 
-#: qml/DynamicForecastPage.qml:342 qml/DynamicForecastPage.qml:347
-#: qml/ForecastContainerPage.qml:46 qml/settings/SettingsDialog.qml:12
+#: qml/DynamicForecastPage.qml:348 qml/DynamicForecastPage.qml:353
+#: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "მორგება"
 
-#: qml/DynamicForecastPage.qml:363 qml/DynamicForecastPage.qml:368
-#: qml/ForecastContainerPage.qml:53
+#: qml/DynamicForecastPage.qml:369 qml/DynamicForecastPage.qml:374
+#: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
 msgstr "განახლება"
 
-#: qml/DynamicForecastPage.qml:428 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:434 qml/FlatLocationForecast.qml:112
 #, kde-format
 msgid "Daily"
 msgstr "დღიურად"
 
-#: qml/DynamicForecastPage.qml:433
+#: qml/DynamicForecastPage.qml:439
 #, kde-format
 msgid "Local Date: "
 msgstr "ლოკალური თარიღი: "
 
-#: qml/DynamicForecastPage.qml:513 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:519 qml/FlatLocationForecast.qml:157
 #, kde-format
 msgid "Hourly"
 msgstr "საათობრივ"
 
-#: qml/DynamicForecastPage.qml:518
+#: qml/DynamicForecastPage.qml:524
 #, kde-format
 msgid "Local Time: "
 msgstr "ლოკალური დრო: "
@@ -252,17 +252,17 @@ msgstr "შედეგების გარეშე"
 msgid "Add location"
 msgstr "მდებარეობის დამატება"
 
-#: qml/locationslist/LocationsListView.qml:47
+#: qml/locationslist/LocationsListView.qml:55
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "დროის სარტყლის მიღების შეცდომა"
 
-#: qml/locationslist/LocationsListView.qml:58
+#: qml/locationslist/LocationsListView.qml:66
 #, kde-format
 msgid "Add a location"
 msgstr "მდებარეობის დამატება"
 
-#: qml/locationslist/LocationsListView.qml:137
+#: qml/locationslist/LocationsListView.qml:214
 #, kde-format
 msgid "Delete"
 msgstr "წაშლა"
@@ -404,17 +404,17 @@ msgstr "უკან"
 msgid "Finish"
 msgstr "დასრულება"
 
-#: qml/SunriseCard.qml:48
+#: qml/SunriseCard.qml:47
 #, kde-format
 msgid "Sunrise"
 msgstr "აისი"
 
-#: qml/SunriseCard.qml:72
+#: qml/SunriseCard.qml:71
 #, kde-format
 msgid "Sunset"
 msgstr "მზის ჩასვლა"
 
-#: qml/SunriseCard.qml:94
+#: qml/SunriseCard.qml:93
 #, kde-format
 msgid "Moon Phase"
 msgstr "მთვარის ფაზა"

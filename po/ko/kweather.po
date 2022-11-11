@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:50+0000\n"
+"POT-Creation-Date: 2022-11-11 00:48+0000\n"
 "PO-Revision-Date: 2022-08-09 13:25+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -77,7 +77,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mmHg"
 
-#: main.cpp:67 qml/DefaultPage.qml:66 qml/main.qml:18
+#: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "날씨"
@@ -133,71 +133,71 @@ msgstr "위치 선택"
 msgid "Open KWeather"
 msgstr "KWeather 열기"
 
-#: qml/DefaultPage.qml:15 qml/ForecastContainerPage.qml:19
+#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "예측"
 
-#: qml/DefaultPage.qml:24
+#: qml/DefaultPage.qml:27
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "현재 위치를 찾는 중 네트워크 오류 발생"
 
-#: qml/DefaultPage.qml:74 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:26
-#: qml/locationslist/LocationsListView.qml:63
+#: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
 msgstr "위치 추가"
 
-#: qml/DynamicForecastPage.qml:230 qml/FlatLocationForecast.qml:33
+#: qml/DynamicForecastPage.qml:236 qml/FlatLocationForecast.qml:45
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "%1의 날씨 새로 고침"
 
-#: qml/DynamicForecastPage.qml:302 qml/FlatLocationForecast.qml:89
+#: qml/DynamicForecastPage.qml:308 qml/FlatLocationForecast.qml:96
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1에 업데이트됨"
 
-#: qml/DynamicForecastPage.qml:322 qml/DynamicForecastPage.qml:327
-#: qml/ForecastContainerPage.qml:41
+#: qml/DynamicForecastPage.qml:328 qml/DynamicForecastPage.qml:333
+#: qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "위치"
 
-#: qml/DynamicForecastPage.qml:342 qml/DynamicForecastPage.qml:347
-#: qml/ForecastContainerPage.qml:46 qml/settings/SettingsDialog.qml:12
+#: qml/DynamicForecastPage.qml:348 qml/DynamicForecastPage.qml:353
+#: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "설정"
 
-#: qml/DynamicForecastPage.qml:363 qml/DynamicForecastPage.qml:368
-#: qml/ForecastContainerPage.qml:53
+#: qml/DynamicForecastPage.qml:369 qml/DynamicForecastPage.qml:374
+#: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
 msgstr "새로 고침"
 
-#: qml/DynamicForecastPage.qml:428 qml/FlatLocationForecast.qml:105
+#: qml/DynamicForecastPage.qml:434 qml/FlatLocationForecast.qml:112
 #, kde-format
 msgid "Daily"
 msgstr "매일"
 
-#: qml/DynamicForecastPage.qml:433
+#: qml/DynamicForecastPage.qml:439
 #, kde-format
 msgid "Local Date: "
 msgstr "지역 날짜:"
 
-#: qml/DynamicForecastPage.qml:513 qml/FlatLocationForecast.qml:150
+#: qml/DynamicForecastPage.qml:519 qml/FlatLocationForecast.qml:157
 #, kde-format
 msgid "Hourly"
 msgstr "매 시간"
 
-#: qml/DynamicForecastPage.qml:518
+#: qml/DynamicForecastPage.qml:524
 #, kde-format
 msgid "Local Time: "
 msgstr "지역 시간:"
@@ -253,17 +253,17 @@ msgstr "결과 없음"
 msgid "Add location"
 msgstr "위치 추가"
 
-#: qml/locationslist/LocationsListView.qml:47
+#: qml/locationslist/LocationsListView.qml:55
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "시간대 정보를 가져올 수 없음"
 
-#: qml/locationslist/LocationsListView.qml:58
+#: qml/locationslist/LocationsListView.qml:66
 #, kde-format
 msgid "Add a location"
 msgstr "위치 추가"
 
-#: qml/locationslist/LocationsListView.qml:137
+#: qml/locationslist/LocationsListView.qml:214
 #, kde-format
 msgid "Delete"
 msgstr ""
@@ -409,17 +409,17 @@ msgstr "뒤로"
 msgid "Finish"
 msgstr "완료"
 
-#: qml/SunriseCard.qml:48
+#: qml/SunriseCard.qml:47
 #, kde-format
 msgid "Sunrise"
 msgstr "일출"
 
-#: qml/SunriseCard.qml:72
+#: qml/SunriseCard.qml:71
 #, kde-format
 msgid "Sunset"
 msgstr "일몰"
 
-#: qml/SunriseCard.qml:94
+#: qml/SunriseCard.qml:93
 #, kde-format
 msgid "Moon Phase"
 msgstr "달 위상"
