@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-11 00:48+0000\n"
-"PO-Revision-Date: 2022-08-23 09:37+0000\n"
+"PO-Revision-Date: 2022-11-11 18:50+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -68,14 +68,13 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 tommur"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 mmHg"
+msgstr "%1 mm"
 
 #: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
@@ -358,29 +357,26 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Úrkoma"
+msgstr "Úrkomueiningar"
 
 #: qml/settings/SettingsComponent.qml:234
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1mm"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:234
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr ""
+msgstr "in"
 
 #: qml/SetupWizard.qml:64
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "Velkomin í KVeður"
+msgstr "Velkomin í veðurforritið"
 
 #: qml/SetupWizard.qml:70
 #, kde-format
