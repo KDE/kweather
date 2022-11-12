@@ -23,6 +23,7 @@
   <name xml:lang="fi">Weather</name>
   <name xml:lang="fr">Météo</name>
   <name xml:lang="id">Weather</name>
+  <name xml:lang="is">Veður</name>
   <name xml:lang="it">Meteo</name>
   <name xml:lang="ka">ამინდი</name>
   <name xml:lang="ko">날씨</name>
@@ -51,6 +52,7 @@
   <summary xml:lang="fi">Näytä tosiaikaiset sääennusteet ja muuta tietoa</summary>
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
   <summary xml:lang="id">Lihat ramalan cuaca dan informasi lainnya dalam waktu nyata</summary>
+  <summary xml:lang="is">Skoðaðu veðurspár í rauntíma og aðrar upplýsingar</summary>
   <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale e altre informazioni</summary>
   <summary xml:lang="ka">ამინდის პროგნოზებისა და სხვა ინფორმაციის რეალურ დროში ნახვა</summary>
   <summary xml:lang="ko">실시간 일기 예보와 기타 정보 표시</summary>
@@ -80,6 +82,7 @@
   <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
   <developer_name xml:lang="fr">Communauté KDE</developer_name>
   <developer_name xml:lang="id">Komunitas KDE</developer_name>
+  <developer_name xml:lang="is">KDE-samfélagið</developer_name>
   <developer_name xml:lang="it">Comunità KDE</developer_name>
   <developer_name xml:lang="ka">KDE-ის საზოგადოება</developer_name>
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
@@ -119,6 +122,7 @@
     <p xml:lang="fi">Mukautuva sääsovellus Plasmaan. Litteä ja dynaaminen/animoitu näkymä sääennusteiden ja muun tiedon esittämiseen.</p>
     <p xml:lang="fr">Une application météo convergente pour Plasma. Elle possède des affichages à plat mais aussi dynamique / animé pour l'affichage des prévisions et d'autres informations.</p>
     <p xml:lang="id">Sebuah aplikasi cuaca yang konvergen untuk Plasma. Memilki tampilan datar dan beranimasi/dinamis untuk menampilkan ramalan cuaca dan informasi lainnya.</p>
+    <p xml:lang="is">Hentugt veðurforrit fyrir Plasma. Er með flatar og breytilegar/hreyfðar ásýndir til að skoða veðurspár í rauntíma og aðrar upplýsingar</p>
     <p xml:lang="it">Un'applicazione meteo convergente per Plasma. Ha viste statiche e dinamiche/animate per mostrare previsioni e altre informazioni.</p>
     <p xml:lang="ko">Plasma용 올인원 날씨 프로그램입니다. 평면, 동적, 애니메이션 보기로 일기 예보와 기타 정보를 볼 수 있습니다.</p>
     <p xml:lang="lt">Konverguojanti orų programa, skirta Plasma. Turi plokščią ir dinaminį/animuotą rodinį, skirtą atvaizduoti orų prognozes bei kitą informaciją.</p>
@@ -149,6 +153,7 @@
       <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
+      <caption xml:lang="is">Breytileg farsímaútgáfa</caption>
       <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
       <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
       <caption xml:lang="ko">모바일 동적 보기</caption>
@@ -180,6 +185,7 @@
       <caption xml:lang="fi">Dynaaminen työpöytänäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
       <caption xml:lang="id">Tampilan dinamis desktop</caption>
+      <caption xml:lang="is">Breytileg vinnutölvuútgáfa</caption>
       <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
       <caption xml:lang="ka">სამუშაო მაგიდის დინამიკური ხედი</caption>
       <caption xml:lang="ko">데스크톱 동적 보기</caption>
@@ -211,6 +217,7 @@
       <caption xml:lang="fi">Litteä mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
       <caption xml:lang="id">Tampilan datar ponsel</caption>
+      <caption xml:lang="is">Flöt farsímaútgáfa</caption>
       <caption xml:lang="it">Visualizzazione statica mobile</caption>
       <caption xml:lang="ka">ბრტყელი მობილური ხედი</caption>
       <caption xml:lang="ko">데스크톱 평면 보기</caption>
@@ -242,6 +249,7 @@
       <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
+      <caption xml:lang="is">Breytileg farsímaútgáfa</caption>
       <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
       <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
       <caption xml:lang="ko">모바일 동적 보기</caption>
