@@ -2,21 +2,23 @@
 # This file is distributed under the same license as the kweather package.
 # Burkhard Lück <lueck@hube-lueck.de>, 2020, 2021.
 # Frederik Schwarzer <schwarzer@kde.org>, 2021, 2022.
+# Alois Spitzbart <spitz234@hotmail.com>, 2022.
+# Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-11 00:48+0000\n"
-"PO-Revision-Date: 2022-08-20 20:43+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2022-11-09 14:36+0100\n"
+"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -69,14 +71,13 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 in"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgid "%1 mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 mmHg"
+msgstr "%1 mm"
 
 #: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
@@ -162,7 +163,7 @@ msgstr "Wetter aktualisiert für %1"
 #: qml/DynamicForecastPage.qml:308 qml/FlatLocationForecast.qml:96
 #, kde-format
 msgid "Updated at %1"
-msgstr "Aktualisiert am %1"
+msgstr "Aktualisiert um %1"
 
 #: qml/DynamicForecastPage.qml:328 qml/DynamicForecastPage.qml:333
 #: qml/ForecastContainerPage.qml:44
@@ -193,7 +194,7 @@ msgstr "Täglich"
 #: qml/DynamicForecastPage.qml:439
 #, kde-format
 msgid "Local Date: "
-msgstr "Lokales Datum:"
+msgstr "Lokales Datum: "
 
 #: qml/DynamicForecastPage.qml:519 qml/FlatLocationForecast.qml:157
 #, kde-format
@@ -238,7 +239,7 @@ msgstr "Verbindung nicht möglich"
 #: qml/locationslist/AddLocationListView.qml:98
 #, kde-format
 msgid "Search for a location"
-msgstr "Suche nach dem Ort"
+msgstr "Suche nach einem Ort"
 
 #: qml/locationslist/AddLocationListView.qml:103
 #, kde-format
@@ -361,30 +362,26 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:232
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Niederschlag"
+msgstr "Niederschlagseinheiten"
 
 #: qml/settings/SettingsComponent.qml:234
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1 mm"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:234
-#, fuzzy, kde-format
-#| msgid "Rain"
+#, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "Regen"
+msgstr "in"
 
 #: qml/SetupWizard.qml:64
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "Willkommen bei KWeather"
+msgstr "Willkommen bei Wetter"
 
 #: qml/SetupWizard.qml:70
 #, kde-format
