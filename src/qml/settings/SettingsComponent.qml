@@ -44,8 +44,22 @@ ColumnLayout {
             MobileForm.FormComboBoxDelegate {
                 id: forecastStyleDropdown
                 text: i18n("Forecast Style")
-                currentValue: settingsModel.forecastStyle
-                model: [["Flat", i18n("Flat")], ["Dynamic", i18n("Dynamic")]]
+                currentIndex: indexOfValue(settingsModel.forecastStyle)
+                model: ListModel {
+                    // we can't use i18n with ListElement
+                    Component.onCompleted: {
+                        append({"name": i18n("Flat"), "value": "Flat"});
+                        append({"name": i18n("Dynamic"), "value": "Dynamic"});
+                        
+                        // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
+                        forecastStyleDropdown.currentIndex = forecastStyleDropdown.indexOfValue(settingsModel.forecastStyle)
+                    }
+                }
+                
+                textRole: "name"
+                valueRole: "value"
+                onActivated: settingsModel.save()
+                onCurrentValueChanged: settingsModel.forecastStyle = currentValue;
                 
                 onClicked: {
                     if (root.dialog) {
@@ -59,21 +73,6 @@ ColumnLayout {
                     function onClosed() {
                         if (root.dialog) {
                             root.dialog.open();
-                        }
-                    }
-                }
-                
-                dialogDelegate: RadioDelegate {
-                    implicitWidth: Kirigami.Units.gridUnit * 16
-                    topPadding: Kirigami.Units.smallSpacing * 2
-                    bottomPadding: Kirigami.Units.smallSpacing * 2
-                    
-                    text: modelData[1]
-                    checked: settingsModel.forecastStyle == modelData[0]
-                    onCheckedChanged: {
-                        if (checked) {
-                            settingsModel.forecastStyle = modelData[0];
-                            settingsModel.save();
                         }
                     }
                 }
@@ -109,8 +108,23 @@ ColumnLayout {
             MobileForm.FormComboBoxDelegate {
                 id: temperatureUnitsDropdown
                 text: i18n("Temperature Units")
-                currentValue: settingsModel.temperatureUnits
-                model: [["Use System Default", i18n("Use System Default")], ["Celsius", i18n("Celsius")], ["Fahrenheit", i18n("Fahrenheit")]]
+                currentIndex: indexOfValue(settingsModel.temperatureUnits)
+                model: ListModel {
+                    // we can't use i18n with ListElement
+                    Component.onCompleted: {
+                        append({"name": i18n("Use System Default"), "value": "Use System Default"});
+                        append({"name": i18n("Celsius"), "value": "Celsius"});
+                        append({"name": i18n("Fahrenheit"), "value": "Fahrenheit"});
+                        
+                        // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
+                        temperatureUnitsDropdown.currentIndex = temperatureUnitsDropdown.indexOfValue(settingsModel.temperatureUnits)
+                    }
+                }
+                
+                textRole: "name"
+                valueRole: "value"
+                onActivated: settingsModel.save()
+                onCurrentValueChanged: settingsModel.temperatureUnits = currentValue;
                 
                 onClicked: {
                     if (root.dialog) {
@@ -127,21 +141,6 @@ ColumnLayout {
                         }
                     }
                 }
-                
-                dialogDelegate: RadioDelegate {
-                    implicitWidth: Kirigami.Units.gridUnit * 16
-                    topPadding: Kirigami.Units.smallSpacing * 2
-                    bottomPadding: Kirigami.Units.smallSpacing * 2
-                    
-                    text: modelData[1]
-                    checked: settingsModel.temperatureUnits == modelData[0]
-                    onCheckedChanged: {
-                        if (checked) {
-                            settingsModel.temperatureUnits = modelData[0];
-                            settingsModel.save();
-                        }
-                    }
-                }
             }
             
             MobileForm.FormDelegateSeparator { above: temperatureUnitsDropdown; below: speedUnitsDropdown }
@@ -149,8 +148,23 @@ ColumnLayout {
             MobileForm.FormComboBoxDelegate {
                 id: speedUnitsDropdown
                 text: i18n("Speed Units")
-                currentValue: settingsModel.speedUnits
-                model: [["kph", i18nc("kilometers per hour", "kph")], ["mph", i18nc("miles per hour", "mph")], ["m/s", i18nc("meters per second", "m/s")]]
+                currentIndex: indexOfValue(settingsModel.speedUnits)
+                model: ListModel {
+                    // we can't use i18n with ListElement
+                    Component.onCompleted: {
+                        append({"name": i18nc("kilometers per hour", "kph"), "value": "kph"});
+                        append({"name": i18nc("miles per hour", "mph"), "value": "mph"});
+                        append({"name": i18nc("meters per second", "m/s"), "value": "m/s"});
+                        
+                        // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
+                        speedUnitsDropdown.currentIndex = speedUnitsDropdown.indexOfValue(settingsModel.speedUnits)
+                    }
+                }
+                
+                textRole: "name"
+                valueRole: "value"
+                onActivated: settingsModel.save()
+                onCurrentValueChanged: settingsModel.speedUnits = currentValue;
                 
                 onClicked: {
                     if (root.dialog) {
@@ -167,21 +181,6 @@ ColumnLayout {
                         }
                     }
                 }
-                
-                dialogDelegate: RadioDelegate {
-                    implicitWidth: Kirigami.Units.gridUnit * 16
-                    topPadding: Kirigami.Units.smallSpacing * 2
-                    bottomPadding: Kirigami.Units.smallSpacing * 2
-                    
-                    text: modelData[1]
-                    checked: settingsModel.speedUnits == modelData[0]
-                    onCheckedChanged: {
-                        if (checked) {
-                            settingsModel.speedUnits = modelData[0];
-                            settingsModel.save();
-                        }
-                    }
-                }
             }
             
             MobileForm.FormDelegateSeparator { above: speedUnitsDropdown; below: pressureUnitsDropdown }
@@ -189,8 +188,22 @@ ColumnLayout {
             MobileForm.FormComboBoxDelegate {
                 id: pressureUnitsDropdown
                 text: i18n("Pressure Units")
-                currentValue: settingsModel.pressureUnits
-                model: [["hPa", i18nc("Hectopascal Pressure", "hPa")], ["mmHg", i18nc("Millimetre of mercury", "mmHg")]]
+                currentIndex: indexOfValue(settingsModel.pressureUnits)
+                model: ListModel {
+                    // we can't use i18n with ListElement
+                    Component.onCompleted: {
+                        append({"name": i18nc("Hectopascal Pressure", "hPa"), "value": "hPa"});
+                        append({"name": i18nc("Millimetre of mercury", "mmHg"), "value": "mmHg"});
+                        
+                        // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
+                        pressureUnitsDropdown.currentIndex = pressureUnitsDropdown.indexOfValue(settingsModel.pressureUnits)
+                    }
+                }
+                
+                textRole: "name"
+                valueRole: "value"
+                onActivated: settingsModel.save()
+                onCurrentValueChanged: settingsModel.pressureUnits = currentValue;
                 
                 onClicked: {
                     if (root.dialog) {
@@ -207,21 +220,6 @@ ColumnLayout {
                         }
                     }
                 }
-                
-                dialogDelegate: RadioDelegate {
-                    implicitWidth: Kirigami.Units.gridUnit * 16
-                    topPadding: Kirigami.Units.smallSpacing * 2
-                    bottomPadding: Kirigami.Units.smallSpacing * 2
-                    
-                    text: modelData[1]
-                    checked: settingsModel.pressureUnits == modelData[0]
-                    onCheckedChanged: {
-                        if (checked) {
-                            settingsModel.pressureUnits = modelData[0];
-                            settingsModel.save();
-                        }
-                    }
-                }
             }
             
             MobileForm.FormDelegateSeparator { above: pressureUnitsDropdown; below: precipitationUnitsDropdown }
@@ -230,9 +228,23 @@ ColumnLayout {
             MobileForm.FormComboBoxDelegate {
                 id: precipitationUnitsDropdown
                 text: i18n("Precipitation Units")
-                currentValue: settingsModel.precipitationUnits
-                model: [["mm", i18nc("Millimeters", "mm")], ["in", i18nc("Inches", "in")]]
-
+                currentIndex: indexOfValue(settingsModel.precipitationUnits)
+                model: ListModel {
+                    // we can't use i18n with ListElement
+                    Component.onCompleted: {
+                        append({"name": i18nc("Millimeters", "mm"), "value": "mm"});
+                        append({"name": i18nc("Inches", "in"), "value": "in"});
+                        
+                        // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
+                        precipitationUnitsDropdown.currentIndex = precipitationUnitsDropdown.indexOfValue(settingsModel.precipitationUnits)
+                    }
+                }
+                
+                textRole: "name"
+                valueRole: "value"
+                onActivated: settingsModel.save()
+                onCurrentValueChanged: settingsModel.precipitationUnits = currentValue;
+                
                 onClicked: {
                     if (root.dialog) {
                         dialogTimer.dialog = precipitationUnitsDropdown.dialog;
@@ -245,21 +257,6 @@ ColumnLayout {
                     function onClosed() {
                         if (root.dialog) {
                             root.dialog.open();
-                        }
-                    }
-                }
-
-                dialogDelegate: RadioDelegate {
-                    implicitWidth: Kirigami.Units.gridUnit * 16
-                    topPadding: Kirigami.Units.smallSpacing * 2
-                    bottomPadding: Kirigami.Units.smallSpacing * 2
-
-                    text: modelData[1]
-                    checked: settingsModel.precipitationUnits == modelData[0]
-                    onCheckedChanged: {
-                        if (checked) {
-                            settingsModel.precipitationUnits = modelData[0];
-                            settingsModel.save();
                         }
                     }
                 }
