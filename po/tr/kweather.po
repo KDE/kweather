@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:48+0000\n"
+"POT-Creation-Date: 2022-11-16 00:49+0000\n"
 "PO-Revision-Date: 2022-09-15 09:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -278,98 +278,98 @@ msgstr "Genel"
 msgid "Forecast Style"
 msgstr "Tahmin Biçemi"
 
-#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:130
 #, kde-format
 msgid "Flat"
 msgstr "Düz"
 
-#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:52 qml/SetupWizard.qml:177
 #, kde-format
 msgid "Dynamic"
 msgstr "Devingen"
 
-#: qml/settings/SettingsComponent.qml:86
+#: qml/settings/SettingsComponent.qml:85
 #, kde-format
 msgid "About"
 msgstr "Hakkında"
 
-#: qml/settings/SettingsComponent.qml:106
+#: qml/settings/SettingsComponent.qml:105
 #, kde-format
 msgid "Units"
 msgstr "Birimler"
 
-#: qml/settings/SettingsComponent.qml:111
+#: qml/settings/SettingsComponent.qml:110
 #, kde-format
 msgid "Temperature Units"
 msgstr "Sıcaklık Birimleri"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:115
 #, kde-format
 msgid "Use System Default"
 msgstr "Sistem Öntanımlısını Kullan"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:116
 #, kde-format
 msgid "Celsius"
 msgstr "Santigrat"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:117
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenhayt"
 
-#: qml/settings/SettingsComponent.qml:151
+#: qml/settings/SettingsComponent.qml:150
 #, kde-format
 msgid "Speed Units"
 msgstr "Hız Birimleri"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:155
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "km/sa"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:156
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mil/sa"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:157
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/sn"
 
-#: qml/settings/SettingsComponent.qml:191
+#: qml/settings/SettingsComponent.qml:190
 #, kde-format
 msgid "Pressure Units"
 msgstr "Basınç Birimleri"
 
-#: qml/settings/SettingsComponent.qml:193
+#: qml/settings/SettingsComponent.qml:195
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hBa"
 
-#: qml/settings/SettingsComponent.qml:193
+#: qml/settings/SettingsComponent.qml:196
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/SettingsComponent.qml:230
 #, kde-format
 msgid "Precipitation Units"
 msgstr "Yağış Birimleri"
 
-#: qml/settings/SettingsComponent.qml:234
+#: qml/settings/SettingsComponent.qml:235
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "mm"
 
-#: qml/settings/SettingsComponent.qml:234
+#: qml/settings/SettingsComponent.qml:236
 #, kde-format
 msgctxt "Inches"
 msgid "in"

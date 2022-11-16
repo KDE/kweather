@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:48+0000\n"
+"POT-Creation-Date: 2022-11-16 00:49+0000\n"
 "PO-Revision-Date: 2022-06-11 09:15-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -278,101 +278,101 @@ msgstr ""
 msgid "Forecast Style"
 msgstr "ਭਵਿੱਖਬਾਣੀ ਦਾ ਢੰਗ"
 
-#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:130
 #, kde-format
 msgid "Flat"
 msgstr "ਸਮਤਲ"
 
-#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:52 qml/SetupWizard.qml:177
 #, kde-format
 msgid "Dynamic"
 msgstr "ਡਾਇਨੈਮਿਕ"
 
-#: qml/settings/SettingsComponent.qml:86
+#: qml/settings/SettingsComponent.qml:85
 #, kde-format
 msgid "About"
 msgstr "ਇਸ ਬਾਰੇ"
 
-#: qml/settings/SettingsComponent.qml:106
+#: qml/settings/SettingsComponent.qml:105
 #, fuzzy, kde-format
 #| msgid "Speed Units"
 msgid "Units"
 msgstr "ਗਤੀ ਦੀਆਂ ਇਕਾਈਆਂ"
 
-#: qml/settings/SettingsComponent.qml:111
+#: qml/settings/SettingsComponent.qml:110
 #, kde-format
 msgid "Temperature Units"
 msgstr "ਤਾਪਮਾਨ ਦੀਆਂ ਇਕਾਈਆਂ"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:115
 #, kde-format
 msgid "Use System Default"
 msgstr "ਸਿਸਟਮ ਮੂਲ ਵਰਤੋਂ"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:116
 #, kde-format
 msgid "Celsius"
 msgstr "ਸੈਲਸੀਅਸ"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:117
 #, kde-format
 msgid "Fahrenheit"
 msgstr "ਫਾਰਨਹਾਇਟ"
 
-#: qml/settings/SettingsComponent.qml:151
+#: qml/settings/SettingsComponent.qml:150
 #, kde-format
 msgid "Speed Units"
 msgstr "ਗਤੀ ਦੀਆਂ ਇਕਾਈਆਂ"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:155
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "ਕਿ.ਪ੍ਰਤੀ.ਘੰ"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:156
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "ਮੀ.ਪ੍ਰਤੀ.ਘੰ"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:157
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "ਮੀ/ਸ"
 
-#: qml/settings/SettingsComponent.qml:191
+#: qml/settings/SettingsComponent.qml:190
 #, kde-format
 msgid "Pressure Units"
 msgstr "ਦਬਾਓ ਯੂਨਿਟ"
 
-#: qml/settings/SettingsComponent.qml:193
+#: qml/settings/SettingsComponent.qml:195
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/settings/SettingsComponent.qml:193
+#: qml/settings/SettingsComponent.qml:196
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/SettingsComponent.qml:230
 #, fuzzy, kde-format
 #| msgid "Precipitation"
 msgid "Precipitation Units"
 msgstr "ਵਰ੍ਹਨ"
 
-#: qml/settings/SettingsComponent.qml:234
+#: qml/settings/SettingsComponent.qml:235
 #, fuzzy, kde-format
 #| msgid "%1mm"
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "%1ਮਿ.ਮੀ."
 
-#: qml/settings/SettingsComponent.qml:234
+#: qml/settings/SettingsComponent.qml:236
 #, fuzzy, kde-format
 #| msgid "Rain"
 msgctxt "Inches"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:48+0000\n"
+"POT-Creation-Date: 2022-11-16 00:49+0000\n"
 "PO-Revision-Date: 2022-08-09 13:25+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -278,100 +278,100 @@ msgstr "일반"
 msgid "Forecast Style"
 msgstr "일기 예보 스타일"
 
-#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:130
 #, kde-format
 msgid "Flat"
 msgstr "평면"
 
-#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:52 qml/SetupWizard.qml:177
 #, kde-format
 msgid "Dynamic"
 msgstr "동적"
 
-#: qml/settings/SettingsComponent.qml:86
+#: qml/settings/SettingsComponent.qml:85
 #, kde-format
 msgid "About"
 msgstr "정보"
 
-#: qml/settings/SettingsComponent.qml:106
+#: qml/settings/SettingsComponent.qml:105
 #, kde-format
 msgid "Units"
 msgstr "단위"
 
-#: qml/settings/SettingsComponent.qml:111
+#: qml/settings/SettingsComponent.qml:110
 #, kde-format
 msgid "Temperature Units"
 msgstr "온도 단위"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:115
 #, kde-format
 msgid "Use System Default"
 msgstr "시스템 기본값 사용"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:116
 #, kde-format
 msgid "Celsius"
 msgstr "섭씨"
 
-#: qml/settings/SettingsComponent.qml:113
+#: qml/settings/SettingsComponent.qml:117
 #, kde-format
 msgid "Fahrenheit"
 msgstr "화씨"
 
-#: qml/settings/SettingsComponent.qml:151
+#: qml/settings/SettingsComponent.qml:150
 #, kde-format
 msgid "Speed Units"
 msgstr "속도 단위"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:155
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "kph"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:156
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/settings/SettingsComponent.qml:153
+#: qml/settings/SettingsComponent.qml:157
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/s"
 
-#: qml/settings/SettingsComponent.qml:191
+#: qml/settings/SettingsComponent.qml:190
 #, kde-format
 msgid "Pressure Units"
 msgstr "기압 단위"
 
-#: qml/settings/SettingsComponent.qml:193
+#: qml/settings/SettingsComponent.qml:195
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/settings/SettingsComponent.qml:193
+#: qml/settings/SettingsComponent.qml:196
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/SettingsComponent.qml:230
 #, fuzzy, kde-format
 #| msgid "Precipitation"
 msgid "Precipitation Units"
 msgstr "강수량"
 
-#: qml/settings/SettingsComponent.qml:234
+#: qml/settings/SettingsComponent.qml:235
 #, fuzzy, kde-format
 #| msgid "%1mm"
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "%1 mm"
 
-#: qml/settings/SettingsComponent.qml:234
+#: qml/settings/SettingsComponent.qml:236
 #, fuzzy, kde-format
 #| msgid "Rain"
 msgctxt "Inches"
