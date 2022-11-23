@@ -62,7 +62,7 @@ ColumnLayout {
                 onCurrentValueChanged: settingsModel.forecastStyle = currentValue;
                 
                 onClicked: {
-                    if (root.dialog) {
+                    if (root.dialog && forecastStyleDropdown.mode === MobileForm.FormComboBoxDelegate.Dialog) {
                         dialogTimer.dialog = forecastStyleDropdown.dialog;
                         dialogTimer.restart();
                     }
@@ -127,7 +127,7 @@ ColumnLayout {
                 onCurrentValueChanged: settingsModel.temperatureUnits = currentValue;
                 
                 onClicked: {
-                    if (root.dialog) {
+                    if (root.dialog && temperatureUnitsDropdown.mode === MobileForm.FormComboBoxDelegate.Dialog) {
                         dialogTimer.dialog = temperatureUnitsDropdown.dialog;
                         dialogTimer.restart();
                     }
@@ -167,7 +167,7 @@ ColumnLayout {
                 onCurrentValueChanged: settingsModel.speedUnits = currentValue;
                 
                 onClicked: {
-                    if (root.dialog) {
+                    if (root.dialog && speedUnitsDropdown.mode === MobileForm.FormComboBoxDelegate.Dialog) {
                         dialogTimer.dialog = speedUnitsDropdown.dialog;
                         dialogTimer.restart();
                     }
@@ -206,7 +206,7 @@ ColumnLayout {
                 onCurrentValueChanged: settingsModel.pressureUnits = currentValue;
                 
                 onClicked: {
-                    if (root.dialog) {
+                    if (root.dialog && pressureUnitsDropdown.mode === MobileForm.FormComboBoxDelegate.Dialog) {
                         dialogTimer.dialog = pressureUnitsDropdown.dialog;
                         dialogTimer.restart();
                     }
@@ -246,7 +246,7 @@ ColumnLayout {
                 onCurrentValueChanged: settingsModel.precipitationUnits = currentValue;
                 
                 onClicked: {
-                    if (root.dialog) {
+                    if (root.dialog && precipitationUnitsDropdown.mode === MobileForm.FormComboBoxDelegate.Dialog) {
                         dialogTimer.dialog = precipitationUnitsDropdown.dialog;
                         dialogTimer.restart();
                     }
