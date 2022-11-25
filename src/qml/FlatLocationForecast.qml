@@ -17,7 +17,6 @@ import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
-    verticalScrollBarPolicy: ScrollBar.AlwaysOff
 
     background: null // transparent, since there is a page behind
 

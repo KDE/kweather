@@ -26,8 +26,6 @@ Kirigami.ScrollablePage {
     
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
     
-    verticalScrollBarPolicy: ScrollBar.AlwaysOff
-    
     // HACK: disable this scrollable when needed because it steals events from dialogs
     flickable.interactive: !applicationWindow().isDialogOpen
     
