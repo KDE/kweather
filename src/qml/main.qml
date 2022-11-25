@@ -127,7 +127,15 @@ Kirigami.ApplicationWindow {
     function openSettings() {
         if (isWideScreen) {
             settingsDialogLoader.active = true;
-            settingsDialogLoader.item.open();
+            
+            if (Kirigami.Settings.isMobile) {
+                // SettingsDialog
+                settingsDialogLoader.item.open();
+            } else {
+                // SettingsWindow
+                settingsDialogLoader.item.close();
+                settingsDialogLoader.item.show();
+            }
         } else {
             applicationWindow().pushPage(getPage("Settings"), 0);
         }
@@ -166,7 +174,7 @@ Kirigami.ApplicationWindow {
         id: settingsDialogLoader
         property bool isOpen: item && item.visible
         active: false
-        sourceComponent: SettingsDialog {}
+        source: Kirigami.Settings.isMobile ? "qrc:/qml/settings/SettingsDialog.qml" : "qrc:/qml/settings/SettingsWindow.qml"
     }
     
     Loader {

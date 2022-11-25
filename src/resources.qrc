@@ -23,6 +23,7 @@
         <file>qml/settings/SettingsPage.qml</file>
         <file>qml/settings/SettingsComponent.qml</file>
         <file>qml/settings/SettingsDialog.qml</file>
+        <file>qml/settings/SettingsWindow.qml</file>
         <file>qml/locationslist/LocationsListView.qml</file>
         <file>qml/locationslist/LocationsListPage.qml</file>
         <file>qml/locationslist/LocationsListDialog.qml</file>
