@@ -73,7 +73,10 @@ if (ANDROID)
         speedometer
         go-up
         go-down
+        go-right
         compass
+        mark-location
+        find-location
 
         weather-clear
         weather-clear-night

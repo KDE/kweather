@@ -40,7 +40,7 @@ Kirigami.Page {
     // actions (only shown in flat view since the toolbar is hidden in dynamic view)
     actions.contextualActions: [
         Kirigami.Action {
-            iconName: "globe"
+            iconName: "find-location"
             text: i18n("Locations")
             onTriggered: applicationWindow().openLocationsList()
         },

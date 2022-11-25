@@ -99,7 +99,7 @@ ListView {
         visible: !root.model.networkError && !root.model.loading && root.count == 0 && root.searchQuery == ""
 
         helpfulAction: Kirigami.Action {
-            iconName: "list-add"
+            iconName: "mark-location"
             text: i18n("Add current location")
             onTriggered: {
                 WeatherLocationListModel.requestCurrentLocation()

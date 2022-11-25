@@ -318,7 +318,7 @@ Kirigami.ScrollablePage {
                     Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                     Kirigami.Theme.inherit: false
                     
-                    icon.name: "globe"
+                    icon.name: "find-location"
                     icon.height: header.iconLength
                     icon.width: header.iconLength
                     icon.color: "white"
@@ -328,7 +328,7 @@ Kirigami.ScrollablePage {
                     onClicked: applicationWindow().openLocationsList()
 
                     ToolTip.visible: down
-                    ToolTip.text: i18n("Locations")
+                    ToolTip.text: i18n("Choose location")
                 }
                 ToolButton {
                     Layout.alignment: Qt.AlignTop
