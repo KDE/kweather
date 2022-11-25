@@ -65,9 +65,10 @@ ListView {
             
             Button {
                 id: searchButton
+                icon.name: "search"
                 implicitHeight: search.implicitHeight
                 implicitWidth: height
-                icon.name: "search"
+                enabled: search.text !== ""
                 width: height
                 height: search.height
                 onClicked: root.model.textChanged(root.searchQuery, 0)
