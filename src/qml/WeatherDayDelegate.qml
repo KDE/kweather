@@ -12,16 +12,15 @@ import QtQuick.Shapes 1.12
 import org.kde.kirigami 2.11 as Kirigami
 import kweather 1.0
 
-Rectangle {
+Item {
     implicitWidth: Kirigami.Units.gridUnit * 6
-    implicitHeight: Kirigami.Units.gridUnit * 8
+    implicitHeight: dayElement.implicitHeight + Kirigami.Units.largeSpacing * 2
+    // implicitHeight: Kirigami.Units.gridUnit * 8
 
     property var weather
     property color textColor
     property color secondaryTextColor
     property alias mouseArea: mouse 
-    
-    color: "transparent"
     
     MouseArea {
         id: mouse
@@ -32,18 +31,21 @@ Rectangle {
     // actual day display
     ColumnLayout {
         id: dayElement
-        anchors.fill: parent
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.leftMargin: Kirigami.Units.largeSpacing
         anchors.topMargin: Kirigami.Units.largeSpacing
         anchors.rightMargin: Kirigami.Units.largeSpacing
-        anchors.bottomMargin: Kirigami.Units.largeSpacing
-        spacing: 0
+        spacing: Kirigami.Units.smallSpacing
 
         Label {
+            Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.smallSpacing
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
             text: weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
             color: textColor
+            elide: Text.ElideRight
         }
         Kirigami.Icon {
             Layout.topMargin: Kirigami.Units.smallSpacing
@@ -68,9 +70,11 @@ Rectangle {
             }
         }
         Label {
+            Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.smallSpacing
             text: weather.weatherDescription
             color: textColor
+            wrapMode: Text.Wrap
         }
     }
 }

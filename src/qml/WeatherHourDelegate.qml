@@ -42,13 +42,17 @@ Rectangle {
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
+            Layout.fillWidth: true
             text: Formatter.formatTemperature(weather.temperature, settingsModel.temperatureUnits)
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
             color: textColor
+            elide: Text.ElideRight
         }
         Label {
+            Layout.fillWidth: true
             text: weather.weatherDescription
             color: textColor
+            wrapMode: Text.Wrap
         }
 
         // precipitation
@@ -82,10 +86,11 @@ Rectangle {
         }
 
         Label {
+            Layout.fillWidth: true
             font.weight: Font.Bold
-            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
             text: Formatter.formatHourlyCardDelegateTime(weather.date, weatherLocation.timeZone)
             color: textColor
+            wrapMode: Text.Wrap
         }
     }
 }
