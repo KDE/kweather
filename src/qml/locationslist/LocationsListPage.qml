@@ -16,7 +16,7 @@ import kweather 1.0
 Kirigami.ScrollablePage {
     title: i18n("Locations")
     
-    property int yTranslate: 0
+    property real yTranslate: 0
     property int currentIndex: 0
 
     globalToolBarStyle: Kirigami.ApplicationHeaderStyle.ToolBar
