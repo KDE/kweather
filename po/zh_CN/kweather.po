@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:49+0000\n"
+"POT-Creation-Date: 2022-11-26 00:48+0000\n"
 "PO-Revision-Date: 2022-11-19 14:49\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -150,53 +150,58 @@ msgstr "获取当前位置时发生网络错误"
 msgid "Add Location"
 msgstr "添加位置"
 
-#: qml/DynamicForecastPage.qml:236 qml/FlatLocationForecast.qml:45
+#: qml/DynamicForecastPage.qml:234 qml/FlatLocationForecast.qml:44
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "已刷新 %1 的天气"
 
-#: qml/DynamicForecastPage.qml:308 qml/FlatLocationForecast.qml:96
+#: qml/DynamicForecastPage.qml:306 qml/FlatLocationForecast.qml:95
 #, kde-format
 msgid "Updated at %1"
 msgstr "更新于 %1"
 
-#: qml/DynamicForecastPage.qml:328 qml/DynamicForecastPage.qml:333
-#: qml/ForecastContainerPage.qml:44
+#: qml/DynamicForecastPage.qml:326 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "位置"
 
-#: qml/DynamicForecastPage.qml:348 qml/DynamicForecastPage.qml:353
+#: qml/DynamicForecastPage.qml:331
+#, fuzzy, kde-format
+#| msgid "Add location"
+msgid "Choose location"
+msgstr "添加位置"
+
+#: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
-#: qml/settings/SettingsPage.qml:16
+#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
 msgstr "设置"
 
-#: qml/DynamicForecastPage.qml:369 qml/DynamicForecastPage.qml:374
+#: qml/DynamicForecastPage.qml:367 qml/DynamicForecastPage.qml:372
 #: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
 msgstr "刷新"
 
-#: qml/DynamicForecastPage.qml:434 qml/FlatLocationForecast.qml:112
+#: qml/DynamicForecastPage.qml:432 qml/FlatLocationForecast.qml:111
 #, kde-format
 msgid "Daily"
 msgstr "每日"
 
-#: qml/DynamicForecastPage.qml:439
+#: qml/DynamicForecastPage.qml:437
 #, kde-format
 msgid "Local Date: "
 msgstr "本地日期："
 
-#: qml/DynamicForecastPage.qml:519 qml/FlatLocationForecast.qml:157
+#: qml/DynamicForecastPage.qml:517 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
 msgstr "每小时"
 
-#: qml/DynamicForecastPage.qml:524
+#: qml/DynamicForecastPage.qml:522
 #, kde-format
 msgid "Local Time: "
 msgstr "本地时间："
@@ -226,22 +231,22 @@ msgstr "紫外线指数"
 msgid "Search for a location…"
 msgstr ""
 
-#: qml/locationslist/AddLocationListView.qml:86
+#: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
 msgid "Unable to connect"
 msgstr "无法连接"
 
-#: qml/locationslist/AddLocationListView.qml:98
+#: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
 msgid "Search for a location"
 msgstr "搜索位置"
 
-#: qml/locationslist/AddLocationListView.qml:103
+#: qml/locationslist/AddLocationListView.qml:104
 #, kde-format
 msgid "Add current location"
 msgstr "添加当前位置"
 
-#: qml/locationslist/AddLocationListView.qml:126
+#: qml/locationslist/AddLocationListView.qml:127
 #, kde-format
 msgid "No results"
 msgstr "无结果"

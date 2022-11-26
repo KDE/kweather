@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:49+0000\n"
+"POT-Creation-Date: 2022-11-26 00:48+0000\n"
 "PO-Revision-Date: 2022-09-15 08:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -155,53 +155,58 @@ msgstr "Помилка мережі під час спроби отриманн�
 msgid "Add Location"
 msgstr "Додати місце"
 
-#: qml/DynamicForecastPage.qml:236 qml/FlatLocationForecast.qml:45
+#: qml/DynamicForecastPage.qml:234 qml/FlatLocationForecast.qml:44
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Прогноз погоди для %1 оновлено"
 
-#: qml/DynamicForecastPage.qml:308 qml/FlatLocationForecast.qml:96
+#: qml/DynamicForecastPage.qml:306 qml/FlatLocationForecast.qml:95
 #, kde-format
 msgid "Updated at %1"
 msgstr "Оновлено о %1"
 
-#: qml/DynamicForecastPage.qml:328 qml/DynamicForecastPage.qml:333
-#: qml/ForecastContainerPage.qml:44
+#: qml/DynamicForecastPage.qml:326 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "Місця"
 
-#: qml/DynamicForecastPage.qml:348 qml/DynamicForecastPage.qml:353
+#: qml/DynamicForecastPage.qml:331
+#, fuzzy, kde-format
+#| msgid "Add location"
+msgid "Choose location"
+msgstr "Додати місце"
+
+#: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
-#: qml/settings/SettingsPage.qml:16
+#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
 msgstr "Параметри"
 
-#: qml/DynamicForecastPage.qml:369 qml/DynamicForecastPage.qml:374
+#: qml/DynamicForecastPage.qml:367 qml/DynamicForecastPage.qml:372
 #: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
 msgstr "Освіжити"
 
-#: qml/DynamicForecastPage.qml:434 qml/FlatLocationForecast.qml:112
+#: qml/DynamicForecastPage.qml:432 qml/FlatLocationForecast.qml:111
 #, kde-format
 msgid "Daily"
 msgstr "Щодня"
 
-#: qml/DynamicForecastPage.qml:439
+#: qml/DynamicForecastPage.qml:437
 #, kde-format
 msgid "Local Date: "
 msgstr "Місцева дата: "
 
-#: qml/DynamicForecastPage.qml:519 qml/FlatLocationForecast.qml:157
+#: qml/DynamicForecastPage.qml:517 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
 msgstr "Щогодини"
 
-#: qml/DynamicForecastPage.qml:524
+#: qml/DynamicForecastPage.qml:522
 #, kde-format
 msgid "Local Time: "
 msgstr "Місцевий час: "
@@ -231,22 +236,22 @@ msgstr "УФ-індекс"
 msgid "Search for a location…"
 msgstr "Шукати місцевість…"
 
-#: qml/locationslist/AddLocationListView.qml:86
+#: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
 msgid "Unable to connect"
 msgstr "Не вдалося з'єднатись"
 
-#: qml/locationslist/AddLocationListView.qml:98
+#: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
 msgid "Search for a location"
 msgstr "Пошук місцевості"
 
-#: qml/locationslist/AddLocationListView.qml:103
+#: qml/locationslist/AddLocationListView.qml:104
 #, kde-format
 msgid "Add current location"
 msgstr "Додати поточне місце"
 
-#: qml/locationslist/AddLocationListView.qml:126
+#: qml/locationslist/AddLocationListView.qml:127
 #, kde-format
 msgid "No results"
 msgstr "Немає результатів"
