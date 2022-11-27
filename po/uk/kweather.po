@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-26 00:48+0000\n"
-"PO-Revision-Date: 2022-09-15 08:54+0300\n"
+"PO-Revision-Date: 2022-11-26 10:58+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -173,10 +173,9 @@ msgid "Locations"
 msgstr "Місця"
 
 #: qml/DynamicForecastPage.qml:331
-#, fuzzy, kde-format
-#| msgid "Add location"
+#, kde-format
 msgid "Choose location"
-msgstr "Додати місце"
+msgstr "Виберіть місце"
 
 #: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
