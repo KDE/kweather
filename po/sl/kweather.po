@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-26 00:48+0000\n"
-"PO-Revision-Date: 2022-09-16 06:27+0200\n"
+"PO-Revision-Date: 2022-11-27 07:16+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 
@@ -169,10 +169,9 @@ msgid "Locations"
 msgstr "Lokacije"
 
 #: qml/DynamicForecastPage.qml:331
-#, fuzzy, kde-format
-#| msgid "Add location"
+#, kde-format
 msgid "Choose location"
-msgstr "Dodaj lokacijo"
+msgstr "Izberi lokacijo"
 
 #: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
