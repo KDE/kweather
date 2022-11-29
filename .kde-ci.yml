@@ -10,6 +10,7 @@ Dependencies:
     'frameworks/ki18n': '@stable'
     'frameworks/kirigami': '@stable'
     'frameworks/knotifications': '@stable'
+    'libraries/kirigami-addons': '@latest'
     'libraries/kweathercore': '@latest'
 
 - 'on': ['Linux', 'FreeBSD']
