@@ -12,7 +12,6 @@ A convergent weather application for Plasma.
 
 ## Features
 * Daily and hourly weather data that can be viewed in flat and dynamic views
-* Plasmoid that can be used on desktop and mobile
 
 ## Links
 * Project page: https://invent.kde.org/plasma-mobile/kweather

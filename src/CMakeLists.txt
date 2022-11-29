@@ -119,7 +119,7 @@ else()
 endif()
 
 if (UNIX AND (NOT ANDROID))
-add_subdirectory(plasmoid)
+# add_subdirectory(plasmoid)
 endif()
 target_include_directories(kweather PRIVATE ${CMAKE_BINARY_DIR})
 install(TARGETS kweather ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
