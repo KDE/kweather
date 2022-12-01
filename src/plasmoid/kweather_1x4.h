@@ -8,7 +8,7 @@
 
 #include <Plasma/Applet>
 
-#include <KWeatherCore/WeatherForecast>
+#include <KWeatherCore/WeatherForecastSource>
 
 class HourlyModel;
 class KWeather_1x4 : public Plasma::Applet
@@ -56,6 +56,7 @@ private:
     QString m_location;
     double m_latitude, m_longitude;
     KWeatherCore::WeatherForecast m_forecast;
+    KWeatherCore::WeatherForecastSource m_source;
 
     HourlyModel *m_hourlyModel;
 };

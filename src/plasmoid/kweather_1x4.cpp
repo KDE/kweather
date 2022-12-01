@@ -8,8 +8,6 @@
 
 #include <KSharedConfig>
 
-#include <KWeatherCore/WeatherForecastSource>
-
 #include "hourlymodel.h"
 #include "kweathersettings.h"
 
@@ -34,7 +32,7 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVa
 
 void KWeather_1x4::update()
 {
-    auto pendingForecast = KWeatherCore::WeatherForecastSource().requestData(m_latitude, m_longitude);
+    auto pendingForecast = m_source.requestData(m_latitude, m_longitude);
     connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
         m_forecast = pendingForecast->value();
         pendingForecast->deleteLater();
