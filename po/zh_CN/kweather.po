@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-26 00:48+0000\n"
-"PO-Revision-Date: 2022-11-19 14:49\n"
+"PO-Revision-Date: 2022-12-01 06:53\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -56,25 +56,25 @@ msgstr "%1 百帕"
 #: formatter.cpp:57
 #, kde-format
 msgid "%1 mmHg"
-msgstr ""
+msgstr "%1 毫米汞柱"
 
 #: formatter.cpp:64
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: formatter.cpp:71
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 英寸"
 
 #: formatter.cpp:73
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr ""
+msgstr "%1 毫米"
 
 #: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
@@ -168,10 +168,9 @@ msgid "Locations"
 msgstr "位置"
 
 #: qml/DynamicForecastPage.qml:331
-#, fuzzy, kde-format
-#| msgid "Add location"
+#, kde-format
 msgid "Choose location"
-msgstr "添加位置"
+msgstr "选择位置"
 
 #: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
@@ -229,7 +228,7 @@ msgstr "紫外线指数"
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr ""
+msgstr "搜索位置…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
@@ -269,12 +268,12 @@ msgstr "添加位置"
 #: qml/locationslist/LocationsListView.qml:214
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: qml/settings/SettingsComponent.qml:46
 #, kde-format
@@ -299,7 +298,7 @@ msgstr "关于"
 #: qml/settings/SettingsComponent.qml:105
 #, kde-format
 msgid "Units"
-msgstr ""
+msgstr "单位"
 
 #: qml/settings/SettingsComponent.qml:110
 #, kde-format
@@ -364,24 +363,24 @@ msgstr "毫米汞柱"
 #: qml/settings/SettingsComponent.qml:230
 #, kde-format
 msgid "Precipitation Units"
-msgstr ""
+msgstr "降水量单位"
 
 #: qml/settings/SettingsComponent.qml:235
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr ""
+msgstr "毫米"
 
 #: qml/settings/SettingsComponent.qml:236
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr ""
+msgstr "英寸"
 
 #: qml/SetupWizard.qml:64
 #, kde-format
 msgid "Welcome to Weather"
-msgstr ""
+msgstr "欢迎使用 Weather"
 
 #: qml/SetupWizard.qml:70
 #, kde-format
