@@ -37,19 +37,23 @@ Rectangle {
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
             }
         }
-        Kirigami.Icon {
-            source: plasmoid.nativeInterface.weatherIcon
-        }
+        RowLayout {
+            Layout.fillWidth: true
+            Kirigami.Icon {
+                source: plasmoid.nativeInterface.weatherIcon
+            }
 
-        Label {
-            text: plasmoid.nativeInterface.desc
-            color: Kirigami.Theme.textColor
-            leftPadding: Kirigami.Units.smallSpacing
-            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+            Label {
+                text: plasmoid.nativeInterface.desc
+                color: Kirigami.Theme.textColor
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+            }
         }
         Row {
             Kirigami.Icon {
                 source: "speedometer"
+                isMask: true
+                color: Kirigami.Theme.textColor
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
                 Layout.minimumWidth: Layout.minimumHeight * 1.5
             }
@@ -64,6 +68,8 @@ Rectangle {
             visible: plasmoid.nativeInterface.precipitation > 0.01
             Kirigami.Icon {
                 source: "raindrop"
+                isMask: true
+                color: Kirigami.Theme.textColor
                 Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                 Layout.preferredWidth: Kirigami.Units.iconSizes.medium
             }

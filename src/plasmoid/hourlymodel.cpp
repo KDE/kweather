@@ -29,6 +29,9 @@ QVariant HourlyModel::data(const QModelIndex &index, int role) const
 int HourlyModel::rowCount(const QModelIndex &index) const
 {
     Q_UNUSED(index)
+    if (m_location.dailyWeatherForecast().empty()) {
+        return 0;
+    }
     return 24;
 }
 QHash<int, QByteArray> HourlyModel::roleNames() const

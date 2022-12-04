@@ -5,6 +5,7 @@
 #include "kweather_1x4.h"
 
 #include <QQmlApplicationEngine>
+#include <QTimer>
 
 #include <KSharedConfig>
 
@@ -14,6 +15,7 @@
 KWeather_1x4::KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVariantList &args)
     : Plasma::Applet(parent, md, args)
     , m_hourlyModel(new HourlyModel())
+    , m_timer(new QTimer(this))
 {
     qmlRegisterAnonymousType<HourlyModel>("HourlyModel", 1);
     auto config = KSharedConfig::openConfig(QStringLiteral("kweather/plasmoid"));
@@ -27,13 +29,18 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVa
         m_longitude = m_group.readEntry("longitude").toDouble();
         m_needLocation = false;
         update();
+        m_timer->setInterval(3600 * 1000);
+        m_timer->start();
+        connect(m_timer, &QTimer::timeout, this, [this] {
+            update();
+        });
     }
 }
 
 void KWeather_1x4::update()
 {
     auto pendingForecast = m_source.requestData(m_latitude, m_longitude);
-    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, [this, pendingForecast] {
+    connect(pendingForecast, &KWeatherCore::PendingWeatherForecast::finished, this, [this, pendingForecast] {
         m_forecast = pendingForecast->value();
         pendingForecast->deleteLater();
         m_hourlyModel->loadForecast(m_forecast);
@@ -44,17 +51,20 @@ void KWeather_1x4::update()
 QStringList KWeather_1x4::locationsInSystem()
 {
     auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
+    const QStringList groups = m_config.groupList();
     QStringList list;
+    list.reserve(groups.size());
 
-    for (const auto &loc : m_config.groupList()) {
-        list += m_config.group(loc).readEntry("locationName");
-    }
+    std::transform(groups.begin(), groups.end(), std::back_inserter(list), [&m_config](const QString &loc) {
+        return m_config.group(loc).readEntry("locationName");
+    });
     return list;
 }
 void KWeather_1x4::setLocation(const QString &location)
 {
     auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
-    for (const auto &loc : m_config.groupList()) {
+    const auto groups = m_config.groupList();
+    for (const auto &loc : groups) {
         auto m_group = m_config.group(loc);
         if (location == m_group.readEntry("locationName")) {
             m_location = location;

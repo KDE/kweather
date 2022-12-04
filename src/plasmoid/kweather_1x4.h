@@ -11,6 +11,7 @@
 #include <KWeatherCore/WeatherForecastSource>
 
 class HourlyModel;
+class QTimer;
 class KWeather_1x4 : public Plasma::Applet
 {
     Q_OBJECT
@@ -59,6 +60,7 @@ private:
     KWeatherCore::WeatherForecastSource m_source;
 
     HourlyModel *m_hourlyModel;
+    QTimer *m_timer;
 };
 
 #endif
