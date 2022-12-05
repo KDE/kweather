@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-26 00:48+0000\n"
+"POT-Creation-Date: 2022-12-05 00:49+0000\n"
 "PO-Revision-Date: 2020-06-13 20:50+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -109,24 +109,24 @@ msgstr ""
 msgid "please select the location"
 msgstr ""
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:61 qml/InfoCard.qml:71
 #, kde-format
 msgid "%1%"
 msgstr ""
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:77
 #, kde-format
 msgid "%1mm"
 msgstr ""
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:123
-#: plasmoid/package/contents/ui/WeatherContainer.qml:162
+#: plasmoid/package/contents/ui/WeatherContainer.qml:129
+#: plasmoid/package/contents/ui/WeatherContainer.qml:168
 #, fuzzy, kde-format
 #| msgid "Add Location"
 msgid "Select Location"
 msgstr "Pridať umiestnenie"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:128
+#: plasmoid/package/contents/ui/WeatherContainer.qml:134
 #, fuzzy, kde-format
 #| msgid "Weather"
 msgid "Open KWeather"

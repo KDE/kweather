@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-26 00:48+0000\n"
+"POT-Creation-Date: 2022-12-05 00:49+0000\n"
 "PO-Revision-Date: 2022-09-24 16:11+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -111,23 +111,23 @@ msgstr "Ingen plats hittades i systemet, lägg till någon i Väder"
 msgid "please select the location"
 msgstr "välj platsen"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:57 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:61 qml/InfoCard.qml:71
 #, kde-format
 msgid "%1%"
 msgstr "%1 %"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:77
 #, kde-format
 msgid "%1mm"
 msgstr "%1 mm"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:123
-#: plasmoid/package/contents/ui/WeatherContainer.qml:162
+#: plasmoid/package/contents/ui/WeatherContainer.qml:129
+#: plasmoid/package/contents/ui/WeatherContainer.qml:168
 #, kde-format
 msgid "Select Location"
 msgstr "Välj plats"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:128
+#: plasmoid/package/contents/ui/WeatherContainer.qml:134
 #, kde-format
 msgid "Open KWeather"
 msgstr "Öppna Väder"
