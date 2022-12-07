@@ -28,6 +28,7 @@ Kirigami.ApplicationWindow {
     pageStack.globalToolBar.canContainHandles: true; // move handles to toolbar
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.ToolBar; // ensure toolbar style for mobile
     pageStack.globalToolBar.showNavigationButtons: Kirigami.ApplicationHeaderStyle.ShowBackButton;
+    pageStack.popHiddenPages: true
 
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
     
@@ -42,26 +43,6 @@ Kirigami.ApplicationWindow {
         if (settingsModel.firstStartup) {
             setupWizardLoader.source = "qrc:/qml/SetupWizard.qml";
             setupWizardLoader.item.open();
-        }
-    }
-    
-    // pop pages when not in use
-    Connections {
-        target: applicationWindow().pageStack
-        function onCurrentIndexChanged() {
-            // wait for animation to finish before popping pages
-            timer.restart();
-        }
-    }
-    
-    Timer {
-        id: timer
-        interval: 300
-        onTriggered: {
-            let currentIndex = applicationWindow().pageStack.currentIndex;
-            while (applicationWindow().pageStack.depth > (currentIndex + 1) && currentIndex >= 0) {
-                applicationWindow().pageStack.pop();
-            }
         }
     }
     
