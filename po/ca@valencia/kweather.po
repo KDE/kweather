@@ -401,7 +401,7 @@ msgstr "Seleccioneu el tema de la predicció"
 #: qml/SetupWizard.qml:94
 #, kde-format
 msgid "You can change the theme later in the settings."
-msgstr "Més tard podreu canviar el tema a la configuració."
+msgstr "Més tard podreu canviar el tema en la configuració."
 
 #: qml/SetupWizard.qml:201
 #, kde-format
