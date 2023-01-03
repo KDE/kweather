@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# Stelios <sstavra@gmail.com>, 2020, 2021.
+# Stelios <sstavra@gmail.com>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-05 00:49+0000\n"
-"PO-Revision-Date: 2021-10-04 10:51+0300\n"
+"PO-Revision-Date: 2023-01-02 23:40+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -54,31 +54,27 @@ msgid "%1 hPa"
 msgstr "%1 hPa"
 
 #: formatter.cpp:57
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgid "%1 mmHg"
-msgstr "mmHg"
+msgstr "%1 mmHg"
 
 #: formatter.cpp:64
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: formatter.cpp:71
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 in"
 
 #: formatter.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "mmHg"
+msgstr "%1 mm"
 
 #: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
@@ -91,10 +87,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Μια συνοδευτική εφαρμογή καιρικών φαινομένων για το Plasma"
 
 #: main.cpp:71
-#, fuzzy, kde-format
-#| msgid "© 2020-2021 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2022 Plasma Development Team"
-msgstr "© 2020-2021 Ομάδα ανάπτυξης Plasma"
+msgstr "© 2020-2022 Ομάδα ανάπτυξης Plasma"
 
 #: main.cpp:73
 #, kde-format
@@ -136,7 +131,7 @@ msgstr "Επιλογή τοποθεσίας"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:134
 #, kde-format
 msgid "Open KWeather"
-msgstr "Open KWeather"
+msgstr "Άνοιγμα του KWeather"
 
 #: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
 #, kde-format
@@ -174,10 +169,9 @@ msgid "Locations"
 msgstr "Τοποθεσίες"
 
 #: qml/DynamicForecastPage.qml:331
-#, fuzzy, kde-format
-#| msgid "Add location"
+#, kde-format
 msgid "Choose location"
-msgstr "Προσθήκη τοποθεσίας"
+msgstr "Επιλογή τοποθεσίας"
 
 #: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
@@ -233,10 +227,9 @@ msgid "UV index"
 msgstr "Δείκτης UV"
 
 #: qml/locationslist/AddLocationListView.qml:48
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "Αναζήτηση τοποθεσίας"
+msgstr "Αναζήτηση τοποθεσίας…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
@@ -276,12 +269,12 @@ msgstr "Προσθήκη μιας τοποθεσίας"
 #: qml/locationslist/LocationsListView.qml:214
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Γενικά"
 
 #: qml/settings/SettingsComponent.qml:46
 #, kde-format
@@ -304,10 +297,9 @@ msgid "About"
 msgstr "Περίγραμμα"
 
 #: qml/settings/SettingsComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Μονάδες ταχύτητας"
+msgstr "Μονάδες"
 
 #: qml/settings/SettingsComponent.qml:110
 #, kde-format
@@ -317,7 +309,7 @@ msgstr "Μονάδες θερμοκρασίας"
 #: qml/settings/SettingsComponent.qml:115
 #, kde-format
 msgid "Use System Default"
-msgstr ""
+msgstr "Χρήση ρυθμίσεων του συστήματος"
 
 #: qml/settings/SettingsComponent.qml:116
 #, kde-format
@@ -370,30 +362,26 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:230
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Υετός"
+msgstr "Μονάδες υετού"
 
 #: qml/settings/SettingsComponent.qml:235
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1mm"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:236
-#, fuzzy, kde-format
-#| msgid "Rain"
+#, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "Βροχόπτωση"
+msgstr "in"
 
 #: qml/SetupWizard.qml:64
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "Καλώς ήλθατε στο KWeather"
+msgstr "Καλώς ήρθατε στην πρόγνωση του καιρού"
 
 #: qml/SetupWizard.qml:70
 #, kde-format
