@@ -168,10 +168,9 @@ msgid "Locations"
 msgstr "Umístění"
 
 #: qml/DynamicForecastPage.qml:331
-#, fuzzy, kde-format
-#| msgid "Add location"
+#, kde-format
 msgid "Choose location"
-msgstr "Přidat umístění"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
