@@ -6,6 +6,7 @@
 #
 
 /compile_commands.json
+.cache/
 *.qmlc
 build/
 .kdev4/
