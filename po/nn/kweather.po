@@ -1,12 +1,12 @@
 # Translation of kweather to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022.
+# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-05 00:49+0000\n"
-"PO-Revision-Date: 2022-09-11 19:45+0200\n"
+"PO-Revision-Date: 2023-01-15 11:54+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -70,13 +70,13 @@ msgstr "–"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 tommar"
 
 #: formatter.cpp:73
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr ""
+msgstr "%1 mm"
 
 #: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
@@ -173,7 +173,7 @@ msgstr "Stadar"
 #: qml/DynamicForecastPage.qml:331
 #, kde-format
 msgid "Choose location"
-msgstr ""
+msgstr "Vel stad"
 
 #: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
@@ -368,19 +368,19 @@ msgstr "mmHg"
 #: qml/settings/SettingsComponent.qml:230
 #, kde-format
 msgid "Precipitation Units"
-msgstr ""
+msgstr "Nedbørseining"
 
 #: qml/settings/SettingsComponent.qml:235
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr ""
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:236
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr ""
+msgstr "tommar"
 
 #: qml/SetupWizard.qml:64
 #, kde-format
