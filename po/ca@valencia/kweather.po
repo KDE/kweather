@@ -130,7 +130,7 @@ msgstr "%1 mm"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:168
 #, kde-format
 msgid "Select Location"
-msgstr "Selecció d'emplaçament"
+msgstr "Seleccioneu un emplaçament"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:134
 #, kde-format
