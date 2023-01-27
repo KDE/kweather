@@ -6,9 +6,9 @@
 #
 cmake_minimum_required(VERSION 3.16)
 
-project(kweather)
+set(PROJECT_VERSION "23.01")
+project(kweather VERSION ${PROJECT_VERSION})
 
-set(PROJECT_VERSION "22.11")
 set(QT_MIN_VERSION "5.15.2")
 set(KF5_MIN_VERSION "5.101.0")
 if (ANDROID)
