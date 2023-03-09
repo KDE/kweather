@@ -13,14 +13,12 @@ set(kweather_1x4_SRCS
 )
 add_library(plasma_applet_kweather_1x4 MODULE ${kweather_1x4_SRCS})
 
-kcoreaddons_desktop_to_json(plasma_applet_kweather_1x4 package/metadata.desktop SERVICE_TYPES plasma-applet.desktop)
-
 target_link_libraries(plasma_applet_kweather_1x4
                       Qt::Gui
                       Qt::Qml
-                      KF5::KWeatherCore
-                      KF5::Plasma
-                      KF5::I18n
+                      KF${QT_MAJOR_VERSION}::KWeatherCore
+                      KF${QT_MAJOR_VERSION}::Plasma
+                      KF${QT_MAJOR_VERSION}::I18n
                       kweatherLib)
 
 

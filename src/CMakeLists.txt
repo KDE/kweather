@@ -26,8 +26,8 @@ set_target_properties(kweatherLib PROPERTIES POSITION_INDEPENDENT_CODE ON)
 kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
 target_link_libraries(kweatherLib
     Qt::Core
-    KF5::ConfigCore
-    KF5::ConfigGui
+    KF${QT_MAJOR_VERSION}::ConfigCore
+    KF${QT_MAJOR_VERSION}::ConfigGui
     )
 if (QT_MAJOR_VERSION EQUAL "5")
     qtquick_compiler_add_resources(RESOURCES resources.qrc)
@@ -42,10 +42,10 @@ target_link_libraries(kweather
     Qt::QuickControls2
     Qt::Network
     Qt::Charts
-    KF5::I18n
-    KF5::CoreAddons
-    KF5::Notifications
-    KF5::KWeatherCore
+    KF${QT_MAJOR_VERSION}::I18n
+    KF${QT_MAJOR_VERSION}::CoreAddons
+    KF${QT_MAJOR_VERSION}::Notifications
+    KF${QT_MAJOR_VERSION}::KWeatherCore
     kweatherLib
 )
 if(${QT_MAJOR_VERSION} EQUAL "6")

@@ -15,7 +15,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kweather VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.101.0")
+set(KF_MIN_VERSION "5.101.0")
 if (ANDROID)
     set(QT_MIN_VERSION "5.15.8")
 endif()
@@ -27,7 +27,7 @@ option(BUILD_PLASMOID "Build the weather plasmoid" ON)
 
 include(FeatureSummary)
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED)
+find_package(ECM ${KF_MIN_VERSION} REQUIRED)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -61,20 +61,20 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONEN
     QuickControls2
     Charts
 )
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     Kirigami2
     I18n
     CoreAddons
     Notifications
 )
-find_package(KF5KWeatherCore 0.6.0 REQUIRED)
+find_package(KF${QT_MAJOR_VERSION}KWeatherCore 0.6.0 REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}QuickCompiler)
 if (${QT_MAJOR_VERSION} EQUAL "6")
     find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS OpenGL)
 endif()
 
-find_package(KF5KirigamiAddons 0.6 REQUIRED)
+find_package(KF${QT_MAJOR_VERSION}KirigamiAddons 0.6 REQUIRED)
 
 if (ANDROID)
     find_package(OpenSSL REQUIRED)
@@ -83,7 +83,7 @@ else ()
 endif()
 
 if (NOT ANDROID AND BUILD_PLASMOID)
-   find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
+   find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
 
 ecm_find_qmlmodule(org.kde.kirigamiaddons.labs.mobileform 0.1)
