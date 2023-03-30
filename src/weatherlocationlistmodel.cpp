@@ -7,8 +7,8 @@
 #include <QJsonArray>
 #include <QQmlEngine>
 
-#include <KConfigCore/KConfigGroup>
-#include <KConfigCore/KSharedConfig>
+#include <KConfigGroup>
+#include <KSharedConfig>
 
 #include <KWeatherCore/LocationQueryReply>
 

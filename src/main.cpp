@@ -22,7 +22,7 @@
 #endif
 
 #include <KAboutData>
-#include <KConfigCore/KConfig>
+#include <KConfig>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
