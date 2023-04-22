@@ -1,20 +1,20 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-05 00:49+0000\n"
-"PO-Revision-Date: 2022-11-27 07:16+0100\n"
+"PO-Revision-Date: 2023-04-21 22:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 
@@ -149,7 +149,7 @@ msgstr "Napaka v omrežju pri pridobivanju trenutne lokacije"
 #: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
-msgstr "Doda lokacijo"
+msgstr "Dodaj lokacijo"
 
 #: qml/DynamicForecastPage.qml:234 qml/FlatLocationForecast.qml:44
 #, kde-format
