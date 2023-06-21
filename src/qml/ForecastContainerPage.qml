@@ -38,21 +38,21 @@ Kirigami.Page {
     }
     
     // actions (only shown in flat view since the toolbar is hidden in dynamic view)
-    actions.contextualActions: [
+    actions: [
         Kirigami.Action {
-            iconName: "find-location"
+            icon.name: "find-location"
             text: i18n("Locations")
             onTriggered: applicationWindow().openLocationsList()
         },
         Kirigami.Action {
-            iconName: "settings-configure"
+            icon.name: "settings-configure"
             text: i18n("Settings")
             displayHint: Kirigami.Action.IconOnly
             onTriggered: applicationWindow().openSettings()
         },
         Kirigami.Action {
             visible: !Kirigami.Settings.isMobile
-            iconName: "view-refresh"
+            icon.name: "view-refresh"
             text: i18n("Refresh")
             displayHint: Kirigami.Action.IconOnly
             onTriggered: WeatherLocationListModel.locations[loader.item.currentIndex].update()

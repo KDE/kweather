@@ -33,10 +33,10 @@ Kirigami.Page {
         }
     }
     
-    actions.contextualActions: [
+    actions: [
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
-            iconName: "settings-configure"
+            icon.name: "settings-configure"
             onTriggered: applicationWindow().openSettings()
         }
     ]
