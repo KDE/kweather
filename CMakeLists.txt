@@ -17,7 +17,7 @@ project(kweather VERSION ${RELEASE_SERVICE_VERSION})
 set(QT_MIN_VERSION "5.15.2")
 set(KF_MIN_VERSION "5.101.0")
 if (ANDROID)
-    set(QT_MIN_VERSION "5.15.8")
+    set(QT_MIN_VERSION "5.15.10")
 endif()
 
 set(CMAKE_CXX_STANDARD 17)
