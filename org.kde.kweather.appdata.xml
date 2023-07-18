@@ -50,7 +50,6 @@
   <summary xml:lang="de">Echtzeit-Wettervorschau und weitere Informationen anzeigen</summary>
   <summary xml:lang="el">Προβολή πρόγνωσης του καιρού σε πραγματικό χρόνο και άλλες πληροφορίες</summary>
   <summary xml:lang="en-GB">View real-time weather forecasts and other information</summary>
-  <summary xml:lang="eo">Rigardi realtempajn veterprognozojn kaj aliajn informojn</summary>
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real y otra información</summary>
   <summary xml:lang="fi">Näytä tosiaikaiset sääennusteet ja muuta tietoa</summary>
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
@@ -81,7 +80,6 @@
   <developer_name xml:lang="de">KDE-Gemeinschaft</developer_name>
   <developer_name xml:lang="el">Η Κοινότητα του KDE</developer_name>
   <developer_name xml:lang="en-GB">KDE Community</developer_name>
-  <developer_name xml:lang="eo">KDE-Komunumo</developer_name>
   <developer_name xml:lang="es">Comunidad KDE</developer_name>
   <developer_name xml:lang="et">KDE kogukond</developer_name>
   <developer_name xml:lang="eu">KDEren komunitatea</developer_name>
@@ -158,7 +156,6 @@
       <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
       <caption xml:lang="el">Δυναμική προβολή για κινητό</caption>
       <caption xml:lang="en-GB">Mobile dynamic view</caption>
-      <caption xml:lang="eo">Poŝtelefona dinamika perspektivo</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
       <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
@@ -192,7 +189,6 @@
       <caption xml:lang="de">Dynamische Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="el">Δυναμική προβολή για υπολογιστή</caption>
       <caption xml:lang="en-GB">Desktop dynamic view</caption>
-      <caption xml:lang="eo">Labortabla dinamika perspektivo</caption>
       <caption xml:lang="es">Vista dinámica de escritorio</caption>
       <caption xml:lang="fi">Dynaaminen työpöytänäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
@@ -226,7 +222,6 @@
       <caption xml:lang="de">Flache Ansicht für Mobilgeräte</caption>
       <caption xml:lang="el">Επίπεδη προβολή για κινητό</caption>
       <caption xml:lang="en-GB">Mobile flat view</caption>
-      <caption xml:lang="eo">Poŝtelefona plata perspektivo</caption>
       <caption xml:lang="es">Vista plana móvil</caption>
       <caption xml:lang="fi">Litteä mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
@@ -260,7 +255,6 @@
       <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
       <caption xml:lang="el">Δυναμική προβολή για κινητό</caption>
       <caption xml:lang="en-GB">Mobile dynamic view</caption>
-      <caption xml:lang="eo">Poŝtelefona dinamika perspektivo</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
       <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
