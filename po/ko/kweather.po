@@ -84,7 +84,7 @@ msgstr "날씨"
 #: main.cpp:69
 #, kde-format
 msgid "A convergent weather application for Plasma"
-msgstr "Plasma용 올인원 날씨 프로그램"
+msgstr "Plasma용 올인원 날씨 앱"
 
 #: main.cpp:71
 #, kde-format
