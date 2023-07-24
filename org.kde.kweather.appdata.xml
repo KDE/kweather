@@ -17,6 +17,7 @@
   <name xml:lang="de">Weather</name>
   <name xml:lang="el">Καιρός</name>
   <name xml:lang="en-GB">Weather</name>
+  <name xml:lang="eo">Vetero</name>
   <name xml:lang="es">Meteorología</name>
   <name xml:lang="et">Ilm</name>
   <name xml:lang="eu">Eguraldia</name>
@@ -125,6 +126,7 @@
     <p xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma. Mit flachen und dynamisch animierten Ansichten der Wettervorhersage und weiteren Informationen.</p>
     <p xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma. Περιέχει επίπεδες και δυναμικές/κινούμενης εικόνας προβολές για την παρουσίαση προγνώσεων και για άλλες πληροφορίες.</p>
     <p xml:lang="en-GB">A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
+    <p xml:lang="eo">Konverĝa veteraplikaĵo por Plasmo. Havas platajn kaj dinamikajn/viglajn vidojn por montri prognozojn kaj aliajn informojn.</p>
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
     <p xml:lang="fi">Mukautuva sääsovellus Plasmaan. Litteä ja dynaaminen/animoitu näkymä sääennusteiden ja muun tiedon esittämiseen.</p>
     <p xml:lang="fr">Une application météo convergente pour Plasma. Elle possède des affichages à plat mais aussi dynamique / animé pour l'affichage des prévisions et d'autres informations.</p>
@@ -133,7 +135,7 @@
     <p xml:lang="is">Hentugt veðurforrit fyrir Plasma. Er með flatar og breytilegar/hreyfðar ásýndir til að skoða veðurspár í rauntíma og aðrar upplýsingar</p>
     <p xml:lang="it">Un'applicazione meteo convergente per Plasma. Ha viste statiche e dinamiche/animate per mostrare previsioni e altre informazioni.</p>
     <p xml:lang="ka">კონვერგენტული ამინდის აპლიკაცია Plasma-სთვის. პროგნოზისა და სხვა ინფორმაციის საჩვენებლად გააჩნია ბრტყელი და დინამიკური/ანიმირებული ხედები.</p>
-    <p xml:lang="ko">Plasma용 올인원 날씨 프로그램입니다. 평면, 동적, 애니메이션 보기로 일기 예보와 기타 정보를 볼 수 있습니다.</p>
+    <p xml:lang="ko">Plasma용 올인원 날씨 앱입니다. 평면, 동적, 애니메이션 보기로 일기 예보와 기타 정보를 볼 수 있습니다.</p>
     <p xml:lang="lt">Konverguojanti orų programa, skirta Plasma. Turi plokščią ir dinaminį/animuotą rodinį, skirtą atvaizduoti orų prognozes bei kitą informaciją.</p>
     <p xml:lang="nl">Een convergente weer-toepassing voor Plasma. Heeft vlakke en dynamisch/geanimeerde beelden voor het tonen van weersverwachtingen en andere informatie.</p>
     <p xml:lang="nn">Vêrmeldingsprogram for Plasma, tilpassa ulike brukarflater. Hat flat og dynamiske/animerte visingar for vêrmeldingar og annan vêrinformasjon.</p>
