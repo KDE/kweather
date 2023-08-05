@@ -52,6 +52,7 @@
   <summary xml:lang="en-GB">View real-time weather forecasts and other information</summary>
   <summary xml:lang="eo">Rigardi realtempajn veterprognozojn kaj aliajn informojn</summary>
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real y otra información</summary>
+  <summary xml:lang="eu">Ikusi denbora errealeko eguraldi aurreikuspenak eta beste informazio batzuk</summary>
   <summary xml:lang="fi">Näytä tosiaikaiset sääennusteet ja muuta tietoa</summary>
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
   <summary xml:lang="gl">Vexa a predición meteorolóxica e outra información en tempo real.</summary>
@@ -126,6 +127,7 @@
     <p xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma. Περιέχει επίπεδες και δυναμικές/κινούμενης εικόνας προβολές για την παρουσίαση προγνώσεων και για άλλες πληροφορίες.</p>
     <p xml:lang="en-GB">A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
+    <p xml:lang="eu">Plasmarako eguraldi aplikazio konbergente bat. Aurreikuspenak eta beste informazio batzuk erakusteko ikuspegi laua eta dinamikoa/animatua ditu.</p>
     <p xml:lang="fi">Mukautuva sääsovellus Plasmaan. Litteä ja dynaaminen/animoitu näkymä sääennusteiden ja muun tiedon esittämiseen.</p>
     <p xml:lang="fr">Une application météo convergente pour Plasma. Elle possède des affichages à plat mais aussi dynamique / animé pour l'affichage des prévisions et d'autres informations.</p>
     <p xml:lang="gl">Unha aplicación meteorolóxica converxente para Plasma. Ten vistas estáticas e dinámicas para amosar as predicións e outra información.</p>
@@ -160,6 +162,7 @@
       <caption xml:lang="en-GB">Mobile dynamic view</caption>
       <caption xml:lang="eo">Poŝtelefona dinamika perspektivo</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="eu">Mugikorreko ikuspegi dinamikoa</caption>
       <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="gl">Vista dinámica de móbil.</caption>
@@ -194,6 +197,7 @@
       <caption xml:lang="en-GB">Desktop dynamic view</caption>
       <caption xml:lang="eo">Labortabla dinamika perspektivo</caption>
       <caption xml:lang="es">Vista dinámica de escritorio</caption>
+      <caption xml:lang="eu">Mahaigaineko ikuspegi dinamikoa</caption>
       <caption xml:lang="fi">Dynaaminen työpöytänäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
       <caption xml:lang="gl">Vista dinámica de escritorio.</caption>
@@ -228,6 +232,7 @@
       <caption xml:lang="en-GB">Mobile flat view</caption>
       <caption xml:lang="eo">Poŝtelefona plata perspektivo</caption>
       <caption xml:lang="es">Vista plana móvil</caption>
+      <caption xml:lang="eu">Mugikorreko ikuspegi laua</caption>
       <caption xml:lang="fi">Litteä mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
       <caption xml:lang="gl">Vista estática de móbil.</caption>
@@ -262,6 +267,7 @@
       <caption xml:lang="en-GB">Mobile dynamic view</caption>
       <caption xml:lang="eo">Poŝtelefona dinamika perspektivo</caption>
       <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="eu">Mugikorreko ikuspegi dinamikoa</caption>
       <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="gl">Vista dinámica de móbil.</caption>
