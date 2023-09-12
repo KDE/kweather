@@ -74,7 +74,7 @@ if (${QT_MAJOR_VERSION} EQUAL "6")
     find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS OpenGL)
 endif()
 
-find_package(KF${QT_MAJOR_VERSION}KirigamiAddons 0.6 REQUIRED)
+find_package(KF${QT_MAJOR_VERSION}KirigamiAddons 0.11 REQUIRED)
 
 if (ANDROID)
     find_package(OpenSSL REQUIRED)
