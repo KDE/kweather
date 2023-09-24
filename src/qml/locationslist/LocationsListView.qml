@@ -67,7 +67,7 @@ ListView {
         visible: root.count == 0
         
         helpfulAction: Kirigami.Action {
-            iconName: "list-add"
+            icon.name: "list-add"
             text: i18n("Add Location")
             onTriggered: applicationWindow().openAddLocation()
         }

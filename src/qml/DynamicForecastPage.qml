@@ -19,19 +19,19 @@ import kweather 1.0
 
 Kirigami.ScrollablePage {
     id: page
-    
+
     property int currentIndex: 0
     property var weatherLocation: WeatherLocationListModel.locations[page.currentIndex]
     property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.dayForecasts[0]
-    
+
     property int maximumContentWidth: Kirigami.Units.gridUnit * 35
-    
+
     // HACK: disable this scrollable when needed because it steals events from dialogs
     flickable.interactive: !applicationWindow().isDialogOpen
-    
+
     // x-drag threshold to change page
     property real pageChangeThreshold: page.width / 4
-    
+
     // page functions
     property bool canGoLeft: currentIndex > 0
     property bool canGoRight: currentIndex < WeatherLocationListModel.count - 1
@@ -65,17 +65,17 @@ Kirigami.ScrollablePage {
             xAnim.restart();
         }
     }
-    
+
     Connections {
         target: WeatherLocationListModel
-        
+
         function onLocationsChanged() {
             if (page.currentIndex >= WeatherLocationListModel.count) {
                 page.currentIndex = WeatherLocationListModel.count - 1;
             }
         }
     }
-    
+
     // animate x fade out before page switch
     NumberAnimation {
         id: xOutAnim
@@ -83,14 +83,14 @@ Kirigami.ScrollablePage {
         property: "x"
         easing.type: Easing.InOutQuad
         duration: Kirigami.Units.longDuration
-        
+
         property bool goLeft: false
 
         onFinished: {
             goLeft ? finishMoveLeft() : finishMoveRight();
         }
     }
-    
+
     // background
     background: KWEATHER_IS_ANDROID ? backgroundQml.item : backgroundGL.item
     Loader {
@@ -234,17 +234,17 @@ Kirigami.ScrollablePage {
             showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
         }
     }
-    
+
     Item {
         implicitHeight: mainLayout.implicitHeight
-        
+
         Rectangle {
             id: rootMask
             color: "transparent"
             opacity: 1 - (Math.abs(x) / (page.width / 4))
             height: parent.height
             width: parent.width
-            
+
             // left/right dragging for switching pages
             DragHandler {
                 id: dragHandler
@@ -252,10 +252,10 @@ Kirigami.ScrollablePage {
                 yAxis.enabled: false; xAxis.enabled: true
                 xAxis.minimum: page.canGoRight ? -page.width : -pageChangeThreshold / 2 // extra feedback
                 xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
-                
+
                 // HACK: when a delegate, or the listview is being interacted with, disable the DragHandler so that it doesn't switch pages
                 enabled: dailyCard.pressedCount == 0 && hourlyCard.pressedCount == 0
-                
+
                 onActiveChanged: {
                     if (!active) {
                         // if drag passed threshold, change page
@@ -269,7 +269,7 @@ Kirigami.ScrollablePage {
                     }
                 }
             }
-            
+
             // reset to position
             NumberAnimation on x {
                 id: xAnim; to: 0
@@ -277,15 +277,15 @@ Kirigami.ScrollablePage {
                 easing.type: Easing.InOutQuad
                 duration: Kirigami.Units.longDuration
             }
-            
+
             // header
             RowLayout {
                 id: header
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.right: parent.right
-                anchors.margins: Kirigami.Units.smallSpacing 
-                
+                anchors.margins: Kirigami.Units.smallSpacing
+
                 ColumnLayout {
                     Layout.fillWidth: true
                     spacing: Kirigami.Units.largeSpacing
@@ -306,23 +306,23 @@ Kirigami.ScrollablePage {
                         text: i18n("Updated at %1", weatherLocation.lastUpdated)
                     }
                 }
-                
+
                 property real buttonLength: Kirigami.Units.gridUnit * 2.5
                 property real iconLength: Kirigami.Units.gridUnit * 1.2
-                
+
                 ToolButton {
                     Layout.alignment: Qt.AlignTop
                     Layout.minimumWidth: header.buttonLength
                     Layout.minimumHeight: header.buttonLength
-                    
+
                     Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                     Kirigami.Theme.inherit: false
-                    
+
                     icon.name: "find-location"
                     icon.height: header.iconLength
                     icon.width: header.iconLength
                     icon.color: "white"
-                    
+
                     text: i18n("Locations")
                     display: ToolButton.IconOnly
                     onClicked: applicationWindow().openLocationsList()
@@ -334,15 +334,15 @@ Kirigami.ScrollablePage {
                     Layout.alignment: Qt.AlignTop
                     Layout.minimumWidth: header.buttonLength
                     Layout.minimumHeight: header.buttonLength
-                    
+
                     Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                     Kirigami.Theme.inherit: false
-                    
+
                     icon.name: "settings-configure"
                     icon.height: header.iconLength
                     icon.width: header.iconLength
                     icon.color: "white"
-                    
+
                     text: i18n("Settings")
                     display: ToolButton.IconOnly
                     onClicked: applicationWindow().openSettings()
@@ -354,15 +354,15 @@ Kirigami.ScrollablePage {
                     Layout.alignment: Qt.AlignTop
                     Layout.minimumWidth: header.buttonLength
                     Layout.minimumHeight: header.buttonLength
-                    
+
                     Kirigami.Theme.colorSet: Kirigami.Theme.Complementary
                     Kirigami.Theme.inherit: false
-                    
+
                     icon.name: "view-refresh"
                     icon.height: header.iconLength
                     icon.width: header.iconLength
                     icon.color: "white"
-                    
+
                     visible: !Kirigami.Settings.isMobile
                     text: i18n("Refresh")
                     display: ToolButton.IconOnly
@@ -372,20 +372,20 @@ Kirigami.ScrollablePage {
                     ToolTip.text: i18n("Refresh")
                 }
             }
-            
+
             // content
             ColumnLayout {
                 id: mainLayout
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: Math.min(page.width - Kirigami.Units.largeSpacing * 4, maximumContentWidth)
-                
+
                 // separator from top
                 // used instead of topMargin, since it can be shrunk when needed (small window height)
                 Item {
                     Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2, // header height
                                                     page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
                 }
-                
+
                 // weather header
                 ColumnLayout {
                     id: headerText
@@ -427,7 +427,7 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
                     Layout.topMargin: Kirigami.Units.largeSpacing * 2
                     Layout.bottomMargin: Kirigami.Units.largeSpacing
-                    
+
                     Label {
                         text: i18n("Daily")
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
@@ -440,15 +440,15 @@ Kirigami.ScrollablePage {
                         opacity: 0.7
                     }
                 }
-                
+
                 // daily view
                 Control {
                     id: dailyCard
                     Layout.fillWidth: true
                     padding: Kirigami.Units.largeSpacing
-                    
+
                     property int pressedCount: 0
-                    
+
                     background: Kirigami.ShadowedRectangle {
                         color: weatherLocation.cardBackgroundColor
                         radius: Kirigami.Units.smallSpacing
@@ -479,14 +479,14 @@ Kirigami.ScrollablePage {
                         spacing: Kirigami.Units.largeSpacing
 
                         onDraggingChanged: dailyCard.pressedCount += dragging? 1 : -1;
-                        
+
                         model: weatherLocation.dayForecasts
                         delegate: WeatherDayDelegate {
                             id: delegate
                             weather: modelData
                             textColor: weatherLocation.cardTextColor
                             secondaryTextColor: weatherLocation.cardSecondaryTextColor
-                            
+
                             Connections {
                                 target: delegate.mouseArea
                                 function onPressedChanged() {
@@ -500,7 +500,7 @@ Kirigami.ScrollablePage {
                         }
                     }
                 }
-                
+
                 // temperature chart
                 TemperatureChartCard {
                     location: weatherLocation
@@ -512,7 +512,7 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
                     Layout.topMargin: Kirigami.Units.largeSpacing * 2
                     Layout.bottomMargin: Kirigami.Units.largeSpacing
-                    
+
                     Label {
                         text: i18n("Hourly")
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
@@ -532,7 +532,7 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     property int pressedCount: 0
-                    
+
                     background: Kirigami.ShadowedRectangle {
                         color: weatherLocation.cardBackgroundColor
                         radius: Kirigami.Units.smallSpacing
@@ -564,7 +564,7 @@ Kirigami.ScrollablePage {
                         }
                     }
                 }
-                
+
                 // bottom card (extra info for selected day)
                 InfoCard {
                     Layout.fillWidth: true
@@ -586,6 +586,7 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     textColor: weatherLocation.cardTextColor
+                    selectedDay: page.selectedDay
 
                     background: Kirigami.ShadowedRectangle {
                         color: weatherLocation.cardBackgroundColor

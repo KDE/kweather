@@ -18,7 +18,7 @@ Kirigami.Dialog {
     
     customFooterActions: [
         Kirigami.Action {
-            iconName: "list-add"
+            icon.name: "list-add"
             text: i18n("Add Location")
             onTriggered: {
                 root.close();

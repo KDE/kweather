@@ -26,39 +26,34 @@ set_target_properties(kweatherLib PROPERTIES POSITION_INDEPENDENT_CODE ON)
 kconfig_add_kcfg_files(kweatherLib kweathersettings.kcfgc GENERATE_MOC)
 target_link_libraries(kweatherLib
     Qt::Core
-    KF${QT_MAJOR_VERSION}::ConfigCore
-    KF${QT_MAJOR_VERSION}::ConfigGui
-    )
-if (QT_MAJOR_VERSION EQUAL "5")
-    qtquick_compiler_add_resources(RESOURCES resources.qrc)
-else()
-    qt_add_resources(RESOURCES resources.qrc)
-endif()
+    KF6::ConfigCore
+    KF6::ConfigGui
+)
+qt_add_resources(RESOURCES resources.qrc)
 
 add_executable(kweather ${kweather_SRCS} ${RESOURCES})
 target_link_libraries(kweather
     PUBLIC
-    Qt::Qml
-    Qt::QuickControls2
-    Qt::Network
-    Qt::Charts
-    KF${QT_MAJOR_VERSION}::I18n
-    KF${QT_MAJOR_VERSION}::CoreAddons
-    KF${QT_MAJOR_VERSION}::Notifications
-    KF${QT_MAJOR_VERSION}::KWeatherCore
+    Qt6::Qml
+    Qt6::QuickControls2
+    Qt6::Network
+    Qt6::Charts
+    Qt6::OpenGL
+    KF6::I18n
+    KF6::CoreAddons
+    KF6::Notifications
+    KF6::KWeatherCore
     kweatherLib
 )
-if(${QT_MAJOR_VERSION} EQUAL "6")
-    target_link_libraries(kweather PRIVATE "Qt${QT_MAJOR_VERSION}::OpenGL")
-endif()
+
 if (ANDROID)
     target_link_libraries(kweather
         PUBLIC
         OpenSSL::SSL
-        Qt::Svg
-        Qt${QT_MAJOR_VERSION}::GuiPrivate
-        Qt${QT_MAJOR_VERSION}::Qml
-        Qt${QT_MAJOR_VERSION}::Quick
+        Qt6::Svg
+        Qt6::GuiPrivate
+        Qt6::Qml
+        Qt6::Quick
     )
 
     kirigami_package_breeze_icons(ICONS
@@ -115,7 +110,7 @@ if (ANDROID)
         weather-storm-night
     )
 else()
-    target_link_libraries(kweather PUBLIC Qt::Widgets)
+    target_link_libraries(kweather PUBLIC Qt6::Widgets)
 endif()
 
 if (UNIX AND (NOT ANDROID))

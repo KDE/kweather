@@ -22,7 +22,7 @@ Kirigami.ScrollablePage {
     globalToolBarStyle: Kirigami.ApplicationHeaderStyle.ToolBar
     actions.contextualActions: [
         Kirigami.Action {
-            iconName: "list-add"
+            icon.name: "list-add"
             text: i18n("Add Location")
             onTriggered: applicationWindow().openAddLocation()
         }

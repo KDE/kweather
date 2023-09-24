@@ -13,22 +13,10 @@
 #include <QtGlobal>
 
 // In Qt5 QtCharts is namespaced, in Qt6 not
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-namespace QtCharts
-{
 class QAbstractSeries;
 class QSplineSeries;
 class QDateTimeAxis;
 class QValueAxis;
-}
-
-using namespace QtCharts;
-#else
-class QAbstractSeries;
-class QSplineSeries;
-class QDateTimeAxis;
-class QValueAxis;
-#endif
 
 class TemperatureChartData : public QObject
 {

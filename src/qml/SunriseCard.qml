@@ -21,6 +21,7 @@ import kweather 1.0
 Kirigami.Card {
     id: root
 
+    required property var selectedDay
     property var textColor: Kirigami.Theme.textColor
 
     contentItem: Item {

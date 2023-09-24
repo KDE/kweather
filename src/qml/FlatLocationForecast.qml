@@ -16,7 +16,7 @@ import org.kde.kirigami 2.11 as Kirigami
 import kweather 1.0
 
 Kirigami.ScrollablePage {
-    id: page
+    id: root
 
     background: null // transparent, since there is a page behind
 
@@ -37,10 +37,10 @@ Kirigami.ScrollablePage {
         target: weatherLocation
         ignoreUnknownSignals: true
         function onStopLoadingIndicator() {
-            page.refreshing = false;
+            root.refreshing = false;
             
             // flat mode loads all locations at once, only show one notification for the current item
-            if (page.ListView.isCurrentItem) {
+            if (root.ListView.isCurrentItem) {
                 showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
             }
         }
@@ -55,7 +55,7 @@ Kirigami.ScrollablePage {
                 id: weatherIcon
                 source: weatherLocation.currentHourForecast ? weatherLocation.currentHourForecast.weatherIcon : "weather-none-available"
                 Layout.preferredHeight: width
-                Layout.preferredWidth: page.width * 0.8 - headerText.width
+                Layout.preferredWidth: root.width * 0.8 - headerText.width
                 Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
                 Layout.maximumWidth: Kirigami.Theme.defaultFont.pointSize * 15
                 Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 5
@@ -185,6 +185,7 @@ Kirigami.ScrollablePage {
         SunriseCard {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
+            selectedDay: root.selectedDay
         }
     }
 }

@@ -98,7 +98,7 @@ Control {
                 }
                 Component.onDestruction: {
                     // ensure that the series is a nullptr
-                    chartData.initSeries(0);
+                    chartData.initSeries(null);
                 }
             }
 

@@ -14,11 +14,8 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kweather VERSION ${RELEASE_SERVICE_VERSION})
 
-set(QT_MIN_VERSION "5.15.2")
-set(KF_MIN_VERSION "5.101.0")
-if (ANDROID)
-    set(QT_MIN_VERSION "5.15.10")
-endif()
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -52,7 +49,7 @@ ecm_setup_version(${PROJECT_VERSION}
     VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/version.h
 )
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
     Core
     Quick
     Test
@@ -60,30 +57,28 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONEN
     Svg
     QuickControls2
     Charts
+    OpenGL
 )
-find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     Kirigami2
     I18n
     CoreAddons
     Notifications
 )
-find_package(KF${QT_MAJOR_VERSION}KWeatherCore 0.6.0 REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}QuickCompiler)
-if (${QT_MAJOR_VERSION} EQUAL "6")
-    find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS OpenGL)
-endif()
+find_package(KF6KWeatherCore 0.6.0 REQUIRED)
+find_package(Qt6QuickCompiler)
 
-find_package(KF${QT_MAJOR_VERSION}KirigamiAddons 0.11 REQUIRED)
+find_package(KF6KirigamiAddons 0.11 REQUIRED)
 
 if (ANDROID)
     find_package(OpenSSL REQUIRED)
 else ()
-    find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 endif()
 
 if (NOT ANDROID AND BUILD_PLASMOID)
-   find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Plasma)
+   find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Plasma)
 endif()
 
 ecm_find_qmlmodule(org.kde.kholidays 1.0)
