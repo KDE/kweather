@@ -50,7 +50,7 @@ Control {
         
         onPressAndHold: root.pressAndHold()
         onReleased: root.released()
-        onClicked: {
+        onClicked: mouse => {
             if (mouse.button === Qt.RightButton) {
                 root.rightClicked();
             } else if (mouse.button === Qt.LeftButton) {
