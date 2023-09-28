@@ -33,7 +33,7 @@ Kirigami.Page {
         }
     }
     
-    actions.contextualActions: [
+    actions: [
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
             icon.name: "settings-configure"
