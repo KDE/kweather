@@ -106,7 +106,7 @@ Control {
             MouseArea {
                 anchors.fill: parent
                 property int scrollDist: Kirigami.Units.gridUnit * 2
-                onWheel: {
+                onWheel: wheel => {
                     //check if mouse is scrolling up or down
                     if (wheel.angleDelta.y < 0){
                         page.flickable.contentY += scrollDist
@@ -114,8 +114,8 @@ Control {
                         page.flickable.contentY -= scrollDist
                     }
                 }
-                onPressed: mouse.accepted = false // forward mouse event
-                onReleased: mouse.accepted = false // forward mouse event
+                onPressed: mouse =>  mouse.accepted = false // forward mouse event
+                onReleased: mouse => mouse.accepted = false // forward mouse event
             }
         }
     }
