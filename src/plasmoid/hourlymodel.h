@@ -17,9 +17,9 @@ class HourlyModel : public QAbstractListModel
     Q_PROPERTY(QString currentDescription READ currentDescription NOTIFY reseted)
 public:
     enum HourlyRole { Time = Qt::UserRole + 1, Icon, Description, Temperature, Precipitation };
-    virtual QVariant data(const QModelIndex &index, int role) const override;
-    virtual int rowCount(const QModelIndex &index) const override;
-    virtual QHash<int, QByteArray> roleNames() const override;
+    QVariant data(const QModelIndex &index, int role) const override;
+    int rowCount(const QModelIndex &index) const override;
+    QHash<int, QByteArray> roleNames() const override;
     const QString &currentIcon() const;
     QString currentTemperature() const;
     const QString &currentDescription() const;
