@@ -8,7 +8,7 @@
 /compile_commands.json
 .cache/
 *.qmlc
-build/
+build*/
 .kdev4/
 .idea/
 kweather.kdev4
