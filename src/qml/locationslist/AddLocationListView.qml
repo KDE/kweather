@@ -153,7 +153,7 @@ ListView {
         }
         
         onClicked: apply()
-        Keys.onPressed: {
+        Keys.onPressed: event => {
             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
                 apply();
                 event.accepted = true;
