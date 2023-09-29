@@ -12,7 +12,6 @@
 
 #include <QtGlobal>
 
-// In Qt5 QtCharts is namespaced, in Qt6 not
 class QAbstractSeries;
 class QSplineSeries;
 class QDateTimeAxis;
