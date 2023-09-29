@@ -59,8 +59,8 @@ private:
     KWeatherCore::WeatherForecast m_forecast;
     KWeatherCore::WeatherForecastSource m_source;
 
-    HourlyModel *m_hourlyModel;
-    QTimer *m_timer;
+    HourlyModel *m_hourlyModel = nullptr;
+    QTimer *m_timer = nullptr;
 };
 
 #endif
