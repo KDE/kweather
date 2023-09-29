@@ -23,7 +23,7 @@ class WeatherBackgroundRenderer : public QQuickFramebufferObject
     Q_PROPERTY(QColor colorBottom READ colorBottom WRITE setColorBottom NOTIFY colorBottomChanged)
     Q_PROPERTY(QColor cloudColor READ cloudColor WRITE setCloudColor NOTIFY cloudColorChanged)
 public:
-    WeatherBackgroundRenderer(QQuickItem *parent = nullptr);
+    explicit WeatherBackgroundRenderer(QQuickItem *parent = nullptr);
     Renderer *createRenderer() const override;
     bool rain() const;
     bool cloud() const;
