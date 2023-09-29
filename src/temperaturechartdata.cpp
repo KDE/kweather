@@ -42,7 +42,7 @@ void TemperatureChartData::updateData()
     double minTemp = std::numeric_limits<double>::max();
     double maxTemp = std::numeric_limits<double>::min();
 
-    for (const QVariant &dayVariant : qAsConst(m_weatherData)) {
+    for (const QVariant &dayVariant : std::as_const(m_weatherData)) {
         const auto day = dayVariant.value<KWeatherCore::DailyWeatherForecast>();
 
         const double dayMinTemp = Kweather::convertTemp(day.minTemp(), KWeatherSettings::self()->temperatureUnits());
