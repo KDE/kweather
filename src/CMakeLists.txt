@@ -8,16 +8,22 @@
 set(kweather_SRCS
     main.cpp
     weatherlocationlistmodel.cpp
+    weatherlocationlistmodel.h
     weatherlocation.cpp
+    weatherlocation.h
     locationquerymodel.cpp
+    locationquerymodel.h
     temperaturechartdata.cpp
+    temperaturechartdata.h
     formatter.cpp
+    formatter.h
 )
 
 if (NOT ANDROID)
     set(kweather_SRCS
         ${kweather_SRCS}
         weatherbackground.cpp
+        weatherbackground.h
     )
 endif()
 
