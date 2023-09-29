@@ -23,14 +23,6 @@
 
 #include <utility>
 
-namespace QtCharts
-{
-class QAbstractSeries;
-class QSplineSeries;
-class QDateTimeAxis;
-class QValueAxis;
-}
-
 class WeatherLocation : public QObject
 {
     Q_OBJECT
@@ -162,7 +154,7 @@ private:
     QString m_locationName, m_locationId;
     QString m_timeZone;
     QDateTime m_lastUpdated;
-    QTimer *m_timer;
+    QTimer *m_timer = nullptr;
     float m_latitude, m_longitude;
 
     QVariantList m_dayForecasts;
