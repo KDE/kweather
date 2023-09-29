@@ -20,7 +20,7 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVa
     qmlRegisterAnonymousType<HourlyModel>("HourlyModel", 1);
     auto config = KSharedConfig::openConfig(QStringLiteral("kweather/plasmoid"));
     auto group = config->group("general");
-    QString locationID = group.readEntry("locationID");
+    const QString locationID = group.readEntry("locationID");
     if (!locationID.isEmpty()) {
         auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
         auto m_group = m_config.group(locationID);
