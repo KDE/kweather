@@ -233,7 +233,7 @@ msgstr "Buscar unha localización…"
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
 msgid "Unable to connect"
-msgstr "Non se pode conectar"
+msgstr "Non é posíbel conectar"
 
 #: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
@@ -258,7 +258,7 @@ msgstr "Engadir un lugar"
 #: qml/locationslist/LocationsListView.qml:55
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr "Non se pode obter información do fuso horario."
+msgstr "Non é posíbel obter información do fuso horario."
 
 #: qml/locationslist/LocationsListView.qml:66
 #, kde-format
