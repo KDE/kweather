@@ -24,6 +24,7 @@
   <name xml:lang="fi">Weather</name>
   <name xml:lang="fr">Météo</name>
   <name xml:lang="gl">Meteoroloxía</name>
+  <name xml:lang="ia">Tempore meteorologic-Weather</name>
   <name xml:lang="id">Weather</name>
   <name xml:lang="is">Veður</name>
   <name xml:lang="it">Meteo</name>
@@ -90,6 +91,7 @@
   <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
   <developer_name xml:lang="fr">Communauté KDE</developer_name>
   <developer_name xml:lang="gl">Comunidade KDE</developer_name>
+  <developer_name xml:lang="ia">Communitate de KDE</developer_name>
   <developer_name xml:lang="id">Komunitas KDE</developer_name>
   <developer_name xml:lang="is">KDE-samfélagið</developer_name>
   <developer_name xml:lang="it">Comunità KDE</developer_name>
