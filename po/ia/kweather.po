@@ -1,0 +1,430 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the kweather package.
+#
+# giovanni <g.sora@tiscali.it>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: kweather\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-12-05 00:49+0000\n"
+"PO-Revision-Date: 2023-10-02 17:36+0200\n"
+"Last-Translator: giovanni <g.sora@tiscali.it>\n"
+"Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
+"Language: ia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Giovanni Sora"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "g.sora@tiscali.it"
+
+#: formatter.cpp:33 formatter.cpp:38
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr "%1°"
+
+#: formatter.cpp:44
+#, kde-format
+msgid "%1 km/h"
+msgstr "%1 km/h"
+
+#: formatter.cpp:46
+#, kde-format
+msgid "%1 mph"
+msgstr "%1 mph"
+
+#: formatter.cpp:48
+#, kde-format
+msgid "%1 m/s"
+msgstr "%1 m/s"
+
+#: formatter.cpp:55
+#, kde-format
+msgid "%1 hPa"
+msgstr "%1 hPa"
+
+#: formatter.cpp:57
+#, kde-format
+msgid "%1 mmHg"
+msgstr "%1 mmHg"
+
+#: formatter.cpp:64
+#, kde-format
+msgctxt "sunrise time not available"
+msgid "-"
+msgstr "-"
+
+#: formatter.cpp:71
+#, kde-format
+msgctxt "in as inches"
+msgid "%1 in"
+msgstr "%1 in"
+
+#: formatter.cpp:73
+#, kde-format
+msgctxt "mm as millimeters"
+msgid "%1 mm"
+msgstr "%1 mm"
+
+#: main.cpp:67 qml/DefaultPage.qml:69 qml/main.qml:21
+#, kde-format
+msgid "Weather"
+msgstr "Tempore meteorologic"
+
+#: main.cpp:69
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr "Un  application convergente de tempore per Plasma"
+
+#: main.cpp:71
+#, kde-format
+msgid "© 2020-2022 Plasma Development Team"
+msgstr ""
+"© 2020-2022 Plasma Development Team -Equipa de disveloppamento de Plasma"
+
+#: main.cpp:73
+#, kde-format
+msgid "Han Young"
+msgstr "Han Young"
+
+#: main.cpp:74
+#, kde-format
+msgid "Devin Lin"
+msgstr "Devin Lin"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr ""
+"Nulle location trovate sur systema, pro favoir tu adde alcun in kweather"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#, kde-format
+msgid "please select the location"
+msgstr "pro favor tu selige le location"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:61 qml/InfoCard.qml:71
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:77
+#, kde-format
+msgid "%1mm"
+msgstr "%1mm"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:129
+#: plasmoid/package/contents/ui/WeatherContainer.qml:168
+#, kde-format
+msgid "Select Location"
+msgstr "Selectiona location"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:134
+#, kde-format
+msgid "Open KWeather"
+msgstr "Aperi KWeather"
+
+#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#, kde-format
+msgid "Forecast"
+msgstr "Vista de prevision"
+
+#: qml/DefaultPage.qml:27
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "Error de rete quandp il obteneva le location currente"
+
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListView.qml:71
+#, kde-format
+msgid "Add Location"
+msgstr "Adde location"
+
+#: qml/DynamicForecastPage.qml:234 qml/FlatLocationForecast.qml:44
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "Tempore refrescate per %1"
+
+#: qml/DynamicForecastPage.qml:306 qml/FlatLocationForecast.qml:95
+#, kde-format
+msgid "Updated at %1"
+msgstr "Actualisate a %1"
+
+#: qml/DynamicForecastPage.qml:326 qml/ForecastContainerPage.qml:44
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:17
+#, kde-format
+msgid "Locations"
+msgstr "Locationes"
+
+#: qml/DynamicForecastPage.qml:331
+#, kde-format
+msgid "Choose location"
+msgstr "Selige Location"
+
+#: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
+#: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "Preferentias"
+
+#: qml/DynamicForecastPage.qml:367 qml/DynamicForecastPage.qml:372
+#: qml/ForecastContainerPage.qml:56
+#, kde-format
+msgid "Refresh"
+msgstr "Refresca"
+
+#: qml/DynamicForecastPage.qml:432 qml/FlatLocationForecast.qml:111
+#, kde-format
+msgid "Daily"
+msgstr "Cata die"
+
+#: qml/DynamicForecastPage.qml:437
+#, kde-format
+msgid "Local Date: "
+msgstr "Data Local:"
+
+#: qml/DynamicForecastPage.qml:517 qml/FlatLocationForecast.qml:156
+#, kde-format
+msgid "Hourly"
+msgstr "Per hora"
+
+#: qml/DynamicForecastPage.qml:522
+#, kde-format
+msgid "Local Time: "
+msgstr "Tempore Local: "
+
+#: qml/InfoCard.qml:43
+#, kde-format
+msgid "Precipitation"
+msgstr "Precipitation"
+
+#: qml/InfoCard.qml:67
+#, kde-format
+msgid "Humidity"
+msgstr "Humiditate"
+
+#: qml/InfoCard.qml:91
+#, kde-format
+msgid "Pressure"
+msgstr "Pression"
+
+#: qml/InfoCard.qml:115
+#, kde-format
+msgid "UV index"
+msgstr "Indice UV"
+
+#: qml/locationslist/AddLocationListView.qml:48
+#, kde-format
+msgid "Search for a location…"
+msgstr "Cerca un location..."
+
+#: qml/locationslist/AddLocationListView.qml:87
+#, kde-format
+msgid "Unable to connect"
+msgstr "Il non pote connecter"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Search for a location"
+msgstr "Cerca un location"
+
+#: qml/locationslist/AddLocationListView.qml:104
+#, kde-format
+msgid "Add current location"
+msgstr "Adde location currente"
+
+#: qml/locationslist/AddLocationListView.qml:127
+#, kde-format
+msgid "No results"
+msgstr "Nulle resultatos"
+
+#: qml/locationslist/AddLocationPage.qml:17
+#, kde-format
+msgid "Add location"
+msgstr "Adde location"
+
+#: qml/locationslist/LocationsListView.qml:55
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "Incapace a trovar information de fuso horari"
+
+#: qml/locationslist/LocationsListView.qml:66
+#, kde-format
+msgid "Add a location"
+msgstr "Adde un location"
+
+#: qml/locationslist/LocationsListView.qml:214
+#, kde-format
+msgid "Delete"
+msgstr "Dele"
+
+#: qml/settings/SettingsComponent.qml:41
+#, kde-format
+msgid "General"
+msgstr "General"
+
+#: qml/settings/SettingsComponent.qml:46
+#, kde-format
+msgid "Forecast Style"
+msgstr "Stilo de Prevision"
+
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:130
+#, kde-format
+msgid "Flat"
+msgstr "Plan"
+
+#: qml/settings/SettingsComponent.qml:52 qml/SetupWizard.qml:177
+#, kde-format
+msgid "Dynamic"
+msgstr "Dynamic"
+
+#: qml/settings/SettingsComponent.qml:85
+#, kde-format
+msgid "About"
+msgstr "A proposito"
+
+#: qml/settings/SettingsComponent.qml:105
+#, kde-format
+msgid "Units"
+msgstr "Unitates"
+
+#: qml/settings/SettingsComponent.qml:110
+#, kde-format
+msgid "Temperature Units"
+msgstr "Unitates de temperatura"
+
+#: qml/settings/SettingsComponent.qml:115
+#, kde-format
+msgid "Use System Default"
+msgstr "Usa le predefinite de systema"
+
+#: qml/settings/SettingsComponent.qml:116
+#, kde-format
+msgid "Celsius"
+msgstr "Celsius"
+
+#: qml/settings/SettingsComponent.qml:117
+#, kde-format
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: qml/settings/SettingsComponent.qml:150
+#, kde-format
+msgid "Speed Units"
+msgstr "Unitates de velocitate"
+
+#: qml/settings/SettingsComponent.qml:155
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "kph"
+
+#: qml/settings/SettingsComponent.qml:156
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "mph"
+
+#: qml/settings/SettingsComponent.qml:157
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr "m/s"
+
+#: qml/settings/SettingsComponent.qml:190
+#, kde-format
+msgid "Pressure Units"
+msgstr "Unitates de pression"
+
+#: qml/settings/SettingsComponent.qml:195
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "hPa"
+
+#: qml/settings/SettingsComponent.qml:196
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr "mmHg"
+
+#: qml/settings/SettingsComponent.qml:230
+#, kde-format
+msgid "Precipitation Units"
+msgstr "Unitates de precipitation"
+
+#: qml/settings/SettingsComponent.qml:235
+#, kde-format
+msgctxt "Millimeters"
+msgid "mm"
+msgstr "mm"
+
+#: qml/settings/SettingsComponent.qml:236
+#, kde-format
+msgctxt "Inches"
+msgid "in"
+msgstr "in"
+
+#: qml/SetupWizard.qml:64
+#, kde-format
+msgid "Welcome to Weather"
+msgstr "Benvenite a Weather"
+
+#: qml/SetupWizard.qml:70
+#, kde-format
+msgid "Continue"
+msgstr "Continua"
+
+#: qml/SetupWizard.qml:89
+#, kde-format
+msgid "Select forecast theme"
+msgstr "Selige thema de prevision"
+
+#: qml/SetupWizard.qml:94
+#, kde-format
+msgid "You can change the theme later in the settings."
+msgstr "Tu pote cambiar le thema plus tarde in le preferentias."
+
+#: qml/SetupWizard.qml:201
+#, kde-format
+msgid "Back"
+msgstr "Retro"
+
+#: qml/SetupWizard.qml:207
+#, kde-format
+msgid "Finish"
+msgstr "Termina"
+
+#: qml/SunriseCard.qml:47
+#, kde-format
+msgid "Sunrise"
+msgstr "Alba"
+
+#: qml/SunriseCard.qml:71
+#, kde-format
+msgid "Sunset"
+msgstr "poner del sol"
+
+#: qml/SunriseCard.qml:93
+#, kde-format
+msgid "Moon Phase"
+msgstr "Phase lunar"
+
+#: qml/TemperatureChartCard.qml:87
+#, kde-format
+msgid "temperature"
+msgstr "temperatura"
