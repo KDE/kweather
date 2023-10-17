@@ -14,3 +14,7 @@ Files: android/res/mipmap-mdpi/ic_launcher.png
 Copyright: 2020 Gabriel Souza Franco
     2020 Devin Lin <espidev@gmail.com>
 License: CC-BY-4.0
+
+Files: snapcraft.yaml
+Copyright: None
+License: CC0-1.0
