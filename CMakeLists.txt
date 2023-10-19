@@ -67,7 +67,6 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Notifications
 )
 find_package(KF6KWeatherCore 0.6.0 REQUIRED)
-find_package(Qt6QuickCompiler)
 
 find_package(KF6KirigamiAddons 0.11 REQUIRED)
 
