@@ -36,7 +36,7 @@ void TemperatureChartData::updateData()
 
     m_series->clear();
 
-    QVector<QPointF> result;
+    QList<QPointF> result;
     result.reserve(m_weatherData.size());
 
     double minTemp = std::numeric_limits<double>::max();

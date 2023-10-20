@@ -357,7 +357,7 @@ public:
 
     void render()
     {
-        QVector<QVector3D> backgroundV = {{-1, 1, 0}, {1, 1, 0}, {1, -1, 0}, {-1, -1, 0}};
+        QList<QVector3D> backgroundV = {{-1, 1, 0}, {1, 1, 0}, {1, -1, 0}, {-1, -1, 0}};
         auto topColor = m_topColor, bottomColor = m_bottomColor;
 
         if (inAnimation) {
@@ -371,7 +371,7 @@ public:
             bottomColor = bottomColor * percentage + m_oldBottomColor * (1 - percentage);
         }
 
-        QVector<QVector4D> backgroundC = {bottomColor, bottomColor, topColor, topColor};
+        QList<QVector4D> backgroundC = {bottomColor, bottomColor, topColor, topColor};
 
         program.bind();
         program.setAttributeArray(vertexAttr, backgroundV.constData());
@@ -450,7 +450,7 @@ public:
     }
 
 private:
-    QVector<QVector3D> vertices;
+    QList<QVector3D> vertices;
     std::vector<std::tuple<QVector2D, float, float>> droplets; // pos, length, speed
     QOpenGLShaderProgram shader;
     int vertexAttr;
