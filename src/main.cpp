@@ -59,7 +59,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
     QQmlApplicationEngine engine;
 
-    KLocalizedString::setApplicationDomain("kweather");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kweather"));
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     KAboutData aboutData(QStringLiteral("kweather"),
                          i18n("Weather"),
