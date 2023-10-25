@@ -109,9 +109,10 @@ Kirigami.ScrollablePage {
         // daily view
         Label {
             text: i18n("Daily")
-            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+            font.pointSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 1.2)
             Layout.topMargin: Kirigami.Units.largeSpacing
         }
+
         Kirigami.Separator {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
@@ -154,8 +155,9 @@ Kirigami.ScrollablePage {
         Label {
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             text: i18n("Hourly")
-            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
+            font.pointSize: Math.round(Kirigami.Theme.defaultFont.pointSize * 1.2)
         }
+
         Kirigami.Separator {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2

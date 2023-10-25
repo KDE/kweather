@@ -92,26 +92,27 @@ Kirigami.ScrollablePage {
     }
 
     // background
-    background: KWEATHER_IS_ANDROID ? backgroundQml.item : backgroundGL.item
-    Loader {
-        id: backgroundGL
-        active: !KWEATHER_IS_ANDROID
-        sourceComponent: WeatherBackground {
-            anchors.fill: parent
-            rain: weatherLocation.rain
-            cloud: weatherLocation.cloud
-            sun: weatherLocation.sun
-            star: weatherLocation.star
-            snow: weatherLocation.snow
-            colorTop: weatherLocation.topColor
-            colorBottom: weatherLocation.bottomColor
-            cloudColor: weatherLocation.cloudColor
-        }
-    }
+    background: backgroundQml.item // disable OpenGL background for now as it causes issues: backgroundGL.item
+
+    // Loader {
+    //     id: backgroundGL
+    //     active: !KWEATHER_IS_ANDROID
+    //     sourceComponent: WeatherBackground {
+    //         anchors.fill: parent
+    //         rain: weatherLocation.rain
+    //         cloud: weatherLocation.cloud
+    //         sun: weatherLocation.sun
+    //         star: weatherLocation.star
+    //         snow: weatherLocation.snow
+    //         colorTop: weatherLocation.topColor
+    //         colorBottom: weatherLocation.bottomColor
+    //         cloudColor: weatherLocation.cloudColor
+    //     }
+    // }
 
     Loader {
         id: backgroundQml
-        active: KWEATHER_IS_ANDROID
+        active: true
         sourceComponent: Rectangle {
             anchors.fill: parent
             color: "#24a3de"
@@ -449,14 +450,10 @@ Kirigami.ScrollablePage {
 
                     property int pressedCount: 0
 
-                    background: Kirigami.ShadowedRectangle {
+                    background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
                         radius: Kirigami.Units.smallSpacing
                         anchors.fill: parent
-
-                        shadow.size: Kirigami.Units.largeSpacing
-                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                     }
 
                     contentItem: WeatherStrip {
@@ -533,14 +530,10 @@ Kirigami.ScrollablePage {
 
                     property int pressedCount: 0
 
-                    background: Kirigami.ShadowedRectangle {
+                    background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
                         radius: Kirigami.Units.smallSpacing
                         anchors.fill: parent
-
-                        shadow.size: Kirigami.Units.largeSpacing
-                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                     }
 
                     contentItem: WeatherStrip {
@@ -571,14 +564,10 @@ Kirigami.ScrollablePage {
 
                     textColor: weatherLocation.cardTextColor
 
-                    background: Kirigami.ShadowedRectangle {
+                    background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
                         radius: Kirigami.Units.smallSpacing
                         anchors.fill: parent
-
-                        shadow.size: Kirigami.Units.largeSpacing
-                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                     }
                 }
 
@@ -588,14 +577,10 @@ Kirigami.ScrollablePage {
                     textColor: weatherLocation.cardTextColor
                     selectedDay: page.selectedDay
 
-                    background: Kirigami.ShadowedRectangle {
+                    background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
                         radius: Kirigami.Units.smallSpacing
                         anchors.fill: parent
-
-                        shadow.size: Kirigami.Units.largeSpacing
-                        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
                     }
                 }
             }
