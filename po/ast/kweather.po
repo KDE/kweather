@@ -1,31 +1,31 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2023.
 #
+# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-26 01:48+0000\n"
-"PO-Revision-Date: 2023-06-11 18:21+0200\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
-"Language: gl\n"
+"PO-Revision-Date: 2023-10-25 11:42+0200\n"
+"Last-Translator: Enol P. <enolp@softastur.org>\n"
+"Language-Team: \n"
+"Language: ast_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Adrian Chaves (Gallaecio)"
+msgstr "Softastur"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "adrian@chaves.io"
+msgstr "alministradores@softastur.org"
 
 #: formatter.cpp:33 formatter.cpp:38
 #, kde-format
@@ -62,54 +62,54 @@ msgstr "%1 mmHg"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr "-"
+msgstr ""
 
 #: formatter.cpp:71
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr "%1 pol"
+msgstr ""
 
 #: formatter.cpp:73
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "%1 mm"
+msgstr ""
 
 #: main.cpp:65 qml/DefaultPage.qml:69 qml/main.qml:21
 #, kde-format
 msgid "Weather"
-msgstr "Meteoroloxía"
+msgstr ""
 
 #: main.cpp:67
 #, kde-format
 msgid "A convergent weather application for Plasma"
-msgstr "Unha aplicación meteorolóxica converxente para Plasma"
+msgstr ""
 
 #: main.cpp:69
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
-msgstr "© 2020-2022 Equipo de desenvolvemento de Plasma"
+msgstr ""
 
 #: main.cpp:71
 #, kde-format
 msgid "Han Young"
-msgstr "Han Young"
+msgstr ""
 
 #: main.cpp:72
 #, kde-format
 msgid "Devin Lin"
-msgstr "Devin Lin"
+msgstr ""
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "No location found on system, please add some in kweather"
-msgstr "Non se atopou unha localización no sistema, engada unha a kweather."
+msgstr ""
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "please select the location"
-msgstr "Seleccione unha localización."
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:61 qml/InfoCard.qml:71
 #, kde-format
@@ -119,28 +119,28 @@ msgstr "%1%"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:77
 #, kde-format
 msgid "%1mm"
-msgstr "%1 mm"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:129
 #: plasmoid/package/contents/ui/WeatherContainer.qml:168
 #, kde-format
 msgid "Select Location"
-msgstr "Seleccionar a localización"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:134
 #, kde-format
 msgid "Open KWeather"
-msgstr "Abrir KWeather"
+msgstr ""
 
 #: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
-msgstr "Prognóstico"
+msgstr ""
 
 #: qml/DefaultPage.qml:27
 #, kde-format
 msgid "Network error when obtaining current location"
-msgstr "Produciuse un erro de rede ao intentar obter a localización."
+msgstr ""
 
 #: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
@@ -148,281 +148,281 @@ msgstr "Produciuse un erro de rede ao intentar obter a localización."
 #: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
-msgstr "Engadir un lugar"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:44
 #, kde-format
 msgid "Weather refreshed for %1"
-msgstr "Tempo actualizado durante %1"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
 #, kde-format
 msgid "Updated at %1"
-msgstr "Actualizado ás %1"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
-msgstr "Localizacións"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:332
 #, kde-format
 msgid "Choose location"
-msgstr "Escoller unha localización"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:347 qml/DynamicForecastPage.qml:352
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
-msgstr "Configuración"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:368 qml/DynamicForecastPage.qml:373
 #: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
-msgstr "Actualizar"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:111
 #, kde-format
 msgid "Daily"
-msgstr "Diariamente"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:438
 #, kde-format
 msgid "Local Date: "
-msgstr "Data local: "
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:157
 #, kde-format
 msgid "Hourly"
-msgstr "Cada hora"
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:519
 #, kde-format
 msgid "Local Time: "
-msgstr "Hora local: "
+msgstr ""
 
 #: qml/InfoCard.qml:43
 #, kde-format
 msgid "Precipitation"
-msgstr "Precipitación"
+msgstr ""
 
 #: qml/InfoCard.qml:67
 #, kde-format
 msgid "Humidity"
-msgstr "Humidade"
+msgstr ""
 
 #: qml/InfoCard.qml:91
 #, kde-format
 msgid "Pressure"
-msgstr "Presión"
+msgstr ""
 
 #: qml/InfoCard.qml:115
 #, kde-format
 msgid "UV index"
-msgstr "Índice ultravioleta"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr "Buscar unha localización…"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
 msgid "Unable to connect"
-msgstr "Non é posíbel conectar"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
 msgid "Search for a location"
-msgstr "Buscar unha localización"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:104
 #, kde-format
 msgid "Add current location"
-msgstr "Engadir a localización actual"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:127
 #, kde-format
 msgid "No results"
-msgstr "Non hai resultados."
+msgstr ""
 
 #: qml/locationslist/AddLocationPage.qml:17
 #, kde-format
 msgid "Add location"
-msgstr "Engadir un lugar"
+msgstr ""
 
 #: qml/locationslist/LocationsListView.qml:55
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr "Non é posíbel obter información do fuso horario."
+msgstr ""
 
 #: qml/locationslist/LocationsListView.qml:66
 #, kde-format
 msgid "Add a location"
-msgstr "Engadir unha localización"
+msgstr ""
 
 #: qml/locationslist/LocationsListView.qml:214
 #, kde-format
 msgid "Delete"
-msgstr "Eliminar"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:35
 #, kde-format
 msgid "General"
-msgstr "Xeral"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "Forecast Style"
-msgstr "Estilo de prognóstico"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:130
 #, kde-format
 msgid "Flat"
-msgstr "Estático"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:177
 #, kde-format
 msgid "Dynamic"
-msgstr "Dinámico"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:80
 #, kde-format
 msgid "About"
-msgstr "Sobre"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:92
 #, kde-format
 msgid "Units"
-msgstr "Unidades"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:98
 #, kde-format
 msgid "Temperature Units"
-msgstr "Unidades de temperatura"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:103
 #, kde-format
 msgid "Use System Default"
-msgstr "Usar o predeterminado do sistema"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:104
 #, kde-format
 msgid "Celsius"
-msgstr "Celsius"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:105
 #, kde-format
 msgid "Fahrenheit"
-msgstr "Fahrenheit"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:138
 #, kde-format
 msgid "Speed Units"
-msgstr "Unidades de velocidade"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:143
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
-msgstr "kph"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:144
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
-msgstr "mph"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr "m/s"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:178
 #, kde-format
 msgid "Pressure Units"
-msgstr "Unidades de presión"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:183
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
-msgstr "hPa"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:184
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
-msgstr "mmHg"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:218
 #, kde-format
 msgid "Precipitation Units"
-msgstr "Unidades de precipitación"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:223
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "mm"
+msgstr ""
 
 #: qml/settings/SettingsComponent.qml:224
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "pol"
+msgstr ""
 
 #: qml/SetupWizard.qml:64
 #, kde-format
 msgid "Welcome to Weather"
-msgstr "Benvida a Meteoroloxía"
+msgstr ""
 
 #: qml/SetupWizard.qml:70
 #, kde-format
 msgid "Continue"
-msgstr "Continuar"
+msgstr ""
 
 #: qml/SetupWizard.qml:89
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Seleccione o tema de prognóstico"
+msgstr ""
 
 #: qml/SetupWizard.qml:94
 #, kde-format
 msgid "You can change the theme later in the settings."
-msgstr "Pode cambialo na configuración."
+msgstr ""
 
 #: qml/SetupWizard.qml:201
 #, kde-format
 msgid "Back"
-msgstr "Volver"
+msgstr ""
 
 #: qml/SetupWizard.qml:207
 #, kde-format
 msgid "Finish"
-msgstr "Rematar"
+msgstr ""
 
 #: qml/SunriseCard.qml:48
 #, kde-format
 msgid "Sunrise"
-msgstr "Amencer"
+msgstr ""
 
 #: qml/SunriseCard.qml:72
 #, kde-format
 msgid "Sunset"
-msgstr "Crepuscular"
+msgstr ""
 
 #: qml/SunriseCard.qml:94
 #, kde-format
 msgid "Moon Phase"
-msgstr "Fase da Lúa"
+msgstr ""
 
 #: qml/TemperatureChartCard.qml:87
 #, kde-format
 msgid "temperature"
-msgstr "temperatura"
+msgstr ""

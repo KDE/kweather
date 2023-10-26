@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-29 01:41+0000\n"
+"POT-Creation-Date: 2023-10-26 01:48+0000\n"
 "PO-Revision-Date: 2022-12-31 15:20+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -150,57 +150,57 @@ msgstr "Network error when obtaining current location"
 msgid "Add Location"
 msgstr "Add Location"
 
-#: qml/DynamicForecastPage.qml:234 qml/FlatLocationForecast.qml:44
+#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:44
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Weather refreshed for %1"
 
-#: qml/DynamicForecastPage.qml:306 qml/FlatLocationForecast.qml:95
+#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
 #, kde-format
 msgid "Updated at %1"
 msgstr "Updated at %1"
 
-#: qml/DynamicForecastPage.qml:326 qml/ForecastContainerPage.qml:44
+#: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:17
 #, kde-format
 msgid "Locations"
 msgstr "Locations"
 
-#: qml/DynamicForecastPage.qml:331
+#: qml/DynamicForecastPage.qml:332
 #, kde-format
 msgid "Choose location"
 msgstr "Choose location"
 
-#: qml/DynamicForecastPage.qml:346 qml/DynamicForecastPage.qml:351
+#: qml/DynamicForecastPage.qml:347 qml/DynamicForecastPage.qml:352
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
 msgstr "Settings"
 
-#: qml/DynamicForecastPage.qml:367 qml/DynamicForecastPage.qml:372
+#: qml/DynamicForecastPage.qml:368 qml/DynamicForecastPage.qml:373
 #: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
 msgstr "Refresh"
 
-#: qml/DynamicForecastPage.qml:432 qml/FlatLocationForecast.qml:111
+#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:111
 #, kde-format
 msgid "Daily"
 msgstr "Daily"
 
-#: qml/DynamicForecastPage.qml:437
+#: qml/DynamicForecastPage.qml:438
 #, kde-format
 msgid "Local Date: "
 msgstr "Local Date: "
 
-#: qml/DynamicForecastPage.qml:517 qml/FlatLocationForecast.qml:156
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:157
 #, kde-format
 msgid "Hourly"
 msgstr "Hourly"
 
-#: qml/DynamicForecastPage.qml:522
+#: qml/DynamicForecastPage.qml:519
 #, kde-format
 msgid "Local Time: "
 msgstr "Local Time: "
