@@ -79,3 +79,5 @@ void HourlyModel::openKWeather()
     auto m_process = new QProcess(this);
     m_process->start(QStringLiteral("kweather"), QStringList());
 }
+
+#include "moc_hourlymodel.cpp"

@@ -77,3 +77,5 @@ QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &t
 {
     return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();
 }
+
+#include "moc_formatter.cpp"

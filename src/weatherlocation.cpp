@@ -433,3 +433,5 @@ bool WeatherLocation::snow() const
 {
     return m_snow;
 }
+
+#include "moc_weatherlocation.cpp"

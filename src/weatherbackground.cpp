@@ -1008,3 +1008,5 @@ void WeatherBackgroundRenderer::setCloudColor(const QColor &c)
 {
     m_cloudColor = c;
 }
+
+#include "moc_weatherbackground.cpp"

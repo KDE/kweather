@@ -126,3 +126,5 @@ void LocationQueryModel::clearResults()
     m_networkError = false;
     Q_EMIT propertyChanged();
 }
+
+#include "moc_locationquerymodel.cpp"

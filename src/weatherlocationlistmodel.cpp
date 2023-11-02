@@ -221,3 +221,5 @@ QList<WeatherLocation *> &WeatherLocationListModel::locations()
 {
     return m_locations;
 }
+
+#include "moc_weatherlocationlistmodel.cpp"

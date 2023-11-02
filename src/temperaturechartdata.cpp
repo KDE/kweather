@@ -88,3 +88,5 @@ double TemperatureChartData::minTempLimit() const
 {
     return m_minTempLimit;
 }
+
+#include "moc_temperaturechartdata.cpp"

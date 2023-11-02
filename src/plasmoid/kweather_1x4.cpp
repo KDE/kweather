@@ -134,3 +134,5 @@ qreal KWeather_1x4::precipitation() const
 K_PLUGIN_CLASS_WITH_JSON(KWeather_1x4, "package/metadata.json")
 
 #include "kweather_1x4.moc"
+
+#include "moc_kweather_1x4.cpp"
