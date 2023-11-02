@@ -30,7 +30,7 @@ QString Formatter::formatTemperatureUnitDegrees(const QString &unit) const
 
 QString Formatter::formatTemperature(qreal temperature, const QString &unit) const
 {
-    return i18nc("A temperature", "%1°", Kweather::convertTemp(temperature, unit));
+    return ki18nc("A temperature", "%1°").subs(Kweather::convertTemp(temperature, unit)).toString();
 }
 
 QString Formatter::formatTemperatureRounded(qreal temperature, const QString &unit) const
@@ -40,21 +40,30 @@ QString Formatter::formatTemperatureRounded(qreal temperature, const QString &un
 
 QString Formatter::formatWindSpeed(qreal speed, const QString &unit) const
 {
+    QString formattedSpeed;
+
     if (unit == QLatin1String("kph")) {
-        return i18n("%1 km/h", QString::number(speed, 'f', 1));
+        formattedSpeed = QLocale().toString(speed, 'f', 1);
+        return ki18n("%1 km/h").subs(formattedSpeed).toString();
     } else if (unit == QLatin1String("mph")) {
-        return i18n("%1 mph", QString::number(speed * 0.62, 'f', 1));
+        formattedSpeed = QLocale().toString(speed * 0.62, 'f', 1);
+        return ki18n("%1 mph").subs(formattedSpeed).toString();
     } else {
-        return i18n("%1 m/s", QString::number(speed * 1000 / 3600, 'f', 1));
+        formattedSpeed = QLocale().toString(speed * 1000 / 3600, 'f', 1);
+        return ki18n("%1 m/s").subs(formattedSpeed).toString();
     }
 }
 
 QString Formatter::formatPressure(qreal pressure, const QString &unit) const
 {
+    QString formattedPressure;
+
     if (unit == QLatin1String("hPa")) {
-        return i18n("%1 hPa", QString::number(pressure, 'f', 1));
+        formattedPressure = QLocale().toString(pressure, 'f', 1);
+        return ki18n("%1 hPa").subs(formattedPressure).toString();
     } else {
-        return i18n("%1 mmHg", QString::number(pressure * 0.7500638, 'f', 1));
+        formattedPressure = QLocale().toString(pressure * 0.7500638, 'f', 1);
+        return ki18n("%1 mmHg").subs(formattedPressure).toString();
     }
 }
 
@@ -67,10 +76,14 @@ QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) co
 }
 QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit) const
 {
+    QString formattedPrecipitation;
+
     if (unit == QStringLiteral("in")) {
-        return i18nc("in as inches", "%1 in", QString::number(precipitation * 0.03937008, 'f', 2));
+        formattedPrecipitation = QLocale().toString(precipitation * 0.03937008, 'f', 2);
+        return ki18nc("in as inches", "%1 in").subs(formattedPrecipitation).toString();
     } else {
-        return i18nc("mm as millimeters", "%1 mm", QString::number(precipitation, 'f', 1));
+        formattedPrecipitation = QLocale().toString(precipitation, 'f', 1);
+        return ki18nc("mm as millimeters", "%1 mm").subs(formattedPrecipitation).toString();
     }
 }
 QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const
