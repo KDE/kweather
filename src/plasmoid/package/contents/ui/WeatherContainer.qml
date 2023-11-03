@@ -2,15 +2,18 @@
     SPDX-FileCopyrightText: 2021 HanY <hanyoung@protonmail.com>
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
-import QtQuick 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.4
-import org.kde.plasma.plasmoid 2.0
-import org.kde.kirigami 2.11 as Kirigami
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.plasmoid
+import org.kde.kirigami as Kirigami
+
 Rectangle {
     id: container
+
     Layout.preferredWidth: Kirigami.Units.gridUnit * 12
     Layout.preferredHeight: Kirigami.Units.gridUnit * 12
+
     color: Kirigami.Theme.backgroundColor
     radius: 8
 
@@ -24,7 +27,7 @@ Rectangle {
         RowLayout {
             Layout.fillWidth: true
             Label {
-                text: plasmoid.nativeInterface.location
+                text: Plasmoid.location
                 color: Kirigami.Theme.textColor
                 leftPadding: Kirigami.Units.smallSpacing
                 font.bold: true
@@ -32,7 +35,7 @@ Rectangle {
             }
             Label {
                 id: temperatureLabel
-                text: plasmoid.nativeInterface.temp + "°"
+                text: Plasmoid.temp + "°"
                 color: Kirigami.Theme.activeTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
             }
@@ -40,11 +43,11 @@ Rectangle {
         RowLayout {
             Layout.fillWidth: true
             Kirigami.Icon {
-                source: plasmoid.nativeInterface.weatherIcon
+                source: Plasmoid.weatherIcon
             }
 
             Label {
-                text: plasmoid.nativeInterface.desc
+                text: Plasmoid.desc
                 color: Kirigami.Theme.textColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
             }
@@ -58,14 +61,14 @@ Rectangle {
                 Layout.minimumWidth: Layout.minimumHeight * 1.5
             }
             Label {
-                text: i18n("%1%", plasmoid.nativeInterface.humidity)
+                text: i18n("%1%", Plasmoid.humidity)
                 color: Kirigami.Theme.textColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
             }
         }
 
         RowLayout {
-            visible: plasmoid.nativeInterface.precipitation > 0.01
+            visible: Plasmoid.precipitation > 0.01
             Kirigami.Icon {
                 source: "raindrop"
                 isMask: true
@@ -74,7 +77,7 @@ Rectangle {
                 Layout.preferredWidth: Kirigami.Units.iconSizes.medium
             }
             Label {
-                text: i18n("%1mm", plasmoid.nativeInterface.precipitation.toFixed(1))
+                text: i18n("%1mm", Plasmoid.precipitation.toFixed(1))
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
             }
         }
@@ -112,10 +115,10 @@ Rectangle {
                                     Layout.alignment: Qt.AlignHCenter
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                                     font.weight: Font.Light
-                                    text: plasmoid.nativeInterface.location
+                                    text: Plasmoid.location
                                 }
                                 Kirigami.Icon {
-                                    source: plasmoid.nativeInterface.hourlyModel.currentIcon
+                                    source: Plasmoid.hourlyModel.currentIcon
                                     Layout.preferredHeight: width
                                     Layout.preferredWidth: detailedItem.width * 0.8 - headerText.width
                                     Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
@@ -132,7 +135,7 @@ Rectangle {
                                 Button {
                                     Layout.alignment: Qt.AlignHCenter
                                     text: i18n("Open KWeather")
-                                    onClicked: plasmoid.nativeInterface.hourlyModel.openKWeather()
+                                    onClicked: Plasmoid.hourlyModel.openKWeather()
                                 }
                             }
                             // weather header
@@ -141,19 +144,19 @@ Rectangle {
                                 Label {
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                                     font.weight: Font.Light
-                                    text: plasmoid.nativeInterface.hourlyModel.currentTemperature + "°"
+                                    text: Plasmoid.hourlyModel.currentTemperature + "°"
                                 }
                                 Label {
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                                     font.weight: Font.Bold
-                                    text: plasmoid.nativeInterface.hourlyModel.currentDescription
+                                    text: Plasmoid.hourlyModel.currentDescription
                                 }
                             }
                         }
                         ListView {
                             Layout.preferredHeight: Kirigami.Units.gridUnit * 16
                             Layout.fillWidth: true
-                            model: plasmoid.nativeInterface.hourlyModel
+                            model: Plasmoid.hourlyModel
                             delegate: Kirigami.BasicListItem {
                                 label: time
                                 subtitle: temperature + "°"

@@ -2,35 +2,47 @@
     SPDX-FileCopyrightText: 2021 HanY <hanyoung@protonmail.com>
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
-import QtQuick 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.4
-import org.kde.plasma.plasmoid 2.0
-import org.kde.kirigami 2.11 as Kirigami
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.plasmoid
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
+
 Rectangle {
-    signal selected()
     id: container
-    Layout.preferredWidth: Kirigami.Units.gridUnit * 12
-    Layout.preferredHeight: Kirigami.Units.gridUnit * 12
+
+    signal selected()
+
     color: Kirigami.Theme.backgroundColor
     radius: 8
 
+    Layout.preferredWidth: Kirigami.Units.gridUnit * 12
+    Layout.preferredHeight: Kirigami.Units.gridUnit * 12
+
     ListView {
         id: listView
+
         anchors.fill: parent
         model: plasmoid.nativeInterface.locationsInSystem()
-        delegate: Kirigami.BasicListItem {
+
+        delegate: Delegates.RoundedItemDelegate {
             text: modelData
+
             onClicked: {
                 selected()
                 plasmoid.nativeInterface.setLocation(modelData)
             }
         }
+
         Label {
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: Kirigami.Units.gridUnit
+            anchors {
+                bottom: parent.bottom
+                bottomMargin: Kirigami.Units.gridUnit
+            }
+
             color: Kirigami.Theme.disabledTextColor
-            text: listView.count == 0 ? i18n("No location found on system, please add some in kweather") : i18n("please select the location")
+            text: listView.count == 0 ? i18n("No location found on system, please add some in kweather") : i18n("Please select the location")
         }
     }
 }
