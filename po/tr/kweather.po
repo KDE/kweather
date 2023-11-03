@@ -1,14 +1,14 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
 # Volkan Gezer <volkangezer@gmail.com>, 2021.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-26 01:48+0000\n"
-"PO-Revision-Date: 2023-03-10 13:05+0300\n"
+"PO-Revision-Date: 2023-11-02 14:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -106,12 +106,13 @@ msgstr "Devin Lin"
 #, kde-format
 msgid "No location found on system, please add some in kweather"
 msgstr ""
-"Sisteminizde konum bulunamadı, kweather içinde bir veya birkaç tane ekleyin"
+"Sisteminizde konum bulunamadı, Hava Durumu içinde bir veya birkaç tane "
+"ekleyin"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:33
 #, kde-format
 msgid "please select the location"
-msgstr "lütfen konumu seçin"
+msgstr "Lütfen konumu seçin"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:61 qml/InfoCard.qml:71
 #, kde-format
@@ -132,12 +133,12 @@ msgstr "Konum Seç"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:134
 #, kde-format
 msgid "Open KWeather"
-msgstr "K Hava'yı Aç"
+msgstr "Hava Durumu'nu Aç"
 
 #: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
-msgstr "Tahmin"
+msgstr "Hava Tahmini"
 
 #: qml/DefaultPage.qml:27
 #, kde-format
@@ -160,7 +161,7 @@ msgstr "%1 için hava durumu yenilendi"
 #: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
 #, kde-format
 msgid "Updated at %1"
-msgstr "Güncellenme %1"
+msgstr "Son güncelleme: %1"
 
 #: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
@@ -245,7 +246,7 @@ msgstr "Bir konum ara"
 #: qml/locationslist/AddLocationListView.qml:104
 #, kde-format
 msgid "Add current location"
-msgstr "Geçerli konumu ekle"
+msgstr "Geçerli Konumu Ekle"
 
 #: qml/locationslist/AddLocationListView.qml:127
 #, kde-format
@@ -310,7 +311,7 @@ msgstr "Sıcaklık Birimleri"
 #: qml/settings/SettingsComponent.qml:103
 #, kde-format
 msgid "Use System Default"
-msgstr "Sistem Öntanımlısını Kullan"
+msgstr "Sistem öntanımlısını kullan"
 
 #: qml/settings/SettingsComponent.qml:104
 #, kde-format
@@ -392,7 +393,7 @@ msgstr "Sürdür"
 #: qml/SetupWizard.qml:89
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Tahmin teması seçin"
+msgstr "Hava tahmini temasını seçin"
 
 #: qml/SetupWizard.qml:94
 #, kde-format
