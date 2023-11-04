@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-26 01:48+0000\n"
+"POT-Creation-Date: 2023-11-04 01:39+0000\n"
 "PO-Revision-Date: 2022-11-26 13:20+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -103,34 +103,35 @@ msgstr "Han Young"
 msgid "Devin Lin"
 msgstr "Devin Lin"
 
-#: plasmoid/package/contents/ui/LocationSelector.qml:33
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
 #, kde-format
 msgid "No location found on system, please add some in kweather"
 msgstr ""
 "No se ha encontrado ninguna ubicación en el sistema. Añada una en KWeather."
 
-#: plasmoid/package/contents/ui/LocationSelector.qml:33
-#, kde-format
-msgid "please select the location"
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, fuzzy, kde-format
+#| msgid "please select the location"
+msgid "Please select the location"
 msgstr "Seleccione la ubicación"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:61 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:77
+#: plasmoid/package/contents/ui/WeatherContainer.qml:80
 #, kde-format
 msgid "%1mm"
 msgstr "%1mm"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:129
-#: plasmoid/package/contents/ui/WeatherContainer.qml:168
+#: plasmoid/package/contents/ui/WeatherContainer.qml:132
+#: plasmoid/package/contents/ui/WeatherContainer.qml:171
 #, kde-format
 msgid "Select Location"
 msgstr "Seleccionar ubicación"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:134
+#: plasmoid/package/contents/ui/WeatherContainer.qml:137
 #, kde-format
 msgid "Open KWeather"
 msgstr "Abrir KWeather"
