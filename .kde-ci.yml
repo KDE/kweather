@@ -15,7 +15,7 @@ Dependencies:
 
 - 'on': ['Linux/Qt5', 'FreeBSD/Qt5']
   'require':
-    'frameworks/plasma-framework': '@stable'
+    'plasma/plasma-framework': '@stable'
 
 - 'on': ['Linux/Qt6', 'Android/Qt6', 'FreeBSD/Qt6', 'Windows/Qt6']
   'require':
@@ -30,4 +30,4 @@ Dependencies:
 
 - 'on': ['Linux/Qt6', 'FreeBSD/Qt6']
   'require':
-    'frameworks/plasma-framework': '@latest-kf6'
+    'plasma/plasma-framework': '@latest-kf6'
