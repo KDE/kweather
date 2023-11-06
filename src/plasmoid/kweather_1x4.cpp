@@ -19,10 +19,10 @@ KWeather_1x4::KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVa
 {
     qmlRegisterAnonymousType<HourlyModel>("HourlyModel", 1);
     auto config = KSharedConfig::openConfig(QStringLiteral("kweather/plasmoid"));
-    auto group = config->group("general");
+    auto group = config->group(QStringLiteral("general"));
     const QString locationID = group.readEntry("locationID");
     if (!locationID.isEmpty()) {
-        auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
+        auto m_config = KWeatherSettings::self()->config()->group(QStringLiteral("WeatherLocations"));
         auto m_group = m_config.group(locationID);
         m_location = m_group.readEntry("locationName");
         m_latitude = m_group.readEntry("latitude").toDouble();
@@ -50,7 +50,7 @@ void KWeather_1x4::update()
 
 QStringList KWeather_1x4::locationsInSystem()
 {
-    auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
+    auto m_config = KWeatherSettings::self()->config()->group(QStringLiteral("WeatherLocations"));
     const QStringList groups = m_config.groupList();
     QStringList list;
     list.reserve(groups.size());
@@ -62,14 +62,14 @@ QStringList KWeather_1x4::locationsInSystem()
 }
 void KWeather_1x4::setLocation(const QString &location)
 {
-    auto m_config = KWeatherSettings::self()->config()->group("WeatherLocations");
+    auto m_config = KWeatherSettings::self()->config()->group(QStringLiteral("WeatherLocations"));
     const auto groups = m_config.groupList();
     for (const auto &loc : groups) {
         auto m_group = m_config.group(loc);
         if (location == m_group.readEntry("locationName")) {
             m_location = location;
             auto config = KSharedConfig::openConfig(QStringLiteral("kweather/plasmoid"));
-            auto group = config->group("general");
+            auto group = config->group(QStringLiteral("general"));
             group.writeEntry("locationID", loc);
             m_latitude = m_group.readEntry("latitude").toDouble();
             m_longitude = m_group.readEntry("longitude").toDouble();
