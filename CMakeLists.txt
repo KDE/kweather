@@ -77,7 +77,7 @@ else ()
 endif()
 
 if (NOT ANDROID AND BUILD_PLASMOID)
-   find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Plasma)
+   find_package(KF6Plasma REQUIRED)
 endif()
 
 ecm_find_qmlmodule(org.kde.kholidays 1.0)
