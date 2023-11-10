@@ -11,8 +11,8 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.2
 import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
+import org.kde.kweather
 import "backgrounds"
-import kweather 1.0
 
 Kirigami.Card {
 

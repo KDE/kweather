@@ -6,6 +6,7 @@
 
 #include <QAbstractListModel>
 #include <QObject>
+#include <QQmlEngine>
 
 #include <KWeatherCore/LocationQuery>
 
@@ -14,6 +15,8 @@
 class WeatherLocationListModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
     Q_PROPERTY(int count READ count NOTIFY locationsChanged)
     Q_PROPERTY(QList<WeatherLocation *> locations READ locations NOTIFY locationsChanged)
 
@@ -21,6 +24,7 @@ public:
     enum Roles { LocationRole = Qt::UserRole };
 
     static WeatherLocationListModel *inst();
+    static WeatherLocationListModel *create(QQmlEngine *, QJSEngine *);
 
     void load();
     void saveOrder();

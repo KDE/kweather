@@ -26,16 +26,9 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "formatter.h"
 #include "kweathersettings.h"
-#include "locationquerymodel.h"
-#include "temperaturechartdata.h"
 #include "version.h"
-#ifndef Q_OS_ANDROID
-#include "weatherbackground.h"
-#endif
 #include "weatherlocation.h"
-#include "weatherlocationlistmodel.h"
 
 class AbstractHourlyWeatherForecast;
 class AbstractDailyWeatherForecast;
@@ -81,10 +74,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         return engine->toScriptValue(KAboutData::applicationData());
     });
 
-    qmlRegisterSingletonType<WeatherLocationListModel>("kweather", 1, 0, "WeatherLocationListModel", [](QQmlEngine *engine, QJSEngine *) -> QObject * {
-        return WeatherLocationListModel::inst();
-    });
-
     engine.rootContext()->setContextProperty(QStringLiteral("settingsModel"), KWeatherSettings::self());
 
     WeatherLocation *emptyWeatherLocation = new WeatherLocation();
@@ -93,15 +82,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty(QStringLiteral("KWEATHER_IS_ANDROID"), true);
 #else
     engine.rootContext()->setContextProperty(QStringLiteral("KWEATHER_IS_ANDROID"), false);
-#endif
-    Formatter formatter;
-    qmlRegisterSingletonInstance<Formatter>("kweather", 1, 0, "Formatter", &formatter);
-
-    qmlRegisterType<TemperatureChartData>("kweather", 1, 0, "TemperatureChartData");
-    qmlRegisterType<LocationQueryModel>("kweather", 1, 0, "LocationQueryModel");
-    qmlRegisterType<WeatherLocation>("kweather", 1, 0, "WeatherLocation");
-#ifndef Q_OS_ANDROID
-    qmlRegisterType<WeatherBackgroundRenderer>("kweather", 1, 0, "WeatherBackground");
 #endif
 
     qRegisterMetaType<KWeatherCore::HourlyWeatherForecast>();

@@ -10,10 +10,13 @@
 
 #include <QDateTime>
 #include <QObject>
+#include <qqmlregistration.h>
 
 class Formatter : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 public:
     Q_INVOKABLE double convertTemp(qreal temperature, const QString &unit) const;
     Q_INVOKABLE QString formatTemperatureUnitDegrees(const QString &unit) const;

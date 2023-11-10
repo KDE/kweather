@@ -22,6 +22,12 @@ WeatherLocationListModel::WeatherLocationListModel(QObject *parent)
     load();
 }
 
+WeatherLocationListModel *WeatherLocationListModel::create(QQmlEngine *, QJSEngine *)
+{
+    QQmlEngine::setObjectOwnership(inst(), QQmlEngine::CppOwnership);
+    return inst();
+}
+
 WeatherLocationListModel *WeatherLocationListModel::inst()
 {
     static WeatherLocationListModel *singleton = new WeatherLocationListModel;

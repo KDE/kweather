@@ -11,7 +11,6 @@ import QtQuick.Layouts 1.2
 
 import org.kde.kirigami 2.12 as Kirigami
 
-import kweather 1.0
 
 // page shown if there are no weather locations configured
 Kirigami.Page {

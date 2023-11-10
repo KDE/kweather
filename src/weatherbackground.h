@@ -7,6 +7,7 @@
 
 #include <QOpenGLFunctions>
 #include <QtQuick/QQuickFramebufferObject>
+#include <qqmlregistration.h>
 
 class BackgroundRenderer;
 

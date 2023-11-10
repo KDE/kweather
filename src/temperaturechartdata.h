@@ -11,6 +11,7 @@
 #include <KWeatherCore/DailyWeatherForecast>
 
 #include <QtGlobal>
+#include <qqmlregistration.h>
 
 class QAbstractSeries;
 class QSplineSeries;
@@ -20,6 +21,7 @@ class QValueAxis;
 class TemperatureChartData : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QVariantList weatherData READ weatherData WRITE setWeatherData NOTIFY weatherDataChanged)
     Q_PROPERTY(double maxTempLimit READ maxTempLimit NOTIFY maxTempLimitChanged)
     Q_PROPERTY(double minTempLimit READ minTempLimit NOTIFY minTempLimitChanged)

@@ -12,8 +12,7 @@ import QtQuick.Layouts 1.2
 import QtQuick.Shapes 1.12
 
 import org.kde.kirigami 2.11 as Kirigami
-
-import kweather 1.0
+import org.kde.kweather
 
 Kirigami.ScrollablePage {
     id: root

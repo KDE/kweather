@@ -13,10 +13,10 @@ import QtCharts 2.3
 
 import org.kde.kirigami 2.13 as Kirigami
 import org.kde.kholidays 1.0
+import org.kde.kweather
 
 import "backgrounds"
 
-import kweather 1.0
 
 Kirigami.Card {
     id: root

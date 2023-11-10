@@ -15,7 +15,7 @@ import org.kde.kirigami 2.13 as Kirigami
 import "backgrounds"
 import "backgrounds/components"
 
-import kweather 1.0
+import org.kde.kweather
 
 Kirigami.ScrollablePage {
     id: page

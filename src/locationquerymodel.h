@@ -9,6 +9,7 @@
 
 #include <QAbstractListModel>
 #include <QObject>
+#include <qqmlregistration.h>
 
 #include <KWeatherCore/LocationQuery>
 
@@ -16,6 +17,7 @@ class QTimer;
 class LocationQueryModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(bool loading READ loading NOTIFY propertyChanged)
     Q_PROPERTY(bool networkError READ networkError NOTIFY propertyChanged)
 

@@ -14,7 +14,7 @@ import org.kde.kirigami 2.11 as Kirigami
 import "locationslist"
 import "settings"
 
-import kweather 1.0
+import org.kde.kweather
 
 Kirigami.ApplicationWindow {
     id: appwindow

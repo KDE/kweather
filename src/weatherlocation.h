@@ -18,6 +18,7 @@
 #include <QString>
 #include <QTimeZone>
 #include <QTimer>
+#include <qqmlregistration.h>
 
 #include <KWeatherCore/WeatherForecastSource>
 
@@ -26,6 +27,7 @@
 class WeatherLocation : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QString name READ locationName CONSTANT)
     Q_PROPERTY(float latitude READ latitude CONSTANT)
     Q_PROPERTY(float longitude READ longitude CONSTANT)
