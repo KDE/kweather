@@ -41,7 +41,7 @@ Kirigami.ApplicationWindow {
         switchToPage(getPage("Forecast"), 1);
 
         if (settingsModel.firstStartup) {
-            setupWizardLoader.source = "qrc:/qml/SetupWizard.qml";
+            setupWizardLoader.source = "SetupWizard.qml";
             setupWizardLoader.item.open();
         }
     }
@@ -97,11 +97,11 @@ Kirigami.ApplicationWindow {
     
     function getPage(name) {
         switch (name) {
-            case "Forecast": return pagePool.loadPage(WeatherLocationListModel.count === 0 ? "qrc:/qml/DefaultPage.qml" : "qrc:/qml/ForecastContainerPage.qml");
-            case "Locations": return pagePool.loadPage("qrc:/qml/locationslist/LocationsListPage.qml");
-            case "Settings": return pagePool.loadPage("qrc:/qml/settings/SettingsPage.qml");
-            case "About": return pagePool.loadPage("qrc:/qml/AboutPage.qml");
-            case "Default": return pagePool.loadPage("qrc:/qml/DefaultPage.qml");
+            case "Forecast": return pagePool.loadPage(WeatherLocationListModel.count === 0 ? "DefaultPage.qml" : "ForecastContainerPage.qml");
+            case "Locations": return pagePool.loadPage("locationslist/LocationsListPage.qml");
+            case "Settings": return pagePool.loadPage("settings/SettingsPage.qml");
+            case "About": return pagePool.loadPage("AboutPage.qml");
+            case "Default": return pagePool.loadPage("DefaultPage.qml");
         }
     }
     
@@ -136,7 +136,7 @@ Kirigami.ApplicationWindow {
             addLocationDialogLoader.active = true;
             addLocationDialogLoader.item.open();
         } else {
-            applicationWindow().pageStack.push(Qt.resolvedUrl("qrc:/qml/locationslist/AddLocationPage.qml"))
+            applicationWindow().pageStack.push(Qt.resolvedUrl("locationslist/AddLocationPage.qml"))
         }
     }
     
@@ -155,7 +155,7 @@ Kirigami.ApplicationWindow {
         id: settingsDialogLoader
         property bool isOpen: item && item.visible
         active: false
-        source: Kirigami.Settings.isMobile ? "qrc:/qml/settings/SettingsDialog.qml" : "qrc:/qml/settings/SettingsWindow.qml"
+        source: Kirigami.Settings.isMobile ? "settings/SettingsDialog.qml" : "settings/SettingsWindow.qml"
     }
     
     Loader {

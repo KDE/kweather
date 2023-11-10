@@ -6,49 +6,6 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/kweather.svg</file>
-        <file>qml/main.qml</file>
-        <file>qml/FlatLocationForecast.qml</file>
-        <file>qml/WeatherDayDelegate.qml</file>
-        <file>qml/WeatherHourDelegate.qml</file>
-        <file>qml/ForecastContainerPage.qml</file>
-        <file>qml/DefaultPage.qml</file>
-        <file>qml/SetupWizard.qml</file>
-        <file>qml/AboutPage.qml</file>
-        <file>qml/TemperatureChartCard.qml</file>
-        <file>qml/SunriseCard.qml</file>
-        <file>qml/InfoCard.qml</file>
-        <file>qml/WeatherStrip.qml</file>
-        <file>qml/DynamicForecastPage.qml</file>
-        <file>qml/FlatForecastPage.qml</file>
-        <file>qml/settings/SettingsPage.qml</file>
-        <file>qml/settings/SettingsComponent.qml</file>
-        <file>qml/settings/SettingsDialog.qml</file>
-        <file>qml/settings/SettingsWindow.qml</file>
-        <file>qml/locationslist/LocationsListView.qml</file>
-        <file>qml/locationslist/LocationsListPage.qml</file>
-        <file>qml/locationslist/LocationsListDialog.qml</file>
-        <file>qml/locationslist/AddLocationDialog.qml</file>
-        <file>qml/locationslist/AddLocationListView.qml</file>
-        <file>qml/locationslist/AddLocationPage.qml</file>
-        <file>qml/components/ListDelegate.qml</file>
-        <file>qml/backgrounds/DynamicBackground.qml</file>
-        <file>qml/backgrounds/ClearDay.qml</file>
-        <file>qml/backgrounds/ClearNight.qml</file>
-        <file>qml/backgrounds/CloudyDay.qml</file>
-        <file>qml/backgrounds/CloudyNight.qml</file>
-        <file>qml/backgrounds/Misty.qml</file>
-        <file>qml/backgrounds/PartlyCloudyDay.qml</file>
-        <file>qml/backgrounds/PartlyCloudyNight.qml</file>
-        <file>qml/backgrounds/RainyDay.qml</file>
-        <file>qml/backgrounds/RainyNight.qml</file>
-        <file>qml/backgrounds/SnowyDay.qml</file>
-        <file>qml/backgrounds/SnowyNight.qml</file>
-        <file>qml/backgrounds/components/Sun.qml</file>
-        <file>qml/backgrounds/components/Stars.qml</file>
-        <file>qml/backgrounds/components/Snow.qml</file>
-        <file>qml/backgrounds/components/Rain.qml</file>
-        <file>qml/backgrounds/components/Cloud.qml</file>
-        <file>qml/backgrounds/components/Cloudy.qml</file>
         <file>resources/KWeather_DYNAMIC.png</file>
         <file>resources/KWeather_FLAT.png</file>
         <file>resources/NotoSans-Light.ttf</file>

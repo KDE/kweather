@@ -52,6 +52,53 @@ target_link_libraries(kweather
     kweatherLib
 )
 
+ecm_add_qml_module(kweather URI "org.kde.kweather"
+    QML_FILES
+    qml/Main.qml
+    qml/FlatLocationForecast.qml
+    qml/WeatherDayDelegate.qml
+    qml/WeatherHourDelegate.qml
+    qml/ForecastContainerPage.qml
+    qml/DefaultPage.qml
+    qml/SetupWizard.qml
+    qml/AboutPage.qml
+    qml/TemperatureChartCard.qml
+    qml/SunriseCard.qml
+    qml/InfoCard.qml
+    qml/WeatherStrip.qml
+    qml/DynamicForecastPage.qml
+    qml/FlatForecastPage.qml
+    qml/settings/SettingsPage.qml
+    qml/settings/SettingsComponent.qml
+    qml/settings/SettingsDialog.qml
+    qml/settings/SettingsWindow.qml
+    qml/locationslist/LocationsListView.qml
+    qml/locationslist/LocationsListPage.qml
+    qml/locationslist/LocationsListDialog.qml
+    qml/locationslist/AddLocationDialog.qml
+    qml/locationslist/AddLocationListView.qml
+    qml/locationslist/AddLocationPage.qml
+    qml/components/ListDelegate.qml
+    qml/backgrounds/DynamicBackground.qml
+    qml/backgrounds/ClearDay.qml
+    qml/backgrounds/ClearNight.qml
+    qml/backgrounds/CloudyDay.qml
+    qml/backgrounds/CloudyNight.qml
+    qml/backgrounds/Misty.qml
+    qml/backgrounds/PartlyCloudyDay.qml
+    qml/backgrounds/PartlyCloudyNight.qml
+    qml/backgrounds/RainyDay.qml
+    qml/backgrounds/RainyNight.qml
+    qml/backgrounds/SnowyDay.qml
+    qml/backgrounds/SnowyNight.qml
+    qml/backgrounds/components/Sun.qml
+    qml/backgrounds/components/Stars.qml
+    qml/backgrounds/components/Snow.qml
+    qml/backgrounds/components/Rain.qml
+    qml/backgrounds/components/Cloud.qml
+    qml/backgrounds/components/Cloudy.qml
+)
+
 if (ANDROID)
     target_link_libraries(kweather
         PUBLIC

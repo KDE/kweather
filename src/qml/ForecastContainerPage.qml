@@ -66,7 +66,7 @@ Kirigami.Page {
         
         Component.onCompleted: loadStyle()
         function loadStyle() {
-            setSource(settingsModel.forecastStyle === "Dynamic" ? "qrc:/qml/DynamicForecastPage.qml" : "qrc:/qml/FlatForecastPage.qml");
+            setSource(settingsModel.forecastStyle === "Dynamic" ? "DynamicForecastPage.qml" : "FlatForecastPage.qml");
         }
         
         Connections {

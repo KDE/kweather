@@ -109,7 +109,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qRegisterMetaType<QList<WeatherLocation *>>();
 
     // load setup wizard if first launch
-    engine.load(QUrl(QStringLiteral("qrc:///qml/main.qml")));
+    engine.loadFromModule("org.kde.kweather", "Main");
 
     // required for X11
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.kweather")));
