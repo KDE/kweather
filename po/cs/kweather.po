@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# Vit Pelcak <vit@pelcak.org>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:39+0000\n"
-"PO-Revision-Date: 2023-01-30 09:09+0100\n"
+"PO-Revision-Date: 2023-11-08 14:26+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -107,10 +107,9 @@ msgid "No location found on system, please add some in kweather"
 msgstr ""
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "prosím, vyberte umístění"
+msgstr "Prosím, vyberte umístění"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
 #, kde-format
