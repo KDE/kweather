@@ -152,7 +152,7 @@ QString WeatherLocation::currentTimeFormatted() const
 
 QString WeatherLocation::currentDateFormatted() const
 {
-    return currentDateTime().toString(QStringLiteral("dd MMM yyyy"));
+    return QLocale().toString(currentDateTime().toLocalTime().date(), QLocale::LongFormat);
 }
 
 QDateTime WeatherLocation::currentDateTime() const

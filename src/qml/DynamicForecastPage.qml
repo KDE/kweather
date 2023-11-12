@@ -435,7 +435,7 @@ Kirigami.ScrollablePage {
                         color: "white"
                     }
                     Label {
-                        text: i18n("Local Date: ") + weatherLocation.currentDate
+                        text: i18n("Local date: %1", weatherLocation.currentDate)
                         font: Kirigami.Theme.smallFont
                         color: "white"
                         opacity: 0.7
@@ -516,7 +516,7 @@ Kirigami.ScrollablePage {
                         color: "white"
                     }
                     Label {
-                        text: i18n("Local Time: ") + weatherLocation.currentTime
+                        text: i18n("Local time: %1", weatherLocation.currentTime)
                         font: Kirigami.Theme.smallFont
                         color: "white"
                         opacity: 0.7

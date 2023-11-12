@@ -67,6 +67,16 @@ QString Formatter::formatPressure(qreal pressure, const QString &unit) const
     }
 }
 
+QString Formatter::formatPercent(qreal percentage) const
+{
+    return i18nc("%1 represents percent value, % is the percent sign", "%1%", percentage);
+}
+
+QString Formatter::formatDouble(qreal number) const
+{
+    return i18n("%1", QLocale().toString(number));
+}
+
 QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) const
 {
     if (!date.isValid()) {
@@ -74,6 +84,7 @@ QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) co
     }
     return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();
 }
+
 QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit) const
 {
     QString formattedPrecipitation;
@@ -86,6 +97,7 @@ QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit)
         return ki18nc("mm as millimeters", "%1 mm").subs(formattedPrecipitation).toString();
     }
 }
+
 QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const
 {
     return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();

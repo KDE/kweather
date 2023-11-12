@@ -68,7 +68,7 @@ Kirigami.Card {
                         color: root.textColor
                     }
                     Label {
-                        text: selectedDay == null ? "" : i18n("%1%", selectedDay.humidity.toFixed(1))
+                        text: selectedDay == null ? "" : Formatter.formatPercent(selectedDay.humidity.toFixed(1))
                         color: root.textColor
                     }
                 }
@@ -112,11 +112,11 @@ Kirigami.Card {
                     spacing: Kirigami.Units.smallSpacing
                     Label {
                         font.weight: Font.Bold
-                        text: i18n("UV index")
+                        text: i18n("UV Index")
                         color: root.textColor
                     }
                     Label {
-                        text: selectedDay == null ? "" : selectedDay.uvIndex.toFixed(1)
+                        text: selectedDay == null ? "" : Formatter.formatDouble(selectedDay.uvIndex.toFixed(1))
                         color: root.textColor
                     }
                 }

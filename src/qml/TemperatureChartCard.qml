@@ -58,7 +58,7 @@ Control {
                 margins.top: 0; margins.bottom: Kirigami.Units.smallSpacing
                 legend.visible: false
                 antialiasing: true
-
+                localizeNumbers: true
                 animationOptions: ChartView.NoAnimation
                 backgroundColor: tempChartCard.backgroundColor
                 plotAreaColor: tempChartCard.backgroundColor
