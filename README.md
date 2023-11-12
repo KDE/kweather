@@ -4,11 +4,13 @@
 - SPDX-License-Identifier: GPL-2.0-or-later
 -->
 
-# KWeather <img src="org.kde.kweather.svg" width="40"/>
+# <img src="org.kde.kweather.svg" width="40"/> KWeather
 
 <a href='https://flathub.org/apps/details/org.kde.kweather'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
 A convergent weather application for Plasma.
+
+![KWeather Main Window](https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png)
 
 ## Features
 * Daily and hourly weather data that can be viewed in flat and dynamic views
