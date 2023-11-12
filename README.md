@@ -6,9 +6,9 @@
 
 # <img src="org.kde.kweather.svg" width="40"/> KWeather
 
-<a href='https://flathub.org/apps/details/org.kde.kweather'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
-
 A convergent weather application for Plasma.
+
+<a href='https://flathub.org/apps/details/org.kde.kweather'><img width='190px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
 ![KWeather Main Window](https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png)
 
