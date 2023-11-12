@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:39+0000\n"
-"PO-Revision-Date: 2023-10-21 13:51\n"
+"POT-Creation-Date: 2023-11-12 01:39+0000\n"
+"PO-Revision-Date: 2023-11-11 07:20\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -33,44 +33,44 @@ msgctxt "A temperature"
 msgid "%1°"
 msgstr "%1°"
 
-#: formatter.cpp:44
+#: formatter.cpp:47
 #, kde-format
 msgid "%1 km/h"
 msgstr "%1 千米/小时"
 
-#: formatter.cpp:46
+#: formatter.cpp:50
 #, kde-format
 msgid "%1 mph"
 msgstr "%1 英里/小时"
 
-#: formatter.cpp:48
+#: formatter.cpp:53
 #, kde-format
 msgid "%1 m/s"
 msgstr "%1 米/秒"
 
-#: formatter.cpp:55
+#: formatter.cpp:63
 #, kde-format
 msgid "%1 hPa"
 msgstr "%1 百帕"
 
-#: formatter.cpp:57
+#: formatter.cpp:66
 #, kde-format
 msgid "%1 mmHg"
 msgstr "%1 毫米汞柱"
 
-#: formatter.cpp:64
+#: formatter.cpp:73
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:71
+#: formatter.cpp:83
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 英寸"
 
-#: formatter.cpp:73
+#: formatter.cpp:86
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -107,10 +107,9 @@ msgid "No location found on system, please add some in kweather"
 msgstr "无法从系统中获取位置，请手动在 kweather 中添加位置"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "请选择位置"
+msgstr ""
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
 #, kde-format

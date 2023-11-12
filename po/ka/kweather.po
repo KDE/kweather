@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:39+0000\n"
+"POT-Creation-Date: 2023-11-12 01:39+0000\n"
 "PO-Revision-Date: 2023-11-05 06:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -34,44 +34,44 @@ msgctxt "A temperature"
 msgid "%1°"
 msgstr "%1°"
 
-#: formatter.cpp:44
+#: formatter.cpp:47
 #, kde-format
 msgid "%1 km/h"
 msgstr "%1 კმ/სთ"
 
-#: formatter.cpp:46
+#: formatter.cpp:50
 #, kde-format
 msgid "%1 mph"
 msgstr "%1 მ/წთ"
 
-#: formatter.cpp:48
+#: formatter.cpp:53
 #, kde-format
 msgid "%1 m/s"
 msgstr "%1 მ/წმ"
 
-#: formatter.cpp:55
+#: formatter.cpp:63
 #, kde-format
 msgid "%1 hPa"
 msgstr "%1 ჰპა"
 
-#: formatter.cpp:57
+#: formatter.cpp:66
 #, kde-format
 msgid "%1 mmHg"
 msgstr "%1 მმHg"
 
-#: formatter.cpp:64
+#: formatter.cpp:73
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:71
+#: formatter.cpp:83
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 დუიმი"
 
-#: formatter.cpp:73
+#: formatter.cpp:86
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
