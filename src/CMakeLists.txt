@@ -54,6 +54,7 @@ target_link_libraries(kweather
 )
 
 add_subdirectory(qml)
+add_subdirectory(resources)
 
 if (ANDROID)
     target_link_libraries(kweather
