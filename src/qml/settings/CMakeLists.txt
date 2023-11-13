@@ -3,10 +3,10 @@ qt_add_qml_module(kweathersettings
     VERSION 1.0
     OUTPUT_DIRECTORY "KWeatherSettings"
     QML_FILES
-    SettingsPage.qml
-    SettingsComponent.qml
-    SettingsDialog.qml
-    SettingsWindow.qml
+    "SettingsPage.qml"
+    "SettingsComponent.qml"
+    "SettingsDialog.qml"
+    "SettingsWindow.qml"
     STATIC
 )
 

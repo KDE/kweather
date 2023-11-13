@@ -3,18 +3,18 @@ qt_add_qml_module(kweatherbackgrounds
     VERSION 1.0
     OUTPUT_DIRECTORY "KWeatherBackgrounds"
     QML_FILES
-    DynamicBackground.qml
-    ClearDay.qml
-    ClearNight.qml
-    CloudyDay.qml
-    CloudyNight.qml
-    Misty.qml
-    PartlyCloudyDay.qml
-    PartlyCloudyNight.qml
-    RainyDay.qml
-    RainyNight.qml
-    SnowyDay.qml
-    SnowyNight.qml
+    "DynamicBackground.qml"
+    "ClearDay.qml"
+    "ClearNight.qml"
+    "CloudyDay.qml"
+    "CloudyNight.qml"
+    "Misty.qml"
+    "PartlyCloudyDay.qml"
+    "PartlyCloudyNight.qml"
+    "RainyDay.qml"
+    "RainyNight.qml"
+    "SnowyDay.qml"
+    "SnowyNight.qml"
     STATIC
 )
 

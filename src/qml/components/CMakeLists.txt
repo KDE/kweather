@@ -3,7 +3,7 @@ qt_add_qml_module(kweathercomponents
     VERSION 1.0
     OUTPUT_DIRECTORY "KWeatherComponents"
     QML_FILES
-    ListDelegate.qml
+    "ListDelegate.qml"
     STATIC
 )
 
