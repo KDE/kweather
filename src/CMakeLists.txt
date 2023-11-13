@@ -36,9 +36,7 @@ target_link_libraries(kweatherLib
     KF6::ConfigGui
 )
 
-qt_add_resources(RESOURCES resources.qrc)
-
-add_executable(kweather ${kweather_SRCS} ${RESOURCES})
+add_executable(kweather ${kweather_SRCS})
 target_link_libraries(kweather
     PUBLIC
     Qt6::Qml
