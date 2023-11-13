@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:39+0000\n"
+"POT-Creation-Date: 2023-11-13 01:39+0000\n"
 "PO-Revision-Date: 2023-04-24 17:37+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -58,45 +58,58 @@ msgstr "%1 hPa"
 msgid "%1 mmHg"
 msgstr "%1 mm.c.s"
 
-#: formatter.cpp:73
+#: formatter.cpp:72
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr "%1%"
+
+#: formatter.cpp:77
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgid "%1"
+msgstr "%1%"
+
+#: formatter.cpp:83
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr "s-"
 
-#: formatter.cpp:83
+#: formatter.cpp:94
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 düym"
 
-#: formatter.cpp:86
+#: formatter.cpp:97
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:65 qml/DefaultPage.qml:69 qml/main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:68 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "Hava məlumatı"
 
-#: main.cpp:67
+#: main.cpp:60
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr "Plasma'da hava proqnozu üçün əlverişli tətbiq."
 
-#: main.cpp:69
+#: main.cpp:62
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© 2020-2022 Plasma Tərtibatçılar Komandası"
 
-#: main.cpp:71
+#: main.cpp:64
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
@@ -112,7 +125,7 @@ msgstr "Sistemdə məkan tapılmadı, lütfən kweather-ə məkanı əlavə edin
 msgid "Please select the location"
 msgstr "lütfən məkanı seçin"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
@@ -133,37 +146,37 @@ msgstr "Məkan seçimi"
 msgid "Open KWeather"
 msgstr "KWeather açın"
 
-#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:17 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "Hava məlumatı"
 
-#: qml/DefaultPage.qml:27
+#: qml/DefaultPage.qml:26
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "Hazırkı yer haqqında məlumat alması zamanı şəbəkə xətası"
 
-#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:76 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
 msgstr "Yeni yer əlavə etmək"
 
-#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:44
+#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "%1 üçün hava məlumatı yeniləndi"
 
-#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
+#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1-də/da yeniləndi"
 
 #: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
-#: qml/locationslist/LocationsListPage.qml:17
+#: qml/locationslist/LocationsListPage.qml:16
 #, kde-format
 msgid "Locations"
 msgstr "Məkanlar"
@@ -186,24 +199,26 @@ msgstr "Ayarlar"
 msgid "Refresh"
 msgstr "Yeniləmək"
 
-#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:111
+#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "Gündəlik"
 
 #: qml/DynamicForecastPage.qml:438
-#, kde-format
-msgid "Local Date: "
+#, fuzzy, kde-format
+#| msgid "Local Date: "
+msgid "Local date: %1"
 msgstr "Yerli tarix:"
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:157
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
 msgstr "Hər saat"
 
 #: qml/DynamicForecastPage.qml:519
-#, kde-format
-msgid "Local Time: "
+#, fuzzy, kde-format
+#| msgid "Local Time: "
+msgid "Local time: %1"
 msgstr "Yerli vaxt: "
 
 #: qml/InfoCard.qml:43
@@ -222,8 +237,9 @@ msgid "Pressure"
 msgstr "Təzyiq"
 
 #: qml/InfoCard.qml:115
-#, kde-format
-msgid "UV index"
+#, fuzzy, kde-format
+#| msgid "UV index"
+msgid "UV Index"
 msgstr "UV indeks"
 
 #: qml/locationslist/AddLocationListView.qml:48
@@ -251,7 +267,7 @@ msgstr "Yeni məkan əlavə etmək"
 msgid "No results"
 msgstr "Nəticələr tapılmadı"
 
-#: qml/locationslist/AddLocationPage.qml:17
+#: qml/locationslist/AddLocationPage.qml:16
 #, kde-format
 msgid "Add location"
 msgstr "Yeni yer əlavə etmək"
@@ -281,12 +297,12 @@ msgstr "Əsas"
 msgid "Forecast Style"
 msgstr "Hava məlumatı görünüşü"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
 msgstr "Rəvan"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinamik"
@@ -378,32 +394,32 @@ msgctxt "Inches"
 msgid "in"
 msgstr "düym"
 
-#: qml/SetupWizard.qml:64
+#: qml/SetupWizard.qml:63
 #, kde-format
 msgid "Welcome to Weather"
 msgstr "\"Hava məlumatına\" xoş gəldiniz"
 
-#: qml/SetupWizard.qml:70
+#: qml/SetupWizard.qml:69
 #, kde-format
 msgid "Continue"
 msgstr "Davam etmək"
 
-#: qml/SetupWizard.qml:89
+#: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
 msgstr "Hava məlunatı görünüşünü seçmək"
 
-#: qml/SetupWizard.qml:94
+#: qml/SetupWizard.qml:93
 #, kde-format
 msgid "You can change the theme later in the settings."
 msgstr "Siz görünüşü daha sonra ayarlarda dəyişə bilərsiniz."
 
-#: qml/SetupWizard.qml:201
+#: qml/SetupWizard.qml:200
 #, kde-format
 msgid "Back"
 msgstr "Geriyə"
 
-#: qml/SetupWizard.qml:207
+#: qml/SetupWizard.qml:206
 #, kde-format
 msgid "Finish"
 msgstr "Son"

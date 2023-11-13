@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:39+0000\n"
+"POT-Creation-Date: 2023-11-13 01:39+0000\n"
 "PO-Revision-Date: 2020-06-13 20:50+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -56,45 +56,56 @@ msgstr ""
 msgid "%1 mmHg"
 msgstr ""
 
-#: formatter.cpp:73
+#: formatter.cpp:72
+#, kde-format
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr ""
+
+#: formatter.cpp:77
+#, kde-format
+msgid "%1"
+msgstr ""
+
+#: formatter.cpp:83
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: formatter.cpp:83
+#: formatter.cpp:94
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr ""
 
-#: formatter.cpp:86
+#: formatter.cpp:97
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr ""
 
-#: main.cpp:65 qml/DefaultPage.qml:69 qml/main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:68 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "Počasie"
 
-#: main.cpp:67
+#: main.cpp:60
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr ""
 
-#: main.cpp:69
+#: main.cpp:62
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
 msgstr ""
 
-#: main.cpp:71
+#: main.cpp:64
 #, kde-format
 msgid "Han Young"
 msgstr ""
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgid "Devin Lin"
 msgstr ""
@@ -110,7 +121,7 @@ msgstr ""
 msgid "Please select the location"
 msgstr "Pridať umiestnenie"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
 msgid "%1%"
 msgstr ""
@@ -133,37 +144,37 @@ msgstr "Pridať umiestnenie"
 msgid "Open KWeather"
 msgstr "Počasie"
 
-#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:17 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "Predpoveď"
 
-#: qml/DefaultPage.qml:27
+#: qml/DefaultPage.qml:26
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr ""
 
-#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:76 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
 msgstr "Pridať umiestnenie"
 
-#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:44
+#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
+#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr ""
 
 #: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
-#: qml/locationslist/LocationsListPage.qml:17
+#: qml/locationslist/LocationsListPage.qml:16
 #, kde-format
 msgid "Locations"
 msgstr "Miesta"
@@ -187,24 +198,24 @@ msgstr "Nastavenia"
 msgid "Refresh"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:111
+#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "Denne"
 
 #: qml/DynamicForecastPage.qml:438
 #, kde-format
-msgid "Local Date: "
+msgid "Local date: %1"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:157
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
 msgstr "Každú hodinu"
 
 #: qml/DynamicForecastPage.qml:519
 #, kde-format
-msgid "Local Time: "
+msgid "Local time: %1"
 msgstr ""
 
 #: qml/InfoCard.qml:43
@@ -224,7 +235,7 @@ msgstr "Tlak"
 
 #: qml/InfoCard.qml:115
 #, kde-format
-msgid "UV index"
+msgid "UV Index"
 msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:48
@@ -252,7 +263,7 @@ msgstr ""
 msgid "No results"
 msgstr "Žiadne výsledky"
 
-#: qml/locationslist/AddLocationPage.qml:17
+#: qml/locationslist/AddLocationPage.qml:16
 #, fuzzy, kde-format
 #| msgid "Add Location"
 msgid "Add location"
@@ -284,12 +295,12 @@ msgstr ""
 msgid "Forecast Style"
 msgstr "Predpoveď"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
 msgstr ""
@@ -384,32 +395,32 @@ msgctxt "Inches"
 msgid "in"
 msgstr "Dážď"
 
-#: qml/SetupWizard.qml:64
+#: qml/SetupWizard.qml:63
 #, kde-format
 msgid "Welcome to Weather"
 msgstr ""
 
-#: qml/SetupWizard.qml:70
+#: qml/SetupWizard.qml:69
 #, kde-format
 msgid "Continue"
 msgstr ""
 
-#: qml/SetupWizard.qml:89
+#: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
 msgstr ""
 
-#: qml/SetupWizard.qml:94
+#: qml/SetupWizard.qml:93
 #, kde-format
 msgid "You can change the theme later in the settings."
 msgstr ""
 
-#: qml/SetupWizard.qml:201
+#: qml/SetupWizard.qml:200
 #, kde-format
 msgid "Back"
 msgstr ""
 
-#: qml/SetupWizard.qml:207
+#: qml/SetupWizard.qml:206
 #, kde-format
 msgid "Finish"
 msgstr ""

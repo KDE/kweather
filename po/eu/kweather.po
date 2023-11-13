@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:39+0000\n"
+"POT-Creation-Date: 2023-11-13 01:39+0000\n"
 "PO-Revision-Date: 2023-11-04 08:59+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -62,45 +62,58 @@ msgstr "%1 hPa"
 msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
-#: formatter.cpp:73
+#: formatter.cpp:72
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr "%%1"
+
+#: formatter.cpp:77
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgid "%1"
+msgstr "%%1"
+
+#: formatter.cpp:83
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:83
+#: formatter.cpp:94
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 in"
 
-#: formatter.cpp:86
+#: formatter.cpp:97
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:65 qml/DefaultPage.qml:69 qml/main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:68 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "Eguraldia"
 
-#: main.cpp:67
+#: main.cpp:60
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr "Plasmarako eguraldi aplikazio konbergentea"
 
-#: main.cpp:69
+#: main.cpp:62
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© 2020-2022 Plasma garapen taldea"
 
-#: main.cpp:71
+#: main.cpp:64
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
@@ -116,7 +129,7 @@ msgstr ""
 msgid "Please select the location"
 msgstr "Mesedez, hautatu kokalekua"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
 msgid "%1%"
 msgstr "%%1"
@@ -137,37 +150,37 @@ msgstr "Hautatu kokalekua"
 msgid "Open KWeather"
 msgstr "Ireki KWeather"
 
-#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:17 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "Iragarpena"
 
-#: qml/DefaultPage.qml:27
+#: qml/DefaultPage.qml:26
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "Sareko errorea uneko kokalekua eskuratzean"
 
-#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:76 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
 msgstr "Gehitu kokalekua"
 
-#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:44
+#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "Eguraldi freskatzea %1"
 
-#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
+#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1 eguneratua"
 
 #: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
-#: qml/locationslist/LocationsListPage.qml:17
+#: qml/locationslist/LocationsListPage.qml:16
 #, kde-format
 msgid "Locations"
 msgstr "Kokalekuak"
@@ -190,24 +203,26 @@ msgstr "Ezarpenak"
 msgid "Refresh"
 msgstr "Berritu"
 
-#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:111
+#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "Egunero"
 
 #: qml/DynamicForecastPage.qml:438
-#, kde-format
-msgid "Local Date: "
+#, fuzzy, kde-format
+#| msgid "Local Date: "
+msgid "Local date: %1"
 msgstr "Tokiko data:"
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:157
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
 msgstr "Orduro"
 
 #: qml/DynamicForecastPage.qml:519
-#, kde-format
-msgid "Local Time: "
+#, fuzzy, kde-format
+#| msgid "Local Time: "
+msgid "Local time: %1"
 msgstr "Tokiko ordua:"
 
 #: qml/InfoCard.qml:43
@@ -226,8 +241,9 @@ msgid "Pressure"
 msgstr "Presioa"
 
 #: qml/InfoCard.qml:115
-#, kde-format
-msgid "UV index"
+#, fuzzy, kde-format
+#| msgid "UV index"
+msgid "UV Index"
 msgstr "UV indizea"
 
 #: qml/locationslist/AddLocationListView.qml:48
@@ -255,7 +271,7 @@ msgstr "Gehitu uneko kokalekua"
 msgid "No results"
 msgstr "Emaitzarik gabe"
 
-#: qml/locationslist/AddLocationPage.qml:17
+#: qml/locationslist/AddLocationPage.qml:16
 #, kde-format
 msgid "Add location"
 msgstr "Gehitu kokalekua"
@@ -285,12 +301,12 @@ msgstr "Orokorra"
 msgid "Forecast Style"
 msgstr "Iragarpenaren estiloa"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
 msgstr "Laua"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinamikoa"
@@ -382,32 +398,32 @@ msgctxt "Inches"
 msgid "in"
 msgstr "in"
 
-#: qml/SetupWizard.qml:64
+#: qml/SetupWizard.qml:63
 #, kde-format
 msgid "Welcome to Weather"
 msgstr "Ongi etorri «KWeather»rera"
 
-#: qml/SetupWizard.qml:70
+#: qml/SetupWizard.qml:69
 #, kde-format
 msgid "Continue"
 msgstr "Jarraitu"
 
-#: qml/SetupWizard.qml:89
+#: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
 msgstr "Aukeratu aurreikuspenaren gaia"
 
-#: qml/SetupWizard.qml:94
+#: qml/SetupWizard.qml:93
 #, kde-format
 msgid "You can change the theme later in the settings."
 msgstr "Aurrerago, gaia ezarpenetatik alda dezakezu."
 
-#: qml/SetupWizard.qml:201
+#: qml/SetupWizard.qml:200
 #, kde-format
 msgid "Back"
 msgstr "Atzera"
 
-#: qml/SetupWizard.qml:207
+#: qml/SetupWizard.qml:206
 #, kde-format
 msgid "Finish"
 msgstr "Amaitu"

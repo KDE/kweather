@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-12 01:39+0000\n"
+"POT-Creation-Date: 2023-11-13 01:39+0000\n"
 "PO-Revision-Date: 2023-11-05 06:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -59,45 +59,58 @@ msgstr "%1 ჰპა"
 msgid "%1 mmHg"
 msgstr "%1 მმHg"
 
-#: formatter.cpp:73
+#: formatter.cpp:72
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr "%1%"
+
+#: formatter.cpp:77
+#, fuzzy, kde-format
+#| msgid "%1%"
+msgid "%1"
+msgstr "%1%"
+
+#: formatter.cpp:83
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:83
+#: formatter.cpp:94
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 დუიმი"
 
-#: formatter.cpp:86
+#: formatter.cpp:97
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 მმ"
 
-#: main.cpp:65 qml/DefaultPage.qml:69 qml/main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:68 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "ამინდი"
 
-#: main.cpp:67
+#: main.cpp:60
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr "კონვერგენტული ამინდის აპლიკაცია Plasma-სთვის"
 
-#: main.cpp:69
+#: main.cpp:62
 #, kde-format
 msgid "© 2020-2022 Plasma Development Team"
 msgstr "© 2010-2022 Plasma -ის პროგრამისტების გუნდი"
 
-#: main.cpp:71
+#: main.cpp:64
 #, kde-format
 msgid "Han Young"
 msgstr "ჰან იანგი"
 
-#: main.cpp:72
+#: main.cpp:65
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
@@ -112,7 +125,7 @@ msgstr "სისტემაში მდებარეობა ვერ ვ
 msgid "Please select the location"
 msgstr "აირჩეთ მდებარეობა"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:64 qml/InfoCard.qml:71
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
@@ -133,37 +146,37 @@ msgstr "მდებარეობის არჩევა"
 msgid "Open KWeather"
 msgstr "KWeather-ის გახსნა"
 
-#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:17 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "პროგნოზი"
 
-#: qml/DefaultPage.qml:27
+#: qml/DefaultPage.qml:26
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "ქსელის შეცდომა მიმდინარე მდებარეობის დადგენისას"
 
-#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:76 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:26
+#: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71
 #, kde-format
 msgid "Add Location"
 msgstr "მდებარეობის დამატება"
 
-#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:44
+#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "ამინდი განახლდა %1-სთვის"
 
-#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:95
+#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "განახლების დრო: %1"
 
 #: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
 #: qml/locationslist/LocationsListDialog.qml:14
-#: qml/locationslist/LocationsListPage.qml:17
+#: qml/locationslist/LocationsListPage.qml:16
 #, kde-format
 msgid "Locations"
 msgstr "მდებარეობები"
@@ -186,24 +199,26 @@ msgstr "მორგება"
 msgid "Refresh"
 msgstr "განახლება"
 
-#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:111
+#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "დღიურად"
 
 #: qml/DynamicForecastPage.qml:438
-#, kde-format
-msgid "Local Date: "
+#, fuzzy, kde-format
+#| msgid "Local Date: "
+msgid "Local date: %1"
 msgstr "ლოკალური თარიღი: "
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:157
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
 msgstr "საათობრივ"
 
 #: qml/DynamicForecastPage.qml:519
-#, kde-format
-msgid "Local Time: "
+#, fuzzy, kde-format
+#| msgid "Local Time: "
+msgid "Local time: %1"
 msgstr "ლოკალური დრო: "
 
 #: qml/InfoCard.qml:43
@@ -222,8 +237,9 @@ msgid "Pressure"
 msgstr "წნევა"
 
 #: qml/InfoCard.qml:115
-#, kde-format
-msgid "UV index"
+#, fuzzy, kde-format
+#| msgid "UV index"
+msgid "UV Index"
 msgstr "UV ინდექსი"
 
 #: qml/locationslist/AddLocationListView.qml:48
@@ -251,7 +267,7 @@ msgstr "მიმდინარე მდებარეობის დამ�
 msgid "No results"
 msgstr "შედეგების გარეშე"
 
-#: qml/locationslist/AddLocationPage.qml:17
+#: qml/locationslist/AddLocationPage.qml:16
 #, kde-format
 msgid "Add location"
 msgstr "მდებარეობის დამატება"
@@ -281,12 +297,12 @@ msgstr "ძირითადი"
 msgid "Forecast Style"
 msgstr "პროგნოზის სტილი"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:130
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
 msgstr "ბრტყელი"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:177
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
 msgstr "დინამიკა"
@@ -378,32 +394,32 @@ msgctxt "Inches"
 msgid "in"
 msgstr "დუიმი"
 
-#: qml/SetupWizard.qml:64
+#: qml/SetupWizard.qml:63
 #, kde-format
 msgid "Welcome to Weather"
 msgstr "მოგესალმებით ამინდის აპლიკაციაში"
 
-#: qml/SetupWizard.qml:70
+#: qml/SetupWizard.qml:69
 #, kde-format
 msgid "Continue"
 msgstr "გაგრძელება"
 
-#: qml/SetupWizard.qml:89
+#: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
 msgstr "აირჩიეთ პროგნოზის თემა"
 
-#: qml/SetupWizard.qml:94
+#: qml/SetupWizard.qml:93
 #, kde-format
 msgid "You can change the theme later in the settings."
 msgstr "თემის შეცვლა მოგვიანებითაც, პარამეტრებში შეგიძლიათ."
 
-#: qml/SetupWizard.qml:201
+#: qml/SetupWizard.qml:200
 #, kde-format
 msgid "Back"
 msgstr "უკან"
 
-#: qml/SetupWizard.qml:207
+#: qml/SetupWizard.qml:206
 #, kde-format
 msgid "Finish"
 msgstr "დასრულება"
