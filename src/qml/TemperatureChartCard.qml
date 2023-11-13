@@ -12,7 +12,7 @@ import QtQuick.Layouts 1.2
 import QtCharts 2.3
 import org.kde.kirigami 2.13 as Kirigami
 import org.kde.kweather
-import "backgrounds"
+import org.kde.kweather.backgrounds
 
 Control {
     id: tempChartCard

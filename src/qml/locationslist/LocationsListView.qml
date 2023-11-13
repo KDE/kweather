@@ -15,7 +15,7 @@ import org.kde.kirigami 2.12 as Kirigami
 
 import org.kde.kweather
 
-import "../components"
+import org.kde.kweather.components
 
 ListView {
     id: root

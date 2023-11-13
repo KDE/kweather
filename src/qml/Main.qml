@@ -11,8 +11,8 @@ import QtQuick.Layouts 1.2
 
 import org.kde.kirigami 2.11 as Kirigami
 
-import "locationslist"
-import "settings"
+import org.kde.kweather.locations
+import org.kde.kweather.settings
 
 import org.kde.kweather
 

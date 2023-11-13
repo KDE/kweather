@@ -12,8 +12,8 @@ import QtQuick.Layouts 1.2
 
 import org.kde.kirigami 2.13 as Kirigami
 
-import "backgrounds"
-import "backgrounds/components"
+import org.kde.kweather.backgrounds
+import org.kde.kweather.backgrounds.components
 
 import org.kde.kweather
 
