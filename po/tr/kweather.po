@@ -1,14 +1,15 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# Volkan Gezer <volkangezer@gmail.com>, 2021.
 # SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# Volkan Gezer <volkangezer@gmail.com>, 2021.
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-13 01:39+0000\n"
-"PO-Revision-Date: 2023-11-04 13:05+0300\n"
+"PO-Revision-Date: 2023-11-13 07:16+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -60,17 +61,15 @@ msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
 #: formatter.cpp:72
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%​%1"
 
 #: formatter.cpp:77
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%​%1"
+msgstr "%1"
 
 #: formatter.cpp:83
 #, kde-format
@@ -207,10 +206,9 @@ msgid "Daily"
 msgstr "Günlük"
 
 #: qml/DynamicForecastPage.qml:438
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "Yerel Tarih: "
+msgstr "Yerel tarih: %1"
 
 #: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
@@ -218,10 +216,9 @@ msgid "Hourly"
 msgstr "Saatlik"
 
 #: qml/DynamicForecastPage.qml:519
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "Yerel Saat: "
+msgstr "Yerel zaman: %1"
 
 #: qml/InfoCard.qml:43
 #, kde-format
@@ -239,8 +236,7 @@ msgid "Pressure"
 msgstr "Basınç"
 
 #: qml/InfoCard.qml:115
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
 msgstr "UV Endeksi"
 
@@ -277,12 +273,12 @@ msgstr "Konum ekle"
 #: qml/locationslist/LocationsListView.qml:55
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr "Saat dilimi bilgileri getirilemiyor"
+msgstr "Zaman dilimi bilgisi getirilemiyor"
 
 #: qml/locationslist/LocationsListView.qml:66
 #, kde-format
 msgid "Add a location"
-msgstr "Bir yer ekleyin"
+msgstr "Bir yer ekle"
 
 #: qml/locationslist/LocationsListView.qml:214
 #, kde-format
@@ -409,7 +405,7 @@ msgstr "Sürdür"
 #: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Hava tahmini temasını seçin"
+msgstr "Hava tahmini temasını seç"
 
 #: qml/SetupWizard.qml:93
 #, kde-format
@@ -439,7 +435,7 @@ msgstr "Gün Batımı"
 #: qml/SunriseCard.qml:94
 #, kde-format
 msgid "Moon Phase"
-msgstr "Ay Evreleri"
+msgstr "Ay'ın Evreleri"
 
 #: qml/TemperatureChartCard.qml:87
 #, kde-format

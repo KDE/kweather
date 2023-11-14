@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-13 01:39+0000\n"
-"PO-Revision-Date: 2023-11-04 08:35+0100\n"
+"PO-Revision-Date: 2023-11-13 09:36+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -60,17 +60,15 @@ msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
 #: formatter.cpp:72
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
 #: formatter.cpp:77
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: formatter.cpp:83
 #, kde-format
@@ -205,10 +203,9 @@ msgid "Daily"
 msgstr "Dnevno"
 
 #: qml/DynamicForecastPage.qml:438
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "Lokalni datum: "
+msgstr "Lokalni datum: %1"
 
 #: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
@@ -216,10 +213,9 @@ msgid "Hourly"
 msgstr "Vsako uro"
 
 #: qml/DynamicForecastPage.qml:519
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "Lokalni čas: "
+msgstr "Lokalni čas: %1"
 
 #: qml/InfoCard.qml:43
 #, kde-format
@@ -237,8 +233,7 @@ msgid "Pressure"
 msgstr "Tlak"
 
 #: qml/InfoCard.qml:115
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
 msgstr "UV indeks"
 
