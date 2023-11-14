@@ -37,6 +37,100 @@ target_link_libraries(kweatherLib
 )
 
 add_executable(kweather ${kweather_SRCS})
+
+qt_add_qml_module(kweather
+    URI "org.kde.kweather"
+    VERSION 1.0
+    # OUTPUT_DIRECTORY "KWeather"
+    QML_FILES
+    "qml/Main.qml"
+    "qml/FlatLocationForecast.qml"
+    "qml/WeatherDayDelegate.qml"
+    "qml/WeatherHourDelegate.qml"
+    "qml/ForecastContainerPage.qml"
+    "qml/DefaultPage.qml"
+    "qml/SetupWizard.qml"
+    "qml/AboutPage.qml"
+    "qml/TemperatureChartCard.qml"
+    "qml/SunriseCard.qml"
+    "qml/InfoCard.qml"
+    "qml/WeatherStrip.qml"
+    "qml/DynamicForecastPage.qml"
+    "qml/FlatForecastPage.qml"
+    SOURCES
+    weatherlocationlistmodel.cpp
+    weatherlocationlistmodel.h
+)
+
+qt_add_qml_module(kweatherbackgrounds
+    URI "org.kde.kweather.backgrounds"
+    VERSION 1.0
+    OUTPUT_DIRECTORY "KWeatherBackgrounds"
+    QML_FILES
+    "qml/backgrounds/DynamicBackground.qml"
+    "qml/backgrounds/ClearDay.qml"
+    "qml/backgrounds/ClearNight.qml"
+    "qml/backgrounds/CloudyDay.qml"
+    "qml/backgrounds/CloudyNight.qml"
+    "qml/backgrounds/Misty.qml"
+    "qml/backgrounds/PartlyCloudyDay.qml"
+    "qml/backgrounds/PartlyCloudyNight.qml"
+    "qml/backgrounds/RainyDay.qml"
+    "qml/backgrounds/RainyNight.qml"
+    "qml/backgrounds/SnowyDay.qml"
+    "qml/backgrounds/SnowyNight.qml"
+    STATIC
+)
+
+qt_add_qml_module(kweatherbackgroundscomponents
+    URI "org.kde.kweather.backgrounds.components"
+    VERSION 1.0
+    OUTPUT_DIRECTORY "KWeatherBackgroundsComponents"
+    QML_FILES
+    "qml/backgrounds/components/Sun.qml"
+    "qml/backgrounds/components/Stars.qml"
+    "qml/backgrounds/components/Snow.qml"
+    "qml/backgrounds/components/Rain.qml"
+    "qml/backgrounds/components/Cloud.qml"
+    "qml/backgrounds/components/Cloudy.qml"
+    STATIC
+)
+
+qt_add_qml_module(kweathercomponents
+    URI "org.kde.kweather.components"
+    VERSION 1.0
+    OUTPUT_DIRECTORY "KWeatherComponents"
+    QML_FILES
+    "qml/components/ListDelegate.qml"
+    STATIC
+)
+
+qt_add_qml_module(kweatherlocations
+    URI "org.kde.kweather.locations"
+    VERSION 1.0
+    OUTPUT_DIRECTORY "KWeatherLocations"
+    QML_FILES
+    "qml/locationslist/LocationsListView.qml"
+    "qml/locationslist/LocationsListPage.qml"
+    "qml/locationslist/LocationsListDialog.qml"
+    "qml/locationslist/AddLocationDialog.qml"
+    "qml/locationslist/AddLocationListView.qml"
+    "qml/locationslist/AddLocationPage.qml"
+    STATIC
+)
+
+qt_add_qml_module(kweathersettings
+    URI "org.kde.kweather.settings"
+    VERSION 1.0
+    OUTPUT_DIRECTORY "KWeatherSettings"
+    QML_FILES
+    "qml/settings/SettingsPage.qml"
+    "qml/settings/SettingsComponent.qml"
+    "qml/settings/SettingsDialog.qml"
+    "qml/settings/SettingsWindow.qml"
+    STATIC
+)
+
 target_link_libraries(kweather
     PUBLIC
     Qt6::Qml
@@ -49,9 +143,13 @@ target_link_libraries(kweather
     KF6::Notifications
     KF6::KWeatherCore
     kweatherLib
+    kweatherbackgroundsplugin
+    kweatherbackgroundscomponentsplugin
+    kweathercomponentsplugin
+    kweatherlocationsplugin
+    kweathersettingsplugin
 )
 
-add_subdirectory(qml)
 add_subdirectory(resources)
 
 if (ANDROID)

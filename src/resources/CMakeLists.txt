@@ -1,5 +1,5 @@
 qt_add_resources(kweather "kweatheresources"
-    PREFIX "/"
+    PREFIX "/resources"
     FILES
     "kweather.svg"
     "KWeather_DYNAMIC.png"
