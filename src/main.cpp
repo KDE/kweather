@@ -84,10 +84,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty(QStringLiteral("KWEATHER_IS_ANDROID"), false);
 #endif
 
-    qRegisterMetaType<KWeatherCore::HourlyWeatherForecast>();
-    qRegisterMetaType<KWeatherCore::DailyWeatherForecast>();
-    qRegisterMetaType<QList<WeatherLocation *>>();
-
     // load setup wizard if first launch
     engine.loadFromModule("org.kde.kweather", "Main");
 
