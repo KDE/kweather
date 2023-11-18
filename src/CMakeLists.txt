@@ -41,7 +41,6 @@ add_executable(kweather ${kweather_SRCS})
 qt_add_qml_module(kweather
     URI "org.kde.kweather"
     VERSION 1.0
-    # OUTPUT_DIRECTORY "KWeather"
     QML_FILES
     "qml/Main.qml"
     "qml/FlatLocationForecast.qml"
@@ -65,7 +64,6 @@ qt_add_qml_module(kweather
 qt_add_qml_module(kweatherbackgrounds
     URI "org.kde.kweather.backgrounds"
     VERSION 1.0
-    OUTPUT_DIRECTORY "KWeatherBackgrounds"
     QML_FILES
     "qml/backgrounds/DynamicBackground.qml"
     "qml/backgrounds/ClearDay.qml"
@@ -85,7 +83,6 @@ qt_add_qml_module(kweatherbackgrounds
 qt_add_qml_module(kweatherbackgroundscomponents
     URI "org.kde.kweather.backgrounds.components"
     VERSION 1.0
-    OUTPUT_DIRECTORY "KWeatherBackgroundsComponents"
     QML_FILES
     "qml/backgrounds/components/Sun.qml"
     "qml/backgrounds/components/Stars.qml"
@@ -99,7 +96,6 @@ qt_add_qml_module(kweatherbackgroundscomponents
 qt_add_qml_module(kweathercomponents
     URI "org.kde.kweather.components"
     VERSION 1.0
-    OUTPUT_DIRECTORY "KWeatherComponents"
     QML_FILES
     "qml/components/ListDelegate.qml"
     STATIC
@@ -108,7 +104,6 @@ qt_add_qml_module(kweathercomponents
 qt_add_qml_module(kweatherlocations
     URI "org.kde.kweather.locations"
     VERSION 1.0
-    OUTPUT_DIRECTORY "KWeatherLocations"
     QML_FILES
     "qml/locationslist/LocationsListView.qml"
     "qml/locationslist/LocationsListPage.qml"
@@ -122,7 +117,6 @@ qt_add_qml_module(kweatherlocations
 qt_add_qml_module(kweathersettings
     URI "org.kde.kweather.settings"
     VERSION 1.0
-    OUTPUT_DIRECTORY "KWeatherSettings"
     QML_FILES
     "qml/settings/SettingsPage.qml"
     "qml/settings/SettingsComponent.qml"
