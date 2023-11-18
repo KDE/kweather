@@ -70,10 +70,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-    qmlRegisterSingletonType("kweather", 1, 0, "AboutData", [](QQmlEngine *engine, QJSEngine *) -> QJSValue {
-        return engine->toScriptValue(KAboutData::applicationData());
-    });
-
     engine.rootContext()->setContextProperty(QStringLiteral("settingsModel"), KWeatherSettings::self());
 
     WeatherLocation *emptyWeatherLocation = new WeatherLocation();
