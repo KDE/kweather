@@ -12,7 +12,7 @@ import org.kde.kirigami 2.12 as Kirigami
 
 Popup {
     id: setupPopup
-    
+
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
 
     modal: true
@@ -29,10 +29,10 @@ Popup {
         color: Kirigami.Theme.backgroundColor
         radius: Kirigami.Units.largeSpacing
         anchors.fill: parent
-        
+
         shadow.size: Kirigami.Units.largeSpacing
-        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.55)
+        shadow.yOffset: 2
     }
    
     SwipeView {
@@ -112,7 +112,7 @@ Popup {
                             }
                         }
                         
-                        border.width: Kirigami.Units.devicePixelRatio
+                        border.width: 1
                         border.color: Qt.tint(Kirigami.Theme.textColor, Qt.rgba(color.r, color.g, color.b, 0.6))
                         
                         shadow.size: Kirigami.Units.largeSpacing
@@ -159,12 +159,12 @@ Popup {
                             }
                         }
                         
-                        border.width: Kirigami.Units.devicePixelRatio
+                        border.width: 1
                         border.color: Qt.tint(Kirigami.Theme.textColor, Qt.rgba(color.r, color.g, color.b, 0.6))
                         
                         shadow.size: Kirigami.Units.largeSpacing
                         shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-                        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
+                        shadow.yOffset:  2
                         
                         ColumnLayout {
                             id: dynamicColumn
