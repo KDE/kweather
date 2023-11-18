@@ -1,3 +1,9 @@
+#
+# SPDX-FileCopyrightText: 2023 Thiago Sueto <herzenschein@gmail.com>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+
 qt_add_qml_module(kweather
     URI "org.kde.kweather"
     VERSION 1.0
