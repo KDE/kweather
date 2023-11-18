@@ -155,7 +155,7 @@ Kirigami.ApplicationWindow {
         id: settingsDialogLoader
         property bool isOpen: item && item.visible
         active: false
-        source: Kirigami.Settings.isMobile ? "settings/SettingsDialog.qml" : "settings/SettingsWindow.qml"
+        sourceComponent: Kirigami.Settings.isMobile ? Qt.createComponent("org.kde.kweather.settings", "SettingsDialog") : Qt.createComponent("org.kde.kweather.settings", "SettingsWindow")
     }
     
     Loader {
