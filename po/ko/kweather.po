@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-13 01:39+0000\n"
+"POT-Creation-Date: 2023-11-19 01:54+0000\n"
 "PO-Revision-Date: 2023-03-01 01:46+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -89,7 +89,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:58 qml/DefaultPage.qml:68 qml/Main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:69 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "날씨"
@@ -146,17 +146,17 @@ msgstr "위치 선택"
 msgid "Open KWeather"
 msgstr "KWeather 열기"
 
-#: qml/DefaultPage.qml:17 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "예측"
 
-#: qml/DefaultPage.qml:26
+#: qml/DefaultPage.qml:27
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "현재 위치를 찾는 중 네트워크 오류 발생"
 
-#: qml/DefaultPage.qml:76 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71
