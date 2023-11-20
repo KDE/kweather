@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-19 01:54+0000\n"
-"PO-Revision-Date: 2023-11-11 07:20\n"
+"PO-Revision-Date: 2023-11-19 03:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -59,17 +59,15 @@ msgid "%1 mmHg"
 msgstr "%1 毫米汞柱"
 
 #: formatter.cpp:72
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
 #: formatter.cpp:77
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1%"
+msgstr ""
 
 #: formatter.cpp:83
 #, kde-format
@@ -204,10 +202,9 @@ msgid "Daily"
 msgstr "每日"
 
 #: qml/DynamicForecastPage.qml:438
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "本地日期："
+msgstr ""
 
 #: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
@@ -215,10 +212,9 @@ msgid "Hourly"
 msgstr "每小时"
 
 #: qml/DynamicForecastPage.qml:519
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "本地时间："
+msgstr ""
 
 #: qml/InfoCard.qml:43
 #, kde-format
@@ -236,10 +232,9 @@ msgid "Pressure"
 msgstr "气压"
 
 #: qml/InfoCard.qml:115
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
-msgstr "紫外线指数"
+msgstr ""
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
