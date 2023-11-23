@@ -19,7 +19,7 @@ target_link_libraries(plasma_applet_kweather_1x4
                       Qt::Gui
                       Qt::Qml
                       KF6::KWeatherCore
-                      KF6::Plasma
+                      Plasma::Plasma
                       KF6::I18n
                       kweatherLib)
 
