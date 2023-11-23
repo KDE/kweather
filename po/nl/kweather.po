@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-19 01:54+0000\n"
+"POT-Creation-Date: 2023-11-23 01:40+0000\n"
 "PO-Revision-Date: 2023-11-13 10:56+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -87,7 +87,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:58 qml/DefaultPage.qml:69 qml/Main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:70 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "Weer"
@@ -143,17 +143,17 @@ msgstr "Locatie selecteren"
 msgid "Open KWeather"
 msgstr "KWeather openen"
 
-#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "Prognose"
 
-#: qml/DefaultPage.qml:27
+#: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "Netwerkfeut bij ophalen huidige locatie"
 
-#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:78 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71

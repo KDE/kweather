@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-19 01:54+0000\n"
+"POT-Creation-Date: 2023-11-23 01:40+0000\n"
 "PO-Revision-Date: 2023-02-02 11:39+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -89,7 +89,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:58 qml/DefaultPage.qml:69 qml/Main.qml:21
+#: main.cpp:58 qml/DefaultPage.qml:70 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "Veður"
@@ -146,17 +146,17 @@ msgstr "Veldu staðsetningu"
 msgid "Open KWeather"
 msgstr "Opna KVeður"
 
-#: qml/DefaultPage.qml:18 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
 #, kde-format
 msgid "Forecast"
 msgstr "Veðurspá"
 
-#: qml/DefaultPage.qml:27
+#: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "Villa í netkerfi þegar reynt var að ná í núverandi staðsetningu"
 
-#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:78 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:25
 #: qml/locationslist/LocationsListView.qml:71
