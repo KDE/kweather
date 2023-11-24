@@ -96,13 +96,21 @@ Kirigami.ApplicationWindow {
     }
     
     function getPage(name) {
+        console.log('fetch ' + name)
         switch (name) {
-            case "Forecast": return pagePool.loadPage(WeatherLocationListModel.count === 0 ? "DefaultPage.qml" : "ForecastContainerPage.qml");
-            case "Locations": return pagePool.loadPage("locationslist/LocationsListPage.qml");
-            case "Settings": return pagePool.loadPage("settings/SettingsPage.qml");
-            case "About": return pagePool.loadPage("AboutPage.qml");
-            case "Default": return pagePool.loadPage("DefaultPage.qml");
+            case "Forecast": return pagePool.loadPage(WeatherLocationListModel.count === 0 ? getPageUrl('', 'DefaultPage.qml') : getPageUrl('', 'ForecastContainerPage.qml'));
+            case "Locations": return pagePool.loadPage("qrc:/qt/qml/org/kde/kweather/locations/qml/locationslist/LocationsListPage.qml");
+            case "Settings": return pagePool.loadPage(getPageUrl('settings', 'settings/SettingsPage.qml'));
+            case "About": return pagePool.loadPage(getPageUrl('', 'AboutPage.qml'));
+            case "Default": return pagePool.loadPage(getPageUrl('', 'DefaultPage.qml'));
         }
+    }
+
+    function getPageUrl(module: string, file: string): string {
+        if (module === '') {
+            return `qrc:/qt/qml/org/kde/kweather/qml/${file}`;
+        }
+        return `qrc:/qt/qml/org/kde/kweather/${module}/qml/${file}`;
     }
     
     function openSettings() {
@@ -136,7 +144,7 @@ Kirigami.ApplicationWindow {
             addLocationDialogLoader.active = true;
             addLocationDialogLoader.item.open();
         } else {
-            applicationWindow().pageStack.push(Qt.resolvedUrl("locationslist/AddLocationPage.qml"))
+            applicationWindow().pageStack.push(getPageUrl('locations', 'locationslist/AddLocationPage.qml'))
         }
     }
     
