@@ -67,7 +67,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Notifications
 )
-find_package(KF6KWeatherCore 0.6.0 REQUIRED)
+find_package(KWeatherCore 0.8.0 REQUIRED)
 
 find_package(KF6KirigamiAddons 0.11 REQUIRED)
 

@@ -18,7 +18,7 @@ add_library(plasma_applet_kweather_1x4 MODULE ${kweather_1x4_SRCS})
 target_link_libraries(plasma_applet_kweather_1x4
                       Qt::Gui
                       Qt::Qml
-                      KF6::KWeatherCore
+                      KWeatherCore
                       Plasma::Plasma
                       KF6::I18n
                       kweatherLib)
