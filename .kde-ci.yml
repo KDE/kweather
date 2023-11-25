@@ -15,4 +15,4 @@ Dependencies:
 
 - 'on': ['Linux/Qt6', 'FreeBSD/Qt6']
   'require':
-    'plasma/plasma-framework': '@latest-kf6'
+    'plasma/libplasma': '@latest-kf6'
