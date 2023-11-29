@@ -45,6 +45,7 @@
   <name xml:lang="uk">Погода</name>
   <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
+  <name xml:lang="zh-TW">天氣</name>
   <summary>View real-time weather forecasts and other information</summary>
   <summary xml:lang="az">Real vaxt hava məlumatlarını və digər məlumatları göstərmək</summary>
   <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real i altra informació</summary>
@@ -77,6 +78,7 @@
   <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди та інших даних</summary>
   <summary xml:lang="x-test">xxView real-time weather forecasts and other informationxx</summary>
   <summary xml:lang="zh-CN">查看实时天气预报和其他信息</summary>
+  <summary xml:lang="zh-TW">檢視實時天氣預報和其他資訊</summary>
   <developer>
     <name>KDE Community</name>
   </developer>
@@ -123,6 +125,7 @@
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
     <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
     <p xml:lang="zh-CN">一款针对 Plasma 设计的桌面/移动平台通用天气预报应用。它可通过扁平视图、动态/动画视图来展示天气预报以及其他信息。</p>
+    <p xml:lang="zh-TW">一個 Plasma 用的跨平台天氣應用程式。提供天氣預報和其他資訊的扁平及動態檢視。</p>
   </description>
   <screenshots>
     <screenshot type="default">
@@ -159,6 +162,7 @@
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <caption xml:lang="zh-CN">移动端动态视图</caption>
+      <caption xml:lang="zh-TW">行動版動態檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
     </screenshot>
     <screenshot>
@@ -195,6 +199,7 @@
       <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
       <caption xml:lang="x-test">xxDesktop dynamic viewxx</caption>
       <caption xml:lang="zh-CN">桌面端动态视图</caption>
+      <caption xml:lang="zh-TW">桌面版動態檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
     </screenshot>
     <screenshot>
@@ -231,6 +236,7 @@
       <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile flat viewxx</caption>
       <caption xml:lang="zh-CN">移动端扁平视图</caption>
+      <caption xml:lang="zh-TW">行動版扁平檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
     </screenshot>
     <screenshot>
@@ -267,6 +273,7 @@
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
       <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <caption xml:lang="zh-CN">移动端动态视图</caption>
+      <caption xml:lang="zh-TW">行動版動態檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
   </screenshots>
