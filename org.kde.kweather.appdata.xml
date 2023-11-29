@@ -17,6 +17,7 @@
   <name xml:lang="de">Weather</name>
   <name xml:lang="el">Καιρός</name>
   <name xml:lang="en-GB">Weather</name>
+  <name xml:lang="eo">Vetero</name>
   <name xml:lang="es">Meteorología</name>
   <name xml:lang="et">Ilm</name>
   <name xml:lang="eu">Eguraldia</name>
@@ -129,6 +130,7 @@
     <p xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma. Mit flachen und dynamisch animierten Ansichten der Wettervorhersage und weiteren Informationen.</p>
     <p xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma. Περιέχει επίπεδες και δυναμικές/κινούμενης εικόνας προβολές για την παρουσίαση προγνώσεων και για άλλες πληροφορίες.</p>
     <p xml:lang="en-GB">A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
+    <p xml:lang="eo">Konverĝa veteraplikaĵo por Plasmo. Havas platajn kaj dinamikajn/viglajn vidojn por montri prognozojn kaj aliajn informojn.</p>
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
     <p xml:lang="eu">Plasmarako eguraldi aplikazio konbergente bat. Aurreikuspenak eta beste informazio batzuk erakusteko ikuspegi laua eta dinamikoa/animatua ditu.</p>
     <p xml:lang="fi">Mukautuva sääsovellus Plasmaan. Litteä ja dynaaminen/animoitu näkymä sääennusteiden ja muun tiedon esittämiseen.</p>
