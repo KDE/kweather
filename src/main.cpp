@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
+#include <QApplication>
 #include <QCommandLineParser>
 #include <QIcon>
 #include <QMetaObject>
@@ -14,12 +15,6 @@
 #include <QQuickStyle>
 #include <QUrl>
 #include <QtQml>
-
-#ifdef Q_OS_ANDROID
-#include <QGuiApplication>
-#else
-#include <QApplication>
-#endif
 
 #include <KAboutData>
 #include <KConfig>
@@ -35,8 +30,10 @@ class AbstractDailyWeatherForecast;
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
+    // We always NEED QApplication, since we use QtCharts
+    QApplication app(argc, argv);
+
 #ifdef Q_OS_ANDROID
-    QGuiApplication app(argc, argv);
     QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));
 #else
     // set default style
@@ -47,9 +44,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORMTHEME")) {
         qputenv("QT_QPA_PLATFORMTHEME", "kde");
     }
-
-    QApplication app(argc, argv);
 #endif
+
     QQmlApplicationEngine engine;
 
     KLocalizedString::setApplicationDomain(QByteArrayLiteral("kweather"));
