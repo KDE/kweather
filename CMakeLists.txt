@@ -90,17 +90,18 @@ ki18n_install(po)
 
 if (ANDROID)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
+    install(FILES org.kde.kweather.svg DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kirigami/breeze-internal/icons/)
+else()
+    install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+    install(FILES org.kde.kweather.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+    install(FILES org.kde.kweather.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
+
+    # DBus
+    configure_file(org.kde.kweather.service.in
+                ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service
+            DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 endif()
-
-install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.kweather.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES org.kde.kweather.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
-
-# DBus
-configure_file(org.kde.kweather.service.in
-               ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kweather.service
-        DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
