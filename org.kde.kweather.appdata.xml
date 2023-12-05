@@ -107,7 +107,7 @@
     <p xml:lang="gl">Unha aplicación meteorolóxica converxente para Plasma. Ten vistas estáticas e dinámicas para amosar as predicións e outra información.</p>
     <p xml:lang="ia">Un application convergente de tempore per Plasma. Il ha vistas platte e dynamic/animate per monstrarprevisiones e altere information.</p>
     <p xml:lang="id">Sebuah aplikasi cuaca yang konvergen untuk Plasma. Memilki tampilan datar dan beranimasi/dinamis untuk menampilkan ramalan cuaca dan informasi lainnya.</p>
-    <p xml:lang="is">Hentugt veðurforrit fyrir Plasma. Er með flatar og breytilegar/hreyfðar ásýndir til að skoða veðurspár í rauntíma og aðrar upplýsingar</p>
+    <p xml:lang="is">Þægilegt veðurforrit fyrir Plasma. Með bæði flatt og líflegt/hreyfanlegt yfirlitsnið til að skoða veðurspár í rauntíma og aðrar upplýsingar</p>
     <p xml:lang="it">Un'applicazione meteo convergente per Plasma. Ha viste statiche e dinamiche/animate per mostrare previsioni e altre informazioni.</p>
     <p xml:lang="ka">კონვერგენტული ამინდის აპლიკაცია Plasma-სთვის. პროგნოზისა და სხვა ინფორმაციის საჩვენებლად გააჩნია ბრტყელი და დინამიკური/ანიმირებული ხედები.</p>
     <p xml:lang="ko">Plasma용 올인원 날씨 앱입니다. 평면, 동적, 애니메이션 보기로 일기 예보와 기타 정보를 볼 수 있습니다.</p>
@@ -144,7 +144,7 @@
       <caption xml:lang="gl">Vista dinámica de móbil.</caption>
       <caption xml:lang="ia">Vista dynamic de Mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
-      <caption xml:lang="is">Breytileg farsímaútgáfa</caption>
+      <caption xml:lang="is">Lífleg farsímaútgáfa</caption>
       <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
       <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
       <caption xml:lang="ko">모바일 동적 보기</caption>
@@ -181,7 +181,7 @@
       <caption xml:lang="gl">Vista dinámica de escritorio.</caption>
       <caption xml:lang="ia">Vista dynamic de Scriptorio</caption>
       <caption xml:lang="id">Tampilan dinamis desktop</caption>
-      <caption xml:lang="is">Breytileg vinnutölvuútgáfa</caption>
+      <caption xml:lang="is">Lífleg útgáfa fyrir skjáborð</caption>
       <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
       <caption xml:lang="ka">სამუშაო მაგიდის დინამიკური ხედი</caption>
       <caption xml:lang="ko">데스크톱 동적 보기</caption>
@@ -255,7 +255,7 @@
       <caption xml:lang="gl">Vista dinámica de móbil.</caption>
       <caption xml:lang="ia">Vista dynamic de Mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
-      <caption xml:lang="is">Breytileg farsímaútgáfa</caption>
+      <caption xml:lang="is">Lífleg farsímaútgáfa</caption>
       <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
       <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
       <caption xml:lang="ko">모바일 동적 보기</caption>
