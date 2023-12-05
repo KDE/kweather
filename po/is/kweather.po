@@ -1,31 +1,32 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
 # Sveinn í Felli <sv1@fellsnet.is>, 2022, 2023.
+# SPDX-FileCopyrightText: 2023 Guðmundur Erlingsson <gudmundure@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-04 01:39+0000\n"
-"PO-Revision-Date: 2023-02-02 11:39+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
+"PO-Revision-Date: 2023-12-03 21:10+0000\n"
+"Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Sveinn í Felli"
+msgstr "Sveinn í Felli, Guðmundur Erlingsson"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sv1@fellsnet.is"
+msgstr "sv1@fellsnet.is, gudmundure@gmail.com"
 
 #: formatter.cpp:33 formatter.cpp:38
 #, kde-format
@@ -41,7 +42,7 @@ msgstr "%1 km/klst"
 #: formatter.cpp:50
 #, kde-format
 msgid "%1 mph"
-msgstr "%1 mi/klst"
+msgstr "%1 mílur/klst"
 
 #: formatter.cpp:53
 #, kde-format
@@ -59,17 +60,15 @@ msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
 #: formatter.cpp:72
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
 #: formatter.cpp:77
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: formatter.cpp:83
 #, kde-format
@@ -97,7 +96,7 @@ msgstr "Veður"
 #: main.cpp:56
 #, kde-format
 msgid "A convergent weather application for Plasma"
-msgstr "Hentugt veðurforrit fyrir Plasma"
+msgstr "Þægilegt veðurforrit fyrir Plasma"
 
 #: main.cpp:58
 #, kde-format
@@ -117,13 +116,12 @@ msgstr "Devin Lin"
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
 #, kde-format
 msgid "No location found on system, please add some in kweather"
-msgstr "Engin staðsetning fannst á kerfinu, bættu einhverjum við í KVeður"
+msgstr "Engin staðsetning fannst í kerfinu, bættu einhverjum við í kweather"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "veldu staðsetninguna"
+msgstr "Veldu staðsetningu"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -139,12 +137,12 @@ msgstr "%1mm"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:171
 #, kde-format
 msgid "Select Location"
-msgstr "Veldu staðsetningu"
+msgstr "Velja staðsetningu"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:137
 #, kde-format
 msgid "Open KWeather"
-msgstr "Opna KVeður"
+msgstr "Opna KWeather"
 
 #: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
 #, kde-format
@@ -154,7 +152,7 @@ msgstr "Veðurspá"
 #: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
-msgstr "Villa í netkerfi þegar reynt var að ná í núverandi staðsetningu"
+msgstr "Villa í nettengingu þegar reynt var að sækja núverandi staðsetningu"
 
 #: qml/DefaultPage.qml:78 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
@@ -167,7 +165,7 @@ msgstr "Bæta við staðsetningu"
 #: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
-msgstr "Veður endurlesið fyrir %1"
+msgstr "Veður endurhlaðið fyrir %1"
 
 #: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
 #, kde-format
@@ -197,7 +195,7 @@ msgstr "Stillingar"
 #: qml/ForecastContainerPage.qml:56
 #, kde-format
 msgid "Refresh"
-msgstr "Endurlesa"
+msgstr "Endurhlaða"
 
 #: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
 #, kde-format
@@ -205,21 +203,19 @@ msgid "Daily"
 msgstr "Daglega"
 
 #: qml/DynamicForecastPage.qml:438
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "Dagsetning á staðnum:"
+msgstr "Staðartími: %1"
 
 #: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
 #, kde-format
 msgid "Hourly"
-msgstr "Á klukkustundar fresti"
+msgstr "Á klst. fresti"
 
 #: qml/DynamicForecastPage.qml:519
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "Staðartími: "
+msgstr "Staðartími: %1"
 
 #: qml/InfoCard.qml:43
 #, kde-format
@@ -237,10 +233,9 @@ msgid "Pressure"
 msgstr "Loftþrýstingur"
 
 #: qml/InfoCard.qml:115
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
-msgstr "UV-geislun"
+msgstr "UV-stuðull"
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
@@ -295,7 +290,7 @@ msgstr "Almennt"
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "Forecast Style"
-msgstr "Stíll veðurspár"
+msgstr "Stílsnið veðurspár"
 
 #: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
 #, kde-format
@@ -305,7 +300,7 @@ msgstr "Flatt"
 #: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
-msgstr "Breytilegt"
+msgstr "Líflegt"
 
 #: qml/settings/SettingsComponent.qml:80
 #, kde-format
@@ -330,7 +325,7 @@ msgstr "Nota sjálfgefnar kerfisstillingar"
 #: qml/settings/SettingsComponent.qml:104
 #, kde-format
 msgid "Celsius"
-msgstr "Selsíus"
+msgstr "Celsíus"
 
 #: qml/settings/SettingsComponent.qml:105
 #, kde-format
@@ -346,13 +341,13 @@ msgstr "Hraðamælieiningar"
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
-msgstr "hn/klst"
+msgstr "km/klst"
 
 #: qml/settings/SettingsComponent.qml:144
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
-msgstr "mi/klst"
+msgstr "mílur/klst"
 
 #: qml/settings/SettingsComponent.qml:145
 #, kde-format
@@ -407,12 +402,12 @@ msgstr "Halda áfram"
 #: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Veldu þema veðurspár"
+msgstr "Veldu þema fyrir veðurspár"
 
 #: qml/SetupWizard.qml:93
 #, kde-format
 msgid "You can change the theme later in the settings."
-msgstr "Þú getur breytt þemanu síðar í stillingum."
+msgstr "Þú getur breytt þemanu síðar í stillingunum."
 
 #: qml/SetupWizard.qml:200
 #, kde-format
@@ -442,7 +437,7 @@ msgstr "Kvartil tungls"
 #: qml/TemperatureChartCard.qml:87
 #, kde-format
 msgid "temperature"
-msgstr "Hitastig"
+msgstr "hitastig"
 
 #~ msgid "No locations configured"
 #~ msgstr "Engar staðsetningar stilltar"
