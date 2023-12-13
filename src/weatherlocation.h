@@ -142,7 +142,7 @@ private:
     QColor m_cardTextColor;
     QColor m_cardSecondaryTextColor;
     QColor m_iconColor;
-    QString m_backgroundComponent = QStringLiteral("backgrounds/ClearDay.qml");
+    QString m_backgroundComponent = QStringLiteral("qrc:/qt/qml/org/kde/kweather/backgrounds/qml/backgrounds/ClearDay.qml");
     bool m_isDarkTheme = false;
     bool m_rain = false;
     bool m_snow = false;

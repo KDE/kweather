@@ -273,7 +273,7 @@ void WeatherLocation::determineCurrentForecast()
         return;
 
     auto currentWeather = m_forecast.dailyWeatherForecast().begin()->hourlyWeatherForecast().begin();
-    m_backgroundComponent = QStringLiteral("rc:/qt/qml/org/kde/kweather/backgrounds/qml/backgrounds/ClearDay.qml");
+    m_backgroundComponent = QStringLiteral("qrc:/qt/qml/org/kde/kweather/backgrounds/qml/backgrounds/ClearDay.qml");
 
     bool isDayStyle = false; // make sure that if the background is definitively day, the colours match that
     m_sun = false;
