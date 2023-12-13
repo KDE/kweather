@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: 2022 Devin Lin <espidev@gmail.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-import QtQuick 2.0
-import QtQuick.Controls 2.2 as Controls
-import QtQuick.Layouts 1.1
+import QtQuick
+import QtQuick.Controls as Controls
+import QtQuick.Layouts
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
 // A settings window is used on desktop when the app is widescreen.
 Kirigami.ApplicationWindow {

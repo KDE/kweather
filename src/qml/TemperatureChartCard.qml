@@ -6,11 +6,11 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-import QtQuick 2.12
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.2
-import QtCharts 2.3
-import org.kde.kirigami 2.13 as Kirigami
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtCharts
+import org.kde.kirigami as Kirigami
 import org.kde.kweather
 import org.kde.kweather.backgrounds
 

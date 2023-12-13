@@ -6,12 +6,12 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-import QtQuick 2.12
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.2
-import QtQuick.Shapes 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Shapes
 
-import org.kde.kirigami 2.11 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.kweather
 
 Kirigami.ScrollablePage {

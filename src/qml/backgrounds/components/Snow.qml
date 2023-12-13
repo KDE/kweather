@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
-import QtQuick 2.0
-import QtQuick.Layouts 1.2
+import QtQuick
+import QtQuick.Layouts
 Canvas {
     id: mycanvas
 
