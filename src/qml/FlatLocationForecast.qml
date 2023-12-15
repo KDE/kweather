@@ -31,13 +31,13 @@ Kirigami.ScrollablePage {
             weatherLocation.update();
         }
     }
-    
+
     Connections {
         target: weatherLocation
         ignoreUnknownSignals: true
         function onStopLoadingIndicator() {
             root.refreshing = false;
-            
+
             // flat mode loads all locations at once, only show one notification for the current item
             if (root.ListView.isCurrentItem) {
                 showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
@@ -95,7 +95,7 @@ Kirigami.ScrollablePage {
                 }
             }
         }
-        
+
         PageIndicator {
             visible: Kirigami.Settings.isMobile
             Layout.topMargin: Kirigami.Units.largeSpacing
@@ -122,7 +122,6 @@ Kirigami.ScrollablePage {
             selectable: true
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
-            implicitHeight: Kirigami.Units.gridUnit * 8
             spacing: Kirigami.Units.largeSpacing
 
             highlightMoveDuration: 250
