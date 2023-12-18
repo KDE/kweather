@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-04 01:39+0000\n"
+"POT-Creation-Date: 2023-12-18 02:00+0000\n"
 "PO-Revision-Date: 2023-11-13 23:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -211,7 +211,7 @@ msgstr "Щодня"
 msgid "Local date: %1"
 msgstr "Місцева дата: %1"
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "Щогодини"

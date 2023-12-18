@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-04 01:39+0000\n"
-"PO-Revision-Date: 2023-12-09 09:25\n"
+"POT-Creation-Date: 2023-12-18 02:00+0000\n"
+"PO-Revision-Date: 2023-12-17 11:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -206,7 +206,7 @@ msgstr "每日"
 msgid "Local date: %1"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "每小时"

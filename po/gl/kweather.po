@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-04 01:39+0000\n"
+"POT-Creation-Date: 2023-12-18 02:00+0000\n"
 "PO-Revision-Date: 2023-11-15 18:41+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -206,7 +206,7 @@ msgstr "Diariamente"
 msgid "Local date: %1"
 msgstr "Data local: %1"
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:156
+#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "Cada hora"
