@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 02:00+0000\n"
-"PO-Revision-Date: 2023-10-25 11:42+0200\n"
+"PO-Revision-Date: 2023-12-12 00:58+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
-"Language-Team: \n"
+"Language-Team: Asturian <alministradores@softastur.org>\n"
 "Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -59,35 +59,33 @@ msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
 #: formatter.cpp:72
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
 #: formatter.cpp:77
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: formatter.cpp:83
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: formatter.cpp:94
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 in"
 
 #: formatter.cpp:97
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr ""
+msgstr "%1 mm"
 
 #: main.cpp:54 qml/DefaultPage.qml:70 qml/Main.qml:21
 #, kde-format
