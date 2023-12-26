@@ -14,28 +14,17 @@ import org.kde.kirigami as Kirigami
 import org.kde.kweather
 import org.kde.kweather.backgrounds
 
-Control {
+Kirigami.AbstractCard {
     id: tempChartCard
 
     required property var location
     property var backgroundColor: location.cardBackgroundColor
     property var textColor: location.cardTextColor
 
-    Layout.fillWidth: true
     leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0;
     implicitHeight: Math.round(Kirigami.Units.gridUnit * 8.5)
 
     clip: true
-    
-    background: Kirigami.ShadowedRectangle {
-        color: tempChartCard.backgroundColor
-        radius: Kirigami.Units.smallSpacing
-        anchors.fill: parent
-
-        shadow.size: Kirigami.Units.largeSpacing
-        shadow.color: Qt.rgba(0.0, 0.0, 0.0, 0.15)
-        shadow.yOffset: Kirigami.Units.devicePixelRatio * 2
-    }
 
     contentItem: ScrollView {
         id: scrollView

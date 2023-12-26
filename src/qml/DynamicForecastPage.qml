@@ -500,7 +500,14 @@ Kirigami.ScrollablePage {
 
                 // temperature chart
                 TemperatureChartCard {
+                    Layout.fillWidth: true
                     location: weatherLocation
+
+                    background: Rectangle {
+                        color: weatherLocation.cardBackgroundColor
+                        radius: Kirigami.Units.smallSpacing
+                        anchors.fill: parent
+                    }
                 }
 
                 // hourly view header

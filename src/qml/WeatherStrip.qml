@@ -34,7 +34,7 @@ ListView {
         icon.name: "arrow-left"
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        visible: hoverMouseArea.hovered && (root.currentIndex > 0 || !root.atXBeginning)
+        visible: !Kirigami.Settings.isMobile && hoverMouseArea.hovered && (root.currentIndex > 0 || !root.atXBeginning)
 
         onClicked: {
             if (selectable) {
@@ -50,7 +50,7 @@ ListView {
         icon.name: "arrow-right"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        visible: hoverMouseArea.hovered && (root.currentIndex < root.count - 1 || !root.atXEnd)
+        visible: !Kirigami.Settings.isMobile && hoverMouseArea.hovered && (root.currentIndex < root.count - 1 || !root.atXEnd)
 
         onClicked: {
             if (selectable) {
