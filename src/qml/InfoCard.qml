@@ -10,13 +10,17 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtCharts
+
 import org.kde.kirigami as Kirigami
 import org.kde.kweather
 import org.kde.kweather.backgrounds
 
-Kirigami.Card {
-
+Kirigami.AbstractCard {
     id: root
+    topPadding: Kirigami.Units.gridUnit
+    bottomPadding: Kirigami.Units.gridUnit
+    leftPadding: Kirigami.Units.gridUnit
+    rightPadding: Kirigami.Units.gridUnit
 
     property var textColor: Kirigami.Theme.textColor
 
@@ -28,11 +32,11 @@ Kirigami.Card {
 
             // precipitation
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "raindrop"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                     isMask: true
                 }
@@ -52,11 +56,11 @@ Kirigami.Card {
 
             // Humidity
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "compass"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                     isMask: true
                 }
@@ -76,11 +80,11 @@ Kirigami.Card {
 
             // Atmospheric pressure
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "speedometer"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                     isMask: true
                 }
@@ -100,11 +104,11 @@ Kirigami.Card {
 
             // UV Index
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "compass"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                     isMask: true
                 }

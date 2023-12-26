@@ -17,9 +17,12 @@ import org.kde.kweather
 
 import org.kde.kweather.backgrounds
 
-
-Kirigami.Card {
+Kirigami.AbstractCard {
     id: root
+    topPadding: Kirigami.Units.gridUnit
+    bottomPadding: Kirigami.Units.gridUnit
+    leftPadding: Kirigami.Units.gridUnit
+    rightPadding: Kirigami.Units.gridUnit
 
     required property var selectedDay
     property var textColor: Kirigami.Theme.textColor
@@ -33,11 +36,11 @@ Kirigami.Card {
 
             // Sunrise
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "go-up"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                     isMask: true
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
@@ -57,11 +60,11 @@ Kirigami.Card {
 
             // Sunset
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "go-down"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                     isMask: true
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
@@ -81,11 +84,11 @@ Kirigami.Card {
 
             // Moon phase
             RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
                     source: "weather-clear-night"
-                    Layout.minimumHeight: Kirigami.Theme.defaultFont.pointSize * 2
-                    Layout.minimumWidth: Layout.minimumHeight * 1.5
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    implicitWidth: Kirigami.Units.iconSizes.medium
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing

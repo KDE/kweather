@@ -524,8 +524,12 @@ Kirigami.ScrollablePage {
                 }
 
                 // hourly view
-                Kirigami.Card {
+                Kirigami.AbstractCard {
                     id: hourlyCard
+                    topPadding: Kirigami.Units.gridUnit
+                    bottomPadding: Kirigami.Units.gridUnit
+                    leftPadding: Kirigami.Units.gridUnit
+                    rightPadding: Kirigami.Units.gridUnit
                     Layout.fillWidth: true
 
                     property int pressedCount: 0
