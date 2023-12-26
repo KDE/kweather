@@ -26,6 +26,7 @@ Kirigami.AbstractCard {
 
     contentItem: Item {
         implicitHeight: column.height
+
         Column {
             id: column
             spacing: Kirigami.Units.largeSpacing * 2

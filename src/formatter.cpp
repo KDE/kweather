@@ -16,12 +16,12 @@
 
 double Formatter::convertTemp(qreal temperature, const QString &unit) const
 {
-    return Kweather::convertTemp(temperature, unit);
+    return KWeather::convertTemp(temperature, unit);
 }
 
 QString Formatter::formatTemperatureUnitDegrees(const QString &unit) const
 {
-    if (unit == QLatin1String("Celsius") || (unit == QLatin1String("Use System Default") && QLocale().measurementSystem() == QLocale::MetricSystem)) {
+    if (KWeather::isCelsius(unit)) {
         return QStringLiteral("℃");
     } else {
         return QStringLiteral("℉");
@@ -30,12 +30,18 @@ QString Formatter::formatTemperatureUnitDegrees(const QString &unit) const
 
 QString Formatter::formatTemperature(qreal temperature, const QString &unit) const
 {
-    return ki18nc("A temperature", "%1°").subs(Kweather::convertTemp(temperature, unit)).toString();
+    // only have decimals when in celsius
+    if (KWeather::isCelsius(unit)) {
+        QString temp = QStringLiteral("%1").arg(KWeather::convertTemp(temperature, unit), 0, 'f', 1);
+        return ki18nc("A temperature", "%1°").subs(temp).toString();
+    } else {
+        return formatTemperatureRounded(temperature, unit);
+    }
 }
 
 QString Formatter::formatTemperatureRounded(qreal temperature, const QString &unit) const
 {
-    return i18nc("A temperature", "%1°", qRound(Kweather::convertTemp(temperature, unit)));
+    return i18nc("A temperature", "%1°", qRound(KWeather::convertTemp(temperature, unit)));
 }
 
 QString Formatter::formatWindSpeed(qreal speed, const QString &unit) const

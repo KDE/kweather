@@ -39,7 +39,7 @@ void WeatherLocationListModel::load()
     beginResetModel();
 
     // load locations from kconfig
-    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
+    auto config = KWeatherSettings::self()->config()->group(KWeather::WEATHER_LOCATIONS_CFG_GROUP);
     auto locations = config.groupList();
     for (const auto &location : locations) {
         auto location_ptr = WeatherLocation::load(location);

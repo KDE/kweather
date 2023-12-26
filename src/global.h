@@ -16,17 +16,21 @@
 
 #include "kweathersettings.h"
 
-namespace Kweather
+namespace KWeather
 {
 static const QString WEATHER_LOCATIONS_CFG_GROUP = QStringLiteral("WeatherLocations");
 
+static bool isCelsius(const QString &unit)
+{
+    if (unit == QLatin1String("Use System Default")) {
+        return (QLocale().measurementSystem() == QLocale::MetricSystem);
+    }
+    return unit == QLatin1String("Celsius");
+};
+
 static double convertTemp(double temp, const QString &unit)
 {
-    bool metric = !(unit == QLatin1String("Fahrenheit"));
-    if (unit == QLatin1String("Use System Default")) {
-        metric = (QLocale().measurementSystem() == QLocale::MetricSystem);
-    }
-    if (metric) {
+    if (KWeather::isCelsius(unit)) {
         return temp;
     } else {
         return temp * 1.8 + 32;

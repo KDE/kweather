@@ -63,7 +63,7 @@ WeatherLocation::WeatherLocation()
 
 WeatherLocation *WeatherLocation::load(const QString &groupName)
 {
-    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(groupName);
+    auto config = KWeatherSettings::self()->config()->group(KWeather::WEATHER_LOCATIONS_CFG_GROUP).group(groupName);
     if (config.isValid()) {
         return new WeatherLocation(groupName,
                                    config.readEntry("locationName"),
@@ -77,7 +77,7 @@ WeatherLocation *WeatherLocation::load(const QString &groupName)
 
 void WeatherLocation::save()
 {
-    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
+    auto config = KWeatherSettings::self()->config()->group(KWeather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
     config.writeEntry("locationName", locationName());
     config.writeEntry("latitude", latitude());
     config.writeEntry("longitude", longitude());
@@ -87,14 +87,14 @@ void WeatherLocation::save()
 
 void WeatherLocation::saveOrder(int index)
 {
-    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
+    auto config = KWeatherSettings::self()->config()->group(KWeather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
     config.writeEntry("index", index);
     config.sync();
 }
 
 int WeatherLocation::index()
 {
-    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
+    auto config = KWeatherSettings::self()->config()->group(KWeather::WEATHER_LOCATIONS_CFG_GROUP).group(locationId());
     auto res = config.readEntry("index");
     if (res.isEmpty()) {
         return -1;
@@ -105,7 +105,7 @@ int WeatherLocation::index()
 
 void WeatherLocation::deleteConfig()
 {
-    auto config = KWeatherSettings::self()->config()->group(Kweather::WEATHER_LOCATIONS_CFG_GROUP);
+    auto config = KWeatherSettings::self()->config()->group(KWeather::WEATHER_LOCATIONS_CFG_GROUP);
     config.deleteGroup(locationId());
     config.sync();
 }
