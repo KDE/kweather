@@ -48,11 +48,33 @@ Rectangle {
             color: textColor
             elide: Text.ElideRight
         }
-        Label {
+        Item {
             Layout.fillWidth: true
-            text: weather.weatherDescription
-            color: textColor
-            wrapMode: Text.Wrap
+            implicitHeight: descriptionTextMetrics.implicitHeight
+
+            Label {
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                text: weather.weatherDescription
+                color: textColor
+                wrapMode: Text.Wrap
+                elide: Text.ElideRight
+                maximumLineCount: 2
+            }
+
+            // ensure that the height of the reserved space for the labels is always two text lines
+            Label {
+                id: descriptionTextMetrics
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                visible: false
+                text: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+                color: textColor
+                wrapMode: Text.Wrap
+                maximumLineCount: 2
+            }
         }
 
         // precipitation
