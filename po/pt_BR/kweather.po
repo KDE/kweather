@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 02:00+0000\n"
+"POT-Creation-Date: 2023-12-27 01:36+0000\n"
 "PO-Revision-Date: 2023-11-14 13:23-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -28,61 +28,61 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "herzenschein@gmail.com"
 
-#: formatter.cpp:33 formatter.cpp:38
+#: formatter.cpp:36 formatter.cpp:44
 #, kde-format
 msgctxt "A temperature"
 msgid "%1°"
 msgstr "%1°"
 
-#: formatter.cpp:47
+#: formatter.cpp:53
 #, kde-format
 msgid "%1 km/h"
 msgstr "%1 km/h"
 
-#: formatter.cpp:50
+#: formatter.cpp:56
 #, kde-format
 msgid "%1 mph"
 msgstr "%1 mph"
 
-#: formatter.cpp:53
+#: formatter.cpp:59
 #, kde-format
 msgid "%1 m/s"
 msgstr "%1 m/s"
 
-#: formatter.cpp:63
+#: formatter.cpp:69
 #, kde-format
 msgid "%1 hPa"
 msgstr "%1 hPa"
 
-#: formatter.cpp:66
+#: formatter.cpp:72
 #, kde-format
 msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
-#: formatter.cpp:72
+#: formatter.cpp:78
 #, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
-#: formatter.cpp:77
+#: formatter.cpp:83
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: formatter.cpp:83
+#: formatter.cpp:89
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:94
+#: formatter.cpp:100
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 in"
 
-#: formatter.cpp:97
+#: formatter.cpp:103
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -207,32 +207,32 @@ msgstr "Diariamente"
 msgid "Local date: %1"
 msgstr "Data local: %1"
 
-#: qml/DynamicForecastPage.qml:514 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "A cada hora"
 
-#: qml/DynamicForecastPage.qml:519
+#: qml/DynamicForecastPage.qml:526
 #, kde-format
 msgid "Local time: %1"
 msgstr "Hora local: %1"
 
-#: qml/InfoCard.qml:43
+#: qml/InfoCard.qml:48
 #, kde-format
 msgid "Precipitation"
 msgstr "Precipitação"
 
-#: qml/InfoCard.qml:67
+#: qml/InfoCard.qml:72
 #, kde-format
 msgid "Humidity"
 msgstr "Umidade"
 
-#: qml/InfoCard.qml:91
+#: qml/InfoCard.qml:96
 #, kde-format
 msgid "Pressure"
 msgstr "Pressão"
 
-#: qml/InfoCard.qml:115
+#: qml/InfoCard.qml:120
 #, kde-format
 msgid "UV Index"
 msgstr "Índice UV"
@@ -419,22 +419,22 @@ msgstr "Voltar"
 msgid "Finish"
 msgstr "Concluir"
 
-#: qml/SunriseCard.qml:48
+#: qml/SunriseCard.qml:51
 #, kde-format
 msgid "Sunrise"
 msgstr "Nascer do sol"
 
-#: qml/SunriseCard.qml:72
+#: qml/SunriseCard.qml:75
 #, kde-format
 msgid "Sunset"
 msgstr "Anoitecer"
 
-#: qml/SunriseCard.qml:94
+#: qml/SunriseCard.qml:97
 #, kde-format
 msgid "Moon Phase"
 msgstr "Fase da lua"
 
-#: qml/TemperatureChartCard.qml:87
+#: qml/TemperatureChartCard.qml:76
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
