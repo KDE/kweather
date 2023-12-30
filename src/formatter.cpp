@@ -32,8 +32,8 @@ QString Formatter::formatTemperature(qreal temperature, const QString &unit) con
 {
     // only have decimals when in celsius
     if (KWeather::isCelsius(unit)) {
-        QString temp = QStringLiteral("%1").arg(KWeather::convertTemp(temperature, unit), 0, 'f', 1);
-        return ki18nc("A temperature", "%1°").subs(temp).toString();
+        QString formattedTemperature = QLocale().toString(KWeather::convertTemp(temperature, unit), 'f', 1);
+        return ki18nc("A temperature", "%1°").subs(formattedTemperature).toString();
     } else {
         return formatTemperatureRounded(temperature, unit);
     }
