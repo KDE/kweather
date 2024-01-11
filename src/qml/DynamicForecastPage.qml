@@ -250,7 +250,7 @@ Kirigami.ScrollablePage {
             DragHandler {
                 id: dragHandler
                 target: rootMask
-                yAxis.enabled: false; xAxis.enabled: true
+                yAxis.enabled: false; xAxis.enabled: Kirigami.Settings.hasTransientTouchInput
                 xAxis.minimum: page.canGoRight ? -page.width : -pageChangeThreshold / 2 // extra feedback
                 xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
 
