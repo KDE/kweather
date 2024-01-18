@@ -17,7 +17,7 @@ A convergent weather application for Plasma.
 * Plasmoid that can be used on desktop and mobile
 
 ## Links
-* Project page: https://invent.kde.org/plasma-mobile/kweather
+* Project page: https://invent.kde.org/utilities/kweather
 * Issues: https://bugs.kde.org/describecomponents.cgi?product=kweather
 * Development channel: https://matrix.to/#/#plasmamobile:matrix.org
 
