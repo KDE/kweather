@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-27 01:36+0000\n"
-"PO-Revision-Date: 2021-12-12 15:42+0200\n"
+"PO-Revision-Date: 2024-01-23 23:34+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -56,44 +56,38 @@ msgid "%1 hPa"
 msgstr "%1 hPa"
 
 #: formatter.cpp:72
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgid "%1 mmHg"
-msgstr "mmHg"
+msgstr "%1 mmHg"
 
 #: formatter.cpp:78
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
 #: formatter.cpp:83
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: formatter.cpp:89
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: formatter.cpp:100
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 col."
 
 #: formatter.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "Millimetre of mercury"
-#| msgid "mmHg"
+#, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr "mmHg"
+msgstr "%1 mm"
 
 #: main.cpp:54 qml/DefaultPage.qml:70 qml/Main.qml:21
 #, kde-format
@@ -106,10 +100,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Konverguojanti orų programa, skirta Plasma"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2021 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2022 Plasma Development Team"
-msgstr "© 2020-2021 Plasma plėtojimo komanda"
+msgstr "© 2020-2022 Plasma programuotojų komanda"
 
 #: main.cpp:60
 #, kde-format
@@ -127,10 +120,9 @@ msgid "No location found on system, please add some in kweather"
 msgstr "Sistemoje nerasta jokios vietos, pridėkite ją kweather programėlėje"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "pasirinkite vietą"
+msgstr "Pasirinkite vietą"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -189,10 +181,9 @@ msgid "Locations"
 msgstr "Vietos"
 
 #: qml/DynamicForecastPage.qml:332
-#, fuzzy, kde-format
-#| msgid "Add location"
+#, kde-format
 msgid "Choose location"
-msgstr "Pridėti vietą"
+msgstr "Pasirinkti vietą"
 
 #: qml/DynamicForecastPage.qml:347 qml/DynamicForecastPage.qml:352
 #: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
@@ -213,10 +204,9 @@ msgid "Daily"
 msgstr "Kasdien"
 
 #: qml/DynamicForecastPage.qml:438
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "Vietinė data: "
+msgstr "Vietinė data: %1"
 
 #: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
 #, kde-format
@@ -224,10 +214,9 @@ msgid "Hourly"
 msgstr "Kas valandą"
 
 #: qml/DynamicForecastPage.qml:526
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "Vietinis laikas: "
+msgstr "Vietinis laikas: %1"
 
 #: qml/InfoCard.qml:48
 #, kde-format
@@ -245,16 +234,14 @@ msgid "Pressure"
 msgstr "Slėgis"
 
 #: qml/InfoCard.qml:120
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
 msgstr "UV indeksas"
 
 #: qml/locationslist/AddLocationListView.qml:48
-#, fuzzy, kde-format
-#| msgid "Search for a location"
+#, kde-format
 msgid "Search for a location…"
-msgstr "Ieškoti vietos"
+msgstr "Ieškoti vietos…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
@@ -294,12 +281,12 @@ msgstr "Pridėti vietą"
 #: qml/locationslist/LocationsListView.qml:214
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Ištrinti"
 
 #: qml/settings/SettingsComponent.qml:35
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "Bendra"
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
@@ -322,10 +309,9 @@ msgid "About"
 msgstr "Apie"
 
 #: qml/settings/SettingsComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Speed Units"
+#, kde-format
 msgid "Units"
-msgstr "Greičio vienetai"
+msgstr "Vienetai"
 
 #: qml/settings/SettingsComponent.qml:98
 #, kde-format
@@ -388,29 +374,26 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:218
-#, fuzzy, kde-format
-#| msgid "Precipitation"
+#, kde-format
 msgid "Precipitation Units"
-msgstr "Krituliai"
+msgstr "Kritulių vienetai"
 
 #: qml/settings/SettingsComponent.qml:223
-#, fuzzy, kde-format
-#| msgid "%1mm"
+#, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "%1mm"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:224
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr ""
+msgstr "col."
 
 #: qml/SetupWizard.qml:63
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
+#, kde-format
 msgid "Welcome to Weather"
-msgstr "Sveiki atvykę į KWeather"
+msgstr "Sveiki atvykę į Orus"
 
 #: qml/SetupWizard.qml:69
 #, kde-format
