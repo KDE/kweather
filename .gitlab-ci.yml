@@ -7,3 +7,12 @@ include:
       - /gitlab-templates/freebsd-qt6.yml
       - /gitlab-templates/flatpak.yml
       - /gitlab-templates/craft-android-qt6-apks.yml
+
+appstream:
+  image:
+    name: archlinux:latest
+    entrypoint: [""]
+  stage: build
+  script:
+    - pacman -Sy appstream --noconfirm
+    - appstreamcli validate org.kde.kweather.appdata.xml
