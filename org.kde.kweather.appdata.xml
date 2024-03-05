@@ -80,8 +80,10 @@
   <summary xml:lang="x-test">xxView real-time weather forecasts and other informationxx</summary>
   <summary xml:lang="zh-CN">查看实时天气预报和其他信息</summary>
   <summary xml:lang="zh-TW">檢視實時天氣預報和其他資訊</summary>
-  <developer>
-    <name>KDE Community</name>
+  <developer id="kde.org">
+    <id>kde.org</id>
+    <name>The KDE Community</name>
+    <url>https://kde.org</url>
   </developer>
   <launchable type="desktop-id">org.kde.kweather.desktop</launchable>
   <recommends>
