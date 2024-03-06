@@ -31,6 +31,22 @@
             "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kirigami-addons.git", "branch": "master" } ]
         },
         {
+            "name": "libplasma",
+            "config-opts": [
+                "-DBUILD_TESTING=OFF"
+            ],
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/plasma/libplasma.git",
+                    "branch": "master"
+                }
+
+            ]
+        },
+        {
             "name": "kweather",
             "buildsystem": "cmake-ninja",
             "builddir": true,
