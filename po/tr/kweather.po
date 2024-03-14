@@ -1,7 +1,7 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 # Volkan Gezer <volkangezer@gmail.com>, 2021.
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-27 01:36+0000\n"
-"PO-Revision-Date: 2023-11-16 22:24+0300\n"
+"PO-Revision-Date: 2024-03-12 23:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -75,7 +75,7 @@ msgstr "%1"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr "-"
+msgstr "—"
 
 #: formatter.cpp:100
 #, kde-format
@@ -145,7 +145,7 @@ msgstr "Konum Seç"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:137
 #, kde-format
 msgid "Open KWeather"
-msgstr "Hava Durumu'nu Aç"
+msgstr "Hava Durumu’nu Aç"
 
 #: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
 #, kde-format
@@ -395,7 +395,7 @@ msgstr "inç"
 #: qml/SetupWizard.qml:63
 #, kde-format
 msgid "Welcome to Weather"
-msgstr "Hava Durumu'na hoş geldiniz"
+msgstr "Hava Durumu’na hoş geldiniz"
 
 #: qml/SetupWizard.qml:69
 #, kde-format
@@ -405,7 +405,7 @@ msgstr "Sürdür"
 #: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Hava tahmini temasını seç"
+msgstr "Hava tahmini temasını seçin"
 
 #: qml/SetupWizard.qml:93
 #, kde-format
@@ -435,7 +435,7 @@ msgstr "Günbatımı"
 #: qml/SunriseCard.qml:97
 #, kde-format
 msgid "Moon Phase"
-msgstr "Ay'ın Evreleri"
+msgstr "Ay’ın Evreleri"
 
 #: qml/TemperatureChartCard.qml:76
 #, kde-format
