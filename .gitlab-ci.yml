@@ -10,7 +10,7 @@ include:
 
 appstream:
   image:
-    name: ubuntu:latest
+    name: ubuntu:devel
     entrypoint: [""]
   tags:
     - Linux
