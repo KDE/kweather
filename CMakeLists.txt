@@ -105,7 +105,7 @@ endif()
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-file(GLOB_RECURSE ALL_SOURCE_FILES *.cpp *.h *.qml)
+file(GLOB_RECURSE ALL_SOURCE_FILES src/*.cpp src/*.h src/*.qml)
 ecm_check_outbound_license(LICENSES GPL-2.0-only GPL-3.0-only FILES ${ALL_SOURCE_FILES})
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
