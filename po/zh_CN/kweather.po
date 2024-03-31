@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-27 01:36+0000\n"
-"PO-Revision-Date: 2024-01-06 03:32\n"
+"PO-Revision-Date: 2024-03-30 19:38\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kweather/kweather.pot\n"
-"X-Crowdin-File-ID: 46309\n"
+"X-Crowdin-File: /kf6-stable/messages/kweather/kweather.pot\n"
+"X-Crowdin-File-ID: 51530\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -67,7 +67,7 @@ msgstr "%1%"
 #: formatter.cpp:83
 #, kde-format
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: formatter.cpp:89
 #, kde-format
@@ -120,7 +120,7 @@ msgstr "无法从系统中获取位置，请手动在 kweather 中添加位置"
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
 #, kde-format
 msgid "Please select the location"
-msgstr ""
+msgstr "请选择位置"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -204,7 +204,7 @@ msgstr "每日"
 #: qml/DynamicForecastPage.qml:438
 #, kde-format
 msgid "Local date: %1"
-msgstr ""
+msgstr "当地日期：%1"
 
 #: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
 #, kde-format
@@ -214,7 +214,7 @@ msgstr "每小时"
 #: qml/DynamicForecastPage.qml:526
 #, kde-format
 msgid "Local time: %1"
-msgstr ""
+msgstr "当地时间：%1"
 
 #: qml/InfoCard.qml:48
 #, kde-format
@@ -234,7 +234,7 @@ msgstr "气压"
 #: qml/InfoCard.qml:120
 #, kde-format
 msgid "UV Index"
-msgstr ""
+msgstr "紫外线指数"
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
