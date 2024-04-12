@@ -83,7 +83,7 @@ if (NOT ANDROID AND BUILD_PLASMOID)
 endif()
 
 ecm_find_qmlmodule(org.kde.kholidays 1.0)
-
+add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 add_subdirectory(src)
 
 ki18n_install(po)
