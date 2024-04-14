@@ -7,6 +7,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import org.kde.plasma.plasmoid
 import org.kde.kirigami as Kirigami
+import org.kde.kirigami.delegates as KD
 
 Rectangle {
     id: container
@@ -157,10 +158,16 @@ Rectangle {
                             Layout.preferredHeight: Kirigami.Units.gridUnit * 16
                             Layout.fillWidth: true
                             model: Plasmoid.hourlyModel
-                            delegate: Kirigami.BasicListItem {
-                                label: time
-                                subtitle: temperature + "°"
-                                icon: weatherIcon
+                            delegate: ItemDelegate {
+                                id: baseDelegate
+                                width: ListView.width
+                                icon.name: weatherIcon
+                                text: time
+                                contentItem: KD.IconTitleSubtitle {
+                                    icon.name: baseDelegate.icon.name
+                                    title: baseDelegate.text
+                                    subtitle: temperature + "°"
+                                }
                             }
                         }
                     }

@@ -1,4 +1,5 @@
 {
+    "KPackageStructure": "Plasma/Applet",
     "KPlugin": {
         "Authors": [
             {
@@ -73,9 +74,7 @@
         "Description[x-test]": "xxKWeather_1x4 widgetxx",
         "Description[zh_CN]": "KWeather 1x4 挂件",
         "Description[zh_TW]": "KWeather_1x4 元件",
-        "EnabledByDefault": true,
-        "Icon": "kweather",
-        "Id": "org.kde.plasma.kweather_1x4",
+        "Icon": "org.kde.kweather",
         "License": "LGPL-2.1+",
         "Name": "KWeather_1x4",
         "Name[az]": "KWeather_1x4",
@@ -111,14 +110,10 @@
         "Name[x-test]": "xxKWeather_1x4xx",
         "Name[zh_CN]": "KWeather_1x4",
         "Name[zh_TW]": "KWeather_1x4",
-        "ServiceTypes": [
-            "Plasma/Applet"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop/"
     },
-    "X-Plasma-API": "declarativeappletscript",
-    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-Provides": [
         "org.kde.plasma.weather"
     ]

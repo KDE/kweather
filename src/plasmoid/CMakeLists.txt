@@ -26,4 +26,4 @@ target_link_libraries(plasma_applet_kweather_1x4
 
 install(TARGETS plasma_applet_kweather_1x4 DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/applets)
 
-plasma_install_package(package org.kde.plasma.kweather_1x4)
+plasma_install_package(package plasma_applet_org.kde.plasma.kweather_1x4)

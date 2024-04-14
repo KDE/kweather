@@ -3,27 +3,25 @@
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.4
-import org.kde.plasma.plasmoid 2.0
-import org.kde.kirigami 2.11 as Kirigami
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.plasmoid
+import org.kde.kirigami as Kirigami
 
 PlasmoidItem {
-    id: root
-
     Plasmoid.backgroundHints: "ShadowBackground";
 
     fullRepresentation: Loader {
         active: true
-        source: root.plasmoid.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
+        source: Plasmoid.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
     }
 
     compactRepresentation: ColumnLayout{
         Kirigami.Icon {
             height: 20
             width: 20
-            source: root.plasmoid.weatherIcon
+            source: Plasmoid.weatherIcon
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -32,7 +30,7 @@ PlasmoidItem {
             }
         }
         Label {
-            text: root.plasmoid.temp + "°"
+            text: Plasmoid.temp + "°"
             color: Kirigami.Theme.activeTextColor
         }
     }
