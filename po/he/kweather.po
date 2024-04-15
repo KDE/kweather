@@ -1,0 +1,439 @@
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kweather package.
+#
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: kweather\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-12-27 01:36+0000\n"
+"PO-Revision-Date: 2024-04-12 10:30+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "צוות התרגום של KDE ישראל"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-l10n-he@kde.org"
+
+#: formatter.cpp:36 formatter.cpp:44
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr "%1°"
+
+#: formatter.cpp:53
+#, kde-format
+msgid "%1 km/h"
+msgstr "%1 קמ״ש"
+
+#: formatter.cpp:56
+#, kde-format
+msgid "%1 mph"
+msgstr "%1 מיילים לשעה"
+
+#: formatter.cpp:59
+#, kde-format
+msgid "%1 m/s"
+msgstr "%1 מטרים לשנייה"
+
+#: formatter.cpp:69
+#, kde-format
+msgid "%1 hPa"
+msgstr "%1 הקטופסקל"
+
+#: formatter.cpp:72
+#, kde-format
+msgid "%1 mmHg"
+msgstr "%1 מילימטר כספית"
+
+#: formatter.cpp:78
+#, kde-format
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr "%1%"
+
+#: formatter.cpp:83
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: formatter.cpp:89
+#, kde-format
+msgctxt "sunrise time not available"
+msgid "-"
+msgstr "-"
+
+#: formatter.cpp:100
+#, kde-format
+msgctxt "in as inches"
+msgid "%1 in"
+msgstr "%1 אינטשים"
+
+#: formatter.cpp:103
+#, kde-format
+msgctxt "mm as millimeters"
+msgid "%1 mm"
+msgstr "%1 מ״מ"
+
+#: main.cpp:54 qml/DefaultPage.qml:70 qml/Main.qml:21
+#, kde-format
+msgid "Weather"
+msgstr "מזג אוויר"
+
+#: main.cpp:56
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr "יישום מזג אוויר אחוד לפלזמה."
+
+#: main.cpp:58
+#, kde-format
+msgid "© 2020-2022 Plasma Development Team"
+msgstr "© 2020‏-2022 צוות פיתוח פלזמה"
+
+#: main.cpp:60
+#, kde-format
+msgid "Han Young"
+msgstr "האן יאנג"
+
+#: main.cpp:61
+#, kde-format
+msgid "Devin Lin"
+msgstr "דווין לין"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr "לא נמצא מקום המערכת, נא להוסיף אותו ב־kweather"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, kde-format
+msgid "Please select the location"
+msgstr "נא לבחור מקום"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
+#, kde-format
+msgid "%1%"
+msgstr "%1%"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:80
+#, kde-format
+msgid "%1mm"
+msgstr "%1מ״מ"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:132
+#: plasmoid/package/contents/ui/WeatherContainer.qml:171
+#, kde-format
+msgid "Select Location"
+msgstr "בחירת מקום"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:137
+#, kde-format
+msgid "Open KWeather"
+msgstr "פתיחת KWeather"
+
+#: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
+#, kde-format
+msgid "Forecast"
+msgstr "תחזית"
+
+#: qml/DefaultPage.qml:28
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "שגיאת תקשורת במשיכת המקום הנוכחי"
+
+#: qml/DefaultPage.qml:78 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:25
+#: qml/locationslist/LocationsListView.qml:71
+#, kde-format
+msgid "Add Location"
+msgstr "הוספת מקום"
+
+#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "מזג האוויר התעדכן עבור %1"
+
+#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
+#, kde-format
+msgid "Updated at %1"
+msgstr "עודכן ב־%1"
+
+#: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:16
+#, kde-format
+msgid "Locations"
+msgstr "מקומות"
+
+#: qml/DynamicForecastPage.qml:332
+#, kde-format
+msgid "Choose location"
+msgstr "בחירת מקום"
+
+#: qml/DynamicForecastPage.qml:347 qml/DynamicForecastPage.qml:352
+#: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "הגדרות"
+
+#: qml/DynamicForecastPage.qml:368 qml/DynamicForecastPage.qml:373
+#: qml/ForecastContainerPage.qml:56
+#, kde-format
+msgid "Refresh"
+msgstr "רענון"
+
+#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
+#, kde-format
+msgid "Daily"
+msgstr "יומי"
+
+#: qml/DynamicForecastPage.qml:438
+#, kde-format
+msgid "Local date: %1"
+msgstr "תאריך מקומי: %1"
+
+#: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
+#, kde-format
+msgid "Hourly"
+msgstr "שעתי"
+
+#: qml/DynamicForecastPage.qml:526
+#, kde-format
+msgid "Local time: %1"
+msgstr "שעון מקומי: %1"
+
+#: qml/InfoCard.qml:48
+#, kde-format
+msgid "Precipitation"
+msgstr "משקעים"
+
+#: qml/InfoCard.qml:72
+#, kde-format
+msgid "Humidity"
+msgstr "לחות"
+
+#: qml/InfoCard.qml:96
+#, kde-format
+msgid "Pressure"
+msgstr "לחץ"
+
+#: qml/InfoCard.qml:120
+#, kde-format
+msgid "UV Index"
+msgstr "מדד קרינה אולטרה סגולה"
+
+#: qml/locationslist/AddLocationListView.qml:48
+#, kde-format
+msgid "Search for a location…"
+msgstr "חיפוש מקום…"
+
+#: qml/locationslist/AddLocationListView.qml:87
+#, kde-format
+msgid "Unable to connect"
+msgstr "לא ניתן להתחבר"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Search for a location"
+msgstr "חיפוש מקום"
+
+#: qml/locationslist/AddLocationListView.qml:104
+#, kde-format
+msgid "Add current location"
+msgstr "הוספת המקום הנוכחי"
+
+#: qml/locationslist/AddLocationListView.qml:127
+#, kde-format
+msgid "No results"
+msgstr "אין תוצאות"
+
+#: qml/locationslist/AddLocationPage.qml:16
+#, kde-format
+msgid "Add location"
+msgstr "הוספת מקום"
+
+#: qml/locationslist/LocationsListView.qml:55
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "לא ניתן למשוך את פרטי אזור הזמן"
+
+#: qml/locationslist/LocationsListView.qml:66
+#, kde-format
+msgid "Add a location"
+msgstr "הוספת מקום"
+
+#: qml/locationslist/LocationsListView.qml:214
+#, kde-format
+msgid "Delete"
+msgstr "מחיקה"
+
+#: qml/settings/SettingsComponent.qml:35
+#, kde-format
+msgid "General"
+msgstr "כללי"
+
+#: qml/settings/SettingsComponent.qml:41
+#, kde-format
+msgid "Forecast Style"
+msgstr "סגנון תחזית"
+
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
+#, kde-format
+msgid "Flat"
+msgstr "שטוח"
+
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
+#, kde-format
+msgid "Dynamic"
+msgstr "דינמי"
+
+#: qml/settings/SettingsComponent.qml:80
+#, kde-format
+msgid "About"
+msgstr "על אודות"
+
+#: qml/settings/SettingsComponent.qml:92
+#, kde-format
+msgid "Units"
+msgstr "יחידות"
+
+#: qml/settings/SettingsComponent.qml:98
+#, kde-format
+msgid "Temperature Units"
+msgstr "יחידות טמפרטורה"
+
+#: qml/settings/SettingsComponent.qml:103
+#, kde-format
+msgid "Use System Default"
+msgstr "להשתמש בברירת המחדל של המערכת"
+
+#: qml/settings/SettingsComponent.qml:104
+#, kde-format
+msgid "Celsius"
+msgstr "צלזיוס"
+
+#: qml/settings/SettingsComponent.qml:105
+#, kde-format
+msgid "Fahrenheit"
+msgstr "פרנהייט"
+
+#: qml/settings/SettingsComponent.qml:138
+#, kde-format
+msgid "Speed Units"
+msgstr "יחידות מהירות"
+
+#: qml/settings/SettingsComponent.qml:143
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "קמ״ש"
+
+#: qml/settings/SettingsComponent.qml:144
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr " מיילים לשעה"
+
+#: qml/settings/SettingsComponent.qml:145
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr "מטרים לשנייה"
+
+#: qml/settings/SettingsComponent.qml:178
+#, kde-format
+msgid "Pressure Units"
+msgstr "יחידות לחץ"
+
+#: qml/settings/SettingsComponent.qml:183
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "הקטופסקל"
+
+#: qml/settings/SettingsComponent.qml:184
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr "מילימטר פסקל"
+
+#: qml/settings/SettingsComponent.qml:218
+#, kde-format
+msgid "Precipitation Units"
+msgstr "יחידות משקעים"
+
+#: qml/settings/SettingsComponent.qml:223
+#, kde-format
+msgctxt "Millimeters"
+msgid "mm"
+msgstr "מ״מ"
+
+#: qml/settings/SettingsComponent.qml:224
+#, kde-format
+msgctxt "Inches"
+msgid "in"
+msgstr "אינטשים"
+
+#: qml/SetupWizard.qml:63
+#, kde-format
+msgid "Welcome to Weather"
+msgstr "ברוך בואך ליישום מזג האוויר"
+
+#: qml/SetupWizard.qml:69
+#, kde-format
+msgid "Continue"
+msgstr "המשך"
+
+#: qml/SetupWizard.qml:88
+#, kde-format
+msgid "Select forecast theme"
+msgstr "בחירת ערכת עיצוב מזג האוויר"
+
+#: qml/SetupWizard.qml:93
+#, kde-format
+msgid "You can change the theme later in the settings."
+msgstr "אפשר לשנות את ערכת העיצוב בהמשך דרך ההגדרות."
+
+#: qml/SetupWizard.qml:200
+#, kde-format
+msgid "Back"
+msgstr "חזרה"
+
+#: qml/SetupWizard.qml:206
+#, kde-format
+msgid "Finish"
+msgstr "סיום"
+
+#: qml/SunriseCard.qml:51
+#, kde-format
+msgid "Sunrise"
+msgstr "זריחה"
+
+#: qml/SunriseCard.qml:75
+#, kde-format
+msgid "Sunset"
+msgstr "שקיעה"
+
+#: qml/SunriseCard.qml:97
+#, kde-format
+msgid "Moon Phase"
+msgstr "מופע הירח"
+
+#: qml/TemperatureChartCard.qml:76
+#, kde-format
+msgid "temperature"
+msgstr "טמפרטורה"
