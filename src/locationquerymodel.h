@@ -47,6 +47,6 @@ private:
     bool m_loading = false, m_networkError = false;
     std::vector<KWeatherCore::LocationQueryResult> m_results;
     KWeatherCore::LocationQuery m_querySource;
-    QTimer *inputTimer = nullptr;
+    QTimer *const inputTimer;
     QString m_text;
 };

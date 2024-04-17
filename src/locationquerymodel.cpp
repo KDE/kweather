@@ -14,8 +14,8 @@
 #include <QTimer>
 
 LocationQueryModel::LocationQueryModel()
+    : inputTimer(new QTimer(this))
 {
-    inputTimer = new QTimer(this);
     inputTimer->setSingleShot(true);
     connect(inputTimer, &QTimer::timeout, this, &LocationQueryModel::setQuery);
 }
