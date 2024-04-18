@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-27 01:36+0000\n"
+"POT-Creation-Date: 2024-04-18 00:40+0000\n"
 "PO-Revision-Date: 2023-11-14 13:23-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -99,8 +99,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Um aplicativo de meteorologia convergente feito para o Plasma"
 
 #: main.cpp:58
-#, kde-format
-msgid "© 2020-2022 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2020-2022 Plasma Development Team"
+msgid "© 2020-2024 Plasma Development Team"
 msgstr "© 2020-2022 Equipe de desenvolvimento do Plasma"
 
 #: main.cpp:60

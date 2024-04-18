@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-27 01:36+0000\n"
+"POT-Creation-Date: 2024-04-18 00:40+0000\n"
 "PO-Revision-Date: 2020-06-13 17:20-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: main.cpp:58
 #, kde-format
-msgid "© 2020-2022 Plasma Development Team"
+msgid "© 2020-2024 Plasma Development Team"
 msgstr ""
 
 #: main.cpp:60
