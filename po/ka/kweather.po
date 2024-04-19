@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-18 00:40+0000\n"
-"PO-Revision-Date: 2023-11-14 05:52+0100\n"
+"PO-Revision-Date: 2024-04-18 03:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -99,10 +99,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "კონვერგენტული ამინდის აპლიკაცია Plasma-სთვის"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma -ის პროგრამისტების გუნდი"
+msgstr "© 2010-2024 Plasma -ის პროგრამისტების გუნდი"
 
 #: main.cpp:60
 #, kde-format

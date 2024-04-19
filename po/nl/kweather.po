@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-18 00:40+0000\n"
-"PO-Revision-Date: 2023-11-13 10:56+0100\n"
+"PO-Revision-Date: 2024-04-18 10:13+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - 2020 t/m 2023"
+msgstr "Freek de Kruijf - 2020 t/m 2024"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -98,10 +98,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Een convergente weer-toepassing voor Plasma"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2022 Ontwikkelteam van Plasma"
+msgstr "© 2020-2024 Ontwikkelteam van Plasma"
 
 #: main.cpp:60
 #, kde-format
