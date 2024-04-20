@@ -1,17 +1,17 @@
 # Translation for kweather.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2023 This file is copyright:
+# Copyright (C) 2020-2024 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # @Krr4m4rr0 <birazabal@gmail.com>, 2020.
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-18 00:40+0000\n"
-"PO-Revision-Date: 2023-11-26 01:17+0100\n"
+"PO-Revision-Date: 2024-04-19 21:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -102,10 +102,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Plasmarako eguraldi aplikazio konbergentea"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2022 Plasma garapen taldea"
+msgstr "© 2020-2024 Plasma garapen taldea"
 
 #: main.cpp:60
 #, kde-format
