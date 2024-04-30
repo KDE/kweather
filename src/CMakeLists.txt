@@ -187,6 +187,17 @@ if (ANDROID)
         weather-few-clouds-wind-night
         weather-fog
         weather-freezing-rain
+        weather-freezing-rain-day
+        weather-freezing-rain-night
+        weather-freezing-scattered-rain
+        weather-freezing-scattered-rain-day
+        weather-freezing-scattered-rain-night
+        weather-freezing-scattered-rain-storm
+        weather-freezing-scattered-rain-storm-day
+        weather-freezing-scattered-rain-storm-night
+        weather-freezing-storm
+        weather-freezing-storm-day
+        weather-freezing-storm-night
         weather-hail
         weather-many-clouds
         weather-many-clouds-wind
@@ -200,11 +211,22 @@ if (ANDROID)
         weather-showers-scattered
         weather-showers-scattered-day
         weather-showers-scattered-night
+        weather-showers-scattered-storm
+        weather-showers-scattered-storm-day
+        weather-showers-scattered-storm-night
         weather-snow
+        weather-snow-day
+        weather-snow-night
         weather-snow-rain
         weather-snow-scattered
         weather-snow-scattered-day
         weather-snow-scattered-night
+        weather-snow-scattered-storm
+        weather-snow-scattered-storm-day
+        weather-snow-scattered-storm-night
+        weather-snow-storm
+        weather-snow-storm-day
+        weather-snow-storm-night
         weather-storm
         weather-storm-day
         weather-storm-night
