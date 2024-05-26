@@ -14,6 +14,9 @@ apps:
       - unity7
       - network
       - network-bind
+      - network-observe
+      - hardware-observe
+      - location-observe
 
 compression: lzo
 slots:
@@ -119,14 +122,3 @@ parts:
     build-environment:
       - CMAKE_PREFIX_PATH: $CRAFT_STAGE/usr:/snap/kf6-core22-sdk/current/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
       - QML2_IMPORT_PATH: $CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET/qml:$CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET/qt5/qml:$CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET/qt5/qml/org/kde/kirigami.2:/snap/kf6-core22-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET/qt5/qml
-
-  cleanup:
-    plugin: nil
-    after: [kweather]
-    build-snaps:
-      - kf6-core22
-    override-prime: |
-      set -eux
-      for snap in "core22" "kf6-core22"; do
-          cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" \;
-      done
