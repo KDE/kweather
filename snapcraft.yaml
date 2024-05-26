@@ -1,0 +1,125 @@
+name: kweather
+confinement: strict
+grade: stable
+base: core22
+adopt-info: kweather
+
+apps:
+  kweather:
+    extensions: [kde-neon-6]
+    common-id: org.kde.kweather
+    desktop: usr/share/applications/org.kde.kweather.desktop
+    command: usr/bin/kweather
+    plugs:
+      - unity7
+      - network
+      - network-bind
+
+compression: lzo
+
+slots:
+  session-dbus-interface:
+    interface: dbus
+    name: org.kde.kweather
+    bus: session
+
+parts:
+  libplasma:
+    plugin: cmake
+    source: https://invent.kde.org/plasma/libplasma/-/archive/v6.0.3/libplasma-v6.0.3.tar.gz
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_DESKTOPTHEMES=OFF
+      - -DBUILD_TESTING=OFF
+    build-packages:
+      - libwayland-dev
+      - doxygen
+      - gettext
+      - graphviz
+      - pkg-config
+      - libsm-dev
+      - docbook
+      - docbook-xml
+      - docbook-xsl
+    prime:
+      - -usr/lib/*/cmake/*
+      - -usr/include/*
+      - -usr/share/ECM/*
+      - -usr/share/doc/*
+      - -usr/share/man/*
+      - -usr/share/icons/breeze-dark*
+      - -usr/bin/X11
+      - -usr/lib/gcc/$CRAFT_ARCH_TRIPLET_BUILD_FOR
+      - -usr/lib/aspell/*
+      - -usr/share/docs
+      - -usr/share/lintain
+
+  kweathercore:
+    plugin: cmake
+    source: https://invent.kde.org/libraries/kweathercore.git
+    source-tag: "v0.8.0"
+    source-depth: 1
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTING=OFF
+      - -DKDE_SKIP_TEST_SETTINGS=ON
+    prime:
+      - -usr/lib/*/cmake/*
+      - -usr/include/*
+      - -usr/share/ECM/*
+      - -usr/share/doc/*
+      - -usr/share/man/*
+      - -usr/share/icons/breeze-dark*
+      - -usr/bin/X11
+      - -usr/lib/gcc/$CRAFT_ARCH_TRIPLET_BUILD_FOR
+      - -usr/lib/aspell/*
+      - -usr/share/docs
+      - -usr/share/lintain
+
+  kweather:
+    after:
+      - libplasma
+      - kweathercore
+    parse-info:
+      - usr/share/metainfo/org.kde.kweather.appdata.xml
+    plugin: cmake
+    build-packages:
+      - reuse
+      - libvulkan-dev
+      - libxkbcommon-dev
+    source: https://invent.kde.org/utilities/kweather/-/archive/v24.05.0/kweather-v24.05.0.tar.gz
+    stage-packages:
+      - libplasma6
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DENABLE_TESTING=OFF
+      - -DBUILD_TESTING=OFF
+      - -DKDE_SKIP_TEST_SETTINGS=ON
+    prime:
+      - -usr/lib/*/cmake/*
+      - -usr/include/*
+      - -usr/share/ECM/*
+      - -usr/share/doc/*
+      - -usr/share/man/*
+      - -usr/share/icons/breeze-dark*
+      - -usr/bin/X11
+      - -usr/lib/gcc/$CRAFT_ARCH_TRIPLET/6.0.0
+      - -usr/lib/aspell/*
+      - -usr/share/lintian
+    build-environment:
+      - CMAKE_PREFIX_PATH: $CRAFT_STAGE/usr:/snap/kf6-core22-sdk/current/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
+      - QML2_IMPORT_PATH: $CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET/qml:$CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET/qt5/qml:$CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET/qt5/qml/org/kde/kirigami.2:/snap/kf6-core22-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET/qt5/qml
+
+  cleanup:
+    plugin: nil
+    after: [kweather]
+    build-snaps:
+      - kf6-core22
+    override-prime: |
+      set -eux
+      for snap in "core22" "kf6-core22"; do
+          cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" \;
+      done
