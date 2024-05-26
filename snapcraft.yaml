@@ -16,7 +16,6 @@ apps:
       - network-bind
 
 compression: lzo
-
 slots:
   session-dbus-interface:
     interface: dbus
@@ -38,6 +37,12 @@ parts:
       - gettext
       - graphviz
       - pkg-config
+      - libgl-dev
+      - libgl1-mesa-dev
+      - libgles-dev
+      - libglvnd-dev
+      - libglx-dev
+      - libegl-dev
       - libsm-dev
       - docbook
       - docbook-xml
@@ -90,8 +95,6 @@ parts:
       - libvulkan-dev
       - libxkbcommon-dev
     source: https://invent.kde.org/utilities/kweather/-/archive/v24.05.0/kweather-v24.05.0.tar.gz
-    stage-packages:
-      - libplasma6
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
