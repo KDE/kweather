@@ -32,6 +32,10 @@ parts:
       - -DBUILD_DESKTOPTHEMES=OFF
       - -DBUILD_TESTING=OFF
     build-packages:
+      - libxcb-composite0-dev
+      - libxcb-damage0-dev
+      - libxcb-shape0-dev
+      - libxcb-glx0-dev
       - libwayland-dev
       - doxygen
       - gettext
