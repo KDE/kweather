@@ -13,12 +13,9 @@ apps:
     plugs:
       - unity7
       - network
-      - network-bind
-      - network-observe
-      - hardware-observe
-      - location-observe
 
 compression: lzo
+
 slots:
   session-dbus-interface:
     interface: dbus
