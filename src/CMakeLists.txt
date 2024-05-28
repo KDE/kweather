@@ -59,6 +59,8 @@ qt_add_qml_module(kweather
     SOURCES
     weatherlocationlistmodel.cpp
     weatherlocationlistmodel.h
+    DEPENDENCIES
+    QtCore
 )
 
 qt_add_qml_module(kweatherbackgrounds
