@@ -38,8 +38,8 @@ class WeatherLocation : public QObject
     Q_PROPERTY(QString timeZone READ timeZone NOTIFY timeZoneChanged)
     Q_PROPERTY(QVariant currentHourForecast READ currentHourForecast NOTIFY currentForecastChanged)
 
-    Q_PROPERTY(QVariantList dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
-    Q_PROPERTY(QVariantList hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
+    Q_PROPERTY(QList<KWeatherCore::DailyWeatherForecast> dayForecasts READ dayForecasts NOTIFY dayForecastsChanged)
+    Q_PROPERTY(QList<KWeatherCore::HourlyWeatherForecast> hourForecasts READ hourForecasts NOTIFY hourForecastsChanged)
     Q_PROPERTY(int selectedDay READ selectedDay WRITE setSelectedDay NOTIFY selectedDayChanged)
 
     Q_PROPERTY(QString backgroundComponent READ backgroundComponent NOTIFY currentForecastChanged)
@@ -104,8 +104,8 @@ public:
 
     const QColor &iconColor() const;
     bool darkTheme() const;
-    QVariantList dayForecasts() const;
-    QVariantList hourForecasts() const;
+    QList<KWeatherCore::DailyWeatherForecast> dayForecasts() const;
+    QList<KWeatherCore::HourlyWeatherForecast> hourForecasts() const;
     int selectedDay() const;
     void setSelectedDay(int selectedDay);
     QVariant currentHourForecast();
@@ -160,7 +160,7 @@ private:
     QTimer *m_timer = nullptr;
     float m_latitude, m_longitude;
 
-    QVariantList m_dayForecasts;
-    QVariantList m_hourForecasts;
+    QList<KWeatherCore::DailyWeatherForecast> m_dayForecasts;
+    QList<KWeatherCore::HourlyWeatherForecast> m_hourForecasts;
     int m_selectedDay = 0;
 };

@@ -50,7 +50,7 @@ WeatherLocation::WeatherLocation(QString locationId,
         if (!m_forecast.dailyWeatherForecast().empty()) {
             const auto hourForecasts = m_forecast.dailyWeatherForecast()[m_selectedDay].hourlyWeatherForecast();
             for (const KWeatherCore::HourlyWeatherForecast &hour : hourForecasts) {
-                m_hourForecasts << QVariant::fromValue(hour);
+                m_hourForecasts << hour;
             }
         }
         Q_EMIT hourForecastsChanged();
@@ -200,12 +200,12 @@ bool WeatherLocation::darkTheme() const
     return m_isDarkTheme;
 }
 
-QVariantList WeatherLocation::dayForecasts() const
+QList<KWeatherCore::DailyWeatherForecast> WeatherLocation::dayForecasts() const
 {
     return m_dayForecasts;
 }
 
-QVariantList WeatherLocation::hourForecasts() const
+QList<KWeatherCore::HourlyWeatherForecast> WeatherLocation::hourForecasts() const
 {
     return m_hourForecasts;
 }
@@ -250,14 +250,14 @@ void WeatherLocation::updateData(KWeatherCore::WeatherForecast forecasts)
     if (!m_forecast.dailyWeatherForecast().empty() && m_forecast.dailyWeatherForecast().size() > m_selectedDay) {
         const auto hourForecasts = m_forecast.dailyWeatherForecast()[m_selectedDay].hourlyWeatherForecast();
         for (const KWeatherCore::HourlyWeatherForecast &hour : hourForecasts) {
-            m_hourForecasts << QVariant::fromValue(hour);
+            m_hourForecasts << hour;
         }
     }
     Q_EMIT hourForecastsChanged();
 
     m_dayForecasts.clear();
     for (const KWeatherCore::DailyWeatherForecast &day : m_forecast.dailyWeatherForecast()) {
-        m_dayForecasts << QVariant::fromValue(day);
+        m_dayForecasts << day;
     }
     Q_EMIT dayForecastsChanged();
 
