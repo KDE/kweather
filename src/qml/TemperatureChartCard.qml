@@ -17,7 +17,7 @@ import org.kde.kweather.backgrounds
 Kirigami.AbstractCard {
     id: tempChartCard
 
-    required property var location
+    required property WeatherLocation location
     property var backgroundColor: location.cardBackgroundColor
     property var textColor: location.cardTextColor
 
@@ -37,7 +37,7 @@ Kirigami.AbstractCard {
 
             TemperatureChartData {
                 id: chartData
-                weatherData: location.dayForecasts
+                weatherData: tempChartCard.location.dayForecasts
             }
 
             ChartView {

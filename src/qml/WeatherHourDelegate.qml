@@ -13,6 +13,8 @@ import org.kde.kirigami as Kirigami
 import org.kde.kweather
 
 Rectangle {
+    id: root
+
     implicitWidth: Kirigami.Units.gridUnit * 5
     implicitHeight: hourElement.height
     color: "transparent"
@@ -37,15 +39,15 @@ Rectangle {
         spacing: Kirigami.Units.smallSpacing
 
         Kirigami.Icon {
-            source: weather.weatherIcon
+            source: root.weather.weatherIcon
             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
         }
         Label {
             Layout.fillWidth: true
-            text: Formatter.formatTemperature(weather.temperature, settingsModel.temperatureUnits)
+            text: Formatter.formatTemperature(root.weather.temperature, settingsModel.temperatureUnits)
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-            color: textColor
+            color: root.textColor
             elide: Text.ElideRight
         }
         Item {
@@ -56,8 +58,8 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
-                text: weather.weatherDescription
-                color: textColor
+                text: root.weather.weatherDescription
+                color: root.textColor
                 wrapMode: Text.Wrap
                 elide: Text.ElideRight
                 maximumLineCount: 2
@@ -71,7 +73,7 @@ Rectangle {
                 anchors.right: parent.right
                 visible: false
                 text: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-                color: textColor
+                color: root.textColor
                 wrapMode: Text.Wrap
                 maximumLineCount: 2
             }
@@ -87,8 +89,8 @@ Rectangle {
                 isMask: true
             }
             Label {
-                color: secondaryTextColor
-                text: Formatter.formatPrecipitation(weather.precipitationAmount, settingsModel.precipitationUnits)
+                color: root.secondaryTextColor
+                text: Formatter.formatPrecipitation(root.weather.precipitationAmount, settingsModel.precipitationUnits)
             }
         }
 
@@ -102,16 +104,16 @@ Rectangle {
                 isMask: true
             }
             Label {
-                color: secondaryTextColor
-                text: Formatter.formatWindSpeed(weather.windSpeed, settingsModel.speedUnits)
+                color: root.secondaryTextColor
+                text: Formatter.formatWindSpeed(root.weather.windSpeed, settingsModel.speedUnits)
             }
         }
 
         Label {
             Layout.fillWidth: true
             font.weight: Font.Bold
-            text: Formatter.formatHourlyCardDelegateTime(weather.date, weatherLocation.timeZone)
-            color: textColor
+            text: Formatter.formatHourlyCardDelegateTime(root.weather.date, weatherLocation.timeZone)
+            color: root.textColor
             wrapMode: Text.Wrap
         }
     }

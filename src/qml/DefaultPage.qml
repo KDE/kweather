@@ -16,6 +16,8 @@ import org.kde.kweather.locations
 
 // page shown if there are no weather locations configured
 Kirigami.Page {
+    id: root
+
     title: i18n("Forecast")
 
     property bool loading: false
@@ -47,14 +49,14 @@ Kirigami.Page {
         transform: Translate { y: yTranslate }
         BusyIndicator {
             anchors.centerIn: parent
-            running: loading
+            running: root.loading
             Layout.minimumWidth: Kirigami.Units.iconSizes.huge
             Layout.minimumHeight: width
         }
         
         
         ColumnLayout {
-            visible: !loading
+            visible: !root.loading
             anchors.centerIn: parent
             spacing: Kirigami.Units.gridUnit
             

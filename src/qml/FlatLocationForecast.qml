@@ -19,7 +19,7 @@ Kirigami.ScrollablePage {
 
     background: null // transparent, since there is a page behind
 
-    property var weatherLocation
+    property WeatherLocation weatherLocation
     property var selectedDay: dailyListView.currentItem ? dailyListView.currentItem.weather : weatherLocation.dayForecasts[0]
 
     property bool inView: false
@@ -33,14 +33,14 @@ Kirigami.ScrollablePage {
     }
 
     Connections {
-        target: weatherLocation
+        target: root.weatherLocation
         ignoreUnknownSignals: true
         function onStopLoadingIndicator() {
             root.refreshing = false;
 
             // flat mode loads all locations at once, only show one notification for the current item
             if (root.ListView.isCurrentItem) {
-                showPassiveNotification(i18n("Weather refreshed for %1", weatherLocation.name));
+                showPassiveNotification(i18n("Weather refreshed for %1", root.weatherLocation.name));
             }
         }
     }
@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
             Kirigami.Icon {
                 id: weatherIcon
-                source: weatherLocation.currentHourForecast ? weatherLocation.currentHourForecast.weatherIcon : "weather-none-available"
+                source: root.weatherLocation.currentHourForecast ? root.weatherLocation.currentHourForecast.weatherIcon : "weather-none-available"
                 Layout.preferredHeight: width
                 Layout.preferredWidth: root.width * 0.8 - headerText.width
                 Layout.maximumHeight: Kirigami.Theme.defaultFont.pointSize * 15
@@ -71,7 +71,7 @@ Kirigami.ScrollablePage {
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                         font.weight: Font.Light
                         font.family: lightHeadingFont.name
-                        text: weatherLocation.currentHourForecast ? Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits)) : ""
+                        text: root.weatherLocation.currentHourForecast ? Math.round(Formatter.convertTemp(root.weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits)) : ""
                     }
                     Label {
                         Layout.alignment: Qt.AlignTop
@@ -85,13 +85,13 @@ Kirigami.ScrollablePage {
                 Label {
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                     font.weight: Font.Bold
-                    text: weatherLocation.currentHourForecast ? weatherLocation.currentHourForecast.weatherDescription : ""
+                    text: root.weatherLocation.currentHourForecast ? root.weatherLocation.currentHourForecast.weatherDescription : ""
                 }
                 Label {
                     color: Kirigami.Theme.disabledTextColor
                     Layout.topMargin: Kirigami.Units.largeSpacing
                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 0.9
-                    text: i18n("Updated at %1", weatherLocation.lastUpdated)
+                    text: i18n("Updated at %1", root.weatherLocation.lastUpdated)
                 }
             }
         }
@@ -137,7 +137,7 @@ Kirigami.ScrollablePage {
                 focus: true
             }
 
-            model: weatherLocation.dayForecasts
+            model: root.weatherLocation.dayForecasts
             delegate: WeatherDayDelegate {
                 weather: modelData
                 textColor: Kirigami.Theme.textColor
@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
             }
 
             onCurrentIndexChanged: {
-                weatherLocation.selectedDay = currentIndex
+                root.weatherLocation.selectedDay = currentIndex
             }
         }
 
@@ -168,7 +168,7 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
-            model: weatherLocation.hourForecasts
+            model: root.weatherLocation.hourForecasts
 
             delegate: WeatherHourDelegate {
                 weather: modelData

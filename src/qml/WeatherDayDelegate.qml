@@ -13,6 +13,8 @@ import org.kde.kirigami as Kirigami
 import org.kde.kweather
 
 Item {
+    id: root
+
     implicitWidth: Kirigami.Units.gridUnit * 6
     implicitHeight: dayElement.implicitHeight + Kirigami.Units.largeSpacing * 2
     // implicitHeight: Kirigami.Units.gridUnit * 8
@@ -43,13 +45,13 @@ Item {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.smallSpacing
             font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-            text: weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
-            color: textColor
+            text: root.weather.date.toLocaleString(Qt.locale(), "ddd d").replace(".", "")
+            color: root.textColor
             elide: Text.ElideRight
         }
         Kirigami.Icon {
             Layout.topMargin: Kirigami.Units.smallSpacing
-            source: weather.weatherIcon
+            source: root.weather.weatherIcon
             implicitHeight: Kirigami.Units.iconSizes.medium
             implicitWidth: Kirigami.Units.iconSizes.medium
         }
@@ -59,21 +61,21 @@ Item {
             Label {
                 id: highTemp
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                text: Formatter.formatTemperatureRounded(weather.maxTemp, settingsModel.temperatureUnits)
-                color: textColor
+                text: Formatter.formatTemperatureRounded(root.weather.maxTemp, settingsModel.temperatureUnits)
+                color: root.textColor
             }
             Label {
                 anchors.baseline: highTemp.baseline
-                color: secondaryTextColor
+                color: root.secondaryTextColor
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1
-                text: Formatter.formatTemperatureRounded(weather.minTemp, settingsModel.temperatureUnits)
+                text: Formatter.formatTemperatureRounded(root.weather.minTemp, settingsModel.temperatureUnits)
             }
         }
         Label {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.smallSpacing
-            text: weather.weatherDescription
-            color: textColor
+            text: root.weather.weatherDescription
+            color: root.textColor
             wrapMode: Text.Wrap
         }
     }

@@ -37,7 +37,7 @@ ListView {
         visible: !Kirigami.Settings.isMobile && hoverMouseArea.hovered && (root.currentIndex > 0 || !root.atXBeginning)
 
         onClicked: {
-            if (selectable) {
+            if (root.selectable) {
                 root.decrementCurrentIndex();
             } else {
                 animateMove.to -= root.contentItem.children[0].width + root.spacing;
@@ -53,7 +53,7 @@ ListView {
         visible: !Kirigami.Settings.isMobile && hoverMouseArea.hovered && (root.currentIndex < root.count - 1 || !root.atXEnd)
 
         onClicked: {
-            if (selectable) {
+            if (root.selectable) {
                 root.incrementCurrentIndex();
             } else {
                 animateMove.to += root.contentItem.children[0].width + root.spacing;
