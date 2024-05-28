@@ -28,6 +28,7 @@ class WeatherLocation : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
+    QML_UNCREATABLE("")
     Q_PROPERTY(QString name READ locationName CONSTANT)
     Q_PROPERTY(float latitude READ latitude CONSTANT)
     Q_PROPERTY(float longitude READ longitude CONSTANT)
