@@ -20,7 +20,7 @@ ListView {
     clip: true
 
     snapMode: ListView.SnapToItem
-    
+
     property bool selectable: false
 
     // detect mouse hover
@@ -61,7 +61,7 @@ ListView {
             }
         }
     }
-    
+
     NumberAnimation on contentX {
         id: animateMove
         to: root.contentX

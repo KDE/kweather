@@ -10,15 +10,13 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
-
 Kirigami.ScrollablePage {
     id: root
     title: i18n("Add location")
-    
+
     Component.onCompleted: addLocationListView.focusRequested()
 
     AddLocationListView {
         id: addLocationListView
     }
 }
-

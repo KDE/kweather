@@ -14,6 +14,6 @@ import org.kde.kirigamiaddons.formcard as FormCard
 FormCard.FormCardPage {
     id: root
     title: i18n("Settings")
-    
+
     SettingsComponent {}
 }

@@ -17,9 +17,9 @@ ColumnLayout {
     property var dialog: null // dialog component if this is within a dialog
 
     spacing: 0
-    
-    signal closeRequested()
-    
+
+    signal closeRequested
+
     // HACK: dialog switching requires some time between closing and opening
     Timer {
         id: dialogTimer
@@ -34,7 +34,7 @@ ColumnLayout {
     FormCard.FormHeader {
         title: i18n("General")
     }
-    
+
     FormCard.FormCard {
         FormCard.FormComboBoxDelegate {
             id: forecastStyleDropdown
@@ -43,26 +43,32 @@ ColumnLayout {
             model: ListModel {
                 // we can't use i18n with ListElement
                 Component.onCompleted: {
-                    append({"name": i18n("Flat"), "value": "Flat"});
-                    append({"name": i18n("Dynamic"), "value": "Dynamic"});
-                    
+                    append({
+                        "name": i18n("Flat"),
+                        "value": "Flat"
+                    });
+                    append({
+                        "name": i18n("Dynamic"),
+                        "value": "Dynamic"
+                    });
+
                     // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-                    forecastStyleDropdown.currentIndex = forecastStyleDropdown.indexOfValue(settingsModel.forecastStyle)
+                    forecastStyleDropdown.currentIndex = forecastStyleDropdown.indexOfValue(settingsModel.forecastStyle);
                 }
             }
-            
+
             textRole: "name"
             valueRole: "value"
             onActivated: settingsModel.save()
-            onCurrentValueChanged: settingsModel.forecastStyle = currentValue;
-            
+            onCurrentValueChanged: settingsModel.forecastStyle = currentValue
+
             onClicked: {
                 if (root.dialog && forecastStyleDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
                     dialogTimer.dialog = forecastStyleDropdown.dialog;
                     dialogTimer.restart();
                 }
             }
-            
+
             Connections {
                 target: forecastStyleDropdown.dialog
                 function onClosed() {
@@ -72,15 +78,17 @@ ColumnLayout {
                 }
             }
         }
-        
-        FormCard.FormDelegateSeparator { above: forecastStyleDropdown; below: aboutButton }
-        
+
+        FormCard.FormDelegateSeparator {
+            above: forecastStyleDropdown
+            below: aboutButton
+        }
+
         FormCard.FormButtonDelegate {
             id: aboutButton
             text: i18n("About")
             onClicked: {
                 applicationWindow().pageStack.push(getPage("About"));
-                
                 if (root.dialog) {
                     root.dialog.close();
                 }
@@ -91,7 +99,7 @@ ColumnLayout {
     FormCard.FormHeader {
         title: i18n("Units")
     }
-    
+
     FormCard.FormCard {
         FormCard.FormComboBoxDelegate {
             id: temperatureUnitsDropdown
@@ -100,27 +108,36 @@ ColumnLayout {
             model: ListModel {
                 // we can't use i18n with ListElement
                 Component.onCompleted: {
-                    append({"name": i18n("Use System Default"), "value": "Use System Default"});
-                    append({"name": i18n("Celsius"), "value": "Celsius"});
-                    append({"name": i18n("Fahrenheit"), "value": "Fahrenheit"});
-                    
+                    append({
+                        "name": i18n("Use System Default"),
+                        "value": "Use System Default"
+                    });
+                    append({
+                        "name": i18n("Celsius"),
+                        "value": "Celsius"
+                    });
+                    append({
+                        "name": i18n("Fahrenheit"),
+                        "value": "Fahrenheit"
+                    });
+
                     // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-                    temperatureUnitsDropdown.currentIndex = temperatureUnitsDropdown.indexOfValue(settingsModel.temperatureUnits)
+                    temperatureUnitsDropdown.currentIndex = temperatureUnitsDropdown.indexOfValue(settingsModel.temperatureUnits);
                 }
             }
-            
+
             textRole: "name"
             valueRole: "value"
             onActivated: settingsModel.save()
-            onCurrentValueChanged: settingsModel.temperatureUnits = currentValue;
-            
+            onCurrentValueChanged: settingsModel.temperatureUnits = currentValue
+
             onClicked: {
                 if (root.dialog && temperatureUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
                     dialogTimer.dialog = temperatureUnitsDropdown.dialog;
                     dialogTimer.restart();
                 }
             }
-            
+
             Connections {
                 target: temperatureUnitsDropdown.dialog
                 function onClosed() {
@@ -130,9 +147,12 @@ ColumnLayout {
                 }
             }
         }
-        
-        FormCard.FormDelegateSeparator { above: temperatureUnitsDropdown; below: speedUnitsDropdown }
-        
+
+        FormCard.FormDelegateSeparator {
+            above: temperatureUnitsDropdown
+            below: speedUnitsDropdown
+        }
+
         FormCard.FormComboBoxDelegate {
             id: speedUnitsDropdown
             text: i18n("Speed Units")
@@ -140,27 +160,36 @@ ColumnLayout {
             model: ListModel {
                 // we can't use i18n with ListElement
                 Component.onCompleted: {
-                    append({"name": i18nc("kilometers per hour", "kph"), "value": "kph"});
-                    append({"name": i18nc("miles per hour", "mph"), "value": "mph"});
-                    append({"name": i18nc("meters per second", "m/s"), "value": "m/s"});
-                    
+                    append({
+                        "name": i18nc("kilometers per hour", "kph"),
+                        "value": "kph"
+                    });
+                    append({
+                        "name": i18nc("miles per hour", "mph"),
+                        "value": "mph"
+                    });
+                    append({
+                        "name": i18nc("meters per second", "m/s"),
+                        "value": "m/s"
+                    });
+
                     // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-                    speedUnitsDropdown.currentIndex = speedUnitsDropdown.indexOfValue(settingsModel.speedUnits)
+                    speedUnitsDropdown.currentIndex = speedUnitsDropdown.indexOfValue(settingsModel.speedUnits);
                 }
             }
-            
+
             textRole: "name"
             valueRole: "value"
             onActivated: settingsModel.save()
-            onCurrentValueChanged: settingsModel.speedUnits = currentValue;
-            
+            onCurrentValueChanged: settingsModel.speedUnits = currentValue
+
             onClicked: {
                 if (root.dialog && speedUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
                     dialogTimer.dialog = speedUnitsDropdown.dialog;
                     dialogTimer.restart();
                 }
             }
-            
+
             Connections {
                 target: speedUnitsDropdown.dialog
                 function onClosed() {
@@ -170,9 +199,12 @@ ColumnLayout {
                 }
             }
         }
-        
-        FormCard.FormDelegateSeparator { above: speedUnitsDropdown; below: pressureUnitsDropdown }
-        
+
+        FormCard.FormDelegateSeparator {
+            above: speedUnitsDropdown
+            below: pressureUnitsDropdown
+        }
+
         FormCard.FormComboBoxDelegate {
             id: pressureUnitsDropdown
             text: i18n("Pressure Units")
@@ -180,26 +212,32 @@ ColumnLayout {
             model: ListModel {
                 // we can't use i18n with ListElement
                 Component.onCompleted: {
-                    append({"name": i18nc("Hectopascal Pressure", "hPa"), "value": "hPa"});
-                    append({"name": i18nc("Millimetre of mercury", "mmHg"), "value": "mmHg"});
-                    
+                    append({
+                        "name": i18nc("Hectopascal Pressure", "hPa"),
+                        "value": "hPa"
+                    });
+                    append({
+                        "name": i18nc("Millimetre of mercury", "mmHg"),
+                        "value": "mmHg"
+                    });
+
                     // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-                    pressureUnitsDropdown.currentIndex = pressureUnitsDropdown.indexOfValue(settingsModel.pressureUnits)
+                    pressureUnitsDropdown.currentIndex = pressureUnitsDropdown.indexOfValue(settingsModel.pressureUnits);
                 }
             }
-            
+
             textRole: "name"
             valueRole: "value"
             onActivated: settingsModel.save()
-            onCurrentValueChanged: settingsModel.pressureUnits = currentValue;
-            
+            onCurrentValueChanged: settingsModel.pressureUnits = currentValue
+
             onClicked: {
                 if (root.dialog && pressureUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
                     dialogTimer.dialog = pressureUnitsDropdown.dialog;
                     dialogTimer.restart();
                 }
             }
-            
+
             Connections {
                 target: pressureUnitsDropdown.dialog
                 function onClosed() {
@@ -209,8 +247,11 @@ ColumnLayout {
                 }
             }
         }
-        
-        FormCard.FormDelegateSeparator { above: pressureUnitsDropdown; below: precipitationUnitsDropdown }
+
+        FormCard.FormDelegateSeparator {
+            above: pressureUnitsDropdown
+            below: precipitationUnitsDropdown
+        }
 
         // Precipitation
         FormCard.FormComboBoxDelegate {
@@ -220,19 +261,25 @@ ColumnLayout {
             model: ListModel {
                 // we can't use i18n with ListElement
                 Component.onCompleted: {
-                    append({"name": i18nc("Millimeters", "mm"), "value": "mm"});
-                    append({"name": i18nc("Inches", "in"), "value": "in"});
-                    
+                    append({
+                        "name": i18nc("Millimeters", "mm"),
+                        "value": "mm"
+                    });
+                    append({
+                        "name": i18nc("Inches", "in"),
+                        "value": "in"
+                    });
+
                     // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-                    precipitationUnitsDropdown.currentIndex = precipitationUnitsDropdown.indexOfValue(settingsModel.precipitationUnits)
+                    precipitationUnitsDropdown.currentIndex = precipitationUnitsDropdown.indexOfValue(settingsModel.precipitationUnits);
                 }
             }
-            
+
             textRole: "name"
             valueRole: "value"
             onActivated: settingsModel.save()
-            onCurrentValueChanged: settingsModel.precipitationUnits = currentValue;
-            
+            onCurrentValueChanged: settingsModel.precipitationUnits = currentValue
+
             onClicked: {
                 if (root.dialog && precipitationUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
                     dialogTimer.dialog = precipitationUnitsDropdown.dialog;

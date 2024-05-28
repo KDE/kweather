@@ -11,10 +11,9 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
-
 Kirigami.ScrollablePage {
     title: i18n("Locations")
-    
+
     property real yTranslate: 0
     property int currentIndex: 0
 
@@ -26,8 +25,10 @@ Kirigami.ScrollablePage {
             onTriggered: applicationWindow().openAddLocation()
         }
     ]
-    
+
     LocationsListView {
-        transform: Translate { y: yTranslate }
+        transform: Translate {
+            y: yTranslate
+        }
     }
 }

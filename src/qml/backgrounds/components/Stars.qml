@@ -14,9 +14,9 @@ Item {
     id: rootItem
     anchors.fill: parent
     property double starRadius: 1
-    
+
     property double opacityModifier: 0
-    
+
     NumberAnimation on opacityModifier {
         running: true
         to: 10000
@@ -30,32 +30,34 @@ Item {
             restart();
         }
     }
-    
+
     Repeater {
         model: 30
-        
+
         Item {
             id: shape
             anchors.fill: rootItem
-            
+
             property double starModifier: {
-                let num = 5000 * Math.random()
+                let num = 5000 * Math.random();
                 if (num < 1000) {
                     return 1000;
                 } else {
                     return num;
                 }
             }
-            
+
             opacity: {
                 let remainder = rootItem.opacityModifier % (2 * starModifier);
-                if (remainder > starModifier) { // opacity is decreasing
+                if (remainder > starModifier) {
+                    // opacity is decreasing
                     return (starModifier - (remainder % starModifier)) / starModifier;
-                } else { // opacity is increasing
+                } else {
+                    // opacity is increasing
                     return remainder / starModifier;
                 }
             }
-            
+
             Rectangle {
                 color: "#fff9c4"
                 height: starRadius * 2

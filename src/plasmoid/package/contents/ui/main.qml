@@ -12,14 +12,14 @@ import org.kde.kirigami 2.11 as Kirigami
 PlasmoidItem {
     id: root
 
-    Plasmoid.backgroundHints: "ShadowBackground";
+    Plasmoid.backgroundHints: "ShadowBackground"
 
     fullRepresentation: Loader {
         active: true
         source: root.plasmoid.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
     }
 
-    compactRepresentation: ColumnLayout{
+    compactRepresentation: ColumnLayout {
         Kirigami.Icon {
             height: 20
             width: 20

@@ -21,9 +21,9 @@ Kirigami.Page {
     title: i18n("Forecast")
 
     property bool loading: false
-    
+
     property int yTranslate: 0
-    
+
     Connections {
         target: WeatherLocationListModel
         function onNetworkErrorCreatingDefault() {
@@ -35,7 +35,7 @@ Kirigami.Page {
             loading = false;
         }
     }
-    
+
     actions: [
         Kirigami.Action {
             visible: Kirigami.Settings.isMobile
@@ -44,41 +44,43 @@ Kirigami.Page {
         }
     ]
 
-    Item { // empty list view to centre placeholdermessage
+    Item {
+        // empty list view to centre placeholdermessage
         anchors.fill: parent
-        transform: Translate { y: yTranslate }
+        transform: Translate {
+            y: yTranslate
+        }
         BusyIndicator {
             anchors.centerIn: parent
             running: root.loading
             Layout.minimumWidth: Kirigami.Units.iconSizes.huge
             Layout.minimumHeight: width
         }
-        
-        
+
         ColumnLayout {
             visible: !root.loading
             anchors.centerIn: parent
             spacing: Kirigami.Units.gridUnit
-            
+
             Kirigami.Icon {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 source: "qrc:/resources/kweather.svg"
                 implicitWidth: Kirigami.Units.iconSizes.enormous * 1.5
                 implicitHeight: Kirigami.Units.iconSizes.enormous * 1.5
             }
-            
+
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 text: i18n("Weather")
                 type: Kirigami.Heading.Type.Primary
                 horizontalAlignment: Qt.AlignHCenter
             }
-            
+
             Button {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 icon.name: "list-add"
                 text: i18n("Add Location")
-                onClicked: applicationWindow().openAddLocation();
+                onClicked: applicationWindow().openAddLocation()
             }
         }
     }

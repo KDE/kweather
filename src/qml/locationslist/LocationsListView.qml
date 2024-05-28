@@ -19,28 +19,42 @@ import org.kde.kweather.components
 
 ListView {
     id: root
-    
-    signal closeRequested()
-    
+
+    signal closeRequested
+
     DelegateModel {
         id: visualModel
         model: WeatherLocationListModel
         delegate: delegateComponent
     }
-    
+
     model: visualModel
-    
+
     reuseItems: true
     currentIndex: -1 // no default highlight
 
     add: Transition {
-        NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: Kirigami.Units.shortDuration }
+        NumberAnimation {
+            property: "opacity"
+            from: 0
+            to: 1.0
+            duration: Kirigami.Units.shortDuration
+        }
     }
     remove: Transition {
-        NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: Kirigami.Units.shortDuration }
+        NumberAnimation {
+            property: "opacity"
+            from: 0
+            to: 1.0
+            duration: Kirigami.Units.shortDuration
+        }
     }
     displaced: Transition {
-        NumberAnimation { properties: "x,y"; duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad}
+        NumberAnimation {
+            properties: "x,y"
+            duration: Kirigami.Units.longDuration
+            easing.type: Easing.InOutQuad
+        }
     }
     moveDisplaced: Transition {
         YAnimator {
@@ -48,7 +62,7 @@ ListView {
             easing.type: Easing.InOutQuad
         }
     }
-    
+
     Connections {
         target: WeatherLocationListModel
         function onNetworkErrorCreating() {
@@ -65,7 +79,7 @@ ListView {
         icon.name: "globe"
         text: i18n("Add a location")
         visible: root.count == 0
-        
+
         helpfulAction: Kirigami.Action {
             icon.name: "list-add"
             text: i18n("Add Location")
@@ -75,46 +89,45 @@ ListView {
 
     Component {
         id: delegateComponent
-        
+
         Item {
             id: dragParent
             width: listItem.width
             height: listItem.height
-            
+
             property int visualIndex: DelegateModel.itemsIndex
             property bool held: false // whether it is being dragged
             z: held ? 1 : 0
-            
+
             // logic for receiving drag events
             DropArea {
                 anchors.fill: parent
-                
-                onEntered: (drag) => {
+
+                onEntered: drag => {
                     let from = drag.source.visualIndex;
                     let to = dragParent.visualIndex;
-                    
                     if (from !== undefined && to !== undefined && from !== to) {
                         visualModel.items.move(from, to);
                         WeatherLocationListModel.move(from, to);
                     }
                 }
             }
-            
+
             ListDelegate {
                 id: listItem
                 width: root.width
-                
+
                 leftPadding: Kirigami.Units.largeSpacing
                 rightPadding: Kirigami.Units.largeSpacing
                 topPadding: Kirigami.Units.largeSpacing
                 bottomPadding: Kirigami.Units.largeSpacing
-                
+
                 onClicked: {
                     root.closeRequested();
                     applicationWindow().switchToPage(applicationWindow().getPage("Forecast"), 0);
                     applicationWindow().getPage("Forecast").switchPageIndex(index);
                 }
-                
+
                 function deleteItem() {
                     // if there are no locations left
                     if (WeatherLocationListModel.count === 1) {
@@ -122,13 +135,13 @@ ListView {
                     }
                     WeatherLocationListModel.remove(index);
                 }
-                
+
                 // drag logic
                 Drag.active: dragParent.held
                 Drag.source: dragHandle
                 Drag.hotSpot.x: width / 2
                 Drag.hotSpot.y: height / 2
-                
+
                 // remove anchors when dragging
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
@@ -139,7 +152,7 @@ ListView {
                             target: listItem
                             parent: root
                         }
-                        
+
                         AnchorChanges {
                             target: listItem
                             anchors.horizontalCenter: undefined
@@ -159,22 +172,22 @@ ListView {
                         implicitHeight: Kirigami.Units.iconSizes.smallMedium
                         cursorShape: pressed ? Qt.ClosedHandCursor : Qt.OpenHandCursor
                         preventStealing: true
-                        
+
                         property int visualIndex: dragParent.visualIndex
-                        
+
                         drag.target: dragParent.held ? listItem : undefined
                         drag.axis: Drag.YAxis
-                        
-                        onPressed: dragParent.held = true;
-                        onReleased: dragParent.held = false;
-                        
+
+                        onPressed: dragParent.held = true
+                        onReleased: dragParent.held = false
+
                         Kirigami.Icon {
                             anchors.fill: parent
                             source: "handle-sort"
                             opacity: dragHandle.pressed || (!Kirigami.Settings.tabletMode && dragHandle.hovered) ? 1 : 0.6
                         }
                     }
-                    
+
                     // weather icon and temperature
                     ColumnLayout {
                         Layout.leftMargin: Kirigami.Units.largeSpacing * 2
@@ -193,28 +206,28 @@ ListView {
                             text: Formatter.formatTemperatureRounded(model.location.hourForecasts[0].temperature, settingsModel.temperatureUnits)
                         }
                     }
-        
+
                     // location name
                     Kirigami.Heading {
                         Layout.alignment: Qt.AlignLeft
                         Layout.fillWidth: true
-                        
+
                         level: 2
                         text: model.location.name
                         elide: Text.ElideRight
                         maximumLineCount: 2
                         wrapMode: Text.Wrap
                     }
-                    
+
                     ToolButton {
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                         Layout.leftMargin: Kirigami.Units.smallSpacing
-                        
+
                         icon.name: "delete"
                         text: i18n("Delete")
-                        onClicked: listItem.deleteItem();
+                        onClicked: listItem.deleteItem()
                         display: AbstractButton.IconOnly
-                        
+
                         ToolTip.delay: Kirigami.Units.toolTipDelay
                         ToolTip.timeout: 5000
                         ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered

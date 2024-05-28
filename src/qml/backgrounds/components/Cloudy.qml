@@ -17,7 +17,7 @@ Item {
     property color cloudColor: "white"
     property double unitSize: width / 100 // 100 is full width of screen
     property double heightUnitSize: height / 100
-    
+
     Cloud {
         opacity: 0.2
         color: baseRect.cloudColor

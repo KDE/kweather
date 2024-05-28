@@ -21,7 +21,10 @@ Kirigami.AbstractCard {
     property var backgroundColor: location.cardBackgroundColor
     property var textColor: location.cardTextColor
 
-    leftPadding: 0; rightPadding: 0; topPadding: 0; bottomPadding: 0;
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
     implicitHeight: Math.round(Kirigami.Units.gridUnit * 8.5)
 
     clip: true
@@ -43,8 +46,10 @@ Kirigami.AbstractCard {
             ChartView {
                 id: chartView
                 anchors.fill: parent
-                margins.left: Kirigami.Units.largeSpacing; margins.right: Kirigami.Units.largeSpacing
-                margins.top: 0; margins.bottom: Kirigami.Units.smallSpacing
+                margins.left: Kirigami.Units.largeSpacing
+                margins.right: Kirigami.Units.largeSpacing
+                margins.top: 0
+                margins.bottom: Kirigami.Units.smallSpacing
                 legend.visible: false
                 antialiasing: true
                 localizeNumbers: true
@@ -97,13 +102,13 @@ Kirigami.AbstractCard {
                 property int scrollDist: Kirigami.Units.gridUnit * 2
                 onWheel: wheel => {
                     //check if mouse is scrolling up or down
-                    if (wheel.angleDelta.y < 0){
-                        page.flickable.contentY += scrollDist
+                    if (wheel.angleDelta.y < 0) {
+                        page.flickable.contentY += scrollDist;
                     } else {
-                        page.flickable.contentY -= scrollDist
+                        page.flickable.contentY -= scrollDist;
                     }
                 }
-                onPressed: mouse =>  mouse.accepted = false // forward mouse event
+                onPressed: mouse => mouse.accepted = false // forward mouse event
                 onReleased: mouse => mouse.accepted = false // forward mouse event
             }
         }

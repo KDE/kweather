@@ -16,20 +16,19 @@ Rectangle {
     color: "transparent"
     anchors.fill: parent
     opacity: 0 // animated intro
-    
+
     // specify background colour
     property color gradientColorTop: "white"
     property color gradientColorBottom: "white"
-    
+
     property bool sun: false
-    
+
     property bool clouds: false
     property color cloudsColor: "white"
-    
+
     property bool stars: false
-    
+
     property bool rain: false
-    
+
     property bool snow: false
 }
-

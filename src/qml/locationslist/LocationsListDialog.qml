@@ -8,14 +8,14 @@ import org.kde.kirigami as Kirigami
 
 Kirigami.Dialog {
     id: root
-    
+
     standardButtons: Kirigami.Dialog.NoButton
     parent: applicationWindow().overlay
     title: i18n("Locations")
     preferredHeight: Kirigami.Units.gridUnit * 20
     preferredWidth: Kirigami.Units.gridUnit * 20
     padding: 0
-    
+
     customFooterActions: [
         Kirigami.Action {
             icon.name: "list-add"
@@ -26,8 +26,8 @@ Kirigami.Dialog {
             }
         }
     ]
-    
+
     LocationsListView {
-        onCloseRequested: root.close();
+        onCloseRequested: root.close()
     }
 }

@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
             }
 
             onCurrentIndexChanged: {
-                root.weatherLocation.selectedDay = currentIndex
+                root.weatherLocation.selectedDay = currentIndex;
             }
         }
 
@@ -189,4 +189,3 @@ Kirigami.ScrollablePage {
         }
     }
 }
-

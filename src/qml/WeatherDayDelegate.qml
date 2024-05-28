@@ -17,19 +17,20 @@ Item {
 
     implicitWidth: Kirigami.Units.gridUnit * 6
     implicitHeight: dayElement.implicitHeight + Kirigami.Units.largeSpacing * 2
+
     // implicitHeight: Kirigami.Units.gridUnit * 8
 
     property var weather
     property color textColor
     property color secondaryTextColor
-    property alias mouseArea: mouse 
-    
+    property alias mouseArea: mouse
+
     MouseArea {
         id: mouse
         anchors.fill: parent
         onClicked: dailyListView.currentIndex = index
     }
-    
+
     // actual day display
     ColumnLayout {
         id: dayElement

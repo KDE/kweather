@@ -16,4 +16,3 @@ DynamicBackground {
     gradientColorBottom: "#24a3de"
     snow: true
 }
-

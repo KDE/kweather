@@ -15,7 +15,10 @@ import org.kde.kweather
 
 Kirigami.Page {
     id: page
-    topPadding: 0; bottomPadding: 0; rightPadding: 0; leftPadding: 0
+    topPadding: 0
+    bottomPadding: 0
+    rightPadding: 0
+    leftPadding: 0
 
     title: {
         if (WeatherLocationListModel.locations.count == 0) {
@@ -28,15 +31,15 @@ Kirigami.Page {
             return "";
         }
     }
-    
+
     globalToolBarStyle: (settingsModel.forecastStyle === "Dynamic" && pageStack.layers.depth <= 1) ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
-    
+
     property real yTranslate: 0
-    
+
     function switchPageIndex(pageIndex) {
         loader.item.currentIndex = pageIndex;
     }
-    
+
     // actions (only shown in flat view since the toolbar is hidden in dynamic view)
     actions: [
         Kirigami.Action {
@@ -61,14 +64,16 @@ Kirigami.Page {
 
     Loader {
         id: loader
-        transform: Translate { y: yTranslate }
+        transform: Translate {
+            y: yTranslate
+        }
         anchors.fill: parent
-        
+
         Component.onCompleted: loadStyle()
         function loadStyle() {
             setSource(settingsModel.forecastStyle === "Dynamic" ? "DynamicForecastPage.qml" : "FlatForecastPage.qml");
         }
-        
+
         Connections {
             target: settingsModel
             function onForecastStyleChanged() {
@@ -77,5 +82,3 @@ Kirigami.Page {
         }
     }
 }
-
-

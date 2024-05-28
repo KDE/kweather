@@ -6,6 +6,7 @@
  */
 import QtQuick
 import QtQuick.Layouts
+
 Canvas {
     id: mycanvas
 
@@ -18,7 +19,6 @@ Canvas {
         ctx.lineWidth = 3;
         ctx.lineCap = 'round';
         ctx.clearRect(0, 0, width, height);
-
         function draw() {
             for (var c = 0; c < particles.length; c++) {
                 var p = particles[c];
@@ -29,7 +29,6 @@ Canvas {
             }
             move();
         }
-
         function move() {
             for (var b = 0; b < particles.length; b++) {
                 var p = particles[b];
@@ -55,13 +54,12 @@ Canvas {
         var maxParts = 80;
         for (var a = 0; a < maxParts; a++) {
             init.push({
-                          x: Math.random() * width,
-                          y: Math.random() * height,
-                          l: 2 + Math.random() * 4,
-                          ys: Math.random() * 10 + 10
-                      })
+                x: Math.random() * width,
+                y: Math.random() * height,
+                l: 2 + Math.random() * 4,
+                ys: Math.random() * 10 + 10
+            });
         }
-
         particles = [];
         for (var b = 0; b < maxParts; b++) {
             particles[b] = init[b];

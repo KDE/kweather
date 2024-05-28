@@ -12,7 +12,7 @@ import org.kde.kirigamiaddons.delegates as Delegates
 Rectangle {
     id: container
 
-    signal selected()
+    signal selected
 
     color: Kirigami.Theme.backgroundColor
     radius: 8
@@ -30,8 +30,8 @@ Rectangle {
             text: modelData
 
             onClicked: {
-                selected()
-                plasmoid.nativeInterface.setLocation(modelData)
+                selected();
+                plasmoid.nativeInterface.setLocation(modelData);
             }
         }
 

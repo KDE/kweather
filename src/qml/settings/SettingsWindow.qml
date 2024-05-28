@@ -12,28 +12,30 @@ Kirigami.ApplicationWindow {
     id: root
     title: i18n("Settings")
     flags: Qt.WindowStaysOnTopHint
-    
+
     height: Kirigami.Units.gridUnit * 26
     width: Kirigami.Units.gridUnit * 34
-    
+
     Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
-    
-    pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.ToolBar;
-    pageStack.globalToolBar.showNavigationButtons: Kirigami.ApplicationHeaderStyle.ShowBackButton;
+
+    pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.ToolBar
+    pageStack.globalToolBar.showNavigationButtons: Kirigami.ApplicationHeaderStyle.ShowBackButton
     pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
     pageStack.popHiddenPages: true
-    
+
     pageStack.initialPage: Kirigami.ScrollablePage {
         topPadding: 0
         leftPadding: 0
         rightPadding: 0
-        
+
         globalToolBarStyle: Kirigami.ApplicationHeaderStyle.None
-        
+
         ColumnLayout {
-            Kirigami.Separator { Layout.fillWidth: true }
-            
+            Kirigami.Separator {
+                Layout.fillWidth: true
+            }
+
             SettingsComponent {
                 Layout.topMargin: Kirigami.Units.gridUnit
                 Layout.fillWidth: true
@@ -42,4 +44,3 @@ Kirigami.ApplicationWindow {
         }
     }
 }
-

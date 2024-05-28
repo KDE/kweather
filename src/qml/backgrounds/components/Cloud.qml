@@ -13,7 +13,7 @@ import org.kde.kirigami as Kirigami
 Item {
     id: rootShape
     anchors.fill: parent
-    
+
     property double maxRadiusChange
     property double maxCoordChange
     property double minRadius
@@ -23,7 +23,7 @@ Item {
     property double centerX: minX
     property double centerY: minY
     property color color
-    
+
     NumberAnimation on radius {
         duration: 4000
         running: true
@@ -33,7 +33,7 @@ Item {
             restart();
         }
     }
-    
+
     NumberAnimation on centerX {
         duration: 2600
         running: true
@@ -43,7 +43,7 @@ Item {
             restart();
         }
     }
-    
+
     NumberAnimation on centerY {
         duration: 3400
         running: true
@@ -53,13 +53,13 @@ Item {
             restart();
         }
     }
-    
+
     Rectangle {
         radius: width / 2
         color: rootShape.color
         width: rootShape.radius * 2
         height: width
-        x: centerX - width / 2 
+        x: centerX - width / 2
         y: centerY - width / 2
     }
 }

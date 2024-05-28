@@ -16,28 +16,28 @@ import org.kde.kweather.components
 
 ListView {
     id: root
-    
+
     property string searchQuery: ""
-    
+
     model: LocationQueryModel {}
-    
-    signal closeRequested()
-    signal focusRequested()
-    
+
+    signal closeRequested
+    signal focusRequested
+
     header: Control {
         width: root.width
         leftPadding: Kirigami.Units.largeSpacing
         rightPadding: Kirigami.Units.largeSpacing
         topPadding: Kirigami.Units.largeSpacing
-        bottomPadding: Kirigami.Units.largeSpacing 
-        
+        bottomPadding: Kirigami.Units.largeSpacing
+
         contentItem: RowLayout {
             spacing: Kirigami.Units.smallSpacing
-            
+
             Kirigami.SearchField {
                 id: search
                 Layout.fillWidth: true
-                
+
                 Connections {
                     target: root
                     function onFocusRequested() {
@@ -62,7 +62,7 @@ ListView {
                 }
                 KeyNavigation.down: root
             }
-            
+
             Button {
                 id: searchButton
                 icon.name: "search"
@@ -103,10 +103,8 @@ ListView {
             icon.name: "mark-location"
             text: i18n("Add current location")
             onTriggered: {
-                WeatherLocationListModel.requestCurrentLocation()
-                
+                WeatherLocationListModel.requestCurrentLocation();
                 root.closeRequested();
-                
                 let page = getPage("Forecast");
                 switchToPage(page, 0);
                 if (page.loading !== undefined) {
@@ -139,19 +137,19 @@ ListView {
     delegate: ListDelegate {
         width: root.width
         showSeparator: model.index != root.count - 1
-        
+
         leftPadding: Kirigami.Units.largeSpacing
         rightPadding: Kirigami.Units.largeSpacing
         topPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing * 2
         bottomPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing * 2
-        
+
         function apply() {
             root.model.addLocation(index);
             applicationWindow().getPage("Forecast").switchPageIndex(WeatherLocationListModel.count - 1);
             switchToPage(appwindow.getPage("Forecast"), 0);
             root.closeRequested();
         }
-        
+
         onClicked: apply()
         Keys.onPressed: event => {
             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
@@ -161,10 +159,10 @@ ListView {
                 event.accepted = false;
             }
         }
-        
+
         contentItem: RowLayout {
             spacing: Kirigami.Units.largeSpacing
-            
+
             Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter

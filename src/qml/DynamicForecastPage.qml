@@ -123,14 +123,18 @@ Kirigami.ScrollablePage {
                     color: backgroundLoader.item ? backgroundLoader.item.gradientColorTop : "white"
                     position: 0.0
                     Behavior on color {
-                        ColorAnimation { duration: Kirigami.Units.longDuration }
+                        ColorAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
                     }
                 }
                 GradientStop {
                     color: backgroundLoader.item ? backgroundLoader.item.gradientColorBottom : "white"
                     position: 1.0
                     Behavior on color {
-                        ColorAnimation { duration: Kirigami.Units.longDuration }
+                        ColorAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
                     }
                 }
             }
@@ -147,12 +151,12 @@ Kirigami.ScrollablePage {
             // background components (ex. cloud, sun, etc.)
             Item {
                 anchors.fill: parent
-                opacity: { // opacity lightens when you scroll down the page
+                opacity: {
+                    // opacity lightens when you scroll down the page
                     let scrollAmount = page.flickable.contentY - (Kirigami.Units.gridUnit * 3);
                     if (scrollAmount < 0) {
                         scrollAmount = 0;
                     }
-
                     return 1 - 0.5 * (scrollAmount / (Kirigami.Units.gridUnit * 5));
                 }
 
@@ -160,35 +164,57 @@ Kirigami.ScrollablePage {
                 Loader {
                     anchors.fill: parent
                     opacity: backgroundLoader.item && backgroundLoader.item.sun ? 1 : 0
-                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
+                    }
                     active: opacity !== 0
                     sourceComponent: Sun {}
                 }
                 Loader {
                     anchors.fill: parent
                     opacity: backgroundLoader.item && backgroundLoader.item.stars ? 1 : 0
-                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
+                    }
                     active: opacity !== 0
                     sourceComponent: Stars {}
                 }
                 Loader {
                     anchors.fill: parent
                     opacity: backgroundLoader.item && backgroundLoader.item.clouds ? 1 : 0
-                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
+                    }
                     active: opacity !== 0
-                    sourceComponent: Cloudy { cloudColor: backgroundLoader.item.cloudsColor }
+                    sourceComponent: Cloudy {
+                        cloudColor: backgroundLoader.item.cloudsColor
+                    }
                 }
                 Loader {
                     anchors.fill: parent
                     opacity: backgroundLoader.item && backgroundLoader.item.rain ? 1 : 0
-                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
+                    }
                     active: opacity !== 0
                     sourceComponent: Rain {}
                 }
                 Loader {
                     anchors.fill: parent
                     opacity: backgroundLoader.item && backgroundLoader.item.snow ? 1 : 0
-                    Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration } }
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: Kirigami.Units.longDuration
+                        }
+                    }
                     active: opacity !== 0
                     sourceComponent: Snow {}
                 }
@@ -250,7 +276,8 @@ Kirigami.ScrollablePage {
             DragHandler {
                 id: dragHandler
                 target: rootMask
-                yAxis.enabled: false; xAxis.enabled: Kirigami.Settings.hasTransientTouchInput
+                yAxis.enabled: false
+                xAxis.enabled: Kirigami.Settings.hasTransientTouchInput
                 xAxis.minimum: page.canGoRight ? -page.width : -pageChangeThreshold / 2 // extra feedback
                 xAxis.maximum: page.canGoLeft ? page.width : pageChangeThreshold / 2 // extra feedback
 
@@ -273,7 +300,8 @@ Kirigami.ScrollablePage {
 
             // reset to position
             NumberAnimation on x {
-                id: xAnim; to: 0
+                id: xAnim
+                to: 0
                 running: false
                 easing.type: Easing.InOutQuad
                 duration: Kirigami.Units.longDuration
@@ -383,8 +411,8 @@ Kirigami.ScrollablePage {
                 // separator from top
                 // used instead of topMargin, since it can be shrunk when needed (small window height)
                 Item {
-                    Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2, // header height
-                                                    page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
+                    Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2 // header height
+                    , page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
                 }
 
                 // weather header
@@ -475,7 +503,7 @@ Kirigami.ScrollablePage {
 
                         spacing: Kirigami.Units.largeSpacing
 
-                        onDraggingChanged: dailyCard.pressedCount += dragging? 1 : -1;
+                        onDraggingChanged: dailyCard.pressedCount += dragging ? 1 : -1
 
                         model: weatherLocation.dayForecasts
                         delegate: WeatherDayDelegate {
@@ -493,7 +521,7 @@ Kirigami.ScrollablePage {
                         }
 
                         onCurrentIndexChanged: {
-                            weatherLocation.selectedDay = currentIndex
+                            weatherLocation.selectedDay = currentIndex;
                         }
                     }
                 }
@@ -551,7 +579,7 @@ Kirigami.ScrollablePage {
                         id: hourlyListView
                         selectable: false
                         model: weatherLocation.hourForecasts
-                        onDraggingChanged: hourlyCard.pressedCount += dragging? 1 : -1;
+                        onDraggingChanged: hourlyCard.pressedCount += dragging ? 1 : -1
 
                         delegate: WeatherHourDelegate {
                             id: delegate
@@ -598,4 +626,3 @@ Kirigami.ScrollablePage {
         }
     }
 }
-

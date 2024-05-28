@@ -16,25 +16,29 @@ SwipeView {
     id: forecastView
     property bool canGoLeft: currentIndex > 0
     property bool canGoRight: currentIndex < WeatherLocationListModel.count - 1
-    
+
     anchors.fill: parent
-    transform: Translate { y: yTranslate }
-    
+    transform: Translate {
+        y: yTranslate
+    }
+
     function moveLeft() {
         currentIndex--;
     }
     function moveRight() {
         currentIndex++;
     }
-    
+
     Repeater {
         id: forecastViewRepeater
         anchors.fill: parent
-        
+
         // on mobile mode, for some reason, switching the type to dynamic and back to flat again gives an empty page unless we assign the model
         // after component creation
         Component.onCompleted: {
-            model = Qt.binding(function() { return WeatherLocationListModel.locations; });
+            model = Qt.binding(function () {
+                return WeatherLocationListModel.locations;
+            });
         }
         delegate: FlatLocationForecast {
             weatherLocation: modelData

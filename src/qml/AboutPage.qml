@@ -11,4 +11,4 @@ import org.kde.coreaddons
 FormCard.AboutPage {
     id: aboutPage
     aboutData: AboutData
-} 
+}
