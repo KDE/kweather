@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Stefan Asserhäll <stefan.asserhall@bredband.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-18 00:40+0000\n"
-"PO-Revision-Date: 2023-07-24 11:50+0200\n"
+"PO-Revision-Date: 2024-06-08 15:58+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -59,17 +59,15 @@ msgid "%1 mmHg"
 msgstr "%1 mm kvicksilver"
 
 #: formatter.cpp:78
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1 %"
 
 #: formatter.cpp:83
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1 %"
+msgstr "%1"
 
 #: formatter.cpp:89
 #, kde-format
@@ -100,10 +98,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Ett konvergent väderprogram för Plasma"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2022 Plasma-utvecklingsgruppen"
+msgstr "© 2020-2024 Plasma-utvecklingsgruppen"
 
 #: main.cpp:60
 #, kde-format
@@ -121,10 +118,9 @@ msgid "No location found on system, please add some in kweather"
 msgstr "Ingen plats hittades i systemet, lägg till någon i Väder"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "välj platsen"
+msgstr "Välj plats"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -206,10 +202,9 @@ msgid "Daily"
 msgstr "Dagligen"
 
 #: qml/DynamicForecastPage.qml:438
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "Lokalt datum: "
+msgstr "Lokalt datum: %1"
 
 #: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
 #, kde-format
@@ -217,10 +212,9 @@ msgid "Hourly"
 msgstr "Varje timma"
 
 #: qml/DynamicForecastPage.qml:526
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "Lokal tid: "
+msgstr "Lokal tid: %1"
 
 #: qml/InfoCard.qml:48
 #, kde-format
@@ -238,8 +232,7 @@ msgid "Pressure"
 msgstr "Lufttryck"
 
 #: qml/InfoCard.qml:120
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
 msgstr "UV-index"
 
