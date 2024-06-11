@@ -44,7 +44,7 @@ sudo make install
 
 ## Gallery
 
-<img src="screenshots/kweather-mobile-dynamic.png" width="200px">
-<img src="screenshots/kweather-mobile-dynamic2.png" width="200px">
-<img src="screenshots/kweather-mobile-flat.png" width="200px">
-<img src="screenshots/kweather-desktop-dynamic.png" width="500px">
+<img src="https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png" width="200px">
+<img src="https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png" width="200px">
+<img src="https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png" width="200px">
+<img src="https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png" width="500px">
