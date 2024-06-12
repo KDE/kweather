@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-18 00:40+0000\n"
+"POT-Creation-Date: 2024-06-12 00:41+0000\n"
 "PO-Revision-Date: 2023-11-14 13:23-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -88,7 +88,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:54 qml/DefaultPage.qml:70 qml/Main.qml:21
+#: main.cpp:54 qml/DefaultPage.qml:74 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "Clima"
@@ -145,75 +145,75 @@ msgstr "Selecionar localização"
 msgid "Open KWeather"
 msgstr "Abrir KWeather"
 
-#: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
 msgid "Forecast"
 msgstr "Previsão"
 
-#: qml/DefaultPage.qml:28
+#: qml/DefaultPage.qml:30
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "Erro de conexão ao tentar obter a localização atual"
 
-#: qml/DefaultPage.qml:78 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:25
-#: qml/locationslist/LocationsListView.qml:71
+#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
 msgstr "Adicionar localização"
 
-#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
+#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "O clima em %1 foi atualizado"
 
-#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
+#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "Atualizado às %1"
 
-#: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
 #: qml/locationslist/LocationsListDialog.qml:14
-#: qml/locationslist/LocationsListPage.qml:16
+#: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
 msgid "Locations"
 msgstr "Localizações"
 
-#: qml/DynamicForecastPage.qml:332
+#: qml/DynamicForecastPage.qml:360
 #, kde-format
 msgid "Choose location"
 msgstr "Escolher localização"
 
-#: qml/DynamicForecastPage.qml:347 qml/DynamicForecastPage.qml:352
-#: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
+#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
+#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
 msgstr "Configurações"
 
-#: qml/DynamicForecastPage.qml:368 qml/DynamicForecastPage.qml:373
-#: qml/ForecastContainerPage.qml:56
+#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
+#: qml/ForecastContainerPage.qml:59
 #, kde-format
 msgid "Refresh"
 msgstr "Atualizar"
 
-#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
+#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "Diariamente"
 
-#: qml/DynamicForecastPage.qml:438
+#: qml/DynamicForecastPage.qml:466
 #, kde-format
 msgid "Local date: %1"
 msgstr "Data local: %1"
 
-#: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "A cada hora"
 
-#: qml/DynamicForecastPage.qml:526
+#: qml/DynamicForecastPage.qml:554
 #, kde-format
 msgid "Local time: %1"
 msgstr "Hora local: %1"
@@ -258,27 +258,27 @@ msgstr "Pesquisar local"
 msgid "Add current location"
 msgstr "Adicionar localização atual"
 
-#: qml/locationslist/AddLocationListView.qml:127
+#: qml/locationslist/AddLocationListView.qml:125
 #, kde-format
 msgid "No results"
 msgstr "Nenhum resultado"
 
-#: qml/locationslist/AddLocationPage.qml:16
+#: qml/locationslist/AddLocationPage.qml:15
 #, kde-format
 msgid "Add location"
 msgstr "Adicionar localização"
 
-#: qml/locationslist/LocationsListView.qml:55
+#: qml/locationslist/LocationsListView.qml:69
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "Não foi possível recuperar informações de fuso horário"
 
-#: qml/locationslist/LocationsListView.qml:66
+#: qml/locationslist/LocationsListView.qml:80
 #, kde-format
 msgid "Add a location"
 msgstr "Adicionar uma localização"
 
-#: qml/locationslist/LocationsListView.qml:214
+#: qml/locationslist/LocationsListView.qml:227
 #, kde-format
 msgid "Delete"
 msgstr "Excluir"
@@ -293,98 +293,98 @@ msgstr "Geral"
 msgid "Forecast Style"
 msgstr "Estilo de previsão"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
 msgstr "Simples"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinâmico"
 
-#: qml/settings/SettingsComponent.qml:80
+#: qml/settings/SettingsComponent.qml:89
 #, kde-format
 msgid "About"
 msgstr "Sobre"
 
-#: qml/settings/SettingsComponent.qml:92
+#: qml/settings/SettingsComponent.qml:100
 #, kde-format
 msgid "Units"
 msgstr "Unidades"
 
-#: qml/settings/SettingsComponent.qml:98
+#: qml/settings/SettingsComponent.qml:106
 #, kde-format
 msgid "Temperature Units"
 msgstr "Unidades de temperatura"
 
-#: qml/settings/SettingsComponent.qml:103
+#: qml/settings/SettingsComponent.qml:112
 #, kde-format
 msgid "Use System Default"
 msgstr "Usar padrão do sistema"
 
-#: qml/settings/SettingsComponent.qml:104
+#: qml/settings/SettingsComponent.qml:116
 #, kde-format
 msgid "Celsius"
 msgstr "Célsius"
 
-#: qml/settings/SettingsComponent.qml:105
+#: qml/settings/SettingsComponent.qml:120
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: qml/settings/SettingsComponent.qml:138
+#: qml/settings/SettingsComponent.qml:158
 #, kde-format
 msgid "Speed Units"
 msgstr "Unidades de velocidade"
 
-#: qml/settings/SettingsComponent.qml:143
+#: qml/settings/SettingsComponent.qml:164
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "kph"
 
-#: qml/settings/SettingsComponent.qml:144
+#: qml/settings/SettingsComponent.qml:168
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/settings/SettingsComponent.qml:145
+#: qml/settings/SettingsComponent.qml:172
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/s"
 
-#: qml/settings/SettingsComponent.qml:178
+#: qml/settings/SettingsComponent.qml:210
 #, kde-format
 msgid "Pressure Units"
 msgstr "Unidades de pressão"
 
-#: qml/settings/SettingsComponent.qml:183
+#: qml/settings/SettingsComponent.qml:216
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/settings/SettingsComponent.qml:184
+#: qml/settings/SettingsComponent.qml:220
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:218
+#: qml/settings/SettingsComponent.qml:259
 #, kde-format
 msgid "Precipitation Units"
 msgstr "Unidades de precipitação"
 
-#: qml/settings/SettingsComponent.qml:223
+#: qml/settings/SettingsComponent.qml:265
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "mm"
 
-#: qml/settings/SettingsComponent.qml:224
+#: qml/settings/SettingsComponent.qml:269
 #, kde-format
 msgctxt "Inches"
 msgid "in"
@@ -435,7 +435,7 @@ msgstr "Anoitecer"
 msgid "Moon Phase"
 msgstr "Fase da lua"
 
-#: qml/TemperatureChartCard.qml:76
+#: qml/TemperatureChartCard.qml:81
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"

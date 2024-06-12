@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-18 00:40+0000\n"
+"POT-Creation-Date: 2024-06-12 00:41+0000\n"
 "PO-Revision-Date: 2024-01-28 19:49-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -87,7 +87,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:54 qml/DefaultPage.qml:70 qml/Main.qml:21
+#: main.cpp:54 qml/DefaultPage.qml:74 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
 msgstr "ਮੌਸਮ"
@@ -144,75 +144,75 @@ msgstr "ਟਿਕਾਣਾ ਚੁਣੋ"
 msgid "Open KWeather"
 msgstr "ਕੇ-ਮੌਸਮ ਖੋਲ੍ਹੋ"
 
-#: qml/DefaultPage.qml:19 qml/ForecastContainerPage.qml:22
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
 msgid "Forecast"
 msgstr "ਭਵਿੱਖਬਾਣੀ"
 
-#: qml/DefaultPage.qml:28
+#: qml/DefaultPage.qml:30
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਪ੍ਰਾਪਤ ਕਰਨ ਦੌਰਾਨ ਨੈੱਟਵਰਕ ਗਲਤੀ ਹੈ"
 
-#: qml/DefaultPage.qml:78 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:25
-#: qml/locationslist/LocationsListView.qml:71
+#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
 msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/DynamicForecastPage.qml:235 qml/FlatLocationForecast.qml:43
+#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
 msgstr "%1 ਲਈ ਮੌਸਮ ਨੂੰ ਤਾਜ਼ਾ ਕੀਤਾ ਗਿਆ ਹੈ"
 
-#: qml/DynamicForecastPage.qml:307 qml/FlatLocationForecast.qml:94
+#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1 ਲਈ ਅੱਪਡੇਟ ਕੀਤਾ"
 
-#: qml/DynamicForecastPage.qml:327 qml/ForecastContainerPage.qml:44
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
 #: qml/locationslist/LocationsListDialog.qml:14
-#: qml/locationslist/LocationsListPage.qml:16
+#: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
 msgid "Locations"
 msgstr "ਟਿਕਾਣੇ"
 
-#: qml/DynamicForecastPage.qml:332
+#: qml/DynamicForecastPage.qml:360
 #, kde-format
 msgid "Choose location"
 msgstr "ਟਿਕਾਣਾ ਚੁਣੋ"
 
-#: qml/DynamicForecastPage.qml:347 qml/DynamicForecastPage.qml:352
-#: qml/ForecastContainerPage.qml:49 qml/settings/SettingsDialog.qml:12
+#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
+#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
 msgstr "ਸੈਟਿੰਗਾਂ"
 
-#: qml/DynamicForecastPage.qml:368 qml/DynamicForecastPage.qml:373
-#: qml/ForecastContainerPage.qml:56
+#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
+#: qml/ForecastContainerPage.qml:59
 #, kde-format
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
-#: qml/DynamicForecastPage.qml:433 qml/FlatLocationForecast.qml:110
+#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "ਰੋਜ਼"
 
-#: qml/DynamicForecastPage.qml:438
+#: qml/DynamicForecastPage.qml:466
 #, kde-format
 msgid "Local date: %1"
 msgstr "ਲੋਕਲ ਤਾਰੀਖ: %1"
 
-#: qml/DynamicForecastPage.qml:521 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "ਘੰਟੇਵਾਰ"
 
-#: qml/DynamicForecastPage.qml:526
+#: qml/DynamicForecastPage.qml:554
 #, kde-format
 msgid "Local time: %1"
 msgstr "ਲੋਕਲ ਸਮਾਂ: %1"
@@ -257,27 +257,27 @@ msgstr "ਟਿਕਾਣਾ ਲੱਭੋ"
 msgid "Add current location"
 msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/locationslist/AddLocationListView.qml:127
+#: qml/locationslist/AddLocationListView.qml:125
 #, kde-format
 msgid "No results"
 msgstr "ਨਤੀਜੇ ਨਹੀਂ ਹਨ"
 
-#: qml/locationslist/AddLocationPage.qml:16
+#: qml/locationslist/AddLocationPage.qml:15
 #, kde-format
 msgid "Add location"
 msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/locationslist/LocationsListView.qml:55
+#: qml/locationslist/LocationsListView.qml:69
 #, kde-format
 msgid "Unable to fetch timezone information"
 msgstr "ਸਮਾਂ-ਖੇਤਰ ਦੀ ਜਾਣਕਾਰੀ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
-#: qml/locationslist/LocationsListView.qml:66
+#: qml/locationslist/LocationsListView.qml:80
 #, kde-format
 msgid "Add a location"
 msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/locationslist/LocationsListView.qml:214
+#: qml/locationslist/LocationsListView.qml:227
 #, kde-format
 msgid "Delete"
 msgstr "ਹਟਾਓ"
@@ -292,98 +292,98 @@ msgstr "ਆਮ"
 msgid "Forecast Style"
 msgstr "ਭਵਿੱਖਬਾਣੀ ਦਾ ਢੰਗ"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
 msgstr "ਸਮਤਲ"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
 msgstr "ਡਾਇਨੈਮਿਕ"
 
-#: qml/settings/SettingsComponent.qml:80
+#: qml/settings/SettingsComponent.qml:89
 #, kde-format
 msgid "About"
 msgstr "ਇਸ ਬਾਰੇ"
 
-#: qml/settings/SettingsComponent.qml:92
+#: qml/settings/SettingsComponent.qml:100
 #, kde-format
 msgid "Units"
 msgstr "ਯੂਨਿਟਾਂ"
 
-#: qml/settings/SettingsComponent.qml:98
+#: qml/settings/SettingsComponent.qml:106
 #, kde-format
 msgid "Temperature Units"
 msgstr "ਤਾਪਮਾਨ ਦੀਆਂ ਇਕਾਈਆਂ"
 
-#: qml/settings/SettingsComponent.qml:103
+#: qml/settings/SettingsComponent.qml:112
 #, kde-format
 msgid "Use System Default"
 msgstr "ਸਿਸਟਮ ਮੂਲ ਵਰਤੋਂ"
 
-#: qml/settings/SettingsComponent.qml:104
+#: qml/settings/SettingsComponent.qml:116
 #, kde-format
 msgid "Celsius"
 msgstr "ਸੈਲਸੀਅਸ"
 
-#: qml/settings/SettingsComponent.qml:105
+#: qml/settings/SettingsComponent.qml:120
 #, kde-format
 msgid "Fahrenheit"
 msgstr "ਫਾਰਨਹਾਇਟ"
 
-#: qml/settings/SettingsComponent.qml:138
+#: qml/settings/SettingsComponent.qml:158
 #, kde-format
 msgid "Speed Units"
 msgstr "ਗਤੀ ਦੀਆਂ ਇਕਾਈਆਂ"
 
-#: qml/settings/SettingsComponent.qml:143
+#: qml/settings/SettingsComponent.qml:164
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "ਕਿ.ਪ੍ਰਤੀ.ਘੰ"
 
-#: qml/settings/SettingsComponent.qml:144
+#: qml/settings/SettingsComponent.qml:168
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "ਮੀ.ਪ੍ਰਤੀ.ਘੰ"
 
-#: qml/settings/SettingsComponent.qml:145
+#: qml/settings/SettingsComponent.qml:172
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "ਮੀ/ਸ"
 
-#: qml/settings/SettingsComponent.qml:178
+#: qml/settings/SettingsComponent.qml:210
 #, kde-format
 msgid "Pressure Units"
 msgstr "ਦਬਾਓ ਯੂਨਿਟ"
 
-#: qml/settings/SettingsComponent.qml:183
+#: qml/settings/SettingsComponent.qml:216
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/settings/SettingsComponent.qml:184
+#: qml/settings/SettingsComponent.qml:220
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:218
+#: qml/settings/SettingsComponent.qml:259
 #, kde-format
 msgid "Precipitation Units"
 msgstr "ਵਰ੍ਹਨ ਯੂਨਿਟਾਂ"
 
-#: qml/settings/SettingsComponent.qml:223
+#: qml/settings/SettingsComponent.qml:265
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "mm"
 
-#: qml/settings/SettingsComponent.qml:224
+#: qml/settings/SettingsComponent.qml:269
 #, kde-format
 msgctxt "Inches"
 msgid "in"
@@ -434,7 +434,7 @@ msgstr "ਸੂਰਜ ਛੁਪਾ"
 msgid "Moon Phase"
 msgstr "ਚੰਦ ਕਲਾਵਾਂ"
 
-#: qml/TemperatureChartCard.qml:76
+#: qml/TemperatureChartCard.qml:81
 #, kde-format
 msgid "temperature"
 msgstr "ਤਾਪਮਾਨ"
