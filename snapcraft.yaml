@@ -1,3 +1,6 @@
+# * Copyright 2024 Soumyadeep Ghosh (সৌম্যদীপ ঘোষ) <soumyadeepghosh2004@zohomail.in>
+# * Copyright 2023 Scarlett Moore <sgmoore@kde.org>
+# * SPDX-License-Identifier: GPL-2.0-or-later
 name: kweather
 confinement: strict
 grade: stable
@@ -98,7 +101,7 @@ parts:
       - reuse
       - libvulkan-dev
       - libxkbcommon-dev
-    source: https://invent.kde.org/utilities/kweather/-/archive/v24.05.0/kweather-v24.05.0.tar.gz
+    source: .
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
