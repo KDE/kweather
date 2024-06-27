@@ -11,6 +11,7 @@
   <content_rating type="oars-1.1"/>
   <name>Weather</name>
   <name xml:lang="az">Hava</name>
+  <name xml:lang="bg">Времето</name>
   <name xml:lang="ca">Meteorologia</name>
   <name xml:lang="ca-valencia">Meteorologia</name>
   <name xml:lang="cs">Počasí</name>
@@ -49,6 +50,7 @@
   <name xml:lang="zh-TW">天氣</name>
   <summary>View real-time weather forecasts and other information</summary>
   <summary xml:lang="az">Real vaxt hava məlumatlarını və digər məlumatları göstərmək</summary>
+  <summary xml:lang="bg">Метеорологични прогнози в реално време и друга информация</summary>
   <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real i altra informació</summary>
   <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real i altra informació</summary>
   <summary xml:lang="de">Echtzeit-Wettervorschau und weitere Informationen anzeigen</summary>
@@ -99,6 +101,7 @@
   <description>
     <p>A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
     <p xml:lang="az">Plasma'da hava proqnozu üçün əlverişli tətbiq. Hava haqqında və digər məlumatları göstərmək üçün hamar və canlı/animasiyalı görünüş.</p>
+    <p xml:lang="bg">Приложение за метеорологична прогноза за Plasma. Има плоски и динамични/анимирани изгледи за показване на прогнози и друга информация.</p>
     <p xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="ca-valencia">Una aplicació convergent de meteorologia per a Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma. Mit flachen und dynamisch animierten Ansichten der Wettervorhersage und weiteren Informationen.</p>
@@ -137,6 +140,7 @@
     <screenshot type="default">
       <caption>Mobile dynamic view</caption>
       <caption xml:lang="az">Mobil dinamik görünüş</caption>
+      <caption xml:lang="bg">Динамичен изглед за мобилна версия</caption>
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica en el mòbil</caption>
       <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
@@ -175,6 +179,7 @@
     <screenshot>
       <caption>Desktop dynamic view</caption>
       <caption xml:lang="az">Masaüstü dinamik görünüş</caption>
+      <caption xml:lang="bg">Динамичен изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="de">Dynamische Ansicht für die Arbeitsfläche</caption>
@@ -213,6 +218,7 @@
     <screenshot>
       <caption>Mobile flat view</caption>
       <caption xml:lang="az">Mobil hamar görünüş</caption>
+      <caption xml:lang="bg">Плосък изглед за мобилна версия</caption>
       <caption xml:lang="ca">Vista plana al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista plana en el mòbil</caption>
       <caption xml:lang="de">Flache Ansicht für Mobilgeräte</caption>
@@ -251,6 +257,7 @@
     <screenshot>
       <caption>Mobile dynamic view</caption>
       <caption xml:lang="az">Mobil dinamik görünüş</caption>
+      <caption xml:lang="bg">Динамичен изглед за мобилна версия</caption>
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica en el mòbil</caption>
       <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
