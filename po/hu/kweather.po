@@ -1,31 +1,31 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2024 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-12 00:41+0000\n"
-"PO-Revision-Date: 2024-06-25 21:09+0200\n"
-"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
-"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
-"Language: bg\n"
+"PO-Revision-Date: 2024-06-27 21:53+0200\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Минчо Кондарев"
+msgstr "Kiszel Kristóf"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "mkondarev@yahoo.de"
+msgstr "ulysses@fsf.hu"
 
 #: formatter.cpp:36 formatter.cpp:44
 #, kde-format
@@ -90,17 +90,17 @@ msgstr "%1 mm"
 #: main.cpp:54 qml/DefaultPage.qml:74 qml/Main.qml:21
 #, kde-format
 msgid "Weather"
-msgstr "Времето"
+msgstr "Időjárás"
 
 #: main.cpp:56
 #, kde-format
 msgid "A convergent weather application for Plasma"
-msgstr "Приложение за метеорологична прогноза за Plasma"
+msgstr "Konvergens időjárás-alkalmazás a Plasmához"
 
 #: main.cpp:58
 #, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2024 Екип за разработка на Plasma"
+msgstr "© A Plasma fejlesztői, 2020-2024."
 
 #: main.cpp:60
 #, kde-format
@@ -115,14 +115,12 @@ msgstr "Devin Lin"
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
 #, kde-format
 msgid "No location found on system, please add some in kweather"
-msgstr ""
-"Няма намерено местоположение в системата, моля, добавете местоположение в "
-"kweather"
+msgstr "Nincs megadva hely a rendszeren, adjon hozzá néhányat a KWeatherben"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
 #, kde-format
 msgid "Please select the location"
-msgstr "Моля, изберете местоположение"
+msgstr "Válassza ki a helyet"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -132,28 +130,28 @@ msgstr "%1%"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:80
 #, kde-format
 msgid "%1mm"
-msgstr "%1mm"
+msgstr "%1 mm"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:132
 #: plasmoid/package/contents/ui/WeatherContainer.qml:171
 #, kde-format
 msgid "Select Location"
-msgstr "Избор на местоположение"
+msgstr "Hely kiválasztása"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:137
 #, kde-format
 msgid "Open KWeather"
-msgstr "Отваряне на KWeather"
+msgstr "KWeather megnyitása"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
 msgid "Forecast"
-msgstr "Прогноза"
+msgstr "Előrejelzés"
 
 #: qml/DefaultPage.qml:30
 #, kde-format
 msgid "Network error when obtaining current location"
-msgstr "Мрежова грешка при получаване на текущото местоположение"
+msgstr "Hálózati hiba a jelenlegi hely megszerzésekor"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
@@ -161,188 +159,188 @@ msgstr "Мрежова грешка при получаване на текущ�
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
-msgstr "Добавяне на местоположение"
+msgstr "Hely hozzáadása"
 
 #: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
-msgstr "Прогнозата е обновена за %1"
+msgstr "%1 időjárása frissítve"
 
 #: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
-msgstr "Обновено на %1"
+msgstr "Frissítve: %1"
 
 #: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
 msgid "Locations"
-msgstr "Местоположения"
+msgstr "Helyek"
 
 #: qml/DynamicForecastPage.qml:360
 #, kde-format
 msgid "Choose location"
-msgstr "Изберете местоположение"
+msgstr "Hely kiválasztása"
 
 #: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
 #: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
 #, kde-format
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Beállítások"
 
 #: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
 #: qml/ForecastContainerPage.qml:59
 #, kde-format
 msgid "Refresh"
-msgstr "Обновяване"
+msgstr "Frissítés"
 
 #: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
-msgstr "Ежедневно"
+msgstr "Naponta"
 
 #: qml/DynamicForecastPage.qml:466
 #, kde-format
 msgid "Local date: %1"
-msgstr "Местна дата: %1"
+msgstr "Helyi dátum: %1"
 
 #: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
-msgstr "Ежечасно"
+msgstr "Óránként"
 
 #: qml/DynamicForecastPage.qml:554
 #, kde-format
 msgid "Local time: %1"
-msgstr "Местно време: %1"
+msgstr "Helyi idő: %1"
 
 #: qml/InfoCard.qml:48
 #, kde-format
 msgid "Precipitation"
-msgstr "Валежи"
+msgstr "Csapadék"
 
 #: qml/InfoCard.qml:72
 #, kde-format
 msgid "Humidity"
-msgstr "Влажност"
+msgstr "Páratartalom"
 
 #: qml/InfoCard.qml:96
 #, kde-format
 msgid "Pressure"
-msgstr "Налягане"
+msgstr "Légnyomás"
 
 #: qml/InfoCard.qml:120
 #, kde-format
 msgid "UV Index"
-msgstr "Ултравиолетов индекс"
+msgstr "UV-index"
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr "Търсене на местоположение..."
+msgstr "Hely keresése…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
 msgid "Unable to connect"
-msgstr "Невъзможно свързване"
+msgstr "Nem lehet kapcsolódni"
 
 #: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
 msgid "Search for a location"
-msgstr "Търсене на местоположение"
+msgstr "Hely keresése"
 
 #: qml/locationslist/AddLocationListView.qml:104
 #, kde-format
 msgid "Add current location"
-msgstr "Добавяне на текущо местоположение"
+msgstr "Jelenlegi hely hozzáadása"
 
 #: qml/locationslist/AddLocationListView.qml:125
 #, kde-format
 msgid "No results"
-msgstr "Няма резултати"
+msgstr "Nincs találat"
 
 #: qml/locationslist/AddLocationPage.qml:15
 #, kde-format
 msgid "Add location"
-msgstr "Добавяне на местоположение"
+msgstr "Hely hozzáadása"
 
 #: qml/locationslist/LocationsListView.qml:69
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr "Не може да се извлече информация за часовата зона"
+msgstr "Nem lehet lekérni az időzóna-információkat"
 
 #: qml/locationslist/LocationsListView.qml:80
 #, kde-format
 msgid "Add a location"
-msgstr "Добавяне на местоположение"
+msgstr "Hely hozzáadása"
 
 #: qml/locationslist/LocationsListView.qml:227
 #, kde-format
 msgid "Delete"
-msgstr "Изтриване"
+msgstr "Törlés"
 
 #: qml/settings/SettingsComponent.qml:35
 #, kde-format
 msgid "General"
-msgstr "Общи"
+msgstr "Általános"
 
 #: qml/settings/SettingsComponent.qml:41
 #, kde-format
 msgid "Forecast Style"
-msgstr "Стил на прогнозите"
+msgstr "Előrejelzés-stílus"
 
 #: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
 #, kde-format
 msgid "Flat"
-msgstr "Плоски"
+msgstr "Egyszerű"
 
 #: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
 #, kde-format
 msgid "Dynamic"
-msgstr "Динамично"
+msgstr "Dinamikus"
 
 #: qml/settings/SettingsComponent.qml:89
 #, kde-format
 msgid "About"
-msgstr "Относно"
+msgstr "Névjegy"
 
 #: qml/settings/SettingsComponent.qml:100
 #, kde-format
 msgid "Units"
-msgstr "Мерни единици"
+msgstr "Mértékegységek"
 
 #: qml/settings/SettingsComponent.qml:106
 #, kde-format
 msgid "Temperature Units"
-msgstr "Температурни единици"
+msgstr "Hőmérséklet"
 
 #: qml/settings/SettingsComponent.qml:112
 #, kde-format
 msgid "Use System Default"
-msgstr "Използване на системата по подразбиране"
+msgstr "Rendszer alapértelmezése"
 
 #: qml/settings/SettingsComponent.qml:116
 #, kde-format
 msgid "Celsius"
-msgstr "Градуси по Целзий"
+msgstr "Celsius"
 
 #: qml/settings/SettingsComponent.qml:120
 #, kde-format
 msgid "Fahrenheit"
-msgstr "Градуси по Фаренхайт"
+msgstr "Fahrenheit"
 
 #: qml/settings/SettingsComponent.qml:158
 #, kde-format
 msgid "Speed Units"
-msgstr "Единици за скорост"
+msgstr "Sebesség"
 
 #: qml/settings/SettingsComponent.qml:164
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
-msgstr "kph"
+msgstr "km/h"
 
 #: qml/settings/SettingsComponent.qml:168
 #, kde-format
@@ -354,12 +352,12 @@ msgstr "mph"
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr "m/s (метри в секунда)"
+msgstr "m/s"
 
 #: qml/settings/SettingsComponent.qml:210
 #, kde-format
 msgid "Pressure Units"
-msgstr "Единици за налягане"
+msgstr "Légnyomás"
 
 #: qml/settings/SettingsComponent.qml:216
 #, kde-format
@@ -376,13 +374,13 @@ msgstr "mmHg"
 #: qml/settings/SettingsComponent.qml:259
 #, kde-format
 msgid "Precipitation Units"
-msgstr "Единици за валежи"
+msgstr "Csapadék"
 
 #: qml/settings/SettingsComponent.qml:265
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr "мм"
+msgstr "mm"
 
 #: qml/settings/SettingsComponent.qml:269
 #, kde-format
@@ -393,49 +391,49 @@ msgstr "in"
 #: qml/SetupWizard.qml:63
 #, kde-format
 msgid "Welcome to Weather"
-msgstr "Добре дошли в Прогноза за времето"
+msgstr "Üdvözli az Időjárás"
 
 #: qml/SetupWizard.qml:69
 #, kde-format
 msgid "Continue"
-msgstr "Продължаване"
+msgstr "Folytatás"
 
 #: qml/SetupWizard.qml:88
 #, kde-format
 msgid "Select forecast theme"
-msgstr "Избиране на тема за прогнозите"
+msgstr "Előrejelzés-téma kiválasztása"
 
 #: qml/SetupWizard.qml:93
 #, kde-format
 msgid "You can change the theme later in the settings."
-msgstr "Можете да промените темата по-късно в настройките."
+msgstr "A témát később is módosíthatja a beállításokban."
 
 #: qml/SetupWizard.qml:200
 #, kde-format
 msgid "Back"
-msgstr "Назад"
+msgstr "Vissza"
 
 #: qml/SetupWizard.qml:206
 #, kde-format
 msgid "Finish"
-msgstr "Край"
+msgstr "Befejezés"
 
 #: qml/SunriseCard.qml:51
 #, kde-format
 msgid "Sunrise"
-msgstr "Изгрев"
+msgstr "Napkelte"
 
 #: qml/SunriseCard.qml:75
 #, kde-format
 msgid "Sunset"
-msgstr "Залез"
+msgstr "Napnyugta"
 
 #: qml/SunriseCard.qml:97
 #, kde-format
 msgid "Moon Phase"
-msgstr "Фази на луната"
+msgstr "Holdfázis"
 
 #: qml/TemperatureChartCard.qml:81
 #, kde-format
 msgid "temperature"
-msgstr "температура"
+msgstr "hőmérséklet"
