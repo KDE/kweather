@@ -26,6 +26,7 @@
   <name xml:lang="fr">Météo</name>
   <name xml:lang="gl">Meteoroloxía</name>
   <name xml:lang="he">מזג אוויר</name>
+  <name xml:lang="hu">Időjárás</name>
   <name xml:lang="ia">Tempore meteorologic-Weather</name>
   <name xml:lang="id">Weather</name>
   <name xml:lang="is">Veður</name>
@@ -63,6 +64,7 @@
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
   <summary xml:lang="gl">Vexa a predición meteorolóxica e outra información en tempo real.</summary>
   <summary xml:lang="he">הצגת תחזיות מזג אוויר בזמן אמת ופרטים נוספים</summary>
+  <summary xml:lang="hu">Valós idejű időjárás-előrejelzések és egyéb információk megtekintése</summary>
   <summary xml:lang="ia">Vista de previsiones de tempore in tempore real e altere information</summary>
   <summary xml:lang="id">Lihat ramalan cuaca dan informasi lainnya dalam waktu nyata</summary>
   <summary xml:lang="is">Skoðaðu veðurspár í rauntíma og aðrar upplýsingar</summary>
@@ -114,6 +116,7 @@
     <p xml:lang="fr">Une application météo convergente pour Plasma. Elle possède des affichages à plat mais aussi dynamique / animé pour l'affichage des prévisions et d'autres informations.</p>
     <p xml:lang="gl">Unha aplicación meteorolóxica converxente para Plasma. Ten vistas estáticas e dinámicas para amosar as predicións e outra información.</p>
     <p xml:lang="he">יישום מזג אוויר אחוד לפלזמה. יש לו תצוגות מונפשות/שטוחות להצגת תחזיות ושלל פרטים נוספים.</p>
+    <p xml:lang="hu">Konvergens időjárás-alkalmazás a Plasmához. Egyszerű és dinamikus/animált nézetekben jeleníti meg az időjárás-előrejelzéseket és egyéb információkat</p>
     <p xml:lang="ia">Un application convergente de tempore per Plasma. Il ha vistas platte e dynamic/animate per monstrarprevisiones e altere information.</p>
     <p xml:lang="id">Sebuah aplikasi cuaca yang konvergen untuk Plasma. Memilki tampilan datar dan beranimasi/dinamis untuk menampilkan ramalan cuaca dan informasi lainnya.</p>
     <p xml:lang="is">Þægilegt veðurforrit fyrir Plasma. Með bæði flatt og líflegt/hreyfanlegt yfirlitsnið til að skoða veðurspár í rauntíma og aðrar upplýsingar</p>
@@ -153,6 +156,7 @@
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="gl">Vista dinámica de móbil.</caption>
       <caption xml:lang="he">תצוגה דינמית לניידים</caption>
+      <caption xml:lang="hu">Dinamikus mobilnézet</caption>
       <caption xml:lang="ia">Vista dynamic de Mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
       <caption xml:lang="is">Lífleg farsímaútgáfa</caption>
@@ -192,6 +196,7 @@
       <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
       <caption xml:lang="gl">Vista dinámica de escritorio.</caption>
       <caption xml:lang="he">תצוגה דינמית למחשב</caption>
+      <caption xml:lang="hu">Dinamikus asztali nézet</caption>
       <caption xml:lang="ia">Vista dynamic de Scriptorio</caption>
       <caption xml:lang="id">Tampilan dinamis desktop</caption>
       <caption xml:lang="is">Lífleg útgáfa fyrir skjáborð</caption>
@@ -231,6 +236,7 @@
       <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
       <caption xml:lang="gl">Vista estática de móbil.</caption>
       <caption xml:lang="he">תצוגה שטוחה לניידים</caption>
+      <caption xml:lang="hu">Egyszerű mobilnézet</caption>
       <caption xml:lang="ia">Vista platte de Mobile</caption>
       <caption xml:lang="id">Tampilan datar ponsel</caption>
       <caption xml:lang="is">Flöt farsímaútgáfa</caption>
@@ -270,6 +276,7 @@
       <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
       <caption xml:lang="gl">Vista dinámica de móbil.</caption>
       <caption xml:lang="he">תצוגה דינמית לניידים</caption>
+      <caption xml:lang="hu">Dinamikus mobilnézet</caption>
       <caption xml:lang="ia">Vista dynamic de Mobile</caption>
       <caption xml:lang="id">Tampilan dinamis ponsel</caption>
       <caption xml:lang="is">Lífleg farsímaútgáfa</caption>
