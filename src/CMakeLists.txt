@@ -239,7 +239,7 @@ else()
     target_link_libraries(kweather PUBLIC Qt6::Widgets)
 endif()
 
-if (UNIX AND (NOT ANDROID))
+if (UNIX AND NOT ANDROID AND BUILD_PLASMOID)
 add_subdirectory(plasmoid)
 endif()
 target_include_directories(kweather PRIVATE ${CMAKE_BINARY_DIR})
