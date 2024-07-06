@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-12 00:41+0000\n"
-"PO-Revision-Date: 2024-06-25 21:09+0200\n"
+"PO-Revision-Date: 2024-07-05 15:58+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -241,7 +241,7 @@ msgstr "Ултравиолетов индекс"
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr "Търсене на местоположение..."
+msgstr "Търсене на местоположение…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
