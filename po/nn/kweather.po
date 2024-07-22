@@ -1,12 +1,11 @@
 # Translation of kweather to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-12 00:41+0000\n"
-"PO-Revision-Date: 2023-01-15 11:54+0100\n"
+"PO-Revision-Date: 2024-07-21 14:29+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -61,17 +60,15 @@ msgid "%1 mmHg"
 msgstr "%1 mmHg"
 
 #: formatter.cpp:78
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1 %"
 
 #: formatter.cpp:83
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1 %"
+msgstr "%1"
 
 #: formatter.cpp:89
 #, kde-format
@@ -102,10 +99,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Vêrmeldings­program for Plasma, tilpassa ulike typar brukarflater"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2010–2022 Utviklingslaget for Plasma"
+msgstr "© 2010–2024 Utviklingslaget for Plasma"
 
 #: main.cpp:60
 #, kde-format
@@ -123,10 +119,9 @@ msgid "No location found on system, please add some in kweather"
 msgstr "Fann ikkje noko plassering på systemet. Vel plassering i KWeather."
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "vel plasseringa"
+msgstr "Vel plasseringa"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -209,10 +204,9 @@ msgid "Daily"
 msgstr "Dagleg"
 
 #: qml/DynamicForecastPage.qml:466
-#, fuzzy, kde-format
-#| msgid "Local Date: "
+#, kde-format
 msgid "Local date: %1"
-msgstr "Lokal dato: "
+msgstr "Lokal dato: %1"
 
 #: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
 #, kde-format
@@ -220,10 +214,9 @@ msgid "Hourly"
 msgstr "Kvar time"
 
 #: qml/DynamicForecastPage.qml:554
-#, fuzzy, kde-format
-#| msgid "Local Time: "
+#, kde-format
 msgid "Local time: %1"
-msgstr "Lokalt klokkeslett: "
+msgstr "Lokalt klokkeslett: %1"
 
 #: qml/InfoCard.qml:48
 #, kde-format
@@ -241,8 +234,7 @@ msgid "Pressure"
 msgstr "Trykk"
 
 #: qml/InfoCard.qml:120
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
 msgstr "UV-indeks"
 
