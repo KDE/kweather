@@ -15,7 +15,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kweather VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "6.5.0")
-set(KF_MIN_VERSION "5.240.0")
+set(KF_MIN_VERSION "6.3.0")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -41,6 +41,11 @@ include(KDEGitCommitHooks)
 include(KDEClangFormat)
 include(ECMQmlModule)
 include(ECMAddAndroidApk)
+include(ECMDeprecationSettings)
+
+ecm_set_disabled_deprecation_versions(QT 6.7.0
+    KF 6.4.0
+    )
 
 # clang-format
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES src/*.cpp src/*.h)
