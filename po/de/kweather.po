@@ -4,13 +4,14 @@
 # Frederik Schwarzer <schwarzer@kde.org>, 2021, 2022.
 # Alois Spitzbart <spitz234@hotmail.com>, 2022.
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-12 00:41+0000\n"
-"PO-Revision-Date: 2023-12-18 15:56+0100\n"
+"PO-Revision-Date: 2024-08-21 22:39+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -101,10 +102,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Eine konvergente Wetter-Anwendung für Plasma"
 
 #: main.cpp:58
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "Copyright © 2020-2022 Plasma-Entwicklerteam"
+msgstr "© 2020-2024 Plasma-Entwicklerteam"
 
 #: main.cpp:60
 #, kde-format
