@@ -81,6 +81,7 @@ if (ANDROID)
     find_package(OpenSSL REQUIRED)
 else ()
     find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
+    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Crash)
 endif()
 
 if (NOT ANDROID AND BUILD_PLASMOID)

@@ -21,6 +21,10 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#ifndef Q_OS_ANDROID
+#include <KCrash>
+#endif
+
 #include "kweathersettings.h"
 #include "version.h"
 #include "weatherlocation.h"
@@ -60,6 +64,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     aboutData.addAuthor(i18n("Han Young"), QString(), QStringLiteral("hanyoung@protonmail.com"));
     aboutData.addAuthor(i18n("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"), QStringLiteral("https://espi.dev"));
     KAboutData::setApplicationData(aboutData);
+
+#ifndef Q_OS_ANDROID
+    KCrash::initialize();
+#endif
 
     QCommandLineParser parser;
     aboutData.setupCommandLine(&parser);

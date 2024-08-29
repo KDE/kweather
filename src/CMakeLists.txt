@@ -236,7 +236,7 @@ if (ANDROID)
 
     ecm_add_android_apk(kweather ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
 else()
-    target_link_libraries(kweather PUBLIC Qt6::Widgets)
+    target_link_libraries(kweather PUBLIC Qt6::Widgets KF6::Crash)
 endif()
 
 if (UNIX AND NOT ANDROID AND BUILD_PLASMOID)
