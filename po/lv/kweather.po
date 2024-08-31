@@ -1,0 +1,442 @@
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kweather package.
+#
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
+msgid ""
+msgstr ""
+"Project-Id-Version: kweather\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-08-30 00:42+0000\n"
+"PO-Revision-Date: 2024-08-29 16:55+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 24.08.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Toms Trasūns"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "toms.trasuns@posteo.net"
+
+#: formatter.cpp:36 formatter.cpp:44
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr "%1°"
+
+#: formatter.cpp:53
+#, kde-format
+msgid "%1 km/h"
+msgstr "%1 km/h"
+
+#: formatter.cpp:56
+#, kde-format
+msgid "%1 mph"
+msgstr "%1 mph"
+
+#: formatter.cpp:59
+#, kde-format
+msgid "%1 m/s"
+msgstr "%1 m/s"
+
+#: formatter.cpp:69
+#, kde-format
+msgid "%1 hPa"
+msgstr "%1 hPa"
+
+#: formatter.cpp:72
+#, kde-format
+msgid "%1 mmHg"
+msgstr "%1 mmHg"
+
+#: formatter.cpp:78
+#, kde-format
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr "%1 %"
+
+#: formatter.cpp:83
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: formatter.cpp:89
+#, kde-format
+msgctxt "sunrise time not available"
+msgid "-"
+msgstr "—"
+
+#: formatter.cpp:100
+#, kde-format
+msgctxt "in as inches"
+msgid "%1 in"
+msgstr "%1 in"
+
+#: formatter.cpp:103
+#, kde-format
+msgctxt "mm as millimeters"
+msgid "%1 mm"
+msgstr "%1 mm"
+
+#: main.cpp:58 qml/DefaultPage.qml:74 qml/Main.qml:21
+#, kde-format
+msgid "Weather"
+msgstr "Laikapstākļi"
+
+#: main.cpp:60
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr "Konverģenta laikapstākļu programma „Plasma“ darbvirsmai"
+
+#: main.cpp:62
+#, kde-format
+msgid "© 2020-2024 Plasma Development Team"
+msgstr "© 2020—2024 „Plasma“ izstrādātāju komanda"
+
+#: main.cpp:64
+#, kde-format
+msgid "Han Young"
+msgstr "Han Young"
+
+#: main.cpp:65
+#, kde-format
+msgid "Devin Lin"
+msgstr "Devin Lin"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr ""
+"Sistēmā nav atrasta informācija par vietu, pievienojiet to „kweather“ "
+"programmā"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, kde-format
+msgid "Please select the location"
+msgstr "Atlasiet vietu"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
+#, kde-format
+msgid "%1%"
+msgstr "%1 %"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:80
+#, kde-format
+msgid "%1mm"
+msgstr "%1 mm"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:132
+#: plasmoid/package/contents/ui/WeatherContainer.qml:171
+#, kde-format
+msgid "Select Location"
+msgstr "Atlasiet vietu"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:137
+#, kde-format
+msgid "Open KWeather"
+msgstr "Atvērt „KWeather“"
+
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
+#, kde-format
+msgid "Forecast"
+msgstr "Prognoze"
+
+#: qml/DefaultPage.qml:30
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "Tīkla kļūda, iegūstot pašreizējo vietu"
+
+#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListView.qml:85
+#, kde-format
+msgid "Add Location"
+msgstr "Pievienot vietu"
+
+#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "Laikapstākļi vietai %1 ir atsvaidzināti"
+
+#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
+#, kde-format
+msgid "Updated at %1"
+msgstr "Atjaunošanas laiks %1"
+
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:15
+#, kde-format
+msgid "Locations"
+msgstr "Vietas"
+
+#: qml/DynamicForecastPage.qml:360
+#, kde-format
+msgid "Choose location"
+msgstr "Norādiet vietu"
+
+#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
+#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "Iestatījumi"
+
+#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
+#: qml/ForecastContainerPage.qml:59
+#, kde-format
+msgid "Refresh"
+msgstr "Pārlādēt"
+
+#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
+#, kde-format
+msgid "Daily"
+msgstr "Ik dienu"
+
+#: qml/DynamicForecastPage.qml:466
+#, kde-format
+msgid "Local date: %1"
+msgstr "Lokālais datums: %1"
+
+#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
+#, kde-format
+msgid "Hourly"
+msgstr "Ik stundu"
+
+#: qml/DynamicForecastPage.qml:554
+#, kde-format
+msgid "Local time: %1"
+msgstr "Lokālais laiks: %1"
+
+#: qml/InfoCard.qml:48
+#, kde-format
+msgid "Precipitation"
+msgstr "Nokrišņi"
+
+#: qml/InfoCard.qml:72
+#, kde-format
+msgid "Humidity"
+msgstr "Mitrums"
+
+#: qml/InfoCard.qml:96
+#, kde-format
+msgid "Pressure"
+msgstr "Spiediens"
+
+#: qml/InfoCard.qml:120
+#, kde-format
+msgid "UV Index"
+msgstr "UV indekss"
+
+#: qml/locationslist/AddLocationListView.qml:48
+#, kde-format
+msgid "Search for a location…"
+msgstr "Meklēt vietu…"
+
+#: qml/locationslist/AddLocationListView.qml:87
+#, kde-format
+msgid "Unable to connect"
+msgstr "Neizdodas savienoties"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Search for a location"
+msgstr "Meklē vietu"
+
+#: qml/locationslist/AddLocationListView.qml:104
+#, kde-format
+msgid "Add current location"
+msgstr "Pievienot pašreizējo vietu"
+
+#: qml/locationslist/AddLocationListView.qml:125
+#, kde-format
+msgid "No results"
+msgstr "Rezultātu nav"
+
+#: qml/locationslist/AddLocationPage.qml:15
+#, kde-format
+msgid "Add location"
+msgstr "Pievienot vietu"
+
+#: qml/locationslist/LocationsListView.qml:69
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "Neizdodas izgūt informāciju no laika zonas"
+
+#: qml/locationslist/LocationsListView.qml:80
+#, kde-format
+msgid "Add a location"
+msgstr "Pievienot vietu"
+
+#: qml/locationslist/LocationsListView.qml:227
+#, kde-format
+msgid "Delete"
+msgstr "Dzēst"
+
+#: qml/settings/SettingsComponent.qml:35
+#, kde-format
+msgid "General"
+msgstr "Pamats"
+
+#: qml/settings/SettingsComponent.qml:41
+#, kde-format
+msgid "Forecast Style"
+msgstr "Prognozes stils"
+
+#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
+#, kde-format
+msgid "Flat"
+msgstr "Plakans"
+
+#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
+#, kde-format
+msgid "Dynamic"
+msgstr "Dinamisks"
+
+#: qml/settings/SettingsComponent.qml:89
+#, kde-format
+msgid "About"
+msgstr "Par"
+
+#: qml/settings/SettingsComponent.qml:100
+#, kde-format
+msgid "Units"
+msgstr "Vienības"
+
+#: qml/settings/SettingsComponent.qml:106
+#, kde-format
+msgid "Temperature Units"
+msgstr "Temperatūras vienības"
+
+#: qml/settings/SettingsComponent.qml:112
+#, kde-format
+msgid "Use System Default"
+msgstr "Izmantot sistēmas noklusējumu"
+
+#: qml/settings/SettingsComponent.qml:116
+#, kde-format
+msgid "Celsius"
+msgstr "Celsija"
+
+#: qml/settings/SettingsComponent.qml:120
+#, kde-format
+msgid "Fahrenheit"
+msgstr "Fārenheita"
+
+#: qml/settings/SettingsComponent.qml:158
+#, kde-format
+msgid "Speed Units"
+msgstr "Ātruma vienības"
+
+#: qml/settings/SettingsComponent.qml:164
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "km/h"
+
+#: qml/settings/SettingsComponent.qml:168
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "mph"
+
+#: qml/settings/SettingsComponent.qml:172
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr "m/s"
+
+#: qml/settings/SettingsComponent.qml:210
+#, kde-format
+msgid "Pressure Units"
+msgstr "Spiediena vienības"
+
+#: qml/settings/SettingsComponent.qml:216
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "hPa"
+
+#: qml/settings/SettingsComponent.qml:220
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr "mmHg"
+
+#: qml/settings/SettingsComponent.qml:259
+#, kde-format
+msgid "Precipitation Units"
+msgstr "Nokrišņu vienības"
+
+#: qml/settings/SettingsComponent.qml:265
+#, kde-format
+msgctxt "Millimeters"
+msgid "mm"
+msgstr "mm"
+
+#: qml/settings/SettingsComponent.qml:269
+#, kde-format
+msgctxt "Inches"
+msgid "in"
+msgstr "collas"
+
+#: qml/SetupWizard.qml:63
+#, kde-format
+msgid "Welcome to Weather"
+msgstr "Laipni lūgti laikapstākļu programmā!"
+
+#: qml/SetupWizard.qml:69
+#, kde-format
+msgid "Continue"
+msgstr "Turpināt"
+
+#: qml/SetupWizard.qml:88
+#, kde-format
+msgid "Select forecast theme"
+msgstr "Atlasīt prognožu motīvu"
+
+#: qml/SetupWizard.qml:93
+#, kde-format
+msgid "You can change the theme later in the settings."
+msgstr "Motīvu varat mainīt vēlāk programmas iestatījumos."
+
+#: qml/SetupWizard.qml:200
+#, kde-format
+msgid "Back"
+msgstr "Atpakaļ"
+
+#: qml/SetupWizard.qml:206
+#, kde-format
+msgid "Finish"
+msgstr "Pabeigt"
+
+#: qml/SunriseCard.qml:51
+#, kde-format
+msgid "Sunrise"
+msgstr "Saullēkts"
+
+#: qml/SunriseCard.qml:75
+#, kde-format
+msgid "Sunset"
+msgstr "Saulriets"
+
+#: qml/SunriseCard.qml:97
+#, kde-format
+msgid "Moon Phase"
+msgstr "Mēness fāze"
+
+#: qml/TemperatureChartCard.qml:81
+#, kde-format
+msgid "temperature"
+msgstr "temperatūra"
