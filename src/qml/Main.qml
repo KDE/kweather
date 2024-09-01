@@ -10,6 +10,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
+import org.kde.config as KConfig
 
 import org.kde.kweather.locations
 import org.kde.kweather.settings
@@ -35,6 +36,10 @@ Kirigami.ApplicationWindow {
     readonly property bool isWideScreen: width > 540
 
     readonly property bool isDialogOpen: settingsDialogLoader.isOpen || addLocationDialogLoader.isOpen || locationsListDialogLoader.isOpen
+
+    KConfig.WindowStateSaver {
+        configGroupName: "Window"
+    }
 
     Component.onCompleted: {
         // initial page
