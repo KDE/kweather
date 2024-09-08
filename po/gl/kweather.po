@@ -100,7 +100,7 @@ msgstr "Unha aplicación meteorolóxica converxente para Plasma"
 #: main.cpp:62
 #, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2024 Equipo de desenvolvemento de Plasma"
+msgstr "© 2020-2024 Equipo desenvolvedor de Plasma"
 
 #: main.cpp:64
 #, kde-format
