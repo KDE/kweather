@@ -49,7 +49,6 @@ qt_add_qml_module(kweather
     "qml/ForecastContainerPage.qml"
     "qml/DefaultPage.qml"
     "qml/SetupWizard.qml"
-    "qml/AboutPage.qml"
     "qml/TemperatureChartCard.qml"
     "qml/SunriseCard.qml"
     "qml/InfoCard.qml"

@@ -111,8 +111,6 @@ Kirigami.ApplicationWindow {
             return pagePool.loadPage("qrc:/qt/qml/org/kde/kweather/locations/qml/locationslist/LocationsListPage.qml");
         case "Settings":
             return pagePool.loadPage(getPageUrl('settings', 'settings/SettingsPage.qml'));
-        case "About":
-            return pagePool.loadPage(getPageUrl('', 'AboutPage.qml'));
         case "Default":
             return pagePool.loadPage(getPageUrl('', 'DefaultPage.qml'));
         }

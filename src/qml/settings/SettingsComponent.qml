@@ -88,7 +88,7 @@ ColumnLayout {
             id: aboutButton
             text: i18n("About")
             onClicked: {
-                applicationWindow().pageStack.push(getPage("About"));
+                applicationWindow().pageStack.push(Qt.createComponent("org.kde.kirigamiaddons.formcard", "AboutPage"));
                 if (root.dialog) {
                     root.dialog.close();
                 }
