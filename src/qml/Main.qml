@@ -38,7 +38,7 @@ Kirigami.ApplicationWindow {
     readonly property bool isDialogOpen: settingsDialogLoader.isOpen || addLocationDialogLoader.isOpen || locationsListDialogLoader.isOpen
 
     KConfig.WindowStateSaver {
-        configGroupName: "Window"
+        configGroupName: "MainWindow"
     }
 
     Component.onCompleted: {
