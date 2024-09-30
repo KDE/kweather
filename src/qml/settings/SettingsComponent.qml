@@ -101,35 +101,8 @@ ColumnLayout {
     }
 
     FormCard.FormCard {
-        FormCard.FormComboBoxDelegate {
+        TemperatureUnitComboBox {
             id: temperatureUnitsDropdown
-            text: i18n("Temperature Units")
-            currentIndex: indexOfValue(settingsModel.temperatureUnits)
-            model: ListModel {
-                // we can't use i18n with ListElement
-                Component.onCompleted: {
-                    append({
-                        "name": i18n("Use System Default"),
-                        "value": "Use System Default"
-                    });
-                    append({
-                        "name": i18n("Celsius"),
-                        "value": "Celsius"
-                    });
-                    append({
-                        "name": i18n("Fahrenheit"),
-                        "value": "Fahrenheit"
-                    });
-
-                    // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-                    temperatureUnitsDropdown.currentIndex = temperatureUnitsDropdown.indexOfValue(settingsModel.temperatureUnits);
-                }
-            }
-
-            textRole: "name"
-            valueRole: "value"
-            onActivated: settingsModel.save()
-            onCurrentValueChanged: settingsModel.temperatureUnits = currentValue
 
             onClicked: {
                 if (root.dialog && temperatureUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
