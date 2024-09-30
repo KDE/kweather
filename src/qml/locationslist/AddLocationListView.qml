@@ -99,19 +99,22 @@ ListView {
         text: i18n("Search for a location")
         visible: !root.model.networkError && !root.model.loading && root.count == 0 && root.searchQuery == ""
 
-        helpfulAction: Kirigami.Action {
-            icon.name: "mark-location"
-            text: i18n("Add current location")
-            onTriggered: {
-                WeatherLocationListModel.requestCurrentLocation();
-                root.closeRequested();
-                let page = getPage("Forecast");
-                switchToPage(page, 0);
-                if (page.loading !== undefined) {
-                    getPage("Forecast").loading = true;
-                }
-            }
-        }
+        // The Mozilla location service has shutdown, and so in many cases geoclue stops working and hangs...
+        // Disable this for now until we have a good way to use GPS or other geolocation services.
+        //
+        // helpfulAction: Kirigami.Action {
+        //     icon.name: "mark-location"
+        //     text: i18n("Add current location")
+        //     onTriggered: {
+        //         WeatherLocationListModel.requestCurrentLocation();
+        //         root.closeRequested();
+        //         let page = getPage("Forecast");
+        //         switchToPage(page, 0);
+        //         if (page.loading !== undefined) {
+        //             getPage("Forecast").loading = true;
+        //         }
+        //     }
+        // }
     }
 
     // no results
