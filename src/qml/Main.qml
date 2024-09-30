@@ -70,12 +70,17 @@ Kirigami.ApplicationWindow {
     }
 
     function switchToPage(page, depth) {
-        while (pageStack.layers.depth > 1)
+        while (pageStack.layers.depth > 1) {
             pageStack.layers.pop();
-        while (pageStack.depth > depth)
+        }
+        while (pageStack.currentItem !== page && pageStack.depth > depth) {
             pageStack.pop();
-        runPageAnimations(page);
-        pageStack.push(page);
+        }
+
+        if (pageStack.currentItem !== page) {
+            runPageAnimations(page);
+            pageStack.push(page);
+        }
     }
 
     function pushPage(page, depth) {

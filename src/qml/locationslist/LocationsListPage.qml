@@ -17,7 +17,6 @@ Kirigami.ScrollablePage {
     property real yTranslate: 0
     property int currentIndex: 0
 
-    globalToolBarStyle: Kirigami.ApplicationHeaderStyle.ToolBar
     actions: [
         Kirigami.Action {
             icon.name: "list-add"
