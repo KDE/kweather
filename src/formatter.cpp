@@ -88,7 +88,8 @@ QString Formatter::formatSunriseTime(QDateTime date, const QString &timeZone) co
     if (!date.isValid()) {
         return i18nc("sunrise time not available", "-");
     }
-    return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();
+    auto time = date.toTimeZone(QTimeZone(timeZone.toUtf8())).time();
+    return time.toString(timeFormat()).toLower();
 }
 
 QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit) const
@@ -106,7 +107,14 @@ QString Formatter::formatPrecipitation(qreal precipitation, const QString &unit)
 
 QString Formatter::formatHourlyCardDelegateTime(QDateTime date, const QString &timeZone) const
 {
-    return QLocale().toString(date.toTimeZone(QTimeZone(timeZone.toUtf8())).time(), QLocale::ShortFormat).toLower();
+    auto time = date.toTimeZone(QTimeZone(timeZone.toUtf8())).time();
+    return time.toString(timeFormat()).toLower();
+}
+
+QString Formatter::timeFormat() const
+{
+    // Remove seconds from the time, since it's unnecessary in our strings
+    return QLocale().timeFormat(QLocale::ShortFormat).replace(QStringLiteral(":ss"), QString{});
 }
 
 #include "moc_formatter.cpp"
