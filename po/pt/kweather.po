@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:43+0000\n"
+"POT-Creation-Date: 2024-10-01 00:42+0000\n"
 "PO-Revision-Date: 2022-11-28 15:12+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -163,7 +163,7 @@ msgstr "Ocorreu um erro de rede ao obter a localização actual"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -262,12 +262,7 @@ msgstr "Não é possível ligar"
 msgid "Search for a location"
 msgstr "Pesquisar um local"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Adicionar a localização actual"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Sem resultados"
@@ -448,3 +443,6 @@ msgstr "Fase da Lua"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
+
+#~ msgid "Add current location"
+#~ msgstr "Adicionar a localização actual"

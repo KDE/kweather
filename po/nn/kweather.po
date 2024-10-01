@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:43+0000\n"
+"POT-Creation-Date: 2024-10-01 00:42+0000\n"
 "PO-Revision-Date: 2024-07-21 14:29+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -156,7 +156,7 @@ msgstr "Nettverksfeil ved forsøk på å henta gjeldande stad"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -255,12 +255,7 @@ msgstr "Klarte ikkje kopla til"
 msgid "Search for a location"
 msgstr "Søk etter stad"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Legg til gjeldande stad"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Ingen resultat"
@@ -441,3 +436,6 @@ msgstr "Månefase"
 #, kde-format
 msgid "temperature"
 msgstr "temperatur"
+
+#~ msgid "Add current location"
+#~ msgstr "Legg til gjeldande stad"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:43+0000\n"
+"POT-Creation-Date: 2024-10-01 00:42+0000\n"
 "PO-Revision-Date: 2023-12-11 18:04+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -156,7 +156,7 @@ msgstr "Verkkovirhe noudettaessa nykyistä sijaintia"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -252,12 +252,7 @@ msgstr "Ei voitu yhdistää"
 msgid "Search for a location"
 msgstr "Etsi sijaintia"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Lisää nykyinen sijainti"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Ei tuloksia"
@@ -438,6 +433,9 @@ msgstr "Kuun vaihe"
 #, kde-format
 msgid "temperature"
 msgstr "lämpötila"
+
+#~ msgid "Add current location"
+#~ msgstr "Lisää nykyinen sijainti"
 
 #~ msgid "No locations configured"
 #~ msgstr "Ei asetettuja sijainteja"

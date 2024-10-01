@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:43+0000\n"
+"POT-Creation-Date: 2024-10-01 00:42+0000\n"
 "PO-Revision-Date: 2024-07-05 15:58+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -157,7 +157,7 @@ msgstr "Мрежова грешка при получаване на текущ�
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -253,12 +253,7 @@ msgstr "Невъзможно свързване"
 msgid "Search for a location"
 msgstr "Търсене на местоположение"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Добавяне на текущо местоположение"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Няма резултати"
@@ -439,3 +434,6 @@ msgstr "Фази на луната"
 #, kde-format
 msgid "temperature"
 msgstr "температура"
+
+#~ msgid "Add current location"
+#~ msgstr "Добавяне на текущо местоположение"

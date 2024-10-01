@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:43+0000\n"
+"POT-Creation-Date: 2024-10-01 00:42+0000\n"
 "PO-Revision-Date: 2024-05-06 12:25+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -156,7 +156,7 @@ msgstr "Villa í nettengingu þegar reynt var að sækja núverandi staðsetning
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -252,12 +252,7 @@ msgstr "Get ekki tengst"
 msgid "Search for a location"
 msgstr "Leita að staðsetningu"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Bæta við núverandi staðsetningu"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Engar niðurstöður"
@@ -438,6 +433,9 @@ msgstr "Kvartil tungls"
 #, kde-format
 msgid "temperature"
 msgstr "hitastig"
+
+#~ msgid "Add current location"
+#~ msgstr "Bæta við núverandi staðsetningu"
 
 #~ msgid "No locations configured"
 #~ msgstr "Engar staðsetningar stilltar"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:43+0000\n"
+"POT-Creation-Date: 2024-10-01 00:42+0000\n"
 "PO-Revision-Date: 2024-04-19 21:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -160,7 +160,7 @@ msgstr "Sareko errorea uneko kokalekua eskuratzean"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -256,12 +256,7 @@ msgstr "Ezin da konektatu"
 msgid "Search for a location"
 msgstr "Bilatu kokaleku bat"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Gehitu uneko kokalekua"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Emaitzarik gabe"
@@ -442,6 +437,9 @@ msgstr "Ilargiaren fasea"
 #, kde-format
 msgid "temperature"
 msgstr "tenperatura"
+
+#~ msgid "Add current location"
+#~ msgstr "Gehitu uneko kokalekua"
 
 #~ msgid "No locations configured"
 #~ msgstr "Ez kokalekurik konfiguratu"
