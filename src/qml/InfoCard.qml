@@ -39,7 +39,6 @@ Kirigami.AbstractCard {
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
-                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -59,11 +58,10 @@ Kirigami.AbstractCard {
             RowLayout {
                 spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
-                    source: "compass"
+                    source: "temperature-normal-symbolic"
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
-                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -87,7 +85,6 @@ Kirigami.AbstractCard {
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
-                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
@@ -111,7 +108,6 @@ Kirigami.AbstractCard {
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
-                    isMask: true
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing

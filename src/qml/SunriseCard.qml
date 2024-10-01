@@ -38,10 +38,9 @@ Kirigami.AbstractCard {
             RowLayout {
                 spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
-                    source: "go-up"
+                    source: "weather-clear-symbolic"
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
-                    isMask: true
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
                 Column {
@@ -62,10 +61,9 @@ Kirigami.AbstractCard {
             RowLayout {
                 spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
-                    source: "go-down"
+                    source: "weather-clear-symbolic"
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
-                    isMask: true
                     color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
                 Column {
@@ -86,9 +84,10 @@ Kirigami.AbstractCard {
             RowLayout {
                 spacing: Kirigami.Units.gridUnit
                 Kirigami.Icon {
-                    source: "weather-clear-night"
+                    source: "weather-clear-night-symbolic"
                     implicitHeight: Kirigami.Units.iconSizes.medium
                     implicitWidth: Kirigami.Units.iconSizes.medium
+                    color: settingsModel && settingsModel.forecastStyle === "Dynamic" ? weatherLocation.iconColor : Kirigami.Theme.textColor
                 }
                 Column {
                     spacing: Kirigami.Units.smallSpacing
