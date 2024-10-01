@@ -412,26 +412,28 @@ Kirigami.ScrollablePage {
                 // used instead of topMargin, since it can be shrunk when needed (small window height)
                 Item {
                     Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2 // header height
-                    , page.height - headerText.height - dailyHeader.height - dailyCard.height - Kirigami.Units.gridUnit * 3) // pin to bottom of window
+                    , page.height - headerText.height - dailyCard.height - Kirigami.Units.gridUnit * 5) // pin to bottom of window
                 }
 
                 // weather header
                 ColumnLayout {
                     id: headerText
                     Layout.fillWidth: true
+                    Layout.bottomMargin: Kirigami.Units.gridUnit * 2
                     RowLayout {
+                        Layout.alignment: Qt.AlignHCenter
                         spacing: 0
                         Label {
-                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
-                            font.weight: Font.Light
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 6
+                            font.weight: Font.DemiBold
                             color: "white"
                             text: Math.round(Formatter.convertTemp(weatherLocation.currentHourForecast.temperature, settingsModel.temperatureUnits))
                             font.family: lightHeadingFont.name
                         }
                         Label {
                             Layout.alignment: Qt.AlignTop
-                            Layout.topMargin: Kirigami.Units.largeSpacing
-                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                            Layout.topMargin: Kirigami.Units.largeSpacing * 2
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 3
                             font.weight: Font.Light
                             color: "white"
                             font.family: lightHeadingFont.name
@@ -439,34 +441,13 @@ Kirigami.ScrollablePage {
                         }
                     }
                     Label {
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
+                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
                         font.weight: Font.DemiBold
                         color: "white"
-                        Layout.alignment: Qt.AlignLeft
-                        horizontalAlignment: Text.AlignLeft
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
                         text: weatherLocation.currentHourForecast.weatherDescription
                         font.family: lightHeadingFont.name
-                    }
-                }
-
-                // daily view header
-                ColumnLayout {
-                    id: dailyHeader
-                    spacing: Kirigami.Units.smallSpacing
-                    Layout.fillWidth: true
-                    Layout.topMargin: Kirigami.Units.largeSpacing * 2
-                    Layout.bottomMargin: Kirigami.Units.largeSpacing
-
-                    Label {
-                        text: i18n("Daily")
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
-                        color: "white"
-                    }
-                    Label {
-                        text: i18n("Local date: %1", weatherLocation.currentDate)
-                        font: Kirigami.Theme.smallFont
-                        color: "white"
-                        opacity: 0.7
                     }
                 }
 
@@ -480,7 +461,7 @@ Kirigami.ScrollablePage {
 
                     background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
-                        radius: Kirigami.Units.smallSpacing
+                        radius: Kirigami.Units.cornerRadius
                         anchors.fill: parent
                     }
 
@@ -496,7 +477,7 @@ Kirigami.ScrollablePage {
                                 color: Kirigami.Theme.focusColor
                                 width: 1
                             }
-                            radius: 4
+                            radius: Kirigami.Units.cornerRadius
                             opacity: 0.3
                             focus: true
                         }
@@ -533,7 +514,7 @@ Kirigami.ScrollablePage {
 
                     background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
-                        radius: Kirigami.Units.smallSpacing
+                        radius: Kirigami.Units.cornerRadius
                         anchors.fill: parent
                     }
                 }
@@ -550,12 +531,6 @@ Kirigami.ScrollablePage {
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.3
                         color: "white"
                     }
-                    Label {
-                        text: i18n("Local time: %1", weatherLocation.currentTime)
-                        font: Kirigami.Theme.smallFont
-                        color: "white"
-                        opacity: 0.7
-                    }
                 }
 
                 // hourly view
@@ -571,7 +546,7 @@ Kirigami.ScrollablePage {
 
                     background: Rectangle {
                         color: weatherLocation.cardBackgroundColor
-                        radius: Kirigami.Units.smallSpacing
+                        radius: Kirigami.Units.cornerRadius
                         anchors.fill: parent
                     }
 
