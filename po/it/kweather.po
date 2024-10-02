@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-12 00:41+0000\n"
+"POT-Creation-Date: 2024-10-02 02:34+0000\n"
 "PO-Revision-Date: 2024-04-19 18:50+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -156,7 +156,7 @@ msgstr "Errore di rete durante il recupero della località attuale"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -252,12 +252,7 @@ msgstr "Impossibile connettersi"
 msgid "Search for a location"
 msgstr "Cerca una località"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Aggiungi la località attuale"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Nessun risultato"
@@ -438,6 +433,9 @@ msgstr "Fase lunare"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
+
+#~ msgid "Add current location"
+#~ msgstr "Aggiungi la località attuale"
 
 #~ msgid "No locations configured"
 #~ msgstr "Nessuna località configurata"

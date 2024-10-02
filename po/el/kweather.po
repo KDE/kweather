@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-12 00:41+0000\n"
+"POT-Creation-Date: 2024-10-02 02:34+0000\n"
 "PO-Revision-Date: 2023-01-02 23:40+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -160,7 +160,7 @@ msgstr "Σφάλμα δικτύου κατά την ανάκτηση της τρ
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -259,12 +259,7 @@ msgstr "Αδυναμία σύνδεσης"
 msgid "Search for a location"
 msgstr "Αναζήτηση τοποθεσίας"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "Προσθήκη τρέχουσας τοποθεσίας"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "Χωρίς αποτελέσματα"
@@ -445,6 +440,9 @@ msgstr "Φάση σελήνης"
 #, kde-format
 msgid "temperature"
 msgstr "θερμοκρασία"
+
+#~ msgid "Add current location"
+#~ msgstr "Προσθήκη τρέχουσας τοποθεσίας"
 
 #~ msgid "No locations configured"
 #~ msgstr "Δεν έγινε διαμόρφωση τοποθεσιών"

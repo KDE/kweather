@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-12 00:41+0000\n"
+"POT-Creation-Date: 2024-10-02 02:34+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -155,7 +155,7 @@ msgstr "获取当前位置时发生网络错误"
 
 #: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:24
+#: qml/locationslist/LocationsListPage.qml:23
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -251,12 +251,7 @@ msgstr "无法连接"
 msgid "Search for a location"
 msgstr "搜索位置"
 
-#: qml/locationslist/AddLocationListView.qml:104
-#, kde-format
-msgid "Add current location"
-msgstr "添加当前位置"
-
-#: qml/locationslist/AddLocationListView.qml:125
+#: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
 msgstr "无结果"
@@ -437,3 +432,6 @@ msgstr "月相"
 #, kde-format
 msgid "temperature"
 msgstr "温度"
+
+#~ msgid "Add current location"
+#~ msgstr "添加当前位置"
