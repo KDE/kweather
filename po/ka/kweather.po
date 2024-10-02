@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:42+0000\n"
+"POT-Creation-Date: 2024-10-02 00:42+0000\n"
 "PO-Revision-Date: 2024-04-18 03:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -76,13 +76,13 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:100
+#: formatter.cpp:101
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 დუიმი"
 
-#: formatter.cpp:103
+#: formatter.cpp:104
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -197,42 +197,32 @@ msgstr "მორგება"
 msgid "Refresh"
 msgstr "განახლება"
 
-#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
-#, kde-format
-msgid "Daily"
-msgstr "დღიურად"
-
-#: qml/DynamicForecastPage.qml:466
-#, kde-format
-msgid "Local date: %1"
-msgstr "ლოკალური თარიღი: %1"
-
-#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:530 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "საათობრივ"
 
-#: qml/DynamicForecastPage.qml:554
+#: qml/FlatLocationForecast.qml:110
 #, kde-format
-msgid "Local time: %1"
-msgstr "ლოკალური დრო: %1"
+msgid "Daily"
+msgstr "დღიურად"
 
-#: qml/InfoCard.qml:48
+#: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
 msgstr "ნალექი"
 
-#: qml/InfoCard.qml:72
+#: qml/InfoCard.qml:70
 #, kde-format
 msgid "Humidity"
 msgstr "ტენიანბა"
 
-#: qml/InfoCard.qml:96
+#: qml/InfoCard.qml:93
 #, kde-format
 msgid "Pressure"
 msgstr "წნევა"
 
-#: qml/InfoCard.qml:120
+#: qml/InfoCard.qml:116
 #, kde-format
 msgid "UV Index"
 msgstr "UV ინდექსი"
@@ -287,12 +277,12 @@ msgstr "ძირითადი"
 msgid "Forecast Style"
 msgstr "პროგნოზის სტილი"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47
 #, kde-format
 msgid "Flat"
 msgstr "ბრტყელი"
 
-#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51
 #, kde-format
 msgid "Dynamic"
 msgstr "დინამიკა"
@@ -307,124 +297,115 @@ msgstr "შესახებ"
 msgid "Units"
 msgstr "საზომი ერთეულები"
 
-#: qml/settings/SettingsComponent.qml:106
-#, kde-format
-msgid "Temperature Units"
-msgstr "ტემპერატურის ერთეული"
-
-#: qml/settings/SettingsComponent.qml:112
-#, kde-format
-msgid "Use System Default"
-msgstr "სისტემის ნაგულისხმების გამოყენება"
-
-#: qml/settings/SettingsComponent.qml:116
-#, kde-format
-msgid "Celsius"
-msgstr "ცელსიუსი"
-
-#: qml/settings/SettingsComponent.qml:120
-#, kde-format
-msgid "Fahrenheit"
-msgstr "ფარენჰეიტი"
-
-#: qml/settings/SettingsComponent.qml:158
+#: qml/settings/SettingsComponent.qml:131
 #, kde-format
 msgid "Speed Units"
 msgstr "სიჩქარის ერთეული"
 
-#: qml/settings/SettingsComponent.qml:164
+#: qml/settings/SettingsComponent.qml:137
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "კმ/სთ"
 
-#: qml/settings/SettingsComponent.qml:168
+#: qml/settings/SettingsComponent.qml:141
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "მ/სთ"
 
-#: qml/settings/SettingsComponent.qml:172
+#: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "მ/წმ"
 
-#: qml/settings/SettingsComponent.qml:210
+#: qml/settings/SettingsComponent.qml:183
 #, kde-format
 msgid "Pressure Units"
 msgstr "წნევის ერთეული"
 
-#: qml/settings/SettingsComponent.qml:216
+#: qml/settings/SettingsComponent.qml:189
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "ჰპა"
 
-#: qml/settings/SettingsComponent.qml:220
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "მმHg"
 
-#: qml/settings/SettingsComponent.qml:259
+#: qml/settings/SettingsComponent.qml:232
 #, kde-format
 msgid "Precipitation Units"
 msgstr "ნალექის ერთეული"
 
-#: qml/settings/SettingsComponent.qml:265
+#: qml/settings/SettingsComponent.qml:238
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "მმ"
 
-#: qml/settings/SettingsComponent.qml:269
+#: qml/settings/SettingsComponent.qml:242
 #, kde-format
 msgctxt "Inches"
 msgid "in"
 msgstr "დუიმი"
 
-#: qml/SetupWizard.qml:63
+#: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
-msgid "Welcome to Weather"
-msgstr "მოგესალმებით ამინდის აპლიკაციაში"
+msgid "Temperature Units"
+msgstr "ტემპერატურის ერთეული"
 
-#: qml/SetupWizard.qml:69
+#: qml/settings/TemperatureUnitComboBox.qml:18
 #, kde-format
-msgid "Continue"
-msgstr "გაგრძელება"
+msgid "Use System Default"
+msgstr "სისტემის ნაგულისხმების გამოყენება"
 
-#: qml/SetupWizard.qml:88
+#: qml/settings/TemperatureUnitComboBox.qml:22
 #, kde-format
-msgid "Select forecast theme"
-msgstr "აირჩიეთ პროგნოზის თემა"
+msgid "Celsius"
+msgstr "ცელსიუსი"
 
-#: qml/SetupWizard.qml:93
+#: qml/settings/TemperatureUnitComboBox.qml:26
 #, kde-format
-msgid "You can change the theme later in the settings."
-msgstr "თემის შეცვლა მოგვიანებითაც, პარამეტრებში შეგიძლიათ."
+msgid "Fahrenheit"
+msgstr "ფარენჰეიტი"
 
-#: qml/SetupWizard.qml:200
+#: qml/SetupWizard.qml:311
+#, kde-format
+msgid "Get Started"
+msgstr ""
+
+#: qml/SetupWizard.qml:412
 #, kde-format
 msgid "Back"
 msgstr "უკან"
 
-#: qml/SetupWizard.qml:206
+#: qml/SetupWizard.qml:431
 #, kde-format
-msgid "Finish"
-msgstr "დასრულება"
+msgid "Next"
+msgstr ""
 
-#: qml/SunriseCard.qml:51
+#: qml/SetupWizard.qml:455
+#, fuzzy, kde-format
+#| msgid "You can change the theme later in the settings."
+msgid "The style can be changed later in the settings."
+msgstr "თემის შეცვლა მოგვიანებითაც, პარამეტრებში შეგიძლიათ."
+
+#: qml/SunriseCard.qml:50
 #, kde-format
 msgid "Sunrise"
 msgstr "აისი"
 
-#: qml/SunriseCard.qml:75
+#: qml/SunriseCard.qml:73
 #, kde-format
 msgid "Sunset"
 msgstr "მზის ჩასვლა"
 
-#: qml/SunriseCard.qml:97
+#: qml/SunriseCard.qml:96
 #, kde-format
 msgid "Moon Phase"
 msgstr "მთვარის ფაზა"
@@ -433,6 +414,24 @@ msgstr "მთვარის ფაზა"
 #, kde-format
 msgid "temperature"
 msgstr "ტემპერატურა"
+
+#~ msgid "Local date: %1"
+#~ msgstr "ლოკალური თარიღი: %1"
+
+#~ msgid "Local time: %1"
+#~ msgstr "ლოკალური დრო: %1"
+
+#~ msgid "Welcome to Weather"
+#~ msgstr "მოგესალმებით ამინდის აპლიკაციაში"
+
+#~ msgid "Continue"
+#~ msgstr "გაგრძელება"
+
+#~ msgid "Select forecast theme"
+#~ msgstr "აირჩიეთ პროგნოზის თემა"
+
+#~ msgid "Finish"
+#~ msgstr "დასრულება"
 
 #~ msgid "Add current location"
 #~ msgstr "მიმდინარე მდებარეობის დამტება"

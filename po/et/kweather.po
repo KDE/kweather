@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:42+0000\n"
+"POT-Creation-Date: 2024-10-02 00:42+0000\n"
 "PO-Revision-Date: 2020-10-25 19:39+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -77,13 +77,13 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr ""
 
-#: formatter.cpp:100
+#: formatter.cpp:101
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr ""
 
-#: formatter.cpp:103
+#: formatter.cpp:104
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -204,42 +204,32 @@ msgstr "Seadistused"
 msgid "Refresh"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
-#, fuzzy, kde-format
-msgid "Daily"
-msgstr "Päevad"
-
-#: qml/DynamicForecastPage.qml:466
-#, kde-format
-msgid "Local date: %1"
-msgstr ""
-
-#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:530 qml/FlatLocationForecast.qml:155
 #, fuzzy, kde-format
 msgid "Hourly"
 msgstr "Tunnid"
 
-#: qml/DynamicForecastPage.qml:554
-#, kde-format
-msgid "Local time: %1"
-msgstr ""
+#: qml/FlatLocationForecast.qml:110
+#, fuzzy, kde-format
+msgid "Daily"
+msgstr "Päevad"
 
-#: qml/InfoCard.qml:48
+#: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
 msgstr "Sademed"
 
-#: qml/InfoCard.qml:72
+#: qml/InfoCard.qml:70
 #, kde-format
 msgid "Humidity"
 msgstr "Õhuniiskus"
 
-#: qml/InfoCard.qml:96
+#: qml/InfoCard.qml:93
 #, kde-format
 msgid "Pressure"
 msgstr "Õhurõhk"
 
-#: qml/InfoCard.qml:120
+#: qml/InfoCard.qml:116
 #, fuzzy, kde-format
 #| msgid "UV index"
 msgid "UV Index"
@@ -296,12 +286,12 @@ msgstr ""
 msgid "Forecast Style"
 msgstr "Ilmateate stiil"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47
 #, kde-format
 msgid "Flat"
 msgstr "Lame"
 
-#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51
 #, kde-format
 msgid "Dynamic"
 msgstr "Dünaamiline"
@@ -317,130 +307,120 @@ msgstr "Teave"
 msgid "Units"
 msgstr "Kiiruseühik"
 
-#: qml/settings/SettingsComponent.qml:106
-#, kde-format
-msgid "Temperature Units"
-msgstr "Temperatuuriühik"
-
-#: qml/settings/SettingsComponent.qml:112
-#, kde-format
-msgid "Use System Default"
-msgstr ""
-
-#: qml/settings/SettingsComponent.qml:116
-#, kde-format
-msgid "Celsius"
-msgstr "Celsius"
-
-#: qml/settings/SettingsComponent.qml:120
-#, kde-format
-msgid "Fahrenheit"
-msgstr "Fahrenheit"
-
-#: qml/settings/SettingsComponent.qml:158
+#: qml/settings/SettingsComponent.qml:131
 #, kde-format
 msgid "Speed Units"
 msgstr "Kiiruseühik"
 
-#: qml/settings/SettingsComponent.qml:164
+#: qml/settings/SettingsComponent.qml:137
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "km/h"
 
-#: qml/settings/SettingsComponent.qml:168
+#: qml/settings/SettingsComponent.qml:141
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/settings/SettingsComponent.qml:172
+#: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:210
+#: qml/settings/SettingsComponent.qml:183
 #, fuzzy, kde-format
 #| msgid "Pressure"
 msgid "Pressure Units"
 msgstr "Õhurõhk"
 
-#: qml/settings/SettingsComponent.qml:216
+#: qml/settings/SettingsComponent.qml:189
 #, fuzzy, kde-format
 #| msgid "%1hPa"
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "%1 hPa"
 
-#: qml/settings/SettingsComponent.qml:220
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:259
+#: qml/settings/SettingsComponent.qml:232
 #, fuzzy, kde-format
 #| msgid "Precipitation"
 msgid "Precipitation Units"
 msgstr "Sademed"
 
-#: qml/settings/SettingsComponent.qml:265
+#: qml/settings/SettingsComponent.qml:238
 #, fuzzy, kde-format
 #| msgid "%1mm"
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "%1 mm"
 
-#: qml/settings/SettingsComponent.qml:269
+#: qml/settings/SettingsComponent.qml:242
 #, fuzzy, kde-format
 #| msgid "Rain"
 msgctxt "Inches"
 msgid "in"
 msgstr "Vihm"
 
-#: qml/SetupWizard.qml:63
-#, fuzzy, kde-format
-#| msgid "Welcome to KWeather"
-msgid "Welcome to Weather"
-msgstr "Tere tulemast KWeatherit kasutama"
-
-#: qml/SetupWizard.qml:69
+#: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
-msgid "Continue"
-msgstr "Edasi"
+msgid "Temperature Units"
+msgstr "Temperatuuriühik"
 
-#: qml/SetupWizard.qml:88
+#: qml/settings/TemperatureUnitComboBox.qml:18
 #, kde-format
-msgid "Select forecast theme"
-msgstr "Ilmateate kujunduse valimine"
+msgid "Use System Default"
+msgstr ""
 
-#: qml/SetupWizard.qml:93
+#: qml/settings/TemperatureUnitComboBox.qml:22
 #, kde-format
-msgid "You can change the theme later in the settings."
-msgstr "Kujundust saab hiljem seadistuste all muuta."
+msgid "Celsius"
+msgstr "Celsius"
 
-#: qml/SetupWizard.qml:200
+#: qml/settings/TemperatureUnitComboBox.qml:26
+#, kde-format
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: qml/SetupWizard.qml:311
+#, kde-format
+msgid "Get Started"
+msgstr ""
+
+#: qml/SetupWizard.qml:412
 #, kde-format
 msgid "Back"
 msgstr "Tagasi"
 
-#: qml/SetupWizard.qml:206
+#: qml/SetupWizard.qml:431
 #, kde-format
-msgid "Finish"
-msgstr "Valmis"
+msgid "Next"
+msgstr ""
 
-#: qml/SunriseCard.qml:51
+#: qml/SetupWizard.qml:455
+#, fuzzy, kde-format
+#| msgid "You can change the theme later in the settings."
+msgid "The style can be changed later in the settings."
+msgstr "Kujundust saab hiljem seadistuste all muuta."
+
+#: qml/SunriseCard.qml:50
 #, kde-format
 msgid "Sunrise"
 msgstr "Päikesetõus"
 
-#: qml/SunriseCard.qml:75
+#: qml/SunriseCard.qml:73
 #, kde-format
 msgid "Sunset"
 msgstr "Päikeseloojang"
 
-#: qml/SunriseCard.qml:97
+#: qml/SunriseCard.qml:96
 #, kde-format
 msgid "Moon Phase"
 msgstr "Kuufaas"
@@ -450,6 +430,20 @@ msgstr "Kuufaas"
 #| msgid "temperature"
 msgid "temperature"
 msgstr "temperatuur"
+
+#, fuzzy
+#~| msgid "Welcome to KWeather"
+#~ msgid "Welcome to Weather"
+#~ msgstr "Tere tulemast KWeatherit kasutama"
+
+#~ msgid "Continue"
+#~ msgstr "Edasi"
+
+#~ msgid "Select forecast theme"
+#~ msgstr "Ilmateate kujunduse valimine"
+
+#~ msgid "Finish"
+#~ msgstr "Valmis"
 
 #~ msgid "Add current location"
 #~ msgstr "Lisa praegune asukoht"

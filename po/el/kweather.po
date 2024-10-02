@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:42+0000\n"
+"POT-Creation-Date: 2024-10-02 00:42+0000\n"
 "PO-Revision-Date: 2023-01-02 23:40+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -75,13 +75,13 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:100
+#: formatter.cpp:101
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 in"
 
-#: formatter.cpp:103
+#: formatter.cpp:104
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -198,44 +198,32 @@ msgstr "Ρυθμίσεις"
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
-#, kde-format
-msgid "Daily"
-msgstr "Ανά ημέρα"
-
-#: qml/DynamicForecastPage.qml:466
-#, fuzzy, kde-format
-#| msgid "Local Date: "
-msgid "Local date: %1"
-msgstr "Τοπική ημερομηνία: "
-
-#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:530 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "Ανά ώρα"
 
-#: qml/DynamicForecastPage.qml:554
-#, fuzzy, kde-format
-#| msgid "Local Time: "
-msgid "Local time: %1"
-msgstr "Τοπική ώρα: "
+#: qml/FlatLocationForecast.qml:110
+#, kde-format
+msgid "Daily"
+msgstr "Ανά ημέρα"
 
-#: qml/InfoCard.qml:48
+#: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
 msgstr "Υετός"
 
-#: qml/InfoCard.qml:72
+#: qml/InfoCard.qml:70
 #, kde-format
 msgid "Humidity"
 msgstr "Υγρασία"
 
-#: qml/InfoCard.qml:96
+#: qml/InfoCard.qml:93
 #, kde-format
 msgid "Pressure"
 msgstr "Πίεση"
 
-#: qml/InfoCard.qml:120
+#: qml/InfoCard.qml:116
 #, kde-format
 msgid "UV Index"
 msgstr "Δείκτης UV"
@@ -290,12 +278,12 @@ msgstr "Γενικά"
 msgid "Forecast Style"
 msgstr "Στιλ πρόγνωσης"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47
 #, kde-format
 msgid "Flat"
 msgstr "Σταθερό"
 
-#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51
 #, kde-format
 msgid "Dynamic"
 msgstr "Δυναμικό"
@@ -310,124 +298,115 @@ msgstr "Περίγραμμα"
 msgid "Units"
 msgstr "Μονάδες"
 
-#: qml/settings/SettingsComponent.qml:106
-#, kde-format
-msgid "Temperature Units"
-msgstr "Μονάδες θερμοκρασίας"
-
-#: qml/settings/SettingsComponent.qml:112
-#, kde-format
-msgid "Use System Default"
-msgstr "Χρήση ρυθμίσεων του συστήματος"
-
-#: qml/settings/SettingsComponent.qml:116
-#, kde-format
-msgid "Celsius"
-msgstr "Celsius"
-
-#: qml/settings/SettingsComponent.qml:120
-#, kde-format
-msgid "Fahrenheit"
-msgstr "Fahrenheit"
-
-#: qml/settings/SettingsComponent.qml:158
+#: qml/settings/SettingsComponent.qml:131
 #, kde-format
 msgid "Speed Units"
 msgstr "Μονάδες ταχύτητας"
 
-#: qml/settings/SettingsComponent.qml:164
+#: qml/settings/SettingsComponent.qml:137
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "kph"
 
-#: qml/settings/SettingsComponent.qml:168
+#: qml/settings/SettingsComponent.qml:141
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/settings/SettingsComponent.qml:172
+#: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/s"
 
-#: qml/settings/SettingsComponent.qml:210
+#: qml/settings/SettingsComponent.qml:183
 #, kde-format
 msgid "Pressure Units"
 msgstr "Μονάδες πίεσης"
 
-#: qml/settings/SettingsComponent.qml:216
+#: qml/settings/SettingsComponent.qml:189
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/settings/SettingsComponent.qml:220
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:259
+#: qml/settings/SettingsComponent.qml:232
 #, kde-format
 msgid "Precipitation Units"
 msgstr "Μονάδες υετού"
 
-#: qml/settings/SettingsComponent.qml:265
+#: qml/settings/SettingsComponent.qml:238
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "mm"
 
-#: qml/settings/SettingsComponent.qml:269
+#: qml/settings/SettingsComponent.qml:242
 #, kde-format
 msgctxt "Inches"
 msgid "in"
 msgstr "in"
 
-#: qml/SetupWizard.qml:63
+#: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
-msgid "Welcome to Weather"
-msgstr "Καλώς ήρθατε στην πρόγνωση του καιρού"
+msgid "Temperature Units"
+msgstr "Μονάδες θερμοκρασίας"
 
-#: qml/SetupWizard.qml:69
+#: qml/settings/TemperatureUnitComboBox.qml:18
 #, kde-format
-msgid "Continue"
-msgstr "Συνέχεια"
+msgid "Use System Default"
+msgstr "Χρήση ρυθμίσεων του συστήματος"
 
-#: qml/SetupWizard.qml:88
+#: qml/settings/TemperatureUnitComboBox.qml:22
 #, kde-format
-msgid "Select forecast theme"
-msgstr "Επιλογή θέματος πρόγνωσης"
+msgid "Celsius"
+msgstr "Celsius"
 
-#: qml/SetupWizard.qml:93
+#: qml/settings/TemperatureUnitComboBox.qml:26
 #, kde-format
-msgid "You can change the theme later in the settings."
-msgstr "Μπορείτε να αλλάξετε το θέμα αργότερα στις ρυθμίσεις."
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
 
-#: qml/SetupWizard.qml:200
+#: qml/SetupWizard.qml:311
+#, kde-format
+msgid "Get Started"
+msgstr ""
+
+#: qml/SetupWizard.qml:412
 #, kde-format
 msgid "Back"
 msgstr "Πίσω"
 
-#: qml/SetupWizard.qml:206
+#: qml/SetupWizard.qml:431
 #, kde-format
-msgid "Finish"
-msgstr "Τέλος"
+msgid "Next"
+msgstr ""
 
-#: qml/SunriseCard.qml:51
+#: qml/SetupWizard.qml:455
+#, fuzzy, kde-format
+#| msgid "You can change the theme later in the settings."
+msgid "The style can be changed later in the settings."
+msgstr "Μπορείτε να αλλάξετε το θέμα αργότερα στις ρυθμίσεις."
+
+#: qml/SunriseCard.qml:50
 #, kde-format
 msgid "Sunrise"
 msgstr "Ανατολή"
 
-#: qml/SunriseCard.qml:75
+#: qml/SunriseCard.qml:73
 #, kde-format
 msgid "Sunset"
 msgstr "Δύση"
 
-#: qml/SunriseCard.qml:97
+#: qml/SunriseCard.qml:96
 #, kde-format
 msgid "Moon Phase"
 msgstr "Φάση σελήνης"
@@ -436,6 +415,28 @@ msgstr "Φάση σελήνης"
 #, kde-format
 msgid "temperature"
 msgstr "θερμοκρασία"
+
+#, fuzzy
+#~| msgid "Local Date: "
+#~ msgid "Local date: %1"
+#~ msgstr "Τοπική ημερομηνία: "
+
+#, fuzzy
+#~| msgid "Local Time: "
+#~ msgid "Local time: %1"
+#~ msgstr "Τοπική ώρα: "
+
+#~ msgid "Welcome to Weather"
+#~ msgstr "Καλώς ήρθατε στην πρόγνωση του καιρού"
+
+#~ msgid "Continue"
+#~ msgstr "Συνέχεια"
+
+#~ msgid "Select forecast theme"
+#~ msgstr "Επιλογή θέματος πρόγνωσης"
+
+#~ msgid "Finish"
+#~ msgstr "Τέλος"
 
 #~ msgid "Add current location"
 #~ msgstr "Προσθήκη τρέχουσας τοποθεσίας"

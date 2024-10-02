@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:42+0000\n"
+"POT-Creation-Date: 2024-10-02 00:42+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -75,13 +75,13 @@ msgctxt "sunrise time not available"
 msgid "-"
 msgstr "-"
 
-#: formatter.cpp:100
+#: formatter.cpp:101
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 英寸"
 
-#: formatter.cpp:103
+#: formatter.cpp:104
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -196,42 +196,32 @@ msgstr "设置"
 msgid "Refresh"
 msgstr "刷新"
 
-#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
-#, kde-format
-msgid "Daily"
-msgstr "每日"
-
-#: qml/DynamicForecastPage.qml:466
-#, kde-format
-msgid "Local date: %1"
-msgstr "当地日期：%1"
-
-#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:530 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "每小时"
 
-#: qml/DynamicForecastPage.qml:554
+#: qml/FlatLocationForecast.qml:110
 #, kde-format
-msgid "Local time: %1"
-msgstr "当地时间：%1"
+msgid "Daily"
+msgstr "每日"
 
-#: qml/InfoCard.qml:48
+#: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
 msgstr "降水"
 
-#: qml/InfoCard.qml:72
+#: qml/InfoCard.qml:70
 #, kde-format
 msgid "Humidity"
 msgstr "湿度"
 
-#: qml/InfoCard.qml:96
+#: qml/InfoCard.qml:93
 #, kde-format
 msgid "Pressure"
 msgstr "气压"
 
-#: qml/InfoCard.qml:120
+#: qml/InfoCard.qml:116
 #, kde-format
 msgid "UV Index"
 msgstr "紫外线指数"
@@ -286,12 +276,12 @@ msgstr "常规"
 msgid "Forecast Style"
 msgstr "天气预报显示风格"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47
 #, kde-format
 msgid "Flat"
 msgstr "扁平"
 
-#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51
 #, kde-format
 msgid "Dynamic"
 msgstr "动态"
@@ -306,124 +296,115 @@ msgstr "关于"
 msgid "Units"
 msgstr "单位"
 
-#: qml/settings/SettingsComponent.qml:106
-#, kde-format
-msgid "Temperature Units"
-msgstr "温度单位"
-
-#: qml/settings/SettingsComponent.qml:112
-#, kde-format
-msgid "Use System Default"
-msgstr "使用系统默认"
-
-#: qml/settings/SettingsComponent.qml:116
-#, kde-format
-msgid "Celsius"
-msgstr "摄氏度"
-
-#: qml/settings/SettingsComponent.qml:120
-#, kde-format
-msgid "Fahrenheit"
-msgstr "华氏度"
-
-#: qml/settings/SettingsComponent.qml:158
+#: qml/settings/SettingsComponent.qml:131
 #, kde-format
 msgid "Speed Units"
 msgstr "速度单位"
 
-#: qml/settings/SettingsComponent.qml:164
+#: qml/settings/SettingsComponent.qml:137
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "千米/小时"
 
-#: qml/settings/SettingsComponent.qml:168
+#: qml/settings/SettingsComponent.qml:141
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "英里/小时"
 
-#: qml/settings/SettingsComponent.qml:172
+#: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "米/秒"
 
-#: qml/settings/SettingsComponent.qml:210
+#: qml/settings/SettingsComponent.qml:183
 #, kde-format
 msgid "Pressure Units"
 msgstr "压力单位"
 
-#: qml/settings/SettingsComponent.qml:216
+#: qml/settings/SettingsComponent.qml:189
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "百帕"
 
-#: qml/settings/SettingsComponent.qml:220
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "毫米汞柱"
 
-#: qml/settings/SettingsComponent.qml:259
+#: qml/settings/SettingsComponent.qml:232
 #, kde-format
 msgid "Precipitation Units"
 msgstr "降水量单位"
 
-#: qml/settings/SettingsComponent.qml:265
+#: qml/settings/SettingsComponent.qml:238
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "毫米"
 
-#: qml/settings/SettingsComponent.qml:269
+#: qml/settings/SettingsComponent.qml:242
 #, kde-format
 msgctxt "Inches"
 msgid "in"
 msgstr "英寸"
 
-#: qml/SetupWizard.qml:63
+#: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
-msgid "Welcome to Weather"
-msgstr "欢迎使用天气小程序"
+msgid "Temperature Units"
+msgstr "温度单位"
 
-#: qml/SetupWizard.qml:69
+#: qml/settings/TemperatureUnitComboBox.qml:18
 #, kde-format
-msgid "Continue"
-msgstr "继续"
+msgid "Use System Default"
+msgstr "使用系统默认"
 
-#: qml/SetupWizard.qml:88
+#: qml/settings/TemperatureUnitComboBox.qml:22
 #, kde-format
-msgid "Select forecast theme"
-msgstr "选择天气预报主题"
+msgid "Celsius"
+msgstr "摄氏度"
 
-#: qml/SetupWizard.qml:93
+#: qml/settings/TemperatureUnitComboBox.qml:26
 #, kde-format
-msgid "You can change the theme later in the settings."
-msgstr "您以后可以在设置中切换主题。"
+msgid "Fahrenheit"
+msgstr "华氏度"
 
-#: qml/SetupWizard.qml:200
+#: qml/SetupWizard.qml:311
+#, kde-format
+msgid "Get Started"
+msgstr ""
+
+#: qml/SetupWizard.qml:412
 #, kde-format
 msgid "Back"
 msgstr "返回"
 
-#: qml/SetupWizard.qml:206
+#: qml/SetupWizard.qml:431
 #, kde-format
-msgid "Finish"
-msgstr "完成"
+msgid "Next"
+msgstr ""
 
-#: qml/SunriseCard.qml:51
+#: qml/SetupWizard.qml:455
+#, fuzzy, kde-format
+#| msgid "You can change the theme later in the settings."
+msgid "The style can be changed later in the settings."
+msgstr "您以后可以在设置中切换主题。"
+
+#: qml/SunriseCard.qml:50
 #, kde-format
 msgid "Sunrise"
 msgstr "日出"
 
-#: qml/SunriseCard.qml:75
+#: qml/SunriseCard.qml:73
 #, kde-format
 msgid "Sunset"
 msgstr "日落"
 
-#: qml/SunriseCard.qml:97
+#: qml/SunriseCard.qml:96
 #, kde-format
 msgid "Moon Phase"
 msgstr "月相"
@@ -432,6 +413,24 @@ msgstr "月相"
 #, kde-format
 msgid "temperature"
 msgstr "温度"
+
+#~ msgid "Local date: %1"
+#~ msgstr "当地日期：%1"
+
+#~ msgid "Local time: %1"
+#~ msgstr "当地时间：%1"
+
+#~ msgid "Welcome to Weather"
+#~ msgstr "欢迎使用天气小程序"
+
+#~ msgid "Continue"
+#~ msgstr "继续"
+
+#~ msgid "Select forecast theme"
+#~ msgstr "选择天气预报主题"
+
+#~ msgid "Finish"
+#~ msgstr "完成"
 
 #~ msgid "Add current location"
 #~ msgstr "添加当前位置"

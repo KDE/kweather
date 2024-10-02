@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:42+0000\n"
+"POT-Creation-Date: 2024-10-02 00:42+0000\n"
 "PO-Revision-Date: 2024-04-18 15:31+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -79,13 +79,13 @@ msgid "-"
 msgstr "-"
 
 # skip-rule: t-com_anglo
-#: formatter.cpp:100
+#: formatter.cpp:101
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
 msgstr "%1 \""
 
-#: formatter.cpp:103
+#: formatter.cpp:104
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
@@ -201,42 +201,32 @@ msgstr "Arranjament"
 msgid "Refresh"
 msgstr "Actualitza"
 
-#: qml/DynamicForecastPage.qml:461 qml/FlatLocationForecast.qml:110
-#, kde-format
-msgid "Daily"
-msgstr "Diàriament"
-
-#: qml/DynamicForecastPage.qml:466
-#, kde-format
-msgid "Local date: %1"
-msgstr "Data local: %1"
-
-#: qml/DynamicForecastPage.qml:549 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:530 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "Cada hora"
 
-#: qml/DynamicForecastPage.qml:554
+#: qml/FlatLocationForecast.qml:110
 #, kde-format
-msgid "Local time: %1"
-msgstr "Hora local: %1"
+msgid "Daily"
+msgstr "Diàriament"
 
-#: qml/InfoCard.qml:48
+#: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
 msgstr "Precipitació"
 
-#: qml/InfoCard.qml:72
+#: qml/InfoCard.qml:70
 #, kde-format
 msgid "Humidity"
 msgstr "Humitat"
 
-#: qml/InfoCard.qml:96
+#: qml/InfoCard.qml:93
 #, kde-format
 msgid "Pressure"
 msgstr "Pressió"
 
-#: qml/InfoCard.qml:120
+#: qml/InfoCard.qml:116
 #, kde-format
 msgid "UV Index"
 msgstr "Índex UV"
@@ -291,12 +281,12 @@ msgstr "General"
 msgid "Forecast Style"
 msgstr "Estil de predicció"
 
-#: qml/settings/SettingsComponent.qml:47 qml/SetupWizard.qml:129
+#: qml/settings/SettingsComponent.qml:47
 #, kde-format
 msgid "Flat"
 msgstr "Uniforme"
 
-#: qml/settings/SettingsComponent.qml:51 qml/SetupWizard.qml:176
+#: qml/settings/SettingsComponent.qml:51
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinàmic"
@@ -311,125 +301,116 @@ msgstr "Quant al"
 msgid "Units"
 msgstr "Unitats"
 
-#: qml/settings/SettingsComponent.qml:106
-#, kde-format
-msgid "Temperature Units"
-msgstr "Unitats de temperatura"
-
-#: qml/settings/SettingsComponent.qml:112
-#, kde-format
-msgid "Use System Default"
-msgstr "Usa la predeterminada del sistema"
-
-#: qml/settings/SettingsComponent.qml:116
-#, kde-format
-msgid "Celsius"
-msgstr "Celsius"
-
-#: qml/settings/SettingsComponent.qml:120
-#, kde-format
-msgid "Fahrenheit"
-msgstr "Fahrenheit"
-
-#: qml/settings/SettingsComponent.qml:158
+#: qml/settings/SettingsComponent.qml:131
 #, kde-format
 msgid "Speed Units"
 msgstr "Unitats de velocitat"
 
-#: qml/settings/SettingsComponent.qml:164
+#: qml/settings/SettingsComponent.qml:137
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "kph"
 
-#: qml/settings/SettingsComponent.qml:168
+#: qml/settings/SettingsComponent.qml:141
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "mph"
 
-#: qml/settings/SettingsComponent.qml:172
+#: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
 msgstr "m/s"
 
-#: qml/settings/SettingsComponent.qml:210
+#: qml/settings/SettingsComponent.qml:183
 #, kde-format
 msgid "Pressure Units"
 msgstr "Unitats de pressió"
 
-#: qml/settings/SettingsComponent.qml:216
+#: qml/settings/SettingsComponent.qml:189
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "hPa"
 
-#: qml/settings/SettingsComponent.qml:220
+#: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:259
+#: qml/settings/SettingsComponent.qml:232
 #, kde-format
 msgid "Precipitation Units"
 msgstr "Unitats de precipitació"
 
-#: qml/settings/SettingsComponent.qml:265
+#: qml/settings/SettingsComponent.qml:238
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "mm"
 
 # skip-rule: t-com_anglo
-#: qml/settings/SettingsComponent.qml:269
+#: qml/settings/SettingsComponent.qml:242
 #, kde-format
 msgctxt "Inches"
 msgid "in"
 msgstr "\""
 
-#: qml/SetupWizard.qml:63
+#: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
-msgid "Welcome to Weather"
-msgstr "Us donem la benvinguda al Weather"
+msgid "Temperature Units"
+msgstr "Unitats de temperatura"
 
-#: qml/SetupWizard.qml:69
+#: qml/settings/TemperatureUnitComboBox.qml:18
 #, kde-format
-msgid "Continue"
-msgstr "Continua"
+msgid "Use System Default"
+msgstr "Usa la predeterminada del sistema"
 
-#: qml/SetupWizard.qml:88
+#: qml/settings/TemperatureUnitComboBox.qml:22
 #, kde-format
-msgid "Select forecast theme"
-msgstr "Selecció del tema de la predicció"
+msgid "Celsius"
+msgstr "Celsius"
 
-#: qml/SetupWizard.qml:93
+#: qml/settings/TemperatureUnitComboBox.qml:26
 #, kde-format
-msgid "You can change the theme later in the settings."
-msgstr "Més tard podreu canviar el tema a la configuració."
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
 
-#: qml/SetupWizard.qml:200
+#: qml/SetupWizard.qml:311
+#, kde-format
+msgid "Get Started"
+msgstr ""
+
+#: qml/SetupWizard.qml:412
 #, kde-format
 msgid "Back"
 msgstr "Enrere"
 
-#: qml/SetupWizard.qml:206
+#: qml/SetupWizard.qml:431
 #, kde-format
-msgid "Finish"
-msgstr "Finalitza"
+msgid "Next"
+msgstr ""
 
-#: qml/SunriseCard.qml:51
+#: qml/SetupWizard.qml:455
+#, fuzzy, kde-format
+#| msgid "You can change the theme later in the settings."
+msgid "The style can be changed later in the settings."
+msgstr "Més tard podreu canviar el tema a la configuració."
+
+#: qml/SunriseCard.qml:50
 #, kde-format
 msgid "Sunrise"
 msgstr "Sortida del sol"
 
-#: qml/SunriseCard.qml:75
+#: qml/SunriseCard.qml:73
 #, kde-format
 msgid "Sunset"
 msgstr "Posta del sol"
 
-#: qml/SunriseCard.qml:97
+#: qml/SunriseCard.qml:96
 #, kde-format
 msgid "Moon Phase"
 msgstr "Fase lunar"
@@ -438,6 +419,24 @@ msgstr "Fase lunar"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
+
+#~ msgid "Local date: %1"
+#~ msgstr "Data local: %1"
+
+#~ msgid "Local time: %1"
+#~ msgstr "Hora local: %1"
+
+#~ msgid "Welcome to Weather"
+#~ msgstr "Us donem la benvinguda al Weather"
+
+#~ msgid "Continue"
+#~ msgstr "Continua"
+
+#~ msgid "Select forecast theme"
+#~ msgstr "Selecció del tema de la predicció"
+
+#~ msgid "Finish"
+#~ msgstr "Finalitza"
 
 #~ msgid "Add current location"
 #~ msgstr "Afegeix l'emplaçament actual"
