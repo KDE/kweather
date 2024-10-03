@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-02 00:42+0000\n"
-"PO-Revision-Date: 2024-04-18 09:29+0200\n"
+"PO-Revision-Date: 2024-10-02 06:31+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -377,7 +377,7 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Začnimo"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -387,13 +387,12 @@ msgstr "Nazaj"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Naprej"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Temo lahko spremenite kasneje v nastavitvah."
+msgstr "Slog lahko spremenite kasneje v nastavitvah."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

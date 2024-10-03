@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-02 00:42+0000\n"
-"PO-Revision-Date: 2024-04-19 18:50+0200\n"
+"PO-Revision-Date: 2024-10-02 17:13+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -377,7 +377,7 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Iniziare"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -387,13 +387,12 @@ msgstr "Indietro"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Avanti"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Puoi cambiare il tema in un secondo momento nelle impostazioni."
+msgstr "Lo stile può essere modificato in seguito nelle impostazioni."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

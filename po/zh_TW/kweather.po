@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-02 00:42+0000\n"
-"PO-Revision-Date: 2024-04-19 02:26+0900\n"
+"PO-Revision-Date: 2024-10-02 17:27+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -379,7 +379,7 @@ msgstr "華式"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "初始設定"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -389,13 +389,12 @@ msgstr "返回"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "下一步"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "您之後也可以在設定裡變更主題。"
+msgstr "風格可以之後在設定裡變更。"
 
 #: qml/SunriseCard.qml:50
 #, kde-format
