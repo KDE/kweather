@@ -412,7 +412,7 @@ Kirigami.ScrollablePage {
                 // used instead of topMargin, since it can be shrunk when needed (small window height)
                 Item {
                     Layout.preferredHeight: Math.max(header.height + Kirigami.Units.gridUnit * 2 // header height
-                    , page.height - headerText.height - dailyCard.height - Kirigami.Units.gridUnit * 5) // pin to bottom of window
+                    , page.height - headerText.height - dailyCard.height - Kirigami.Units.gridUnit * 4) // pin to bottom of window
                 }
 
                 // weather header
