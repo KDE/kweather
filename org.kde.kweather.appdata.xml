@@ -50,7 +50,7 @@
   <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
   <name xml:lang="zh-TW">天氣</name>
-  <summary>View real-time weather forecasts and other information</summary>
+  <summary>View real-time weather forecasts</summary>
   <summary xml:lang="az">Real vaxt hava məlumatlarını və digər məlumatları göstərmək</summary>
   <summary xml:lang="bg">Метеорологични прогнози в реално време и друга информация</summary>
   <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real i altra informació</summary>
