@@ -417,21 +417,3 @@ msgstr "Månefase"
 #, kde-format
 msgid "temperature"
 msgstr "temperatur"
-
-#~ msgid "Local date: %1"
-#~ msgstr "Lokal dato: %1"
-
-#~ msgid "Local time: %1"
-#~ msgstr "Lokalt klokkeslett: %1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "Velkommen til KWeather"
-
-#~ msgid "Continue"
-#~ msgstr "Hald fram"
-
-#~ msgid "Select forecast theme"
-#~ msgstr "Vel vêrmeldings­tema"
-
-#~ msgid "Finish"
-#~ msgstr "Fullfør"

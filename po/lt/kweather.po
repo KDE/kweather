@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-02 00:42+0000\n"
-"PO-Revision-Date: 2024-04-24 00:53+0300\n"
+"PO-Revision-Date: 2024-10-05 22:09+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -378,7 +378,7 @@ msgstr "Farenheitas"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Pradžia"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -388,13 +388,12 @@ msgstr "Atgal"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Kitas"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Vėliau apipavidalinimą galėsite keisti nuostatose."
+msgstr "Vėliau stilius gali būti pakeistas nuostatose."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
