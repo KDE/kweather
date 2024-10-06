@@ -436,6 +436,3 @@ msgstr "Månefase"
 #, kde-format
 msgid "temperature"
 msgstr "temperatur"
-
-#~ msgid "Add current location"
-#~ msgstr "Legg til gjeldande stad"
