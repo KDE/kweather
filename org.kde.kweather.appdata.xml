@@ -51,43 +51,6 @@
   <name xml:lang="zh-CN">天气</name>
   <name xml:lang="zh-TW">天氣</name>
   <summary>View real-time weather forecasts</summary>
-  <summary xml:lang="az">Real vaxt hava məlumatlarını və digər məlumatları göstərmək</summary>
-  <summary xml:lang="bg">Метеорологични прогнози в реално време и друга информация</summary>
-  <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real i altra informació</summary>
-  <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real i altra informació</summary>
-  <summary xml:lang="de">Echtzeit-Wettervorschau und weitere Informationen anzeigen</summary>
-  <summary xml:lang="el">Προβολή πρόγνωσης του καιρού σε πραγματικό χρόνο και άλλες πληροφορίες</summary>
-  <summary xml:lang="en-GB">View real-time weather forecasts and other information</summary>
-  <summary xml:lang="eo">Rigardi realtempajn veterprognozojn kaj aliajn informojn</summary>
-  <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real y otra información</summary>
-  <summary xml:lang="eu">Ikusi denbora errealeko eguraldi aurreikuspenak eta beste informazio batzuk</summary>
-  <summary xml:lang="fi">Näytä tosiaikaiset sääennusteet ja muuta tietoa</summary>
-  <summary xml:lang="fr">Afficher des prévisions météo en temps réel et d'autres informations</summary>
-  <summary xml:lang="gl">Vexa a predición meteorolóxica e outra información en tempo real.</summary>
-  <summary xml:lang="he">הצגת תחזיות מזג אוויר בזמן אמת ופרטים נוספים</summary>
-  <summary xml:lang="hu">Valós idejű időjárás-előrejelzések és egyéb információk megtekintése</summary>
-  <summary xml:lang="ia">Vista de previsiones de tempore in tempore real e altere information</summary>
-  <summary xml:lang="id">Lihat ramalan cuaca dan informasi lainnya dalam waktu nyata</summary>
-  <summary xml:lang="is">Skoðaðu veðurspár í rauntíma og aðrar upplýsingar</summary>
-  <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale e altre informazioni</summary>
-  <summary xml:lang="ka">ამინდის პროგნოზებისა და სხვა ინფორმაციის რეალურ დროში ნახვა</summary>
-  <summary xml:lang="ko">실시간 일기 예보와 기타 정보 표시</summary>
-  <summary xml:lang="lt">Rodyti tikralaikes orų prognozes ir kitą informaciją</summary>
-  <summary xml:lang="lv">Iegūstiet reāllaika laikapstākļu prognozes un citu informāciju</summary>
-  <summary xml:lang="nl">Realtime weersverwachtingen en andere informatie bekijken</summary>
-  <summary xml:lang="nn">Vis vêrmeldingar og annan vêrinformasjon i sanntid</summary>
-  <summary xml:lang="pa">ਮੌਕੇ ਉੱਤੇ ਮੌਸਮ ਦੀਆਂ ਭਵਿੱਖਬਾਣੀਆਂ ਅਤੇ ਹੋਰ ਜਾਣਕਾਰੀਆਂ ਨੂੰ ਵੇਖੋ</summary>
-  <summary xml:lang="pl">Oglądaj prognozę pogody w czasie rzeczywistym i inne dane</summary>
-  <summary xml:lang="pt">Ver as previsões meteorológicas e outras informações em tempo-real</summary>
-  <summary xml:lang="pt-BR">Visualize previsões do tempo em tempo real e outras informações</summary>
-  <summary xml:lang="ru">Просмотр прогнозов погоды и другой информации в режиме реального времени</summary>
-  <summary xml:lang="sl">Poglej sprotne vremenske napovedi in ostale informacije</summary>
-  <summary xml:lang="sv">Visa väderprognos och annan information i realtid</summary>
-  <summary xml:lang="tr">Hava Durumu Tahmini Görüntüleyicisi</summary>
-  <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди та інших даних</summary>
-  <summary xml:lang="x-test">xxView real-time weather forecasts and other informationxx</summary>
-  <summary xml:lang="zh-CN">查看实时天气预报和其他信息</summary>
-  <summary xml:lang="zh-TW">檢視實時天氣預報和其他資訊</summary>
   <developer id="kde.org">
     <id>kde.org</id>
     <name>The KDE Community</name>
