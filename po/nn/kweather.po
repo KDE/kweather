@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-02 00:42+0000\n"
-"PO-Revision-Date: 2024-07-21 14:29+0200\n"
+"PO-Revision-Date: 2024-10-06 14:06+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.11.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -380,7 +380,7 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Kom i gang"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -390,13 +390,12 @@ msgstr "Tilbake"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Neste"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Du kan seinare endra temaet i innstillingane."
+msgstr "Du kan seinare endra stilen i innstillingane."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
