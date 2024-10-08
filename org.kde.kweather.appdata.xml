@@ -51,9 +51,13 @@
   <name xml:lang="zh-CN">天气</name>
   <name xml:lang="zh-TW">天氣</name>
   <summary>View real-time weather forecasts</summary>
+  <summary xml:lang="bg">Метеорологични прогнози в реално време</summary>
   <summary xml:lang="ca">Visualitza previsions meteorològiques en temps real</summary>
+  <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real</summary>
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real</summary>
   <summary xml:lang="gl">Vexa a predición meteorolóxica en tempo real.</summary>
+  <summary xml:lang="he">הצגת תחזיות מזג אוויר בזמן אמת</summary>
+  <summary xml:lang="ia">Vista de previsiones de tempore in tempore real </summary>
   <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale</summary>
   <summary xml:lang="ka">ამინდის პროგნოზების ნახვა რეალურ დროში</summary>
   <summary xml:lang="nl">Realtime weersverwachtingen bekijken</summary>
