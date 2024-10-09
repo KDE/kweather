@@ -418,6 +418,7 @@ Kirigami.ScrollablePage {
                 // weather header
                 ColumnLayout {
                     id: headerText
+                    Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
                     Layout.bottomMargin: Kirigami.Units.gridUnit * 2
                     RowLayout {
@@ -440,14 +441,23 @@ Kirigami.ScrollablePage {
                             text: Formatter.formatTemperatureUnitDegrees(settingsModel.temperatureUnits)
                         }
                     }
-                    Label {
-                        font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
-                        font.weight: Font.DemiBold
-                        color: "white"
-                        Layout.fillWidth: true
-                        horizontalAlignment: Text.AlignHCenter
-                        text: weatherLocation.currentHourForecast.weatherDescription
-                        font.family: lightHeadingFont.name
+                    RowLayout {
+                        Layout.alignment: Qt.AlignHCenter
+                        spacing: Kirigami.Units.gridUnit / 2
+                        Kirigami.Icon {
+                            id: weatherDescriptionIcon
+                            implicitHeight: Kirigami.Units.iconSizes.medium
+                            implicitWidth: Kirigami.Units.iconSizes.medium
+                            source: weatherLocation.currentHourForecast.weatherIcon + "-symbolic"
+                            color: "white"
+                        }
+                        Label {
+                            font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.5
+                            font.weight: Font.DemiBold
+                            color: "white"
+                            text: weatherLocation.currentHourForecast.weatherDescription
+                            font.family: lightHeadingFont.name
+                        }
                     }
                 }
 
