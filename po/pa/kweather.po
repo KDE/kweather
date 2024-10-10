@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-02 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:42+0000\n"
 "PO-Revision-Date: 2024-10-01 21:34-0500\n"
 "Last-Translator: A S Alam <aman@punlinux.org>\n"
 "Language-Team: pa\n"
@@ -196,7 +196,7 @@ msgstr "ਸੈਟਿੰਗਾਂ"
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
-#: qml/DynamicForecastPage.qml:530 qml/FlatLocationForecast.qml:155
+#: qml/DynamicForecastPage.qml:540 qml/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
 msgstr "ਘੰਟੇਵਾਰ"
