@@ -59,6 +59,7 @@
   <summary xml:lang="fr">Afficher des prévisions météo en temps réel</summary>
   <summary xml:lang="gl">Vexa a predición meteorolóxica en tempo real.</summary>
   <summary xml:lang="he">הצגת תחזיות מזג אוויר בזמן אמת</summary>
+  <summary xml:lang="hu">Valós idejű időjárás-előrejelzések megtekintése</summary>
   <summary xml:lang="ia">Vista de previsiones de tempore in tempore real </summary>
   <summary xml:lang="it">Visualizza le previsioni meteo in tempo reale</summary>
   <summary xml:lang="ka">ამინდის პროგნოზების ნახვა რეალურ დროში</summary>
@@ -67,6 +68,7 @@
   <summary xml:lang="tr">Gerçek zamanlı hava durumun tahminlerini görüntüleyin</summary>
   <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди</summary>
   <summary xml:lang="x-test">xxView real-time weather forecastsxx</summary>
+  <summary xml:lang="zh-CN">查看实时天气预报</summary>
   <developer id="kde.org">
     <id>kde.org</id>
     <name>The KDE Community</name>
