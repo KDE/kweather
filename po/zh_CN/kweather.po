@@ -432,6 +432,3 @@ msgstr "月相"
 #, kde-format
 msgid "temperature"
 msgstr "温度"
-
-#~ msgid "Add current location"
-#~ msgstr "添加当前位置"
