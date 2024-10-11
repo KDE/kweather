@@ -376,7 +376,7 @@ msgstr "华氏度"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "开始"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -386,13 +386,12 @@ msgstr "返回"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "下一步"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "您以后可以在设置中切换主题。"
+msgstr "此样式可以稍后在设置中更改。"
 
 #: qml/SunriseCard.qml:50
 #, kde-format
@@ -413,24 +412,3 @@ msgstr "月相"
 #, kde-format
 msgid "temperature"
 msgstr "温度"
-
-#~ msgid "Local date: %1"
-#~ msgstr "当地日期：%1"
-
-#~ msgid "Local time: %1"
-#~ msgstr "当地时间：%1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "欢迎使用天气小程序"
-
-#~ msgid "Continue"
-#~ msgstr "继续"
-
-#~ msgid "Select forecast theme"
-#~ msgstr "选择天气预报主题"
-
-#~ msgid "Finish"
-#~ msgstr "完成"
-
-#~ msgid "Add current location"
-#~ msgstr "添加当前位置"
