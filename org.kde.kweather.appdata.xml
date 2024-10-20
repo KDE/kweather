@@ -73,6 +73,7 @@
   <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди</summary>
   <summary xml:lang="x-test">xxView real-time weather forecastsxx</summary>
   <summary xml:lang="zh-CN">查看实时天气预报</summary>
+  <summary xml:lang="zh-TW">查看即時天氣預報</summary>
   <developer id="kde.org">
     <id>kde.org</id>
     <name>The KDE Community</name>
