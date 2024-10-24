@@ -438,6 +438,3 @@ msgstr "Fase lunar"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
-
-#~ msgid "Add current location"
-#~ msgstr "Afig l'emplaçament actual"
