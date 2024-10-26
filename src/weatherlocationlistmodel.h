@@ -21,7 +21,9 @@ class WeatherLocationListModel : public QAbstractListModel
     Q_PROPERTY(QList<WeatherLocation *> locations READ locations NOTIFY locationsChanged)
 
 public:
-    enum Roles { LocationRole = Qt::UserRole };
+    enum Roles {
+        LocationRole = Qt::UserRole
+    };
 
     static WeatherLocationListModel *inst();
     static WeatherLocationListModel *create(QQmlEngine *, QJSEngine *);
