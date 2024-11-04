@@ -109,7 +109,7 @@ else()
             DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR})
 endif()
 
-feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 file(GLOB_RECURSE ALL_SOURCE_FILES src/*.cpp src/*.h src/*.qml)
 ecm_check_outbound_license(LICENSES GPL-2.0-only GPL-3.0-only FILES ${ALL_SOURCE_FILES})
