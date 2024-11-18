@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-05-12 16:10+0300\n"
+"PO-Revision-Date: 2024-11-17 17:51+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -379,7 +379,7 @@ msgstr "Градусы Фаренгейта"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Начать"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -389,11 +389,10 @@ msgstr "Назад"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Далее"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
 msgstr "Выбранное оформление может быть изменено в настройках позже."
 
