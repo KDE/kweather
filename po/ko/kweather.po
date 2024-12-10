@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-20 00:22+0200\n"
+"PO-Revision-Date: 2024-12-10 01:12+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -376,7 +376,7 @@ msgstr "화씨"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "시작하기"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -386,13 +386,12 @@ msgstr "뒤로"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "나중에 설정에서 테마를 변경할 수 있습니다."
+msgstr "나중에 설정에서 스타일을 변경할 수 있습니다."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
