@@ -71,6 +71,7 @@
   <summary xml:lang="nl">Realtime weersverwachtingen bekijken</summary>
   <summary xml:lang="nn">Vis vêrmelding i sanntid</summary>
   <summary xml:lang="pl">Oglądaj prognozę pogody w czasie rzeczywistym</summary>
+  <summary xml:lang="ru">Просмотр прогнозов погоды в режиме реального времени</summary>
   <summary xml:lang="sl">Poglej sprotne vremenske napovedi</summary>
   <summary xml:lang="sv">Visa väderprognoser i realtid</summary>
   <summary xml:lang="tr">Gerçek Zamanlı Hava Durumu Tahminleri</summary>
@@ -123,7 +124,7 @@
     <p xml:lang="pl">Spójna aplikacja pogodowa dla Plazmy. Ma płaskie i dynamiczne/animowane widoki do pokazywania prognozy pogody i innych danych.</p>
     <p xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma. Tem áreas planas e dinâmicas/animadas para mostrar as previsões e outras informações.</p>
     <p xml:lang="pt-BR">Um aplicativo de meteorologia convergente feito para o Plasma. Ele inclui visualização simples e dinâmica para exibir a previsão do tempo, além de oturas informações.</p>
-    <p xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды для Plasma..</p>
+    <p xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды при работе в Plasma. Предусмотрены два варианта оформления: плоское и динамическое.</p>
     <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="tr">Plasma için yakınsak bir hava durumu uygulaması. Tahminleri ve diğer bilgileri göstermek için düz ve devingen/canlandırılmış görünümlere sahiptir.</p>
