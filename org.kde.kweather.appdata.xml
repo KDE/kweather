@@ -42,6 +42,7 @@
   <name xml:lang="pt">Tempo</name>
   <name xml:lang="pt-BR">Meteorologia</name>
   <name xml:lang="ru">Погода</name>
+  <name xml:lang="sa">वातावरणम्‌</name>
   <name xml:lang="sk">Počasie</name>
   <name xml:lang="sl">Weather</name>
   <name xml:lang="sv">Väder</name>
@@ -72,6 +73,7 @@
   <summary xml:lang="nn">Vis vêrmelding i sanntid</summary>
   <summary xml:lang="pl">Oglądaj prognozę pogody w czasie rzeczywistym</summary>
   <summary xml:lang="ru">Просмотр прогнозов погоды в режиме реального времени</summary>
+  <summary xml:lang="sa">वास्तविकसमयस्य मौसमस्य पूर्वानुमानं पश्यन्तु</summary>
   <summary xml:lang="sl">Poglej sprotne vremenske napovedi</summary>
   <summary xml:lang="sv">Visa väderprognoser i realtid</summary>
   <summary xml:lang="tr">Gerçek Zamanlı Hava Durumu Tahminleri</summary>
@@ -125,6 +127,7 @@
     <p xml:lang="pt">Uma aplicação meteorológica convergente para o Plasma. Tem áreas planas e dinâmicas/animadas para mostrar as previsões e outras informações.</p>
     <p xml:lang="pt-BR">Um aplicativo de meteorologia convergente feito para o Plasma. Ele inclui visualização simples e dinâmica para exibir a previsão do tempo, além de oturas informações.</p>
     <p xml:lang="ru">Адаптивное приложение для просмотра прогноза погоды при работе в Plasma. Предусмотрены два варианта оформления: плоское и динамическое.</p>
+    <p xml:lang="sa">प्लाज्मा कृते एकः अभिसरणीयः मौसमानुप्रयोगः । पूर्वानुमानं अन्यसूचनाः च दर्शयितुं सपाटाः गतिशीलाः/सजीवाः दृश्याः सन्ति ।</p>
     <p xml:lang="sl">Konvergentna aplikacija za vreme za Plasmo. Ima pregledne in dinamično animirane poglede za prikaz napovedi in druge informacije.</p>
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="tr">Plasma için yakınsak bir hava durumu uygulaması. Tahminleri ve diğer bilgileri göstermek için düz ve devingen/canlandırılmış görünümlere sahiptir.</p>
@@ -166,6 +169,7 @@
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
       <caption xml:lang="pt-BR">Visualização dinâmica para celular</caption>
       <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
+      <caption xml:lang="sa">चल गतिशील दृश्य</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
@@ -207,6 +211,7 @@
       <caption xml:lang="pt">Área dinâmica para computadores</caption>
       <caption xml:lang="pt-BR">Visualização dinâmica para desktop</caption>
       <caption xml:lang="ru">Динамический режим для ПК</caption>
+      <caption xml:lang="sa">डेस्कटॉप गतिशील दृश्य</caption>
       <caption xml:lang="sl">Namizni dinamični pogled</caption>
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
       <caption xml:lang="tr">Masaüstü devingen görünüm</caption>
@@ -248,6 +253,7 @@
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
       <caption xml:lang="pt-BR">Visão simples para celular</caption>
       <caption xml:lang="ru">Плоский режим для мобильных устройств</caption>
+      <caption xml:lang="sa">चल सपाट दृश्य</caption>
       <caption xml:lang="sl">Mobilni pregledni pogled</caption>
       <caption xml:lang="sv">Mobil enkel vy</caption>
       <caption xml:lang="tr">Taşınabilir düz görünüm</caption>
@@ -289,6 +295,7 @@
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
       <caption xml:lang="pt-BR">Visualização dinâmica para celular</caption>
       <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
+      <caption xml:lang="sa">चल गतिशील दृश्य</caption>
       <caption xml:lang="sl">Mobilni dinamični pogled</caption>
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
