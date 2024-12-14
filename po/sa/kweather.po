@@ -1,0 +1,416 @@
+# Sanskrit translations for kweather package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kweather package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: kweather\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-10-10 00:42+0000\n"
+"PO-Revision-Date: 2024-12-13 20:20+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 24.08.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: formatter.cpp:36 formatter.cpp:44
+#, kde-format
+msgctxt "A temperature"
+msgid "%1°"
+msgstr ""
+
+#: formatter.cpp:53
+#, kde-format
+msgid "%1 km/h"
+msgstr "%1 कि.मी"
+
+#: formatter.cpp:56
+#, kde-format
+msgid "%1 mph"
+msgstr "%1 मील प्रतिघण्टा"
+
+#: formatter.cpp:59
+#, kde-format
+msgid "%1 m/s"
+msgstr "%1 मी/से"
+
+#: formatter.cpp:69
+#, kde-format
+msgid "%1 hPa"
+msgstr "%1 hPa"
+
+#: formatter.cpp:72
+#, kde-format
+msgid "%1 mmHg"
+msgstr "%1 मि.मी"
+
+#: formatter.cpp:78
+#, kde-format
+msgctxt "%1 represents percent value, % is the percent sign"
+msgid "%1%"
+msgstr "%1% २."
+
+#: formatter.cpp:83
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: formatter.cpp:89
+#, kde-format
+msgctxt "sunrise time not available"
+msgid "-"
+msgstr ""
+
+#: formatter.cpp:101
+#, kde-format
+msgctxt "in as inches"
+msgid "%1 in"
+msgstr ""
+
+#: formatter.cpp:104
+#, kde-format
+msgctxt "mm as millimeters"
+msgid "%1 mm"
+msgstr ""
+
+#: main.cpp:58 qml/DefaultPage.qml:74 qml/Main.qml:22
+#, kde-format
+msgid "Weather"
+msgstr "वातावरणम्‌"
+
+#: main.cpp:60
+#, kde-format
+msgid "A convergent weather application for Plasma"
+msgstr "प्लाज्मा कृते एकः अभिसरणीयः मौसमानुप्रयोगः"
+
+#: main.cpp:62
+#, kde-format
+msgid "© 2020-2024 Plasma Development Team"
+msgstr "© 2020-2024 प्लाज्मा विकास दल"
+
+#: main.cpp:64
+#, kde-format
+msgid "Han Young"
+msgstr "हान यंग"
+
+#: main.cpp:65
+#, kde-format
+msgid "Devin Lin"
+msgstr "डेविन् लिन्"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, kde-format
+msgid "No location found on system, please add some in kweather"
+msgstr "प्रणाल्यां कोऽपि स्थानं न लभ्यते, कृपया kweather इत्यत्र किञ्चित् योजयन्तु"
+
+#: plasmoid/package/contents/ui/LocationSelector.qml:45
+#, kde-format
+msgid "Please select the location"
+msgstr "कृपया स्थानं चिनोतु"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:64
+#, kde-format
+msgid "%1%"
+msgstr "%1% २."
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:80
+#, kde-format
+msgid "%1mm"
+msgstr "%1मि.मी"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:132
+#: plasmoid/package/contents/ui/WeatherContainer.qml:171
+#, kde-format
+msgid "Select Location"
+msgstr "स्थानं चिनोतु"
+
+#: plasmoid/package/contents/ui/WeatherContainer.qml:137
+#, kde-format
+msgid "Open KWeather"
+msgstr "Open KWeather"
+
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
+#, kde-format
+msgid "Forecast"
+msgstr "पूर्वानुमान"
+
+#: qml/DefaultPage.qml:30
+#, kde-format
+msgid "Network error when obtaining current location"
+msgstr "वर्तमानस्थानं प्राप्तुं संजालदोषः"
+
+#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
+#: qml/locationslist/LocationsListDialog.qml:22
+#: qml/locationslist/LocationsListPage.qml:23
+#: qml/locationslist/LocationsListView.qml:85
+#, kde-format
+msgid "Add Location"
+msgstr "स्थानं योजयतु"
+
+#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
+#, kde-format
+msgid "Weather refreshed for %1"
+msgstr "%1 कृते मौसमः ताजगः अभवत्"
+
+#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
+#, kde-format
+msgid "Updated at %1"
+msgstr "%1 इत्यत्र अद्यतनम्"
+
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
+#: qml/locationslist/LocationsListDialog.qml:14
+#: qml/locationslist/LocationsListPage.qml:15
+#, kde-format
+msgid "Locations"
+msgstr "स्थानानि"
+
+#: qml/DynamicForecastPage.qml:360
+#, kde-format
+msgid "Choose location"
+msgstr "स्थानं चिनुत"
+
+#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
+#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "सेटिंग्स्"
+
+#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
+#: qml/ForecastContainerPage.qml:59
+#, kde-format
+msgid "Refresh"
+msgstr "ताजगी"
+
+#: qml/DynamicForecastPage.qml:540 qml/FlatLocationForecast.qml:155
+#, kde-format
+msgid "Hourly"
+msgstr "प्रतिघण्टा"
+
+#: qml/FlatLocationForecast.qml:110
+#, kde-format
+msgid "Daily"
+msgstr "प्रतिदिन"
+
+#: qml/InfoCard.qml:47
+#, kde-format
+msgid "Precipitation"
+msgstr "वर्षा"
+
+#: qml/InfoCard.qml:70
+#, kde-format
+msgid "Humidity"
+msgstr "आर्द्रता"
+
+#: qml/InfoCard.qml:93
+#, kde-format
+msgid "Pressure"
+msgstr "प्रबलता"
+
+#: qml/InfoCard.qml:116
+#, kde-format
+msgid "UV Index"
+msgstr "पराबैंगनी सूचकाङ्क"
+
+#: qml/locationslist/AddLocationListView.qml:48
+#, kde-format
+msgid "Search for a location…"
+msgstr "स्थानं अन्वेष्टुम्..."
+
+#: qml/locationslist/AddLocationListView.qml:87
+#, kde-format
+msgid "Unable to connect"
+msgstr "संयोजितुं असमर्थः"
+
+#: qml/locationslist/AddLocationListView.qml:99
+#, kde-format
+msgid "Search for a location"
+msgstr "स्थानं अन्वेष्टुम्"
+
+#: qml/locationslist/AddLocationListView.qml:128
+#, kde-format
+msgid "No results"
+msgstr "न परिणामः"
+
+#: qml/locationslist/AddLocationPage.qml:15
+#, kde-format
+msgid "Add location"
+msgstr "स्थानं योजयतु"
+
+#: qml/locationslist/LocationsListView.qml:69
+#, kde-format
+msgid "Unable to fetch timezone information"
+msgstr "समयक्षेत्रस्य सूचनां आनेतुं असमर्थः"
+
+#: qml/locationslist/LocationsListView.qml:80
+#, kde-format
+msgid "Add a location"
+msgstr "एकं स्थानं योजयन्तु"
+
+#: qml/locationslist/LocationsListView.qml:227
+#, kde-format
+msgid "Delete"
+msgstr "लुप्"
+
+#: qml/settings/SettingsComponent.qml:35
+#, kde-format
+msgid "General"
+msgstr "सामान्य"
+
+#: qml/settings/SettingsComponent.qml:41
+#, kde-format
+msgid "Forecast Style"
+msgstr "पूर्वानुमानशैली"
+
+#: qml/settings/SettingsComponent.qml:47
+#, kde-format
+msgid "Flat"
+msgstr "समतलम्‌"
+
+#: qml/settings/SettingsComponent.qml:51
+#, kde-format
+msgid "Dynamic"
+msgstr "गतिशीलः"
+
+#: qml/settings/SettingsComponent.qml:89
+#, kde-format
+msgid "About"
+msgstr "विषये"
+
+#: qml/settings/SettingsComponent.qml:100
+#, kde-format
+msgid "Units"
+msgstr "इकाइयाँ"
+
+#: qml/settings/SettingsComponent.qml:131
+#, kde-format
+msgid "Speed Units"
+msgstr "गति इकाई"
+
+#: qml/settings/SettingsComponent.qml:137
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:141
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:145
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:183
+#, kde-format
+msgid "Pressure Units"
+msgstr "दबाव इकाइयाँ"
+
+#: qml/settings/SettingsComponent.qml:189
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:193
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:232
+#, kde-format
+msgid "Precipitation Units"
+msgstr "वर्षा एकक"
+
+#: qml/settings/SettingsComponent.qml:238
+#, kde-format
+msgctxt "Millimeters"
+msgid "mm"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:242
+#, kde-format
+msgctxt "Inches"
+msgid "in"
+msgstr ""
+
+#: qml/settings/TemperatureUnitComboBox.qml:12
+#, kde-format
+msgid "Temperature Units"
+msgstr "तापमान इकाई"
+
+#: qml/settings/TemperatureUnitComboBox.qml:18
+#, kde-format
+msgid "Use System Default"
+msgstr "System Default इत्यस्य उपयोगं कुर्वन्तु"
+
+#: qml/settings/TemperatureUnitComboBox.qml:22
+#, kde-format
+msgid "Celsius"
+msgstr "सेल्सियस"
+
+#: qml/settings/TemperatureUnitComboBox.qml:26
+#, kde-format
+msgid "Fahrenheit"
+msgstr "फारेनहाइट्"
+
+#: qml/SetupWizard.qml:311
+#, kde-format
+msgid "Get Started"
+msgstr "आरभत"
+
+#: qml/SetupWizard.qml:412
+#, kde-format
+msgid "Back"
+msgstr "पृष्ठभागः"
+
+#: qml/SetupWizard.qml:431
+#, kde-format
+msgid "Next"
+msgstr "अग्रिम"
+
+#: qml/SetupWizard.qml:455
+#, kde-format
+msgid "The style can be changed later in the settings."
+msgstr "पश्चात् सेटिङ्ग्स् मध्ये शैली परिवर्तयितुं शक्यते ।"
+
+#: qml/SunriseCard.qml:50
+#, kde-format
+msgid "Sunrise"
+msgstr "सूर्योदय"
+
+#: qml/SunriseCard.qml:73
+#, kde-format
+msgid "Sunset"
+msgstr "सूर्यास्त"
+
+#: qml/SunriseCard.qml:96
+#, kde-format
+msgid "Moon Phase"
+msgstr "चन्द्रचरणम्"
+
+#: qml/TemperatureChartCard.qml:81
+#, kde-format
+msgid "temperature"
+msgstr "तापमान"
