@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-12-13 20:20+0530\n"
+"PO-Revision-Date: 2024-12-14 01:12+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -22,18 +22,18 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #: formatter.cpp:36 formatter.cpp:44
 #, kde-format
 msgctxt "A temperature"
 msgid "%1°"
-msgstr ""
+msgstr "%1°"
 
 #: formatter.cpp:53
 #, kde-format
@@ -75,19 +75,19 @@ msgstr "%1"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr ""
+msgstr "- ९."
 
 #: formatter.cpp:101
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 इञ्च्"
 
 #: formatter.cpp:104
 #, kde-format
 msgctxt "mm as millimeters"
 msgid "%1 mm"
-msgstr ""
+msgstr "%1 मि.मी"
 
 #: main.cpp:58 qml/DefaultPage.qml:74 qml/Main.qml:22
 #, kde-format
@@ -307,19 +307,19 @@ msgstr "गति इकाई"
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
-msgstr ""
+msgstr "kph"
 
 #: qml/settings/SettingsComponent.qml:141
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
-msgstr ""
+msgstr "mph"
 
 #: qml/settings/SettingsComponent.qml:145
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr ""
+msgstr "m/s"
 
 #: qml/settings/SettingsComponent.qml:183
 #, kde-format
@@ -330,13 +330,13 @@ msgstr "दबाव इकाइयाँ"
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
-msgstr ""
+msgstr "hPa"
 
 #: qml/settings/SettingsComponent.qml:193
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
-msgstr ""
+msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:232
 #, kde-format
@@ -347,13 +347,13 @@ msgstr "वर्षा एकक"
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr ""
+msgstr "मि.मी"
 
 #: qml/settings/SettingsComponent.qml:242
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr ""
+msgstr "इत्यस्मिन्‌"
 
 #: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
