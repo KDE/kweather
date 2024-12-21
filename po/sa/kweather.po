@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:12+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -64,7 +64,7 @@ msgstr "%1 मि.मी"
 #, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
-msgstr "%1% २."
+msgstr "%1%"
 
 #: formatter.cpp:83
 #, kde-format
@@ -75,7 +75,7 @@ msgstr "%1"
 #, kde-format
 msgctxt "sunrise time not available"
 msgid "-"
-msgstr "- ९."
+msgstr "-"
 
 #: formatter.cpp:101
 #, kde-format
@@ -127,7 +127,7 @@ msgstr "कृपया स्थानं चिनोतु"
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
 msgid "%1%"
-msgstr "%1% २."
+msgstr "%1%"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:80
 #, kde-format
