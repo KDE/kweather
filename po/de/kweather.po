@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-08-21 22:39+0200\n"
+"PO-Revision-Date: 2024-12-23 19:01+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -382,7 +382,7 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Starten"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -392,13 +392,12 @@ msgstr "Zurück"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Weiter"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Hier können Sie das Design später in den Einstellungen ändern."
+msgstr "Das Design kann später in den Einstellungen geändert werden."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
