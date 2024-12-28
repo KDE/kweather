@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-04-21 17:45+0100\n"
+"PO-Revision-Date: 2024-12-27 10:42+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -390,10 +390,9 @@ msgid "Next"
 msgstr ""
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Vi povas ŝanĝi la etoson poste en la agordoj."
+msgstr "Eblas ŝanĝi la stilon poste en la agordoj."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
@@ -414,24 +413,3 @@ msgstr "Luna Fazo"
 #, kde-format
 msgid "temperature"
 msgstr "temperaturo"
-
-#~ msgid "Local date: %1"
-#~ msgstr "Loka dato: %1"
-
-#~ msgid "Local time: %1"
-#~ msgstr "Loka horo: %1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "Bonvenon al Weather"
-
-#~ msgid "Continue"
-#~ msgstr "Daŭrigi"
-
-#~ msgid "Select forecast theme"
-#~ msgstr "Elekti prognozan etoson"
-
-#~ msgid "Finish"
-#~ msgstr "Fini"
-
-#~ msgid "Add current location"
-#~ msgstr "Aldoni aktualan lokon"
