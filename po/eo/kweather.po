@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:42+0000\n"
-"PO-Revision-Date: 2024-12-27 10:42+0100\n"
+"PO-Revision-Date: 2024-12-28 17:41+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -377,7 +377,7 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Ekkomenci"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -387,7 +387,7 @@ msgstr "Reen"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Sekva"
 
 #: qml/SetupWizard.qml:455
 #, kde-format
