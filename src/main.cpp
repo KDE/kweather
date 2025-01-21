@@ -19,6 +19,7 @@
 #include <KAboutData>
 #include <KConfig>
 #include <KLocalizedContext>
+#include <KLocalizedQmlContext>
 #include <KLocalizedString>
 
 #ifndef Q_OS_ANDROID
@@ -53,7 +54,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     KLocalizedString::setApplicationDomain(QByteArrayLiteral("kweather"));
-    engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
+
+    KLocalization::setupLocalizedContext(&engine);
     KAboutData aboutData(QStringLiteral("kweather"),
                          i18n("Weather"),
                          QStringLiteral(KWEATHER_VERSION_STRING),

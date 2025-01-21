@@ -15,7 +15,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kweather VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "6.5.0")
-set(KF_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "6.8.0")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -44,7 +44,7 @@ include(ECMAddAndroidApk)
 include(ECMDeprecationSettings)
 
 ecm_set_disabled_deprecation_versions(QT 6.8.0
-    KF 6.7
+    KF 6.10
     )
 
 # clang-format
