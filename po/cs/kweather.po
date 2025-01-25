@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-10 00:42+0000\n"
+"POT-Creation-Date: 2025-01-25 00:44+0000\n"
 "PO-Revision-Date: 2024-10-08 14:40+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -87,27 +87,27 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:58 qml/DefaultPage.qml:74 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:74 qml/Main.qml:22
 #, kde-format
 msgid "Weather"
 msgstr "Počasí"
 
-#: main.cpp:60
+#: main.cpp:62
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr ""
 
-#: main.cpp:62
+#: main.cpp:64
 #, kde-format
 msgid "© 2020-2024 Plasma Development Team"
 msgstr "© 2020-2024 Vývojový tým Plasma"
 
-#: main.cpp:64
+#: main.cpp:66
 #, kde-format
 msgid "Han Young"
 msgstr "Han Young"
 
-#: main.cpp:65
+#: main.cpp:67
 #, kde-format
 msgid "Devin Lin"
 msgstr "Devin Lin"
