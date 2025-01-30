@@ -154,7 +154,6 @@ if (ANDROID)
         PUBLIC
         OpenSSL::SSL
         Qt6::Svg
-        Qt6::GuiPrivate
         Qt6::Qml
         Qt6::Quick
     )
