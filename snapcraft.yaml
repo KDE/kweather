@@ -4,7 +4,7 @@
 name: kweather
 confinement: strict
 grade: stable
-base: core22
+base: core24
 adopt-info: kweather
 
 apps:
@@ -51,6 +51,9 @@ parts:
       - docbook
       - docbook-xml
       - docbook-xsl
+    build-environment: &build-environment
+      - PYTHONPATH: ${CRAFT_STAGE}/lib/python3.12/site-packages:${CRAFT_STAGE}/usr/lib/python3/dist-packages
+      - LD_LIBRARY_PATH: "/snap/mesa-2404/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/kde-qt6-core24-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy:$LD_LIBRARY_PATH"
 
   kweathercore:
     plugin: cmake
@@ -62,6 +65,7 @@ parts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_TESTING=OFF
       - -DKDE_SKIP_TEST_SETTINGS=ON
+    build-environment: *build-environment
 
   kweather:
     after:
@@ -94,4 +98,15 @@ parts:
       - -usr/lib/aspell/*
       - -usr/share/lintian
     build-environment:
-      - CMAKE_PREFIX_PATH: $CRAFT_STAGE/usr:/snap/kf6-core22-sdk/current/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
+      - CMAKE_PREFIX_PATH: $CRAFT_STAGE/usr:/snap/kf6-core24-sdk/current/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
+      - LD_LIBRARY_PATH: "/snap/mesa-2404/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/kde-qt6-core24-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy:$LD_LIBRARY_PATH"
+
+  gpu-2404:
+    after: [kweather]
+    source: https://github.com/canonical/gpu-snap.git
+    plugin: dump
+    override-prime: |
+      craftctl default
+      ${CRAFT_PART_SRC}/bin/gpu-2404-cleanup mesa-2404
+    prime:
+      - bin/gpu-2404-wrapper
