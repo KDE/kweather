@@ -137,7 +137,7 @@ float WeatherLocation::longitude() const
 
 QString WeatherLocation::lastUpdatedFormatted() const
 {
-    return QLocale().toString(lastUpdated().time(), QLocale::ShortFormat).toLower();
+    return QLocale().toString(lastUpdated().time(), QLocale::ShortFormat);
 }
 
 const QDateTime &WeatherLocation::lastUpdated() const
@@ -147,7 +147,7 @@ const QDateTime &WeatherLocation::lastUpdated() const
 
 QString WeatherLocation::currentTimeFormatted() const
 {
-    return QLocale().toString(currentDateTime().time(), QLocale::ShortFormat).toLower();
+    return QLocale().toString(currentDateTime().time(), QLocale::ShortFormat);
 }
 
 QString WeatherLocation::currentDateFormatted() const
