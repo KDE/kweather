@@ -171,67 +171,132 @@ if (ANDROID)
         go-up
         go-down
         go-right
+        arrow-up-symbolic
+        arrow-down-symbolic
+        arrow-left-symbolic
+        arrow-right-symbolic
         compass
         mark-location
         find-location
+        system-user-list
+        applications-development-symbolic
+        checkmark
+        temperature-normal-symbolic
 
         weather-clear
+        weather-clear-symbolic
         weather-clear-night
+        weather-clear-night-symbolic
         weather-clear-wind
+        weather-clear-wind-symbolic
         weather-clear-wind-night
+        weather-clear-wind-night-symbolic
         weather-clouds
+        weather-clouds-symbolic
         weather-clouds-night
+        weather-clouds-night-symbolic
         weather-clouds-wind
+        weather-clouds-wind-symbolic
         weather-clouds-wind-night
+        weather-clouds-wind-night-symbolic
         weather-few-clouds
+        weather-few-clouds-symbolic
         weather-few-clouds-night
+        weather-few-clouds-night-symbolic
         weather-few-clouds-wind
+        weather-few-clouds-wind-symbolic
         weather-few-clouds-wind-night
+        weather-few-clouds-wind-night-symbolic
         weather-fog
+        weather-fog-symbolic
         weather-freezing-rain
+        weather-freezing-rain-symbolic
         weather-freezing-rain-day
+        weather-freezing-rain-day-symbolic
         weather-freezing-rain-night
+        weather-freezing-rain-night-symbolic
         weather-freezing-scattered-rain
+        weather-freezing-scattered-rain-symbolic
         weather-freezing-scattered-rain-day
+        weather-freezing-scattered-rain-day-symbolic
         weather-freezing-scattered-rain-night
+        weather-freezing-scattered-rain-night-symbolic
         weather-freezing-scattered-rain-storm
+        weather-freezing-scattered-rain-storm-symbolic
         weather-freezing-scattered-rain-storm-day
+        weather-freezing-scattered-rain-storm-day-symbolic
         weather-freezing-scattered-rain-storm-night
+        weather-freezing-scattered-rain-storm-night-symbolic
         weather-freezing-storm
+        weather-freezing-storm-symbolic
         weather-freezing-storm-day
+        weather-freezing-storm-day-symbolic
         weather-freezing-storm-night
+        weather-freezing-storm-night-symbolic
         weather-hail
+        weather-hail-symbolic
         weather-many-clouds
+        weather-many-clouds-symbolic
         weather-many-clouds-wind
+        weather-many-clouds-wind-symbolic
         weather-mist
+        weather-mist-symbolic
         weather-none-available
+        weather-none-available-symbolic
         weather-overcast
+        weather-overcast-symbolic
         weather-overcast-wind
+        weather-overcast-wind-symbolic
         weather-showers
+        weather-showers-symbolic
         weather-showers-day
+        weather-showers-day-symbolic
         weather-showers-night
+        weather-showers-night-symbolic
         weather-showers-scattered
+        weather-showers-scattered-symbolic
         weather-showers-scattered-day
+        weather-showers-scattered-day-symbolic
         weather-showers-scattered-night
+        weather-showers-scattered-night-symbolic
         weather-showers-scattered-storm
+        weather-showers-scattered-storm-symbolic
         weather-showers-scattered-storm-day
+        weather-showers-scattered-storm-day-symbolic
         weather-showers-scattered-storm-night
+        weather-showers-scattered-storm-night-symbolic
         weather-snow
+        weather-snow-symbolic
         weather-snow-day
+        weather-snow-day-symbolic
         weather-snow-night
+        weather-snow-night-symbolic
         weather-snow-rain
+        weather-snow-rain-symbolic
         weather-snow-scattered
+        weather-snow-scattered-symbolic
         weather-snow-scattered-day
+        weather-snow-scattered-day-symbolic
         weather-snow-scattered-night
+        weather-snow-scattered-night-symbolic
         weather-snow-scattered-storm
+        weather-snow-scattered-storm-symbolic
         weather-snow-scattered-storm-day
+        weather-snow-scattered-storm-day-symbolic
         weather-snow-scattered-storm-night
+        weather-snow-scattered-storm-night-symbolic
         weather-snow-storm
+        weather-snow-storm-symbolic
         weather-snow-storm-day
+        weather-snow-storm-day-symbolic
         weather-snow-storm-night
+        weather-snow-storm-night-symbolic
         weather-storm
+        weather-storm-symbolic
         weather-storm-day
+        weather-storm-day-symbolic
         weather-storm-night
+        weather-storm-night-symbolic
     )
 
     ecm_add_android_apk(kweather ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
