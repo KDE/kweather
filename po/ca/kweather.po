@@ -418,24 +418,3 @@ msgstr "Fase lunar"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
-
-#~ msgid "Local date: %1"
-#~ msgstr "Data local: %1"
-
-#~ msgid "Local time: %1"
-#~ msgstr "Hora local: %1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "Us donem la benvinguda al Weather"
-
-#~ msgid "Continue"
-#~ msgstr "Continua"
-
-#~ msgid "Select forecast theme"
-#~ msgstr "Selecció del tema de la predicció"
-
-#~ msgid "Finish"
-#~ msgstr "Finalitza"
-
-#~ msgid "Add current location"
-#~ msgstr "Afegeix l'emplaçament actual"
