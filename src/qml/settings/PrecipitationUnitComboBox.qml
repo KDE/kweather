@@ -9,30 +9,26 @@ import org.kde.kirigamiaddons.formcard as FormCard
 FormCard.FormComboBoxDelegate {
     id: root
 
-    text: i18n("Temperature Units")
-    currentIndex: indexOfValue(settingsModel.temperatureUnits)
+    text: i18n("Precipitation Units")
+    currentIndex: indexOfValue(settingsModel.precipitationUnits)
     textRole: "name"
     valueRole: "value"
     onActivated: settingsModel.save()
-    onCurrentValueChanged: settingsModel.temperatureUnits = currentValue
+    onCurrentValueChanged: settingsModel.precipitationUnits = currentValue
 
     model: ListModel {
         // we can't use i18n with ListElement
         Component.onCompleted: {
             append({
-                "name": i18n("Use System Default"),
-                "value": "Use System Default"
+                "name": i18nc("Millimeters", "mm"),
+                "value": "mm"
             });
             append({
-                "name": i18n("Celsius"),
-                "value": "Celsius"
-            });
-            append({
-                "name": i18n("Fahrenheit"),
-                "value": "Fahrenheit"
+                "name": i18nc("Inches", "in"),
+                "value": "in"
             });
             // indexOfValue doesn't bind to model changes unfortunately, set currentIndex manually here
-            root.currentIndex = root.indexOfValue(settingsModel.temperatureUnits);
+            root.currentIndex = root.indexOfValue(settingsModel.precipitationUnits);
         }
     }
 

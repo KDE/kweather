@@ -551,6 +551,9 @@ Popup {
                                 Layout.fillWidth: true
 
                                 TemperatureUnitComboBox {}
+                                SpeedUnitComboBox {}
+                                PressureUnitComboBox {}
+                                PrecipitationUnitComboBox {}
                             }
                         }
                     }

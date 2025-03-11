@@ -124,6 +124,10 @@ qt_add_qml_module(kweathersettings
     "qml/settings/SettingsDialog.qml"
     "qml/settings/SettingsWindow.qml"
     "qml/settings/TemperatureUnitComboBox.qml"
+    "qml/settings/SpeedUnitComboBox.qml"
+    "qml/settings/PressureUnitComboBox.qml"
+    "qml/settings/PrecipitationUnitComboBox.qml"
+
     STATIC
 )
 
