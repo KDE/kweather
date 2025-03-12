@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 00:44+0000\n"
+"POT-Creation-Date: 2025-03-12 00:45+0000\n"
 "PO-Revision-Date: 2024-10-01 21:34-0500\n"
 "Last-Translator: A S Alam <aman@punlinux.org>\n"
 "Language-Team: pa\n"
@@ -266,109 +266,109 @@ msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 msgid "Delete"
 msgstr "ਹਟਾਓ"
 
-#: qml/settings/SettingsComponent.qml:35
-#, kde-format
-msgid "General"
-msgstr "ਆਮ"
-
-#: qml/settings/SettingsComponent.qml:41
-#, kde-format
-msgid "Forecast Style"
-msgstr "ਭਵਿੱਖਬਾਣੀ ਦਾ ਢੰਗ"
-
-#: qml/settings/SettingsComponent.qml:47
-#, kde-format
-msgid "Flat"
-msgstr "ਸਮਤਲ"
-
-#: qml/settings/SettingsComponent.qml:51
-#, kde-format
-msgid "Dynamic"
-msgstr "ਡਾਇਨੈਮਿਕ"
-
-#: qml/settings/SettingsComponent.qml:89
-#, kde-format
-msgid "About"
-msgstr "ਇਸ ਬਾਰੇ"
-
-#: qml/settings/SettingsComponent.qml:100
-#, kde-format
-msgid "Units"
-msgstr "ਯੂਨਿਟਾਂ"
-
-#: qml/settings/SettingsComponent.qml:131
-#, kde-format
-msgid "Speed Units"
-msgstr "ਗਤੀ ਦੀਆਂ ਇਕਾਈਆਂ"
-
-#: qml/settings/SettingsComponent.qml:137
-#, kde-format
-msgctxt "kilometers per hour"
-msgid "kph"
-msgstr "ਕਿ.ਪ੍ਰਤੀ.ਘੰ"
-
-#: qml/settings/SettingsComponent.qml:141
-#, kde-format
-msgctxt "miles per hour"
-msgid "mph"
-msgstr "ਮੀ.ਪ੍ਰਤੀ.ਘੰ"
-
-#: qml/settings/SettingsComponent.qml:145
-#, kde-format
-msgctxt "meters per second"
-msgid "m/s"
-msgstr "ਮੀ/ਸ"
-
-#: qml/settings/SettingsComponent.qml:183
-#, kde-format
-msgid "Pressure Units"
-msgstr "ਦਬਾਓ ਯੂਨਿਟ"
-
-#: qml/settings/SettingsComponent.qml:189
-#, kde-format
-msgctxt "Hectopascal Pressure"
-msgid "hPa"
-msgstr "hPa"
-
-#: qml/settings/SettingsComponent.qml:193
-#, kde-format
-msgctxt "Millimetre of mercury"
-msgid "mmHg"
-msgstr "mmHg"
-
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/PrecipitationUnitComboBox.qml:12
 #, kde-format
 msgid "Precipitation Units"
 msgstr "ਵਰ੍ਹਨ ਯੂਨਿਟਾਂ"
 
-#: qml/settings/SettingsComponent.qml:238
+#: qml/settings/PrecipitationUnitComboBox.qml:23
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "mm"
 
-#: qml/settings/SettingsComponent.qml:242
+#: qml/settings/PrecipitationUnitComboBox.qml:27
 #, kde-format
 msgctxt "Inches"
 msgid "in"
 msgstr "ਇੰਚ"
+
+#: qml/settings/PressureUnitComboBox.qml:12
+#, kde-format
+msgid "Pressure Units"
+msgstr "ਦਬਾਓ ਯੂਨਿਟ"
+
+#: qml/settings/PressureUnitComboBox.qml:23
+#, kde-format
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "hPa"
+
+#: qml/settings/PressureUnitComboBox.qml:27
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr "mmHg"
+
+#: qml/settings/SettingsComponent.qml:37
+#, kde-format
+msgid "General"
+msgstr "ਆਮ"
+
+#: qml/settings/SettingsComponent.qml:44
+#, kde-format
+msgid "Forecast Style"
+msgstr "ਭਵਿੱਖਬਾਣੀ ਦਾ ਢੰਗ"
+
+#: qml/settings/SettingsComponent.qml:71
+#, kde-format
+msgid "Flat"
+msgstr "ਸਮਤਲ"
+
+#: qml/settings/SettingsComponent.qml:75
+#, kde-format
+msgid "Dynamic"
+msgstr "ਡਾਇਨੈਮਿਕ"
+
+#: qml/settings/SettingsComponent.qml:93
+#, kde-format
+msgid "About"
+msgstr "ਇਸ ਬਾਰੇ"
+
+#: qml/settings/SettingsComponent.qml:105
+#, kde-format
+msgid "Units"
+msgstr "ਯੂਨਿਟਾਂ"
+
+#: qml/settings/SpeedUnitComboBox.qml:12
+#, kde-format
+msgid "Speed Units"
+msgstr "ਗਤੀ ਦੀਆਂ ਇਕਾਈਆਂ"
+
+#: qml/settings/SpeedUnitComboBox.qml:23
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "ਕਿ.ਪ੍ਰਤੀ.ਘੰ"
+
+#: qml/settings/SpeedUnitComboBox.qml:27
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "ਮੀ.ਪ੍ਰਤੀ.ਘੰ"
+
+#: qml/settings/SpeedUnitComboBox.qml:31
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr "ਮੀ/ਸ"
 
 #: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
 msgid "Temperature Units"
 msgstr "ਤਾਪਮਾਨ ਦੀਆਂ ਇਕਾਈਆਂ"
 
-#: qml/settings/TemperatureUnitComboBox.qml:18
+#: qml/settings/TemperatureUnitComboBox.qml:23
 #, kde-format
 msgid "Use System Default"
 msgstr "ਸਿਸਟਮ ਮੂਲ ਵਰਤੋਂ"
 
-#: qml/settings/TemperatureUnitComboBox.qml:22
+#: qml/settings/TemperatureUnitComboBox.qml:27
 #, kde-format
 msgid "Celsius"
 msgstr "ਸੈਲਸੀਅਸ"
 
-#: qml/settings/TemperatureUnitComboBox.qml:26
+#: qml/settings/TemperatureUnitComboBox.qml:31
 #, kde-format
 msgid "Fahrenheit"
 msgstr "ਫਾਰਨਹਾਇਟ"

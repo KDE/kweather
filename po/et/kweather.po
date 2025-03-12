@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-25 00:44+0000\n"
+"POT-Creation-Date: 2025-03-12 00:45+0000\n"
 "PO-Revision-Date: 2020-10-25 19:39+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -276,115 +276,115 @@ msgstr "Lisa asukoht"
 msgid "Delete"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:35
-#, kde-format
-msgid "General"
-msgstr ""
-
-#: qml/settings/SettingsComponent.qml:41
-#, kde-format
-msgid "Forecast Style"
-msgstr "Ilmateate stiil"
-
-#: qml/settings/SettingsComponent.qml:47
-#, kde-format
-msgid "Flat"
-msgstr "Lame"
-
-#: qml/settings/SettingsComponent.qml:51
-#, kde-format
-msgid "Dynamic"
-msgstr "Dünaamiline"
-
-#: qml/settings/SettingsComponent.qml:89
-#, kde-format
-msgid "About"
-msgstr "Teave"
-
-#: qml/settings/SettingsComponent.qml:100
-#, fuzzy, kde-format
-#| msgid "Speed Units"
-msgid "Units"
-msgstr "Kiiruseühik"
-
-#: qml/settings/SettingsComponent.qml:131
-#, kde-format
-msgid "Speed Units"
-msgstr "Kiiruseühik"
-
-#: qml/settings/SettingsComponent.qml:137
-#, kde-format
-msgctxt "kilometers per hour"
-msgid "kph"
-msgstr "km/h"
-
-#: qml/settings/SettingsComponent.qml:141
-#, kde-format
-msgctxt "miles per hour"
-msgid "mph"
-msgstr "mph"
-
-#: qml/settings/SettingsComponent.qml:145
-#, kde-format
-msgctxt "meters per second"
-msgid "m/s"
-msgstr ""
-
-#: qml/settings/SettingsComponent.qml:183
-#, fuzzy, kde-format
-#| msgid "Pressure"
-msgid "Pressure Units"
-msgstr "Õhurõhk"
-
-#: qml/settings/SettingsComponent.qml:189
-#, fuzzy, kde-format
-#| msgid "%1hPa"
-msgctxt "Hectopascal Pressure"
-msgid "hPa"
-msgstr "%1 hPa"
-
-#: qml/settings/SettingsComponent.qml:193
-#, kde-format
-msgctxt "Millimetre of mercury"
-msgid "mmHg"
-msgstr ""
-
-#: qml/settings/SettingsComponent.qml:232
+#: qml/settings/PrecipitationUnitComboBox.qml:12
 #, fuzzy, kde-format
 #| msgid "Precipitation"
 msgid "Precipitation Units"
 msgstr "Sademed"
 
-#: qml/settings/SettingsComponent.qml:238
+#: qml/settings/PrecipitationUnitComboBox.qml:23
 #, fuzzy, kde-format
 #| msgid "%1mm"
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "%1 mm"
 
-#: qml/settings/SettingsComponent.qml:242
+#: qml/settings/PrecipitationUnitComboBox.qml:27
 #, fuzzy, kde-format
 #| msgid "Rain"
 msgctxt "Inches"
 msgid "in"
 msgstr "Vihm"
 
+#: qml/settings/PressureUnitComboBox.qml:12
+#, fuzzy, kde-format
+#| msgid "Pressure"
+msgid "Pressure Units"
+msgstr "Õhurõhk"
+
+#: qml/settings/PressureUnitComboBox.qml:23
+#, fuzzy, kde-format
+#| msgid "%1hPa"
+msgctxt "Hectopascal Pressure"
+msgid "hPa"
+msgstr "%1 hPa"
+
+#: qml/settings/PressureUnitComboBox.qml:27
+#, kde-format
+msgctxt "Millimetre of mercury"
+msgid "mmHg"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:37
+#, kde-format
+msgid "General"
+msgstr ""
+
+#: qml/settings/SettingsComponent.qml:44
+#, kde-format
+msgid "Forecast Style"
+msgstr "Ilmateate stiil"
+
+#: qml/settings/SettingsComponent.qml:71
+#, kde-format
+msgid "Flat"
+msgstr "Lame"
+
+#: qml/settings/SettingsComponent.qml:75
+#, kde-format
+msgid "Dynamic"
+msgstr "Dünaamiline"
+
+#: qml/settings/SettingsComponent.qml:93
+#, kde-format
+msgid "About"
+msgstr "Teave"
+
+#: qml/settings/SettingsComponent.qml:105
+#, fuzzy, kde-format
+#| msgid "Speed Units"
+msgid "Units"
+msgstr "Kiiruseühik"
+
+#: qml/settings/SpeedUnitComboBox.qml:12
+#, kde-format
+msgid "Speed Units"
+msgstr "Kiiruseühik"
+
+#: qml/settings/SpeedUnitComboBox.qml:23
+#, kde-format
+msgctxt "kilometers per hour"
+msgid "kph"
+msgstr "km/h"
+
+#: qml/settings/SpeedUnitComboBox.qml:27
+#, kde-format
+msgctxt "miles per hour"
+msgid "mph"
+msgstr "mph"
+
+#: qml/settings/SpeedUnitComboBox.qml:31
+#, kde-format
+msgctxt "meters per second"
+msgid "m/s"
+msgstr ""
+
 #: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
 msgid "Temperature Units"
 msgstr "Temperatuuriühik"
 
-#: qml/settings/TemperatureUnitComboBox.qml:18
+#: qml/settings/TemperatureUnitComboBox.qml:23
 #, kde-format
 msgid "Use System Default"
 msgstr ""
 
-#: qml/settings/TemperatureUnitComboBox.qml:22
+#: qml/settings/TemperatureUnitComboBox.qml:27
 #, kde-format
 msgid "Celsius"
 msgstr "Celsius"
 
-#: qml/settings/TemperatureUnitComboBox.qml:26
+#: qml/settings/TemperatureUnitComboBox.qml:31
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
