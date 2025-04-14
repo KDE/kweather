@@ -15,7 +15,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kweather VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "6.5.0")
-set(KF_MIN_VERSION "6.8.0")
+set(KF_MIN_VERSION "6.12.0")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -95,7 +95,6 @@ add_subdirectory(src)
 ki18n_install(po)
 
 if (ANDROID)
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/android/version.gradle.in ${CMAKE_BINARY_DIR}/version.gradle)
     install(FILES org.kde.kweather.svg DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kirigami/breeze-internal/icons/)
 else()
     install(PROGRAMS org.kde.kweather.desktop DESTINATION ${KDE_INSTALL_APPDIR})
