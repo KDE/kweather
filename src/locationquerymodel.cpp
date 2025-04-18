@@ -81,13 +81,25 @@ void LocationQueryModel::textChanged(QString query, int timeout)
 
 void LocationQueryModel::setQuery()
 {
+    m_loading = true;
+    m_networkError = false;
+    Q_EMIT propertyChanged();
+
     qDebug() << "start query";
+
     auto reply = m_querySource.query(m_text);
     connect(reply, &KWeatherCore::LocationQueryReply::finished, this, [this, reply]() {
-        reply->error();
-        if (reply->error() == KWeatherCore::LocationQueryReply::NoError || reply->error() == KWeatherCore::LocationQueryReply::NotFound) {
+        m_loading = false;
+        // Handling errors
+        auto err = reply->error();
+        if (err == KWeatherCore::LocationQueryReply::NoError || err == KWeatherCore::LocationQueryReply::NotFound) {
             handleQueryResults(reply->result());
+        } else if (err == KWeatherCore::LocationQueryReply::NetworkError) {
+            m_networkError = true;
+            Q_EMIT propertyChanged();
         }
+
+        reply->deleteLater();
     });
 }
 
