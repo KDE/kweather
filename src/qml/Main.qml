@@ -108,7 +108,6 @@ Kirigami.ApplicationWindow {
     }
 
     function getPage(name) {
-        console.log('fetch ' + name);
         switch (name) {
         case "Forecast":
             return pagePool.loadPage(WeatherLocationListModel.count === 0 ? getPageUrl('', 'DefaultPage.qml') : getPageUrl('', 'ForecastContainerPage.qml'));
