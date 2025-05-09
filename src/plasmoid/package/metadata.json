@@ -90,7 +90,6 @@
         "Description[zh_TW]": "KWeather_1x4 元件",
         "EnabledByDefault": true,
         "Icon": "kweather",
-        "Id": "org.kde.plasma.kweather_1x4",
         "License": "LGPL-2.1+",
         "Name": "KWeather_1x4",
         "Name[az]": "KWeather_1x4",
