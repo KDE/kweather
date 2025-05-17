@@ -7,6 +7,7 @@
 
 [Desktop Entry]
 Name=Weather
+Name[ar]=الطقس
 Name[az]=Hava
 Name[bg]=Времето
 Name[ca]=Meteorologia
@@ -51,6 +52,7 @@ Name[x-test]=xxWeatherxx
 Name[zh_CN]=天气
 Name[zh_TW]=天氣
 Comment=View real-time weather forecasts and other information
+Comment[ar]=عرض تنبؤات الطقس في الوقت الحقيقي وغيرها من المعلومات
 Comment[az]=Hazırkı vaxt hava məlumatına və digər məlumatlara baxış
 Comment[bg]=Метеорологични прогнози в реално време и друга информация
 Comment[ca]=Visualitza previsions meteorològiques en temps real i altra informació
