@@ -44,7 +44,7 @@ include(ECMAddAndroidApk)
 include(ECMDeprecationSettings)
 
 ecm_set_disabled_deprecation_versions(QT 6.8.0
-    KF 6.13.0
+    KF 6.14.0
     )
 
 # clang-format
