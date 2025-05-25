@@ -186,7 +186,7 @@ msgstr "Ubicacions"
 #: qml/DynamicForecastPage.qml:360
 #, kde-format
 msgid "Choose location"
-msgstr "Escolliu una ubicació"
+msgstr "Trieu una ubicació"
 
 #: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
 #: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
