@@ -1,21 +1,21 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# Kheyyam Gojayev <xxmn77@gmail.com>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2025 Kheyyam Gojayev <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:45+0000\n"
-"PO-Revision-Date: 2023-04-24 17:37+0400\n"
-"Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
+"PO-Revision-Date: 2025-06-02 16:30+0400\n"
+"Last-Translator: linux <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -59,17 +59,15 @@ msgid "%1 mmHg"
 msgstr "%1 mm.c.s"
 
 #: formatter.cpp:78
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
 msgstr "%1%"
 
 #: formatter.cpp:83
-#, fuzzy, kde-format
-#| msgid "%1%"
+#, kde-format
 msgid "%1"
-msgstr "%1%"
+msgstr "%1"
 
 #: formatter.cpp:89
 #, kde-format
@@ -100,10 +98,9 @@ msgid "A convergent weather application for Plasma"
 msgstr "Plasma'da hava proqnozu üçün əlverişli tətbiq."
 
 #: main.cpp:64
-#, fuzzy, kde-format
-#| msgid "© 2020-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2022 Plasma Tərtibatçılar Komandası"
+msgstr "© 2020-2024 Plasma Tərtibatı Komandası"
 
 #: main.cpp:66
 #, kde-format
@@ -121,10 +118,9 @@ msgid "No location found on system, please add some in kweather"
 msgstr "Sistemdə məkan tapılmadı, lütfən kweather-ə məkanı əlavə edin"
 
 #: plasmoid/package/contents/ui/LocationSelector.qml:45
-#, fuzzy, kde-format
-#| msgid "please select the location"
+#, kde-format
 msgid "Please select the location"
-msgstr "lütfən məkanı seçin"
+msgstr "Məkanı seçin"
 
 #: plasmoid/package/contents/ui/WeatherContainer.qml:64
 #, kde-format
@@ -226,10 +222,9 @@ msgid "Pressure"
 msgstr "Təzyiq"
 
 #: qml/InfoCard.qml:116
-#, fuzzy, kde-format
-#| msgid "UV index"
+#, kde-format
 msgid "UV Index"
-msgstr "UV indeks"
+msgstr "UV indeksi"
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
@@ -381,7 +376,7 @@ msgstr "Farenqeyt"
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "Başlayaq"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -391,13 +386,12 @@ msgstr "Geriyə"
 #: qml/SetupWizard.qml:431
 #, kde-format
 msgid "Next"
-msgstr ""
+msgstr "Sonra"
 
 #: qml/SetupWizard.qml:455
-#, fuzzy, kde-format
-#| msgid "You can change the theme later in the settings."
+#, kde-format
 msgid "The style can be changed later in the settings."
-msgstr "Siz görünüşü daha sonra ayarlarda dəyişə bilərsiniz."
+msgstr "Görünüş tərzini sonra ayarlardan dəyişə bilərsiniz."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
