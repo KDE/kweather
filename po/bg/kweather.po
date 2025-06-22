@@ -414,24 +414,3 @@ msgstr "Фази на луната"
 #, kde-format
 msgid "temperature"
 msgstr "температура"
-
-#~ msgid "Local date: %1"
-#~ msgstr "Местна дата: %1"
-
-#~ msgid "Local time: %1"
-#~ msgstr "Местно време: %1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "Добре дошли в Прогноза за времето"
-
-#~ msgid "Continue"
-#~ msgstr "Продължаване"
-
-#~ msgid "Select forecast theme"
-#~ msgstr "Избиране на тема за прогнозите"
-
-#~ msgid "Finish"
-#~ msgstr "Край"
-
-#~ msgid "Add current location"
-#~ msgstr "Добавяне на текущо местоположение"
