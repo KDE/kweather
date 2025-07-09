@@ -25,7 +25,8 @@ slots:
 parts:
   libplasma:
     plugin: cmake
-    source: https://invent.kde.org/plasma/libplasma/-/archive/v6.0.3/libplasma-v6.0.3.tar.gz
+    source: https://invent.kde.org/plasma/libplasma.git
+    source-branch: Plasma/6.4
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
@@ -58,7 +59,7 @@ parts:
   kweathercore:
     plugin: cmake
     source: https://invent.kde.org/libraries/kweathercore.git
-    source-tag: "v0.8.0"
+    source-branch: release/25.04
     source-depth: 1
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
