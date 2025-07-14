@@ -362,7 +362,7 @@ msgstr "ტემპერატურის ერთეული"
 #: qml/settings/TemperatureUnitComboBox.qml:23
 #, kde-format
 msgid "Use System Default"
-msgstr "სისტემის ნაგულისხმების გამოყენება"
+msgstr "სისტემის ნაგულისხმევის გამოყენება"
 
 #: qml/settings/TemperatureUnitComboBox.qml:27
 #, kde-format
