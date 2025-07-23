@@ -16,7 +16,22 @@
         "--system-talk-name=org.freedesktop.GeoClue2"
     ],
     "separate-locales": false,
-
+    "cleanup": [
+        "*.a",
+        "*.la",
+        "/doc",
+        "/docs",
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/lib/x86_64-linux-gnu/cmake",
+        "/lib/x86_64-linux-gnu/pkgconfig",
+        "/man",
+        "/share/cmake",
+        "/share/doc",
+        "/share/man",
+        "/share/pkgconfig"
+    ],
     "modules": [
         {
             "name": "kweathercore",
