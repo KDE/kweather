@@ -24,14 +24,14 @@ Rectangle {
         id: listView
 
         anchors.fill: parent
-        model: plasmoid.nativeInterface.locationsInSystem()
+        model: plasmoid.locationsInSystem()
 
         delegate: Delegates.RoundedItemDelegate {
             text: modelData
 
             onClicked: {
                 selected();
-                plasmoid.nativeInterface.setLocation(modelData);
+                plasmoid.setLocation(modelData);
             }
         }
 

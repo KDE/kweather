@@ -16,23 +16,23 @@ PlasmoidItem {
 
     fullRepresentation: Loader {
         active: true
-        source: root.plasmoid.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
+        source: Plasmoid.needLocation ? "LocationSelector.qml" : "WeatherContainer.qml"
     }
 
     compactRepresentation: ColumnLayout {
         Kirigami.Icon {
             height: 20
             width: 20
-            source: root.plasmoid.weatherIcon
+            source: Plasmoid.weatherIcon
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    plasmoid.expanded = !plasmoid.expanded;
+                    root.expanded = !root.expanded;
                 }
             }
         }
         Label {
-            text: root.plasmoid.temp + "°"
+            text: Plasmoid.temp + "°"
             color: Kirigami.Theme.activeTextColor
         }
     }
