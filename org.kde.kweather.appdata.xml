@@ -332,6 +332,10 @@
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
   </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#f7c109</color>
+    <color type="primary" scheme_preference="dark">#2d3b42</color>
+  </branding>
   <categories>
     <category>Utility</category>
     <category>KDE</category>
