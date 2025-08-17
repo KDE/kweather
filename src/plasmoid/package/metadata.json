@@ -137,9 +137,6 @@
         "Name[x-test]": "xxKWeather_1x4xx",
         "Name[zh_CN]": "KWeather_1x4",
         "Name[zh_TW]": "KWeather_1x4",
-        "ServiceTypes": [
-            "Plasma/Applet"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop/"
     },
