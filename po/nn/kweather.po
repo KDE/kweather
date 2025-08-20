@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:45+0000\n"
+"POT-Creation-Date: 2025-08-20 00:46+0000\n"
 "PO-Revision-Date: 2025-03-15 13:13+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -123,23 +123,23 @@ msgstr "Fann ikkje noko plassering på systemet. Vel plassering i KWeather."
 msgid "Please select the location"
 msgstr "Vel plasseringa"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:64
+#: plasmoid/package/contents/ui/WeatherContainer.qml:65
 #, kde-format
 msgid "%1%"
 msgstr "%1 %"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:80
+#: plasmoid/package/contents/ui/WeatherContainer.qml:81
 #, kde-format
 msgid "%1mm"
 msgstr "%1 mm"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:132
-#: plasmoid/package/contents/ui/WeatherContainer.qml:171
+#: plasmoid/package/contents/ui/WeatherContainer.qml:133
+#: plasmoid/package/contents/ui/WeatherContainer.qml:172
 #, kde-format
 msgid "Select Location"
 msgstr "Vel plassering"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:137
+#: plasmoid/package/contents/ui/WeatherContainer.qml:138
 #, kde-format
 msgid "Open KWeather"
 msgstr "Opna KWeather"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:45+0000\n"
+"POT-Creation-Date: 2025-08-20 00:46+0000\n"
 "PO-Revision-Date: 2024-12-28 17:41+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -123,23 +123,23 @@ msgstr "Neniu loko trovita en la sistemo, bonvolu aldoni kelkajn en kweather"
 msgid "Please select the location"
 msgstr "Bonvolu elekti la lokon"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:64
+#: plasmoid/package/contents/ui/WeatherContainer.qml:65
 #, kde-format
 msgid "%1%"
 msgstr "%1%"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:80
+#: plasmoid/package/contents/ui/WeatherContainer.qml:81
 #, kde-format
 msgid "%1mm"
 msgstr "%1mm"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:132
-#: plasmoid/package/contents/ui/WeatherContainer.qml:171
+#: plasmoid/package/contents/ui/WeatherContainer.qml:133
+#: plasmoid/package/contents/ui/WeatherContainer.qml:172
 #, kde-format
 msgid "Select Location"
 msgstr "Elekti Lokon"
 
-#: plasmoid/package/contents/ui/WeatherContainer.qml:137
+#: plasmoid/package/contents/ui/WeatherContainer.qml:138
 #, kde-format
 msgid "Open KWeather"
 msgstr "Malfermi KWeather"
