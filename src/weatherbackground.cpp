@@ -10,8 +10,8 @@
 #include <QOpenGLFramebufferObject>
 
 #include <QOpenGLExtraFunctions>
+#include <QOpenGLShaderProgram>
 #include <QtQuick/QQuickWindow>
-#include <qopenglshaderprogram.h>
 
 #include <array>
 #include <random>
