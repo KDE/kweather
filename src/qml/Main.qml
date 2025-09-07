@@ -58,22 +58,6 @@ Kirigami.ApplicationWindow {
         id: pagePool
     }
 
-    // page switch animation
-    NumberAnimation {
-        id: anim
-        from: 0
-        to: 1
-        duration: Kirigami.Units.longDuration * 2
-        easing.type: Easing.InOutQuad
-    }
-    NumberAnimation {
-        id: yAnim
-        from: Kirigami.Units.gridUnit * 3
-        to: 0
-        duration: Kirigami.Units.longDuration * 3
-        easing.type: Easing.OutQuint
-    }
-
     function switchToPage(page, depth) {
         while (pageStack.layers.depth > 1) {
             pageStack.layers.pop();
@@ -83,7 +67,6 @@ Kirigami.ApplicationWindow {
         }
 
         if (pageStack.currentItem !== page) {
-            runPageAnimations(page);
             pageStack.push(page);
         }
     }
@@ -91,20 +74,7 @@ Kirigami.ApplicationWindow {
     function pushPage(page, depth) {
         while (depth !== undefined && pageStack.depth > depth + 1)
             pageStack.pop();
-        runPageAnimations(page);
         pageStack.push(page);
-    }
-
-    function runPageAnimations(page) {
-        yAnim.target = page;
-        yAnim.properties = "yTranslate";
-        anim.target = page;
-        anim.properties = "contentItem.opacity";
-        if (page.header) {
-            anim.properties += ",header.opacity";
-        }
-        yAnim.restart();
-        anim.restart();
     }
 
     function getPage(name) {

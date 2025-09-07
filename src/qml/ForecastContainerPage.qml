@@ -34,8 +34,6 @@ Kirigami.Page {
 
     globalToolBarStyle: (settingsModel.forecastStyle === "Dynamic" && pageStack.layers.depth <= 1) ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ToolBar
 
-    property real yTranslate: 0
-
     function switchPageIndex(pageIndex) {
         loader.item.currentIndex = pageIndex;
     }
@@ -64,9 +62,6 @@ Kirigami.Page {
 
     Loader {
         id: loader
-        transform: Translate {
-            y: yTranslate
-        }
         anchors.fill: parent
 
         Component.onCompleted: loadStyle()

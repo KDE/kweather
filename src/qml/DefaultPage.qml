@@ -22,8 +22,6 @@ Kirigami.Page {
 
     property bool loading: false
 
-    property int yTranslate: 0
-
     Connections {
         target: WeatherLocationListModel
         function onNetworkErrorCreatingDefault() {
@@ -47,9 +45,6 @@ Kirigami.Page {
     Item {
         // empty list view to centre placeholdermessage
         anchors.fill: parent
-        transform: Translate {
-            y: yTranslate
-        }
         BusyIndicator {
             anchors.centerIn: parent
             running: root.loading

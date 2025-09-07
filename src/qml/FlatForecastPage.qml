@@ -18,9 +18,6 @@ SwipeView {
     property bool canGoRight: currentIndex < WeatherLocationListModel.count - 1
 
     anchors.fill: parent
-    transform: Translate {
-        y: yTranslate
-    }
 
     function moveLeft() {
         currentIndex--;

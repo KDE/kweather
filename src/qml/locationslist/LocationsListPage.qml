@@ -14,7 +14,6 @@ import org.kde.kirigami as Kirigami
 Kirigami.ScrollablePage {
     title: i18n("Locations")
 
-    property real yTranslate: 0
     property int currentIndex: 0
 
     actions: [
@@ -25,9 +24,5 @@ Kirigami.ScrollablePage {
         }
     ]
 
-    LocationsListView {
-        transform: Translate {
-            y: yTranslate
-        }
-    }
+    LocationsListView {}
 }
