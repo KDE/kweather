@@ -99,6 +99,9 @@ qt_add_qml_module(kweathercomponents
     VERSION 1.0
     QML_FILES
     "qml/components/ListDelegate.qml"
+    "qml/components/PageContainer.qml"
+    "qml/components/PageHeader.qml"
+    "qml/components/PageStack.qml"
     STATIC
 )
 

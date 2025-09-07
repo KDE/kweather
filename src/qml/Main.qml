@@ -14,10 +14,11 @@ import org.kde.config as KConfig
 
 import org.kde.kweather.locations
 import org.kde.kweather.settings
+import org.kde.kweather.components
 
 import org.kde.kweather
 
-Kirigami.ApplicationWindow {
+Kirigami.AbstractApplicationWindow {
     id: appwindow
     title: i18n("Weather")
 
@@ -26,12 +27,7 @@ Kirigami.ApplicationWindow {
     width: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 27 : Kirigami.Units.gridUnit * 40
     height: Kirigami.Settings.isMobile ? Kirigami.Units.gridUnit * 45 : Kirigami.Units.gridUnit * 35
 
-    pageStack.globalToolBar.canContainHandles: true // move handles to toolbar
-    pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.ToolBar // ensure toolbar style for mobile
-    pageStack.globalToolBar.showNavigationButtons: Kirigami.ApplicationHeaderStyle.ShowBackButton
-    pageStack.popHiddenPages: true
-
-    pageStack.columnView.columnResizeMode: Kirigami.ColumnView.SingleColumn
+    pageStack: PageStack {}
 
     readonly property bool isWideScreen: width > 540
 
@@ -59,9 +55,6 @@ Kirigami.ApplicationWindow {
     }
 
     function switchToPage(page, depth) {
-        while (pageStack.layers.depth > 1) {
-            pageStack.layers.pop();
-        }
         while (pageStack.currentItem !== page && pageStack.depth > depth) {
             pageStack.pop();
         }
