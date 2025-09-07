@@ -20,19 +20,6 @@ ColumnLayout {
 
     spacing: 0
 
-    // HACK: dialog switching requires some time between closing and opening
-    Timer {
-        id: dialogTimer
-
-        property var dialog
-
-        interval: 1
-        onTriggered: {
-            root.dialog.close();
-            dialog.open();
-        }
-    }
-
     FormCard.FormHeader {
         title: i18n("General")
     }
@@ -47,22 +34,6 @@ ColumnLayout {
             valueRole: "value"
             onActivated: settingsModel.save()
             onCurrentValueChanged: settingsModel.forecastStyle = currentValue
-            onClicked: {
-                if (root.dialog && forecastStyleDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
-                    dialogTimer.dialog = forecastStyleDropdown.dialog;
-                    dialogTimer.restart();
-                }
-            }
-
-            Connections {
-                function onClosed() {
-                    if (root.dialog)
-                        root.dialog.open();
-
-                }
-
-                target: forecastStyleDropdown.dialog
-            }
 
             model: ListModel {
                 // we can't use i18n with ListElement
@@ -82,10 +53,7 @@ ColumnLayout {
 
         }
 
-        FormCard.FormDelegateSeparator {
-            above: forecastStyleDropdown
-            below: aboutButton
-        }
+        FormCard.FormDelegateSeparator {}
 
         FormCard.FormButtonDelegate {
             id: aboutButton
@@ -93,12 +61,9 @@ ColumnLayout {
             text: i18n("About")
             onClicked: {
                 applicationWindow().pageStack.push(Qt.createComponent("org.kde.kirigamiaddons.formcard", "AboutPage"));
-                if (root.dialog)
-                    root.dialog.close();
-
+                root.closeRequested();
             }
         }
-
     }
 
     FormCard.FormHeader {
@@ -108,108 +73,25 @@ ColumnLayout {
     FormCard.FormCard {
         TemperatureUnitComboBox {
             id: temperatureUnitsDropdown
-
-            onClicked: {
-                if (root.dialog && temperatureUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
-                    dialogTimer.dialog = temperatureUnitsDropdown.dialog;
-                    dialogTimer.restart();
-                }
-            }
-
-            Connections {
-                function onClosed() {
-                    if (root.dialog)
-                        root.dialog.open();
-
-                }
-
-                target: temperatureUnitsDropdown.dialog
-            }
-
         }
 
-        FormCard.FormDelegateSeparator {
-            above: temperatureUnitsDropdown
-            below: speedUnitsDropdown
-        }
+        FormCard.FormDelegateSeparator {}
 
         SpeedUnitComboBox {
             id: speedUnitsDropdown
-
-            onClicked: {
-                if (root.dialog && speedUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
-                    dialogTimer.dialog = speedUnitsDropdown.dialog;
-                    dialogTimer.restart();
-                }
-            }
-
-            Connections {
-                function onClosed() {
-                    if (root.dialog)
-                        root.dialog.open();
-
-                }
-
-                target: speedUnitsDropdown.dialog
-            }
-
         }
 
-        FormCard.FormDelegateSeparator {
-            above: speedUnitsDropdown
-            below: pressureUnitsDropdown
-        }
+        FormCard.FormDelegateSeparator {}
 
         PressureUnitComboBox {
             id: pressureUnitsDropdown
-
-            onClicked: {
-                if (root.dialog && pressureUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
-                    dialogTimer.dialog = pressureUnitsDropdown.dialog;
-                    dialogTimer.restart();
-                }
-            }
-
-            Connections {
-                function onClosed() {
-                    if (root.dialog)
-                        root.dialog.open();
-
-                }
-
-                target: pressureUnitsDropdown.dialog
-            }
-
         }
 
-        FormCard.FormDelegateSeparator {
-            above: pressureUnitsDropdown
-            below: precipitationUnitsDropdown
-        }
+        FormCard.FormDelegateSeparator {}
 
         // Precipitation
         PrecipitationUnitComboBox {
             id: precipitationUnitsDropdown
-
-            onClicked: {
-                if (root.dialog && precipitationUnitsDropdown.mode === FormCard.FormComboBoxDelegate.Dialog) {
-                    dialogTimer.dialog = precipitationUnitsDropdown.dialog;
-                    dialogTimer.restart();
-                }
-            }
-
-            Connections {
-                function onClosed() {
-                    if (root.dialog)
-                        root.dialog.open();
-
-                }
-
-                target: precipitationUnitsDropdown.dialog
-            }
-
         }
-
     }
-
 }

@@ -11,6 +11,7 @@ Kirigami.Dialog {
     id: root
     title: i18n("Settings")
     standardButtons: Kirigami.Dialog.NoButton
+    popupType: Kirigami.Settings.isMobile ? Kirigami.Dialog.Item : Kirigami.Dialog.Window
 
     preferredWidth: Kirigami.Units.gridUnit * 35
 
@@ -24,15 +25,11 @@ Kirigami.Dialog {
         topPadding: Kirigami.Units.gridUnit
         bottomPadding: Kirigami.Units.gridUnit
 
-        background: Rectangle {
-            Kirigami.Theme.inherit: false
-            Kirigami.Theme.colorSet: Kirigami.Theme.Window
-            color: Kirigami.Theme.backgroundColor
-        }
-
         contentItem: SettingsComponent {
             dialog: root
             width: control.width
+
+            onCloseRequested: root.close();
         }
     }
 }
