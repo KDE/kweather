@@ -100,14 +100,7 @@ Kirigami.ApplicationWindow {
     function openSettings() {
         if (isWideScreen) {
             settingsDialogLoader.active = true;
-            if (Kirigami.Settings.isMobile) {
-                // SettingsDialog
-                settingsDialogLoader.item.open();
-            } else {
-                // SettingsWindow
-                settingsDialogLoader.item.close();
-                settingsDialogLoader.item.show();
-            }
+            settingsDialogLoader.item.open();
         } else {
             applicationWindow().pushPage(getPage("Settings"), 0);
         }
@@ -146,7 +139,7 @@ Kirigami.ApplicationWindow {
         id: settingsDialogLoader
         property bool isOpen: item && item.visible
         active: false
-        sourceComponent: Kirigami.Settings.isMobile ? Qt.createComponent("org.kde.kweather.settings", "SettingsDialog") : Qt.createComponent("org.kde.kweather.settings", "SettingsWindow")
+        sourceComponent: Qt.createComponent("org.kde.kweather.settings", "SettingsDialog")
     }
 
     Loader {
