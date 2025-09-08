@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-20 00:46+0000\n"
+"POT-Creation-Date: 2025-09-08 00:48+0000\n"
 "PO-Revision-Date: 2022-11-28 15:12+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -91,7 +91,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:60 qml/DefaultPage.qml:74 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:22
 #, kde-format
 msgid "Weather"
 msgstr "Tempo"
@@ -156,14 +156,14 @@ msgstr "Abrir o KWeather"
 msgid "Forecast"
 msgstr "Previsão"
 
-#: qml/DefaultPage.qml:30
+#: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "Ocorreu um erro de rede ao obter a localização actual"
 
-#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:23
+#: qml/locationslist/LocationsListPage.qml:22
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -179,7 +179,7 @@ msgstr "Meteorologia actualizada para %1"
 msgid "Updated at %1"
 msgstr "Actualizada a %1"
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:45
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
@@ -192,14 +192,14 @@ msgid "Choose location"
 msgstr "Escolher a localização"
 
 #: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
-#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#: qml/ForecastContainerPage.qml:50 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Configuração"
 
 #: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:59
+#: qml/ForecastContainerPage.qml:57
 #, kde-format
 msgid "Refresh"
 msgstr "Actualizar"
@@ -309,32 +309,32 @@ msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "mmHg"
 
-#: qml/settings/SettingsComponent.qml:37
+#: qml/settings/SettingsComponent.qml:24
 #, kde-format
 msgid "General"
 msgstr "Geral"
 
-#: qml/settings/SettingsComponent.qml:44
+#: qml/settings/SettingsComponent.qml:31
 #, kde-format
 msgid "Forecast Style"
 msgstr "Estilo de Previsão"
 
-#: qml/settings/SettingsComponent.qml:71
+#: qml/settings/SettingsComponent.qml:42
 #, kde-format
 msgid "Flat"
 msgstr "Plano"
 
-#: qml/settings/SettingsComponent.qml:75
+#: qml/settings/SettingsComponent.qml:46
 #, kde-format
 msgid "Dynamic"
 msgstr "Dinâmica"
 
-#: qml/settings/SettingsComponent.qml:93
+#: qml/settings/SettingsComponent.qml:61
 #, kde-format
 msgid "About"
 msgstr "Acerca"
 
-#: qml/settings/SettingsComponent.qml:105
+#: qml/settings/SettingsComponent.qml:70
 #, kde-format
 msgid "Units"
 msgstr "Unidades"
