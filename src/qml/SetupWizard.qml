@@ -42,9 +42,9 @@ Popup {
     // Page 1: Units
     // Page 2: Add first location
 
-    readonly property string appearanceHeading: i18n('Appearance')
-    readonly property string unitsHeading: i18n('Units')
-    readonly property string addLocationHeading: i18n('Add Location')
+    readonly property string appearanceHeading: i18n("Appearance")
+    readonly property string unitsHeading: i18n("Units")
+    readonly property string addLocationHeading: i18n("Add Location")
 
     function requestNextPage() {
         if (!viewContainerOpen) {
@@ -235,7 +235,7 @@ Popup {
                 Layout.rightMargin: Kirigami.Units.gridUnit * 2
                 Layout.bottomMargin: Kirigami.Units.gridUnit
                 font.pointSize: 20
-                text: i18n('Welcome to <b>Weather</b>')
+                text: i18n("Welcome to <b>Weather</b>")
                 horizontalAlignment: Text.AlignHCenter
             }
 
@@ -258,7 +258,7 @@ Popup {
                     wrapMode: Text.Wrap
                     opacity: 0.8
                     font: Kirigami.Theme.smallFont
-                    text: i18n('View hourly and daily weather forecasts, along with other detailed information such as wind speed and precipitation.')
+                    text: i18n("View hourly and daily weather forecasts, along with other detailed information such as wind speed and precipitation.")
                 }
             }
             RowLayout {
@@ -279,7 +279,7 @@ Popup {
                     wrapMode: Text.Wrap
                     opacity: 0.8
                     font: Kirigami.Theme.smallFont
-                    text: i18n('Save multiple locations and switch between them easily with the locations list.')
+                    text: i18n("Save multiple locations and switch between them easily with the locations list.")
                 }
             }
 
@@ -301,7 +301,7 @@ Popup {
                     wrapMode: Text.Wrap
                     opacity: 0.8
                     font: Kirigami.Theme.smallFont
-                    text: i18n('Built by the community, and powered by data from the Norwegian Meteorological Institute.')
+                    text: i18n("Built by the community, and powered by data from the Norwegian Meteorological Institute.")
                 }
             }
 
@@ -480,14 +480,14 @@ Popup {
 
                                             Label {
                                                 Layout.fillWidth: true
-                                                text: i18n('Dynamic')
+                                                text: i18n("Dynamic")
                                                 wrapMode: Text.Wrap
                                             }
                                             Label {
                                                 Layout.fillWidth: true
                                                 color: Kirigami.Theme.disabledTextColor
                                                 wrapMode: Text.Wrap
-                                                text: i18n('Animated and full-color backgrounds for weather forecasts.')
+                                                text: i18n("Animated and full-color backgrounds for weather forecasts.")
                                             }
                                         }
                                         Kirigami.Icon {
@@ -516,14 +516,14 @@ Popup {
 
                                             Label {
                                                 Layout.fillWidth: true
-                                                text: i18n('Flat')
+                                                text: i18n("Flat")
                                                 wrapMode: Text.Wrap
                                             }
                                             Label {
                                                 Layout.fillWidth: true
                                                 color: Kirigami.Theme.disabledTextColor
                                                 wrapMode: Text.Wrap
-                                                text: i18n('Flat and simple backgrounds for weather forecasts.')
+                                                text: i18n("Flat and simple backgrounds for weather forecasts.")
                                             }
                                         }
                                         Kirigami.Icon {

@@ -37,7 +37,7 @@ ToolBar {
             id: backButton
             visible: showBackButton
             icon.name: (LayoutMirroring.enabled ? "go-previous-symbolic-rtl" : "go-previous-symbolic")
-            text: i18n('Navigate Back')
+            text: i18n("Navigate Back")
             display: AbstractButton.IconOnly
             onClicked: applicationWindow().pageStack.pop()
 
