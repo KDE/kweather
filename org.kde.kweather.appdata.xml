@@ -51,7 +51,6 @@
   <name xml:lang="sv">Väder</name>
   <name xml:lang="tr">Hava Durumu</name>
   <name xml:lang="uk">Погода</name>
-  <name xml:lang="x-test">xxWeatherxx</name>
   <name xml:lang="zh-CN">天气</name>
   <name xml:lang="zh-TW">天氣</name>
   <summary>View real-time weather forecasts</summary>
@@ -89,7 +88,6 @@
   <summary xml:lang="sv">Visa väderprognoser i realtid</summary>
   <summary xml:lang="tr">Gerçek Zamanlı Hava Durumu Tahminleri</summary>
   <summary xml:lang="uk">Перегляд інтерактивних прогнозів погоди</summary>
-  <summary xml:lang="x-test">xxView real-time weather forecastsxx</summary>
   <summary xml:lang="zh-CN">查看实时天气预报</summary>
   <summary xml:lang="zh-TW">查看即時天氣預報</summary>
   <developer id="kde.org">
@@ -146,7 +144,6 @@
     <p xml:lang="sv">Ett konvergent väderprogram för Plasma. Har enkla och dynamiskt animerade vyer för prognoser och annan information.</p>
     <p xml:lang="tr">Plasma için yakınsak bir hava durumu uygulaması. Tahminleri ve diğer bilgileri göstermek için düz ve devingen/canlandırılmış görünümlere sahiptir.</p>
     <p xml:lang="uk">Зручна програма для показу прогнозів погоди для Плазми. Передбачено простий і динамічний/анімований режими перегляду для показу прогнозів погоди та іншої інформації.</p>
-    <p xml:lang="x-test">xxA convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.xx</p>
     <p xml:lang="zh-CN">一款针对 Plasma 设计的桌面/移动平台通用天气预报应用。它可通过扁平视图、动态/动画视图来展示天气预报以及其他信息。</p>
     <p xml:lang="zh-TW">一個 Plasma 用的跨平台天氣應用程式。提供天氣預報和其他資訊的扁平及動態檢視。</p>
   </description>
@@ -191,7 +188,6 @@
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
-      <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <caption xml:lang="zh-CN">移动端动态视图</caption>
       <caption xml:lang="zh-TW">行動版動態檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
@@ -236,7 +232,6 @@
       <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
       <caption xml:lang="tr">Masaüstü devingen görünüm</caption>
       <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
-      <caption xml:lang="x-test">xxDesktop dynamic viewxx</caption>
       <caption xml:lang="zh-CN">桌面端动态视图</caption>
       <caption xml:lang="zh-TW">桌面版動態檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
@@ -281,7 +276,6 @@
       <caption xml:lang="sv">Mobil enkel vy</caption>
       <caption xml:lang="tr">Taşınabilir düz görünüm</caption>
       <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
-      <caption xml:lang="x-test">xxMobile flat viewxx</caption>
       <caption xml:lang="zh-CN">移动端扁平视图</caption>
       <caption xml:lang="zh-TW">行動版扁平檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
@@ -326,7 +320,6 @@
       <caption xml:lang="sv">Mobil dynamisk vy</caption>
       <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
       <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
-      <caption xml:lang="x-test">xxMobile dynamic viewxx</caption>
       <caption xml:lang="zh-CN">移动端动态视图</caption>
       <caption xml:lang="zh-TW">行動版動態檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
