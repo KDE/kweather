@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-08 00:48+0000\n"
+"POT-Creation-Date: 2025-09-11 00:45+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -87,7 +87,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 毫米"
 
-#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
 msgid "Weather"
 msgstr "天气"
@@ -143,6 +143,11 @@ msgstr "选择位置"
 msgid "Open KWeather"
 msgstr "打开 KWeather"
 
+#: qml/components/PageHeader.qml:40
+#, kde-format
+msgid "Navigate Back"
+msgstr ""
+
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
 msgid "Forecast"
@@ -156,7 +161,7 @@ msgstr "获取当前位置时发生网络错误"
 #: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:22
-#: qml/locationslist/LocationsListView.qml:85
+#: qml/locationslist/LocationsListView.qml:85 qml/SetupWizard.qml:47
 #, kde-format
 msgid "Add Location"
 msgstr "添加位置"
@@ -310,12 +315,12 @@ msgstr "常规"
 msgid "Forecast Style"
 msgstr "天气预报显示风格"
 
-#: qml/settings/SettingsComponent.qml:42
+#: qml/settings/SettingsComponent.qml:42 qml/SetupWizard.qml:519
 #, kde-format
 msgid "Flat"
 msgstr "扁平"
 
-#: qml/settings/SettingsComponent.qml:46
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:483
 #, kde-format
 msgid "Dynamic"
 msgstr "动态"
@@ -325,7 +330,7 @@ msgstr "动态"
 msgid "About"
 msgstr "关于"
 
-#: qml/settings/SettingsComponent.qml:70
+#: qml/settings/SettingsComponent.qml:70 qml/SetupWizard.qml:46
 #, kde-format
 msgid "Units"
 msgstr "单位"
@@ -373,6 +378,37 @@ msgstr "摄氏度"
 msgid "Fahrenheit"
 msgstr "华氏度"
 
+#: qml/SetupWizard.qml:45
+#, kde-format
+msgid "Appearance"
+msgstr ""
+
+#: qml/SetupWizard.qml:238
+#, kde-format
+msgid "Welcome to <b>Weather</b>"
+msgstr ""
+
+#: qml/SetupWizard.qml:261
+#, kde-format
+msgid ""
+"View hourly and daily weather forecasts, along with other detailed "
+"information such as wind speed and precipitation."
+msgstr ""
+
+#: qml/SetupWizard.qml:282
+#, kde-format
+msgid ""
+"Save multiple locations and switch between them easily with the locations "
+"list."
+msgstr ""
+
+#: qml/SetupWizard.qml:304
+#, kde-format
+msgid ""
+"Built by the community, and powered by data from the Norwegian "
+"Meteorological Institute."
+msgstr ""
+
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
@@ -392,6 +428,16 @@ msgstr "下一步"
 #, kde-format
 msgid "The style can be changed later in the settings."
 msgstr "此样式可以稍后在设置中更改。"
+
+#: qml/SetupWizard.qml:490
+#, kde-format
+msgid "Animated and full-color backgrounds for weather forecasts."
+msgstr ""
+
+#: qml/SetupWizard.qml:526
+#, kde-format
+msgid "Flat and simple backgrounds for weather forecasts."
+msgstr ""
 
 #: qml/SunriseCard.qml:50
 #, kde-format

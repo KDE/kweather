@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-08 00:48+0000\n"
+"POT-Creation-Date: 2025-09-11 00:45+0000\n"
 "PO-Revision-Date: 2024-10-02 20:35+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -90,7 +90,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 мм"
 
-#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
 msgid "Weather"
 msgstr "Погода"
@@ -148,6 +148,11 @@ msgstr "Вибір місця перебування"
 msgid "Open KWeather"
 msgstr "Відкрити KWeather"
 
+#: qml/components/PageHeader.qml:40
+#, kde-format
+msgid "Navigate Back"
+msgstr ""
+
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
 msgid "Forecast"
@@ -161,7 +166,7 @@ msgstr "Помилка мережі під час спроби отриманн�
 #: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:22
-#: qml/locationslist/LocationsListView.qml:85
+#: qml/locationslist/LocationsListView.qml:85 qml/SetupWizard.qml:47
 #, kde-format
 msgid "Add Location"
 msgstr "Додати місце"
@@ -315,12 +320,12 @@ msgstr "Загальне"
 msgid "Forecast Style"
 msgstr "Стиль прогнозу"
 
-#: qml/settings/SettingsComponent.qml:42
+#: qml/settings/SettingsComponent.qml:42 qml/SetupWizard.qml:519
 #, kde-format
 msgid "Flat"
 msgstr "Нейтральний"
 
-#: qml/settings/SettingsComponent.qml:46
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:483
 #, kde-format
 msgid "Dynamic"
 msgstr "Динамічний"
@@ -330,7 +335,7 @@ msgstr "Динамічний"
 msgid "About"
 msgstr "Про програму"
 
-#: qml/settings/SettingsComponent.qml:70
+#: qml/settings/SettingsComponent.qml:70 qml/SetupWizard.qml:46
 #, kde-format
 msgid "Units"
 msgstr "Одиниці виміру"
@@ -378,6 +383,38 @@ msgstr "градуси Цельсія"
 msgid "Fahrenheit"
 msgstr "градуси Фаренгейта"
 
+#: qml/SetupWizard.qml:45
+#, kde-format
+msgid "Appearance"
+msgstr ""
+
+#: qml/SetupWizard.qml:238
+#, fuzzy, kde-format
+#| msgid "Welcome to Weather"
+msgid "Welcome to <b>Weather</b>"
+msgstr "Вітаємо у «Погоді»"
+
+#: qml/SetupWizard.qml:261
+#, kde-format
+msgid ""
+"View hourly and daily weather forecasts, along with other detailed "
+"information such as wind speed and precipitation."
+msgstr ""
+
+#: qml/SetupWizard.qml:282
+#, kde-format
+msgid ""
+"Save multiple locations and switch between them easily with the locations "
+"list."
+msgstr ""
+
+#: qml/SetupWizard.qml:304
+#, kde-format
+msgid ""
+"Built by the community, and powered by data from the Norwegian "
+"Meteorological Institute."
+msgstr ""
+
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
@@ -397,6 +434,16 @@ msgstr "Далі"
 #, kde-format
 msgid "The style can be changed later in the settings."
 msgstr "Стиль можна пізніше змінити у параметрах програми."
+
+#: qml/SetupWizard.qml:490
+#, kde-format
+msgid "Animated and full-color backgrounds for weather forecasts."
+msgstr ""
+
+#: qml/SetupWizard.qml:526
+#, kde-format
+msgid "Flat and simple backgrounds for weather forecasts."
+msgstr ""
 
 #: qml/SunriseCard.qml:50
 #, kde-format
@@ -423,9 +470,6 @@ msgstr "температура"
 
 #~ msgid "Local time: %1"
 #~ msgstr "Місцевий час: %1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "Вітаємо у «Погоді»"
 
 #~ msgid "Continue"
 #~ msgstr "Продовжити"

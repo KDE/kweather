@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-08 00:48+0000\n"
+"POT-Creation-Date: 2025-09-11 00:45+0000\n"
 "PO-Revision-Date: 2024-10-05 12:49+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -88,7 +88,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
 
-#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
 msgid "Weather"
 msgstr "Pogoda"
@@ -144,6 +144,11 @@ msgstr "Wybierz miejsce"
 msgid "Open KWeather"
 msgstr "Otwórz KWeather"
 
+#: qml/components/PageHeader.qml:40
+#, kde-format
+msgid "Navigate Back"
+msgstr ""
+
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
 msgid "Forecast"
@@ -157,7 +162,7 @@ msgstr "Błąd sieci przy ustalaniu bieżącego miejsca"
 #: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
 #: qml/locationslist/LocationsListPage.qml:22
-#: qml/locationslist/LocationsListView.qml:85
+#: qml/locationslist/LocationsListView.qml:85 qml/SetupWizard.qml:47
 #, kde-format
 msgid "Add Location"
 msgstr "Dodaj miejsce"
@@ -311,12 +316,12 @@ msgstr "Ogólne"
 msgid "Forecast Style"
 msgstr "Wygląd prognozy"
 
-#: qml/settings/SettingsComponent.qml:42
+#: qml/settings/SettingsComponent.qml:42 qml/SetupWizard.qml:519
 #, kde-format
 msgid "Flat"
 msgstr "Płaski"
 
-#: qml/settings/SettingsComponent.qml:46
+#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:483
 #, kde-format
 msgid "Dynamic"
 msgstr "Dynamiczne"
@@ -326,7 +331,7 @@ msgstr "Dynamiczne"
 msgid "About"
 msgstr "O programie"
 
-#: qml/settings/SettingsComponent.qml:70
+#: qml/settings/SettingsComponent.qml:70 qml/SetupWizard.qml:46
 #, kde-format
 msgid "Units"
 msgstr "Jednostki"
@@ -374,6 +379,38 @@ msgstr "Celsjusz"
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
+#: qml/SetupWizard.qml:45
+#, kde-format
+msgid "Appearance"
+msgstr ""
+
+#: qml/SetupWizard.qml:238
+#, fuzzy, kde-format
+#| msgid "Welcome to Weather"
+msgid "Welcome to <b>Weather</b>"
+msgstr "Witaj w Pogodzie"
+
+#: qml/SetupWizard.qml:261
+#, kde-format
+msgid ""
+"View hourly and daily weather forecasts, along with other detailed "
+"information such as wind speed and precipitation."
+msgstr ""
+
+#: qml/SetupWizard.qml:282
+#, kde-format
+msgid ""
+"Save multiple locations and switch between them easily with the locations "
+"list."
+msgstr ""
+
+#: qml/SetupWizard.qml:304
+#, kde-format
+msgid ""
+"Built by the community, and powered by data from the Norwegian "
+"Meteorological Institute."
+msgstr ""
+
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
@@ -393,6 +430,16 @@ msgstr "Następny"
 #, kde-format
 msgid "The style can be changed later in the settings."
 msgstr "Wygląd możesz zmienić później w ustawieniach."
+
+#: qml/SetupWizard.qml:490
+#, kde-format
+msgid "Animated and full-color backgrounds for weather forecasts."
+msgstr ""
+
+#: qml/SetupWizard.qml:526
+#, kde-format
+msgid "Flat and simple backgrounds for weather forecasts."
+msgstr ""
 
 #: qml/SunriseCard.qml:50
 #, kde-format
@@ -419,9 +466,6 @@ msgstr "Temperatura"
 
 #~ msgid "Local time: %1"
 #~ msgstr "Czas lokalny: %1"
-
-#~ msgid "Welcome to Weather"
-#~ msgstr "Witaj w Pogodzie"
 
 #~ msgid "Continue"
 #~ msgstr "Kontynuuj"
