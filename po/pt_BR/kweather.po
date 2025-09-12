@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2025-02-04 15:46-0300\n"
+"PO-Revision-Date: 2025-09-10 23:16-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -148,7 +148,7 @@ msgstr "Abrir KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Voltar"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -383,13 +383,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Aparência"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Bem-vindo ao Clima"
+msgstr "Bem-vindo ao  <b>Clima</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -397,6 +396,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Veja previsões meteorológicas diárias e por hora, além de outras informações "
+"detalhadas, como velocidade do vento e precipitação."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -404,6 +405,7 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Salve vários locais e alterne entre eles facilmente com a lista de locais."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -411,6 +413,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Construído pela comunidade e alimentado por dados do Instituto Meteorológico "
+"da Noruega."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -435,12 +439,12 @@ msgstr "O estilo pode ser alterado mais tarde nas configurações."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Fundos animados e coloridos para previsões do tempo."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Fundos simples e planos para previsões do tempo."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

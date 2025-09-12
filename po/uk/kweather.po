@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2024-10-02 20:35+0300\n"
+"PO-Revision-Date: 2025-09-11 09:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -151,7 +151,7 @@ msgstr "Відкрити KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Перейти назад"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -386,13 +386,12 @@ msgstr "градуси Фаренгейта"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Вигляд"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Вітаємо у «Погоді»"
+msgstr "Вітаємо у <b>Погоді</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -400,6 +399,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Перегляд прогнозів погоди за годинами та днями, а також інші докладні "
+"відомості, зокрема щодо швидкості вітру та вологості."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -407,6 +408,7 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Зберегти декілька місць і перемикатися між ними за допомогою списку місць."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -414,6 +416,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Побудовано спільнотою на основі даних від Норвезького метеорологічного "
+"інституту."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -438,12 +442,12 @@ msgstr "Стиль можна пізніше змінити у параметр�
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Анімовані і однотонні фонові зображення для прогнозів погоди."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Звичайні і прості фонові зображення для прогнозів погоди."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

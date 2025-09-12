@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2024-10-02 15:44+0200\n"
+"PO-Revision-Date: 2025-09-11 17:37+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -146,7 +146,7 @@ msgstr "KWeather openen"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Naar achteren navigeren"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -381,13 +381,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Uiterlijk"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Welkom bij Weather"
+msgstr "Welkom bij <b>Weer</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -395,6 +394,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Bekijk de per uur en dagelijkse weervoorspelling, samen met andere "
+"gedetailleerde informatie zoals windsnelheid en neerslag."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -402,6 +403,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Sla meerdere locaties op en schakel er gemakkelijk tussen met de "
+"locatielijst."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -409,6 +412,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Gebouwd door de gemeenschap en voorzien van gegevens uit het Noorse "
+"Meteorologische Instituut."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -434,11 +439,12 @@ msgstr "De stijl kan later in de instellingen gewijzigd worden."
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
 msgstr ""
+"Geanimeerde en volledige gekleurder achtergronden voor weervoorspellingen."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Vlakke en eenvoudige achtergronden voor weersvoorspellingen."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

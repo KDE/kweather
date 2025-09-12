@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2024-10-02 05:41+0200\n"
+"PO-Revision-Date: 2025-09-11 03:45+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -147,7 +147,7 @@ msgstr "KWeather-ის გახსნა"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "უკან გადასვლა"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -382,13 +382,12 @@ msgstr "ფარენჰეიტი"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "გარეგნობა"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "მოგესალმებით ამინდის აპლიკაციაში"
+msgstr "მოგესალმებით <b>ამინდის</b> აპლიკაციაში"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -396,6 +395,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"ნახეთ საათობრივი და ყოველდღიური ამინის პროგნოზები სხვა ისეთ დეტალურ "
+"ინფორმაციასთან ერთად, როგორიცაა ქარის სიჩქარე და ნალექები."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -403,6 +404,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"შეინახეთ მრავალი მდებარეობა და გადართეთ მათ შორის მარტივად მდებარეობების "
+"სიით."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -410,6 +413,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"აშენდა საზოგადოების მიერ და უზრუნველყოფილია ნორვეგიის მეტეოროლოგიური "
+"ინსტიტუტის მონაცემებით."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -434,12 +439,12 @@ msgstr "სტილის შეცვლა მოგვიანებით,
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "ანიმაციური და სრული ფერადი ფონი ამინდის პროგნოზებისთვის."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "ბრტყელი და მარტივი ფონი ამინდის პროგნოზისთვის."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

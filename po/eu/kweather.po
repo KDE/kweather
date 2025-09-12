@@ -1,17 +1,17 @@
 # Translation for kweather.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2024 This file is copyright:
+# Copyright (C) 2020-2025 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
 # @Krr4m4rr0 <birazabal@gmail.com>, 2020.
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2023, 2024.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2024-10-02 22:55+0200\n"
+"PO-Revision-Date: 2025-09-11 21:29+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -151,7 +151,7 @@ msgstr "Ireki KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Nabigatu atzera"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -386,13 +386,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Itxura"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Ongi etorri «KWeather»rera"
+msgstr "Ongi etorri <b>KWeather</b>rera"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -400,6 +399,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Ikusi orduko eta eguneko eguraldi iragarpenak, haizearen abiadura eta "
+"prezipitazioa bezalako beste informazio zehatz batzuekin batera."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -407,6 +408,7 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Gorde hainbat kokaleku eta haien artean erraz aldatu kokapen-zerrendarekin."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -414,6 +416,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Komunitateak eraikia, eta Norvegiako Meteorologia Institutuaren datekin "
+"elikatua."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -438,12 +442,12 @@ msgstr "Estiloa beranduago alda daiteke, ezarpenetatik."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Eguraldi iragarpenetarako atzeko-plano animatuak eta koloretsuak."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Eguraldi iragarpenetarako atzeko-plano lau eta soilak."
 
 #: qml/SunriseCard.qml:50
 #, kde-format

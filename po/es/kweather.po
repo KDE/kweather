@@ -1,15 +1,15 @@
 # Spanish translations for kweather.po package.
-# Copyright (C) 2020 This file is copyright:
+# Copyright (C) 2020-2025 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-#
 # Automatically generated, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+#
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2024-10-02 15:58+0200\n"
+"PO-Revision-Date: 2025-09-11 12:11+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -149,7 +149,7 @@ msgstr "Abrir KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Volver"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -237,7 +237,7 @@ msgstr "Índice UV"
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr "Buscar un lugar..."
+msgstr "Buscar un lugar…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
@@ -384,13 +384,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Aspecto"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Bienvenido a Weather"
+msgstr "Bienvenido a <b>Weather</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -398,6 +397,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Vea pronósticos meteorológicos por horas y por días, junto con otra "
+"información detallada, como la velocidad del viento y las precipitaciones."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -405,6 +406,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Guarde múltiples ubicaciones y cambie entre ellas fácilmente con la lista de "
+"ubicaciones."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -412,6 +415,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Creado por la comunidad y alimentado con datos del Instituto Meteorológico "
+"Noruego."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -436,12 +441,12 @@ msgstr "Puede cambiar el estilo posteriormente en las preferencias."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Fondos animados y a todo color para pronósticos del tiempo."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Fondos simples y planos para pronósticos del tiempo."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
@@ -462,158 +467,3 @@ msgstr "Fase de la Luna"
 #, kde-format
 msgid "temperature"
 msgstr "temperatura"
-
-#~ msgid "Local date: %1"
-#~ msgstr "Fecha local: %1"
-
-#~ msgid "Local time: %1"
-#~ msgstr "Hora local: %1"
-
-#~ msgid "Continue"
-#~ msgstr "Continuar"
-
-#~ msgid "Select forecast theme"
-#~ msgstr "Seleccionar el tema para el pronóstico"
-
-#~ msgid "Finish"
-#~ msgstr "Finalizar"
-
-#~ msgid "Add current location"
-#~ msgstr "Añadir la ubicación actual"
-
-#~ msgid "No locations configured"
-#~ msgstr "Ninguna ubicación configurada"
-
-#~ msgid "Dynamic mode may cause performance issues on embedded platforms"
-#~ msgstr ""
-#~ "El modo dinámico puede causas problemas de rendimiento en plataformas "
-#~ "empotradas"
-
-#~ msgid "Search for a place..."
-#~ msgstr "Buscar un lugar..."
-
-#~ msgid "Left"
-#~ msgstr "Izquierda"
-
-#~ msgid "Right"
-#~ msgstr "Derecha"
-
-#~ msgid "Remove"
-#~ msgstr "Eliminar"
-
-#~ msgid "API Token"
-#~ msgstr "Token de la API"
-
-#~ msgid "Not Set"
-#~ msgstr "Sin definir"
-
-#~ msgid "Added"
-#~ msgstr "Añadido"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
-
-#~ msgid "OpenWeatherMap API Token"
-#~ msgstr "Token de la API de OpenWeatherMap"
-
-#~ msgid "Add your own OpenWeatherMap API token."
-#~ msgstr "Añada su propio token de la API de OpenWeatherMap."
-
-#~ msgid "Token added is stored as PLAIN TEXT in system."
-#~ msgstr "El token añadido se guarda como texto sin formato en el sistema."
-
-#~ msgid "Add your API token here... "
-#~ msgstr "Añada aquí su token de la API..."
-
-#~ msgid "© 2020-2021 KDE Community"
-#~ msgstr "© 2020-2021 La comunidad KDE"
-
-#~ msgid "A convergent weather application for Plasma."
-#~ msgstr "Una aplicación meteorológica convergente para Plasma."
-
-#~ msgid "Weather application in Kirigami"
-#~ msgstr "Aplicación meteorológica en Kirigami"
-
-#~ msgid "A mobile friendly weather app built with Kirigami."
-#~ msgstr "Una aplicación meteorológica para móviles creada con Kirigami."
-
-#~ msgid "Storm"
-#~ msgstr "Tormenta"
-
-#~ msgid "Heavy Snow"
-#~ msgstr "Nevada intensa"
-
-#~ msgid "Fog"
-#~ msgstr "Niebla"
-
-#~ msgid "Heavy Sleet"
-#~ msgstr "Perdigones de hielo pesados"
-
-#~ msgid "Cloudy"
-#~ msgstr "Nublado"
-
-#~ msgid "Light Snow"
-#~ msgstr "Nieve ligera"
-
-#~ msgid "Light Sleet"
-#~ msgstr "Perdigones de hielo ligeros"
-
-#~ msgid "Sleet"
-#~ msgstr "Perdigones de hielo"
-
-#~ msgid "Heavy Rain"
-#~ msgstr "Lluvia intensa"
-
-#~ msgid "Snow"
-#~ msgstr "Nieve"
-
-#~ msgid "Light Rain"
-#~ msgstr "Lluvia débil"
-
-#~ msgid "Light Clouds"
-#~ msgstr "Nubes ligeras"
-
-#~ msgid "Partly Sunny"
-#~ msgstr "Parcialmente soleado"
-
-#~ msgid "Partly Cloudy"
-#~ msgstr "Parcialmente nublado"
-
-#~ msgid "Clear"
-#~ msgstr "Despejado"
-
-#~ msgid "Mostly Sunny"
-#~ msgstr "Mayormente soleado"
-
-#~ msgid "Rain Showers"
-#~ msgstr "Chubascos"
-
-#~ msgid "Thunderstorm"
-#~ msgstr "Tormenta eléctrica"
-
-#~ msgid "Mist"
-#~ msgstr "Neblina"
-
-#~ msgid "Select Weather Source"
-#~ msgstr "Seleccionar fuente meteorológica"
-
-#~ msgid "Select Backend"
-#~ msgstr "Seleccionar el motor"
-
-#~ msgctxt "Norway Meteorologisk Institutt"
-#~ msgid "Norway Meteorologisk Institutt"
-#~ msgstr "Norway Meteorologisk Institutt"
-
-#~ msgid "Flat (Performance)"
-#~ msgstr "Plano (rendimiento)"
-
-#~ msgid "Dynamic (Animated)"
-#~ msgstr "Dinámico (animado)"
-
-#~ msgid "Run in background mode"
-#~ msgstr "Ejecutar en segundo plano"
-
-#, fuzzy
-#~| msgid "Add current location"
-#~ msgid "Add Current Location"
-#~ msgstr "Añadir la ubicación actual"
