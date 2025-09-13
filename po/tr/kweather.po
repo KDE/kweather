@@ -1,7 +1,7 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 # Volkan Gezer <volkangezer@gmail.com>, 2021.
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-11 00:45+0000\n"
-"PO-Revision-Date: 2024-10-02 06:47+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"PO-Revision-Date: 2025-09-12 10:26+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -150,7 +150,7 @@ msgstr "Hava Durumu’nu Aç"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Geri Dön"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
 #, kde-format
@@ -385,13 +385,12 @@ msgstr "Fahrenhayt"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Görünüş"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Hava Durumu’na hoş geldiniz"
+msgstr "<b>Hava Durumu</b>’na hoş geldiniz"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -399,6 +398,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Saatlik ve günlük hava durumunu, rüzgâr hızı ve yağış durumu gibi ek "
+"ayrıntılı bilgilerle görüntüleyin."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -406,6 +407,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Birden çok konumu kaydedin ve konumlar listesinden aralarında tez geçiş "
+"yapın."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -413,6 +416,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Topluluk tarafından yapılmıştır ve Norveç Metereoloji Enstitüsü bünyesinden "
+"alınan veriyle çalıştırılmaktadır."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -438,11 +443,15 @@ msgstr "Biçem daha sonra ayarlardan değiştirilebilir."
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
 msgstr ""
+"Hava durumu tahminleri için canlandırılmış ve tam renk arka planlar "
+"aralarından seçim yapın."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
 msgstr ""
+"Hava durumu tahminleri için düz ve basit arka planlar aralarından seçim "
+"yapın."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
