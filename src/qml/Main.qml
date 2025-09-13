@@ -56,7 +56,11 @@ Kirigami.AbstractApplicationWindow {
 
     function switchToPage(page, depth) {
         while (pageStack.currentItem !== page && pageStack.depth > depth) {
-            pageStack.pop();
+            if (pageStack.depth === 1) {
+                pageStack.clear();
+            } else {
+                pageStack.pop();
+            }
         }
 
         if (pageStack.currentItem !== page) {

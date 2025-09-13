@@ -20,6 +20,10 @@ Kirigami.Page {
     rightPadding: 0
     leftPadding: 0
 
+    function switchPageIndex(pageIndex) {
+        loader.item.currentIndex = pageIndex;
+    }
+
     title: {
         if (WeatherLocationListModel.locations.count == 0) {
             return i18n("Forecast");
@@ -32,10 +36,14 @@ Kirigami.Page {
         }
     }
 
-    titleDelegate: (settingsModel.forecastStyle === "Dynamic") ? null : undefined
+    property Component savedTitleDelegate: null
 
-    function switchPageIndex(pageIndex) {
-        loader.item.currentIndex = pageIndex;
+    Component.onCompleted: {
+        // Save title delegate
+        savedTitleDelegate = titleDelegate;
+
+        // Set binding on title delegate (header) to remove it on the dynamic page
+        titleDelegate = Qt.binding(() => (settingsModel.forecastStyle === "Dynamic") ? null : savedTitleDelegate);
     }
 
     // actions (only shown in flat view since the toolbar is hidden in dynamic view)
