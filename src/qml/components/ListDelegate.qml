@@ -26,11 +26,7 @@ Control {
 
     hoverEnabled: true
     background: Rectangle {
-        color: Qt.rgba(Kirigami.Theme.textColor.r, Kirigami.Theme.textColor.g, Kirigami.Theme.textColor.b, mouseArea.pressed ? 0.2 : (!Kirigami.Settings.tabletMode && hoverHandler.hovered) ? 0.1 : 0)
-
-        HoverHandler {
-            id: hoverHandler
-        }
+        color: Qt.rgba(Kirigami.Theme.textColor.r, Kirigami.Theme.textColor.g, Kirigami.Theme.textColor.b, mouseArea.pressed ? 0.2 : (!Kirigami.Settings.tabletMode && root.hovered) ? 0.1 : 0)
 
         Kirigami.Separator {
             anchors.bottom: parent.bottom
