@@ -32,6 +32,8 @@ ColumnLayout {
             currentIndex: indexOfValue(settingsModel.forecastStyle)
             textRole: "name"
             valueRole: "value"
+            displayMode: FormCard.FormComboBoxDelegate.Dialog
+
             onActivated: settingsModel.save()
             onCurrentValueChanged: settingsModel.forecastStyle = currentValue
 

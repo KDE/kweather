@@ -13,6 +13,8 @@ FormCard.FormComboBoxDelegate {
     currentIndex: indexOfValue(settingsModel.pressureUnits)
     textRole: "name"
     valueRole: "value"
+    displayMode: FormCard.FormComboBoxDelegate.Dialog
+
     onActivated: settingsModel.save()
     onCurrentValueChanged: settingsModel.pressureUnits = currentValue
 
