@@ -13,6 +13,8 @@ FormCard.FormComboBoxDelegate {
     currentIndex: indexOfValue(settingsModel.temperatureUnits)
     textRole: "name"
     valueRole: "value"
+    displayMode: FormCard.FormComboBoxDelegate.Dialog
+
     onActivated: settingsModel.save()
     onCurrentValueChanged: settingsModel.temperatureUnits = currentValue
 
