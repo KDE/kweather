@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-11 00:45+0000\n"
+"POT-Creation-Date: 2025-09-14 00:46+0000\n"
 "PO-Revision-Date: 2025-09-11 09:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -153,7 +153,7 @@ msgstr "Відкрити KWeather"
 msgid "Navigate Back"
 msgstr "Перейти назад"
 
-#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
 msgid "Forecast"
 msgstr "Прогноз"
@@ -181,7 +181,7 @@ msgstr "Прогноз погоди для %1 оновлено"
 msgid "Updated at %1"
 msgstr "Оновлено о %1"
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:45
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:53
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
@@ -194,14 +194,14 @@ msgid "Choose location"
 msgstr "Виберіть місце"
 
 #: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:50 qml/settings/SettingsDialog.qml:12
+#: qml/ForecastContainerPage.qml:58 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Параметри"
 
 #: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:57
+#: qml/ForecastContainerPage.qml:65
 #, kde-format
 msgid "Refresh"
 msgstr "Освіжити"
@@ -281,13 +281,13 @@ msgstr "Вилучити"
 msgid "Precipitation Units"
 msgstr "Одиниця виміру опадів"
 
-#: qml/settings/PrecipitationUnitComboBox.qml:23
+#: qml/settings/PrecipitationUnitComboBox.qml:25
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "мм"
 
-#: qml/settings/PrecipitationUnitComboBox.qml:27
+#: qml/settings/PrecipitationUnitComboBox.qml:29
 #, kde-format
 msgctxt "Inches"
 msgid "in"
@@ -298,13 +298,13 @@ msgstr "дюйм"
 msgid "Pressure Units"
 msgstr "Одиниці тиску"
 
-#: qml/settings/PressureUnitComboBox.qml:23
+#: qml/settings/PressureUnitComboBox.qml:25
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "гПа"
 
-#: qml/settings/PressureUnitComboBox.qml:27
+#: qml/settings/PressureUnitComboBox.qml:29
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
@@ -320,22 +320,22 @@ msgstr "Загальне"
 msgid "Forecast Style"
 msgstr "Стиль прогнозу"
 
-#: qml/settings/SettingsComponent.qml:42 qml/SetupWizard.qml:519
+#: qml/settings/SettingsComponent.qml:44 qml/SetupWizard.qml:519
 #, kde-format
 msgid "Flat"
 msgstr "Нейтральний"
 
-#: qml/settings/SettingsComponent.qml:46 qml/SetupWizard.qml:483
+#: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:483
 #, kde-format
 msgid "Dynamic"
 msgstr "Динамічний"
 
-#: qml/settings/SettingsComponent.qml:61
+#: qml/settings/SettingsComponent.qml:63
 #, kde-format
 msgid "About"
 msgstr "Про програму"
 
-#: qml/settings/SettingsComponent.qml:70 qml/SetupWizard.qml:46
+#: qml/settings/SettingsComponent.qml:72 qml/SetupWizard.qml:46
 #, kde-format
 msgid "Units"
 msgstr "Одиниці виміру"
@@ -345,19 +345,19 @@ msgstr "Одиниці виміру"
 msgid "Speed Units"
 msgstr "Одиниці швидкості"
 
-#: qml/settings/SpeedUnitComboBox.qml:23
+#: qml/settings/SpeedUnitComboBox.qml:25
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "км/год"
 
-#: qml/settings/SpeedUnitComboBox.qml:27
+#: qml/settings/SpeedUnitComboBox.qml:29
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "милі/год"
 
-#: qml/settings/SpeedUnitComboBox.qml:31
+#: qml/settings/SpeedUnitComboBox.qml:33
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
@@ -368,17 +368,17 @@ msgstr "м/с"
 msgid "Temperature Units"
 msgstr "Одиниці температури"
 
-#: qml/settings/TemperatureUnitComboBox.qml:23
+#: qml/settings/TemperatureUnitComboBox.qml:25
 #, kde-format
 msgid "Use System Default"
 msgstr "Типовий системний"
 
-#: qml/settings/TemperatureUnitComboBox.qml:27
+#: qml/settings/TemperatureUnitComboBox.qml:29
 #, kde-format
 msgid "Celsius"
 msgstr "градуси Цельсія"
 
-#: qml/settings/TemperatureUnitComboBox.qml:31
+#: qml/settings/TemperatureUnitComboBox.qml:33
 #, kde-format
 msgid "Fahrenheit"
 msgstr "градуси Фаренгейта"
