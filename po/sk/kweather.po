@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:45+0000\n"
+"POT-Creation-Date: 2025-09-15 02:37+0000\n"
 "PO-Revision-Date: 2020-06-13 20:50+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -85,7 +85,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr ""
 
-#: main.cpp:60 qml/DefaultPage.qml:74 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
 msgid "Weather"
 msgstr "Počasie"
@@ -144,19 +144,19 @@ msgstr "Pridať umiestnenie"
 msgid "Open KWeather"
 msgstr "Počasie"
 
-#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
 msgid "Forecast"
 msgstr "Predpoveď"
 
-#: qml/DefaultPage.qml:30
+#: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr ""
 
-#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:23
+#: qml/locationslist/LocationsListPage.qml:22
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -172,7 +172,7 @@ msgstr ""
 msgid "Updated at %1"
 msgstr ""
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:53
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
@@ -186,14 +186,14 @@ msgid "Choose location"
 msgstr "Pridať umiestnenie"
 
 #: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
-#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#: qml/ForecastContainerPage.qml:58 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Nastavenia"
 
 #: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:59
+#: qml/ForecastContainerPage.qml:65
 #, kde-format
 msgid "Refresh"
 msgstr ""
@@ -275,13 +275,13 @@ msgstr ""
 msgid "Precipitation Units"
 msgstr "Zrážky"
 
-#: qml/settings/PrecipitationUnitComboBox.qml:23
+#: qml/settings/PrecipitationUnitComboBox.qml:25
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr ""
 
-#: qml/settings/PrecipitationUnitComboBox.qml:27
+#: qml/settings/PrecipitationUnitComboBox.qml:29
 #, fuzzy, kde-format
 #| msgid "Rain"
 msgctxt "Inches"
@@ -294,45 +294,45 @@ msgstr "Dážď"
 msgid "Pressure Units"
 msgstr "Tlak"
 
-#: qml/settings/PressureUnitComboBox.qml:23
+#: qml/settings/PressureUnitComboBox.qml:25
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr ""
 
-#: qml/settings/PressureUnitComboBox.qml:27
+#: qml/settings/PressureUnitComboBox.qml:29
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:37
+#: qml/settings/SettingsComponent.qml:24
 #, kde-format
 msgid "General"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:44
+#: qml/settings/SettingsComponent.qml:31
 #, fuzzy, kde-format
 #| msgid "Forecast"
 msgid "Forecast Style"
 msgstr "Predpoveď"
 
-#: qml/settings/SettingsComponent.qml:71
+#: qml/settings/SettingsComponent.qml:44
 #, kde-format
 msgid "Flat"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:75
+#: qml/settings/SettingsComponent.qml:48
 #, kde-format
 msgid "Dynamic"
 msgstr ""
 
-#: qml/settings/SettingsComponent.qml:93
+#: qml/settings/SettingsComponent.qml:63
 #, kde-format
 msgid "About"
 msgstr "O aplikácii"
 
-#: qml/settings/SettingsComponent.qml:105
+#: qml/settings/SettingsComponent.qml:72
 #, kde-format
 msgid "Units"
 msgstr ""
@@ -342,19 +342,19 @@ msgstr ""
 msgid "Speed Units"
 msgstr ""
 
-#: qml/settings/SpeedUnitComboBox.qml:23
+#: qml/settings/SpeedUnitComboBox.qml:25
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr ""
 
-#: qml/settings/SpeedUnitComboBox.qml:27
+#: qml/settings/SpeedUnitComboBox.qml:29
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "míľ/h"
 
-#: qml/settings/SpeedUnitComboBox.qml:31
+#: qml/settings/SpeedUnitComboBox.qml:33
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
@@ -365,17 +365,17 @@ msgstr ""
 msgid "Temperature Units"
 msgstr ""
 
-#: qml/settings/TemperatureUnitComboBox.qml:23
+#: qml/settings/TemperatureUnitComboBox.qml:25
 #, kde-format
 msgid "Use System Default"
 msgstr ""
 
-#: qml/settings/TemperatureUnitComboBox.qml:27
+#: qml/settings/TemperatureUnitComboBox.qml:29
 #, kde-format
 msgid "Celsius"
 msgstr "Celzius"
 
-#: qml/settings/TemperatureUnitComboBox.qml:31
+#: qml/settings/TemperatureUnitComboBox.qml:33
 #, kde-format
 msgid "Fahrenheit"
 msgstr "Fahrenheit"

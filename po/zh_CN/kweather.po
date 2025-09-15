@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:45+0000\n"
+"POT-Creation-Date: 2025-09-15 02:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -87,7 +87,7 @@ msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 毫米"
 
-#: main.cpp:60 qml/DefaultPage.qml:74 qml/Main.qml:22
+#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
 msgid "Weather"
 msgstr "天气"
@@ -143,19 +143,19 @@ msgstr "选择位置"
 msgid "Open KWeather"
 msgstr "打开 KWeather"
 
-#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:25
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
 msgid "Forecast"
 msgstr "预报"
 
-#: qml/DefaultPage.qml:30
+#: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
 msgstr "获取当前位置时发生网络错误"
 
-#: qml/DefaultPage.qml:82 qml/locationslist/AddLocationDialog.qml:14
+#: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
-#: qml/locationslist/LocationsListPage.qml:23
+#: qml/locationslist/LocationsListPage.qml:22
 #: qml/locationslist/LocationsListView.qml:85
 #, kde-format
 msgid "Add Location"
@@ -171,7 +171,7 @@ msgstr "已刷新 %1 的天气"
 msgid "Updated at %1"
 msgstr "更新于 %1"
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:47
+#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:53
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
@@ -184,14 +184,14 @@ msgid "Choose location"
 msgstr "选择位置"
 
 #: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:52 qml/settings/SettingsDialog.qml:12
-#: qml/settings/SettingsPage.qml:16 qml/settings/SettingsWindow.qml:13
+#: qml/ForecastContainerPage.qml:58 qml/settings/SettingsDialog.qml:12
+#: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "设置"
 
 #: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:59
+#: qml/ForecastContainerPage.qml:65
 #, kde-format
 msgid "Refresh"
 msgstr "刷新"
@@ -271,13 +271,13 @@ msgstr "删除"
 msgid "Precipitation Units"
 msgstr "降水量单位"
 
-#: qml/settings/PrecipitationUnitComboBox.qml:23
+#: qml/settings/PrecipitationUnitComboBox.qml:25
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
 msgstr "毫米"
 
-#: qml/settings/PrecipitationUnitComboBox.qml:27
+#: qml/settings/PrecipitationUnitComboBox.qml:29
 #, kde-format
 msgctxt "Inches"
 msgid "in"
@@ -288,44 +288,44 @@ msgstr "英寸"
 msgid "Pressure Units"
 msgstr "压力单位"
 
-#: qml/settings/PressureUnitComboBox.qml:23
+#: qml/settings/PressureUnitComboBox.qml:25
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
 msgstr "百帕"
 
-#: qml/settings/PressureUnitComboBox.qml:27
+#: qml/settings/PressureUnitComboBox.qml:29
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
 msgstr "毫米汞柱"
 
-#: qml/settings/SettingsComponent.qml:37
+#: qml/settings/SettingsComponent.qml:24
 #, kde-format
 msgid "General"
 msgstr "常规"
 
-#: qml/settings/SettingsComponent.qml:44
+#: qml/settings/SettingsComponent.qml:31
 #, kde-format
 msgid "Forecast Style"
 msgstr "天气预报显示风格"
 
-#: qml/settings/SettingsComponent.qml:71
+#: qml/settings/SettingsComponent.qml:44
 #, kde-format
 msgid "Flat"
 msgstr "扁平"
 
-#: qml/settings/SettingsComponent.qml:75
+#: qml/settings/SettingsComponent.qml:48
 #, kde-format
 msgid "Dynamic"
 msgstr "动态"
 
-#: qml/settings/SettingsComponent.qml:93
+#: qml/settings/SettingsComponent.qml:63
 #, kde-format
 msgid "About"
 msgstr "关于"
 
-#: qml/settings/SettingsComponent.qml:105
+#: qml/settings/SettingsComponent.qml:72
 #, kde-format
 msgid "Units"
 msgstr "单位"
@@ -335,19 +335,19 @@ msgstr "单位"
 msgid "Speed Units"
 msgstr "速度单位"
 
-#: qml/settings/SpeedUnitComboBox.qml:23
+#: qml/settings/SpeedUnitComboBox.qml:25
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
 msgstr "千米/小时"
 
-#: qml/settings/SpeedUnitComboBox.qml:27
+#: qml/settings/SpeedUnitComboBox.qml:29
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
 msgstr "英里/小时"
 
-#: qml/settings/SpeedUnitComboBox.qml:31
+#: qml/settings/SpeedUnitComboBox.qml:33
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
@@ -358,17 +358,17 @@ msgstr "米/秒"
 msgid "Temperature Units"
 msgstr "温度单位"
 
-#: qml/settings/TemperatureUnitComboBox.qml:23
+#: qml/settings/TemperatureUnitComboBox.qml:25
 #, kde-format
 msgid "Use System Default"
 msgstr "使用系统默认"
 
-#: qml/settings/TemperatureUnitComboBox.qml:27
+#: qml/settings/TemperatureUnitComboBox.qml:29
 #, kde-format
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: qml/settings/TemperatureUnitComboBox.qml:31
+#: qml/settings/TemperatureUnitComboBox.qml:33
 #, kde-format
 msgid "Fahrenheit"
 msgstr "华氏度"
