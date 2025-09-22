@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the kweather package.
 # Automatically generated, 2022.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-14 00:46+0000\n"
-"PO-Revision-Date: 2024-10-02 17:27+0900\n"
+"PO-Revision-Date: 2025-09-22 03:59+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -149,7 +149,7 @@ msgstr "開啟 KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "返回"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -217,7 +217,7 @@ msgstr "每日"
 #: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
-msgstr "雨量"
+msgstr "降水量"
 
 #: qml/InfoCard.qml:70
 #, kde-format
@@ -277,7 +277,7 @@ msgstr "刪除"
 #: qml/settings/PrecipitationUnitComboBox.qml:12
 #, kde-format
 msgid "Precipitation Units"
-msgstr "雨量單位"
+msgstr "降水量單位"
 
 #: qml/settings/PrecipitationUnitComboBox.qml:25
 #, kde-format
@@ -384,34 +384,33 @@ msgstr "華式"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "外觀"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "歡迎來到天氣"
+msgstr "歡迎來到<b>天氣</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
 msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
-msgstr ""
+msgstr "檢視每小時與每天的天氣預報，包含風速與降水量等等其他詳細資訊。"
 
 #: qml/SetupWizard.qml:282
 #, kde-format
 msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
-msgstr ""
+msgstr "儲存多個地理位置，並從位置清單切換。"
 
 #: qml/SetupWizard.qml:304
 #, kde-format
 msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
-msgstr ""
+msgstr "由社群建構，基於挪威氣象研究所的資料。"
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -436,12 +435,12 @@ msgstr "風格可以之後在設定裡變更。"
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "天氣預報背景使用動態且全彩的背景。"
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "天氣預報背景使用扁平而簡單的背景。"
 
 #: qml/SunriseCard.qml:50
 #, kde-format
