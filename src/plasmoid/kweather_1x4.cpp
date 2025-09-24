@@ -76,7 +76,7 @@ void KWeather_1x4::setLocation(const QString &location)
             update();
             m_needLocation = false;
             Q_EMIT needLocationChanged();
-            Q_EMIT locationChanged();
+            Q_EMIT weatherLocationChanged();
 
             group.sync();
             break;
@@ -91,7 +91,7 @@ const KWeatherCore::HourlyWeatherForecast &KWeather_1x4::getFirst() const
 {
     return m_forecast.dailyWeatherForecast().front().hourlyWeatherForecast().front();
 }
-QString KWeather_1x4::location() const
+QString KWeather_1x4::weatherLocation() const
 {
     return m_location;
 }

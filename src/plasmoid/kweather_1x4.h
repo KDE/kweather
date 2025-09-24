@@ -16,7 +16,7 @@ class KWeather_1x4 : public Plasma::Applet
 {
     Q_OBJECT
     Q_PROPERTY(bool needLocation READ needLocation NOTIFY needLocationChanged)
-    Q_PROPERTY(QString location READ location NOTIFY locationChanged)
+    Q_PROPERTY(QString weatherLocation READ weatherLocation NOTIFY weatherLocationChanged)
     Q_PROPERTY(qreal temp READ temp NOTIFY updated)
     Q_PROPERTY(QString desc READ desc NOTIFY updated)
     Q_PROPERTY(QString weatherIcon READ weatherIcon NOTIFY updated)
@@ -25,7 +25,7 @@ class KWeather_1x4 : public Plasma::Applet
     Q_PROPERTY(HourlyModel *hourlyModel READ hourlyModel NOTIFY hourlyModelChanged)
 public:
     KWeather_1x4(QObject *parent, const KPluginMetaData &md, const QVariantList &args);
-    QString location() const;
+    QString weatherLocation() const;
     QString desc() const;
     qreal temp() const;
     QString weatherIcon() const;
@@ -43,7 +43,7 @@ public:
     Q_INVOKABLE QStringList locationsInSystem();
     Q_INVOKABLE void setLocation(const QString &location);
 Q_SIGNALS:
-    void locationChanged();
+    void weatherLocationChanged();
     void updated();
     void needLocationChanged();
     void hourlyModelChanged();

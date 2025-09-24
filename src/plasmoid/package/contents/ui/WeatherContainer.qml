@@ -28,7 +28,7 @@ Rectangle {
         RowLayout {
             Layout.fillWidth: true
             Label {
-                text: Plasmoid.location
+                text: Plasmoid.weatherLocation
                 color: Kirigami.Theme.textColor
                 leftPadding: Kirigami.Units.smallSpacing
                 font.bold: true
@@ -116,7 +116,7 @@ Rectangle {
                                     Layout.alignment: Qt.AlignHCenter
                                     font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
                                     font.weight: Font.Light
-                                    text: Plasmoid.location
+                                    text: Plasmoid.weatherLocation
                                 }
                                 Kirigami.Icon {
                                     source: Plasmoid.hourlyModel.currentIcon
