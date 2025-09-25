@@ -12,10 +12,6 @@
 #include <QFile>
 #include <QJsonArray>
 #include <QQmlEngine>
-#include <QTimeZone>
-#include <QTimer>
-
-#include <utility>
 
 #include "global.h"
 #include "kweathersettings.h"
