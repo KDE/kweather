@@ -146,7 +146,7 @@ msgstr "打开 KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "后退"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -381,33 +381,33 @@ msgstr "华氏度"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "外观"
 
 #: qml/SetupWizard.qml:238
 #, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr ""
+msgstr "欢迎使用<b>天气</b>小程序"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
 msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
-msgstr ""
+msgstr "查看每小时和每日的天气预报，以及其他详细信息，如风速和降水量。"
 
 #: qml/SetupWizard.qml:282
 #, kde-format
 msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
-msgstr ""
+msgstr "使用位置列表可保存多个位置，并轻松在它们之间切换。"
 
 #: qml/SetupWizard.qml:304
 #, kde-format
 msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
-msgstr ""
+msgstr "由社区打造，并由挪威气象研究所的数据提供支持。"
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -432,12 +432,12 @@ msgstr "此样式可以稍后在设置中更改。"
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "采用动画和全彩背景显示的天气预报。"
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "采用简洁扁平背景的天气预报。"
 
 #: qml/SunriseCard.qml:50
 #, kde-format
