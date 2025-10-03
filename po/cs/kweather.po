@@ -381,7 +381,7 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhled"
 
 #: qml/SetupWizard.qml:238
 #, kde-format
