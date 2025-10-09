@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-14 00:46+0000\n"
-"PO-Revision-Date: 2024-12-10 01:12+0100\n"
+"PO-Revision-Date: 2025-10-09 01:05+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -146,7 +146,7 @@ msgstr "KWeather 열기"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "이전 탐색"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -381,13 +381,12 @@ msgstr "화씨"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "모양"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Weather에 오신 것을 환영합니다"
+msgstr "<b>Weather</b>에 오신 것을 환영합니다"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -395,20 +394,22 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"시간별 및 일간 일기예보를 볼 수 있으며, 풍속이나 강수량 등의 자세한 정보를 "
+"볼 수 있습니다."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
 msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
-msgstr ""
+msgstr "여러 위치를 저장하고 위치 목록에서 쉽게 위치를 전환할 수 있습니다."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
 msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
-msgstr ""
+msgstr "커뮤니티에서 제작하여 노르웨이 기상청 데이터를 사용합니다."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -433,12 +434,12 @@ msgstr "나중에 설정에서 스타일을 변경할 수 있습니다."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "일기 예보에 애니메이션과 색상이 있는 배경을 사용합니다."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "일기 예보에 간단하고 평평한 배경을 사용합니다."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
