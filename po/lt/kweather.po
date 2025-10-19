@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-13 00:45+0000\n"
-"PO-Revision-Date: 2024-10-05 22:09+0300\n"
+"PO-Revision-Date: 2025-10-18 13:20+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -147,7 +147,7 @@ msgstr "Atverti KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Naršyti atgal"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -382,13 +382,12 @@ msgstr "Farenheitas"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Išvaizda"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Sveiki atvykę į Orus"
+msgstr "Jus sveikina <b>Orai</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -396,6 +395,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Žiūrėkite kasvalandines ir kasdienes orų prognozes kartu su kita išsamia "
+"informacija, tokia kaip vėjo greitis ir kritulių kiekis."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -403,6 +404,7 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Įrašykite keletą vietų ir lengvai jas perjunkite naudodami vietų sąrašą."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -410,6 +412,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Sukurta bendruomenės ir veikia su duomenimis iš Norvegijos meteorologijos "
+"instituto."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -434,12 +438,12 @@ msgstr "Vėliau stilius gali būti pakeistas nuostatose."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Animuoti ir spalvingi orų prognozių fonai."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Plokšti ir paprasti orų prognozių fonai."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
