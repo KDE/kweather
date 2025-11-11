@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-13 00:45+0000\n"
-"PO-Revision-Date: 2024-10-10 21:39+0200\n"
+"PO-Revision-Date: 2025-11-10 21:42+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -145,7 +145,7 @@ msgstr "KWeather megnyitása"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Navigálás vissza"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -380,13 +380,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Megjelenés"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Üdvözli az Időjárás"
+msgstr "Üdvözli az <b>Időjárás</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -394,6 +393,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Nézze meg az óránkénti és napi időjárás-előrejelzéseket, valamint egyéb "
+"részletes információkat, például a szélsebességet és a csapadékot."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -401,6 +402,7 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Mentsen több helyszínt és váltson közöttük könnyedén a helyszínlistával."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -408,6 +410,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"A közösség készítette, az adatokat pedig a Norvég Meteorológiai Intézet "
+"biztosítja."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -432,12 +436,12 @@ msgstr "A témát később is módosíthatja a beállításokban."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Animált és teljes színű háttérképek az időjárás-előrejelzésekhez."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Letisztult, egyszerű háttérképek az időjárás-előrejelzésekhez."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
