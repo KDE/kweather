@@ -98,7 +98,7 @@ private:
     CloudsRenderer *m_clouds = nullptr;
     RainRenderer *m_rain = nullptr;
     std::function<float()> dice;
-    BackgroundRenderer *background;
+    BackgroundRenderer *background = nullptr;
     SunRenderer *m_sun = nullptr;
     StarsRendererBase *m_stars = nullptr;
     SnowRendererBase *m_snow = nullptr;
