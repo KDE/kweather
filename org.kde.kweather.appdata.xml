@@ -149,6 +149,106 @@
   </description>
   <screenshots>
     <screenshot type="default">
+      <caption>Desktop dynamic view</caption>
+      <caption xml:lang="ar">عرض حركي سطح المكتب</caption>
+      <caption xml:lang="az">Masaüstü dinamik görünüş</caption>
+      <caption xml:lang="bg">Динамичен изглед за настолна версия</caption>
+      <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
+      <caption xml:lang="ca-valencia">Vista dinàmica a l'escriptori</caption>
+      <caption xml:lang="de">Dynamische Ansicht für die Arbeitsfläche</caption>
+      <caption xml:lang="el">Δυναμική προβολή για υπολογιστή</caption>
+      <caption xml:lang="en-GB">Desktop dynamic view</caption>
+      <caption xml:lang="eo">Labortabla dinamika perspektivo</caption>
+      <caption xml:lang="es">Vista dinámica de escritorio</caption>
+      <caption xml:lang="eu">Mahaigaineko ikuspegi dinamikoa</caption>
+      <caption xml:lang="fi">Dynaaminen työpöytänäkymä</caption>
+      <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
+      <caption xml:lang="gl">Vista dinámica de escritorio.</caption>
+      <caption xml:lang="he">תצוגה דינמית למחשב</caption>
+      <caption xml:lang="hi">डेस्कटॉप गतिशील दृश्य</caption>
+      <caption xml:lang="hu">Dinamikus asztali nézet</caption>
+      <caption xml:lang="ia">Vista dynamic de Scriptorio</caption>
+      <caption xml:lang="id">Tampilan dinamis desktop</caption>
+      <caption xml:lang="is">Lífleg útgáfa fyrir skjáborð</caption>
+      <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
+      <caption xml:lang="ka">სამუშაო მაგიდის დინამიკური ხედი</caption>
+      <caption xml:lang="ko">데스크톱 동적 보기</caption>
+      <caption xml:lang="lt">Darbalaukio dinaminis rodinys</caption>
+      <caption xml:lang="lv">Darbvirsmas dinamiskais skats</caption>
+      <caption xml:lang="nb">Dynamisk skrivebordsvisning</caption>
+      <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
+      <caption xml:lang="nn">Dynamisk skrivebordsvising</caption>
+      <caption xml:lang="pa">ਡੈਸਕਫਾਪ ਸਫ਼ਰੀ ਝਲਕ</caption>
+      <caption xml:lang="pl">Biurkowy widok dynamiczny</caption>
+      <caption xml:lang="pt">Área dinâmica para computadores</caption>
+      <caption xml:lang="pt-BR">Visualização dinâmica para desktop</caption>
+      <caption xml:lang="ru">Динамический режим для ПК</caption>
+      <caption xml:lang="sa">डेस्कटॉप गतिशील दृश्य</caption>
+      <caption xml:lang="sl">Namizni dinamični pogled</caption>
+      <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
+      <caption xml:lang="tr">Masaüstü devingen görünüm</caption>
+      <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
+      <caption xml:lang="zh-CN">桌面端动态视图</caption>
+      <caption xml:lang="zh-TW">桌面版動態檢視</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Desktop Welcome Screen</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-startup.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Desktop dynamic view</caption>
+      <caption xml:lang="ar">عرض حركي سطح المكتب</caption>
+      <caption xml:lang="az">Masaüstü dinamik görünüş</caption>
+      <caption xml:lang="bg">Динамичен изглед за настолна версия</caption>
+      <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
+      <caption xml:lang="ca-valencia">Vista dinàmica a l'escriptori</caption>
+      <caption xml:lang="de">Dynamische Ansicht für die Arbeitsfläche</caption>
+      <caption xml:lang="el">Δυναμική προβολή για υπολογιστή</caption>
+      <caption xml:lang="en-GB">Desktop dynamic view</caption>
+      <caption xml:lang="eo">Labortabla dinamika perspektivo</caption>
+      <caption xml:lang="es">Vista dinámica de escritorio</caption>
+      <caption xml:lang="eu">Mahaigaineko ikuspegi dinamikoa</caption>
+      <caption xml:lang="fi">Dynaaminen työpöytänäkymä</caption>
+      <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
+      <caption xml:lang="gl">Vista dinámica de escritorio.</caption>
+      <caption xml:lang="he">תצוגה דינמית למחשב</caption>
+      <caption xml:lang="hi">डेस्कटॉप गतिशील दृश्य</caption>
+      <caption xml:lang="hu">Dinamikus asztali nézet</caption>
+      <caption xml:lang="ia">Vista dynamic de Scriptorio</caption>
+      <caption xml:lang="id">Tampilan dinamis desktop</caption>
+      <caption xml:lang="is">Lífleg útgáfa fyrir skjáborð</caption>
+      <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
+      <caption xml:lang="ka">სამუშაო მაგიდის დინამიკური ხედი</caption>
+      <caption xml:lang="ko">데스크톱 동적 보기</caption>
+      <caption xml:lang="lt">Darbalaukio dinaminis rodinys</caption>
+      <caption xml:lang="lv">Darbvirsmas dinamiskais skats</caption>
+      <caption xml:lang="nb">Dynamisk skrivebordsvisning</caption>
+      <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
+      <caption xml:lang="nn">Dynamisk skrivebordsvising</caption>
+      <caption xml:lang="pa">ਡੈਸਕਫਾਪ ਸਫ਼ਰੀ ਝਲਕ</caption>
+      <caption xml:lang="pl">Biurkowy widok dynamiczny</caption>
+      <caption xml:lang="pt">Área dinâmica para computadores</caption>
+      <caption xml:lang="pt-BR">Visualização dinâmica para desktop</caption>
+      <caption xml:lang="ru">Динамический режим для ПК</caption>
+      <caption xml:lang="sa">डेस्कटॉप गतिशील दृश्य</caption>
+      <caption xml:lang="sl">Namizni dinamični pogled</caption>
+      <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
+      <caption xml:lang="tr">Masaüstü devingen görünüm</caption>
+      <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
+      <caption xml:lang="zh-CN">桌面端动态视图</caption>
+      <caption xml:lang="zh-TW">桌面版動態檢視</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic2.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Desktop flat view</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-flat.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Desktop flat view</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-flat2.png</image>
+    </screenshot>
+    <screenshot>
       <caption>Mobile dynamic view</caption>
       <caption xml:lang="ar">عرض حركي للجوال</caption>
       <caption xml:lang="az">Mobil dinamik görünüş</caption>
@@ -193,48 +293,52 @@
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic.png</image>
     </screenshot>
     <screenshot>
-      <caption>Desktop dynamic view</caption>
-      <caption xml:lang="ar">عرض حركي سطح المكتب</caption>
-      <caption xml:lang="az">Masaüstü dinamik görünüş</caption>
-      <caption xml:lang="bg">Динамичен изглед за настолна версия</caption>
-      <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
-      <caption xml:lang="ca-valencia">Vista dinàmica a l'escriptori</caption>
-      <caption xml:lang="de">Dynamische Ansicht für die Arbeitsfläche</caption>
-      <caption xml:lang="el">Δυναμική προβολή για υπολογιστή</caption>
-      <caption xml:lang="en-GB">Desktop dynamic view</caption>
-      <caption xml:lang="eo">Labortabla dinamika perspektivo</caption>
-      <caption xml:lang="es">Vista dinámica de escritorio</caption>
-      <caption xml:lang="eu">Mahaigaineko ikuspegi dinamikoa</caption>
-      <caption xml:lang="fi">Dynaaminen työpöytänäkymä</caption>
-      <caption xml:lang="fr">Un affichage dynamique pour bureau</caption>
-      <caption xml:lang="gl">Vista dinámica de escritorio.</caption>
-      <caption xml:lang="he">תצוגה דינמית למחשב</caption>
-      <caption xml:lang="hi">डेस्कटॉप गतिशील दृश्य</caption>
-      <caption xml:lang="hu">Dinamikus asztali nézet</caption>
-      <caption xml:lang="ia">Vista dynamic de Scriptorio</caption>
-      <caption xml:lang="id">Tampilan dinamis desktop</caption>
-      <caption xml:lang="is">Lífleg útgáfa fyrir skjáborð</caption>
-      <caption xml:lang="it">Visualizzazione dinamica desktop</caption>
-      <caption xml:lang="ka">სამუშაო მაგიდის დინამიკური ხედი</caption>
-      <caption xml:lang="ko">데스크톱 동적 보기</caption>
-      <caption xml:lang="lt">Darbalaukio dinaminis rodinys</caption>
-      <caption xml:lang="lv">Darbvirsmas dinamiskais skats</caption>
-      <caption xml:lang="nb">Dynamisk skrivebordsvisning</caption>
-      <caption xml:lang="nl">Dynamisch beeld op bureaublad</caption>
-      <caption xml:lang="nn">Dynamisk skrivebordsvising</caption>
-      <caption xml:lang="pa">ਡੈਸਕਫਾਪ ਸਫ਼ਰੀ ਝਲਕ</caption>
-      <caption xml:lang="pl">Biurkowy widok dynamiczny</caption>
-      <caption xml:lang="pt">Área dinâmica para computadores</caption>
-      <caption xml:lang="pt-BR">Visualização dinâmica para desktop</caption>
-      <caption xml:lang="ru">Динамический режим для ПК</caption>
-      <caption xml:lang="sa">डेस्कटॉप गतिशील दृश्य</caption>
-      <caption xml:lang="sl">Namizni dinamični pogled</caption>
-      <caption xml:lang="sv">Skrivbord dynamisk vy</caption>
-      <caption xml:lang="tr">Masaüstü devingen görünüm</caption>
-      <caption xml:lang="uk">Динамічний вигляд на комп'ютері</caption>
-      <caption xml:lang="zh-CN">桌面端动态视图</caption>
-      <caption xml:lang="zh-TW">桌面版動態檢視</caption>
-      <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-dynamic.png</image>
+      <caption>Mobile Welcome Screen</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-startup.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Mobile dynamic view</caption>
+      <caption xml:lang="ar">عرض حركي للجوال</caption>
+      <caption xml:lang="az">Mobil dinamik görünüş</caption>
+      <caption xml:lang="bg">Динамичен изглед за мобилна версия</caption>
+      <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
+      <caption xml:lang="ca-valencia">Vista dinàmica en el mòbil</caption>
+      <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
+      <caption xml:lang="el">Δυναμική προβολή για κινητό</caption>
+      <caption xml:lang="en-GB">Mobile dynamic view</caption>
+      <caption xml:lang="eo">Poŝtelefona dinamika perspektivo</caption>
+      <caption xml:lang="es">Vista dinámica móvil</caption>
+      <caption xml:lang="eu">Mugikorreko ikuspegi dinamikoa</caption>
+      <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
+      <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
+      <caption xml:lang="gl">Vista dinámica de móbil.</caption>
+      <caption xml:lang="he">תצוגה דינמית לניידים</caption>
+      <caption xml:lang="hi">मोबाइल गतिशील दृश्य</caption>
+      <caption xml:lang="hu">Dinamikus mobilnézet</caption>
+      <caption xml:lang="ia">Vista dynamic de Mobile</caption>
+      <caption xml:lang="id">Tampilan dinamis ponsel</caption>
+      <caption xml:lang="is">Lífleg farsímaútgáfa</caption>
+      <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
+      <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
+      <caption xml:lang="ko">모바일 동적 보기</caption>
+      <caption xml:lang="lt">Mobilusis dinaminis rodinys</caption>
+      <caption xml:lang="lv">Mobilās ierīces dinamiskais skats</caption>
+      <caption xml:lang="nb">Dynamisk mobilvisning</caption>
+      <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
+      <caption xml:lang="nn">Dynamisk mobilvising</caption>
+      <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
+      <caption xml:lang="pl">Przenośny dynamiczny widok</caption>
+      <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
+      <caption xml:lang="pt-BR">Visualização dinâmica para celular</caption>
+      <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
+      <caption xml:lang="sa">चल गतिशील दृश्य</caption>
+      <caption xml:lang="sl">Mobilni dinamični pogled</caption>
+      <caption xml:lang="sv">Mobil dynamisk vy</caption>
+      <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
+      <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
+      <caption xml:lang="zh-CN">移动端动态视图</caption>
+      <caption xml:lang="zh-TW">行動版動態檢視</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
     </screenshot>
     <screenshot>
       <caption>Mobile flat view</caption>
@@ -281,48 +385,48 @@
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat.png</image>
     </screenshot>
     <screenshot>
-      <caption>Mobile dynamic view</caption>
-      <caption xml:lang="ar">عرض حركي للجوال</caption>
-      <caption xml:lang="az">Mobil dinamik görünüş</caption>
-      <caption xml:lang="bg">Динамичен изглед за мобилна версия</caption>
-      <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
-      <caption xml:lang="ca-valencia">Vista dinàmica en el mòbil</caption>
-      <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
-      <caption xml:lang="el">Δυναμική προβολή για κινητό</caption>
-      <caption xml:lang="en-GB">Mobile dynamic view</caption>
-      <caption xml:lang="eo">Poŝtelefona dinamika perspektivo</caption>
-      <caption xml:lang="es">Vista dinámica móvil</caption>
-      <caption xml:lang="eu">Mugikorreko ikuspegi dinamikoa</caption>
-      <caption xml:lang="fi">Dynaaminen mobiilinäkymä</caption>
-      <caption xml:lang="fr">Un affichage dynamique pour mobile</caption>
-      <caption xml:lang="gl">Vista dinámica de móbil.</caption>
-      <caption xml:lang="he">תצוגה דינמית לניידים</caption>
-      <caption xml:lang="hi">मोबाइल गतिशील दृश्य</caption>
-      <caption xml:lang="hu">Dinamikus mobilnézet</caption>
-      <caption xml:lang="ia">Vista dynamic de Mobile</caption>
-      <caption xml:lang="id">Tampilan dinamis ponsel</caption>
-      <caption xml:lang="is">Lífleg farsímaútgáfa</caption>
-      <caption xml:lang="it">Visualizzazione dinamica mobile</caption>
-      <caption xml:lang="ka">მობილური დინამიკური ხედი</caption>
-      <caption xml:lang="ko">모바일 동적 보기</caption>
-      <caption xml:lang="lt">Mobilusis dinaminis rodinys</caption>
-      <caption xml:lang="lv">Mobilās ierīces dinamiskais skats</caption>
-      <caption xml:lang="nb">Dynamisk mobilvisning</caption>
-      <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
-      <caption xml:lang="nn">Dynamisk mobilvising</caption>
-      <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
-      <caption xml:lang="pl">Przenośny dynamiczny widok</caption>
-      <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
-      <caption xml:lang="pt-BR">Visualização dinâmica para celular</caption>
-      <caption xml:lang="ru">Динамический режим для мобильных устройств</caption>
-      <caption xml:lang="sa">चल गतिशील दृश्य</caption>
-      <caption xml:lang="sl">Mobilni dinamični pogled</caption>
-      <caption xml:lang="sv">Mobil dynamisk vy</caption>
-      <caption xml:lang="tr">Taşınabilir devingen görünüm</caption>
-      <caption xml:lang="uk">Динамічний вигляд на мобільному пристрої</caption>
-      <caption xml:lang="zh-CN">移动端动态视图</caption>
-      <caption xml:lang="zh-TW">行動版動態檢視</caption>
-      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-dynamic2.png</image>
+      <caption>Mobile flat view</caption>
+      <caption xml:lang="ar">عرض مسطح للجوال</caption>
+      <caption xml:lang="az">Mobil hamar görünüş</caption>
+      <caption xml:lang="bg">Плосък изглед за мобилна версия</caption>
+      <caption xml:lang="ca">Vista plana al mòbil</caption>
+      <caption xml:lang="ca-valencia">Vista plana en el mòbil</caption>
+      <caption xml:lang="de">Flache Ansicht für Mobilgeräte</caption>
+      <caption xml:lang="el">Επίπεδη προβολή για κινητό</caption>
+      <caption xml:lang="en-GB">Mobile flat view</caption>
+      <caption xml:lang="eo">Poŝtelefona plata perspektivo</caption>
+      <caption xml:lang="es">Vista plana móvil</caption>
+      <caption xml:lang="eu">Mugikorreko ikuspegi laua</caption>
+      <caption xml:lang="fi">Litteä mobiilinäkymä</caption>
+      <caption xml:lang="fr">Un affichage à plat pour mobile</caption>
+      <caption xml:lang="gl">Vista estática de móbil.</caption>
+      <caption xml:lang="he">תצוגה שטוחה לניידים</caption>
+      <caption xml:lang="hi">मोबाइल फ्लैट दृश्य</caption>
+      <caption xml:lang="hu">Egyszerű mobilnézet</caption>
+      <caption xml:lang="ia">Vista platte de Mobile</caption>
+      <caption xml:lang="id">Tampilan datar ponsel</caption>
+      <caption xml:lang="is">Flöt farsímaútgáfa</caption>
+      <caption xml:lang="it">Visualizzazione statica mobile</caption>
+      <caption xml:lang="ka">ბრტყელი მობილური ხედი</caption>
+      <caption xml:lang="ko">데스크톱 평면 보기</caption>
+      <caption xml:lang="lt">Mobilusis plokščias rodinys</caption>
+      <caption xml:lang="lv">Mobilās ierīces plakanais skats</caption>
+      <caption xml:lang="nb">Flat mobilvisning</caption>
+      <caption xml:lang="nl">Vlak beeld op mobiel</caption>
+      <caption xml:lang="nn">Flat mobilvising</caption>
+      <caption xml:lang="pa">ਮੋਬਾਈਲ ਸਰਲ ਝਲਕ</caption>
+      <caption xml:lang="pl">Przenośny płaski widok</caption>
+      <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
+      <caption xml:lang="pt-BR">Visão simples para celular</caption>
+      <caption xml:lang="ru">Плоский режим для мобильных устройств</caption>
+      <caption xml:lang="sa">चल सपाट दृश्य</caption>
+      <caption xml:lang="sl">Mobilni pregledni pogled</caption>
+      <caption xml:lang="sv">Mobil enkel vy</caption>
+      <caption xml:lang="tr">Taşınabilir düz görünüm</caption>
+      <caption xml:lang="uk">Простий вигляд на мобільному пристрої</caption>
+      <caption xml:lang="zh-CN">移动端扁平视图</caption>
+      <caption xml:lang="zh-TW">行動版扁平檢視</caption>
+      <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-flat2.png</image>
     </screenshot>
   </screenshots>
   <branding>
