@@ -5,20 +5,21 @@
 # SPDX-FileCopyrightText: 2022 Alois Spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2022 Frank Steinmetzger <dev-kde@felsenfleischer.de>
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:43+0000\n"
-"PO-Revision-Date: 2024-12-23 19:01+0100\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-11-11 22:59+0100\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -103,7 +104,7 @@ msgstr "Eine konvergente Wetter-Anwendung für Plasma"
 #: main.cpp:64
 #, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr "© 2020-2024 Plasma-Entwicklungsteam"
+msgstr "© 2020–2024 Plasma-Entwicklungsteam"
 
 #: main.cpp:66
 #, kde-format
@@ -150,7 +151,7 @@ msgstr "KWeather öffnen"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Zurückgehen"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -238,7 +239,7 @@ msgstr "UV-Index"
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr "Nach einem Ort suchen ..."
+msgstr "Nach einem Ort suchen …"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
@@ -385,13 +386,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Erscheinungsbild"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Willkommen bei Wetter"
+msgstr "Willkommen bei <b>Wetter</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -399,6 +399,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Stündliche und tägliche Wettervorhersagen ansehen, mit detaillierten "
+"Informationen wie Windgeschwindigkeit und Niederschlag."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -406,6 +408,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Speichern Sie mehrere Orte und wechseln Sie zwischen diesen über die „Orte“-"
+"Liste."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -413,6 +417,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Von der Gemeinschaft kreiert, ermöglicht durch Daten des norwegischen "
+"meteorologischen Instituts."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -437,12 +443,12 @@ msgstr "Das Design kann später in den Einstellungen geändert werden."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Animierte, farbige Hintergründe für Wettervorhersagen."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Flache und simple Hintergründe für Wettervorhersagen."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
