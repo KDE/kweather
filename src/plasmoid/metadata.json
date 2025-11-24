@@ -88,7 +88,7 @@
         "Description[sv]": "Kväder komponent 1x4",
         "Description[tr]": "K Hava_1 × 4 araç takımı",
         "Description[uk]": "Віджет KWeather_1x4",
-        "Description[zh_CN]": "KWeather 1x4 挂件",
+        "Description[zh_CN]": "KWeather 1x4 小部件",
         "Description[zh_TW]": "KWeather_1x4 元件",
         "EnabledByDefault": true,
         "Icon": "org.kde.kweather",
