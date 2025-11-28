@@ -194,6 +194,7 @@
     </screenshot>
     <screenshot>
       <caption>Desktop Welcome Screen</caption>
+      <caption xml:lang="ar">شاشة الترحيب لسطح المكتب</caption>
       <caption xml:lang="ca">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="es">Pantalla de bienvenida al escritorio</caption>
@@ -205,6 +206,7 @@
       <caption xml:lang="sl">Pozdravni zaslon namizja</caption>
       <caption xml:lang="tr">Masaüstü karşılama ekranı</caption>
       <caption xml:lang="uk">Сторінка вітання стільниці</caption>
+      <caption xml:lang="zh-CN">桌面欢迎屏幕</caption>
       <caption xml:lang="zh-TW">桌面版歡迎畫面</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-startup.png</image>
     </screenshot>
@@ -254,6 +256,7 @@
     </screenshot>
     <screenshot>
       <caption>Desktop flat view</caption>
+      <caption xml:lang="ar">عرض مسطح لسطح المكتب</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
@@ -265,11 +268,13 @@
       <caption xml:lang="sl">Namizni ploski pogled</caption>
       <caption xml:lang="tr">Masaüstü düz görünüm</caption>
       <caption xml:lang="uk">Простий перегляд на робочій станції</caption>
+      <caption xml:lang="zh-CN">桌面扁平视图</caption>
       <caption xml:lang="zh-TW">桌面版扁平檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-flat.png</image>
     </screenshot>
     <screenshot>
       <caption>Desktop flat view</caption>
+      <caption xml:lang="ar">عرض مسطح لسطح المكتب</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
@@ -281,6 +286,7 @@
       <caption xml:lang="sl">Namizni ploski pogled</caption>
       <caption xml:lang="tr">Masaüstü düz görünüm</caption>
       <caption xml:lang="uk">Простий перегляд на робочій станції</caption>
+      <caption xml:lang="zh-CN">桌面扁平视图</caption>
       <caption xml:lang="zh-TW">桌面版扁平檢視</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-desktop-flat2.png</image>
     </screenshot>
@@ -330,6 +336,7 @@
     </screenshot>
     <screenshot>
       <caption>Mobile Welcome Screen</caption>
+      <caption xml:lang="ar">شاشة الترحيب للجوال</caption>
       <caption xml:lang="ca">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="ca-valencia">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="es">Pantalla de bienvenida móvil</caption>
@@ -341,6 +348,7 @@
       <caption xml:lang="sl">Mobilni pozdravni zaslon</caption>
       <caption xml:lang="tr">Taşınabilir karşılama ekranı</caption>
       <caption xml:lang="uk">Сторінка вітання для мобільних пристроїв</caption>
+      <caption xml:lang="zh-CN">手机欢迎屏幕</caption>
       <caption xml:lang="zh-TW">行動版歡迎畫面</caption>
       <image>https://cdn.kde.org/screenshots/kweather/kweather-mobile-startup.png</image>
     </screenshot>
