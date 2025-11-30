@@ -195,6 +195,7 @@
     <screenshot>
       <caption>Desktop Welcome Screen</caption>
       <caption xml:lang="ar">شاشة الترحيب لسطح المكتب</caption>
+      <caption xml:lang="bg">Приветстващ прозорец за настолна версия</caption>
       <caption xml:lang="ca">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="es">Pantalla de bienvenida al escritorio</caption>
@@ -257,6 +258,7 @@
     <screenshot>
       <caption>Desktop flat view</caption>
       <caption xml:lang="ar">عرض مسطح لسطح المكتب</caption>
+      <caption xml:lang="bg">Плосък изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
@@ -275,6 +277,7 @@
     <screenshot>
       <caption>Desktop flat view</caption>
       <caption xml:lang="ar">عرض مسطح لسطح المكتب</caption>
+      <caption xml:lang="bg">Плосък изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
@@ -337,6 +340,7 @@
     <screenshot>
       <caption>Mobile Welcome Screen</caption>
       <caption xml:lang="ar">شاشة الترحيب للجوال</caption>
+      <caption xml:lang="bg">Приветстващ прозорец за мобилна версия</caption>
       <caption xml:lang="ca">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="ca-valencia">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="es">Pantalla de bienvenida móvil</caption>
