@@ -40,12 +40,6 @@
             "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kweathercore.git", "branch": "master" } ]
         },
         {
-            "name": "kirigamiaddons",
-            "config-opts": [ "-DBUILD_TESTING=OFF" ],
-            "buildsystem": "cmake-ninja",
-            "sources": [ { "type": "git", "url": "https://invent.kde.org/libraries/kirigami-addons.git", "branch": "master" } ]
-        },
-        {
             "name": "kweather",
             "config-opts": [ "-DBUILD_PLASMOID=OFF" ],
             "buildsystem": "cmake-ninja",
