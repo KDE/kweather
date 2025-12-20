@@ -1,10 +1,18 @@
 /*
     SPDX-FileCopyrightText: 2021 HanYoung <hanyoung@protonmail.com>
+    SPDX-FileCopyrightText: 2025 Devin Lin <devin@kde.org>
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 #include "hourlymodel.h"
 
 #include <QProcess>
+
+using namespace Qt::StringLiterals;
+
+HourlyModel::HourlyModel(QObject *parent)
+    : QAbstractListModel{parent}
+{
+}
 
 QVariant HourlyModel::data(const QModelIndex &index, int role) const
 {
@@ -13,7 +21,7 @@ QVariant HourlyModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case Time:
-        return QLocale().toString(getNthHour(index.row()).date(), QLocale::ShortFormat).toLower();
+        return getNthHour(index.row()).date().toString(u"h:mm ap"_s);
     case Icon:
         return getNthHour(index.row()).weatherIcon();
     case Description:
