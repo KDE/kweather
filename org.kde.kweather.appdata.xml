@@ -199,6 +199,7 @@
       <caption xml:lang="ca">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="cs">Úvodní obrazovka plochy</caption>
+      <caption xml:lang="de">Willkommensbildschirm für die Arbeitsfläche</caption>
       <caption xml:lang="es">Pantalla de bienvenida al escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ongietorri pantaila</caption>
       <caption xml:lang="fr">Écran de bienvenue pour ordinateur de bureau</caption>
@@ -267,6 +268,7 @@
       <caption xml:lang="bg">Плосък изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
+      <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
       <caption xml:lang="fr">Affichage à plat pour ordinateur de bureau</caption>
@@ -291,6 +293,7 @@
       <caption xml:lang="bg">Плосък изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
+      <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
       <caption xml:lang="fr">Affichage à plat pour ordinateur de bureau</caption>
@@ -360,6 +363,7 @@
       <caption xml:lang="ca">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="ca-valencia">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="cs">Mobilní uvítací obrazovka</caption>
+      <caption xml:lang="de">Willkommensbildschirm für Mobilgeräte</caption>
       <caption xml:lang="es">Pantalla de bienvenida móvil</caption>
       <caption xml:lang="eu">Mugikorreko ongietorri pantaila</caption>
       <caption xml:lang="fr">Écran de bienvenue pour ordinateur mobile</caption>
