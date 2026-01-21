@@ -202,6 +202,7 @@
       <caption xml:lang="de">Willkommensbildschirm für die Arbeitsfläche</caption>
       <caption xml:lang="es">Pantalla de bienvenida al escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ongietorri pantaila</caption>
+      <caption xml:lang="fi">Työpöydän tervetulonäyttö</caption>
       <caption xml:lang="fr">Écran de bienvenue pour ordinateur de bureau</caption>
       <caption xml:lang="he">מסך קבלת פנים של שולחן העבודה</caption>
       <caption xml:lang="is">Upphafsskjár tölvu</caption>
@@ -272,6 +273,7 @@
       <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
+      <caption xml:lang="fi">Litteä työpöytänäkymä</caption>
       <caption xml:lang="fr">Affichage à plat pour ordinateur de bureau</caption>
       <caption xml:lang="he">תצוגה שטוחה לשולחן עבודה</caption>
       <caption xml:lang="is">Flöt útgáfa fyrir skjáborð</caption>
@@ -298,6 +300,7 @@
       <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
+      <caption xml:lang="fi">Litteä työpöytänäkymä</caption>
       <caption xml:lang="fr">Affichage à plat pour ordinateur de bureau</caption>
       <caption xml:lang="he">תצוגה שטוחה לשולחן עבודה</caption>
       <caption xml:lang="is">Flöt útgáfa fyrir skjáborð</caption>
@@ -369,6 +372,7 @@
       <caption xml:lang="de">Willkommensbildschirm für Mobilgeräte</caption>
       <caption xml:lang="es">Pantalla de bienvenida móvil</caption>
       <caption xml:lang="eu">Mugikorreko ongietorri pantaila</caption>
+      <caption xml:lang="fi">Mobiilin tervetulonäyttö</caption>
       <caption xml:lang="fr">Écran de bienvenue pour ordinateur mobile</caption>
       <caption xml:lang="he">מסך קבלת פנים לניידים</caption>
       <caption xml:lang="is">Upphafsskjár síma</caption>
