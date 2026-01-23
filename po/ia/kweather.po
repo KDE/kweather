@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2026 giovanni <g.sora@tiscali.it>
 # giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:55+0000\n"
-"PO-Revision-Date: 2024-10-03 09:59+0200\n"
+"PO-Revision-Date: 2026-01-22 14:13+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -148,7 +148,7 @@ msgstr "Aperi KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Navigation de retro"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
 #, kde-format
@@ -383,13 +383,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Apparentia"
 
 #: qml/SetupWizard.qml:238
-#, fuzzy, kde-format
-#| msgid "Welcome to Weather"
+#, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr "Benvenite a Weather"
+msgstr "Benvenite a <b>Weather</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
