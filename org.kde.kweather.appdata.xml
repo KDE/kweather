@@ -205,6 +205,7 @@
       <caption xml:lang="fi">Työpöydän tervetulonäyttö</caption>
       <caption xml:lang="fr">Écran de bienvenue pour ordinateur de bureau</caption>
       <caption xml:lang="he">מסך קבלת פנים של שולחן העבודה</caption>
+      <caption xml:lang="ia">Schermo de benvenite de scriptorio</caption>
       <caption xml:lang="is">Upphafsskjár tölvu</caption>
       <caption xml:lang="it">Schermata di benvenuto del desktop</caption>
       <caption xml:lang="ka">სამუშაო მაგიდის მისალმების ეკრანი</caption>
@@ -276,6 +277,7 @@
       <caption xml:lang="fi">Litteä työpöytänäkymä</caption>
       <caption xml:lang="fr">Affichage à plat pour ordinateur de bureau</caption>
       <caption xml:lang="he">תצוגה שטוחה לשולחן עבודה</caption>
+      <caption xml:lang="ia">Vista platte de Scriptorio</caption>
       <caption xml:lang="is">Flöt útgáfa fyrir skjáborð</caption>
       <caption xml:lang="it">Vista piatta del desktop</caption>
       <caption xml:lang="ka">სამუშაო მაგიდის ბრტყელი ხედი</caption>
@@ -303,6 +305,7 @@
       <caption xml:lang="fi">Litteä työpöytänäkymä</caption>
       <caption xml:lang="fr">Affichage à plat pour ordinateur de bureau</caption>
       <caption xml:lang="he">תצוגה שטוחה לשולחן עבודה</caption>
+      <caption xml:lang="ia">Vista platte de Scriptorio</caption>
       <caption xml:lang="is">Flöt útgáfa fyrir skjáborð</caption>
       <caption xml:lang="it">Vista piatta del desktop</caption>
       <caption xml:lang="ka">სამუშაო მაგიდის ბრტყელი ხედი</caption>
@@ -375,6 +378,7 @@
       <caption xml:lang="fi">Mobiilin tervetulonäyttö</caption>
       <caption xml:lang="fr">Écran de bienvenue pour ordinateur mobile</caption>
       <caption xml:lang="he">מסך קבלת פנים לניידים</caption>
+      <caption xml:lang="ia">Schermo de benvenite de Mobile</caption>
       <caption xml:lang="is">Upphafsskjár síma</caption>
       <caption xml:lang="it">Schermata di benvenuto mobile</caption>
       <caption xml:lang="ka">მობილური ვერსიის მისალმების ეკრანი</caption>
