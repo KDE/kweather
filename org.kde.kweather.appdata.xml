@@ -215,6 +215,7 @@
       <caption xml:lang="pl">Ekran powitalny urządzenia biurkowego</caption>
       <caption xml:lang="pt-BR">Tela de boas-vindas do desktop</caption>
       <caption xml:lang="sl">Pozdravni zaslon namizja</caption>
+      <caption xml:lang="sv">Skrivbord välkomstskärm</caption>
       <caption xml:lang="tr">Masaüstü karşılama ekranı</caption>
       <caption xml:lang="uk">Сторінка вітання стільниці</caption>
       <caption xml:lang="zh-CN">桌面欢迎屏幕</caption>
@@ -287,6 +288,7 @@
       <caption xml:lang="pl">Płaski widok urządzenia biurkowego</caption>
       <caption xml:lang="pt-BR">Visualização plana para desktop</caption>
       <caption xml:lang="sl">Namizni ploski pogled</caption>
+      <caption xml:lang="sv">Skrivbord enkel vy</caption>
       <caption xml:lang="tr">Masaüstü düz görünüm</caption>
       <caption xml:lang="uk">Простий перегляд на робочій станції</caption>
       <caption xml:lang="zh-CN">桌面扁平视图</caption>
@@ -315,6 +317,7 @@
       <caption xml:lang="pl">Płaski widok urządzenia biurkowego</caption>
       <caption xml:lang="pt-BR">Visualização plana para desktop</caption>
       <caption xml:lang="sl">Namizni ploski pogled</caption>
+      <caption xml:lang="sv">Skrivbord enkel vy</caption>
       <caption xml:lang="tr">Masaüstü düz görünüm</caption>
       <caption xml:lang="uk">Простий перегляд на робочій станції</caption>
       <caption xml:lang="zh-CN">桌面扁平视图</caption>
@@ -388,6 +391,7 @@
       <caption xml:lang="pl">Ekran powitalny urządzenia przenośnego</caption>
       <caption xml:lang="pt-BR">Tela de boas-vindas do dispositivo móvel</caption>
       <caption xml:lang="sl">Mobilni pozdravni zaslon</caption>
+      <caption xml:lang="sv">Mobil välkomstskärm</caption>
       <caption xml:lang="tr">Taşınabilir karşılama ekranı</caption>
       <caption xml:lang="uk">Сторінка вітання для мобільних пристроїв</caption>
       <caption xml:lang="zh-CN">手机欢迎屏幕</caption>
