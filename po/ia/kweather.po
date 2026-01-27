@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:55+0000\n"
-"PO-Revision-Date: 2026-01-22 14:13+0100\n"
+"PO-Revision-Date: 2026-01-26 15:17+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -396,6 +396,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Vide previsiones de tempore horari e quotidian, conjunctemente con altere "
+"information detaliate como velocitate de vento e precipitation."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -403,6 +405,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Salveguarda locationes multiple e commuta inter illos facilmente con le "
+"lista de locationes."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -410,6 +414,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Construite per la communitate, e con datos contributed per le Instituto "
+"Meteorologic Norvegian"
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -434,12 +440,12 @@ msgstr "Le stilo pote esser cambiate  plus tarde in le preferentias."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Fundos animate e de color plen per previsiones de tempore."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Fundos simple e platte per previsiones de tempore."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
