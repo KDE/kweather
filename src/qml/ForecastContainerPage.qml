@@ -12,6 +12,8 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 import org.kde.kweather
+import org.kde.kweather.forecast.dynamic
+import org.kde.kweather.forecast.flat
 
 Kirigami.Page {
     id: page
@@ -56,14 +58,14 @@ Kirigami.Page {
         Kirigami.Action {
             icon.name: "settings-configure"
             text: i18n("Settings")
-            displayHint: Kirigami.Action.IconOnly
+            displayHint: Kirigami.DisplayHint.IconOnly
             onTriggered: applicationWindow().openSettings()
         },
         Kirigami.Action {
             visible: !Kirigami.Settings.isMobile
             icon.name: "view-refresh"
             text: i18n("Refresh")
-            displayHint: Kirigami.Action.IconOnly
+            displayHint: Kirigami.DisplayHint.IconOnly
             onTriggered: WeatherLocationListModel.locations[loader.item.currentIndex].update()
         }
     ]
@@ -72,16 +74,15 @@ Kirigami.Page {
         id: loader
         anchors.fill: parent
 
-        Component.onCompleted: loadStyle()
-        function loadStyle() {
-            setSource(settingsModel.forecastStyle === "Dynamic" ? "DynamicForecastPage.qml" : "FlatForecastPage.qml");
+        Component {
+            id: dynamic
+            DynamicForecastPage {}
+        }
+        Component {
+            id: flat
+            FlatForecastPage {}
         }
 
-        Connections {
-            target: settingsModel
-            function onForecastStyleChanged() {
-                loader.loadStyle();
-            }
-        }
+        sourceComponent: (settingsModel.forecastStyle === "Dynamic") ? dynamic : flat
     }
 }

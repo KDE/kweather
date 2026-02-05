@@ -43,7 +43,6 @@ qt_add_qml_module(kweather
     VERSION 1.0
     QML_FILES
     "qml/Main.qml"
-    "qml/FlatLocationForecast.qml"
     "qml/WeatherDayDelegate.qml"
     "qml/WeatherHourDelegate.qml"
     "qml/ForecastContainerPage.qml"
@@ -53,13 +52,31 @@ qt_add_qml_module(kweather
     "qml/SunriseCard.qml"
     "qml/InfoCard.qml"
     "qml/WeatherStrip.qml"
-    "qml/DynamicForecastPage.qml"
-    "qml/FlatForecastPage.qml"
     SOURCES
     weatherlocationlistmodel.cpp
     weatherlocationlistmodel.h
     DEPENDENCIES
     QtCore
+)
+
+qt_add_qml_module(kweatherflatforecast
+    URI "org.kde.kweather.forecast.flat"
+    VERSION 1.0
+    QML_FILES
+    "qml/forecast/flat/FlatForecastPage.qml"
+    "qml/forecast/flat/FlatLocationForecast.qml"
+    STATIC
+)
+
+qt_add_qml_module(kweatherdynamicforecast
+    URI "org.kde.kweather.forecast.dynamic"
+    VERSION 1.0
+    QML_FILES
+    "qml/forecast/dynamic/DynamicForecastBackground.qml"
+    "qml/forecast/dynamic/DynamicForecastContent.qml"
+    "qml/forecast/dynamic/DynamicForecastHeader.qml"
+    "qml/forecast/dynamic/DynamicForecastPage.qml"
+    STATIC
 )
 
 qt_add_qml_module(kweatherbackgrounds
@@ -151,6 +168,8 @@ target_link_libraries(kweather
     kweathercomponentsplugin
     kweatherlocationsplugin
     kweathersettingsplugin
+    kweatherflatforecastplugin
+    kweatherdynamicforecastplugin
 )
 
 add_subdirectory(resources)

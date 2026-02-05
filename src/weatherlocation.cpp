@@ -43,7 +43,7 @@ WeatherLocation::WeatherLocation(QString locationId,
 
     connect(this, &WeatherLocation::selectedDayChanged, this, [this] {
         m_hourForecasts.clear();
-        if (!m_forecast.dailyWeatherForecast().empty()) {
+        if (!m_forecast.dailyWeatherForecast().empty() && m_forecast.dailyWeatherForecast().size() > m_selectedDay && m_selectedDay >= 0) {
             const auto hourForecasts = m_forecast.dailyWeatherForecast()[m_selectedDay].hourlyWeatherForecast();
             for (const KWeatherCore::HourlyWeatherForecast &hour : hourForecasts) {
                 m_hourForecasts << hour;

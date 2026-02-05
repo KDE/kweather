@@ -19,13 +19,6 @@ SwipeView {
 
     anchors.fill: parent
 
-    function moveLeft() {
-        currentIndex--;
-    }
-    function moveRight() {
-        currentIndex++;
-    }
-
     Repeater {
         id: forecastViewRepeater
         anchors.fill: parent
