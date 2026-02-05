@@ -93,9 +93,10 @@ msgid "Weather"
 msgstr "Počasí"
 
 #: main.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "A convergent weather application for Plasma"
 msgid "A convergent weather application for Plasma"
-msgstr ""
+msgstr "Konvergentní aplikace pro předpověď počasí pro Plasmu"
 
 #: main.cpp:64
 #, kde-format
@@ -113,9 +114,11 @@ msgid "Devin Lin"
 msgstr "Devin Lin"
 
 #: plasmoid/LocationSelector.qml:45
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "No location found on system, please add some in kweather"
 msgid "No location found on system, please add some in kweather"
 msgstr ""
+"V systému nebylo nalezeno žádné místo, přidejte prosím nějaké v aplikaci"
 
 #: plasmoid/LocationSelector.qml:45
 #, kde-format
@@ -153,9 +156,10 @@ msgid "Forecast"
 msgstr "Předpověď"
 
 #: qml/DefaultPage.qml:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network error when obtaining current location"
 msgid "Network error when obtaining current location"
-msgstr ""
+msgstr "Při zjišťování aktuální polohy došlo k chybě sítě"
 
 #: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
@@ -256,9 +260,10 @@ msgid "Add location"
 msgstr "Přidat umístění"
 
 #: qml/locationslist/LocationsListView.qml:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unable to fetch timezone information"
 msgid "Unable to fetch timezone information"
-msgstr ""
+msgstr "Nepodařilo se získat informace o časovém pásmu"
 
 #: qml/locationslist/LocationsListView.qml:80
 #, kde-format
@@ -388,25 +393,38 @@ msgid "Welcome to <b>Weather</b>"
 msgstr "Vítejte v programu <b>Weather</b>"
 
 #: qml/SetupWizard.qml:261
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "View hourly and daily weather forecasts, along with other detailed "
+#| "information such as wind speed and precipitation."
 msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Zobrazujte si hodinovou a denní předpověď počasí spolu s dalšími podrobnými "
+"informacemi, jako je rychlost větru a srážky."
 
 #: qml/SetupWizard.qml:282
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Save multiple locations and switch between them easily with the locations "
+#| "list."
 msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Ukládejte si více míst a snadno mezi nimi přepínejte pomocí seznamu míst."
 
 #: qml/SetupWizard.qml:304
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Built by the community, and powered by data from the Norwegian "
+#| "Meteorological Institute."
 msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Vytvořeno komunitou a poháněno daty z Norského meteorologického institutu."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -429,14 +447,16 @@ msgid "The style can be changed later in the settings."
 msgstr "Styl můžete později změnit v nastavení."
 
 #: qml/SetupWizard.qml:490
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Animated and full-color backgrounds for weather forecasts."
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Animovaná a plnobarevná pozadí pro předpovědi počasí."
 
 #: qml/SetupWizard.qml:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Flat and simple backgrounds for weather forecasts."
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Plochá a jednoduchá pozadí pro předpovědi počasí."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
