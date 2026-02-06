@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:55+0000\n"
+"POT-Creation-Date: 2026-02-06 00:48+0000\n"
 "PO-Revision-Date: 2025-09-11 09:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -152,7 +152,7 @@ msgstr "Відкрити KWeather"
 msgid "Navigate Back"
 msgstr "Перейти назад"
 
-#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:31
 #, kde-format
 msgid "Forecast"
 msgstr "Прогноз"
@@ -170,47 +170,53 @@ msgstr "Помилка мережі під час спроби отриманн�
 msgid "Add Location"
 msgstr "Додати місце"
 
-#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
+#: qml/forecast/dynamic/DynamicForecastContent.qml:161
+#: qml/forecast/flat/FlatLocationForecast.qml:155
 #, kde-format
-msgid "Weather refreshed for %1"
-msgstr "Прогноз погоди для %1 оновлено"
+msgid "Hourly"
+msgstr "Щогодини"
 
-#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:37
+#: qml/forecast/flat/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "Оновлено о %1"
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:53
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:57
+#: qml/ForecastContainerPage.qml:55
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
 msgid "Locations"
 msgstr "Місця"
 
-#: qml/DynamicForecastPage.qml:360
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:62
 #, kde-format
 msgid "Choose location"
 msgstr "Виберіть місце"
 
-#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:58 qml/settings/SettingsDialog.qml:12
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:77
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:82
+#: qml/ForecastContainerPage.qml:60 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Параметри"
 
-#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:65
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:98
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:103
+#: qml/ForecastContainerPage.qml:67
 #, kde-format
 msgid "Refresh"
 msgstr "Освіжити"
 
-#: qml/DynamicForecastPage.qml:540 qml/FlatLocationForecast.qml:155
+#: qml/forecast/dynamic/DynamicForecastPage.qml:73
+#: qml/forecast/flat/FlatLocationForecast.qml:43
 #, kde-format
-msgid "Hourly"
-msgstr "Щогодини"
+msgid "Weather refreshed for %1"
+msgstr "Прогноз погоди для %1 оновлено"
 
-#: qml/FlatLocationForecast.qml:110
+#: qml/forecast/flat/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "Щодня"

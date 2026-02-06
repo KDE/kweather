@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:55+0000\n"
+"POT-Creation-Date: 2026-02-06 00:48+0000\n"
 "PO-Revision-Date: 2024-10-01 21:34-0500\n"
 "Last-Translator: A S Alam <aman@punlinux.org>\n"
 "Language-Team: pa\n"
@@ -147,7 +147,7 @@ msgstr "ਕੇ-ਮੌਸਮ ਖੋਲ੍ਹੋ"
 msgid "Navigate Back"
 msgstr ""
 
-#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:31
 #, kde-format
 msgid "Forecast"
 msgstr "ਭਵਿੱਖਬਾਣੀ"
@@ -165,47 +165,53 @@ msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਪ੍ਰਾਪਤ ਕਰਨ ਦ�
 msgid "Add Location"
 msgstr "ਟਿਕਾਣਾ ਜੋੜੋ"
 
-#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
+#: qml/forecast/dynamic/DynamicForecastContent.qml:161
+#: qml/forecast/flat/FlatLocationForecast.qml:155
 #, kde-format
-msgid "Weather refreshed for %1"
-msgstr "%1 ਲਈ ਮੌਸਮ ਨੂੰ ਤਾਜ਼ਾ ਕੀਤਾ ਗਿਆ ਹੈ"
+msgid "Hourly"
+msgstr "ਘੰਟੇਵਾਰ"
 
-#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:37
+#: qml/forecast/flat/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "%1 ਲਈ ਅੱਪਡੇਟ ਕੀਤਾ"
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:53
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:57
+#: qml/ForecastContainerPage.qml:55
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
 msgid "Locations"
 msgstr "ਟਿਕਾਣੇ"
 
-#: qml/DynamicForecastPage.qml:360
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:62
 #, kde-format
 msgid "Choose location"
 msgstr "ਟਿਕਾਣਾ ਚੁਣੋ"
 
-#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:58 qml/settings/SettingsDialog.qml:12
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:77
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:82
+#: qml/ForecastContainerPage.qml:60 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "ਸੈਟਿੰਗਾਂ"
 
-#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:65
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:98
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:103
+#: qml/ForecastContainerPage.qml:67
 #, kde-format
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
-#: qml/DynamicForecastPage.qml:540 qml/FlatLocationForecast.qml:155
+#: qml/forecast/dynamic/DynamicForecastPage.qml:73
+#: qml/forecast/flat/FlatLocationForecast.qml:43
 #, kde-format
-msgid "Hourly"
-msgstr "ਘੰਟੇਵਾਰ"
+msgid "Weather refreshed for %1"
+msgstr "%1 ਲਈ ਮੌਸਮ ਨੂੰ ਤਾਜ਼ਾ ਕੀਤਾ ਗਿਆ ਹੈ"
 
-#: qml/FlatLocationForecast.qml:110
+#: qml/forecast/flat/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "ਰੋਜ਼"

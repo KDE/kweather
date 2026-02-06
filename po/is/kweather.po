@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:55+0000\n"
+"POT-Creation-Date: 2026-02-06 00:48+0000\n"
 "PO-Revision-Date: 2025-10-08 09:39+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -148,7 +148,7 @@ msgstr "Opna KWeather"
 msgid "Navigate Back"
 msgstr "Fara til baka"
 
-#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:29
+#: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:31
 #, kde-format
 msgid "Forecast"
 msgstr "Veðurspá"
@@ -166,47 +166,53 @@ msgstr "Villa í nettengingu þegar reynt var að sækja núverandi staðsetning
 msgid "Add Location"
 msgstr "Bæta við staðsetningu"
 
-#: qml/DynamicForecastPage.qml:261 qml/FlatLocationForecast.qml:43
+#: qml/forecast/dynamic/DynamicForecastContent.qml:161
+#: qml/forecast/flat/FlatLocationForecast.qml:155
 #, kde-format
-msgid "Weather refreshed for %1"
-msgstr "Veður endurhlaðið fyrir %1"
+msgid "Hourly"
+msgstr "Á klst. fresti"
 
-#: qml/DynamicForecastPage.qml:335 qml/FlatLocationForecast.qml:94
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:37
+#: qml/forecast/flat/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
 msgstr "Uppfært kl. %1"
 
-#: qml/DynamicForecastPage.qml:355 qml/ForecastContainerPage.qml:53
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:57
+#: qml/ForecastContainerPage.qml:55
 #: qml/locationslist/LocationsListDialog.qml:14
 #: qml/locationslist/LocationsListPage.qml:15
 #, kde-format
 msgid "Locations"
 msgstr "Staðsetningar"
 
-#: qml/DynamicForecastPage.qml:360
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:62
 #, kde-format
 msgid "Choose location"
 msgstr "Velja staðsetningu"
 
-#: qml/DynamicForecastPage.qml:375 qml/DynamicForecastPage.qml:380
-#: qml/ForecastContainerPage.qml:58 qml/settings/SettingsDialog.qml:12
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:77
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:82
+#: qml/ForecastContainerPage.qml:60 qml/settings/SettingsDialog.qml:12
 #: qml/settings/SettingsPage.qml:16
 #, kde-format
 msgid "Settings"
 msgstr "Stillingar"
 
-#: qml/DynamicForecastPage.qml:396 qml/DynamicForecastPage.qml:401
-#: qml/ForecastContainerPage.qml:65
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:98
+#: qml/forecast/dynamic/DynamicForecastHeader.qml:103
+#: qml/ForecastContainerPage.qml:67
 #, kde-format
 msgid "Refresh"
 msgstr "Endurhlaða"
 
-#: qml/DynamicForecastPage.qml:540 qml/FlatLocationForecast.qml:155
+#: qml/forecast/dynamic/DynamicForecastPage.qml:73
+#: qml/forecast/flat/FlatLocationForecast.qml:43
 #, kde-format
-msgid "Hourly"
-msgstr "Á klst. fresti"
+msgid "Weather refreshed for %1"
+msgstr "Veður endurhlaðið fyrir %1"
 
-#: qml/FlatLocationForecast.qml:110
+#: qml/forecast/flat/FlatLocationForecast.qml:110
 #, kde-format
 msgid "Daily"
 msgstr "Daglega"
