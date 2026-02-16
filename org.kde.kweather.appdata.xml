@@ -389,6 +389,12 @@
       <description>
         <ul>
           <li>User interface improvements and bugfixes</li>
+          <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
+          <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
+          <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
+          <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
+          <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
+          <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
         </ul>
       </description>
     </release>
@@ -397,6 +403,12 @@
       <description>
         <ul>
           <li>User interface improvements and bugfixes</li>
+          <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
+          <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
+          <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
+          <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
+          <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
+          <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
         </ul>
       </description>
     </release>
@@ -405,6 +417,12 @@
       <description>
         <ul>
           <li>User interface improvements and bugfixes</li>
+          <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
+          <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
+          <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
+          <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
+          <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
+          <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
         </ul>
       </description>
     </release>
@@ -412,12 +430,40 @@
       <url>https://www.plasma-mobile.org/2021/12/07/plasma-mobile-gear-21-12/</url>
       <description>
         <p>Changes:</p>
+        <p xml:lang="ca">Canvis:</p>
+        <p xml:lang="ca-valencia">Canvis:</p>
+        <p xml:lang="es">Cambios:</p>
+        <p xml:lang="he">שינויים:</p>
+        <p xml:lang="pt-BR">Alterações:</p>
+        <p xml:lang="ru">Изменения:</p>
         <ul>
           <li>Performance improvements in Dynamic view</li>
+          <li xml:lang="ca">Millores de rendiment a la vista dinàmica</li>
+          <li xml:lang="ca-valencia">Millores de rendiment a la vista dinàmica</li>
+          <li xml:lang="es">Mejoras de rendimiento en la vista dinámica</li>
+          <li xml:lang="he">שיפורי ביצועים בתצוגה דינמית</li>
+          <li xml:lang="pt-BR">Melhorias de desempenho na visualização dinâmica</li>
+          <li xml:lang="ru">Улучшение производительности в динамическом представлении</li>
           <li>Dynamic view action bar rewritten to be inline to content</li>
+          <li xml:lang="ca">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
+          <li xml:lang="ca-valencia">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
+          <li xml:lang="pt-BR">A barra de ação da visualização dinâmica foi reescrita para ficar integrada ao conteúdo</li>
+          <li xml:lang="ru">Панель действий динамического представления переписана для размещения в строке с содержимым</li>
           <li>Allow setting non-current location in default forecasts page</li>
+          <li xml:lang="ca">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
+          <li xml:lang="ca-valencia">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
+          <li xml:lang="pt-BR">Permitir a configuração de uma localização diferente da atual na página de previsões padrão</li>
+          <li xml:lang="ru">Разрешено задание не текущего местоположения на странице прогнозов по умолчанию</li>
           <li>Added ability to fetch temperature units from system locale</li>
+          <li xml:lang="ca">Afegeix la capacitat d'obtenir unitats de temperatura de la configuració regional del sistema</li>
+          <li xml:lang="ca-valencia">Afig la capacitat d'obtindre unitats de temperatura de la configuració regional del sistema</li>
+          <li xml:lang="pt-BR">Adicionada a capacidade de obter unidades de temperatura da localização do sistema</li>
+          <li xml:lang="ru">Добавлена возможность получения единиц измерения температуры из системной локали</li>
           <li>Fixed timezone format not being correctly read for local location time</li>
+          <li xml:lang="ca">Corregeix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
+          <li xml:lang="ca-valencia">Corregix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
+          <li xml:lang="pt-BR">Corrigido o problema que impedia a leitura correta do formato de fuso horário para a hora local</li>
+          <li xml:lang="ru">Исправлено некорректное чтение формата часового пояса для местного времени</li>
         </ul>
       </description>
     </release>
@@ -427,10 +473,29 @@
     <release version="21.07" date="2021-07-20">
       <description>
         <p>Changes:</p>
+        <p xml:lang="ca">Canvis:</p>
+        <p xml:lang="ca-valencia">Canvis:</p>
+        <p xml:lang="es">Cambios:</p>
+        <p xml:lang="he">שינויים:</p>
+        <p xml:lang="pt-BR">Alterações:</p>
+        <p xml:lang="ru">Изменения:</p>
         <ul>
           <li>Rewrote the weather plasmoid</li>
+          <li xml:lang="ca">Reescrit el plasmoide meteorològic</li>
+          <li xml:lang="ca-valencia">Reescrit el plasmoide meteorològic</li>
+          <li xml:lang="es">Reescritura del plasmoide de meteorología</li>
+          <li xml:lang="pt-BR">Reescrita do plasmoide meteorológico</li>
+          <li xml:lang="ru">Переписан плазмоид погоды</li>
           <li>Use inline page indicator for flat mode forecasts</li>
+          <li xml:lang="ca">Usa l'indicador de pàgina inclosa per a les previsions en mode pla</li>
+          <li xml:lang="ca-valencia">Utilitza l'indicador de pàgina inclosa per a les previsions en mode pla</li>
+          <li xml:lang="pt-BR">Uso do indicador de página embutido para previsões em modo plano</li>
+          <li xml:lang="ru">Использован встроенный индикатор страницы для прогнозов в плоском режиме</li>
           <li>Fix location ordering not persisting</li>
+          <li xml:lang="ca">Corregeix l'ordre de les ubicacions que no persisteix</li>
+          <li xml:lang="ca-valencia">Corregix l'ordre de les ubicacions que no persistix</li>
+          <li xml:lang="pt-BR">Corrigido o problema de persistência na ordenação de locais</li>
+          <li xml:lang="ru">Исправлено сохранение порядок расположений</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/07/20/plasma-mobile-gear-21-07/</url>
@@ -438,13 +503,46 @@
     <release version="21.06" date="2021-06-10">
       <description>
         <p>Changes:</p>
+        <p xml:lang="ca">Canvis:</p>
+        <p xml:lang="ca-valencia">Canvis:</p>
+        <p xml:lang="es">Cambios:</p>
+        <p xml:lang="he">שינויים:</p>
+        <p xml:lang="pt-BR">Alterações:</p>
+        <p xml:lang="ru">Изменения:</p>
         <ul>
           <li>Reworked the locations page to better handle long location names</li>
+          <li xml:lang="ca">Refà la pàgina d'ubicacions per gestionar millor els noms de les ubicacions llargues</li>
+          <li xml:lang="ca-valencia">Refà la pàgina d'ubicacions per a gestionar millor els noms de les ubicacions llargues</li>
+          <li xml:lang="pt-BR">Reformulada a página de locais para lidar melhor com nomes de locais longos</li>
+          <li xml:lang="ru">Переработана страница местоположений для лучшей обработки длинных названий</li>
           <li>Add maximum width to dynamic forecast to better deal with widescreen</li>
+          <li xml:lang="ca">Afegeix l'amplada màxima a la previsió dinàmica per gestionar millor les pantalles amples</li>
+          <li xml:lang="ca-valencia">Afig l'amplària màxima a la previsió dinàmica per a gestionar millor les pantalles amples</li>
+          <li xml:lang="pt-BR">Adicionada largura máxima à previsão dinâmica para melhor lidar com telas widescreen</li>
+          <li xml:lang="ru">Определена максимальная ширина для динамического прогноза для лучшей работы с широкоэкранными дисплеями</li>
           <li>Remove plasmoid (it is being reworked!)</li>
+          <li xml:lang="ca">Elimina el plasmoide (s'està tornant a fer!)</li>
+          <li xml:lang="ca-valencia">Elimina el plasmoide (s'està tornant a fer!)</li>
+          <li xml:lang="pt-BR">Removido o plasmoide (está sendo reformulado!)</li>
+          <li xml:lang="ru">Удалён виджет (ведётся переработка!)</li>
           <li>Fixed default page not being loaded when new locations are added</li>
+          <li xml:lang="ca">Corregeix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
+          <li xml:lang="ca-valencia">Corregix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
+          <li xml:lang="pt-BR">Corrigido o problema em que a página padrão não carregava quando novos locais eram adicionados</li>
+          <li xml:lang="ru">Исправлена ошибка загрузки страницы по умолчанию при добавлении новых местоположений</li>
           <li>Unify application settings location</li>
+          <li xml:lang="ca">Unifica la configuració de la ubicació a l'aplicació</li>
+          <li xml:lang="ca-valencia">Unifica la configuració de la ubicació a l'aplicació</li>
+          <li xml:lang="he">איחוד מקום הגדרות היישום</li>
+          <li xml:lang="pt-BR">Unificada a localização das configurações do aplicativo</li>
+          <li xml:lang="ru">Унифицировано расположение параметров приложения</li>
           <li>Enable qml debugging when in debug mode</li>
+          <li xml:lang="ca">Activa la depuració del QML quan és en el mode de depuració</li>
+          <li xml:lang="ca-valencia">Activa la depuració de QML quan és en el mode de depuració</li>
+          <li xml:lang="es">Habilitar modo de depuración qml en el modo de depuración</li>
+          <li xml:lang="he">הפעלת ניפוי שגיאות ב־qml במצב ניפוי שגיאות</li>
+          <li xml:lang="pt-BR">Ativada a depuração do QML quando no modo de depuração</li>
+          <li xml:lang="ru">Добавлена возможность отладки QML в режиме отладки</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/06/10/plasma-mobile-update-june/</url>
