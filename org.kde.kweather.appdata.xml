@@ -604,6 +604,7 @@
         <ul>
           <li>User interface improvements and bugfixes</li>
           <li xml:lang="ar">تحسينات على واجهة المستخدم وإصلاح علل</li>
+          <li xml:lang="bg">Подобрения в потребителския интерфейс и корекции на грешки</li>
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
@@ -628,6 +629,7 @@
         <ul>
           <li>User interface improvements and bugfixes</li>
           <li xml:lang="ar">تحسينات على واجهة المستخدم وإصلاح علل</li>
+          <li xml:lang="bg">Подобрения в потребителския интерфейс и корекции на грешки</li>
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
@@ -652,6 +654,7 @@
         <ul>
           <li>User interface improvements and bugfixes</li>
           <li xml:lang="ar">تحسينات على واجهة المستخدم وإصلاح علل</li>
+          <li xml:lang="bg">Подобрения в потребителския интерфейс и корекции на грешки</li>
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
@@ -675,6 +678,7 @@
       <description>
         <p>Changes:</p>
         <p xml:lang="ar">التغييرات:</p>
+        <p xml:lang="bg">Промени:</p>
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="es">Cambios:</p>
@@ -693,6 +697,7 @@
         <ul>
           <li>Performance improvements in Dynamic view</li>
           <li xml:lang="ar">تحسينات في الأداء في العرض الحركي</li>
+          <li xml:lang="bg">Подобрения в производителността в динамичния изглед</li>
           <li xml:lang="ca">Millores de rendiment a la vista dinàmica</li>
           <li xml:lang="ca-valencia">Millores de rendiment a la vista dinàmica</li>
           <li xml:lang="es">Mejoras de rendimiento en la vista dinámica.</li>
@@ -710,6 +715,7 @@
           <li xml:lang="zh-CN">动态视图的性能改进</li>
           <li>Dynamic view action bar rewritten to be inline to content</li>
           <li xml:lang="ar">أُعيدت كتابة شريط إجراءات العرض الحركي ليكون مضمنًا في المحتوى</li>
+          <li xml:lang="bg">Динамична лента за действие на изгледа, пренаписана така, че да е вградена в съдържанието</li>
           <li xml:lang="ca">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
           <li xml:lang="ca-valencia">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
           <li xml:lang="es">Barra de acción de vista dinámica reescrita para estar en línea con el contenido.</li>
@@ -727,6 +733,7 @@
           <li xml:lang="zh-CN">动态视图操作栏重写为内嵌内容</li>
           <li>Allow setting non-current location in default forecasts page</li>
           <li xml:lang="ar">السماح بضبط موقع غير الحالي في صفحة التنبؤات المبدئية</li>
+          <li xml:lang="bg">Разрешаване на задаване на неактуално местоположение на страницата с прогнози по подразбиране</li>
           <li xml:lang="ca">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
           <li xml:lang="ca-valencia">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
           <li xml:lang="es">Permitir configurar una ubicación no actual en la página de pronósticos predeterminada.</li>
@@ -744,6 +751,7 @@
           <li xml:lang="zh-CN">允许在默认预报页面设置为非当前地理位置</li>
           <li>Added ability to fetch temperature units from system locale</li>
           <li xml:lang="ar">أُضيفت القدرة على جلب وحدات درجة الحرارة من محلية النظام</li>
+          <li xml:lang="bg">Добавена е възможност за извличане на температурни единици от системния език</li>
           <li xml:lang="ca">Afegeix la capacitat d'obtenir unitats de temperatura de la configuració regional del sistema</li>
           <li xml:lang="ca-valencia">Afig la capacitat d'obtindre unitats de temperatura de la configuració regional del sistema</li>
           <li xml:lang="es">Se ha añadido la capacidad de obtener unidades de temperatura de la configuración regional del sistema.</li>
@@ -761,6 +769,7 @@
           <li xml:lang="zh-CN">新增从系统区域设置中获取温度单位的功能</li>
           <li>Fixed timezone format not being correctly read for local location time</li>
           <li xml:lang="ar">أُصلح تنسيق المنطقة الزمنية الذي لم يُقرأ بشكل صحيح لوقت الموقع المحلي</li>
+          <li xml:lang="bg">Поправен е форматът на часовата зона, който не се четеше правилно за местното време</li>
           <li xml:lang="ca">Corregeix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
           <li xml:lang="ca-valencia">Corregix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
           <li xml:lang="es">Corrección para el formato de zona horaria no se lee correctamente para la hora de la ubicación local.</li>
@@ -786,6 +795,7 @@
       <description>
         <p>Changes:</p>
         <p xml:lang="ar">التغييرات:</p>
+        <p xml:lang="bg">Промени:</p>
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="es">Cambios:</p>
@@ -804,6 +814,7 @@
         <ul>
           <li>Rewrote the weather plasmoid</li>
           <li xml:lang="ar">أُعيدت كتابة بلازمويد الطقس</li>
+          <li xml:lang="bg">Пренаписан е плазмоид за метеорологичните данни</li>
           <li xml:lang="ca">Reescrit el plasmoide meteorològic</li>
           <li xml:lang="ca-valencia">Reescrit el plasmoide meteorològic</li>
           <li xml:lang="es">Reescritura del plasmoide de meteorología.</li>
@@ -821,6 +832,7 @@
           <li xml:lang="zh-CN">重写天气 Plasma 小程序</li>
           <li>Use inline page indicator for flat mode forecasts</li>
           <li xml:lang="ar">استخدام مؤشر صفحة مضمن لتنبؤات الوضع المسطح</li>
+          <li xml:lang="bg">Използване на вграден индикатор на страницата за прогнози в плосък режим</li>
           <li xml:lang="ca">Usa l'indicador de pàgina inclosa per a les previsions en mode pla</li>
           <li xml:lang="ca-valencia">Utilitza l'indicador de pàgina inclosa per a les previsions en mode pla</li>
           <li xml:lang="es">Usar el indicador de página en línea para pronósticos en modo plano.</li>
@@ -838,6 +850,7 @@
           <li xml:lang="zh-CN">在扁平模式的预报中使用内嵌页面指示器</li>
           <li>Fix location ordering not persisting</li>
           <li xml:lang="ar">إصلاح عدم استمرار ترتيب المواقع</li>
+          <li xml:lang="bg">Поправка на подреждането на местоположенията, което не се запазва</li>
           <li xml:lang="ca">Corregeix l'ordre de les ubicacions que no persisteix</li>
           <li xml:lang="ca-valencia">Corregix l'ordre de les ubicacions que no persistix</li>
           <li xml:lang="es">Se ha corregido el problema de que el orden de ubicación no persistía.</li>
@@ -861,6 +874,7 @@
       <description>
         <p>Changes:</p>
         <p xml:lang="ar">التغييرات:</p>
+        <p xml:lang="bg">Промени:</p>
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="es">Cambios:</p>
@@ -879,6 +893,7 @@
         <ul>
           <li>Reworked the locations page to better handle long location names</li>
           <li xml:lang="ar">أُعيدت صياغة صفحة المواقع للتعامل بشكل أفضل مع أسماء المواقع الطويلة</li>
+          <li xml:lang="bg">Страницата с местоположения е преработена, за да се обработват по-добре дългите имена на местоположения.</li>
           <li xml:lang="ca">Refà la pàgina d'ubicacions per gestionar millor els noms de les ubicacions llargues</li>
           <li xml:lang="ca-valencia">Refà la pàgina d'ubicacions per a gestionar millor els noms de les ubicacions llargues</li>
           <li xml:lang="es">Se ha modificado la página de ubicaciones para manejar mejor los nombres largos de ubicaciones.</li>
@@ -896,6 +911,7 @@
           <li xml:lang="zh-CN">重构位置页面以适应长名称</li>
           <li>Add maximum width to dynamic forecast to better deal with widescreen</li>
           <li xml:lang="ar">إضافة عرض أقصى للتنبؤ الحركي للتعامل بشكل أفضل مع الشاشات العريضة</li>
+          <li xml:lang="bg">Добавена е максимална ширина към динамичната прогноза, за да се представи по-добре в широкоекранен режим</li>
           <li xml:lang="ca">Afegeix l'amplada màxima a la previsió dinàmica per gestionar millor les pantalles amples</li>
           <li xml:lang="ca-valencia">Afig l'amplària màxima a la previsió dinàmica per a gestionar millor les pantalles amples</li>
           <li xml:lang="es">Se ha añadido la anchura máxima al pronóstico dinámico para aprovechar mejor las pantallas anchas.</li>
@@ -913,6 +929,7 @@
           <li xml:lang="zh-CN">为动态预报添加最大宽度以适应宽屏</li>
           <li>Remove plasmoid (it is being reworked!)</li>
           <li xml:lang="ar">إزالة البلازمويد (تجري إعادة صياغته!)</li>
+          <li xml:lang="bg">Премахнат е плазмоида (той се преработва!)</li>
           <li xml:lang="ca">Elimina el plasmoide (s'està tornant a fer!)</li>
           <li xml:lang="ca-valencia">Elimina el plasmoide (s'està tornant a fer!)</li>
           <li xml:lang="es">Eliminar plasmoide (¡se está trabajando en ello!)</li>
@@ -930,6 +947,7 @@
           <li xml:lang="zh-CN">移除 Plasma 小程序 (正在重写)</li>
           <li>Fixed default page not being loaded when new locations are added</li>
           <li xml:lang="ar">أُصلح عدم تحميل الصفحة المبدئية عند إضافة مواقع جديدة</li>
+          <li xml:lang="bg">Поправена е страницата по подразбиране, която не се зареждаше при добавяне на нови местоположения</li>
           <li xml:lang="ca">Corregeix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
           <li xml:lang="ca-valencia">Corregix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
           <li xml:lang="es">Se ha corregido el problema de que la página predeterminada no se cargaba cuando se añadían nuevas ubicaciones.</li>
@@ -947,6 +965,7 @@
           <li xml:lang="zh-CN">修复了在添加新位置时默认页面不加载的问题</li>
           <li>Unify application settings location</li>
           <li xml:lang="ar">توحيد موقع إعدادات التطبيق</li>
+          <li xml:lang="bg">Унифициране на местоположението на настройките на приложението</li>
           <li xml:lang="ca">Unifica la configuració de la ubicació a l'aplicació</li>
           <li xml:lang="ca-valencia">Unifica la configuració de la ubicació a l'aplicació</li>
           <li xml:lang="es">Unificar la ubicación de la configuración de la aplicación.</li>
@@ -964,6 +983,7 @@
           <li xml:lang="zh-CN">统一应用程序设置位置</li>
           <li>Enable qml debugging when in debug mode</li>
           <li xml:lang="ar">تمكين تنقيب qml عند التواجد في وضع التنقيح</li>
+          <li xml:lang="bg">Активиране на qml дебъгване в режим на дебъгване</li>
           <li xml:lang="ca">Activa la depuració del QML quan és en el mode de depuració</li>
           <li xml:lang="ca-valencia">Activa la depuració de QML quan és en el mode de depuració</li>
           <li xml:lang="es">Habilitar modo de depuración qml en el modo de depuración.</li>
