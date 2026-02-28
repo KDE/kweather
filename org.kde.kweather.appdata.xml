@@ -613,6 +613,7 @@
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
+          <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
           <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
@@ -638,6 +639,7 @@
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
+          <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
           <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
@@ -663,6 +665,7 @@
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
+          <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
           <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
@@ -687,6 +690,7 @@
         <p xml:lang="ia">%1 Modificationes</p>
         <p xml:lang="it">Modifiche:</p>
         <p xml:lang="ka">ცვლილებები:</p>
+        <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
         <p xml:lang="pt-BR">Alterações:</p>
         <p xml:lang="ru">Изменения:</p>
@@ -706,6 +710,7 @@
           <li xml:lang="ia">Melioramentod de prestation in vista Dynamic</li>
           <li xml:lang="it">Miglioramenti delle prestazioni nella vista dinamica</li>
           <li xml:lang="ka">შესრულების გაუმჯობესება დინამიკურ ხედში</li>
+          <li xml:lang="lt">Našumo patobulinimai dinaminiame rodinyje</li>
           <li xml:lang="nl">Verbeteringen van prestaties in dynamische weergave</li>
           <li xml:lang="pt-BR">Melhorias de desempenho na visualização dinâmica</li>
           <li xml:lang="ru">Улучшение производительности в динамическом представлении</li>
@@ -724,6 +729,7 @@
           <li xml:lang="ia">Barra de action de vista Dymanic rescribite per esser in linea al contento</li>
           <li xml:lang="it">Barra delle azioni di visualizzazione dinamica riscritta per essere in linea con il contenuto</li>
           <li xml:lang="ka">დინამიკური ხედის ქმედების ზოლი თავიდან გადაიწერა რომ იყოს ხაზზე შემცველობასთან</li>
+          <li xml:lang="lt">Dinaminio rodinio veiksmų juosta perrašyta taip, kad būtų įterpta į turinį</li>
           <li xml:lang="nl">Actiebalk van dynamische weergave herschreven om inline te zijn met inhoud</li>
           <li xml:lang="pt-BR">A barra de ação da visualização dinâmica foi reescrita para ficar integrada ao conteúdo</li>
           <li xml:lang="ru">Панель действий динамического представления переписана для размещения в строке с содержимым</li>
@@ -742,6 +748,7 @@
           <li xml:lang="ia">Permitte assignar location non currente in pagina de prevision predefinite</li>
           <li xml:lang="it">Consente l'impostazione della posizione non corrente nella pagina delle previsioni predefinite</li>
           <li xml:lang="ka">არამუდმივი მდებარეობების დაყენების დაშვება ნაგულისხმევი პროგნოზების გვერდზე</li>
+          <li xml:lang="lt">Leidžiama numatytajame orų prognozių puslapyje nustatyti ne dabartinę vietą</li>
           <li xml:lang="nl">Sta toe om een ​​niet-huidige locatie in te stellen op de pagina met standaardvoorspellingen.</li>
           <li xml:lang="pt-BR">Permitir a configuração de uma localização diferente da atual na página de previsões padrão</li>
           <li xml:lang="ru">Разрешено задание не текущего местоположения на странице прогнозов по умолчанию</li>
@@ -760,6 +767,7 @@
           <li xml:lang="ia">Addite habilitate a trovar unitates de temperatura ex le locale de systema</li>
           <li xml:lang="it">Aggiunta la possibilità di recuperare le unità di temperatura dalle impostazioni locali del sistema</li>
           <li xml:lang="ka">დაემატა ტემპერატურის ერთეულის სისტემური ლოკალიდან მიღების შესაძლებლობა</li>
+          <li xml:lang="lt">Pridėta galimybė gauti temperatūros vienetus iš sistemos lokalės</li>
           <li xml:lang="nl">Mogelijkheid toegevoegd om temperatuureenheden op te halen uit de taalinstelling van het systeem.</li>
           <li xml:lang="pt-BR">Adicionada a capacidade de obter unidades de temperatura da localização do sistema</li>
           <li xml:lang="ru">Добавлена возможность получения единиц измерения температуры из системной локали</li>
@@ -778,6 +786,7 @@
           <li xml:lang="ia">Corrigite formato de fuso horari que non es correctemente legite per tempore de location local</li>
           <li xml:lang="it">Corretto il formato del fuso orario che non veniva letto correttamente per l'ora locale</li>
           <li xml:lang="ka">გასწორდა დროის სარტყლის ფორმატის არასწორი წაკითხვა ლოკალური მდებარეობის დროისთვის</li>
+          <li xml:lang="lt">Fiksuotas laiko formatas nebuvo teisingai perskaitomas vietiniam vietos laikui</li>
           <li xml:lang="nl">Het probleem is opgelost waarbij de tijdzone-indeling niet correct werd uitgelezen voor de lokale tijd.</li>
           <li xml:lang="pt-BR">Corrigido o problema que impedia a leitura correta do formato de fuso horário para a hora local</li>
           <li xml:lang="ru">Исправлено некорректное чтение формата часового пояса для местного времени</li>
@@ -804,6 +813,7 @@
         <p xml:lang="ia">%1 Modificationes</p>
         <p xml:lang="it">Modifiche:</p>
         <p xml:lang="ka">ცვლილებები:</p>
+        <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
         <p xml:lang="pt-BR">Alterações:</p>
         <p xml:lang="ru">Изменения:</p>
@@ -823,6 +833,7 @@
           <li xml:lang="ia">Rescribeva le plasmoid del tempore meteorologic</li>
           <li xml:lang="it">Riscritto il plasmoide meteorologico</li>
           <li xml:lang="ka">თავიდან დაიწერა ამინდის პლაზმოიდი</li>
+          <li xml:lang="lt">Perrašytas orų Plasma įskiepis</li>
           <li xml:lang="nl">De weer-plasmoid is herschreven</li>
           <li xml:lang="pt-BR">Reescrita do plasmoide meteorológico</li>
           <li xml:lang="ru">Переписан плазмоид погоды</li>
@@ -841,6 +852,7 @@
           <li xml:lang="ia">Usa indicator d epagina integrate pe rprevisiones de modo plan</li>
           <li xml:lang="it">Utilizza l'indicatore di pagina in linea per le previsioni in modalità piatta</li>
           <li xml:lang="ka">ხაზშივე გვერდის მაჩვენებლის გამოყენება ბრტყელი რეჟიმის პროგნოზებისთვის</li>
+          <li xml:lang="lt">Plokščios veiksenos orų prognozėms naudojamas įterptas puslapio indikatorius</li>
           <li xml:lang="nl">Gebruik de inline pagina-indicator voor voorspellingen in vlakke modus.</li>
           <li xml:lang="pt-BR">Uso do indicador de página embutido para previsões em modo plano</li>
           <li xml:lang="ru">Использован встроенный индикатор страницы для прогнозов в плоском режиме</li>
@@ -859,6 +871,7 @@
           <li xml:lang="ia">Corrige ordinar de location non persistente</li>
           <li xml:lang="it">Corregge l'ordinamento delle posizioni che non viene mantenuta</li>
           <li xml:lang="ka">გასწორდა მდებარეობის მიმდევრობის არამუდმივობა</li>
+          <li xml:lang="lt">Ištaisyta klaida, kai vietų tvarka nebūdavo pastovi</li>
           <li xml:lang="nl">Het probleem met de niet-behoudende locatievolgorde is opgelost.</li>
           <li xml:lang="pt-BR">Corrigido o problema de persistência na ordenação de locais</li>
           <li xml:lang="ru">Исправлено сохранение порядок расположений</li>
@@ -883,6 +896,7 @@
         <p xml:lang="ia">%1 Modificationes</p>
         <p xml:lang="it">Modifiche:</p>
         <p xml:lang="ka">ცვლილებები:</p>
+        <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
         <p xml:lang="pt-BR">Alterações:</p>
         <p xml:lang="ru">Изменения:</p>
@@ -902,6 +916,7 @@
           <li xml:lang="ia">Relaborava le pagina de location per manear meliormente longe nomine de location</li>
           <li xml:lang="it">La pagina delle posizioni è stata rielaborata per gestire meglio i nomi di posizione lunghi</li>
           <li xml:lang="ka">გადაკეთდა მდებარეობის გვერდი, რომ უკეთ აღიქვას გრძელი მდებარეობის სახელები</li>
+          <li xml:lang="lt">Atnaujintas vietų puslapis, kad būtų geriau apdorojami ilgi vietovių pavadinimai</li>
           <li xml:lang="nl">De pagina met locaties is opnieuw bewerkt om lange locatienamen beter te verwerken.</li>
           <li xml:lang="pt-BR">Reformulada a página de locais para lidar melhor com nomes de locais longos</li>
           <li xml:lang="ru">Переработана страница местоположений для лучшей обработки длинных названий</li>
@@ -920,6 +935,7 @@
           <li xml:lang="ia">Adde largessa maxime a prevision dynamic per tractar meliormente schermos large</li>
           <li xml:lang="it">Aggiunge la larghezza massima alle previsioni dinamiche per gestire meglio lo schermo panoramico</li>
           <li xml:lang="ka">დაემატა მაქსიმალური სიგანე დინამიკურ პროგნოზებს ფართო ეკრანებთან უკეთესად სამუშაოდ</li>
+          <li xml:lang="lt">Į dinaminę orų prognozę pridėtas didžiausias plotis, kad būtų geriau susitvarkoma plačiuose ekranuose</li>
           <li xml:lang="nl">Voeg de maximale breedte toe aan de dynamische voorspelling om beter om te gaan met breedbeeldschermen.</li>
           <li xml:lang="pt-BR">Adicionada largura máxima à previsão dinâmica para melhor lidar com telas widescreen</li>
           <li xml:lang="ru">Определена максимальная ширина для динамического прогноза для лучшей работы с широкоэкранными дисплеями</li>
@@ -938,6 +954,7 @@
           <li xml:lang="ia">Remove plasmoid (il ha essite relaborate!)</li>
           <li xml:lang="it">Rimuove il plasmoide (è in fase di rielaborazione!)</li>
           <li xml:lang="ka">პლაზმოიდის წაშლა (მიმდინარეობს მისი თავიდან დამუშავება!)</li>
+          <li xml:lang="lt">Pašalintas Plasma įskiepis (jis yra perdaromas!)</li>
           <li xml:lang="nl">Plasmoid verwijderen (het wordt opnieuw bewerkt!)</li>
           <li xml:lang="pt-BR">Removido o plasmoide (está sendo reformulado!)</li>
           <li xml:lang="ru">Удалён виджет (ведётся переработка!)</li>
@@ -956,6 +973,7 @@
           <li xml:lang="ia">Corrigite que le pagina predefinite non es cargate quando nove locationes es addite</li>
           <li xml:lang="it">Risolto il problema per cui la pagina predefinita non veniva caricata quando venivano aggiunte nuove posizioni</li>
           <li xml:lang="ka">გასწორდა ნაგულისხმევი გვერდის არჩატვირთვა ახალი მდებარეობების დამატებისას</li>
+          <li xml:lang="lt">Fiksuotas numatytasis puslapis nebuvo įkeliamas, kai buvo pridėtos naujos vietos</li>
           <li xml:lang="nl">Opgelost: de standaardpagina werd niet geladen wanneer nieuwe locaties werden toegevoegd.</li>
           <li xml:lang="pt-BR">Corrigido o problema em que a página padrão não carregava quando novos locais eram adicionados</li>
           <li xml:lang="ru">Исправлена ошибка загрузки страницы по умолчанию при добавлении новых местоположений</li>
@@ -974,6 +992,7 @@
           <li xml:lang="ia">Uni locationes de preferentias de application</li>
           <li xml:lang="it">Unifica la posizione delle impostazioni dell'applicazione</li>
           <li xml:lang="ka">გაერთიანდა აპლიკაციის მორგების მდებარეობა</li>
+          <li xml:lang="lt">Suvienyta programos nuostatų vieta</li>
           <li xml:lang="nl">De locatie van de toepassingsinstellingen eenduidig maken</li>
           <li xml:lang="pt-BR">Unificada a localização das configurações do aplicativo</li>
           <li xml:lang="ru">Унифицировано расположение параметров приложения</li>
@@ -992,6 +1011,7 @@
           <li xml:lang="ia">Habilita cribrar de qml quando in modo de cribrar</li>
           <li xml:lang="it">Abilita il debug qml quando si è in modalità debug</li>
           <li xml:lang="ka">qml გამართვის ჩართვა გამართვის რეჟიმში</li>
+          <li xml:lang="lt">Įjungtas qml derinimas, kai esama derinimo veiksenoje</li>
           <li xml:lang="nl">Schakel QML-foutopsporing in wanneer u zich in de foutopsporingsmodus bevindt.</li>
           <li xml:lang="pt-BR">Ativada a depuração do QML quando no modo de depuração</li>
           <li xml:lang="ru">Добавлена возможность отладки QML в режиме отладки</li>
