@@ -111,6 +111,7 @@
     <p xml:lang="bg">Приложение за метеорологична прогноза за Plasma. Има плоски и динамични/анимирани изгледи за показване на прогнози и друга информация.</p>
     <p xml:lang="ca">Una aplicació convergent de meteorologia per al Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="ca-valencia">Una aplicació convergent de meteorologia per a Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
+    <p xml:lang="cs">Konvergentní aplikace pro předpověď počasí pro Plasma. Má jednoduché a dynamické/animované zobrazení pro předpovědi a další informace.</p>
     <p xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma. Mit flachen und dynamisch animierten Ansichten der Wettervorhersage und weiteren Informationen.</p>
     <p xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma. Περιέχει επίπεδες και δυναμικές/κινούμενης εικόνας προβολές για την παρουσίαση προγνώσεων και για άλλες πληροφορίες.</p>
     <p xml:lang="en-GB">A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
@@ -155,6 +156,7 @@
       <caption xml:lang="bg">Динамичен изглед за мобилна версия</caption>
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica en el mòbil</caption>
+      <caption xml:lang="cs">Mobilní dynamické zobrazení</caption>
       <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
       <caption xml:lang="el">Δυναμική προβολή για κινητό</caption>
       <caption xml:lang="en-GB">Mobile dynamic view</caption>
@@ -199,6 +201,7 @@
       <caption xml:lang="bg">Динамичен изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista dinàmica a l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica a l'escriptori</caption>
+      <caption xml:lang="cs">Dynamické zobrazení pro PC</caption>
       <caption xml:lang="de">Dynamische Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="el">Δυναμική προβολή για υπολογιστή</caption>
       <caption xml:lang="en-GB">Desktop dynamic view</caption>
@@ -243,6 +246,7 @@
       <caption xml:lang="bg">Плосък изглед за мобилна версия</caption>
       <caption xml:lang="ca">Vista plana al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista plana en el mòbil</caption>
+      <caption xml:lang="cs">Jednoduché mobilní zobrazení</caption>
       <caption xml:lang="de">Flache Ansicht für Mobilgeräte</caption>
       <caption xml:lang="el">Επίπεδη προβολή για κινητό</caption>
       <caption xml:lang="en-GB">Mobile flat view</caption>
@@ -287,6 +291,7 @@
       <caption xml:lang="bg">Динамичен изглед за мобилна версия</caption>
       <caption xml:lang="ca">Vista dinàmica al mòbil</caption>
       <caption xml:lang="ca-valencia">Vista dinàmica en el mòbil</caption>
+      <caption xml:lang="cs">Mobilní dynamické zobrazení</caption>
       <caption xml:lang="de">Dynamische Ansicht für Mobilgeräte</caption>
       <caption xml:lang="el">Δυναμική προβολή για κινητό</caption>
       <caption xml:lang="en-GB">Mobile dynamic view</caption>
@@ -394,6 +399,7 @@
           <li xml:lang="bg">Подобрения в потребителския интерфейс и корекции на грешки</li>
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
+          <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
@@ -418,6 +424,7 @@
           <li xml:lang="bg">Подобрения в потребителския интерфейс и корекции на грешки</li>
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
+          <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
@@ -442,6 +449,7 @@
           <li xml:lang="bg">Подобрения в потребителския интерфейс и корекции на грешки</li>
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
+          <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
@@ -465,6 +473,7 @@
         <p xml:lang="bg">Промени:</p>
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
+        <p xml:lang="cs">Změny:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
@@ -483,6 +492,7 @@
           <li xml:lang="bg">Подобрения в производителността в динамичния изглед</li>
           <li xml:lang="ca">Millores de rendiment a la vista dinàmica</li>
           <li xml:lang="ca-valencia">Millores de rendiment a la vista dinàmica</li>
+          <li xml:lang="cs">Vylepšení výkonu v dynamickém zobrazení</li>
           <li xml:lang="es">Mejoras de rendimiento en la vista dinámica.</li>
           <li xml:lang="fr">Améliorations des performances dans la vue dynamique</li>
           <li xml:lang="he">שיפורי ביצועים בתצוגה דינמית</li>
@@ -500,6 +510,7 @@
           <li xml:lang="bg">Динамична лента за действие на изгледа, пренаписана така, че да е вградена в съдържанието</li>
           <li xml:lang="ca">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
           <li xml:lang="ca-valencia">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
+          <li xml:lang="cs">Dynamická lišta akcí zobrazení byla přepracována tak, aby byla v souladu s obsahem.</li>
           <li xml:lang="es">Barra de acción de vista dinámica reescrita para estar en línea con el contenido.</li>
           <li xml:lang="fr">La barre d'actions de vue dynamique a été réécrite pour être intégrée au contenu</li>
           <li xml:lang="he">סרגל פעולות התצוגה הדינמית שוכתב כדי שיהיה מיושר לתוכן</li>
@@ -517,6 +528,7 @@
           <li xml:lang="bg">Разрешаване на задаване на неактуално местоположение на страницата с прогнози по подразбиране</li>
           <li xml:lang="ca">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
           <li xml:lang="ca-valencia">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
+          <li xml:lang="cs">Umožněno nastavení jiné než aktuální polohy na stránce výchozích předpovědí</li>
           <li xml:lang="es">Permitir configurar una ubicación no actual en la página de pronósticos predeterminada.</li>
           <li xml:lang="fr">Autoriser la définition d'un emplacement non courant sur la page par défaut des prévisions</li>
           <li xml:lang="he">לאפשר הגדרת מקום שאינו הנוכחי בעמוד התשקיפים כברירת מחדל</li>
@@ -534,6 +546,7 @@
           <li xml:lang="bg">Добавена е възможност за извличане на температурни единици от системния език</li>
           <li xml:lang="ca">Afegeix la capacitat d'obtenir unitats de temperatura de la configuració regional del sistema</li>
           <li xml:lang="ca-valencia">Afig la capacitat d'obtindre unitats de temperatura de la configuració regional del sistema</li>
+          <li xml:lang="cs">Přidána možnost načíst jednotky teploty ze systémového nastavení místního formátu.</li>
           <li xml:lang="es">Se ha añadido la capacidad de obtener unidades de temperatura de la configuración regional del sistema.</li>
           <li xml:lang="fr">Ajout de la possibilité de charger les unités de température à partir des paramètres régionaux du système</li>
           <li xml:lang="he">נוספה האפשרות למשוך את יחידות הטמפרטורה לפי הגדרות המקום של המערכת</li>
@@ -551,6 +564,7 @@
           <li xml:lang="bg">Поправен е форматът на часовата зона, който не се четеше правилно за местното време</li>
           <li xml:lang="ca">Corregeix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
           <li xml:lang="ca-valencia">Corregix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
+          <li xml:lang="cs">Formát pevného časového pásma není správně načítán pro místní čas</li>
           <li xml:lang="es">Corrección para el formato de zona horaria no se lee correctamente para la hora de la ubicación local.</li>
           <li xml:lang="fr">Correction du format de fuseau horaire fixe incorrectement lu pour l’heure locale</li>
           <li xml:lang="he">תוקנה בעיה שתבנית אזור הזמן לא נקראת כראוי לשעה של המקום הנוכחי</li>
@@ -576,6 +590,7 @@
         <p xml:lang="bg">Промени:</p>
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
+        <p xml:lang="cs">Změny:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
@@ -594,6 +609,7 @@
           <li xml:lang="bg">Пренаписан е плазмоид за метеорологичните данни</li>
           <li xml:lang="ca">Reescrit el plasmoide meteorològic</li>
           <li xml:lang="ca-valencia">Reescrit el plasmoide meteorològic</li>
+          <li xml:lang="cs">Přepsán plasmoid počasí.</li>
           <li xml:lang="es">Reescritura del plasmoide de meteorología.</li>
           <li xml:lang="fr">Réécrit le plasmoïde de météo</li>
           <li xml:lang="he">פלזמואיד מזג האוויר נכתב מחדש</li>
@@ -611,6 +627,7 @@
           <li xml:lang="bg">Използване на вграден индикатор на страницата за прогнози в плосък режим</li>
           <li xml:lang="ca">Usa l'indicador de pàgina inclosa per a les previsions en mode pla</li>
           <li xml:lang="ca-valencia">Utilitza l'indicador de pàgina inclosa per a les previsions en mode pla</li>
+          <li xml:lang="cs">Použit inline indikátor stránky pro předpovědi v jednoduchém režimu</li>
           <li xml:lang="es">Usar el indicador de página en línea para pronósticos en modo plano.</li>
           <li xml:lang="fr">Utilisez un indicateur intégré de page pour les prévisions en mode à plat</li>
           <li xml:lang="he">להשתמש במחוון פנימי בעמוד לתשקיפים במצב שטוח</li>
@@ -628,6 +645,7 @@
           <li xml:lang="bg">Поправка на подреждането на местоположенията, което не се запазва</li>
           <li xml:lang="ca">Corregeix l'ordre de les ubicacions que no persisteix</li>
           <li xml:lang="ca-valencia">Corregix l'ordre de les ubicacions que no persistix</li>
+          <li xml:lang="cs">Oprava nefunkčního řazení poloh</li>
           <li xml:lang="es">Se ha corregido el problema de que el orden de ubicación no persistía.</li>
           <li xml:lang="fr">Correction de l'ordre des emplacements non permanent</li>
           <li xml:lang="he">תוקנה בעיה שסדר המקומות אינו עקבי</li>
@@ -651,6 +669,7 @@
         <p xml:lang="bg">Промени:</p>
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
+        <p xml:lang="cs">Změny:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
@@ -669,6 +688,7 @@
           <li xml:lang="bg">Страницата с местоположения е преработена, за да се обработват по-добре дългите имена на местоположения.</li>
           <li xml:lang="ca">Refà la pàgina d'ubicacions per gestionar millor els noms de les ubicacions llargues</li>
           <li xml:lang="ca-valencia">Refà la pàgina d'ubicacions per a gestionar millor els noms de les ubicacions llargues</li>
+          <li xml:lang="cs">Přepracována stránka s lokalitami, aby lépe zvládala jejich dlouhé názvy.</li>
           <li xml:lang="es">Se ha modificado la página de ubicaciones para manejar mejor los nombres largos de ubicaciones.</li>
           <li xml:lang="fr">Refonte de la page des emplacements pour mieux gérer les noms longs d'emplacements</li>
           <li xml:lang="he">עמוד המקומות עבר עבודה מחדש לטיפול טוב יותר בשמות מקומות ארוכים</li>
@@ -686,6 +706,7 @@
           <li xml:lang="bg">Добавена е максимална ширина към динамичната прогноза, за да се представи по-добре в широкоекранен режим</li>
           <li xml:lang="ca">Afegeix l'amplada màxima a la previsió dinàmica per gestionar millor les pantalles amples</li>
           <li xml:lang="ca-valencia">Afig l'amplària màxima a la previsió dinàmica per a gestionar millor les pantalles amples</li>
+          <li xml:lang="cs">Přidána maximální šířka k dynamické předpovědi, aby se lépe přizpůsobila širokoúhlému displeji.</li>
           <li xml:lang="es">Se ha añadido la anchura máxima al pronóstico dinámico para aprovechar mejor las pantallas anchas.</li>
           <li xml:lang="fr">Ajouter une largeur maximale à la prévision dynamique pour mieux gérer les écrans larges</li>
           <li xml:lang="he">הוספת רוחב מרבי לתשקיף דינמי כדי להתמודד טוב יותר עם מסך רחב</li>
@@ -703,6 +724,7 @@
           <li xml:lang="bg">Премахнат е плазмоида (той се преработва!)</li>
           <li xml:lang="ca">Elimina el plasmoide (s'està tornant a fer!)</li>
           <li xml:lang="ca-valencia">Elimina el plasmoide (s'està tornant a fer!)</li>
+          <li xml:lang="cs">Odstraněn plasmoid (je přepracováván!)</li>
           <li xml:lang="es">Eliminar plasmoide (¡se está trabajando en ello!)</li>
           <li xml:lang="fr">Supprimer le plasmoïde (Il est en cours de refonte !)</li>
           <li xml:lang="he">הפלזמואיד הוסר (עובדים עליו מחדש!)</li>
@@ -720,6 +742,7 @@
           <li xml:lang="bg">Поправена е страницата по подразбиране, която не се зареждаше при добавяне на нови местоположения</li>
           <li xml:lang="ca">Corregeix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
           <li xml:lang="ca-valencia">Corregix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
+          <li xml:lang="cs">Opravena chyba, kdy se při přidání nových lokalit nenačítala výchozí stránka.</li>
           <li xml:lang="es">Se ha corregido el problema de que la página predeterminada no se cargaba cuando se añadían nuevas ubicaciones.</li>
           <li xml:lang="fr">Correction de l'absence de chargement de la page par défaut lors de l'ajout de nouveaux emplacements</li>
           <li xml:lang="he">תוקנה בעיה שעמוד ברירת המחדל לא נטען כשנוספים מקומות חדשים</li>
@@ -737,6 +760,7 @@
           <li xml:lang="bg">Унифициране на местоположението на настройките на приложението</li>
           <li xml:lang="ca">Unifica la configuració de la ubicació a l'aplicació</li>
           <li xml:lang="ca-valencia">Unifica la configuració de la ubicació a l'aplicació</li>
+          <li xml:lang="cs">Sjednoceno umístění nastavení aplikace</li>
           <li xml:lang="es">Unificar la ubicación de la configuración de la aplicación.</li>
           <li xml:lang="fr">Unifier l'emplacement de la configuration de l'application</li>
           <li xml:lang="he">איחוד מקום הגדרות היישום</li>
@@ -754,6 +778,7 @@
           <li xml:lang="bg">Активиране на qml дебъгване в режим на дебъгване</li>
           <li xml:lang="ca">Activa la depuració del QML quan és en el mode de depuració</li>
           <li xml:lang="ca-valencia">Activa la depuració de QML quan és en el mode de depuració</li>
+          <li xml:lang="cs">Povoleno ladění qml v režimu ladění</li>
           <li xml:lang="es">Habilitar modo de depuración qml en el modo de depuración.</li>
           <li xml:lang="fr">Activer le débogage de QML lorsqu'en mode de débogage</li>
           <li xml:lang="he">הפעלת ניפוי שגיאות ב־qml במצב ניפוי שגיאות</li>
