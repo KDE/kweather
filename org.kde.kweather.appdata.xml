@@ -405,6 +405,7 @@
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
+          <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
@@ -412,6 +413,7 @@
           <li xml:lang="sl">Izboljšave uporabniškega vmesnika in popravki napak</li>
           <li xml:lang="uk">Удосконалення інтерфейсу користувача та виправлення вад</li>
           <li xml:lang="zh-CN">用户界面改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">使用者介面改善與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -430,6 +432,7 @@
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
+          <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
@@ -437,6 +440,7 @@
           <li xml:lang="sl">Izboljšave uporabniškega vmesnika in popravki napak</li>
           <li xml:lang="uk">Удосконалення інтерфейсу користувача та виправлення вад</li>
           <li xml:lang="zh-CN">用户界面改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">使用者介面改善與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -455,6 +459,7 @@
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
+          <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
@@ -462,6 +467,7 @@
           <li xml:lang="sl">Izboljšave uporabniškega vmesnika in popravki napak</li>
           <li xml:lang="uk">Удосконалення інтерфейсу користувача та виправлення вад</li>
           <li xml:lang="zh-CN">用户界面改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">使用者介面改善與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -479,6 +485,7 @@
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">Modificationes:</p>
         <p xml:lang="it">Modifiche:</p>
+        <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
         <p xml:lang="pt-BR">Alterações:</p>
@@ -486,6 +493,7 @@
         <p xml:lang="sl">Spremembe:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
+        <p xml:lang="zh-TW">變更：</p>
         <ul>
           <li>Performance improvements in Dynamic view</li>
           <li xml:lang="ar">تحسينات في الأداء في العرض الحركي</li>
@@ -498,6 +506,7 @@
           <li xml:lang="he">שיפורי ביצועים בתצוגה דינמית</li>
           <li xml:lang="ia">Melioramentod de prestation in vista Dynamic</li>
           <li xml:lang="it">Miglioramenti delle prestazioni nella vista dinamica</li>
+          <li xml:lang="ka">შესრულების გაუმჯობესება დინამიკურ ხედში</li>
           <li xml:lang="lt">Našumo patobulinimai dinaminiame rodinyje</li>
           <li xml:lang="nl">Verbeteringen van prestaties in dynamische weergave</li>
           <li xml:lang="pt-BR">Melhorias de desempenho na visualização dinâmica</li>
@@ -505,6 +514,7 @@
           <li xml:lang="sl">Izboljšave delovanja v dinamičnem pogledu</li>
           <li xml:lang="uk">Удосконалення швидкодії у динамічному режимі перегляду</li>
           <li xml:lang="zh-CN">动态视图的性能改进</li>
+          <li xml:lang="zh-TW">改善動態檢視的效能</li>
           <li>Dynamic view action bar rewritten to be inline to content</li>
           <li xml:lang="ar">أُعيدت كتابة شريط إجراءات العرض الحركي ليكون مضمنًا في المحتوى</li>
           <li xml:lang="bg">Динамична лента за действие на изгледа, пренаписана така, че да е вградена в съдържанието</li>
@@ -516,6 +526,7 @@
           <li xml:lang="he">סרגל פעולות התצוגה הדינמית שוכתב כדי שיהיה מיושר לתוכן</li>
           <li xml:lang="ia">Barra de action de vista Dymanic rescribite per esser in linea al contento</li>
           <li xml:lang="it">Barra delle azioni di visualizzazione dinamica riscritta per essere in linea con il contenuto</li>
+          <li xml:lang="ka">დინამიკური ხედის ქმედების ზოლი თავიდან გადაიწერა რომ იყოს ხაზზე შემცველობასთან</li>
           <li xml:lang="lt">Dinaminio rodinio veiksmų juosta perrašyta taip, kad būtų įterpta į turinį</li>
           <li xml:lang="nl">Actiebalk van dynamische weergave herschreven om inline te zijn met inhoud</li>
           <li xml:lang="pt-BR">A barra de ação da visualização dinâmica foi reescrita para ficar integrada ao conteúdo</li>
@@ -523,6 +534,7 @@
           <li xml:lang="sl">Dinamična vrstica dejanj za prikaz, prepisana tako, da je v vrstici z vsebino</li>
           <li xml:lang="uk">Переписано панель дій динамічного перегляду так, щоб вона лишалася в одному рядку зі вмістом</li>
           <li xml:lang="zh-CN">动态视图操作栏重写为内嵌内容</li>
+          <li xml:lang="zh-TW">重寫動態檢視的動作列來與內容放在一起</li>
           <li>Allow setting non-current location in default forecasts page</li>
           <li xml:lang="ar">السماح بضبط موقع غير الحالي في صفحة التنبؤات المبدئية</li>
           <li xml:lang="bg">Разрешаване на задаване на неактуално местоположение на страницата с прогнози по подразбиране</li>
@@ -534,6 +546,7 @@
           <li xml:lang="he">לאפשר הגדרת מקום שאינו הנוכחי בעמוד התשקיפים כברירת מחדל</li>
           <li xml:lang="ia">Permitte assignar location non currente in pagina de prevision predefinite</li>
           <li xml:lang="it">Consente l'impostazione della posizione non corrente nella pagina delle previsioni predefinite</li>
+          <li xml:lang="ka">არამუდმივი მდებარეობების დაყენების დაშვება ნაგულისხმევი პროგნოზების გვერდზე</li>
           <li xml:lang="lt">Leidžiama numatytajame orų prognozių puslapyje nustatyti ne dabartinę vietą</li>
           <li xml:lang="nl">Sta toe om een ​​niet-huidige locatie in te stellen op de pagina met standaardvoorspellingen.</li>
           <li xml:lang="pt-BR">Permitir a configuração de uma localização diferente da atual na página de previsões padrão</li>
@@ -541,6 +554,7 @@
           <li xml:lang="sl">Dovoli nastavitev netrenutne lokacije na strani s privzetimi napovedmi</li>
           <li xml:lang="uk">Уможливлено встановлення місця, відмінного від поточного, на сторінці типових прогнозів</li>
           <li xml:lang="zh-CN">允许在默认预报页面设置为非当前地理位置</li>
+          <li xml:lang="zh-TW">允許在預設預報頁面設定非目前所在的位置</li>
           <li>Added ability to fetch temperature units from system locale</li>
           <li xml:lang="ar">أُضيفت القدرة على جلب وحدات درجة الحرارة من محلية النظام</li>
           <li xml:lang="bg">Добавена е възможност за извличане на температурни единици от системния език</li>
@@ -552,6 +566,7 @@
           <li xml:lang="he">נוספה האפשרות למשוך את יחידות הטמפרטורה לפי הגדרות המקום של המערכת</li>
           <li xml:lang="ia">Addite habilitate a trovar unitates de temperatura ex le locale de systema</li>
           <li xml:lang="it">Aggiunta la possibilità di recuperare le unità di temperatura dalle impostazioni locali del sistema</li>
+          <li xml:lang="ka">დაემატა ტემპერატურის ერთეულის სისტემური ლოკალიდან მიღების შესაძლებლობა</li>
           <li xml:lang="lt">Pridėta galimybė gauti temperatūros vienetus iš sistemos lokalės</li>
           <li xml:lang="nl">Mogelijkheid toegevoegd om temperatuureenheden op te halen uit de taalinstelling van het systeem.</li>
           <li xml:lang="pt-BR">Adicionada a capacidade de obter unidades de temperatura da localização do sistema</li>
@@ -559,6 +574,7 @@
           <li xml:lang="sl">Dodana možnost pridobivanja temperaturnih enot iz sistemskih nastavitev</li>
           <li xml:lang="uk">Додано можливість отримання температурної шкали з загальносистемної локалі</li>
           <li xml:lang="zh-CN">新增从系统区域设置中获取温度单位的功能</li>
+          <li xml:lang="zh-TW">新增從系統地域取得溫度單位設定值的功能</li>
           <li>Fixed timezone format not being correctly read for local location time</li>
           <li xml:lang="ar">أُصلح تنسيق المنطقة الزمنية الذي لم يُقرأ بشكل صحيح لوقت الموقع المحلي</li>
           <li xml:lang="bg">Поправен е форматът на часовата зона, който не се четеше правилно за местното време</li>
@@ -570,6 +586,7 @@
           <li xml:lang="he">תוקנה בעיה שתבנית אזור הזמן לא נקראת כראוי לשעה של המקום הנוכחי</li>
           <li xml:lang="ia">Corrigite formato de fuso horari que non es correctemente legite per tempore de location local</li>
           <li xml:lang="it">Corretto il formato del fuso orario che non veniva letto correttamente per l'ora locale</li>
+          <li xml:lang="ka">გასწორდა დროის სარტყლის ფორმატის არასწორი წაკითხვა ლოკალური მდებარეობის დროისთვის</li>
           <li xml:lang="lt">Fiksuotas laiko formatas nebuvo teisingai perskaitomas vietiniam vietos laikui</li>
           <li xml:lang="nl">Het probleem is opgelost waarbij de tijdzone-indeling niet correct werd uitgelezen voor de lokale tijd.</li>
           <li xml:lang="pt-BR">Corrigido o problema que impedia a leitura correta do formato de fuso horário para a hora local</li>
@@ -577,6 +594,7 @@
           <li xml:lang="sl">Odpravljena je bila nepravilna oblika časovnega pasu za lokalni čas lokacije.</li>
           <li xml:lang="uk">Виправлено читання формату часового поясу для місцевого часу</li>
           <li xml:lang="zh-CN">修复了无法从本地位置时间正确读取时区格式</li>
+          <li xml:lang="zh-TW">修正時區格式沒有為本地時間正確讀取的問題</li>
         </ul>
       </description>
     </release>
@@ -596,6 +614,7 @@
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">Modificationes:</p>
         <p xml:lang="it">Modifiche:</p>
+        <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
         <p xml:lang="pt-BR">Alterações:</p>
@@ -603,6 +622,7 @@
         <p xml:lang="sl">Spremembe:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
+        <p xml:lang="zh-TW">變更：</p>
         <ul>
           <li>Rewrote the weather plasmoid</li>
           <li xml:lang="ar">أُعيدت كتابة بلازمويد الطقس</li>
@@ -615,6 +635,7 @@
           <li xml:lang="he">פלזמואיד מזג האוויר נכתב מחדש</li>
           <li xml:lang="ia">Rescribeva le plasmoid del tempore meteorologic</li>
           <li xml:lang="it">Riscritto il plasmoide meteorologico</li>
+          <li xml:lang="ka">თავიდან დაიწერა ამინდის პლაზმოიდი</li>
           <li xml:lang="lt">Perrašytas orų Plasma įskiepis</li>
           <li xml:lang="nl">De weer-plasmoid is herschreven</li>
           <li xml:lang="pt-BR">Reescrita do plasmoide meteorológico</li>
@@ -622,6 +643,7 @@
           <li xml:lang="sl">Ponovno prepisan vremenski plazmoid</li>
           <li xml:lang="uk">Переписано плазмоїд погоди</li>
           <li xml:lang="zh-CN">重写天气 Plasma 小程序</li>
+          <li xml:lang="zh-TW">重寫天氣 Plasmoid 元件</li>
           <li>Use inline page indicator for flat mode forecasts</li>
           <li xml:lang="ar">استخدام مؤشر صفحة مضمن لتنبؤات الوضع المسطح</li>
           <li xml:lang="bg">Използване на вграден индикатор на страницата за прогнози в плосък режим</li>
@@ -633,6 +655,7 @@
           <li xml:lang="he">להשתמש במחוון פנימי בעמוד לתשקיפים במצב שטוח</li>
           <li xml:lang="ia">Usa indicator d epagina integrate pe rprevisiones de modo plan</li>
           <li xml:lang="it">Utilizza l'indicatore di pagina in linea per le previsioni in modalità piatta</li>
+          <li xml:lang="ka">ხაზშივე გვერდის მაჩვენებლის გამოყენება ბრტყელი რეჟიმის პროგნოზებისთვის</li>
           <li xml:lang="lt">Plokščios veiksenos orų prognozėms naudojamas įterptas puslapio indikatorius</li>
           <li xml:lang="nl">Gebruik de inline pagina-indicator voor voorspellingen in vlakke modus.</li>
           <li xml:lang="pt-BR">Uso do indicador de página embutido para previsões em modo plano</li>
@@ -640,6 +663,7 @@
           <li xml:lang="sl">Uporabite indikator strani v vrstici za napovedi v ravnem načinu</li>
           <li xml:lang="uk">Використано індикатор вбудованої сторінки для прогнозів у простому режимі</li>
           <li xml:lang="zh-CN">在扁平模式的预报中使用内嵌页面指示器</li>
+          <li xml:lang="zh-TW">用行內頁面指示器顯示扁平模式預報</li>
           <li>Fix location ordering not persisting</li>
           <li xml:lang="ar">إصلاح عدم استمرار ترتيب المواقع</li>
           <li xml:lang="bg">Поправка на подреждането на местоположенията, което не се запазва</li>
@@ -651,6 +675,7 @@
           <li xml:lang="he">תוקנה בעיה שסדר המקומות אינו עקבי</li>
           <li xml:lang="ia">Corrige ordinar de location non persistente</li>
           <li xml:lang="it">Corregge l'ordinamento delle posizioni che non viene mantenuta</li>
+          <li xml:lang="ka">გასწორდა მდებარეობის მიმდევრობის არამუდმივობა</li>
           <li xml:lang="lt">Ištaisyta klaida, kai vietų tvarka nebūdavo pastovi</li>
           <li xml:lang="nl">Het probleem met de niet-behoudende locatievolgorde is opgelost.</li>
           <li xml:lang="pt-BR">Corrigido o problema de persistência na ordenação de locais</li>
@@ -658,6 +683,7 @@
           <li xml:lang="sl">Odprava težave z vrstnim redom lokacij, ki se ne ohranja</li>
           <li xml:lang="uk">Виправлено сумісність упорядковування місць</li>
           <li xml:lang="zh-CN">修复了位置排序不能记忆的问题</li>
+          <li xml:lang="zh-TW">修正位置排序不會儲存的問題</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/07/20/plasma-mobile-gear-21-07/</url>
@@ -675,6 +701,7 @@
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">Modificationes:</p>
         <p xml:lang="it">Modifiche:</p>
+        <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
         <p xml:lang="pt-BR">Alterações:</p>
@@ -682,6 +709,7 @@
         <p xml:lang="sl">Spremembe:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
+        <p xml:lang="zh-TW">變更：</p>
         <ul>
           <li>Reworked the locations page to better handle long location names</li>
           <li xml:lang="ar">أُعيدت صياغة صفحة المواقع للتعامل بشكل أفضل مع أسماء المواقع الطويلة</li>
@@ -694,6 +722,7 @@
           <li xml:lang="he">עמוד המקומות עבר עבודה מחדש לטיפול טוב יותר בשמות מקומות ארוכים</li>
           <li xml:lang="ia">Relaborava le pagina de location per manear meliormente longe nomine de location</li>
           <li xml:lang="it">La pagina delle posizioni è stata rielaborata per gestire meglio i nomi di posizione lunghi</li>
+          <li xml:lang="ka">გადაკეთდა მდებარეობის გვერდი, რომ უკეთ აღიქვას გრძელი მდებარეობის სახელები</li>
           <li xml:lang="lt">Atnaujintas vietų puslapis, kad būtų geriau apdorojami ilgi vietovių pavadinimai</li>
           <li xml:lang="nl">De pagina met locaties is opnieuw bewerkt om lange locatienamen beter te verwerken.</li>
           <li xml:lang="pt-BR">Reformulada a página de locais para lidar melhor com nomes de locais longos</li>
@@ -701,6 +730,7 @@
           <li xml:lang="sl">Predelana stran z lokacijami za boljše obvladovanje dolgih imen lokacij</li>
           <li xml:lang="uk">Перероблено сторінку місць так, щоб на ній краще було видно довгі назви місць</li>
           <li xml:lang="zh-CN">重构位置页面以适应长名称</li>
+          <li xml:lang="zh-TW">修改位置頁面來改善對於較長的位置名稱的處理</li>
           <li>Add maximum width to dynamic forecast to better deal with widescreen</li>
           <li xml:lang="ar">إضافة عرض أقصى للتنبؤ الحركي للتعامل بشكل أفضل مع الشاشات العريضة</li>
           <li xml:lang="bg">Добавена е максимална ширина към динамичната прогноза, за да се представи по-добре в широкоекранен режим</li>
@@ -712,6 +742,7 @@
           <li xml:lang="he">הוספת רוחב מרבי לתשקיף דינמי כדי להתמודד טוב יותר עם מסך רחב</li>
           <li xml:lang="ia">Adde largessa maxime a prevision dynamic per tractar meliormente schermos large</li>
           <li xml:lang="it">Aggiunge la larghezza massima alle previsioni dinamiche per gestire meglio lo schermo panoramico</li>
+          <li xml:lang="ka">დაემატა მაქსიმალური სიგანე დინამიკურ პროგნოზებს ფართო ეკრანებთან უკეთესად სამუშაოდ</li>
           <li xml:lang="lt">Į dinaminę orų prognozę pridėtas didžiausias plotis, kad būtų geriau susitvarkoma plačiuose ekranuose</li>
           <li xml:lang="nl">Voeg de maximale breedte toe aan de dynamische voorspelling om beter om te gaan met breedbeeldschermen.</li>
           <li xml:lang="pt-BR">Adicionada largura máxima à previsão dinâmica para melhor lidar com telas widescreen</li>
@@ -719,6 +750,7 @@
           <li xml:lang="sl">Dinamični napovedi doda največjo širino za boljše delovanje v širokem zaslonu</li>
           <li xml:lang="uk">Додано максимальну ширину для динамічних прогнозів так, щоб це краще працювало на широких екранах</li>
           <li xml:lang="zh-CN">为动态预报添加最大宽度以适应宽屏</li>
+          <li xml:lang="zh-TW">為動態預報設定最大寬度來改善寬螢幕上的顯示</li>
           <li>Remove plasmoid (it is being reworked!)</li>
           <li xml:lang="ar">إزالة البلازمويد (تجري إعادة صياغته!)</li>
           <li xml:lang="bg">Премахнат е плазмоида (той се преработва!)</li>
@@ -730,6 +762,7 @@
           <li xml:lang="he">הפלזמואיד הוסר (עובדים עליו מחדש!)</li>
           <li xml:lang="ia">Remove plasmoid (il ha essite relaborate!)</li>
           <li xml:lang="it">Rimuove il plasmoide (è in fase di rielaborazione!)</li>
+          <li xml:lang="ka">პლაზმოიდის წაშლა (მიმდინარეობს მისი თავიდან დამუშავება!)</li>
           <li xml:lang="lt">Pašalintas Plasma įskiepis (jis yra perdaromas!)</li>
           <li xml:lang="nl">Plasmoid verwijderen (het wordt opnieuw bewerkt!)</li>
           <li xml:lang="pt-BR">Removido o plasmoide (está sendo reformulado!)</li>
@@ -737,6 +770,7 @@
           <li xml:lang="sl">Odstrani plazmoid (se predeluje!).</li>
           <li xml:lang="uk">Вилучено плазмоїд (переписування!)</li>
           <li xml:lang="zh-CN">移除 Plasma 小程序 (正在重写)</li>
+          <li xml:lang="zh-TW">移除 Plasmoid 元件（我們正在重寫它！）</li>
           <li>Fixed default page not being loaded when new locations are added</li>
           <li xml:lang="ar">أُصلح عدم تحميل الصفحة المبدئية عند إضافة مواقع جديدة</li>
           <li xml:lang="bg">Поправена е страницата по подразбиране, която не се зареждаше при добавяне на нови местоположения</li>
@@ -748,6 +782,7 @@
           <li xml:lang="he">תוקנה בעיה שעמוד ברירת המחדל לא נטען כשנוספים מקומות חדשים</li>
           <li xml:lang="ia">Corrigite que le pagina predefinite non es cargate quando nove locationes es addite</li>
           <li xml:lang="it">Risolto il problema per cui la pagina predefinita non veniva caricata quando venivano aggiunte nuove posizioni</li>
+          <li xml:lang="ka">გასწორდა ნაგულისხმევი გვერდის არჩატვირთვა ახალი მდებარეობების დამატებისას</li>
           <li xml:lang="lt">Fiksuotas numatytasis puslapis nebuvo įkeliamas, kai buvo pridėtos naujos vietos</li>
           <li xml:lang="nl">Opgelost: de standaardpagina werd niet geladen wanneer nieuwe locaties werden toegevoegd.</li>
           <li xml:lang="pt-BR">Corrigido o problema em que a página padrão não carregava quando novos locais eram adicionados</li>
@@ -755,6 +790,7 @@
           <li xml:lang="sl">Popravljena je bila napaka, da se privzeta stran ni naložila ob dodajanju novih lokacij</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що типова сторінка не завантажувалася, якщо додано нові місця</li>
           <li xml:lang="zh-CN">修复了在添加新位置时默认页面不加载的问题</li>
+          <li xml:lang="zh-TW">修正新增位置時不會載入預設頁面的問題</li>
           <li>Unify application settings location</li>
           <li xml:lang="ar">توحيد موقع إعدادات التطبيق</li>
           <li xml:lang="bg">Унифициране на местоположението на настройките на приложението</li>
@@ -766,6 +802,7 @@
           <li xml:lang="he">איחוד מקום הגדרות היישום</li>
           <li xml:lang="ia">Uni locationes de preferentias de application</li>
           <li xml:lang="it">Unifica la posizione delle impostazioni dell'applicazione</li>
+          <li xml:lang="ka">გაერთიანდა აპლიკაციის მორგების მდებარეობა</li>
           <li xml:lang="lt">Suvienyta programos nuostatų vieta</li>
           <li xml:lang="nl">De locatie van de toepassingsinstellingen eenduidig maken</li>
           <li xml:lang="pt-BR">Unificada a localização das configurações do aplicativo</li>
@@ -773,6 +810,7 @@
           <li xml:lang="sl">Poenoti nastavitev lokacije aplikacije</li>
           <li xml:lang="uk">Уніфіковано розташування параметрів роботи програми</li>
           <li xml:lang="zh-CN">统一应用程序设置位置</li>
+          <li xml:lang="zh-TW">統一應用程式設定位置</li>
           <li>Enable qml debugging when in debug mode</li>
           <li xml:lang="ar">تمكين تنقيب qml عند التواجد في وضع التنقيح</li>
           <li xml:lang="bg">Активиране на qml дебъгване в режим на дебъгване</li>
@@ -784,6 +822,7 @@
           <li xml:lang="he">הפעלת ניפוי שגיאות ב־qml במצב ניפוי שגיאות</li>
           <li xml:lang="ia">Habilita cribrar de qml quando in modo de cribrar</li>
           <li xml:lang="it">Abilita il debug qml quando si è in modalità debug</li>
+          <li xml:lang="ka">ჩაირთო QML-ის გამართვა გამართვის რეჟიმში აგებისას</li>
           <li xml:lang="lt">Įjungtas qml derinimas, kai esama derinimo veiksenoje</li>
           <li xml:lang="nl">Schakel QML-foutopsporing in wanneer u zich in de foutopsporingsmodus bevindt.</li>
           <li xml:lang="pt-BR">Ativada a depuração do QML quando no modo de depuração</li>
@@ -791,6 +830,7 @@
           <li xml:lang="sl">Omogoči odpravljanje napak qml v načinu odpravljanja napak</li>
           <li xml:lang="uk">Уможливлено діагностику qml, якщо програма перебуває у діагностичному режимі</li>
           <li xml:lang="zh-CN">在调试模式下启用 QML 调试</li>
+          <li xml:lang="zh-TW">使用除錯模式時也啟用 QML 除錯</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/06/10/plasma-mobile-update-june/</url>
