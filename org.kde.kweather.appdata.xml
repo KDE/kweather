@@ -630,6 +630,7 @@
           <li xml:lang="tr">Kullanıcı arayüzü iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Удосконалення інтерфейсу користувача та виправлення вад</li>
           <li xml:lang="zh-CN">用户界面改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">使用者介面改善與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -657,6 +658,7 @@
           <li xml:lang="tr">Kullanıcı arayüzü iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Удосконалення інтерфейсу користувача та виправлення вад</li>
           <li xml:lang="zh-CN">用户界面改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">使用者介面改善與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -684,6 +686,7 @@
           <li xml:lang="tr">Kullanıcı arayüzü iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Удосконалення інтерфейсу користувача та виправлення вад</li>
           <li xml:lang="zh-CN">用户界面改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">使用者介面改善與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -710,6 +713,7 @@
         <p xml:lang="tr">Değişiklikler:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
+        <p xml:lang="zh-TW">變更：</p>
         <ul>
           <li>Performance improvements in Dynamic view</li>
           <li xml:lang="ar">تحسينات في الأداء في العرض الحركي</li>
@@ -731,6 +735,7 @@
           <li xml:lang="tr">Devingen görünümde başarım iyileştirmeleri</li>
           <li xml:lang="uk">Удосконалення швидкодії у динамічному режимі перегляду</li>
           <li xml:lang="zh-CN">动态视图的性能改进</li>
+          <li xml:lang="zh-TW">改善動態檢視的效能</li>
           <li>Dynamic view action bar rewritten to be inline to content</li>
           <li xml:lang="ar">أُعيدت كتابة شريط إجراءات العرض الحركي ليكون مضمنًا في المحتوى</li>
           <li xml:lang="bg">Динамична лента за действие на изгледа, пренаписана така, че да е вградена в съдържанието</li>
@@ -751,6 +756,7 @@
           <li xml:lang="tr">Devingen görünüm eylem çubuğu, içeriğe paralel olacak şekilde yeniden yazıldı</li>
           <li xml:lang="uk">Переписано панель дій динамічного перегляду так, щоб вона лишалася в одному рядку зі вмістом</li>
           <li xml:lang="zh-CN">动态视图操作栏重写为内嵌内容</li>
+          <li xml:lang="zh-TW">重寫動態檢視的動作列來與內容放在一起</li>
           <li>Allow setting non-current location in default forecasts page</li>
           <li xml:lang="ar">السماح بضبط موقع غير الحالي في صفحة التنبؤات المبدئية</li>
           <li xml:lang="bg">Разрешаване на задаване на неактуално местоположение на страницата с прогнози по подразбиране</li>
@@ -771,6 +777,7 @@
           <li xml:lang="tr">Öntanımlı tahminler sayfasında geçerli olmayan bir konum ayarlanmasına izin ver</li>
           <li xml:lang="uk">Уможливлено встановлення місця, відмінного від поточного, на сторінці типових прогнозів</li>
           <li xml:lang="zh-CN">允许在默认预报页面设置为非当前地理位置</li>
+          <li xml:lang="zh-TW">允許在預設預報頁面設定非目前所在的位置</li>
           <li>Added ability to fetch temperature units from system locale</li>
           <li xml:lang="ar">أُضيفت القدرة على جلب وحدات درجة الحرارة من محلية النظام</li>
           <li xml:lang="bg">Добавена е възможност за извличане на температурни единици от системния език</li>
@@ -791,6 +798,7 @@
           <li xml:lang="tr">Sistem yerel ayarlarından sıcaklık birimlerini alma özelliğini ekle</li>
           <li xml:lang="uk">Додано можливість отримання температурної шкали з загальносистемної локалі</li>
           <li xml:lang="zh-CN">新增从系统区域设置中获取温度单位的功能</li>
+          <li xml:lang="zh-TW">新增從系統地域取得溫度單位設定值的功能</li>
           <li>Fixed timezone format not being correctly read for local location time</li>
           <li xml:lang="ar">أُصلح تنسيق المنطقة الزمنية الذي لم يُقرأ بشكل صحيح لوقت الموقع المحلي</li>
           <li xml:lang="bg">Поправен е форматът на часовата зона, който не се четеше правилно за местното време</li>
@@ -811,6 +819,7 @@
           <li xml:lang="tr">Yerel konum saati için saat dilimi biçiminin doğru okunamaması sorununu düzelt</li>
           <li xml:lang="uk">Виправлено читання формату часового поясу для місцевого часу</li>
           <li xml:lang="zh-CN">修复了无法从本地位置时间正确读取时区格式</li>
+          <li xml:lang="zh-TW">修正時區格式沒有為本地時間正確讀取的問題</li>
         </ul>
       </description>
     </release>
@@ -839,6 +848,7 @@
         <p xml:lang="tr">Değişiklikler:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
+        <p xml:lang="zh-TW">變更：</p>
         <ul>
           <li>Rewrote the weather plasmoid</li>
           <li xml:lang="ar">أُعيدت كتابة بلازمويد الطقس</li>
@@ -860,6 +870,7 @@
           <li xml:lang="tr">Hava durumu Plasmoid’ini yeniden yaz</li>
           <li xml:lang="uk">Переписано плазмоїд погоди</li>
           <li xml:lang="zh-CN">重写天气 Plasma 小程序</li>
+          <li xml:lang="zh-TW">重寫天氣 Plasmoid 元件</li>
           <li>Use inline page indicator for flat mode forecasts</li>
           <li xml:lang="ar">استخدام مؤشر صفحة مضمن لتنبؤات الوضع المسطح</li>
           <li xml:lang="bg">Използване на вграден индикатор на страницата за прогнози в плосък режим</li>
@@ -880,6 +891,7 @@
           <li xml:lang="tr">Düz kip tahminleri için satır içi sayfa göstergesini kullan</li>
           <li xml:lang="uk">Використано індикатор вбудованої сторінки для прогнозів у простому режимі</li>
           <li xml:lang="zh-CN">在扁平模式的预报中使用内嵌页面指示器</li>
+          <li xml:lang="zh-TW">用行內頁面指示器顯示扁平模式預報</li>
           <li>Fix location ordering not persisting</li>
           <li xml:lang="ar">إصلاح عدم استمرار ترتيب المواقع</li>
           <li xml:lang="bg">Поправка на подреждането на местоположенията, което не се запазва</li>
@@ -900,6 +912,7 @@
           <li xml:lang="tr">Konum sıralamasının kalıcı olmaması sorununu düzelt</li>
           <li xml:lang="uk">Виправлено сумісність упорядковування місць</li>
           <li xml:lang="zh-CN">修复了位置排序不能记忆的问题</li>
+          <li xml:lang="zh-TW">修正位置排序不會儲存的問題</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/07/20/plasma-mobile-gear-21-07/</url>
@@ -926,6 +939,7 @@
         <p xml:lang="tr">Değişiklikler:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
+        <p xml:lang="zh-TW">變更：</p>
         <ul>
           <li>Reworked the locations page to better handle long location names</li>
           <li xml:lang="ar">أُعيدت صياغة صفحة المواقع للتعامل بشكل أفضل مع أسماء المواقع الطويلة</li>
@@ -947,6 +961,7 @@
           <li xml:lang="tr">Konumlar sayfası, uzun konum adlarını daha iyi işlenebilecek şekilde yeniden düzenle</li>
           <li xml:lang="uk">Перероблено сторінку місць так, щоб на ній краще було видно довгі назви місць</li>
           <li xml:lang="zh-CN">重构位置页面以适应长名称</li>
+          <li xml:lang="zh-TW">修改位置頁面來改善對於較長的位置名稱的處理</li>
           <li>Add maximum width to dynamic forecast to better deal with widescreen</li>
           <li xml:lang="ar">إضافة عرض أقصى للتنبؤ الحركي للتعامل بشكل أفضل مع الشاشات العريضة</li>
           <li xml:lang="bg">Добавена е максимална ширина към динамичната прогноза, за да се представи по-добре в широкоекранен режим</li>
@@ -967,6 +982,7 @@
           <li xml:lang="tr">Geniş ekranlarla daha iyi başa çıkmak için devingen tahmine maksimum genişlik ekle</li>
           <li xml:lang="uk">Додано максимальну ширину для динамічних прогнозів так, щоб це краще працювало на широких екранах</li>
           <li xml:lang="zh-CN">为动态预报添加最大宽度以适应宽屏</li>
+          <li xml:lang="zh-TW">為動態預報設定最大寬度來改善寬螢幕上的顯示</li>
           <li>Remove plasmoid (it is being reworked!)</li>
           <li xml:lang="ar">إزالة البلازمويد (تجري إعادة صياغته!)</li>
           <li xml:lang="bg">Премахнат е плазмоида (той се преработва!)</li>
@@ -987,6 +1003,7 @@
           <li xml:lang="tr">Plasmoid’i kaldır (yeniden yazılıyor)</li>
           <li xml:lang="uk">Вилучено плазмоїд (переписування!)</li>
           <li xml:lang="zh-CN">移除 Plasma 小程序 (正在重写)</li>
+          <li xml:lang="zh-TW">移除 Plasmoid 元件（我們正在重寫它！）</li>
           <li>Fixed default page not being loaded when new locations are added</li>
           <li xml:lang="ar">أُصلح عدم تحميل الصفحة المبدئية عند إضافة مواقع جديدة</li>
           <li xml:lang="bg">Поправена е страницата по подразбиране, която не се зареждаше при добавяне на нови местоположения</li>
@@ -1007,6 +1024,7 @@
           <li xml:lang="tr">Yeni konumlar eklendiğinde öntanımlı sayfanın yüklenmemesi sorununu düzelt</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що типова сторінка не завантажувалася, якщо додано нові місця</li>
           <li xml:lang="zh-CN">修复了在添加新位置时默认页面不加载的问题</li>
+          <li xml:lang="zh-TW">修正新增位置時不會載入預設頁面的問題</li>
           <li>Unify application settings location</li>
           <li xml:lang="ar">توحيد موقع إعدادات التطبيق</li>
           <li xml:lang="bg">Унифициране на местоположението на настройките на приложението</li>
@@ -1027,6 +1045,7 @@
           <li xml:lang="tr">Uygulama ayarlarının konumunu birleştir</li>
           <li xml:lang="uk">Уніфіковано розташування параметрів роботи програми</li>
           <li xml:lang="zh-CN">统一应用程序设置位置</li>
+          <li xml:lang="zh-TW">統一應用程式設定位置</li>
           <li>Enable qml debugging when in debug mode</li>
           <li xml:lang="ar">تمكين تنقيب qml عند التواجد في وضع التنقيح</li>
           <li xml:lang="bg">Активиране на qml дебъгване в режим на дебъгване</li>
@@ -1047,6 +1066,7 @@
           <li xml:lang="tr">Hata ayıklama kipindeyken QML hata ayıklamasına izin ver</li>
           <li xml:lang="uk">Уможливлено діагностику qml, якщо програма перебуває у діагностичному режимі</li>
           <li xml:lang="zh-CN">在调试模式下启用 QML 调试</li>
+          <li xml:lang="zh-TW">使用除錯模式時也啟用 QML 除錯</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/06/10/plasma-mobile-update-june/</url>
