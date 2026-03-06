@@ -753,7 +753,7 @@
           <li xml:lang="pt-BR">A barra de ação da visualização dinâmica foi reescrita para ficar integrada ao conteúdo</li>
           <li xml:lang="ru">Панель действий динамического представления переписана для размещения в строке с содержимым</li>
           <li xml:lang="sl">Dinamična vrstica dejanj za prikaz, prepisana tako, da je v vrstici z vsebino</li>
-          <li xml:lang="tr">Devingen görünüm eylem çubuğu, içeriğe paralel olacak şekilde yeniden yazıldı</li>
+          <li xml:lang="tr">Devingen görünüm eylem çubuğu, içeriğe paralel olacak şekilde yeniden yazıldı.</li>
           <li xml:lang="uk">Переписано панель дій динамічного перегляду так, щоб вона лишалася в одному рядку зі вмістом</li>
           <li xml:lang="zh-CN">动态视图操作栏重写为内嵌内容</li>
           <li xml:lang="zh-TW">重寫動態檢視的動作列來與內容放在一起</li>
@@ -774,7 +774,7 @@
           <li xml:lang="pt-BR">Permitir a configuração de uma localização diferente da atual na página de previsões padrão</li>
           <li xml:lang="ru">Разрешено задание не текущего местоположения на странице прогнозов по умолчанию</li>
           <li xml:lang="sl">Dovoli nastavitev netrenutne lokacije na strani s privzetimi napovedmi</li>
-          <li xml:lang="tr">Öntanımlı tahminler sayfasında geçerli olmayan bir konum ayarlanmasına izin ver</li>
+          <li xml:lang="tr">Öntanımlı tahminler sayfasında geçerli olmayan bir konum ayarlanmasına izin veriliyor.</li>
           <li xml:lang="uk">Уможливлено встановлення місця, відмінного від поточного, на сторінці типових прогнозів</li>
           <li xml:lang="zh-CN">允许在默认预报页面设置为非当前地理位置</li>
           <li xml:lang="zh-TW">允許在預設預報頁面設定非目前所在的位置</li>
@@ -795,7 +795,7 @@
           <li xml:lang="pt-BR">Adicionada a capacidade de obter unidades de temperatura da localização do sistema</li>
           <li xml:lang="ru">Добавлена возможность получения единиц измерения температуры из системной локали</li>
           <li xml:lang="sl">Dodana možnost pridobivanja temperaturnih enot iz sistemskih nastavitev</li>
-          <li xml:lang="tr">Sistem yerel ayarlarından sıcaklık birimlerini alma özelliğini ekle</li>
+          <li xml:lang="tr">Sistem yerel ayarlarından sıcaklık birimlerini alma özelliği eklendi.</li>
           <li xml:lang="uk">Додано можливість отримання температурної шкали з загальносистемної локалі</li>
           <li xml:lang="zh-CN">新增从系统区域设置中获取温度单位的功能</li>
           <li xml:lang="zh-TW">新增從系統地域取得溫度單位設定值的功能</li>
@@ -816,7 +816,7 @@
           <li xml:lang="pt-BR">Corrigido o problema que impedia a leitura correta do formato de fuso horário para a hora local</li>
           <li xml:lang="ru">Исправлено некорректное чтение формата часового пояса для местного времени</li>
           <li xml:lang="sl">Odpravljena je bila nepravilna oblika časovnega pasu za lokalni čas lokacije.</li>
-          <li xml:lang="tr">Yerel konum saati için saat dilimi biçiminin doğru okunamaması sorununu düzelt</li>
+          <li xml:lang="tr">Yerel konum saati için saat dilimi biçiminin doğru okunamaması sorunu düzeltildi.</li>
           <li xml:lang="uk">Виправлено читання формату часового поясу для місцевого часу</li>
           <li xml:lang="zh-CN">修复了无法从本地位置时间正确读取时区格式</li>
           <li xml:lang="zh-TW">修正時區格式沒有為本地時間正確讀取的問題</li>
@@ -867,7 +867,7 @@
           <li xml:lang="pt-BR">Reescrita do plasmoide meteorológico</li>
           <li xml:lang="ru">Переписан плазмоид погоды</li>
           <li xml:lang="sl">Ponovno prepisan vremenski plazmoid</li>
-          <li xml:lang="tr">Hava durumu Plasmoid’ini yeniden yaz</li>
+          <li xml:lang="tr">Hava durumu Plasmoid’i yeniden yazıldı.</li>
           <li xml:lang="uk">Переписано плазмоїд погоди</li>
           <li xml:lang="zh-CN">重写天气 Plasma 小程序</li>
           <li xml:lang="zh-TW">重寫天氣 Plasmoid 元件</li>
@@ -888,7 +888,7 @@
           <li xml:lang="pt-BR">Uso do indicador de página embutido para previsões em modo plano</li>
           <li xml:lang="ru">Использован встроенный индикатор страницы для прогнозов в плоском режиме</li>
           <li xml:lang="sl">Uporabite indikator strani v vrstici za napovedi v ravnem načinu</li>
-          <li xml:lang="tr">Düz kip tahminleri için satır içi sayfa göstergesini kullan</li>
+          <li xml:lang="tr">Düz kip tahminleri için satır içi sayfa göstergesi kullanılıyor.</li>
           <li xml:lang="uk">Використано індикатор вбудованої сторінки для прогнозів у простому режимі</li>
           <li xml:lang="zh-CN">在扁平模式的预报中使用内嵌页面指示器</li>
           <li xml:lang="zh-TW">用行內頁面指示器顯示扁平模式預報</li>
@@ -909,7 +909,7 @@
           <li xml:lang="pt-BR">Corrigido o problema de persistência na ordenação de locais</li>
           <li xml:lang="ru">Исправлено сохранение порядок расположений</li>
           <li xml:lang="sl">Odprava težave z vrstnim redom lokacij, ki se ne ohranja</li>
-          <li xml:lang="tr">Konum sıralamasının kalıcı olmaması sorununu düzelt</li>
+          <li xml:lang="tr">Konum sıralamasının kalıcı olmaması sorunu düzeltildi.</li>
           <li xml:lang="uk">Виправлено сумісність упорядковування місць</li>
           <li xml:lang="zh-CN">修复了位置排序不能记忆的问题</li>
           <li xml:lang="zh-TW">修正位置排序不會儲存的問題</li>
@@ -958,7 +958,7 @@
           <li xml:lang="pt-BR">Reformulada a página de locais para lidar melhor com nomes de locais longos</li>
           <li xml:lang="ru">Переработана страница местоположений для лучшей обработки длинных названий</li>
           <li xml:lang="sl">Predelana stran z lokacijami za boljše obvladovanje dolgih imen lokacij</li>
-          <li xml:lang="tr">Konumlar sayfası, uzun konum adlarını daha iyi işlenebilecek şekilde yeniden düzenle</li>
+          <li xml:lang="tr">Konumlar sayfası, uzun konum adlarını daha iyi işleyecek şekilde yeniden düzenlendi.</li>
           <li xml:lang="uk">Перероблено сторінку місць так, щоб на ній краще було видно довгі назви місць</li>
           <li xml:lang="zh-CN">重构位置页面以适应长名称</li>
           <li xml:lang="zh-TW">修改位置頁面來改善對於較長的位置名稱的處理</li>
@@ -979,7 +979,7 @@
           <li xml:lang="pt-BR">Adicionada largura máxima à previsão dinâmica para melhor lidar com telas widescreen</li>
           <li xml:lang="ru">Определена максимальная ширина для динамического прогноза для лучшей работы с широкоэкранными дисплеями</li>
           <li xml:lang="sl">Dinamični napovedi doda največjo širino za boljše delovanje v širokem zaslonu</li>
-          <li xml:lang="tr">Geniş ekranlarla daha iyi başa çıkmak için devingen tahmine maksimum genişlik ekle</li>
+          <li xml:lang="tr">Geniş ekranlarla daha iyi başa çıkmak için devingen tahmine maksimum genişlik eklendi.</li>
           <li xml:lang="uk">Додано максимальну ширину для динамічних прогнозів так, щоб це краще працювало на широких екранах</li>
           <li xml:lang="zh-CN">为动态预报添加最大宽度以适应宽屏</li>
           <li xml:lang="zh-TW">為動態預報設定最大寬度來改善寬螢幕上的顯示</li>
@@ -1000,7 +1000,7 @@
           <li xml:lang="pt-BR">Removido o plasmoide (está sendo reformulado!)</li>
           <li xml:lang="ru">Удалён виджет (ведётся переработка!)</li>
           <li xml:lang="sl">Odstrani plazmoid (se predeluje!).</li>
-          <li xml:lang="tr">Plasmoid’i kaldır (yeniden yazılıyor)</li>
+          <li xml:lang="tr">Plasmoid kaldırıldı (yeniden yazılıyor).</li>
           <li xml:lang="uk">Вилучено плазмоїд (переписування!)</li>
           <li xml:lang="zh-CN">移除 Plasma 小程序 (正在重写)</li>
           <li xml:lang="zh-TW">移除 Plasmoid 元件（我們正在重寫它！）</li>
@@ -1021,7 +1021,7 @@
           <li xml:lang="pt-BR">Corrigido o problema em que a página padrão não carregava quando novos locais eram adicionados</li>
           <li xml:lang="ru">Исправлена ошибка загрузки страницы по умолчанию при добавлении новых местоположений</li>
           <li xml:lang="sl">Popravljena je bila napaka, da se privzeta stran ni naložila ob dodajanju novih lokacij</li>
-          <li xml:lang="tr">Yeni konumlar eklendiğinde öntanımlı sayfanın yüklenmemesi sorununu düzelt</li>
+          <li xml:lang="tr">Yeni konumlar eklendiğinde öntanımlı sayfanın yüklenmemesi sorunu düzeltildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що типова сторінка не завантажувалася, якщо додано нові місця</li>
           <li xml:lang="zh-CN">修复了在添加新位置时默认页面不加载的问题</li>
           <li xml:lang="zh-TW">修正新增位置時不會載入預設頁面的問題</li>
@@ -1042,7 +1042,7 @@
           <li xml:lang="pt-BR">Unificada a localização das configurações do aplicativo</li>
           <li xml:lang="ru">Унифицировано расположение параметров приложения</li>
           <li xml:lang="sl">Poenoti nastavitev lokacije aplikacije</li>
-          <li xml:lang="tr">Uygulama ayarlarının konumunu birleştir</li>
+          <li xml:lang="tr">Uygulama ayarlarının konumu birleştirildi.</li>
           <li xml:lang="uk">Уніфіковано розташування параметрів роботи програми</li>
           <li xml:lang="zh-CN">统一应用程序设置位置</li>
           <li xml:lang="zh-TW">統一應用程式設定位置</li>
@@ -1063,7 +1063,7 @@
           <li xml:lang="pt-BR">Ativada a depuração do QML quando no modo de depuração</li>
           <li xml:lang="ru">Добавлена возможность отладки QML в режиме отладки</li>
           <li xml:lang="sl">Omogoči odpravljanje napak qml v načinu odpravljanja napak</li>
-          <li xml:lang="tr">Hata ayıklama kipindeyken QML hata ayıklamasına izin ver</li>
+          <li xml:lang="tr">Hata ayıklama kipindeyken QML hata ayıklamasına izin veriliyor.</li>
           <li xml:lang="uk">Уможливлено діагностику qml, якщо програма перебуває у діагностичному режимі</li>
           <li xml:lang="zh-CN">在调试模式下启用 QML 调试</li>
           <li xml:lang="zh-TW">使用除錯模式時也啟用 QML 除錯</li>
