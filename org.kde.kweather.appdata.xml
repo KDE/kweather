@@ -277,6 +277,7 @@
       <caption xml:lang="bg">Плосък изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
+      <caption xml:lang="cs">Plochý pohled pracovní plochy</caption>
       <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
@@ -308,6 +309,7 @@
       <caption xml:lang="bg">Плосък изглед за настолна версия</caption>
       <caption xml:lang="ca">Vista plana de l'escriptori</caption>
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
+      <caption xml:lang="cs">Plochý pohled pracovní plochy</caption>
       <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
@@ -620,6 +622,7 @@
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
+          <li xml:lang="is">Ýmsar betrumbætur á viðmóti og villur lagfærðar</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
@@ -648,6 +651,7 @@
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
+          <li xml:lang="is">Ýmsar betrumbætur á viðmóti og villur lagfærðar</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
@@ -676,6 +680,7 @@
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
+          <li xml:lang="is">Ýmsar betrumbætur á viðmóti og villur lagfærðar</li>
           <li xml:lang="it">Miglioramenti dell'interfaccia utente e correzioni di bug</li>
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
@@ -703,6 +708,7 @@
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">%1 Modificationes</p>
+        <p xml:lang="is">Breytingar:</p>
         <p xml:lang="it">Modifiche:</p>
         <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
@@ -839,6 +845,7 @@
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">%1 Modificationes</p>
+        <p xml:lang="is">Breytingar:</p>
         <p xml:lang="it">Modifiche:</p>
         <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
@@ -931,6 +938,7 @@
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">%1 Modificationes</p>
+        <p xml:lang="is">Breytingar:</p>
         <p xml:lang="it">Modifiche:</p>
         <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
