@@ -21,6 +21,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_PLASMOID "Build the weather plasmoid" ON)
+option(BUILD_KRUNNER "Build the weather krunner" ON)
 
 include(FeatureSummary)
 
@@ -86,6 +87,10 @@ endif()
 
 if (NOT ANDROID AND BUILD_PLASMOID)
    find_package(Plasma REQUIRED)
+endif()
+
+if (NOT ANDROID AND BUILD_KRUNNER)
+    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Runner)
 endif()
 
 ecm_find_qmlmodule(org.kde.kholidays 1.0)

@@ -41,7 +41,7 @@
         },
         {
             "name": "kweather",
-            "config-opts": [ "-DBUILD_PLASMOID=OFF" ],
+            "config-opts": [ "-DBUILD_PLASMOID=OFF", "-DBUILD_KRUNNER=OFF" ],
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]
