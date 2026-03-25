@@ -20,12 +20,12 @@
         "Version": "1.0"
     },
     "X-Plasma-Runner-Min-Letter-Count": 3,
-    "X-Plasma-Runner-Syntaxes": [
-        "weather :q:",
-        "weather"
-    ],
     "X-Plasma-Runner-Syntax-Descriptions": [
         "Show weather for a specific location",
         "Show weather for the default location"
+    ],
+    "X-Plasma-Runner-Syntaxes": [
+        "weather :q:",
+        "weather"
     ]
 }
