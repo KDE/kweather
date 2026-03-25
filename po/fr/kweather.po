@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:48+0000\n"
+"POT-Creation-Date: 2026-03-25 00:48+0000\n"
 "PO-Revision-Date: 2026-01-03 18:05+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
@@ -87,6 +87,26 @@ msgstr "%1 pouces"
 msgctxt "mm as millimeters"
 msgid "%1 mm"
 msgstr "%1 mm"
+
+#: krunner/kweatherrunner.cpp:37
+#, fuzzy, kde-format
+#| msgid "Weather"
+msgctxt "Command to get weather"
+msgid "weather"
+msgstr "Météo"
+
+#: krunner/kweatherrunner.cpp:126
+#, kde-format
+msgctxt ""
+"Weather forecast: %1 is temperature, %2 is description, %3 is location"
+msgid "%1°C - %2 in %3"
+msgstr ""
+
+#: krunner/kweatherrunner.cpp:127
+#, kde-format
+msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
+msgid "High: %1°C Low: %2°C"
+msgstr ""
 
 #: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
