@@ -1,6 +1,6 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kweather package.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Vincenzo Reale <smart2128vr@gmail.com>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Vincenzo Reale <smart2128vr@gmail.com>
 # SPDX-FileCopyrightText: 2024 Paolo Zamponi <feus73@gmail.com>
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-25 00:48+0000\n"
-"PO-Revision-Date: 2025-09-11 14:17+0200\n"
+"PO-Revision-Date: 2026-03-25 14:18+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -89,24 +89,23 @@ msgid "%1 mm"
 msgstr "%1 mm"
 
 #: krunner/kweatherrunner.cpp:37
-#, fuzzy, kde-format
-#| msgid "Weather"
+#, kde-format
 msgctxt "Command to get weather"
 msgid "weather"
-msgstr "Meteo"
+msgstr "meteo"
 
 #: krunner/kweatherrunner.cpp:126
 #, kde-format
 msgctxt ""
 "Weather forecast: %1 is temperature, %2 is description, %3 is location"
 msgid "%1°C - %2 in %3"
-msgstr ""
+msgstr "%1°C - %2 a %3"
 
 #: krunner/kweatherrunner.cpp:127
 #, kde-format
 msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
 msgid "High: %1°C Low: %2°C"
-msgstr ""
+msgstr "Massima: %1°C Minima: %2°C"
 
 #: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format

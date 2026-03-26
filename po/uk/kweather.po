@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-25 00:48+0000\n"
-"PO-Revision-Date: 2025-09-11 09:06+0300\n"
+"PO-Revision-Date: 2026-03-25 08:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -91,24 +91,23 @@ msgid "%1 mm"
 msgstr "%1 мм"
 
 #: krunner/kweatherrunner.cpp:37
-#, fuzzy, kde-format
-#| msgid "Weather"
+#, kde-format
 msgctxt "Command to get weather"
 msgid "weather"
-msgstr "Погода"
+msgstr "погода"
 
 #: krunner/kweatherrunner.cpp:126
 #, kde-format
 msgctxt ""
 "Weather forecast: %1 is temperature, %2 is description, %3 is location"
 msgid "%1°C - %2 in %3"
-msgstr ""
+msgstr "%1°C - %2 у %3"
 
 #: krunner/kweatherrunner.cpp:127
 #, kde-format
 msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
 msgid "High: %1°C Low: %2°C"
-msgstr ""
+msgstr "Найвища: %1°C Найнижча: %2°C"
 
 #: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
