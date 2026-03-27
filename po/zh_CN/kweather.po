@@ -88,11 +88,10 @@ msgid "%1 mm"
 msgstr "%1 毫米"
 
 #: krunner/kweatherrunner.cpp:37
-#, fuzzy, kde-format
-#| msgid "Weather"
+#, kde-format
 msgctxt "Command to get weather"
 msgid "weather"
-msgstr "天气"
+msgstr ""
 
 #: krunner/kweatherrunner.cpp:126
 #, kde-format
