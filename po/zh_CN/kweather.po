@@ -91,20 +91,20 @@ msgstr "%1 毫米"
 #, kde-format
 msgctxt "Command to get weather"
 msgid "weather"
-msgstr ""
+msgstr "天气"
 
 #: krunner/kweatherrunner.cpp:126
 #, kde-format
 msgctxt ""
 "Weather forecast: %1 is temperature, %2 is description, %3 is location"
 msgid "%1°C - %2 in %3"
-msgstr ""
+msgstr "%1°C - %2 - %3"
 
 #: krunner/kweatherrunner.cpp:127
 #, kde-format
 msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
 msgid "High: %1°C Low: %2°C"
-msgstr ""
+msgstr "最高：%1°C 最低：%2°C"
 
 #: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
