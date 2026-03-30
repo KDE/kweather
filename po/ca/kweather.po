@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-25 00:48+0000\n"
-"PO-Revision-Date: 2026-03-25 11:26+0100\n"
+"PO-Revision-Date: 2026-03-29 13:05+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -288,7 +288,7 @@ msgstr "Afegeix un emplaçament"
 #: qml/locationslist/LocationsListView.qml:69
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr "No s'ha pogut obtenir informació sobre la zona horària"
+msgstr "No s'ha pogut obtenir informació sobre el fus horari"
 
 #: qml/locationslist/LocationsListView.qml:80
 #, kde-format
