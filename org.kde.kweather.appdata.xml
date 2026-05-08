@@ -632,6 +632,7 @@
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
+          <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
@@ -661,6 +662,7 @@
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
+          <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
@@ -690,6 +692,7 @@
           <li xml:lang="ca">Millores en la interfície d'usuari i correccions d'errors</li>
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
+          <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
@@ -718,6 +721,7 @@
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="cs">Změny:</p>
+        <p xml:lang="de">Änderungen:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
@@ -742,6 +746,7 @@
           <li xml:lang="ca">Millores de rendiment a la vista dinàmica</li>
           <li xml:lang="ca-valencia">Millores de rendiment a la vista dinàmica</li>
           <li xml:lang="cs">Vylepšení výkonu v dynamickém zobrazení</li>
+          <li xml:lang="de">Leistungsverbesserungen bei der dynamischen Ansicht</li>
           <li xml:lang="es">Mejoras de rendimiento en la vista dinámica.</li>
           <li xml:lang="fr">Améliorations des performances dans la vue dynamique</li>
           <li xml:lang="he">שיפורי ביצועים בתצוגה דינמית</li>
@@ -860,6 +865,7 @@
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="cs">Změny:</p>
+        <p xml:lang="de">Änderungen:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
@@ -884,6 +890,7 @@
           <li xml:lang="ca">Reescrit el plasmoide meteorològic</li>
           <li xml:lang="ca-valencia">Reescrit el plasmoide meteorològic</li>
           <li xml:lang="cs">Přepsán plasmoid počasí.</li>
+          <li xml:lang="de">Wetter-Miniprogram überarbeitet</li>
           <li xml:lang="es">Reescritura del plasmoide de meteorología.</li>
           <li xml:lang="fr">Réécrit le plasmoïde de météo</li>
           <li xml:lang="he">פלזמואיד מזג האוויר נכתב מחדש</li>
@@ -956,6 +963,7 @@
         <p xml:lang="ca">Canvis:</p>
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="cs">Změny:</p>
+        <p xml:lang="de">Änderungen:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
