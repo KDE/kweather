@@ -20,6 +20,10 @@ ToolBar {
     position: ToolBar.Header
     Layout.fillWidth: true
 
+    leftPadding: parent.SafeArea.margins.left
+    rightPadding: parent.SafeArea.margins.right
+    topPadding: parent.SafeArea.margins.top
+
     onTitleDelegateChanged: {
         if (!titleDelegate) {
             return;
