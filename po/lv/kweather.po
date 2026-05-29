@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-25 00:48+0000\n"
+"POT-Creation-Date: 2026-05-29 00:47+0000\n"
 "PO-Revision-Date: 2025-09-24 15:59+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -165,7 +165,7 @@ msgstr "Atlasiet vietu"
 msgid "Open KWeather"
 msgstr "Atvērt „KWeather“"
 
-#: qml/components/PageHeader.qml:40
+#: qml/components/PageHeader.qml:44
 #, kde-format
 msgid "Navigate Back"
 msgstr "Iet atpakaļ"

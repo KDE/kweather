@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-25 00:48+0000\n"
+"POT-Creation-Date: 2026-05-29 00:47+0000\n"
 "PO-Revision-Date: 2026-03-26 10:16+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -162,7 +162,7 @@ msgstr "اختر موقعًا"
 msgid "Open KWeather"
 msgstr "افتح برنامج الطقس"
 
-#: qml/components/PageHeader.qml:40
+#: qml/components/PageHeader.qml:44
 #, kde-format
 msgid "Navigate Back"
 msgstr "عُد"

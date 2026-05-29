@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-25 00:48+0000\n"
+"POT-Creation-Date: 2026-05-29 00:47+0000\n"
 "PO-Revision-Date: 2026-03-25 07:08+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -162,7 +162,7 @@ msgstr "მდებარეობის არჩევა"
 msgid "Open KWeather"
 msgstr "KWeather-ის გახსნა"
 
-#: qml/components/PageHeader.qml:40
+#: qml/components/PageHeader.qml:44
 #, kde-format
 msgid "Navigate Back"
 msgstr "უკან გადასვლა"
