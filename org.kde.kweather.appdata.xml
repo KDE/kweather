@@ -50,6 +50,7 @@
   <name xml:lang="sl">Weather</name>
   <name xml:lang="sv">Väder</name>
   <name xml:lang="tr">Hava Durumu</name>
+  <name xml:lang="ug">ھاۋا رايى</name>
   <name xml:lang="uk">Погода</name>
   <name xml:lang="zh-CN">天气</name>
   <name xml:lang="zh-TW">天氣</name>
@@ -741,6 +742,7 @@
         <p xml:lang="sk">Zmeny:</p>
         <p xml:lang="sl">Spremembe:</p>
         <p xml:lang="tr">Değişiklikler:</p>
+        <p xml:lang="ug">ئۆزگىرىش:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
         <p xml:lang="zh-TW">變更：</p>
@@ -886,6 +888,7 @@
         <p xml:lang="sk">Zmeny:</p>
         <p xml:lang="sl">Spremembe:</p>
         <p xml:lang="tr">Değişiklikler:</p>
+        <p xml:lang="ug">ئۆزگىرىش:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
         <p xml:lang="zh-TW">變更：</p>
@@ -985,6 +988,7 @@
         <p xml:lang="sk">Zmeny:</p>
         <p xml:lang="sl">Spremembe:</p>
         <p xml:lang="tr">Değişiklikler:</p>
+        <p xml:lang="ug">ئۆزگىرىش:</p>
         <p xml:lang="uk">Зміни:</p>
         <p xml:lang="zh-CN">更改：</p>
         <p xml:lang="zh-TW">變更：</p>
