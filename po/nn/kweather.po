@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-06 00:48+0000\n"
-"PO-Revision-Date: 2025-03-15 13:13+0100\n"
+"PO-Revision-Date: 2026-06-23 18:08+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 26.07.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -146,7 +146,7 @@ msgstr "Opna KWeather"
 #: qml/components/PageHeader.qml:40
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Naviger tilbake"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:31
 #, kde-format
@@ -390,12 +390,12 @@ msgstr "Fahrenheit"
 #: qml/SetupWizard.qml:45
 #, kde-format
 msgid "Appearance"
-msgstr ""
+msgstr "Utsjånad"
 
 #: qml/SetupWizard.qml:238
 #, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr ""
+msgstr "Velkommen til <b>Weather</b>"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
