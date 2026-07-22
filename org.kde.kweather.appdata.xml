@@ -1127,7 +1127,7 @@
           <li xml:lang="ar">تمكين تنقيب qml عند التواجد في وضع التنقيح</li>
           <li xml:lang="bg">Активиране на qml дебъгване в режим на дебъгване</li>
           <li xml:lang="ca">Activa la depuració del QML quan és en el mode de depuració</li>
-          <li xml:lang="ca-valencia">Activa la depuració de QML quan és en el mode de depuració</li>
+          <li xml:lang="ca-valencia">Activa la depuració de QML quan s'estiga en el mode de depuració</li>
           <li xml:lang="cs">Povoleno ladění qml v režimu ladění</li>
           <li xml:lang="es">Habilitar modo de depuración qml en el modo de depuración.</li>
           <li xml:lang="fr">Activer le débogage de QML lorsqu'en mode de débogage</li>
