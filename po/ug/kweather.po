@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-29 00:47+0000\n"
-"PO-Revision-Date: 2026-05-31 20:00-0400\n"
+"PO-Revision-Date: 2026-07-22 17:13-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -16,7 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -80,7 +79,7 @@ msgstr "-"
 #, kde-format
 msgctxt "in as inches"
 msgid "%1 in"
-msgstr ""
+msgstr "%1 دىيۇم"
 
 #: formatter.cpp:104
 #, kde-format
@@ -92,20 +91,20 @@ msgstr "%1 mm"
 #, kde-format
 msgctxt "Command to get weather"
 msgid "weather"
-msgstr ""
+msgstr "ھاۋا رايى"
 
 #: krunner/kweatherrunner.cpp:126
 #, kde-format
 msgctxt ""
 "Weather forecast: %1 is temperature, %2 is description, %3 is location"
 msgid "%1°C - %2 in %3"
-msgstr ""
+msgstr "%1°C - %2 in %3"
 
 #: krunner/kweatherrunner.cpp:127
 #, kde-format
 msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
 msgid "High: %1°C Low: %2°C"
-msgstr ""
+msgstr "يۇقىرى: %1°C تۆۋەن: %2°C"
 
 #: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
@@ -115,12 +114,12 @@ msgstr "ھاۋا رايى"
 #: main.cpp:62
 #, kde-format
 msgid "A convergent weather application for Plasma"
-msgstr ""
+msgstr "Plasma غا لايىھەلەنگەن سۇپا ھالقىغان ھاۋا رايى پىروگراممىسى"
 
 #: main.cpp:64
 #, kde-format
 msgid "© 2020-2024 Plasma Development Team"
-msgstr ""
+msgstr "© 2020-2024 Plasma ئىجادىيەت قوشۇنى"
 
 #: main.cpp:66
 #, kde-format
@@ -135,12 +134,12 @@ msgstr "Devin Lin"
 #: plasmoid/LocationSelector.qml:45
 #, kde-format
 msgid "No location found on system, please add some in kweather"
-msgstr ""
+msgstr "سىستېمىدا يەرلىك ئورۇن بايقالمىدى، kweather غا ئورۇن قوشۇڭ"
 
 #: plasmoid/LocationSelector.qml:45
 #, kde-format
 msgid "Please select the location"
-msgstr ""
+msgstr "ئورۇن تاللاڭ"
 
 #: plasmoid/WeatherContainer.qml:65
 #, kde-format
@@ -150,22 +149,22 @@ msgstr "%1%"
 #: plasmoid/WeatherContainer.qml:81
 #, kde-format
 msgid "%1mm"
-msgstr ""
+msgstr "%1mm"
 
 #: plasmoid/WeatherContainer.qml:133 plasmoid/WeatherContainer.qml:172
 #, kde-format
 msgid "Select Location"
-msgstr ""
+msgstr "ئورۇن تاللا"
 
 #: plasmoid/WeatherContainer.qml:138
 #, kde-format
 msgid "Open KWeather"
-msgstr ""
+msgstr "KWeather نى ئاچ"
 
 #: qml/components/PageHeader.qml:44
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "كەينىگە قايت"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:31
 #, kde-format
@@ -175,7 +174,7 @@ msgstr "ئالدىن مەلۇمات"
 #: qml/DefaultPage.qml:28
 #, kde-format
 msgid "Network error when obtaining current location"
-msgstr ""
+msgstr "نۆۋەتتىكى ئورۇنغا ئېرىشىۋاتقاندا تور خاتالىقى كۆرۈلدى"
 
 #: qml/DefaultPage.qml:77 qml/locationslist/AddLocationDialog.qml:14
 #: qml/locationslist/LocationsListDialog.qml:22
@@ -183,19 +182,19 @@ msgstr ""
 #: qml/locationslist/LocationsListView.qml:85 qml/SetupWizard.qml:47
 #, kde-format
 msgid "Add Location"
-msgstr ""
+msgstr "ئورۇن قوش"
 
 #: qml/forecast/dynamic/DynamicForecastContent.qml:161
 #: qml/forecast/flat/FlatLocationForecast.qml:155
 #, kde-format
 msgid "Hourly"
-msgstr "ھەر سائەتتە"
+msgstr "سائەتلىك"
 
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:37
 #: qml/forecast/flat/FlatLocationForecast.qml:94
 #, kde-format
 msgid "Updated at %1"
-msgstr ""
+msgstr "يېڭىلانغان ۋاقتى %1"
 
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:57
 #: qml/ForecastContainerPage.qml:55
@@ -208,7 +207,7 @@ msgstr "ئورنى"
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:62
 #, kde-format
 msgid "Choose location"
-msgstr ""
+msgstr "ئورۇن تاللا"
 
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:77
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:82
@@ -229,7 +228,7 @@ msgstr "يېڭىلا"
 #: qml/forecast/flat/FlatLocationForecast.qml:43
 #, kde-format
 msgid "Weather refreshed for %1"
-msgstr ""
+msgstr "%1 نىڭ ھاۋا رايى ئەھۋالى يېڭىلاندى"
 
 #: qml/forecast/flat/FlatLocationForecast.qml:110
 #, kde-format
@@ -239,7 +238,7 @@ msgstr "كۈندە"
 #: qml/InfoCard.qml:47
 #, kde-format
 msgid "Precipitation"
-msgstr ""
+msgstr "يېغىن"
 
 #: qml/InfoCard.qml:70
 #, kde-format
@@ -254,42 +253,42 @@ msgstr "بېسىم"
 #: qml/InfoCard.qml:116
 #, kde-format
 msgid "UV Index"
-msgstr ""
+msgstr "ئۇلترا بىنەپشە نۇر كۆرسەتكۈچى"
 
 #: qml/locationslist/AddLocationListView.qml:48
 #, kde-format
 msgid "Search for a location…"
-msgstr ""
+msgstr "ئورۇن ئىزدە…"
 
 #: qml/locationslist/AddLocationListView.qml:87
 #, kde-format
 msgid "Unable to connect"
-msgstr ""
+msgstr "باغلىيالمايدۇ"
 
 #: qml/locationslist/AddLocationListView.qml:99
 #, kde-format
 msgid "Search for a location"
-msgstr ""
+msgstr "ئورۇن ئىزدە"
 
 #: qml/locationslist/AddLocationListView.qml:128
 #, kde-format
 msgid "No results"
-msgstr ""
+msgstr "نەتىجە يوق"
 
 #: qml/locationslist/AddLocationPage.qml:15
 #, kde-format
 msgid "Add location"
-msgstr ""
+msgstr "ئورۇن قوش"
 
 #: qml/locationslist/LocationsListView.qml:69
 #, kde-format
 msgid "Unable to fetch timezone information"
-msgstr ""
+msgstr "ۋاقىت رايونى ئۇچۇرىغا ئېرىشەلمەيدۇ"
 
 #: qml/locationslist/LocationsListView.qml:80
 #, kde-format
 msgid "Add a location"
-msgstr ""
+msgstr "ئورۇن قوش"
 
 #: qml/locationslist/LocationsListView.qml:227
 #, kde-format
@@ -299,36 +298,36 @@ msgstr "ئۆچۈر"
 #: qml/settings/PrecipitationUnitComboBox.qml:12
 #, kde-format
 msgid "Precipitation Units"
-msgstr ""
+msgstr "يېغىن بىرلىكى"
 
 #: qml/settings/PrecipitationUnitComboBox.qml:25
 #, kde-format
 msgctxt "Millimeters"
 msgid "mm"
-msgstr ""
+msgstr "mm"
 
 #: qml/settings/PrecipitationUnitComboBox.qml:29
 #, kde-format
 msgctxt "Inches"
 msgid "in"
-msgstr "ئىچىدە"
+msgstr "دىيۇم"
 
 #: qml/settings/PressureUnitComboBox.qml:12
 #, kde-format
 msgid "Pressure Units"
-msgstr ""
+msgstr "بېسىم بىرلىكى"
 
 #: qml/settings/PressureUnitComboBox.qml:25
 #, kde-format
 msgctxt "Hectopascal Pressure"
 msgid "hPa"
-msgstr "خېكتوپاسكال"
+msgstr "hPa"
 
 #: qml/settings/PressureUnitComboBox.qml:29
 #, kde-format
 msgctxt "Millimetre of mercury"
 msgid "mmHg"
-msgstr ""
+msgstr "mmHg"
 
 #: qml/settings/SettingsComponent.qml:24
 #, kde-format
@@ -338,7 +337,7 @@ msgstr "ئادەتتىكى"
 #: qml/settings/SettingsComponent.qml:31
 #, kde-format
 msgid "Forecast Style"
-msgstr ""
+msgstr "ھاۋا رايى ئالدىن مەلۇمات ئۇسلۇبى"
 
 #: qml/settings/SettingsComponent.qml:44 qml/SetupWizard.qml:519
 #, kde-format
@@ -348,7 +347,7 @@ msgstr "تەكشى"
 #: qml/settings/SettingsComponent.qml:48 qml/SetupWizard.qml:483
 #, kde-format
 msgid "Dynamic"
-msgstr ""
+msgstr "ھەرىكەتچان"
 
 #: qml/settings/SettingsComponent.qml:63
 #, kde-format
@@ -363,35 +362,35 @@ msgstr "بىرلىكى"
 #: qml/settings/SpeedUnitComboBox.qml:12
 #, kde-format
 msgid "Speed Units"
-msgstr ""
+msgstr "سۈرئەت بىرلىكى"
 
 #: qml/settings/SpeedUnitComboBox.qml:25
 #, kde-format
 msgctxt "kilometers per hour"
 msgid "kph"
-msgstr ""
+msgstr "kph"
 
 #: qml/settings/SpeedUnitComboBox.qml:29
 #, kde-format
 msgctxt "miles per hour"
 msgid "mph"
-msgstr ""
+msgstr "mph"
 
 #: qml/settings/SpeedUnitComboBox.qml:33
 #, kde-format
 msgctxt "meters per second"
 msgid "m/s"
-msgstr ""
+msgstr "m/s"
 
 #: qml/settings/TemperatureUnitComboBox.qml:12
 #, kde-format
 msgid "Temperature Units"
-msgstr ""
+msgstr "تېمپېراتۇرا بىرلىكى"
 
 #: qml/settings/TemperatureUnitComboBox.qml:25
 #, kde-format
 msgid "Use System Default"
-msgstr ""
+msgstr "سىستېما كۆڭۈلدىكىنى ئىشلەت"
 
 #: qml/settings/TemperatureUnitComboBox.qml:29
 #, kde-format
@@ -401,7 +400,7 @@ msgstr "سېلسىيە گىرادۇس"
 #: qml/settings/TemperatureUnitComboBox.qml:33
 #, kde-format
 msgid "Fahrenheit"
-msgstr "فارنىگىت"
+msgstr "فارېنھېيت"
 
 #: qml/SetupWizard.qml:45
 #, kde-format
@@ -411,7 +410,7 @@ msgstr "قىياپەت"
 #: qml/SetupWizard.qml:238
 #, kde-format
 msgid "Welcome to <b>Weather</b>"
-msgstr ""
+msgstr "<b>ھاۋا رايى</b> غا خۇش كەلدىڭىز"
 
 #: qml/SetupWizard.qml:261
 #, kde-format
@@ -419,6 +418,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"سائەتلىك ۋە كۈندىلىك ھاۋا رايى ئالدىن مەلۇماتى شۇنداقلا شامال سۈرئىتى ۋە "
+"يېغىن مىقدارىغا ئوخشاش باشقا ئۇچۇرنى كۆرسىتىدۇ."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -426,6 +427,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"ئورۇن تىزىمى ئارقىلىق كۆپ ئورۇننى ساقلاپ ئۇلارنىڭ ئارىسىدا ئاسانلا "
+"ئالماشتۇرغىلى بولىدۇ."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -433,11 +436,13 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"جامائەت ياسىغان، نورۋېگىيە ھاۋا رايى ئىلمى ئىنستىتۇتىنىڭ سانلىق مەلۇماتى "
+"قوللايدۇ."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
 msgid "Get Started"
-msgstr ""
+msgstr "باشلايلى"
 
 #: qml/SetupWizard.qml:412
 #, kde-format
@@ -452,34 +457,35 @@ msgstr "كېيىنكى"
 #: qml/SetupWizard.qml:455
 #, kde-format
 msgid "The style can be changed later in the settings."
-msgstr ""
+msgstr "ئۇسلۇبنى كېيىن تەڭشەكتە ئۆزگەرتكىلى بولىدۇ."
 
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
 msgstr ""
+"ھەرىكەتلىك ۋە تولۇق رەڭلىك تەگلىكتە ھاۋا رايى ئالدىن مەلۇماتىنى كۆرسىتىدۇ."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "ئاددىي ۋە تەكشى تەگلىكتە ھاۋا رايى ئالدىن مەلۇماتىنى كۆرسىتىدۇ."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
 msgid "Sunrise"
-msgstr ""
+msgstr "كۈن چىقىش"
 
 #: qml/SunriseCard.qml:73
 #, kde-format
 msgid "Sunset"
-msgstr ""
+msgstr "كۈن پېتىش"
 
 #: qml/SunriseCard.qml:96
 #, kde-format
 msgid "Moon Phase"
-msgstr ""
+msgstr "ئاي يۈزى"
 
 #: qml/TemperatureChartCard.qml:81
 #, kde-format
 msgid "temperature"
-msgstr ""
+msgstr "تېمپېراتۇرا"
