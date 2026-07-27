@@ -89,6 +89,7 @@
                 "Name[sl]": "Arran Ubels",
                 "Name[sv]": "Arran Ubels",
                 "Name[tr]": "Arran Ubels",
+                "Name[ug]": "Arran Ubels",
                 "Name[uk]": "Arran Ubels",
                 "Name[zh_CN]": "Arran Ubels",
                 "Name[zh_TW]": "Arran Ubels"
@@ -118,6 +119,7 @@
         "Description[sl]": "Vremenska napoved",
         "Description[sv]": "Väderprognos",
         "Description[tr]": "Hava durumu çalıştırıcısı",
+        "Description[ug]": "ھاۋارايىدىن مەلۇمات ئىجرا قىلغۇچ",
         "Description[uk]": "Показ прогнозу погоди",
         "Description[zh_CN]": "天气预报 Runner 程序",
         "Description[zh_TW]": "氣象預報 runner",
