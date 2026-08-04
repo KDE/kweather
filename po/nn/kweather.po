@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-29 00:47+0000\n"
-"PO-Revision-Date: 2026-06-23 18:08+0200\n"
+"PO-Revision-Date: 2026-08-03 19:44+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.07.70\n"
+"X-Generator: Lokalize 26.11.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -423,20 +423,22 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Vis vêrmelding per time eller dag, med annan detaljert informasjon, som "
+"nedbør og vindfart."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
 msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
-msgstr ""
+msgstr "Lagra fleire stadar, og byt enkelt mellom dei med stadlista."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
 msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
-msgstr ""
+msgstr "Laga av fellesskapet, og brukar data frå Meteorologisk institutt."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -461,12 +463,12 @@ msgstr "Du kan seinare endra stilen i innstillingane."
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Animerte, fargerike bakgrunnar på vêrmeldingane."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Flate og enkle bakgrunnar på vêrmeldingane."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
