@@ -219,6 +219,7 @@
       <caption xml:lang="lt">Pasisveikinimo langas darbalaukyje</caption>
       <caption xml:lang="lv">Darbvirsmas sveiciena ekrāns</caption>
       <caption xml:lang="nl">Welkomstscherm van bureaublad</caption>
+      <caption xml:lang="nn">Velkomstbilete – skrivebord</caption>
       <caption xml:lang="pl">Ekran powitalny urządzenia biurkowego</caption>
       <caption xml:lang="pt-BR">Tela de boas-vindas do desktop</caption>
       <caption xml:lang="ru">Экран приветствия на рабочем столе</caption>
@@ -298,6 +299,7 @@
       <caption xml:lang="lt">Darbalaukio plokščias rodinys</caption>
       <caption xml:lang="lv">Darbvirsmas plakanais skats</caption>
       <caption xml:lang="nl">Vlakke weergave van bureaublad</caption>
+      <caption xml:lang="nn">Flat vising – skrivebord</caption>
       <caption xml:lang="pl">Płaski widok urządzenia biurkowego</caption>
       <caption xml:lang="pt-BR">Visualização plana para desktop</caption>
       <caption xml:lang="ru">Плоский режим для ПК</caption>
@@ -331,6 +333,7 @@
       <caption xml:lang="lt">Darbalaukio plokščias rodinys</caption>
       <caption xml:lang="lv">Darbvirsmas plakanais skats</caption>
       <caption xml:lang="nl">Vlakke weergave van bureaublad</caption>
+      <caption xml:lang="nn">Flat vising – skrivebord</caption>
       <caption xml:lang="pl">Płaski widok urządzenia biurkowego</caption>
       <caption xml:lang="pt-BR">Visualização plana para desktop</caption>
       <caption xml:lang="ru">Плоский режим для ПК</caption>
@@ -373,7 +376,7 @@
       <caption xml:lang="lv">Mobilās ierīces dinamiskais skats</caption>
       <caption xml:lang="nb">Dynamisk mobilvisning</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
-      <caption xml:lang="nn">Dynamisk mobilvising</caption>
+      <caption xml:lang="nn">Dynamisk vising – mobil</caption>
       <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pl">Dynamiczny widok urządzenia przenośnego</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
@@ -410,6 +413,7 @@
       <caption xml:lang="lt">Mobilusis pasisveikinimo langas</caption>
       <caption xml:lang="lv">Mobilās ierīces sveiciena ekrāns</caption>
       <caption xml:lang="nl">Welkomstscherm van mobiel</caption>
+      <caption xml:lang="nn">Velkomstbilete – mobil</caption>
       <caption xml:lang="pl">Ekran powitalny urządzenia przenośnego</caption>
       <caption xml:lang="pt-BR">Tela de boas-vindas do dispositivo móvel</caption>
       <caption xml:lang="ru">Экран приветствия на мобильном устройстве</caption>
@@ -452,7 +456,7 @@
       <caption xml:lang="lv">Mobilās ierīces dinamiskais skats</caption>
       <caption xml:lang="nb">Dynamisk mobilvisning</caption>
       <caption xml:lang="nl">Dynamisch beeld op mobiel</caption>
-      <caption xml:lang="nn">Dynamisk mobilvising</caption>
+      <caption xml:lang="nn">Dynamisk vising – mobil</caption>
       <caption xml:lang="pa">ਮੋਬਾਇਲ ਸਫ਼ਰੀ ਝਲਕ</caption>
       <caption xml:lang="pl">Dynamiczny widok urządzenia przenośnego</caption>
       <caption xml:lang="pt">Área dinâmica para dispositivos móveis</caption>
@@ -498,7 +502,7 @@
       <caption xml:lang="lv">Mobilās ierīces plakanais skats</caption>
       <caption xml:lang="nb">Flat mobilvisning</caption>
       <caption xml:lang="nl">Vlak beeld op mobiel</caption>
-      <caption xml:lang="nn">Flat mobilvising</caption>
+      <caption xml:lang="nn">Flat vising – mobil</caption>
       <caption xml:lang="pa">ਮੋਬਾਈਲ ਸਰਲ ਝਲਕ</caption>
       <caption xml:lang="pl">Płaski widok urządzenia przenośnego</caption>
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
@@ -544,7 +548,7 @@
       <caption xml:lang="lv">Mobilās ierīces plakanais skats</caption>
       <caption xml:lang="nb">Flat mobilvisning</caption>
       <caption xml:lang="nl">Vlak beeld op mobiel</caption>
-      <caption xml:lang="nn">Flat mobilvising</caption>
+      <caption xml:lang="nn">Flat vising – mobil</caption>
       <caption xml:lang="pa">ਮੋਬਾਈਲ ਸਰਲ ਝਲਕ</caption>
       <caption xml:lang="pl">Płaski widok urządzenia przenośnego</caption>
       <caption xml:lang="pt">Área plana para dispositivos móveis</caption>
@@ -645,6 +649,7 @@
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
+          <li xml:lang="nn">Forbetra brukarflate og feilfiksar</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
           <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
           <li xml:lang="sk">Vylepšenia používateľského rozhrania a opravy chýb</li>
@@ -677,6 +682,7 @@
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
+          <li xml:lang="nn">Forbetra brukarflate og feilfiksar</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
           <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
           <li xml:lang="sk">Vylepšenia používateľského rozhrania a opravy chýb</li>
@@ -709,6 +715,7 @@
           <li xml:lang="ka">მომხმარებლის ინტერფეისის გაუმჯობესება და შეცდომების გამოსწორება</li>
           <li xml:lang="lt">Naudotojo sąsajos patobulinimai ir klaidų ištaisymai</li>
           <li xml:lang="nl">Verbeteringen aan het gebruikersinterface en reparaties van bugs</li>
+          <li xml:lang="nn">Forbetra brukarflate og feilfiksar</li>
           <li xml:lang="pt-BR">Melhorias na interface do usuário e correções de bugs</li>
           <li xml:lang="ru">Улучшения интерфейса и исправления ошибок</li>
           <li xml:lang="sk">Vylepšenia používateľského rozhrania a opravy chýb</li>
@@ -740,6 +747,7 @@
         <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
+        <p xml:lang="nn">Endringar:</p>
         <p xml:lang="pl">Zmiany:</p>
         <p xml:lang="pt-BR">Alterações:</p>
         <p xml:lang="ru">Изменения:</p>
@@ -892,6 +900,7 @@
         <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
+        <p xml:lang="nn">Endringar:</p>
         <p xml:lang="pl">Zmiany:</p>
         <p xml:lang="pt-BR">Alterações:</p>
         <p xml:lang="ru">Изменения:</p>
@@ -996,6 +1005,7 @@
         <p xml:lang="ka">ცვლილებები:</p>
         <p xml:lang="lt">Pakeitimai:</p>
         <p xml:lang="nl">Wijzigingen:</p>
+        <p xml:lang="nn">Endringar:</p>
         <p xml:lang="pl">Zmiany:</p>
         <p xml:lang="pt-BR">Alterações:</p>
         <p xml:lang="ru">Изменения:</p>
