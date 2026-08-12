@@ -208,7 +208,7 @@ msgstr "المواقع"
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:62
 #, kde-format
 msgid "Choose location"
-msgstr "اختر موقعاً جغرافياً"
+msgstr "اختر موقعًا جغرافيًا"
 
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:77
 #: qml/forecast/dynamic/DynamicForecastHeader.qml:82
