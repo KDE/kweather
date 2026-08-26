@@ -642,6 +642,7 @@
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
+          <li xml:lang="fi">Käyttöliittymäparannuksia ja viankorjauksia</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
@@ -675,6 +676,7 @@
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
+          <li xml:lang="fi">Käyttöliittymäparannuksia ja viankorjauksia</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
@@ -708,6 +710,7 @@
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
+          <li xml:lang="fi">Käyttöliittymäparannuksia ja viankorjauksia</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
           <li xml:lang="he">שיפורי ממשק משתמש ותיקוני תקלות</li>
           <li xml:lang="ia">Melioramentos de interfacie de usator e correctiones de faltas</li>
@@ -740,6 +743,7 @@
         <p xml:lang="cs">Změny:</p>
         <p xml:lang="de">Änderungen:</p>
         <p xml:lang="es">Cambios:</p>
+        <p xml:lang="fi">Muutokset:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">%1 Modificationes</p>
@@ -769,6 +773,7 @@
           <li xml:lang="cs">Vylepšení výkonu v dynamickém zobrazení</li>
           <li xml:lang="de">Leistungsverbesserungen bei der dynamischen Ansicht</li>
           <li xml:lang="es">Mejoras de rendimiento en la vista dinámica.</li>
+          <li xml:lang="fi">suorituskykyparannukset dynaamisessa näkymässä</li>
           <li xml:lang="fr">Améliorations des performances dans la vue dynamique</li>
           <li xml:lang="he">שיפורי ביצועים בתצוגה דינמית</li>
           <li xml:lang="ia">Melioramentod de prestation in vista Dynamic</li>
@@ -793,6 +798,7 @@
           <li xml:lang="ca-valencia">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
           <li xml:lang="cs">Dynamická lišta akcí zobrazení byla přepracována tak, aby byla v souladu s obsahem</li>
           <li xml:lang="es">Barra de acción de vista dinámica reescrita para estar en línea con el contenido.</li>
+          <li xml:lang="fi">dynaamisen näkymä toimintopalkki kirjoitettu uudelleen sisällön sisään</li>
           <li xml:lang="fr">La barre d'actions de vue dynamique a été réécrite pour être intégrée au contenu</li>
           <li xml:lang="he">סרגל פעולות התצוגה הדינמית שוכתב כדי שיהיה מיושר לתוכן</li>
           <li xml:lang="ia">Barra de action de vista Dymanic rescribite per esser in linea al contento</li>
@@ -817,6 +823,7 @@
           <li xml:lang="ca-valencia">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
           <li xml:lang="cs">Umožněno nastavení jiné než aktuální polohy na stránce výchozích předpovědí</li>
           <li xml:lang="es">Permitir configurar una ubicación no actual en la página de pronósticos predeterminada.</li>
+          <li xml:lang="fi">sallii asettaa muun kuin nykyisen sijainnin oletusennustesivulle</li>
           <li xml:lang="fr">Autoriser la définition d'un emplacement non courant sur la page par défaut des prévisions</li>
           <li xml:lang="he">לאפשר הגדרת מקום שאינו הנוכחי בעמוד התשקיפים כברירת מחדל</li>
           <li xml:lang="ia">Permitte assignar location non currente in pagina de prevision predefinite</li>
@@ -841,6 +848,7 @@
           <li xml:lang="ca-valencia">Afig la capacitat d'obtindre unitats de temperatura de la configuració regional del sistema</li>
           <li xml:lang="cs">Přidána možnost načíst jednotky teploty ze systémového nastavení místního formátu</li>
           <li xml:lang="es">Se ha añadido la capacidad de obtener unidades de temperatura de la configuración regional del sistema.</li>
+          <li xml:lang="fi">lisätty ominaisuus saada lämpötilayksiköt maa-asetuksista</li>
           <li xml:lang="fr">Ajout de la possibilité de charger les unités de température à partir des paramètres régionaux du système</li>
           <li xml:lang="he">נוספה האפשרות למשוך את יחידות הטמפרטורה לפי הגדרות המקום של המערכת</li>
           <li xml:lang="ia">Addite habilitate a trovar unitates de temperatura ex le locale de systema</li>
@@ -865,6 +873,7 @@
           <li xml:lang="ca-valencia">Corregix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
           <li xml:lang="cs">Formát pevného časového pásma není správně načítán pro místní čas</li>
           <li xml:lang="es">Corrección para el formato de zona horaria no se lee correctamente para la hora de la ubicación local.</li>
+          <li xml:lang="fi">korjattu paikallisen sijainnin kellonajan aikavyöhykkeen virheellinen muotoilu</li>
           <li xml:lang="fr">Correction du format de fuseau horaire fixe incorrectement lu pour l’heure locale</li>
           <li xml:lang="he">תוקנה בעיה שתבנית אזור הזמן לא נקראת כראוי לשעה של המקום הנוכחי</li>
           <li xml:lang="ia">Corrigite formato de fuso horari que non es correctemente legite per tempore de location local</li>
@@ -898,6 +907,7 @@
         <p xml:lang="cs">Změny:</p>
         <p xml:lang="de">Änderungen:</p>
         <p xml:lang="es">Cambios:</p>
+        <p xml:lang="fi">Muutokset:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">%1 Modificationes</p>
@@ -927,6 +937,7 @@
           <li xml:lang="cs">Přepsán plasmoid počasí</li>
           <li xml:lang="de">Wetter-Miniprogram überarbeitet</li>
           <li xml:lang="es">Reescritura del plasmoide de meteorología.</li>
+          <li xml:lang="fi">kirjoitettu sääsovelma uudelleen</li>
           <li xml:lang="fr">Réécrit le plasmoïde de météo</li>
           <li xml:lang="he">פלזמואיד מזג האוויר נכתב מחדש</li>
           <li xml:lang="ia">Rescribeva le plasmoid del tempore meteorologic</li>
@@ -951,6 +962,7 @@
           <li xml:lang="ca-valencia">Utilitza l'indicador de pàgina inclosa per a les previsions en mode pla</li>
           <li xml:lang="cs">Použit inline indikátor stránky pro předpovědi v jednoduchém režimu</li>
           <li xml:lang="es">Usar el indicador de página en línea para pronósticos en modo plano.</li>
+          <li xml:lang="fi">Käytä litteän tilan ennusteisiin tekstinsisäistä sivuosoitinta</li>
           <li xml:lang="fr">Utilisez un indicateur intégré de page pour les prévisions en mode à plat</li>
           <li xml:lang="he">להשתמש במחוון פנימי בעמוד לתשקיפים במצב שטוח</li>
           <li xml:lang="ia">Usa indicator d epagina integrate pe rprevisiones de modo plan</li>
@@ -975,6 +987,7 @@
           <li xml:lang="ca-valencia">Corregix l'ordre de les ubicacions que no persistix</li>
           <li xml:lang="cs">Oprava nefunkčního řazení poloh</li>
           <li xml:lang="es">Se ha corregido el problema de que el orden de ubicación no persistía.</li>
+          <li xml:lang="fi">korjattu sijaintijärjestyksen pysymättömyys</li>
           <li xml:lang="fr">Correction de l'ordre des emplacements non permanent</li>
           <li xml:lang="he">תוקנה בעיה שסדר המקומות אינו עקבי</li>
           <li xml:lang="ia">Corrige ordinar de location non persistente</li>
@@ -1006,6 +1019,7 @@
         <p xml:lang="cs">Změny:</p>
         <p xml:lang="de">Änderungen:</p>
         <p xml:lang="es">Cambios:</p>
+        <p xml:lang="fi">Muutokset:</p>
         <p xml:lang="fr">Modifications :</p>
         <p xml:lang="he">שינויים:</p>
         <p xml:lang="ia">%1 Modificationes</p>
@@ -1034,6 +1048,7 @@
           <li xml:lang="ca-valencia">Refà la pàgina d'ubicacions per a gestionar millor els noms de les ubicacions llargues</li>
           <li xml:lang="cs">Přepracována stránka s lokalitami, aby lépe zvládala jejich dlouhé názvy</li>
           <li xml:lang="es">Se ha modificado la página de ubicaciones para manejar mejor los nombres largos de ubicaciones.</li>
+          <li xml:lang="fi">parannettu sijaintisivua selviämään paremmin pitkistä paikannimistä</li>
           <li xml:lang="fr">Refonte de la page des emplacements pour mieux gérer les noms longs d'emplacements</li>
           <li xml:lang="he">עמוד המקומות עבר עבודה מחדש לטיפול טוב יותר בשמות מקומות ארוכים</li>
           <li xml:lang="ia">Relaborava le pagina de location per manear meliormente longe nomine de location</li>
@@ -1058,6 +1073,7 @@
           <li xml:lang="ca-valencia">Afig l'amplària màxima a la previsió dinàmica per a gestionar millor les pantalles amples</li>
           <li xml:lang="cs">Přidána maximální šířka k dynamické předpovědi, aby se lépe přizpůsobila širokoúhlému displeji</li>
           <li xml:lang="es">Se ha añadido la anchura máxima al pronóstico dinámico para aprovechar mejor las pantallas anchas.</li>
+          <li xml:lang="fi">lisätty dynaamiseen ennusteeseen enimmäisleveys leveiden näyttöjen tukemiseksi paremmin</li>
           <li xml:lang="fr">Ajouter une largeur maximale à la prévision dynamique pour mieux gérer les écrans larges</li>
           <li xml:lang="he">הוספת רוחב מרבי לתשקיף דינמי כדי להתמודד טוב יותר עם מסך רחב</li>
           <li xml:lang="ia">Adde largessa maxime a prevision dynamic per tractar meliormente schermos large</li>
@@ -1082,6 +1098,7 @@
           <li xml:lang="ca-valencia">Elimina el plasmoide (s'està tornant a fer!)</li>
           <li xml:lang="cs">Odstraněn plasmoid (je přepracováván!)</li>
           <li xml:lang="es">Eliminar plasmoide (¡se está trabajando en ello!)</li>
+          <li xml:lang="fi">Poista sovelma (sitä kunnostetaan!)</li>
           <li xml:lang="fr">Supprimer le plasmoïde (Il est en cours de refonte !)</li>
           <li xml:lang="he">הפלזמואיד הוסר (עובדים עליו מחדש!)</li>
           <li xml:lang="ia">Remove plasmoid (il ha essite relaborate!)</li>
@@ -1106,6 +1123,7 @@
           <li xml:lang="ca-valencia">Corregix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
           <li xml:lang="cs">Opravena chyba, kdy se při přidání nových lokalit nenačítala výchozí stránka</li>
           <li xml:lang="es">Se ha corregido el problema de que la página predeterminada no se cargaba cuando se añadían nuevas ubicaciones.</li>
+          <li xml:lang="fi">korjattu oletussivun lataumattomuus uusien sijaintien lisäyksen jälkeen</li>
           <li xml:lang="fr">Correction de l'absence de chargement de la page par défaut lors de l'ajout de nouveaux emplacements</li>
           <li xml:lang="he">תוקנה בעיה שעמוד ברירת המחדל לא נטען כשנוספים מקומות חדשים</li>
           <li xml:lang="ia">Corrigite que le pagina predefinite non es cargate quando nove locationes es addite</li>
@@ -1130,6 +1148,7 @@
           <li xml:lang="ca-valencia">Unifica la configuració de la ubicació a l'aplicació</li>
           <li xml:lang="cs">Sjednoceno umístění nastavení aplikace</li>
           <li xml:lang="es">Unificar la ubicación de la configuración de la aplicación.</li>
+          <li xml:lang="fi">yhtenäistetty sovelluksen asetusten sijainti</li>
           <li xml:lang="fr">Unifier l'emplacement de la configuration de l'application</li>
           <li xml:lang="he">איחוד מקום הגדרות היישום</li>
           <li xml:lang="ia">Uni locationes de preferentias de application</li>
@@ -1154,6 +1173,7 @@
           <li xml:lang="ca-valencia">Activa la depuració de QML quan s'estiga en el mode de depuració</li>
           <li xml:lang="cs">Povoleno ladění qml v režimu ladění</li>
           <li xml:lang="es">Habilitar modo de depuración qml en el modo de depuración.</li>
+          <li xml:lang="fi">Käytä virheenpaikannustilassa QML-virheenpaikannusta</li>
           <li xml:lang="fr">Activer le débogage de QML lorsqu'en mode de débogage</li>
           <li xml:lang="he">הפעלת ניפוי שגיאות ב־qml במצב ניפוי שגיאות</li>
           <li xml:lang="ia">Habilita cribrar de qml quando in modo de cribrar</li>
