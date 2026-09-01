@@ -874,7 +874,7 @@
           <li xml:lang="cs">Formát pevného časového pásma není správně načítán pro místní čas</li>
           <li xml:lang="es">Corrección para el formato de zona horaria no se lee correctamente para la hora de la ubicación local.</li>
           <li xml:lang="fi">korjattu paikallisen sijainnin kellonajan aikavyöhykkeen virheellinen muotoilu</li>
-          <li xml:lang="fr">Correction du format de fuseau horaire fixe incorrectement lu pour l’heure locale</li>
+          <li xml:lang="fr">Correction du format de fuseau horaire fixe incorrectement lu pour l'heure locale</li>
           <li xml:lang="he">תוקנה בעיה שתבנית אזור הזמן לא נקראת כראוי לשעה של המקום הנוכחי</li>
           <li xml:lang="ia">Corrigite formato de fuso horari que non es correctemente legite per tempore de location local</li>
           <li xml:lang="it">Corretto il formato del fuso orario che non veniva letto correttamente per l'ora locale</li>
