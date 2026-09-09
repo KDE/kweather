@@ -225,7 +225,7 @@ msgstr "Configuration"
 #: qml/ForecastContainerPage.qml:67
 #, kde-format
 msgid "Refresh"
-msgstr "Rafraîchir"
+msgstr "Rafraichir"
 
 #: qml/forecast/dynamic/DynamicForecastPage.qml:73
 #: qml/forecast/flat/FlatLocationForecast.qml:43
