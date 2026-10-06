@@ -76,7 +76,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
 )
 find_package(KWeatherCore 0.8.0 REQUIRED)
 
-find_package(KF6KirigamiAddons 0.11 REQUIRED)
+find_package(KF6KirigamiAddons 1.13 REQUIRED)
 
 if (ANDROID)
     find_package(OpenSSL REQUIRED)

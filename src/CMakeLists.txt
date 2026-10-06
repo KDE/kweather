@@ -161,6 +161,7 @@ target_link_libraries(kweather
     KF6::CoreAddons
     KF6::Notifications
     KF6::I18nQml
+    KirigamiApp
     KWeatherCore
     kweatherLib
     kweatherbackgroundsplugin
