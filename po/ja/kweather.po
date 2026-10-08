@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-29 00:47+0000\n"
+"POT-Creation-Date: 2026-10-08 00:50+0000\n"
 "PO-Revision-Date: 2020-06-13 17:20-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -103,27 +103,27 @@ msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
 msgid "High: %1°C Low: %2°C"
 msgstr ""
 
-#: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
+#: main.cpp:48 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
 msgid "Weather"
 msgstr ""
 
-#: main.cpp:62
+#: main.cpp:50
 #, kde-format
 msgid "A convergent weather application for Plasma"
 msgstr ""
 
-#: main.cpp:64
+#: main.cpp:52
 #, kde-format
 msgid "© 2020-2024 Plasma Development Team"
 msgstr ""
 
-#: main.cpp:66
+#: main.cpp:54
 #, kde-format
 msgid "Han Young"
 msgstr ""
 
-#: main.cpp:67
+#: main.cpp:55
 #, kde-format
 msgid "Devin Lin"
 msgstr ""
