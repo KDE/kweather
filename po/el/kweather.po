@@ -1,21 +1,22 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the kweather package.
 #
 # Stelios <sstavra@gmail.com>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2026 Petros Vidalis <pvidalis@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kweather\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-29 00:47+0000\n"
-"PO-Revision-Date: 2023-01-02 23:40+0200\n"
-"Last-Translator: Stelios <sstavra@gmail.com>\n"
+"PO-Revision-Date: 2026-10-13 21:27+0300\n"
+"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -88,24 +89,23 @@ msgid "%1 mm"
 msgstr "%1 mm"
 
 #: krunner/kweatherrunner.cpp:37
-#, fuzzy, kde-format
-#| msgid "Weather"
+#, kde-format
 msgctxt "Command to get weather"
 msgid "weather"
-msgstr "Καιρός"
+msgstr "καιρός"
 
 #: krunner/kweatherrunner.cpp:126
 #, kde-format
 msgctxt ""
 "Weather forecast: %1 is temperature, %2 is description, %3 is location"
 msgid "%1°C - %2 in %3"
-msgstr ""
+msgstr "%1°C - %2 σε %3"
 
 #: krunner/kweatherrunner.cpp:127
 #, kde-format
 msgctxt "Weather forecast subtext: %1 is high temp, %2 is low temp"
 msgid "High: %1°C Low: %2°C"
-msgstr ""
+msgstr "Υψηλή: %1°C Χαμηλή: %2°C"
 
 #: main.cpp:60 qml/DefaultPage.qml:69 qml/Main.qml:23
 #, kde-format
@@ -167,7 +167,7 @@ msgstr "Άνοιγμα του KWeather"
 #: qml/components/PageHeader.qml:44
 #, kde-format
 msgid "Navigate Back"
-msgstr ""
+msgstr "Επιστροφή"
 
 #: qml/DefaultPage.qml:21 qml/ForecastContainerPage.qml:31
 #, kde-format
@@ -422,6 +422,8 @@ msgid ""
 "View hourly and daily weather forecasts, along with other detailed "
 "information such as wind speed and precipitation."
 msgstr ""
+"Δείτε ωριαίες και ημερήσιες προγνώσεις καιρού, καθώς και αναλυτικές "
+"πληροφορίες, όπως η ταχύτητα του ανέμου και ο υετός."
 
 #: qml/SetupWizard.qml:282
 #, kde-format
@@ -429,6 +431,8 @@ msgid ""
 "Save multiple locations and switch between them easily with the locations "
 "list."
 msgstr ""
+"Αποθηκεύστε πολλές τοποθεσίες και μεταβείτε εύκολα από τη μία στην άλλη μέσω "
+"της λίστας τοποθεσιών."
 
 #: qml/SetupWizard.qml:304
 #, kde-format
@@ -436,6 +440,8 @@ msgid ""
 "Built by the community, and powered by data from the Norwegian "
 "Meteorological Institute."
 msgstr ""
+"Δημιουργήθηκε από την κοινότητα και χρησιμοποιεί δεδομένα από το Νορβηγικό "
+"Μετεωρολογικό Ινστιτούτο."
 
 #: qml/SetupWizard.qml:311
 #, kde-format
@@ -461,12 +467,12 @@ msgstr "Μπορείτε να αλλάξετε το θέμα αργότερα σ
 #: qml/SetupWizard.qml:490
 #, kde-format
 msgid "Animated and full-color backgrounds for weather forecasts."
-msgstr ""
+msgstr "Κινούμενα και χρωματισμένα παρασκήνια για προγνώσεις καιρού."
 
 #: qml/SetupWizard.qml:526
 #, kde-format
 msgid "Flat and simple backgrounds for weather forecasts."
-msgstr ""
+msgstr "Επίπεδα και απλά παρασκήνια για προγνώσεις καιρού."
 
 #: qml/SunriseCard.qml:50
 #, kde-format
