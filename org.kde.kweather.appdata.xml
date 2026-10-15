@@ -62,6 +62,7 @@
   <summary xml:lang="ca-valencia">Visualitza previsions meteorològiques en temps real</summary>
   <summary xml:lang="cs">Předpovědi počasí v reálném čase</summary>
   <summary xml:lang="de">Echtzeit-Wettervorhersagen anzeigen</summary>
+  <summary xml:lang="el">Προβολή προγνώσεων καιρού σε πραγματικό χρόνο</summary>
   <summary xml:lang="en-GB">View real-time weather forecasts</summary>
   <summary xml:lang="eo">Rigardi realtempajn veterprognozojn</summary>
   <summary xml:lang="es">Ver predicciones meteorológicas en tiempo real</summary>
@@ -115,7 +116,7 @@
     <p xml:lang="ca-valencia">Una aplicació convergent de meteorologia per a Plasma. Té vistes planes i dinàmiques/animades per a mostrar els pronòstics i altra informació.</p>
     <p xml:lang="cs">Konvergentní aplikace pro předpověď počasí pro Plasma. Má jednoduché a dynamické/animované zobrazení pro předpovědi a další informace.</p>
     <p xml:lang="de">Eine konvergente Wetter-Anwendung für Plasma. Mit flachen und dynamisch animierten Ansichten der Wettervorhersage und weiteren Informationen.</p>
-    <p xml:lang="el">Μία συνοδευτική εφαρμογή πρόγνωσης καιρού για το Plasma. Περιέχει επίπεδες και δυναμικές/κινούμενης εικόνας προβολές για την παρουσίαση προγνώσεων και για άλλες πληροφορίες.</p>
+    <p xml:lang="el">Μια προσαρμοζόμενη εφαρμογή καιρού για το Plasma, με επίπεδη και δυναμική (κινούμενη) προβολή προγνώσεων και άλλων πληροφοριών.</p>
     <p xml:lang="en-GB">A convergent weather application for Plasma. Has flat and dynamic/animated views for showing forecasts and other information.</p>
     <p xml:lang="eo">Konverĝa veteraplikaĵo por Plasmo. Havas platajn kaj dinamikajn/viglajn vidojn por montri prognozojn kaj aliajn informojn.</p>
     <p xml:lang="es">Aplicación meteorológica convergente para Plasma. Contiene una vista plana y otra dinámica/animada para mostrar previsiones meteorológicas y otra información.</p>
@@ -206,6 +207,7 @@
       <caption xml:lang="ca-valencia">Pantalla de benvinguda de l'escriptori</caption>
       <caption xml:lang="cs">Úvodní obrazovka plochy</caption>
       <caption xml:lang="de">Willkommensbildschirm für die Arbeitsfläche</caption>
+      <caption xml:lang="el">Οθόνη υποδοχής για υπολογιστή</caption>
       <caption xml:lang="es">Pantalla de bienvenida al escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ongietorri pantaila</caption>
       <caption xml:lang="fi">Työpöydän tervetulonäyttö</caption>
@@ -286,6 +288,7 @@
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
       <caption xml:lang="cs">Plochý pohled pracovní plochy</caption>
       <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
+      <caption xml:lang="el">Επίπεδη προβολή για υπολογιστή</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
       <caption xml:lang="fi">Litteä työpöytänäkymä</caption>
@@ -320,6 +323,7 @@
       <caption xml:lang="ca-valencia">Vista plana de l'escriptori</caption>
       <caption xml:lang="cs">Plochý pohled pracovní plochy</caption>
       <caption xml:lang="de">Flache Ansicht für die Arbeitsfläche</caption>
+      <caption xml:lang="el">Επίπεδη προβολή για υπολογιστή</caption>
       <caption xml:lang="es">Vista plana de escritorio</caption>
       <caption xml:lang="eu">Mahaigaineko ikuspegi laua</caption>
       <caption xml:lang="fi">Litteä työpöytänäkymä</caption>
@@ -400,6 +404,7 @@
       <caption xml:lang="ca-valencia">Pantalla de benvinguda del mòbil</caption>
       <caption xml:lang="cs">Mobilní uvítací obrazovka</caption>
       <caption xml:lang="de">Willkommensbildschirm für Mobilgeräte</caption>
+      <caption xml:lang="el">Οθόνη υποδοχής για κινητό</caption>
       <caption xml:lang="es">Pantalla de bienvenida móvil</caption>
       <caption xml:lang="eu">Mugikorreko ongietorri pantaila</caption>
       <caption xml:lang="fi">Mobiilin tervetulonäyttö</caption>
@@ -643,6 +648,7 @@
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
+          <li xml:lang="el">Βελτιώσεις στο περιβάλλον χρήστη και διορθώσεις σφαλμάτων</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fi">Käyttöliittymäparannuksia ja viankorjauksia</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
@@ -677,6 +683,7 @@
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
+          <li xml:lang="el">Βελτιώσεις στο περιβάλλον χρήστη και διορθώσεις σφαλμάτων</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fi">Käyttöliittymäparannuksia ja viankorjauksia</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
@@ -711,6 +718,7 @@
           <li xml:lang="ca-valencia">Millores en la interfície d'usuari i esmenes d'errors</li>
           <li xml:lang="cs">Vylepšení uživatelského rozhraní a opravy chyb</li>
           <li xml:lang="de">Verbesserungen der Benutzeroberfläche und Fehlerbehebungen</li>
+          <li xml:lang="el">Βελτιώσεις στο περιβάλλον χρήστη και διορθώσεις σφαλμάτων</li>
           <li xml:lang="es">Mejoras de la interfaz de usuario y corrección de fallos</li>
           <li xml:lang="fi">Käyttöliittymäparannuksia ja viankorjauksia</li>
           <li xml:lang="fr">Améliorations de l'interface utilisateur et corrections de bogues</li>
@@ -744,6 +752,7 @@
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="cs">Změny:</p>
         <p xml:lang="de">Änderungen:</p>
+        <p xml:lang="el">Αλλαγές:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fi">Muutokset:</p>
         <p xml:lang="fr">Modifications :</p>
@@ -774,6 +783,7 @@
           <li xml:lang="ca-valencia">Millores de rendiment a la vista dinàmica</li>
           <li xml:lang="cs">Vylepšení výkonu v dynamickém zobrazení</li>
           <li xml:lang="de">Leistungsverbesserungen bei der dynamischen Ansicht</li>
+          <li xml:lang="el">Βελτιώσεις επιδόσεων στη δυναμική προβολή</li>
           <li xml:lang="es">Mejoras de rendimiento en la vista dinámica.</li>
           <li xml:lang="fi">suorituskykyparannukset dynaamisessa näkymässä</li>
           <li xml:lang="fr">Améliorations des performances dans la vue dynamique</li>
@@ -799,6 +809,7 @@
           <li xml:lang="ca">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
           <li xml:lang="ca-valencia">Barra d'acció de vista dinàmica reescrita per a estar inclosa al contingut</li>
           <li xml:lang="cs">Dynamická lišta akcí zobrazení byla přepracována tak, aby byla v souladu s obsahem</li>
+          <li xml:lang="el">Η γραμμή ενεργειών της δυναμικής προβολής ξαναγράφτηκε ώστε να εμφανίζεται μέσα στο περιεχόμενο</li>
           <li xml:lang="es">Barra de acción de vista dinámica reescrita para estar en línea con el contenido.</li>
           <li xml:lang="fi">dynaamisen näkymä toimintopalkki kirjoitettu uudelleen sisällön sisään</li>
           <li xml:lang="fr">La barre d'actions de vue dynamique a été réécrite pour être intégrée au contenu</li>
@@ -824,6 +835,7 @@
           <li xml:lang="ca">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
           <li xml:lang="ca-valencia">Permet establir la ubicació no actual a la pàgina de previsions predeterminades</li>
           <li xml:lang="cs">Umožněno nastavení jiné než aktuální polohy na stránce výchozích předpovědí</li>
+          <li xml:lang="el">Δυνατότητα επιλογής τοποθεσίας διαφορετικής από την τρέχουσα στην προεπιλεγμένη σελίδα προγνώσεων</li>
           <li xml:lang="es">Permitir configurar una ubicación no actual en la página de pronósticos predeterminada.</li>
           <li xml:lang="fi">sallii asettaa muun kuin nykyisen sijainnin oletusennustesivulle</li>
           <li xml:lang="fr">Autoriser la définition d'un emplacement non courant sur la page par défaut des prévisions</li>
@@ -849,6 +861,7 @@
           <li xml:lang="ca">Afegeix la capacitat d'obtenir unitats de temperatura de la configuració regional del sistema</li>
           <li xml:lang="ca-valencia">Afig la capacitat d'obtindre unitats de temperatura de la configuració regional del sistema</li>
           <li xml:lang="cs">Přidána možnost načíst jednotky teploty ze systémového nastavení místního formátu</li>
+          <li xml:lang="el">Προστέθηκε η δυνατότητα λήψης των μονάδων θερμοκρασίας από τις τοπικές ρυθμίσεις του συστήματος</li>
           <li xml:lang="es">Se ha añadido la capacidad de obtener unidades de temperatura de la configuración regional del sistema.</li>
           <li xml:lang="fi">lisätty ominaisuus saada lämpötilayksiköt maa-asetuksista</li>
           <li xml:lang="fr">Ajout de la possibilité de charger les unités de température à partir des paramètres régionaux du système</li>
@@ -874,6 +887,7 @@
           <li xml:lang="ca">Corregeix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
           <li xml:lang="ca-valencia">Corregix el format del fus horari que no es llegia correctament per a l'hora local de la ubicació</li>
           <li xml:lang="cs">Formát pevného časového pásma není správně načítán pro místní čas</li>
+          <li xml:lang="el">Διορθώθηκε η ανάγνωση της μορφής της ζώνης ώρας για την τοπική ώρα της τοποθεσίας</li>
           <li xml:lang="es">Corrección para el formato de zona horaria no se lee correctamente para la hora de la ubicación local.</li>
           <li xml:lang="fi">korjattu paikallisen sijainnin kellonajan aikavyöhykkeen virheellinen muotoilu</li>
           <li xml:lang="fr">Correction du format de fuseau horaire fixe incorrectement lu pour l'heure locale</li>
@@ -908,6 +922,7 @@
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="cs">Změny:</p>
         <p xml:lang="de">Änderungen:</p>
+        <p xml:lang="el">Αλλαγές:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fi">Muutokset:</p>
         <p xml:lang="fr">Modifications :</p>
@@ -938,6 +953,7 @@
           <li xml:lang="ca-valencia">Reescrit el plasmoide meteorològic</li>
           <li xml:lang="cs">Přepsán plasmoid počasí</li>
           <li xml:lang="de">Wetter-Miniprogram überarbeitet</li>
+          <li xml:lang="el">Ξαναγράφτηκε το πλασμοειδές καιρού</li>
           <li xml:lang="es">Reescritura del plasmoide de meteorología.</li>
           <li xml:lang="fi">kirjoitettu sääsovelma uudelleen</li>
           <li xml:lang="fr">Réécrit le plasmoïde de météo</li>
@@ -963,6 +979,7 @@
           <li xml:lang="ca">Usa l'indicador de pàgina inclosa per a les previsions en mode pla</li>
           <li xml:lang="ca-valencia">Utilitza l'indicador de pàgina inclosa per a les previsions en mode pla</li>
           <li xml:lang="cs">Použit inline indikátor stránky pro předpovědi v jednoduchém režimu</li>
+          <li xml:lang="el">Χρήση ενσωματωμένης ένδειξης σελίδας για τις προγνώσεις σε επίπεδη προβολή</li>
           <li xml:lang="es">Usar el indicador de página en línea para pronósticos en modo plano.</li>
           <li xml:lang="fi">Käytä litteän tilan ennusteisiin tekstinsisäistä sivuosoitinta</li>
           <li xml:lang="fr">Utilisez un indicateur intégré de page pour les prévisions en mode à plat</li>
@@ -988,6 +1005,7 @@
           <li xml:lang="ca">Corregeix l'ordre de les ubicacions que no persisteix</li>
           <li xml:lang="ca-valencia">Corregix l'ordre de les ubicacions que no persistix</li>
           <li xml:lang="cs">Oprava nefunkčního řazení poloh</li>
+          <li xml:lang="el">Διορθώθηκε η μη διατήρηση της σειράς των τοποθεσιών</li>
           <li xml:lang="es">Se ha corregido el problema de que el orden de ubicación no persistía.</li>
           <li xml:lang="fi">korjattu sijaintijärjestyksen pysymättömyys</li>
           <li xml:lang="fr">Correction de l'ordre des emplacements non permanent</li>
@@ -1020,6 +1038,7 @@
         <p xml:lang="ca-valencia">Canvis:</p>
         <p xml:lang="cs">Změny:</p>
         <p xml:lang="de">Änderungen:</p>
+        <p xml:lang="el">Αλλαγές:</p>
         <p xml:lang="es">Cambios:</p>
         <p xml:lang="fi">Muutokset:</p>
         <p xml:lang="fr">Modifications :</p>
@@ -1049,6 +1068,7 @@
           <li xml:lang="ca">Refà la pàgina d'ubicacions per gestionar millor els noms de les ubicacions llargues</li>
           <li xml:lang="ca-valencia">Refà la pàgina d'ubicacions per a gestionar millor els noms de les ubicacions llargues</li>
           <li xml:lang="cs">Přepracována stránka s lokalitami, aby lépe zvládala jejich dlouhé názvy</li>
+          <li xml:lang="el">Ανασχεδιάστηκε η σελίδα τοποθεσιών για καλύτερη εμφάνιση των μεγάλων ονομάτων τοποθεσιών</li>
           <li xml:lang="es">Se ha modificado la página de ubicaciones para manejar mejor los nombres largos de ubicaciones.</li>
           <li xml:lang="fi">parannettu sijaintisivua selviämään paremmin pitkistä paikannimistä</li>
           <li xml:lang="fr">Refonte de la page des emplacements pour mieux gérer les noms longs d'emplacements</li>
@@ -1074,6 +1094,7 @@
           <li xml:lang="ca">Afegeix l'amplada màxima a la previsió dinàmica per gestionar millor les pantalles amples</li>
           <li xml:lang="ca-valencia">Afig l'amplària màxima a la previsió dinàmica per a gestionar millor les pantalles amples</li>
           <li xml:lang="cs">Přidána maximální šířka k dynamické předpovědi, aby se lépe přizpůsobila širokoúhlému displeji</li>
+          <li xml:lang="el">Προστέθηκε μέγιστο πλάτος στη δυναμική πρόγνωση για καλύτερη εμφάνιση σε ευρείες οθόνες</li>
           <li xml:lang="es">Se ha añadido la anchura máxima al pronóstico dinámico para aprovechar mejor las pantallas anchas.</li>
           <li xml:lang="fi">lisätty dynaamiseen ennusteeseen enimmäisleveys leveiden näyttöjen tukemiseksi paremmin</li>
           <li xml:lang="fr">Ajouter une largeur maximale à la prévision dynamique pour mieux gérer les écrans larges</li>
@@ -1099,6 +1120,7 @@
           <li xml:lang="ca">Elimina el plasmoide (s'està tornant a fer!)</li>
           <li xml:lang="ca-valencia">Elimina el plasmoide (s'està tornant a fer!)</li>
           <li xml:lang="cs">Odstraněn plasmoid (je přepracováván!)</li>
+          <li xml:lang="el">Αφαιρέθηκε το plasmoid (βρίσκεται υπό ανακατασκευή!)</li>
           <li xml:lang="es">Eliminar plasmoide (¡se está trabajando en ello!)</li>
           <li xml:lang="fi">Poista sovelma (sitä kunnostetaan!)</li>
           <li xml:lang="fr">Supprimer le plasmoïde (Il est en cours de refonte !)</li>
@@ -1124,6 +1146,7 @@
           <li xml:lang="ca">Corregeix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
           <li xml:lang="ca-valencia">Corregix la pàgina predeterminada que no es carregava quan s'afegien ubicacions noves</li>
           <li xml:lang="cs">Opravena chyba, kdy se při přidání nových lokalit nenačítala výchozí stránka</li>
+          <li xml:lang="el">Διορθώθηκε η μη φόρτωση της προεπιλεγμένης σελίδας κατά την προσθήκη νέων τοποθεσιών</li>
           <li xml:lang="es">Se ha corregido el problema de que la página predeterminada no se cargaba cuando se añadían nuevas ubicaciones.</li>
           <li xml:lang="fi">korjattu oletussivun lataumattomuus uusien sijaintien lisäyksen jälkeen</li>
           <li xml:lang="fr">Correction de l'absence de chargement de la page par défaut lors de l'ajout de nouveaux emplacements</li>
@@ -1149,6 +1172,7 @@
           <li xml:lang="ca">Unifica la configuració de la ubicació a l'aplicació</li>
           <li xml:lang="ca-valencia">Unifica la configuració de la ubicació a l'aplicació</li>
           <li xml:lang="cs">Sjednoceno umístění nastavení aplikace</li>
+          <li xml:lang="el">Ενοποιήθηκε η θέση των ρυθμίσεων της εφαρμογής</li>
           <li xml:lang="es">Unificar la ubicación de la configuración de la aplicación.</li>
           <li xml:lang="fi">yhtenäistetty sovelluksen asetusten sijainti</li>
           <li xml:lang="fr">Unifier l'emplacement de la configuration de l'application</li>
@@ -1174,6 +1198,7 @@
           <li xml:lang="ca">Activa la depuració del QML quan és en el mode de depuració</li>
           <li xml:lang="ca-valencia">Activa la depuració de QML quan s'estiga en el mode de depuració</li>
           <li xml:lang="cs">Povoleno ladění qml v režimu ladění</li>
+          <li xml:lang="el">Ενεργοποιήθηκε η αποσφαλμάτωση QML στη λειτουργία αποσφαλμάτωσης</li>
           <li xml:lang="es">Habilitar modo de depuración qml en el modo de depuración.</li>
           <li xml:lang="fi">Käytä virheenpaikannustilassa QML-virheenpaikannusta</li>
           <li xml:lang="fr">Activer le débogage de QML lorsqu'en mode de débogage</li>
