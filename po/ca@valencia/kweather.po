@@ -65,7 +65,7 @@ msgstr "%1 mmHg"
 #, kde-format
 msgctxt "%1 represents percent value, % is the percent sign"
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: formatter.cpp:83
 #, kde-format
@@ -149,7 +149,7 @@ msgstr "Trieu l'emplaçament"
 #: plasmoid/WeatherContainer.qml:65
 #, kde-format
 msgid "%1%"
-msgstr "%1%"
+msgstr "%1 %"
 
 #: plasmoid/WeatherContainer.qml:81
 #, kde-format
