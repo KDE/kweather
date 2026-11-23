@@ -10,6 +10,8 @@
 
 #include <KWeatherCore/DailyWeatherForecast>
 
+#include <QObject>
+#include <QVariantList>
 #include <QtGlobal>
 #include <qqmlregistration.h>
 

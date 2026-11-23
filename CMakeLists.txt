@@ -95,6 +95,9 @@ endif()
 
 ecm_find_qmlmodule(org.kde.kholidays 1.0)
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
+if(ECM_VERSION VERSION_GREATER_EQUAL "6.33.0")
+    add_definitions(-DQT_LEAN_HEADERS=2)
+endif()
 add_subdirectory(src)
 
 ki18n_install(po)
