@@ -934,7 +934,7 @@
           <li xml:lang="sr-ijekavian">Омогућено постављање локације која није тренутна на подразумијеваној страници прогноза</li>
           <li xml:lang="sr-ijekavianlatin">Omogućeno postavljanje lokacije koja nije trenutna na podrazumijevanoj stranici prognoza</li>
           <li xml:lang="sv">Tillåt inställning av andra platser än den aktuella på standardprognossidan</li>
-          <li xml:lang="tr">Öntanımlı tahminler sayfasında geçerli olmayan bir konum ayarlanmasına izin veriliyor.</li>
+          <li xml:lang="tr">Varsayılan tahminler sayfasında geçerli olmayan bir konum ayarlanmasına izin veriliyor.</li>
           <li xml:lang="uk">Уможливлено встановлення місця, відмінного від поточного, на сторінці типових прогнозів</li>
           <li xml:lang="zh-CN">允许在默认预报页面设置为非当前地理位置</li>
           <li xml:lang="zh-TW">允許在預設預報頁面設定非目前所在的位置</li>
@@ -1289,7 +1289,7 @@
           <li xml:lang="sr-ijekavian">Поправљено неучитавање подразумијеване странице при додавању нових локација</li>
           <li xml:lang="sr-ijekavianlatin">Popravljeno neučitavanje podrazumijevane stranice pri dodavanju novih lokacija</li>
           <li xml:lang="sv">Rättade problemet med att standardsidan inte lästes in vid tillägg av nya platser</li>
-          <li xml:lang="tr">Yeni konumlar eklendiğinde öntanımlı sayfanın yüklenmemesi sorunu düzeltildi.</li>
+          <li xml:lang="tr">Yeni konumlar eklendiğinde varsayılan sayfanın yüklenmemesi sorunu düzeltildi.</li>
           <li xml:lang="uk">Виправлено помилку, пов'язану із тим, що типова сторінка не завантажувалася, якщо додано нові місця</li>
           <li xml:lang="zh-CN">修复了在添加新位置时默认页面不加载的问题</li>
           <li xml:lang="zh-TW">修正新增位置時不會載入預設頁面的問題</li>
